@@ -1,31 +1,34 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useCallback, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ZodError } from "zod";
 import {
-	Check,
-	ArrowRight,
 	ArrowLeft,
+	ArrowRight,
 	Calculator,
-	Zap,
-	Globe,
-	Users,
-	Shield,
-	Info,
+	Check,
+	CircleAlert,
 	DollarSign,
+	Globe,
+	Info,
 	Mail,
+	Shield,
+	Users,
+	Zap,
 } from "lucide-react";
 import Navbar from "@/components/ui/Navbar";
 import ShaderBackground from "@/components/shaders/ShaderBackground";
 import { CAL_LINKS } from "~/lib/constants";
-import { PRICING_STEPS, ANIMATION_CONFIG } from "./constants";
+import { ANIMATION_CONFIG, PRICING_STEPS } from "./constants";
 import type { Selections } from "./types";
 import {
 	calculateStepTotal,
 	calculateTotal,
-	getSelectedOptionsByStep,
 	formatSelectionsSummary,
+	getSelectedOptionsByStep,
 } from "./utils";
+import { validEmail } from "@/app/pricing/validation";
 
 export default function PricingCalculator() {
 	const [currentStep, setCurrentStep] = useState(0);
@@ -34,7 +37,25 @@ export default function PricingCalculator() {
 	const [hoveredOption, setHoveredOption] = useState<string | null>(null);
 	const [email, setEmail] = useState("");
 	const [isSaving, setIsSaving] = useState(false);
+	const [isValidEmail, setIsValidEmail] = useState(false);
 	const [saveError, setSaveError] = useState("");
+
+	const validateEmail = useCallback(() => {
+		try {
+			validEmail(email);
+			setIsValidEmail(true);
+			setSaveError("");
+		} catch (error) {
+			setIsValidEmail(false);
+			if (error instanceof ZodError) {
+				setSaveError(error.issues[0].message);
+			} else if (error instanceof Error) {
+				setSaveError(error.message);
+			} else {
+				setSaveError("An unexpected error occurred during validation");
+			}
+		}
+	}, [email]);
 
 	const currentStepData = PRICING_STEPS[currentStep];
 	const isMultiSelect = currentStepData?.multiSelect || false;
@@ -82,10 +103,11 @@ export default function PricingCalculator() {
 		setShowSummary(false);
 		setEmail("");
 		setSaveError("");
+		setIsValidEmail(false);
 	};
 
 	const saveEstimate = async () => {
-		if (!email) {
+		if (!email || isValidEmail) {
 			setSaveError("Please enter your email");
 			return;
 		}
@@ -167,17 +189,10 @@ export default function PricingCalculator() {
 						</div>
 					))}
 
-					<div
-						className="pt-4 border-t border-cyan-500/30"
-						aria-live="polite"
-						aria-atomic="true"
-					>
+					<div className="pt-4 border-t border-cyan-500/30">
 						<div className="flex items-center justify-between">
 							<span className="text-lg font-bold text-white">Total</span>
-							<span
-								className="text-2xl font-bold text-cyan-400"
-								aria-label={`Total estimate: $${grandTotal.toLocaleString()}`}
-							>
+							<span className="text-2xl font-bold text-cyan-400">
 								${grandTotal.toLocaleString()}
 							</span>
 						</div>
@@ -219,16 +234,9 @@ export default function PricingCalculator() {
 						</div>
 
 						{/* Price Display */}
-						<div
-							className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-2xl p-8 text-center"
-							aria-live="polite"
-							aria-atomic="true"
-						>
+						<div className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-2xl p-8 text-center">
 							<p className="text-gray-300 mb-2">Total Investment</p>
-							<div
-								className="text-6xl font-bold text-white mb-2"
-								aria-label={`Total investment: $${total.toLocaleString()}`}
-							>
+							<div className="text-6xl font-bold text-white mb-2">
 								${total.toLocaleString()}
 							</div>
 							<p className="text-sm text-gray-400">
@@ -238,7 +246,7 @@ export default function PricingCalculator() {
 
 						{/* Email Capture */}
 						<div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/30 rounded-2xl p-8">
-							<div className="max-w-2xl mx-auto">
+							<div className="max-w-2xl min-h-50 mx-auto">
 								<h3 className="text-2xl font-bold text-white mb-4 text-center">
 									Get Your Detailed Quote
 								</h3>
@@ -246,53 +254,40 @@ export default function PricingCalculator() {
 									Enter your email to save this estimate and book a free
 									consultation with our team
 								</p>
-								<form
-									className="flex flex-col sm:flex-row gap-4"
-									onSubmit={(e) => {
-										e.preventDefault();
-										saveEstimate();
-									}}
-								>
+								<div className="flex flex-col sm:flex-row gap-4">
 									<div className="flex-1">
 										<div className="relative">
-											<Mail
-												className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
-												aria-hidden="true"
-											/>
-											<label htmlFor="email-input" className="sr-only">
-												Email address
-											</label>
+											<Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
 											<input
-												id="email-input"
 												type="email"
 												value={email}
-												onChange={(e) => setEmail(e.target.value)}
+												onChange={(e) => {
+													setEmail(e.target.value);
+												}}
+												onBlur={validateEmail}
 												placeholder="your@email.com"
-												aria-required="true"
-												aria-invalid={saveError ? "true" : "false"}
-												aria-describedby={saveError ? "email-error" : undefined}
 												className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-full text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 transition-colors"
 											/>
 										</div>
 										{saveError && (
-											<p
-												id="email-error"
-												className="text-red-400 text-sm mt-2 ml-4"
-												role="alert"
-											>
-												{saveError}
-											</p>
+											<div className="flex items-center pt-3 pl-3.5">
+												<CircleAlert color="#ff6467" />
+												<span className="text-sm mt-1 ml-3 mb-1">
+													<p className="underline border-red-400 text-red-400 ">
+														{saveError}
+													</p>
+												</span>
+											</div>
 										)}
 									</div>
 									<button
-										type="submit"
-										disabled={isSaving}
-										aria-busy={isSaving}
-										className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+										onClick={saveEstimate}
+										disabled={isSaving || !isValidEmail}
+										className="px-8 py-4 h-14.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
 									>
 										{isSaving ? "Saving..." : "Book Free Consultation"}
 									</button>
-								</form>
+								</div>
 							</div>
 						</div>
 
@@ -430,9 +425,7 @@ export default function PricingCalculator() {
 						{/* Action Buttons */}
 						<div className="flex flex-col sm:flex-row gap-4">
 							<button
-								type="button"
 								onClick={resetCalculator}
-								aria-label="Start over and create a new estimate"
 								className="px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full font-semibold hover:bg-white/10 transition-all duration-300"
 							>
 								Start Over
@@ -480,31 +473,17 @@ export default function PricingCalculator() {
 					{/* Main Content */}
 					<div className="lg:col-span-2">
 						{/* Progress Bar */}
-						<div
-							className="mb-8"
-							role="navigation"
-							aria-label="Progress through pricing calculator"
-						>
+						<div className="mb-8">
 							<div className="flex justify-between items-center mb-2">
-								<span className="text-sm text-gray-400" aria-current="step">
+								<span className="text-sm text-gray-400">
 									Step {currentStep + 1} of {PRICING_STEPS.length}
 								</span>
-								<span
-									className="text-sm text-cyan-400"
-									aria-label={`${Math.round(((currentStep + 1) / PRICING_STEPS.length) * 100)} percent complete`}
-								>
+								<span className="text-sm text-cyan-400">
 									{Math.round(((currentStep + 1) / PRICING_STEPS.length) * 100)}
 									%
 								</span>
 							</div>
-							<div
-								className="h-2 bg-white/5 rounded-full overflow-hidden"
-								role="progressbar"
-								aria-valuenow={currentStep + 1}
-								aria-valuemin={1}
-								aria-valuemax={PRICING_STEPS.length}
-								aria-label="Calculator progress"
-							>
+							<div className="h-2 bg-white/5 rounded-full overflow-hidden">
 								<motion.div
 									initial={{ width: ANIMATION_CONFIG.initialWidth }}
 									animate={{
@@ -528,18 +507,13 @@ export default function PricingCalculator() {
 									scale: ANIMATION_CONFIG.finalScale,
 								}}
 								className="mb-6 p-4 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/30 rounded-xl"
-								aria-live="polite"
-								aria-atomic="true"
 							>
 								<div className="flex items-center justify-between">
 									<div className="flex items-center gap-2">
 										<DollarSign className="w-5 h-5 text-green-400" />
 										<span className="text-gray-300">Current Step Total:</span>
 									</div>
-									<span
-										className="text-2xl font-bold text-green-400"
-										aria-label={`Current step adds $${currentTotal.toLocaleString()} to total`}
-									>
+									<span className="text-2xl font-bold text-green-400">
 										+${currentTotal.toLocaleString()}
 									</span>
 								</div>
@@ -554,7 +528,10 @@ export default function PricingCalculator() {
 									opacity: ANIMATION_CONFIG.initialOpacity,
 									x: ANIMATION_CONFIG.initialY.medium,
 								}}
-								animate={{ opacity: ANIMATION_CONFIG.finalOpacity, x: 0 }}
+								animate={{
+									opacity: ANIMATION_CONFIG.finalOpacity,
+									x: 0,
+								}}
 								exit={{
 									opacity: ANIMATION_CONFIG.initialOpacity,
 									x: -ANIMATION_CONFIG.initialY.medium,
@@ -562,21 +539,14 @@ export default function PricingCalculator() {
 								transition={{ duration: ANIMATION_CONFIG.duration.fast }}
 								className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl p-8 mb-8"
 							>
-								<h2
-									id={`step-${currentStep}-title`}
-									className="text-3xl font-bold text-white mb-2"
-								>
+								<h2 className="text-3xl font-bold text-white mb-2">
 									{currentStepData.title}
 								</h2>
 								<p className="text-gray-400 mb-8">
 									{currentStepData.description}
 								</p>
 
-								<div
-									className="grid grid-cols-1 gap-4"
-									role="group"
-									aria-labelledby={`step-${currentStep}-title`}
-								>
+								<div className="grid grid-cols-1 gap-4">
 									{currentStepData.options.map((option) => (
 										<div key={option.id} className="relative group">
 											<button
@@ -584,8 +554,6 @@ export default function PricingCalculator() {
 												onClick={() => handleSelection(option.id)}
 												onMouseEnter={() => setHoveredOption(option.id)}
 												onMouseLeave={() => setHoveredOption(null)}
-												aria-label={`${option.name}. ${option.basePrice > 0 ? `Adds $${option.basePrice.toLocaleString()} to total. ` : ""}${isSelected(option.id) ? "Currently selected" : "Not selected"}. ${option.description}`}
-												aria-pressed={isSelected(option.id)}
 												className={`w-full relative p-6 text-left rounded-xl border-2 transition-all duration-300 ${
 													isSelected(option.id)
 														? "border-cyan-500 bg-cyan-500/10"
@@ -647,22 +615,18 @@ export default function PricingCalculator() {
 						</AnimatePresence>
 
 						{/* Navigation Buttons */}
-						<nav
-							className="flex justify-between items-center"
-							aria-label="Calculator navigation"
-						>
+						<div className="flex justify-between items-center">
 							<button
 								type="button"
 								onClick={prevStep}
 								disabled={currentStep === 0}
-								aria-label={`Go to previous step${currentStep > 0 ? `: ${PRICING_STEPS[currentStep - 1]?.title}` : ""}`}
 								className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
 									currentStep === 0
 										? "bg-white/5 text-gray-600 cursor-not-allowed"
 										: "bg-white/10 text-white hover:bg-white/20"
 								}`}
 							>
-								<ArrowLeft className="w-5 h-5" aria-hidden="true" />
+								<ArrowLeft className="w-5 h-5" />
 								Previous
 							</button>
 
@@ -670,11 +634,6 @@ export default function PricingCalculator() {
 								type="button"
 								onClick={nextStep}
 								disabled={!canProceed()}
-								aria-label={
-									currentStep === PRICING_STEPS.length - 1
-										? "View estimate summary"
-										: `Proceed to next step${currentStep < PRICING_STEPS.length - 1 ? `: ${PRICING_STEPS[currentStep + 1]?.title}` : ""}`
-								}
 								className={`flex items-center gap-2 px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
 									canProceed()
 										? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:shadow-lg hover:shadow-cyan-500/50 transform hover:scale-105"
@@ -684,9 +643,9 @@ export default function PricingCalculator() {
 								{currentStep === PRICING_STEPS.length - 1
 									? "See Estimate"
 									: "Next"}
-								<ArrowRight className="w-5 h-5" aria-hidden="true" />
+								<ArrowRight className="w-5 h-5" />
 							</button>
-						</nav>
+						</div>
 					</div>
 
 					{/* Sidebar Summary */}
