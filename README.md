@@ -164,61 +164,6 @@ npx wrangler d1 execute bobadilla-work --remote --command="SELECT * FROM contact
 npx drizzle-kit studio
 ```
 
-See [D1_DRIZZLE_GUIDE.md](D1_DRIZZLE_GUIDE.md) for complete database
-documentation.
-
-## 📦 Project Structure
-
-```
-bobadilla-work/
-├── src/
-│   ├── app/              # Next.js app directory
-│   ├── db/               # Database schema & client
-│   ├── lib/              # Shared utilities
-│   └── env.ts            # Environment configuration
-├── drizzle/
-│   └── migrations/       # Database migrations
-├── public/               # Static assets
-├── wrangler.jsonc        # Cloudflare configuration
-├── drizzle.config.ts     # Drizzle ORM configuration
-└── claude.md             # Architecture guide
-
-Documentation:
-├── README.md                    # This file
-├── claude.md                    # Architecture patterns
-├── ARCHITECTURE_SUMMARY.md      # Architecture refactoring
-├── D1_MIGRATION_SUMMARY.md      # D1 migration details
-└── D1_DRIZZLE_GUIDE.md          # D1 + Drizzle guide
-```
-
-## 🚀 Deployment
-
-### Deploy to Cloudflare
-
-```bash
-# Build and deploy
-npm run deploy
-```
-
-### First-Time Deployment
-
-1. **Apply database schema to production:**
-
-   ```bash
-   npx wrangler d1 execute bobadilla-work --remote --file=./drizzle/migrations/0000_*.sql
-   ```
-
-2. **Set up secrets (if needed):**
-
-   ```bash
-   echo "your-api-key" | npx wrangler secret put EMAIL_WORKER_API_KEY
-   ```
-
-3. **Deploy:**
-   ```bash
-   npm run deploy
-   ```
-
 ### Environment Variables
 
 Configure in Cloudflare Dashboard or via wrangler:
@@ -227,24 +172,6 @@ Configure in Cloudflare Dashboard or via wrangler:
 - `EMAIL_WORKER_API_KEY` - Email worker authentication
 
 D1 database binding is configured in `wrangler.jsonc` (no secrets needed).
-
-## 📝 API Endpoints
-
-### Contact Form
-
-- **POST** `/api/contact`
-- Validates and stores contact submissions
-- Sends email notifications via external worker
-- Returns: `{ success: true, data: { id: number }, message: string }`
-
-### Reddit Post Date
-
-- **GET** `/api/reddit-post-date?url=<reddit-url>`
-- Extracts post creation date from Reddit URLs
-- Returns: `{ success: true, data: { timestamp: number, postId: string } }`
-
-All endpoints follow standardized response format. See [claude.md](claude.md)
-for API patterns.
 
 ## 🏛️ Architecture Patterns
 
@@ -276,9 +203,6 @@ curl -X POST http://localhost:3001/api/contact \
     "email": "test@example.com",
     "message": "This is a test message"
   }'
-
-# Test Reddit tool
-curl "http://localhost:3001/api/reddit-post-date?url=https://www.reddit.com/r/programming/comments/abc123/post-title/"
 ```
 
 ### Database Testing
@@ -295,36 +219,3 @@ npx wrangler d1 execute bobadilla-work --local --command="
 SELECT * FROM contact_messages ORDER BY created_at DESC LIMIT 5
 "
 ```
-
-## 📚 Documentation
-
-- **[claude.md](claude.md)** - Complete architecture guide
-- **[ARCHITECTURE_SUMMARY.md](ARCHITECTURE_SUMMARY.md)** - Architecture
-  refactoring summary
-- **[D1_MIGRATION_SUMMARY.md](D1_MIGRATION_SUMMARY.md)** - Turso → D1 migration
-  details
-- **[D1_DRIZZLE_GUIDE.md](D1_DRIZZLE_GUIDE.md)** - Working with D1 + Drizzle ORM
-
-## 🤝 Contributing
-
-When adding new features:
-
-1. Follow the architecture patterns in [claude.md](claude.md)
-2. Use modular API endpoint structure
-3. Add Drizzle schema changes via migrations
-4. Use standardized API responses
-5. Maintain type safety with TypeScript + Zod
-
-## 📄 License
-
-[Your License]
-
-## 🔗 Links
-
-- **Website:** [bobadilla.work](https://bobadilla.work)
-- **Cloudflare Dashboard:** [Workers & Pages](https://dash.cloudflare.com)
-- **D1 Database:** [D1 Console](https://dash.cloudflare.com)
-
----
-
-Built with ❤️ using Next.js and Cloudflare Workers
