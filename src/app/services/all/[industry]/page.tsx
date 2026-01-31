@@ -95,7 +95,7 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
 					<div className="mb-16 text-center">
 						<h1 className="text-5xl sm:text-6xl font-bold text-white mb-6">
 							{industry.industry}{" "}
-							<span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+							<span className="bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
 								Solutions
 							</span>
 						</h1>
@@ -133,7 +133,7 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
 
 					{/* Why Choose Us Section */}
 					<section className="mb-16">
-						<div className="p-12 bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl">
+						<div className="p-12 bg-linear-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl">
 							<h2 className="text-3xl font-bold text-white mb-6">
 								Why Choose Bobadilla Tech for {industry.industry}?
 							</h2>
