@@ -1,11 +1,11 @@
 # Bobadilla Tech
 
-A professional portfolio and business website built with Next.js 15 and deployed
+A professional portfolio and business website built with Next.js 16 and deployed
 on Cloudflare Workers.
 
 ## 🚀 Tech Stack
 
-- **Framework:** Next.js 15.5.7 (App Router)
+- **Framework:** Next.js 16.1.6 (App Router with Turbopack)
 - **Deployment:** Cloudflare Workers via OpenNext.js
 - **Database:** Cloudflare D1 (SQLite)
 - **ORM:** Drizzle ORM
@@ -57,7 +57,7 @@ See [claude.md](claude.md) for complete architecture documentation.
 
 ### Prerequisites
 
-- Node.js 18+ (use [Volta](https://volta.sh/) or
+- Node.js 20.9+ (use [Volta](https://volta.sh/) or
   [nvm](https://github.com/nvm-sh/nvm))
 - npm/yarn/pnpm
 
