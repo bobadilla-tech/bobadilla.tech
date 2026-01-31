@@ -5,7 +5,7 @@ import type { Metadata } from "next";
  * Implements best practices for SEO including Open Graph, Twitter Cards, and structured data
  */
 
-export const BASE_URL = "https://bobadilla.work";
+export const BASE_URL = "https://bobadilla.tech";
 export const SITE_NAME = "Bobadilla Tech";
 export const DEFAULT_AUTHOR = "Bobadilla Tech Team";
 
@@ -201,7 +201,7 @@ export function generateOrganizationSchema() {
 		contactPoint: {
 			"@type": "ContactPoint",
 			contactType: "Sales",
-			email: "ale@bobadilla.work",
+			email: "ale@bobadilla.tech",
 			availableLanguage: ["English", "Spanish"],
 		},
 	};

@@ -19,8 +19,8 @@
 	"preview_urls": true,
 	"routes": [
 		{
-			"pattern": "bobadilla.work",
-			"zone_name": "bobadilla.work",
+			"pattern": "bobadilla.tech",
+			"zone_name": "bobadilla.tech",
 			"custom_domain": true,
 		},
 		{

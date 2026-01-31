@@ -12,7 +12,7 @@ export const CAL_LINKS = {
 // Contact Information
 export const CONTACT = {
 	email: {
-		ale: "ale@bobadilla.work",
-		eliaz: "eliaz@bobadilla.work",
+		ale: "ale@bobadilla.tech",
+		eliaz: "eliaz@bobadilla.tech",
 	},
 } as const;

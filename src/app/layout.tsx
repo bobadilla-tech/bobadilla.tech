@@ -28,8 +28,8 @@ export const metadata: Metadata = generateSEOMetadata({
 		"agile development",
 		"fast turnaround",
 	],
-	canonical: "https://bobadilla.work",
-	ogImage: "https://bobadilla.work/og-home.png",
+	canonical: "https://bobadilla.tech",
+	ogImage: "https://bobadilla.tech/og-home.png",
 });
 
 export const viewport: Viewport = {

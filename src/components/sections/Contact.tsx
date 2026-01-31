@@ -382,19 +382,19 @@ export default function Contact() {
 							</h3>
 
 							<a
-								href="mailto:ale@bobadilla.work"
+								href="mailto:ale@bobadilla.tech"
 								className="flex items-center space-x-4 text-gray-300 hover:text-white transition-colors duration-300"
 							>
 								<Mail className="w-6 h-6 text-cyan-400" />
-								<span>ale@bobadilla.work</span>
+								<span>ale@bobadilla.tech</span>
 							</a>
 
 							<a
-								href="mailto:eliaz@bobadilla.work"
+								href="mailto:eliaz@bobadilla.tech"
 								className="flex items-center space-x-4 text-gray-300 hover:text-white transition-colors duration-300"
 							>
 								<Mail className="w-6 h-6 text-cyan-400" />
-								<span>eliaz@bobadilla.work</span>
+								<span>eliaz@bobadilla.tech</span>
 							</a>
 
 							<div className="pt-4 border-t border-white/10">

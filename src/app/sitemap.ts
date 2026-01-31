@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { allServices, industryServices } from "~/data/services";
 
-const BASE_URL = "https://bobadilla.work";
+const BASE_URL = "https://bobadilla.tech";
 
 export default function sitemap(): MetadataRoute.Sitemap {
 	const currentDate = new Date();
