@@ -1,4 +1,4 @@
-# Bobadilla.work
+# Bobadilla Tech
 
 A professional portfolio and business website built with Next.js 15 and deployed
 on Cloudflare Workers.
