@@ -37,17 +37,19 @@ export async function generateMetadata({
 		};
 	}
 
+	const industryText = industry.industry.toLowerCase();
+
 	return generateSEOMetadata({
 		title: `${industry.industry} Software Development Services`,
-		description: `${industry.description} Expert ${industry.industry.toLowerCase()} software solutions from top LATAM developers. Custom development, fast delivery, enterprise quality.`,
+		description: `${industry.description} Expert ${industryText} software solutions from top LATAM developers. Custom development, fast delivery, enterprise quality.`,
 		keywords: [
 			...KEYWORD_SETS.core,
 			...KEYWORD_SETS.services,
 			...KEYWORD_SETS.industries,
-			`${industry.industry.toLowerCase()} software`,
-			`${industry.industry.toLowerCase()} development`,
-			`${industry.industry.toLowerCase()} solutions`,
-			`${industry.industry.toLowerCase()} technology`,
+			`${industryText} software`,
+			`${industryText} development`,
+			`${industryText} solutions`,
+			`${industryText} technology`,
 			"industry-specific development",
 			"specialized solutions",
 		],
