@@ -49,7 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			lastModified: currentDate,
 			changeFrequency: "monthly",
 			priority: 0.8,
-		}),
+		})
 	);
 
 	// Individual service pages within industries
@@ -60,7 +60,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 				lastModified: currentDate,
 				changeFrequency: "monthly",
 				priority: 0.7,
-			})),
+			}))
 	);
 
 	// Tool pages
@@ -83,15 +83,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 	];
 
 	// Remove duplicate URLs (some services might appear in both allServices and industryServices)
-	const uniquePages = allPages.reduce(
-		(acc, page) => {
-			if (!acc.some((p) => p.url === page.url)) {
-				acc.push(page);
-			}
-			return acc;
-		},
-		[] as MetadataRoute.Sitemap,
-	);
+	const uniquePages = allPages.reduce((acc, page) => {
+		if (!acc.some((p) => p.url === page.url)) {
+			acc.push(page);
+		}
+		return acc;
+	}, [] as MetadataRoute.Sitemap);
 
 	return uniquePages;
 }
