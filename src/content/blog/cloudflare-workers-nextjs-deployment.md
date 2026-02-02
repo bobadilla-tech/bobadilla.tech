@@ -406,13 +406,15 @@ Coming from traditional hosting (Vercel, AWS, DigitalOcean), here's what sold us
 
 **Comparison to alternatives:**
 
-| Feature                 | Cloudflare Workers | Vercel         | AWS Lambda       |
-|------------------------|-------------------|----------------|------------------|
-| Cold starts            | None              | Minimal        | 1-5 seconds      |
-| Global locations       | 275+              | 13             | 30+ regions      |
-| Free tier              | 100k req/day      | 100 GB-hours   | 1M req/month     |
-| TTFB (global avg)      | <50ms             | 50-150ms       | 100-300ms        |
-| Pricing beyond free    | $5/10M req        | $20/month+     | $0.20/1M req     |
+**Cloudflare Workers vs. Vercel vs. AWS Lambda:**
+
+| Feature | Cloudflare Workers | Vercel | AWS Lambda |
+|---------|-------------------|--------|------------|
+| **Cold starts** | None | Minimal | 1-5 seconds |
+| **Global locations** | 275+ | 13 | 30+ regions |
+| **Free tier** | 100k req/day | 100 GB-hours | 1M req/month |
+| **TTFB (global avg)** | <50ms | 50-150ms | 100-300ms |
+| **Pricing beyond free** | $5/10M req | $20/month+ | $0.20/1M req |
 
 ### OpenNext.js Configuration
 
@@ -1214,27 +1216,9 @@ We've built a production-ready Next.js application that's fast, scalable, cost-e
 - Automatic sitemap generation
 - Perfect Core Web Vitals scores
 
-### Try It Yourself
+This architecture demonstrates how modern edge computing can deliver exceptional performance at a fraction of traditional infrastructure costs. The entire source code is open source and available on GitHub at [https://github.com/bobadilla-tech/agency-landing](https://github.com/bobadilla-tech/agency-landing), and you can see it running live at [https://bobadilla.tech](https://bobadilla.tech).
 
-This is a real, production application serving traffic today, not just theory. The entire source code is open source and available on GitHub:
 
-**Source code:** [https://github.com/bobadilla-tech/agency-landing](https://github.com/bobadilla-tech/agency-landing)
-**Live site:** [https://bobadilla.tech](https://bobadilla.tech)
-
-Clone it, modify it, deploy it. Build something amazing.
-
-### Future Improvements
-
-Some ideas we're exploring for future iterations:
-
-- **Incremental Static Regeneration (ISR)** for blog posts (update without full rebuild)
-- **Edge caching strategies** with `stale-while-revalidate`
-- **A/B testing framework** running at the edge
-- **Real-time analytics** with Cloudflare Analytics Engine
-- **Image CDN** with Cloudflare Images for automatic optimization
-- **Full-text search** with Cloudflare Vectorize (embedding-based search)
-
-Edge computing is the future of web applications. This architecture gets you there today.
 
 ---
 

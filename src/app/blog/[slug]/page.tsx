@@ -15,6 +15,7 @@ import {
 	BASE_URL,
 	SITE_NAME,
 } from "~/lib/seo";
+import { EXTERNAL_LINKS, COPYRIGHT_TEXT } from "~/lib/constants";
 
 interface PageProps {
 	params: Promise<{ slug: string }>;
@@ -184,15 +185,31 @@ export default async function BlogPostPage({ params }: PageProps) {
 									</a>
 								),
 								code: ({ children, className }) => {
+									const match = /language-(\w+)/.exec(className || "");
+									const language = match ? match[1] : "";
 									const isInline = !className;
+
 									return isInline ? (
 										<code className="bg-slate-800 text-cyan-400 px-1.5 py-0.5 rounded text-sm">
 											{children}
 										</code>
 									) : (
-										<code className="block bg-slate-800 text-cyan-400 p-4 rounded-lg overflow-x-auto">
-											{children}
-										</code>
+										<div className="my-6">
+											<SyntaxHighlighter
+												language={language || "text"}
+												style={vscDarkPlus}
+												customStyle={{
+													padding: "1.5rem",
+													borderRadius: "0.75rem",
+													fontSize: "0.9rem",
+													lineHeight: "1.6",
+													margin: 0,
+												}}
+												showLineNumbers
+											>
+												{String(children).replace(/\n$/, "")}
+											</SyntaxHighlighter>
+										</div>
 									);
 								},
 								blockquote: ({ children }) => (
@@ -251,77 +268,108 @@ export default async function BlogPostPage({ params }: PageProps) {
 							</a>
 						</div>
 
-						{/* Promotional CTAs */}
-						<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-							{/* Requiem API CTA */}
-							<div className="p-6 bg-gradient-to-br from-purple-900/20 to-purple-800/10 border border-purple-500/30 rounded-xl hover:border-purple-500/50 transition-all duration-300">
-								<h4 className="text-lg font-bold text-white mb-2">
-									Need Enterprise APIs?
-								</h4>
-								<p className="text-gray-400 text-sm mb-4">
-									Use our Requiem API for scalable, production-ready solutions
-								</p>
-								<Link
-									href="/#contact"
-									className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium transition-colors duration-300"
-								>
-									Learn More
-									<ArrowLeft className="w-4 h-4 rotate-180" />
-								</Link>
-							</div>
+					</div>
 
-							{/* Consultancy CTA */}
-							<div className="p-6 bg-gradient-to-br from-cyan-900/20 to-cyan-800/10 border border-cyan-500/30 rounded-xl hover:border-cyan-500/50 transition-all duration-300">
-								<h4 className="text-lg font-bold text-white mb-2">
-									Need Development Services?
-								</h4>
-								<p className="text-gray-400 text-sm mb-4">
-									Get expert consultancy to build your next product
-								</p>
-								<Link
-									href="/#contact"
-									className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium transition-colors duration-300"
-								>
-									Get in Touch
-									<ArrowLeft className="w-4 h-4 rotate-180" />
-								</Link>
-							</div>
+					{/* Promotional CTAs */}
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16 pt-8 border-t border-white/10">
+						{/* Requiem API CTA */}
+						<div className="p-6 bg-gradient-to-br from-purple-900/20 to-purple-800/10 border border-purple-500/30 rounded-xl hover:border-purple-500/50 transition-all duration-300">
+							<h4 className="text-lg font-bold text-white mb-2">
+								Need Enterprise APIs?
+							</h4>
+							<p className="text-gray-400 text-sm mb-4">
+								Use our Requiem API for scalable, production-ready solutions
+							</p>
+							<a
+								href={EXTERNAL_LINKS.apis} target="_blank" rel="noopener noreferrer"
+								className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium transition-colors duration-300"
+							>
+								Learn More
+								<ArrowLeft className="w-4 h-4 rotate-180" />
+							</a>
+						</div>
+
+						{/* Consultancy CTA */}
+						<div className="p-6 bg-gradient-to-br from-cyan-900/20 to-cyan-800/10 border border-cyan-500/30 rounded-xl hover:border-cyan-500/50 transition-all duration-300">
+							<h4 className="text-lg font-bold text-white mb-2">
+								Need Development Services?
+							</h4>
+							<p className="text-gray-400 text-sm mb-4">
+								Get expert consultancy to build your next product
+							</p>
+							<Link
+								href="/#contact"
+								className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium transition-colors duration-300"
+							>
+								Get in Touch
+								<ArrowLeft className="w-4 h-4 rotate-180" />
+							</Link>
 						</div>
 					</div>
 				</article>
 
-				{/* More Posts Section */}
-				<section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
-					<h2 className="text-3xl font-bold text-white mb-8">
-						More from our Blog
-					</h2>
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-						{getAllPosts()
-							.filter((p) => p.slug !== post.slug)
-							.slice(0, 3)
-							.map((relatedPost) => (
-								<Link
-									key={relatedPost.id}
-									href={`/blog/${relatedPost.slug}`}
-									className="group p-6 bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-cyan-500/50 transition-all duration-300 hover:scale-105"
-								>
-									<span className="px-3 py-1 bg-cyan-500/20 text-cyan-400 text-xs font-medium rounded-full">
-										{relatedPost.category}
-									</span>
-									<h3 className="text-lg font-bold text-white mt-4 mb-2 group-hover:text-cyan-400 transition-colors duration-300">
-										{relatedPost.title}
-									</h3>
-									<p className="text-gray-400 text-sm line-clamp-2">
-										{relatedPost.description}
-									</p>
-									<div className="flex items-center gap-2 text-gray-500 text-xs mt-4">
-										<Clock className="w-4 h-4" />
-										<span>{relatedPost.readingTime} min read</span>
-									</div>
-								</Link>
-							))}
+			{/* More Posts Section */}
+			<section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+				{(() => {
+					const relatedPosts = getAllPosts()
+						.filter((p) => p.slug !== post.slug)
+						.slice(0, 3);
+
+					if (relatedPosts.length === 0) {
+						return (
+							<div className="text-center py-12">
+								<h2 className="text-3xl font-bold text-white mb-4">
+									Stay Tuned
+								</h2>
+								<p className="text-gray-400 text-lg">
+									More content coming soon. Follow us for updates!
+								</p>
+							</div>
+						);
+					}
+
+					return (
+						<>
+							<h2 className="text-3xl font-bold text-white mb-8">
+								More from our Blog
+							</h2>
+							<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+								{relatedPosts.map((relatedPost) => (
+									<Link
+										key={relatedPost.id}
+										href={`/blog/${relatedPost.slug}`}
+										className="group p-6 bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-cyan-500/50 transition-all duration-300 hover:scale-105"
+									>
+										<span className="px-3 py-1 bg-cyan-500/20 text-cyan-400 text-xs font-medium rounded-full">
+											{relatedPost.category}
+										</span>
+										<h3 className="text-lg font-bold text-white mt-4 mb-2 group-hover:text-cyan-400 transition-colors duration-300">
+											{relatedPost.title}
+										</h3>
+										<p className="text-gray-400 text-sm line-clamp-2">
+											{relatedPost.description}
+										</p>
+										<div className="flex items-center gap-2 text-gray-500 text-xs mt-4">
+											<Clock className="w-4 h-4" />
+											<span>{relatedPost.readingTime} min read</span>
+										</div>
+									</Link>
+								))}
+							</div>
+						</>
+					);
+				})()}
+			</section>
+
+			{/* Footer */}
+			<footer className="relative py-12 mt-24 border-t border-white/10">
+				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+					<div className="text-center text-gray-400">
+						<p className="mb-2">{COPYRIGHT_TEXT}</p>
+						<p className="text-sm">Built with Deep Engineering Expertise</p>
 					</div>
-				</section>
+				</div>
+			</footer>
 			</main>
 		</div>
 	);
