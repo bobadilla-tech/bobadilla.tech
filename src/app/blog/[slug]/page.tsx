@@ -8,6 +8,8 @@ import Navbar from "@/components/ui/Navbar";
 import ShaderBackground from "@/components/shaders/ShaderBackground";
 import { getPostBySlug, getAllPosts } from "@/data/blog";
 import { Calendar, Clock, Tag, ArrowLeft, Twitter, Linkedin, Share2 } from "lucide-react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import {
 	generateMetadata as generateSEOMetadata,
 	BASE_URL,

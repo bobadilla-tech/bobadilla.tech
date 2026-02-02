@@ -28,6 +28,7 @@
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.4.2",
     "@t3-oss/env-nextjs": "^0.13.8",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "@types/three": "^0.181.0",
     "dotenv": "^17.2.3",
     "drizzle-kit": "^0.31.7",
@@ -41,6 +42,7 @@
     "react-dom": "19.2.4",
     "react-email": "^5.0.5",
     "react-markdown": "^10.1.0",
+    "react-syntax-highlighter": "^16.1.0",
     "remark-gfm": "^4.0.1",
     "three": "^0.181.2",
     "zod": "^4.1.13"

@@ -34,6 +34,80 @@
 
 ---
 
+## 📝 Draft Posts
+
+Posts prefixed with `_` are treated as **drafts** and excluded from the build. This allows you to work on blog posts without publishing them.
+
+### How It Works
+
+The blog loader (`src/data/blog.ts`) automatically filters out any files that start with an underscore:
+
+```typescript
+const isNotDraft = !file.startsWith("_");
+```
+
+**Draft posts:**
+- ❌ Are NOT included in blog listing (`/blog`)
+- ❌ Are NOT accessible via URL (404 error)
+- ❌ Are NOT built during deployment
+- ✅ Are only visible in the source code repository
+
+### Creating a Draft
+
+**Option 1: Create new file with underscore prefix**
+
+```bash
+touch src/content/blog/_my-draft-post.md
+```
+
+**Option 2: Convert existing post to draft**
+
+```bash
+mv src/content/blog/my-post.md src/content/blog/_my-post.md
+```
+
+### Publishing a Draft
+
+Simply remove the underscore prefix:
+
+```bash
+mv src/content/blog/_my-post.md src/content/blog/my-post.md
+```
+
+Then commit, build, and deploy as normal.
+
+### Use Cases for Drafts
+
+- **Work in progress**: Write posts over multiple sessions
+- **Pending review**: Team members can review before publishing
+- **Future content**: Plan upcoming posts without publishing
+- **Internal documentation**: Keep notes that aren't meant for public
+
+### Example Workflow
+
+```bash
+# 1. Create draft
+touch src/content/blog/_nextjs-performance-tips.md
+
+# 2. Write content, commit to Git
+git add src/content/blog/_nextjs-performance-tips.md
+git commit -m "Draft: Add Next.js performance tips"
+
+# 3. Test locally (won't appear on /blog)
+npm run dev
+
+# 4. When ready to publish, rename
+mv src/content/blog/_nextjs-performance-tips.md src/content/blog/nextjs-performance-tips.md
+
+# 5. Commit and deploy
+git add src/content/blog/nextjs-performance-tips.md
+git commit -m "Publish: Next.js performance tips"
+npm run build
+npm run cf:deploy
+```
+
+---
+
 ## 👥 Blog Authors
 
 We have **3 authorized blog authors**. Each author has a profile picture that automatically appears on their posts.
