@@ -16,3 +16,10 @@ export const CONTACT = {
 		eliaz: "eliaz@bobadilla.tech",
 	},
 } as const;
+
+// Social Links
+export const SOCIAL_LINKS = {
+	github: "https://github.com/bobadilla-tech",
+	twitter: "https://twitter.com/UltiRequiem",
+	linkedin: "https://linkedin.com/company/bobadilla-tech",
+} as const;

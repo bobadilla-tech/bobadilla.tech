@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SOCIAL_LINKS } from "./constants";
 
 /**
  * SEO Configuration and Utilities
@@ -193,11 +194,7 @@ export function generateOrganizationSchema() {
 			"@type": "PostalAddress",
 			addressCountry: "LATAM",
 		},
-		sameAs: [
-			"https://github.com/UltiRequiem",
-			"https://twitter.com/UltiRequiem",
-			"https://linkedin.com/company/bobadilla-tech",
-		],
+		sameAs: [SOCIAL_LINKS.github, SOCIAL_LINKS.twitter, SOCIAL_LINKS.linkedin],
 		contactPoint: {
 			"@type": "ContactPoint",
 			contactType: "Sales",

@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { z } from "zod";
-import { CAL_LINKS } from "~/lib/constants";
+import { CAL_LINKS, SOCIAL_LINKS } from "~/lib/constants";
 
 // Validation schema (matches backend)
 const contactSchema = z.object({
@@ -401,7 +401,7 @@ export default function Contact() {
 								<p className="text-gray-400 mb-4">Follow us</p>
 								<div className="flex space-x-4">
 									<a
-										href="https://www.linkedin.com/company/bobadilla-tech"
+										href={SOCIAL_LINKS.linkedin}
 										target="_blank"
 										rel="noopener noreferrer"
 										className="p-3 bg-white/5 rounded-lg hover:bg-cyan-500/20 text-gray-400 hover:text-cyan-400 transition-all duration-300"
@@ -409,7 +409,7 @@ export default function Contact() {
 										<Linkedin className="w-6 h-6" />
 									</a>
 									<a
-										href="https://github.com/bobadilla-tech"
+										href={SOCIAL_LINKS.github}
 										target="_blank"
 										rel="noopener noreferrer"
 										className="p-3 bg-white/5 rounded-lg hover:bg-cyan-500/20 text-gray-400 hover:text-cyan-400 transition-all duration-300"

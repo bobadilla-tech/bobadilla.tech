@@ -56,32 +56,32 @@ The orchestrator that coordinates all operations. Should be thin and delegate to
 import type { NextRequest } from "next/server";
 import { z } from "zod";
 import {
-	errorResponse,
-	successResponse,
-	validationErrorResponse,
+ errorResponse,
+ successResponse,
+ validationErrorResponse,
 } from "~/lib/server/api-response";
 import { insertRecord } from "./db";
 import { logAction } from "./logger";
 import { mySchema } from "./validation";
 
 export async function POST(request: NextRequest) {
-	try {
-		const body = await request.json();
-		const validatedData = mySchema.parse(body);
+ try {
+  const body = await request.json();
+  const validatedData = mySchema.parse(body);
 
-		const result = await insertRecord(validatedData);
-		logAction(result);
+  const result = await insertRecord(validatedData);
+  logAction(result);
 
-		return successResponse(result, "Success message", 201);
-	} catch (error) {
-		console.error("Error:", error);
+  return successResponse(result, "Success message", 201);
+ } catch (error) {
+  console.error("Error:", error);
 
-		if (error instanceof z.ZodError) {
-			return validationErrorResponse(error);
-		}
+  if (error instanceof z.ZodError) {
+   return validationErrorResponse(error);
+  }
 
-		return errorResponse("Operation failed");
-	}
+  return errorResponse("Operation failed");
+ }
 }
 ```
 
@@ -101,9 +101,9 @@ Zod schemas for request validation and data extraction.
 import { z } from "zod";
 
 export const mySchema = z.object({
-	name: z.string().min(1).max(100),
-	email: z.string().email(),
-	optional: z.string().optional(),
+ name: z.string().min(1).max(100),
+ email: z.string().email(),
+ optional: z.string().optional(),
 });
 
 export type MySchemaType = z.infer<typeof mySchema>;
@@ -126,14 +126,14 @@ import { db } from "~/db/client";
 import { myTable } from "~/db/schema";
 
 interface RecordData {
-	name: string;
-	email: string;
+ name: string;
+ email: string;
 }
 
 export async function insertRecord(data: RecordData) {
-	const [inserted] = await db.insert(myTable).values(data).returning();
+ const [inserted] = await db.insert(myTable).values(data).returning();
 
-	return inserted;
+ return inserted;
 }
 ```
 
@@ -151,17 +151,17 @@ Integration with third-party APIs or services.
 
 ```typescript
 export async function callExternalService(data: SomeData) {
-	const response = await fetch("https://api.example.com/endpoint", {
-		method: "POST",
-		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify(data),
-	});
+ const response = await fetch("https://api.example.com/endpoint", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(data),
+ });
 
-	if (!response.ok) {
-		throw new Error("External service failed");
-	}
+ if (!response.ok) {
+  throw new Error("External service failed");
+ }
 
-	return response.json();
+ return response.json();
 }
 ```
 
@@ -179,16 +179,16 @@ Structured logging for this endpoint.
 
 ```typescript
 interface LogData {
-	id: number;
-	name: string;
-	timestamp: Date;
+ id: number;
+ name: string;
+ timestamp: Date;
 }
 
 export function logAction(data: LogData): void {
-	console.log("📝 Action performed:");
-	console.log(`   ID: ${data.id}`);
-	console.log(`   Name: ${data.name}`);
-	console.log(`   Time: ${data.timestamp.toISOString()}`);
+ console.log("📝 Action performed:");
+ console.log(`   ID: ${data.id}`);
+ console.log(`   Name: ${data.name}`);
+ console.log(`   Time: ${data.timestamp.toISOString()}`);
 }
 ```
 
@@ -289,9 +289,9 @@ Standardized API response helpers. **All endpoints must use these.**
 
 ```typescript
 import {
-	successResponse,
-	errorResponse,
-	validationErrorResponse,
+ successResponse,
+ errorResponse,
+ validationErrorResponse,
 } from "~/lib/server/api-response";
 ```
 
@@ -361,8 +361,8 @@ bobadilla-work/
 
    ```typescript
    // External packages
-   import type { NextRequest } from "next/server";
    import { z } from "zod";
+   import type { NextRequest } from "next/server";
 
    // Shared utilities
    import { successResponse } from "~/lib/server/api-response";
@@ -371,6 +371,8 @@ bobadilla-work/
    import { insertRecord } from "./db";
    import { mySchema } from "./validation";
    ```
+
+1.1 Type imports go at the end of their sections.
 
 2. **Types/Interfaces** - Define before usage
 
@@ -382,22 +384,22 @@ All endpoints must handle errors consistently:
 
 ```typescript
 try {
-	// Main logic
+ // Main logic
 } catch (error) {
-	console.error("Context-specific error:", error);
+ console.error("Context-specific error:", error);
 
-	// Handle Zod validation errors
-	if (error instanceof z.ZodError) {
-		return validationErrorResponse(error);
-	}
+ // Handle Zod validation errors
+ if (error instanceof z.ZodError) {
+  return validationErrorResponse(error);
+ }
 
-	// Handle known Error instances
-	if (error instanceof Error) {
-		return errorResponse(error.message, 400);
-	}
+ // Handle known Error instances
+ if (error instanceof Error) {
+  return errorResponse(error.message, 400);
+ }
 
-	// Fallback for unknown errors
-	return errorResponse("Unexpected error occurred");
+ // Fallback for unknown errors
+ return errorResponse("Unexpected error occurred");
 }
 ```
 
@@ -479,7 +481,7 @@ src/app/api/reddit-post-date/
    import { z } from "zod";
 
    export const mySchema = z.object({
-   	field: z.string().min(1),
+    field: z.string().min(1),
    });
    ```
 
@@ -489,29 +491,29 @@ src/app/api/reddit-post-date/
    import type { NextRequest } from "next/server";
    import { z } from "zod";
    import {
-   	successResponse,
-   	errorResponse,
-   	validationErrorResponse,
+    successResponse,
+    errorResponse,
+    validationErrorResponse,
    } from "~/lib/server/api-response";
    import { mySchema } from "./validation";
 
    export async function POST(request: NextRequest) {
-   	try {
-   		const body = await request.json();
-   		const validatedData = mySchema.parse(body);
+    try {
+     const body = await request.json();
+     const validatedData = mySchema.parse(body);
 
-   		// Your business logic here
+     // Your business logic here
 
-   		return successResponse({ result: "data" });
-   	} catch (error) {
-   		console.error("Error:", error);
+     return successResponse({ result: "data" });
+    } catch (error) {
+     console.error("Error:", error);
 
-   		if (error instanceof z.ZodError) {
-   			return validationErrorResponse(error);
-   		}
+     if (error instanceof z.ZodError) {
+      return validationErrorResponse(error);
+     }
 
-   		return errorResponse("Operation failed");
-   	}
+     return errorResponse("Operation failed");
+    }
    }
    ```
 
@@ -544,15 +546,20 @@ If you find an endpoint not following this architecture:
 5. Update `route.ts` to use standardized responses
 6. Test thoroughly
 
-## 📖 Additional Resources
+## 🚀 Deployment & Configuration
 
-- [Next.js App Router Documentation](https://nextjs.org/docs/app)
-- [Zod Documentation](https://zod.dev/)
-- [Drizzle ORM Documentation](https://orm.drizzle.team/)
-- [T3 Env Documentation](https://env.t3.gg/)
+This project is deployed on Cloudflare Workers using OpenNext.js. Key configuration files:
 
----
+- `wrangler.jsonc` - Cloudflare Workers configuration (compatibility settings, routes, D1 binding)
+- `tsconfig.json` - TypeScript compiler settings (must use `jsx: "preserve"` for Next.js)
+- `.gitignore` - Excludes auto-generated files (`cloudflare-env.d.ts`, `.open-next/`, etc.)
+- `public/robots.txt` - Search engine crawler instructions
+- `src/app/sitemap.ts` - Dynamic sitemap generation
 
-**Last Updated:** 2025-12-03
+For SEO optimization, the project includes:
 
-For questions or suggestions, contact the development team.
+- Automated sitemap generation for all pages
+- Structured data (JSON-LD) for organization and services
+- Canonical URLs and Open Graph metadata via `src/lib/seo.ts`
+
+See `README.md` for deployment commands and database operations.

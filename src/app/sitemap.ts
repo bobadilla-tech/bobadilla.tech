@@ -1,5 +1,5 @@
 import { allServices, industryServices } from "~/data/services";
-
+import { getAllPosts } from "~/data/blog";
 import type { MetadataRoute } from "next";
 
 const BASE_URL = "https://bobadilla.tech";
@@ -31,6 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			lastModified: currentDate,
 			changeFrequency: "monthly",
 			priority: 0.7,
+		},
+		{
+			url: `${BASE_URL}/blog`,
+			lastModified: currentDate,
+			changeFrequency: "weekly",
+			priority: 0.8,
 		},
 	];
 
@@ -69,12 +75,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		},
 	];
 
+	// Blog posts
+	const blogPosts: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
+		url: `${BASE_URL}/blog/${post.slug}`,
+		lastModified: post.updatedAt ? new Date(post.updatedAt) : new Date(post.publishedAt),
+		changeFrequency: "monthly",
+		priority: post.featured ? 0.8 : 0.7,
+	}));
+
 	const allPages = [
 		...staticPages,
 		...allServicePages,
 		...industryPages,
 		...industryServicePages,
 		...toolPages,
+		...blogPosts,
 	];
 
 	const uniquePages = allPages.reduce((acc, page) => {

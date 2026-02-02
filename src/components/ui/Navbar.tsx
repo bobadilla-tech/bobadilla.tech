@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { CAL_LINKS } from "~/lib/constants";
+import { CAL_LINKS, SOCIAL_LINKS } from "~/lib/constants";
 
 export default function Navbar() {
 	const [isScrolled, setIsScrolled] = useState(false);
@@ -54,7 +54,7 @@ export default function Navbar() {
 							</button>
 							<div className="absolute top-full left-0 mt-2 w-48 bg-slate-900/95 backdrop-blur-lg border border-white/10 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
 								<Link
-									href="/#blog"
+									href="/blog"
 									className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 transition-colors duration-200"
 								>
 									Blog
@@ -65,12 +65,14 @@ export default function Navbar() {
 								>
 									Tools
 								</Link>
-								<Link
-									href="/#opensource"
+								<a
+									href={SOCIAL_LINKS.github}
+									target="_blank"
+									rel="noopener noreferrer"
 									className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 transition-colors duration-200"
 								>
 									Open Source
-								</Link>
+								</a>
 								<Link
 									href="/#apis"
 									className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 transition-colors duration-200"
@@ -132,7 +134,7 @@ export default function Navbar() {
 								<div className="text-gray-400 text-sm mb-2">Resources</div>
 								<div className="pl-4 space-y-2">
 									<Link
-										href="/#blog"
+										href="/blog"
 										className="block text-gray-300 hover:text-white transition-colors duration-200"
 										onClick={() => setIsMobileMenuOpen(false)}
 									>
@@ -145,13 +147,15 @@ export default function Navbar() {
 									>
 										Tools
 									</Link>
-									<Link
-										href="/#opensource"
+									<a
+										href={SOCIAL_LINKS.github}
+										target="_blank"
+										rel="noopener noreferrer"
 										className="block text-gray-300 hover:text-white transition-colors duration-200"
 										onClick={() => setIsMobileMenuOpen(false)}
 									>
 										Open Source
-									</Link>
+									</a>
 									<Link
 										href="/#apis"
 										className="block text-gray-300 hover:text-white transition-colors duration-200"
