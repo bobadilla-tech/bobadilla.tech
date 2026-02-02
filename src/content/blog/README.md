@@ -11,6 +11,7 @@ Create a new `.md` file in this directory. The filename will become the URL slug
 **Example:** `my-awesome-post.md` → `/blog/my-awesome-post`
 
 **Naming conventions:**
+
 - Use lowercase letters
 - Separate words with hyphens
 - Keep it short but descriptive
@@ -35,11 +36,13 @@ coverImage: "/blog/your-image.png"
 ```
 
 #### Required Fields:
+
 - **title**: The post title (shown on the page and in listings)
 - **description**: Brief summary (150-200 characters ideal)
 - **publishedAt**: Date in `YYYY-MM-DD` format
 
 #### Optional Fields:
+
 - **author**: Author name (defaults to "Bobadilla Tech Team")
 - **authorRole**: Author's role (defaults to "Engineering")
 - **updatedAt**: Date when post was last updated
@@ -69,7 +72,7 @@ Your introduction paragraph...
 
 ## Section 1
 
-Content here with **bold** and *italic* text.
+Content here with **bold** and _italic_ text.
 
 ### Subsection
 
@@ -87,7 +90,7 @@ Code blocks:
 
 \`\`\`typescript
 function example() {
-  return "Hello World";
+return "Hello World";
 }
 \`\`\`
 
@@ -120,6 +123,7 @@ Visit: `http://localhost:3000/blog/your-post-slug`
 ## Example Post
 
 See any of the existing `.md` files in this directory for complete examples:
+
 - `rapid-mvp-development-nextjs.md`
 - `ai-integration-best-practices.md`
 - `cloudflare-workers-nextjs-deployment.md`
@@ -136,12 +140,14 @@ See any of the existing `.md` files in this directory for complete examples:
 ## Troubleshooting
 
 **Post not showing up?**
+
 - Check frontmatter syntax (must have `---` before and after)
 - Verify `publishedAt` is not in the future
 - Ensure filename ends with `.md` or `.mdx`
 - Restart dev server after creating new files
 
 **Reading time seems wrong?**
+
 - Reading time auto-calculates based on ~225 words per minute
 - Includes all text content, excludes code blocks and images
 - No action needed - it's automatic!

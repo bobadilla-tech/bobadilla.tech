@@ -24,6 +24,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
 # local env files
 .env
@@ -42,6 +43,9 @@ local.db-wal
 *.tsbuildinfo
 next-env.d.ts
 cloudflare-env.d.ts
+
+# generated files
+/src/data/blog-posts.json
 
 # OpenNext
 /.open-next

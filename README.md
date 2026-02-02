@@ -60,7 +60,7 @@ See [claude.md](claude.md) for complete architecture documentation.
 
 - Node.js 20.9+ (use [Volta](https://volta.sh/) or
   [nvm](https://github.com/nvm-sh/nvm))
-- npm/yarn/pnpm
+- pnpm (install with `npm install -g pnpm`)
 
 ### Setup
 
@@ -74,7 +74,7 @@ See [claude.md](claude.md) for complete architecture documentation.
 2. **Install dependencies**
 
    ```bash
-   npm install
+   pnpm install
    ```
 
 3. **Set up environment variables**
@@ -87,13 +87,13 @@ See [claude.md](claude.md) for complete architecture documentation.
 4. **Initialize local D1 database**
 
    ```bash
-   npx wrangler d1 execute bobadilla-work --local --file=./drizzle/migrations/0000_*.sql
+   pnpm exec wrangler d1 execute bobadilla-work --local --file=./drizzle/migrations/0000_*.sql
    ```
 
 5. **Start development server**
 
    ```bash
-   npm run dev
+   pnpm run dev
    ```
 
    Open [http://localhost:3001](http://localhost:3001) in your browser.
@@ -102,22 +102,22 @@ See [claude.md](claude.md) for complete architecture documentation.
 
 ```bash
 # Run Next.js dev server (with local D1)
-npm run dev
+pnpm run dev
 
 # Preview on Cloudflare runtime
-npm run preview
+pnpm run preview
 
 # Build for production
-npm run build
+pnpm run build
 
 # Deploy to Cloudflare
-npm run deploy
+pnpm run deploy
 
 # Lint code
-npm run lint
+pnpm run lint
 
 # Type check
-npm run type-check
+pnpm run type-check
 ```
 
 ## 🗄️ Database
@@ -136,33 +136,33 @@ type-safe database operations.
 ```bash
 # 1. Edit src/db/schema.ts
 # 2. Generate migration
-npx drizzle-kit generate
+pnpm exec drizzle-kit generate
 ```
 
 **Apply migration:**
 
 ```bash
 # Local
-npx wrangler d1 execute bobadilla-work --local --file=./drizzle/migrations/XXXX.sql
+pnpm exec wrangler d1 execute bobadilla-work --local --file=./drizzle/migrations/XXXX.sql
 
 # Production
-npx wrangler d1 execute bobadilla-work --remote --file=./drizzle/migrations/XXXX.sql
+pnpm exec wrangler d1 execute bobadilla-work --remote --file=./drizzle/migrations/XXXX.sql
 ```
 
 **Query database:**
 
 ```bash
 # Local
-npx wrangler d1 execute bobadilla-work --local --command="SELECT * FROM contact_messages"
+pnpm exec wrangler d1 execute bobadilla-work --local --command="SELECT * FROM contact_messages"
 
 # Production
-npx wrangler d1 execute bobadilla-work --remote --command="SELECT * FROM contact_messages"
+pnpm exec wrangler d1 execute bobadilla-work --remote --command="SELECT * FROM contact_messages"
 ```
 
 **Visual database browser:**
 
 ```bash
-npx drizzle-kit studio
+pnpm exec drizzle-kit studio
 ```
 
 ### Environment Variables
@@ -210,13 +210,13 @@ curl -X POST http://localhost:3001/api/contact \
 
 ```bash
 # Add test data
-npx wrangler d1 execute bobadilla-work --local --command="
+pnpm exec wrangler d1 execute bobadilla-work --local --command="
 INSERT INTO contact_messages (name, email, company, message)
 VALUES ('Test', 'test@test.com', 'Test Co', 'Test message')
 "
 
 # Query test data
-npx wrangler d1 execute bobadilla-work --local --command="
+pnpm exec wrangler d1 execute bobadilla-work --local --command="
 SELECT * FROM contact_messages ORDER BY created_at DESC LIMIT 5
 "
 ```
