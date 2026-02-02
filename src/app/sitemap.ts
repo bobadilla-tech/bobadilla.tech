@@ -1,12 +1,12 @@
-import type { MetadataRoute } from "next";
 import { allServices, industryServices } from "~/data/services";
+
+import type { MetadataRoute } from "next";
 
 const BASE_URL = "https://bobadilla.tech";
 
 export default function sitemap(): MetadataRoute.Sitemap {
 	const currentDate = new Date();
 
-	// Static pages
 	const staticPages: MetadataRoute.Sitemap = [
 		{
 			url: BASE_URL,
@@ -34,7 +34,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		},
 	];
 
-	// Individual service pages from allServices
 	const allServicePages: MetadataRoute.Sitemap = allServices.map((service) => ({
 		url: `${BASE_URL}/services/${service.slug}`,
 		lastModified: currentDate,
@@ -42,7 +41,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		priority: 0.8,
 	}));
 
-	// Industry pages
 	const industryPages: MetadataRoute.Sitemap = industryServices.map(
 		(industry) => ({
 			url: `${BASE_URL}/services/all/${industry.slug}`,
@@ -52,7 +50,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		})
 	);
 
-	// Individual service pages within industries
 	const industryServicePages: MetadataRoute.Sitemap = industryServices.flatMap(
 		(industry) =>
 			industry.services.map((service) => ({
@@ -63,7 +60,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			}))
 	);
 
-	// Tool pages
 	const toolPages: MetadataRoute.Sitemap = [
 		{
 			url: `${BASE_URL}/tools/reddit-post-date`,
@@ -73,7 +69,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		},
 	];
 
-	// Combine all pages and remove duplicates based on URL
 	const allPages = [
 		...staticPages,
 		...allServicePages,
@@ -82,7 +77,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		...toolPages,
 	];
 
-	// Remove duplicate URLs (some services might appear in both allServices and industryServices)
 	const uniquePages = allPages.reduce((acc, page) => {
 		if (!acc.some((p) => p.url === page.url)) {
 			acc.push(page);
