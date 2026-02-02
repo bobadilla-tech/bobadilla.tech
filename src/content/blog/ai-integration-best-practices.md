@@ -1,8 +1,8 @@
 ---
 title: "AI Integration Best Practices for Modern Applications"
 description: "Practical guidelines for integrating AI capabilities into your applications without over-engineering."
-author: "Bobadilla Tech Team"
-authorRole: "AI Engineering"
+author: "Eliaz Bobadilla"
+authorRole: "Senior Engineer"
 publishedAt: "2026-01-28"
 tags: ["AI", "OpenAI", "Best Practices", "Integration"]
 category: "ai"

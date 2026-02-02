@@ -1,8 +1,8 @@
 ---
 title: "Deploying Next.js to Cloudflare Workers with OpenNext"
 description: "A comprehensive guide to deploying Next.js applications on Cloudflare's edge network using OpenNext."
-author: "Bobadilla Tech Team"
-authorRole: "DevOps"
+author: "Eliaz Bobadilla"
+authorRole: "Senior Engineer"
 publishedAt: "2026-01-25"
 tags: ["Next.js", "Cloudflare", "Deployment", "Edge Computing"]
 category: "engineering"

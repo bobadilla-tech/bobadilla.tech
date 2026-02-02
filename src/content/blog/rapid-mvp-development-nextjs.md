@@ -1,8 +1,8 @@
 ---
 title: "How We Build MVPs in Days, Not Months"
 description: "Learn our battle-tested approach to rapid MVP development using Next.js, TypeScript, and modern development tools."
-author: "Bobadilla Tech Team"
-authorRole: "Engineering"
+author: "Eliaz Bobadilla"
+authorRole: "Senior Engineer"
 publishedAt: "2026-02-01"
 tags: ["MVP", "Next.js", "Rapid Development", "Startup"]
 category: "engineering"

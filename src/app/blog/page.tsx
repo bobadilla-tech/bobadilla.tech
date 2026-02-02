@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/ui/Navbar";
 import ShaderBackground from "@/components/shaders/ShaderBackground";
 import {
@@ -51,12 +52,14 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
 	const activeFilter = category || tag;
 
+	// Helper function to format category names
+	const formatCategory = (cat: string) => {
+		if (cat === "ai") return "AI";
+		return cat.charAt(0).toUpperCase() + cat.slice(1);
+	};
+
 	// Determine page title based on filter
-	const pageTitle = category
-		? `${category.charAt(0).toUpperCase() + category.slice(1)} Blog`
-		: tag
-			? `Blog`
-			: "Blog";
+	const pageTitle = category ? `${formatCategory(category)} Blog` : "Blog";
 
 	return (
 		<div className="relative min-h-screen bg-slate-950">
@@ -69,7 +72,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 					<div className="text-center mb-16">
 						<h1 className="text-5xl sm:text-6xl font-bold text-white mb-6">
 							{pageTitle}{" "}
-							<span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+							<span className="bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
 								Posts
 							</span>
 						</h1>
@@ -101,7 +104,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 											: "px-6 py-2 bg-white/5 backdrop-blur-sm border border-white/10 text-gray-300 rounded-full font-medium hover:bg-white/10 hover:text-white transition-all duration-300"
 									}
 								>
-									{cat.charAt(0).toUpperCase() + cat.slice(1)}
+									{cat === "ai" ? "AI" : cat.charAt(0).toUpperCase() + cat.slice(1)}
 								</Link>
 							))}
 						</div>
@@ -114,7 +117,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 								<Link
 									key={post.id}
 									href={`/blog/${post.slug}`}
-									className="group relative p-6 bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-cyan-500/50 transition-all duration-300 hover:scale-105"
+									className="group relative flex flex-col p-6 bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-cyan-500/50 transition-all duration-300 hover:scale-105"
 								>
 									{/* Featured Badge */}
 									{post.featured && (
@@ -126,12 +129,12 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 									{/* Category Badge */}
 									<div className="mb-4">
 										<span className="px-3 py-1 bg-cyan-500/20 text-cyan-400 text-xs font-medium rounded-full">
-											{post.category}
+											{post.category === "ai" ? "AI" : post.category.charAt(0).toUpperCase() + post.category.slice(1)}
 										</span>
 									</div>
 
 									{/* Title */}
-									<h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300">
+									<h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300 line-clamp-2">
 										{post.title}
 									</h3>
 
@@ -159,7 +162,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 									</div>
 
 									{/* Tags */}
-									<div className="flex flex-wrap gap-2">
+									<div className="flex flex-wrap gap-2 mb-4">
 										{post.tags.slice(0, 3).map((tag) => (
 											<span
 												key={tag}
@@ -172,10 +175,22 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 									</div>
 
 									{/* Author */}
-									<div className="mt-4 pt-4 border-t border-white/10">
-										<p className="text-gray-400 text-sm">
-											by {post.author.name}
-										</p>
+									<div className="mt-auto pt-4 border-t border-white/10 flex items-center gap-2">
+										<Image
+											src={post.author.image}
+											alt={post.author.name}
+											width={32}
+											height={32}
+											className="rounded-full object-cover"
+										/>
+										<div className="flex flex-col">
+											<span className="text-gray-300 text-sm font-medium">
+												{post.author.name}
+											</span>
+											<span className="text-gray-500 text-xs">
+												{post.author.role}
+											</span>
+										</div>
 									</div>
 								</Link>
 							))}

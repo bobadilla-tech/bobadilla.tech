@@ -12,6 +12,7 @@ export interface BlogPost {
 	author: {
 		name: string;
 		role: string;
+		image: string;
 	};
 	publishedAt: string; // ISO date string
 	updatedAt?: string; // ISO date string
@@ -23,6 +24,19 @@ export interface BlogPost {
 }
 
 const BLOG_CONTENT_DIR = path.join(process.cwd(), "src/content/blog");
+
+/**
+ * Map author names to their profile images
+ */
+function getAuthorImage(authorName: string): string {
+	const authorImages: Record<string, string> = {
+		"Eliaz Bobadilla": "/faces/eliaz.jpeg",
+		"Alexandra Flores": "/faces/alexandra.png",
+		"Leonardo Estacio": "/faces/leo.jpeg",
+	};
+
+	return authorImages[authorName] || "/faces/eliaz.jpeg"; // default to Eliaz
+}
 
 /**
  * Get all blog posts from markdown files
@@ -48,6 +62,8 @@ export function getAllPosts(): BlogPost[] {
 
 		const readingTime = calculateReadingTime(content);
 
+		const authorName = data.author || "Eliaz Bobadilla";
+
 		return {
 			id: slug,
 			slug,
@@ -55,8 +71,9 @@ export function getAllPosts(): BlogPost[] {
 			description: data.description,
 			content,
 			author: {
-				name: data.author || "Bobadilla Tech Team",
+				name: authorName,
 				role: data.authorRole || "Engineering",
+				image: getAuthorImage(authorName),
 			},
 			publishedAt: data.publishedAt || new Date().toISOString(),
 			updatedAt: data.updatedAt,

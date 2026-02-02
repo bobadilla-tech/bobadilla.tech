@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Navbar from "@/components/ui/Navbar";
 import ShaderBackground from "@/components/shaders/ShaderBackground";
 import { getPostBySlug, getAllPosts } from "@/data/blog";
-import { Calendar, Clock, Tag, ArrowLeft } from "lucide-react";
+import { Calendar, Clock, Tag, ArrowLeft, Twitter, Linkedin, Share2 } from "lucide-react";
 import {
 	generateMetadata as generateSEOMetadata,
 	BASE_URL,
+	SITE_NAME,
 } from "~/lib/seo";
 
 interface PageProps {
@@ -91,7 +93,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 					<p className="text-xl text-gray-400 mb-8">{post.description}</p>
 
 					{/* Meta Information */}
-					<div className="flex flex-wrap gap-6 text-gray-400 text-sm mb-8 pb-8 border-b border-white/10">
+					<div className="flex flex-wrap items-center gap-6 text-gray-400 text-sm mb-8 pb-8 border-b border-white/10">
 						<div className="flex items-center gap-2">
 							<Calendar className="w-5 h-5" />
 							<span>
@@ -106,10 +108,18 @@ export default async function BlogPostPage({ params }: PageProps) {
 							<Clock className="w-5 h-5" />
 							<span>{post.readingTime} min read</span>
 						</div>
-						<div className="flex items-center gap-2">
-							<span className="font-medium">By {post.author.name}</span>
-							<span className="text-gray-500">•</span>
-							<span className="text-gray-500">{post.author.role}</span>
+						<div className="flex items-center gap-3">
+							<Image
+								src={post.author.image}
+								alt={post.author.name}
+								width={40}
+								height={40}
+								className="rounded-full object-cover"
+							/>
+							<div className="flex flex-col">
+								<span className="font-medium text-white">{post.author.name}</span>
+								<span className="text-gray-500 text-xs">{post.author.role}</span>
+							</div>
 						</div>
 					</div>
 
@@ -200,14 +210,81 @@ export default async function BlogPostPage({ params }: PageProps) {
 							Found this helpful?
 						</h3>
 						<p className="text-gray-400 mb-6">
-							Share it with your network or reach out to discuss your project.
+							Share it with your network
 						</p>
-						<Link
-							href="/#contact"
-							className="inline-block px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300"
-						>
-							Get in Touch
-						</Link>
+
+						{/* Social Share Buttons */}
+						<div className="flex flex-wrap gap-4 mb-12">
+							{/* Twitter/X */}
+							<a
+								href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`${BASE_URL}/blog/${post.slug}`)}&via=bobadillatech`}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="flex items-center gap-2 px-6 py-3 bg-black/50 hover:bg-black/70 border border-white/10 hover:border-cyan-500/50 text-white rounded-full font-medium transition-all duration-300"
+							>
+								<Twitter className="w-5 h-5" />
+								<span>Share on X</span>
+							</a>
+
+							{/* LinkedIn */}
+							<a
+								href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(`${BASE_URL}/blog/${post.slug}`)}&title=${encodeURIComponent(post.title)}&summary=${encodeURIComponent(post.description)}&source=${encodeURIComponent(SITE_NAME)}`}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="flex items-center gap-2 px-6 py-3 bg-[#0077B5]/20 hover:bg-[#0077B5]/30 border border-[#0077B5]/30 hover:border-[#0077B5]/50 text-white rounded-full font-medium transition-all duration-300"
+							>
+								<Linkedin className="w-5 h-5" />
+								<span>Share on LinkedIn</span>
+							</a>
+
+							{/* Reddit */}
+							<a
+								href={`https://reddit.com/submit?url=${encodeURIComponent(`${BASE_URL}/blog/${post.slug}`)}&title=${encodeURIComponent(post.title)}`}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="flex items-center gap-2 px-6 py-3 bg-[#FF4500]/20 hover:bg-[#FF4500]/30 border border-[#FF4500]/30 hover:border-[#FF4500]/50 text-white rounded-full font-medium transition-all duration-300"
+							>
+								<Share2 className="w-5 h-5" />
+								<span>Share on Reddit</span>
+							</a>
+						</div>
+
+						{/* Promotional CTAs */}
+						<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+							{/* Requiem API CTA */}
+							<div className="p-6 bg-gradient-to-br from-purple-900/20 to-purple-800/10 border border-purple-500/30 rounded-xl hover:border-purple-500/50 transition-all duration-300">
+								<h4 className="text-lg font-bold text-white mb-2">
+									Need Enterprise APIs?
+								</h4>
+								<p className="text-gray-400 text-sm mb-4">
+									Use our Requiem API for scalable, production-ready solutions
+								</p>
+								<Link
+									href="/#contact"
+									className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium transition-colors duration-300"
+								>
+									Learn More
+									<ArrowLeft className="w-4 h-4 rotate-180" />
+								</Link>
+							</div>
+
+							{/* Consultancy CTA */}
+							<div className="p-6 bg-gradient-to-br from-cyan-900/20 to-cyan-800/10 border border-cyan-500/30 rounded-xl hover:border-cyan-500/50 transition-all duration-300">
+								<h4 className="text-lg font-bold text-white mb-2">
+									Need Development Services?
+								</h4>
+								<p className="text-gray-400 text-sm mb-4">
+									Get expert consultancy to build your next product
+								</p>
+								<Link
+									href="/#contact"
+									className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium transition-colors duration-300"
+								>
+									Get in Touch
+									<ArrowLeft className="w-4 h-4 rotate-180" />
+								</Link>
+							</div>
+						</div>
 					</div>
 				</article>
 
