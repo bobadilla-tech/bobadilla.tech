@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "npm run cf-typegen && next build && opennextjs-cloudflare build --skipBuild",
+    "build": "pnpm run cf-typegen && pnpm run generate-blog-data && next build && opennextjs-cloudflare build --skipBuild",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
@@ -15,6 +15,7 @@
     "cf:deploy": "opennextjs-cloudflare deploy",
     "cf:preview": "opennextjs-cloudflare preview",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv ./cloudflare-env.d.ts",
+    "generate-blog-data": "node --import jiti/register scripts/generate-blog-data.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
@@ -23,20 +24,20 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@libsql/client": "^0.15.15",
-    "@opennextjs/cloudflare": "^1.14.2",
+    "@libsql/client": "^0.17.0",
+    "@opennextjs/cloudflare": "^1.16.2",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.4.2",
     "@t3-oss/env-nextjs": "^0.13.8",
     "@types/react-syntax-highlighter": "^15.5.13",
-    "@types/three": "^0.181.0",
+    "@types/three": "^0.182.0",
     "dotenv": "^17.2.3",
     "drizzle-kit": "^0.31.7",
-    "drizzle-orm": "^0.44.7",
+    "drizzle-orm": "^0.45.1",
     "framer-motion": "^12.23.25",
     "gray-matter": "^4.0.3",
     "jiti": "^2.6.1",
-    "lucide-react": "^0.555.0",
+    "lucide-react": "^0.563.0",
     "next": "16.1.6",
     "react": "19.2.4",
     "react-dom": "19.2.4",
@@ -44,29 +45,31 @@
     "react-markdown": "^10.1.0",
     "react-syntax-highlighter": "^16.1.0",
     "remark-gfm": "^4.0.1",
-    "three": "^0.181.2",
+    "three": "^0.182.0",
     "zod": "^4.1.13"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20251202.0",
+    "@cloudflare/workers-types": "^4.20260131.0",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20.19.25",
     "@types/react": "19.2.10",
     "@types/react-dom": "19.2.3",
     "@vitest/coverage-v8": "^4.0.15",
-    "eslint": "^9",
+    "eslint": "^9.39.2",
     "eslint-config-next": "16.1.6",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
-    "prettier": "^3.7.4",
+    "prettier": "^3.8.1",
     "tailwindcss": "^4",
-    "typescript": "^5",
+    "typescript": "^5.9.3",
     "vitest": "^4.0.15",
-    "wrangler": "^4.52.1"
+    "wrangler": "^4.61.1"
   },
-  "overrides": {
-    "@types/react": "19.2.10",
-    "@types/react-dom": "19.2.3"
+  "pnpm": {
+    "overrides": {
+      "@types/react": "19.2.10",
+      "@types/react-dom": "19.2.3"
+    }
   }
 }

@@ -1,7 +1,10 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import { calculateReadingTime } from "~/lib/reading-time";
+/**
+ * Blog data module
+ * Data is generated at build time from markdown files (see scripts/generate-blog-data.ts)
+ * This allows the blog to work in Cloudflare Workers without file system access
+ */
+
+import blogPostsData from "./blog-posts.json";
 
 export interface BlogPost {
 	id: string;
@@ -23,87 +26,29 @@ export interface BlogPost {
 	coverImage?: string;
 }
 
-const BLOG_CONTENT_DIR = path.join(process.cwd(), "src/content/blog");
+// Import pre-generated blog posts (generated at build time)
+const allPosts: BlogPost[] = blogPostsData as BlogPost[];
 
 /**
- * Map author names to their profile images
- */
-function getAuthorImage(authorName: string): string {
-	const authorImages: Record<string, string> = {
-		"Eliaz Bobadilla": "/faces/eliaz.jpeg",
-		"Alexandra Flores": "/faces/alexandra.png",
-		"Leonardo Estacio": "/faces/leo.jpeg",
-	};
-
-	return authorImages[authorName] || "/faces/eliaz.jpeg"; // default to Eliaz
-}
-
-/**
- * Get all blog posts from markdown files
+ * Get all blog posts
+ * Posts are already sorted by publish date (newest first)
  */
 export function getAllPosts(): BlogPost[] {
-	if (!fs.existsSync(BLOG_CONTENT_DIR)) {
-		console.warn(`Blog content directory not found: ${BLOG_CONTENT_DIR}`);
-		return [];
-	}
-
-	const files = fs.readdirSync(BLOG_CONTENT_DIR).filter((file) => {
-		const isMarkdown = file.endsWith(".md") || file.endsWith(".mdx");
-		const isNotReadme = !file.toUpperCase().includes("README");
-		const isNotDraft = !file.startsWith("_");
-		return isMarkdown && isNotReadme && isNotDraft;
-	});
-
-	const posts = files.map((filename) => {
-		const slug = filename.replace(/\.mdx?$/, "");
-		const filePath = path.join(BLOG_CONTENT_DIR, filename);
-		const fileContents = fs.readFileSync(filePath, "utf8");
-
-		const { data, content } = matter(fileContents);
-
-		const readingTime = calculateReadingTime(content);
-
-		const authorName = data.author || "Eliaz Bobadilla";
-
-		return {
-			id: slug,
-			slug,
-			title: data.title,
-			description: data.description,
-			content,
-			author: {
-				name: authorName,
-				role: data.authorRole || "Engineering",
-				image: getAuthorImage(authorName),
-			},
-			publishedAt: data.publishedAt || new Date().toISOString(),
-			updatedAt: data.updatedAt,
-			tags: data.tags || [],
-			category: data.category || "engineering",
-			readingTime,
-			featured: data.featured || false,
-			coverImage: data.coverImage,
-		};
-	});
-
-	return posts.sort(
-		(a, b) =>
-			new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-	);
+	return allPosts;
 }
 
 /**
  * Get featured blog posts
  */
 export function getFeaturedPosts(): BlogPost[] {
-	return getAllPosts().filter((post) => post.featured);
+	return allPosts.filter((post) => post.featured);
 }
 
 /**
  * Get a single blog post by slug
  */
 export function getPostBySlug(slug: string): BlogPost | undefined {
-	return getAllPosts().find((post) => post.slug === slug);
+	return allPosts.find((post) => post.slug === slug);
 }
 
 /**
@@ -112,21 +57,20 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
 export function getPostsByCategory(
 	category: BlogPost["category"]
 ): BlogPost[] {
-	return getAllPosts().filter((post) => post.category === category);
+	return allPosts.filter((post) => post.category === category);
 }
 
 /**
  * Get posts by tag
  */
 export function getPostsByTag(tag: string): BlogPost[] {
-	return getAllPosts().filter((post) => post.tags.includes(tag));
+	return allPosts.filter((post) => post.tags.includes(tag));
 }
 
 /**
  * Get all unique tags
  */
 export function getAllTags(): string[] {
-	const allPosts = getAllPosts();
 	const tags = new Set<string>();
 	allPosts.forEach((post) => {
 		post.tags.forEach((tag) => tags.add(tag));

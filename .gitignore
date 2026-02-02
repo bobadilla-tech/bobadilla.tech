@@ -43,6 +43,9 @@ local.db-wal
 next-env.d.ts
 cloudflare-env.d.ts
 
+# generated files
+/src/data/blog-posts.json
+
 # OpenNext
 /.open-next
 
