@@ -419,7 +419,7 @@ Coming from traditional hosting (Vercel, AWS, DigitalOcean), here's what sold us
 
 **Developer Experience:**
 
-- **Simple deployment**: `npm run cf:deploy` and you're live
+- **Simple deployment**: `pnpm run cf:deploy` and you're live
 - **Built-in observability**: See real-time metrics in Cloudflare dashboard
 - **Instant rollbacks**: Previous versions are one click away
 - **Custom domains**: HTTPS automatically provisioned
@@ -443,7 +443,7 @@ OpenNext.js transforms your Next.js build into Worker-compatible code. The proce
 **Installation:**
 
 ```bash
-npm install --save-dev @opennextjs/cloudflare
+pnpm add -D @opennextjs/cloudflare
 ```
 
 **Build scripts in `package.json`:**
@@ -542,7 +542,7 @@ The `wrangler.jsonc` file configures your Cloudflare Worker:
 
 4. Deploy:
    ```bash
-   npm run cf:deploy
+   pnpm run cf:deploy
    ```
 
 **HTTPS is automatic:** Cloudflare provisions SSL certificates for you (Let's Encrypt).
@@ -674,7 +674,7 @@ This creates a minimal production build with only necessary dependencies, reduci
 **Turbopack for development:**
 
 ```bash
-npm run dev  # Automatically uses Turbopack in Next.js 16
+pnpm run dev  # Automatically uses Turbopack in Next.js 16
 ```
 
 Turbopack replaces Webpack for 5-10x faster builds during development. Hot Module Replacement (HMR) is nearly instant.
@@ -980,7 +980,7 @@ If you forget to set a required env var, the app won't start. This catches confi
 **Start development server:**
 
 ```bash
-npm run dev
+pnpm run dev
 # Runs on http://localhost:3000
 # Uses Turbopack for fast HMR
 ```
@@ -988,7 +988,7 @@ npm run dev
 **Local Cloudflare preview:**
 
 ```bash
-npm run cf:preview
+pnpm run cf:preview
 # Runs Worker locally with actual D1 database
 # Test exactly what will run in production
 ```
@@ -1031,7 +1031,7 @@ local.db*
 
 ```bash
 # Install Husky
-npm install --save-dev husky lint-staged
+pnpm add -D husky lint-staged
 
 # Add to package.json:
 {
@@ -1066,9 +1066,9 @@ cd agency-landing
 **2. Install dependencies:**
 
 ```bash
-npm install
-# or
 pnpm install
+# or
+npm install
 # or
 yarn install
 ```
@@ -1094,19 +1094,19 @@ DATABASE_URL=file:./local.db
 
 ```bash
 # Create database
-npx wrangler d1 create my-database
+pnpm exec wrangler d1 create my-database
 
 # Copy database ID to wrangler.jsonc
 # database_id: "paste-here"
 
 # Run migrations
-npx wrangler d1 execute my-database --file=./migrations/0000_schema.sql
+pnpm exec wrangler d1 execute my-database --file=./migrations/0000_schema.sql
 ```
 
 **5. Run locally:**
 
 ```bash
-npm run dev
+pnpm run dev
 # Open http://localhost:3000
 ```
 
@@ -1114,10 +1114,10 @@ npm run dev
 
 ```bash
 # Build
-npm run build
+pnpm run build
 
 # Deploy
-npm run cf:deploy
+pnpm run cf:deploy
 
 # Your site is live! 🎉
 ```
@@ -1191,7 +1191,7 @@ await db.run(sql`PRAGMA read_uncommitted = ON`);
 Turbopack (dev mode) doesn't support all Next.js features yet. If you hit issues, temporarily use Webpack:
 
 ```bash
-npm run dev -- --turbo=false
+pnpm run dev -- --turbo=false
 ```
 
 **3. `output: "standalone"` required**
