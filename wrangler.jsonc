@@ -2,8 +2,13 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "bobadilla-work",
 	"main": ".open-next/worker.js",
-	"compatibility_date": "2025-03-01",
-	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+	"compatibility_date": "2026-01-01",
+	"compatibility_flags": [
+		"nodejs_compat",
+		"global_fetch_strictly_public",
+		"streams_enable_constructors",
+		"transformstream_enable_standard_constructor"
+	],
 	"assets": {
 		"binding": "ASSETS",
 		"directory": ".open-next/assets",
