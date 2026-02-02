@@ -187,7 +187,7 @@ export function generateOrganizationSchema() {
 		name: SITE_NAME,
 		alternateName: "Bobadilla Tech Agency",
 		url: BASE_URL,
-		logo: `${BASE_URL}/logo.png`,
+		logo: `${BASE_URL}/logo.svg`,
 		description:
 			"Top LATAM engineering agency specializing in rapid MVP development, enterprise solutions, and AI integration",
 		address: {

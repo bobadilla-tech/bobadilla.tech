@@ -23,3 +23,12 @@ export const SOCIAL_LINKS = {
 	twitter: "https://twitter.com/UltiRequiem",
 	linkedin: "https://linkedin.com/company/bobadilla-tech",
 } as const;
+
+// External Links
+export const EXTERNAL_LINKS = {
+	apis: "https://requiems-api.xyz/",
+} as const;
+
+// Copyright
+export const COPYRIGHT_YEAR = new Date().getFullYear();
+export const COPYRIGHT_TEXT = `© ${COPYRIGHT_YEAR} Bobadilla Tech. All rights reserved.` as const;

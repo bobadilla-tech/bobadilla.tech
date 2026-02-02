@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import Navbar from "@/components/ui/Navbar";
 import ShaderBackground from "@/components/shaders/ShaderBackground";
 import { getPostBySlug, getAllPosts } from "@/data/blog";
@@ -42,7 +44,7 @@ export async function generateMetadata({
 		ogType: "article",
 		article: {
 			publishedTime: post.publishedAt,
-			updatedTime: post.updatedAt,
+			modifiedTime: post.updatedAt,
 			author: post.author.name,
 			tags: post.tags,
 		},
@@ -126,32 +128,70 @@ export default async function BlogPostPage({ params }: PageProps) {
 					</div>
 
 					{/* Content */}
-					<div className="prose prose-invert prose-cyan max-w-none">
-						<div
-							className="text-gray-300 leading-relaxed space-y-6"
-							// In a real app, you'd use a markdown parser like react-markdown or MDX
-							dangerouslySetInnerHTML={{
-								__html: post.content
-									.split("\n")
-									.map((line) => {
-										// Simple markdown-like rendering
-										if (line.startsWith("# ")) {
-											return `<h1 class="text-3xl font-bold text-white mt-8 mb-4">${line.slice(2)}</h1>`;
-										}
-										if (line.startsWith("## ")) {
-											return `<h2 class="text-2xl font-bold text-white mt-6 mb-3">${line.slice(3)}</h2>`;
-										}
-										if (line.startsWith("- ")) {
-											return `<li class="ml-6 mb-2">${line.slice(2)}</li>`;
-										}
-										if (line.trim() === "") {
-											return "<br />";
-										}
-										return `<p>${line}</p>`;
-									})
-									.join(""),
+					<div className="prose prose-invert prose-cyan max-w-none text-gray-300 leading-relaxed">
+						<ReactMarkdown
+							remarkPlugins={[remarkGfm]}
+							components={{
+								h1: ({ children }) => (
+									<h1 className="text-3xl font-bold text-white mt-8 mb-4">
+										{children}
+									</h1>
+								),
+								h2: ({ children }) => (
+									<h2 className="text-2xl font-bold text-white mt-6 mb-3">
+										{children}
+									</h2>
+								),
+								h3: ({ children }) => (
+									<h3 className="text-xl font-bold text-white mt-4 mb-2">
+										{children}
+									</h3>
+								),
+								p: ({ children }) => (
+									<p className="mb-4 text-gray-300">{children}</p>
+								),
+								ul: ({ children }) => (
+									<ul className="list-disc ml-6 mb-4 space-y-2">{children}</ul>
+								),
+								ol: ({ children }) => (
+									<ol className="list-decimal ml-6 mb-4 space-y-2">
+										{children}
+									</ol>
+								),
+								li: ({ children }) => (
+									<li className="text-gray-300">{children}</li>
+								),
+								a: ({ href, children }) => (
+									<a
+										href={href}
+										className="text-cyan-400 hover:text-cyan-300 underline"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										{children}
+									</a>
+								),
+								code: ({ children, className }) => {
+									const isInline = !className;
+									return isInline ? (
+										<code className="bg-slate-800 text-cyan-400 px-1.5 py-0.5 rounded text-sm">
+											{children}
+										</code>
+									) : (
+										<code className="block bg-slate-800 text-cyan-400 p-4 rounded-lg overflow-x-auto">
+											{children}
+										</code>
+									);
+								},
+								blockquote: ({ children }) => (
+									<blockquote className="border-l-4 border-cyan-500 pl-4 italic text-gray-400 my-4">
+										{children}
+									</blockquote>
+								),
 							}}
-						/>
+						>
+							{post.content}
+						</ReactMarkdown>
 					</div>
 
 					{/* Share Section */}

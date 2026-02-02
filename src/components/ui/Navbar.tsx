@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { CAL_LINKS, SOCIAL_LINKS } from "~/lib/constants";
+import { CAL_LINKS, SOCIAL_LINKS, EXTERNAL_LINKS } from "~/lib/constants";
 
 export default function Navbar() {
 	const [isScrolled, setIsScrolled] = useState(false);
@@ -73,12 +73,14 @@ export default function Navbar() {
 								>
 									Open Source
 								</a>
-								<Link
-									href="/#apis"
+								<a
+									href={EXTERNAL_LINKS.apis}
+									target="_blank"
+									rel="noopener noreferrer"
 									className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 transition-colors duration-200"
 								>
 									APIs
-								</Link>
+								</a>
 							</div>
 						</div>
 						<Link
@@ -156,13 +158,15 @@ export default function Navbar() {
 									>
 										Open Source
 									</a>
-									<Link
-										href="/#apis"
+									<a
+										href={EXTERNAL_LINKS.apis}
+										target="_blank"
+										rel="noopener noreferrer"
 										className="block text-gray-300 hover:text-white transition-colors duration-200"
 										onClick={() => setIsMobileMenuOpen(false)}
 									>
 										APIs
-									</Link>
+									</a>
 								</div>
 							</div>
 							<Link

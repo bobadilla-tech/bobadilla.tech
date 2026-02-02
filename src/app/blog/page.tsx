@@ -2,7 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/ui/Navbar";
 import ShaderBackground from "@/components/shaders/ShaderBackground";
-import { getAllPosts, getAllCategories, getAllTags } from "@/data/blog";
+import {
+	getAllPosts,
+	getAllCategories,
+	getAllTags,
+	getPostsByCategory,
+	getPostsByTag,
+} from "@/data/blog";
 import { Calendar, Clock, Tag } from "lucide-react";
 import {
 	generateMetadata as generateSEOMetadata,
@@ -26,10 +32,24 @@ export const metadata: Metadata = generateSEOMetadata({
 	ogImage: `${BASE_URL}/og-blog.png`,
 });
 
-export default function BlogPage() {
-	const posts = getAllPosts();
+interface BlogPageProps {
+	searchParams: Promise<{ category?: string; tag?: string }>;
+}
+
+export default async function BlogPage({ searchParams }: BlogPageProps) {
+	const { category, tag } = await searchParams;
+
+	const allPosts = getAllPosts();
+	const posts = category
+		? getPostsByCategory(category as any)
+		: tag
+			? getPostsByTag(tag)
+			: allPosts;
+
 	const categories = getAllCategories();
 	const tags = getAllTags();
+
+	const activeFilter = category || tag;
 
 	return (
 		<div className="relative min-h-screen bg-slate-950">
@@ -47,7 +67,9 @@ export default function BlogPage() {
 							</span>
 						</h1>
 						<p className="text-xl text-gray-400 max-w-3xl mx-auto">
-							Insights, tutorials, and best practices from our engineering team
+							{activeFilter
+								? `Filtering by: ${activeFilter}`
+								: "Insights, tutorials, and best practices from our engineering team"}
 						</p>
 					</div>
 
@@ -56,17 +78,25 @@ export default function BlogPage() {
 						<div className="flex flex-wrap gap-3 justify-center">
 							<Link
 								href="/blog"
-								className="px-6 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-medium hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300"
+								className={
+									!activeFilter
+										? "px-6 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-medium hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300"
+										: "px-6 py-2 bg-white/5 backdrop-blur-sm border border-white/10 text-gray-300 rounded-full font-medium hover:bg-white/10 hover:text-white transition-all duration-300"
+								}
 							>
 								All Posts
 							</Link>
-							{categories.map((category) => (
+							{categories.map((cat) => (
 								<Link
-									key={category}
-									href={`/blog?category=${category}`}
-									className="px-6 py-2 bg-white/5 backdrop-blur-sm border border-white/10 text-gray-300 rounded-full font-medium hover:bg-white/10 hover:text-white transition-all duration-300"
+									key={cat}
+									href={`/blog?category=${cat}`}
+									className={
+										category === cat
+											? "px-6 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-medium hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300"
+											: "px-6 py-2 bg-white/5 backdrop-blur-sm border border-white/10 text-gray-300 rounded-full font-medium hover:bg-white/10 hover:text-white transition-all duration-300"
+									}
 								>
-									{category.charAt(0).toUpperCase() + category.slice(1)}
+									{cat.charAt(0).toUpperCase() + cat.slice(1)}
 								</Link>
 							))}
 						</div>

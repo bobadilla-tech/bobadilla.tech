@@ -103,7 +103,7 @@ export default function Hero() {
 							<div className="text-gray-400">Support Available</div>
 						</div>
 						<div className="text-center">
-							<div className="text-4xl font-bold text-white mb-2">98%</div>
+							<div className="text-4xl font-bold text-white mb-2">100%</div>
 							<div className="text-gray-400">Client Satisfaction</div>
 						</div>
 					</motion.div>
