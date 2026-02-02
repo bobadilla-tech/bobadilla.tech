@@ -9,7 +9,7 @@ import {
 	getPostsByCategory,
 	getPostsByTag,
 } from "@/data/blog";
-import { Calendar, Clock, Tag } from "lucide-react";
+import { Calendar, Clock, Tag, FileX } from "lucide-react";
 import {
 	generateMetadata as generateSEOMetadata,
 	KEYWORD_SETS,
@@ -51,6 +51,13 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
 	const activeFilter = category || tag;
 
+	// Determine page title based on filter
+	const pageTitle = category
+		? `${category.charAt(0).toUpperCase() + category.slice(1)} Blog`
+		: tag
+			? `Blog`
+			: "Blog";
+
 	return (
 		<div className="relative min-h-screen bg-slate-950">
 			<ShaderBackground />
@@ -61,15 +68,13 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 					{/* Page Header */}
 					<div className="text-center mb-16">
 						<h1 className="text-5xl sm:text-6xl font-bold text-white mb-6">
-							Engineering{" "}
+							{pageTitle}{" "}
 							<span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-								Blog
+								Posts
 							</span>
 						</h1>
 						<p className="text-xl text-gray-400 max-w-3xl mx-auto">
-							{activeFilter
-								? `Filtering by: ${activeFilter}`
-								: "Insights, tutorials, and best practices from our engineering team"}
+							Insights, tutorials, and best practices from our team
 						</p>
 					</div>
 
@@ -102,78 +107,100 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 						</div>
 					</div>
 
-					{/* Blog Posts Grid */}
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-						{posts.map((post) => (
-							<Link
-								key={post.id}
-								href={`/blog/${post.slug}`}
-								className="group relative p-6 bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-cyan-500/50 transition-all duration-300 hover:scale-105"
-							>
-								{/* Featured Badge */}
-								{post.featured && (
-									<div className="absolute top-4 right-4 px-3 py-1 bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-semibold rounded-full">
-										Featured
-									</div>
-								)}
+					{/* Blog Posts Grid or Empty State */}
+					{posts.length > 0 ? (
+						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+							{posts.map((post) => (
+								<Link
+									key={post.id}
+									href={`/blog/${post.slug}`}
+									className="group relative p-6 bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-cyan-500/50 transition-all duration-300 hover:scale-105"
+								>
+									{/* Featured Badge */}
+									{post.featured && (
+										<div className="absolute top-4 right-4 px-3 py-1 bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-semibold rounded-full">
+											Featured
+										</div>
+									)}
 
-								{/* Category Badge */}
-								<div className="mb-4">
-									<span className="px-3 py-1 bg-cyan-500/20 text-cyan-400 text-xs font-medium rounded-full">
-										{post.category}
-									</span>
-								</div>
-
-								{/* Title */}
-								<h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300">
-									{post.title}
-								</h3>
-
-								{/* Description */}
-								<p className="text-gray-400 text-sm mb-4 line-clamp-3">
-									{post.description}
-								</p>
-
-								{/* Meta Information */}
-								<div className="flex flex-wrap gap-4 text-gray-500 text-xs mb-4">
-									<div className="flex items-center gap-1">
-										<Calendar className="w-4 h-4" />
-										<span>
-											{new Date(post.publishedAt).toLocaleDateString("en-US", {
-												month: "short",
-												day: "numeric",
-												year: "numeric",
-											})}
+									{/* Category Badge */}
+									<div className="mb-4">
+										<span className="px-3 py-1 bg-cyan-500/20 text-cyan-400 text-xs font-medium rounded-full">
+											{post.category}
 										</span>
 									</div>
-									<div className="flex items-center gap-1">
-										<Clock className="w-4 h-4" />
-										<span>{post.readingTime} min read</span>
-									</div>
-								</div>
 
-								{/* Tags */}
-								<div className="flex flex-wrap gap-2">
-									{post.tags.slice(0, 3).map((tag) => (
-										<span
-											key={tag}
-											className="inline-flex items-center gap-1 px-2 py-1 bg-white/5 text-gray-400 text-xs rounded"
-										>
-											<Tag className="w-3 h-3" />
-											{tag}
-										</span>
-									))}
-								</div>
+									{/* Title */}
+									<h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300">
+										{post.title}
+									</h3>
 
-								{/* Author */}
-								<div className="mt-4 pt-4 border-t border-white/10">
-									<p className="text-gray-400 text-sm">
-										by {post.author.name}
+									{/* Description */}
+									<p className="text-gray-400 text-sm mb-4 line-clamp-3">
+										{post.description}
 									</p>
-								</div>
-							</Link>
-						))}
-					</div>
+
+									{/* Meta Information */}
+									<div className="flex flex-wrap gap-4 text-gray-500 text-xs mb-4">
+										<div className="flex items-center gap-1">
+											<Calendar className="w-4 h-4" />
+											<span>
+												{new Date(post.publishedAt).toLocaleDateString("en-US", {
+													month: "short",
+													day: "numeric",
+													year: "numeric",
+												})}
+											</span>
+										</div>
+										<div className="flex items-center gap-1">
+											<Clock className="w-4 h-4" />
+											<span>{post.readingTime} min read</span>
+										</div>
+									</div>
+
+									{/* Tags */}
+									<div className="flex flex-wrap gap-2">
+										{post.tags.slice(0, 3).map((tag) => (
+											<span
+												key={tag}
+												className="inline-flex items-center gap-1 px-2 py-1 bg-white/5 text-gray-400 text-xs rounded"
+											>
+												<Tag className="w-3 h-3" />
+												{tag}
+											</span>
+										))}
+									</div>
+
+									{/* Author */}
+									<div className="mt-4 pt-4 border-t border-white/10">
+										<p className="text-gray-400 text-sm">
+											by {post.author.name}
+										</p>
+									</div>
+								</Link>
+							))}
+						</div>
+					) : (
+						<div className="flex flex-col items-center justify-center py-24">
+							<div className="p-6 bg-slate-900/50 backdrop-blur-sm border border-white/10 rounded-2xl max-w-md text-center">
+								<FileX className="w-16 h-16 text-gray-500 mx-auto mb-4" />
+								<h3 className="text-xl font-bold text-white mb-2">
+									No posts found
+								</h3>
+								<p className="text-gray-400 mb-6">
+									{activeFilter
+										? `No posts match "${activeFilter}". Try a different filter or browse all posts.`
+										: "No blog posts available yet. Check back soon!"}
+								</p>
+								<Link
+									href="/blog"
+									className="inline-block px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300"
+								>
+									View All Posts
+								</Link>
+							</div>
+						</div>
+					)}
 
 					{/* CTA Section */}
 					<section className="mt-24 text-center">
