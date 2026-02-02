@@ -41,6 +41,7 @@ local.db-wal
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+cloudflare-env.d.ts
 
 # OpenNext
 /.open-next
