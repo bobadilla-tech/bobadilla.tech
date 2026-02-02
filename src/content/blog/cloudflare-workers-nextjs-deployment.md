@@ -134,24 +134,25 @@ We chose **Next.js 16** for several compelling reasons:
                     ┌───────────┴───────────┐
                     │                       │
                     ▼                       ▼
-           ┌─────────────────┐    ┌─────────────┐
-           │  D1 Database    │    │ Blog Posts  │
-           │  (SQLite)       │    │ (Markdown)  │
-           └─────────────────┘    └─────────────┘
+           ┌─────────────────┐    ┌─────────────────┐
+           │  D1 Database    │    │ Blog Posts JSON │
+           │  (SQLite)       │    │ (Build-time)    │
+           └─────────────────┘    └─────────────────┘
 ```
 
 ---
 
-## 2. File-Based Blog System
+## 2. File-Based Blog System with Build-Time Generation
 
-One of the core features of bobadilla.tech is the blog, and we implemented it using a file-based approach rather than a traditional CMS. Here's why and how.
+One of the core features of bobadilla.tech is the blog, implemented using a file-based approach with build-time generation. This architecture is specifically designed for Cloudflare Workers, which don't have Node.js file system access at runtime.
 
-### Why File-Based CMS?
+### Why File-Based CMS with Build-Time Generation?
 
 **Advantages:**
 
 - **Version control**: Blog posts live in Git alongside code - full history, branching, and collaboration
-- **No API calls**: Posts are read at build time, not runtime (faster, simpler)
+- **Edge-compatible**: No Node.js file system APIs needed at runtime (works in Cloudflare Workers)
+- **Zero latency**: Posts are pre-processed into JSON, no I/O at request time
 - **Type-safe**: TypeScript knows the exact shape of your blog data
 - **Offline editing**: Write in any markdown editor, no internet required
 - **Simple backup**: Just commit to Git
@@ -163,50 +164,87 @@ One of the core features of bobadilla.tech is the blog, and we implemented it us
 - **No real-time updates**: Need to rebuild to publish (acceptable for blogs)
 - **No admin UI**: Team members need Git access (or use GitHub's web editor)
 
-For our team, these trade-offs are actually benefits. We're all technical people who love writing in markdown and are comfortable in our editors (VS Code, Neovim, etc.). The Git-based workflow feels natural, and we can use all our favorite tools for writing, linting, and previewing content. For a blog publishing 2 posts per week with a technical team, file-based CMS is the perfect fit.
+For our team, these trade-offs are actually benefits. We're all technical people who love writing in markdown and are comfortable in our editors (VS Code, Neovim, etc.). The Git-based workflow feels natural, and we can use all our favorite tools for writing, linting, and previewing content.
 
-### Blog Loading Pipeline
+### Blog Build Pipeline
 
-The blog system is implemented in `src/data/blog.ts`. Here's the complete flow:
+The blog system uses a two-step architecture:
 
-#### Step 1: Read Markdown Files
+1. **Build time** (`scripts/generate-blog-data.ts`): Process markdown files into JSON
+2. **Runtime** (`src/data/blog.ts`): Import pre-generated JSON (no file system access)
+
+This separation is critical for Cloudflare Workers compatibility, as Workers run in a V8 JavaScript runtime without Node.js APIs like `fs.readFileSync()`.
+
+#### Build-Time: Processing Markdown to JSON
+
+The build script (`scripts/generate-blog-data.ts`) runs before Next.js compilation:
 
 ```typescript
+// package.json build script:
+// "build": "... && pnpm run generate-blog-data && next build && ..."
+
+// scripts/generate-blog-data.ts
 const BLOG_CONTENT_DIR = path.join(process.cwd(), "src/content/blog");
+const OUTPUT_FILE = path.join(process.cwd(), "src/data/blog-posts.json");
 
-const files = fs.readdirSync(BLOG_CONTENT_DIR).filter((file) => {
-	const isMarkdown = file.endsWith(".md") || file.endsWith(".mdx");
-	const isNotReadme = !file.toUpperCase().includes("README");
-	const isNotDraft = !file.startsWith("_"); // Draft filtering!
-	return isMarkdown && isNotReadme && isNotDraft;
-});
+function generateBlogData(): void {
+	// Step 1: Read markdown files (with draft filtering)
+	const files = fs.readdirSync(BLOG_CONTENT_DIR).filter((file) => {
+		const isMarkdown = file.endsWith(".md") || file.endsWith(".mdx");
+		const isNotReadme = !file.toUpperCase().includes("README");
+		const isNotDraft = !file.startsWith("_"); // Draft system!
+		return isMarkdown && isNotReadme && isNotDraft;
+	});
+
+	// Step 2: Process each file
+	const posts = files.map((filename) => {
+		const slug = filename.replace(/\.mdx?$/, "");
+		const filePath = path.join(BLOG_CONTENT_DIR, filename);
+		const fileContents = fs.readFileSync(filePath, "utf8");
+
+		// Step 3: Parse frontmatter with gray-matter
+		const { data, content } = matter(fileContents);
+
+		// Step 4: Calculate reading time
+		const readingTime = calculateReadingTime(content);
+
+		// Step 5: Map author to avatar
+		const authorName = data.author || "Eliaz Bobadilla";
+
+		return {
+			id: slug,
+			slug,
+			title: data.title,
+			description: data.description,
+			content, // Full markdown content included
+			author: {
+				name: authorName,
+				role: data.authorRole || "Engineering",
+				image: getAuthorImage(authorName),
+			},
+			publishedAt: data.publishedAt || new Date().toISOString(),
+			updatedAt: data.updatedAt,
+			tags: data.tags || [],
+			category: data.category || "engineering",
+			readingTime,
+			featured: data.featured || false,
+			coverImage: data.coverImage,
+		};
+	});
+
+	// Step 6: Sort by date and write to JSON
+	const sortedPosts = posts.sort(
+		(a, b) =>
+			new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+	);
+
+	fs.writeFileSync(OUTPUT_FILE, JSON.stringify(sortedPosts, null, 2));
+}
 ```
 
-**Draft System**: Files prefixed with `_` (like `_draft-post.md`) are automatically excluded. This lets you work on posts without publishing them. Simply remove the `_` prefix when ready to publish.
+**Draft System**: Files prefixed with `_` (like `_draft-post.md`) are automatically excluded. Work on posts without publishing them, then remove the `_` prefix when ready to publish.
 
-#### Step 2: Parse Frontmatter with gray-matter
-
-```typescript
-import matter from "gray-matter";
-
-const fileContents = fs.readFileSync(filePath, "utf8");
-const { data, content } = matter(fileContents);
-
-// data = frontmatter (title, description, etc.)
-// content = markdown content
-```
-
-Gray-matter separates YAML frontmatter from markdown content, giving you strongly-typed metadata and raw content separately.
-
-#### Step 3: Calculate Reading Time Automatically
-
-```typescript
-import { calculateReadingTime } from "~/lib/reading-time";
-
-const readingTime = calculateReadingTime(content);
-```
-
-Our reading time algorithm:
+**Reading Time Algorithm:**
 
 - Removes code blocks, inline code, images, links
 - Strips markdown syntax (headers, bold, lists)
@@ -241,7 +279,7 @@ export function calculateReadingTime(content: string): number {
 }
 ````
 
-#### Step 4: Map Authors to Avatars
+**Author Mapping:**
 
 ```typescript
 function getAuthorImage(authorName: string): string {
@@ -255,18 +293,36 @@ function getAuthorImage(authorName: string): string {
 }
 ```
 
-Author profile pictures are automatically mapped. Just specify the author name in frontmatter, and the avatar appears on the blog post card and detail page.
+#### Runtime: Importing Pre-Generated JSON
 
-#### Step 5: Sort by Publication Date
+At runtime, the blog data module (`src/data/blog.ts`) simply imports the pre-generated JSON:
 
 ```typescript
-return posts.sort(
-	(a, b) =>
-		new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-);
+import blogPostsData from "./blog-posts.json";
+
+// Pre-generated blog posts (already sorted by date)
+const allPosts: BlogPost[] = blogPostsData as BlogPost[];
+
+// No file system operations - just array operations!
+export function getAllPosts(): BlogPost[] {
+	return allPosts;
+}
+
+export function getPostBySlug(slug: string): BlogPost | undefined {
+	return allPosts.find((post) => post.slug === slug);
+}
+
+export function getFeaturedPosts(): BlogPost[] {
+	return allPosts.filter((post) => post.featured);
+}
 ```
 
-Newest posts appear first. Simple but effective.
+**Key Benefits:**
+
+- **Zero file system I/O at runtime**: Everything is in memory
+- **Works in Cloudflare Workers**: No Node.js APIs needed
+- **Instant lookups**: Array operations are microseconds
+- **Type-safe**: JSON is typed as `BlogPost[]`
 
 ### Frontmatter Schema
 
@@ -335,16 +391,18 @@ export async function generateStaticParams() {
 
 **What happens at build time:**
 
-1. Next.js calls `generateStaticParams()`
-2. We return an array of all post slugs
-3. Next.js generates static HTML for each route:
+1. Build script processes markdown files into `blog-posts.json`
+2. Next.js calls `generateStaticParams()` which imports the JSON
+3. We return an array of all post slugs from the pre-generated data
+4. Next.js generates static HTML for each route:
    - `/blog/cloudflare-workers-nextjs-deployment` → Static HTML
    - `/blog/rapid-mvp-development` → Static HTML
    - `/blog/ai-integration-guide` → Static HTML
 
 **Benefits:**
 
-- **Zero file system reads at runtime**: Everything is pre-rendered
+- **Zero file system reads at runtime**: Posts are pre-processed into JSON, bundled with the application
+- **Edge-compatible**: No Node.js APIs needed, works perfectly in Cloudflare Workers
 - **Instant page loads**: HTML is already generated and cached on Cloudflare's CDN
 - **No server-side rendering overhead**: Just serve static files
 - **SEO-perfect**: Search engines get fully-rendered HTML immediately
@@ -451,7 +509,8 @@ pnpm add -D @opennextjs/cloudflare
 ```json
 {
 	"scripts": {
-		"build": "next build && opennextjs-cloudflare build --skipBuild",
+		"build": "pnpm run cf-typegen && pnpm run generate-blog-data && next build && opennextjs-cloudflare build --skipBuild",
+		"generate-blog-data": "node --import jiti/register scripts/generate-blog-data.ts",
 		"cf:build": "opennextjs-cloudflare build",
 		"cf:deploy": "wrangler deploy",
 		"cf:preview": "wrangler dev"
@@ -461,8 +520,10 @@ pnpm add -D @opennextjs/cloudflare
 
 **What happens during build:**
 
-1. `next build` creates optimized production build in `.next/`
-2. `opennextjs-cloudflare build` transforms it:
+1. `cf-typegen` generates TypeScript types for Cloudflare bindings
+2. `generate-blog-data` processes markdown files into JSON (runs using jiti for TypeScript support)
+3. `next build` creates optimized production build in `.next/` (includes the blog JSON)
+4. `opennextjs-cloudflare build` transforms it:
    - Converts Next.js server functions to Worker-compatible code
    - Extracts static assets to `.open-next/assets/`
    - Creates Worker entry point
@@ -1014,6 +1075,9 @@ npx drizzle-kit studio
 cloudflare-env.d.ts
 .next/
 
+# Generated files
+/src/data/blog-posts.json  # Generated at build time from markdown
+
 # Environment
 .env
 .env*.local
@@ -1145,6 +1209,28 @@ export const users = sqliteTable("users", {
 });
 ```
 
+**Blog posts** (`src/content/blog/`):
+
+Add new blog posts as markdown files:
+
+```markdown
+---
+title: "Your Post Title"
+description: "Brief summary"
+author: "Your Name"
+publishedAt: "2026-02-02"
+tags: ["Next.js", "Tutorial"]
+category: "engineering"
+featured: true
+---
+
+# Your Content Here
+
+Your markdown content...
+```
+
+The build script (`scripts/generate-blog-data.ts`) automatically processes all markdown files into JSON. The generated `blog-posts.json` is gitignored and regenerated on every build.
+
 **Markdown components** (`src/app/blog/[slug]/page.tsx`):
 
 Customize how markdown renders:
@@ -1178,7 +1264,20 @@ export const DEFAULT_AUTHOR = "Your Company Team";
 
 ### Common Gotchas
 
-**1. D1 read-replica lag**
+**1. Cloudflare Workers and Node.js APIs**
+
+Cloudflare Workers run in a V8 JavaScript runtime, NOT Node.js. This means Node.js APIs like `fs`, `path`, and `process` are not available at runtime (even with `nodejs_compat` compatibility flag, these APIs are limited).
+
+**Solution:** Move any file system operations to build time:
+
+- ✅ Read files during build (in scripts like `generate-blog-data.ts`)
+- ✅ Generate JSON/static data at build time
+- ✅ Import the generated data in your application
+- ❌ Don't use `fs.readFileSync()` or `fs.readdirSync()` in API routes or pages
+
+This is why our blog system processes markdown at build time instead of runtime.
+
+**2. D1 read-replica lag**
 
 D1 uses read replicas for low-latency reads, which can have a few seconds of lag. For writes, use:
 
@@ -1186,7 +1285,7 @@ D1 uses read replicas for low-latency reads, which can have a few seconds of lag
 await db.run(sql`PRAGMA read_uncommitted = ON`);
 ```
 
-**2. Turbopack limitations**
+**3. Turbopack limitations**
 
 Turbopack (dev mode) doesn't support all Next.js features yet. If you hit issues, temporarily use Webpack:
 
@@ -1194,11 +1293,11 @@ Turbopack (dev mode) doesn't support all Next.js features yet. If you hit issues
 pnpm run dev -- --turbo=false
 ```
 
-**3. `output: "standalone"` required**
+**4. `output: "standalone"` required**
 
 OpenNext.js requires standalone output mode. Don't remove this from `next.config.js`.
 
-**4. Image optimization remote patterns**
+**5. Image optimization remote patterns**
 
 If using external images, configure allowed domains:
 
