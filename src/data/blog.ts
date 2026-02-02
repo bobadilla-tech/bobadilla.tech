@@ -50,7 +50,8 @@ export function getAllPosts(): BlogPost[] {
 	const files = fs.readdirSync(BLOG_CONTENT_DIR).filter((file) => {
 		const isMarkdown = file.endsWith(".md") || file.endsWith(".mdx");
 		const isNotReadme = !file.toUpperCase().includes("README");
-		return isMarkdown && isNotReadme;
+		const isNotDraft = !file.startsWith("_");
+		return isMarkdown && isNotReadme && isNotDraft;
 	});
 
 	const posts = files.map((filename) => {

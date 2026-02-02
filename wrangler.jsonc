@@ -20,7 +20,7 @@
 	"preview_urls": false,
 	"routes": [
 		{
-			"pattern": "bobadilla.tech/*",
+			"pattern": "bobadilla.tech/",
 			"zone_name": "bobadilla.tech",
 			"custom_domain": true,
 		},
