@@ -112,33 +112,7 @@ We chose **Next.js 16** for several compelling reasons:
 
 **Architecture Diagram:**
 
-```
-┌─────────────────────────────────────────────────────┐
-│                   User's Browser                    │
-└───────────────────┬─────────────────────────────────┘
-                    │ HTTPS Request
-                    ▼
-┌─────────────────────────────────────────────────────┐
-│         Cloudflare Global Network (CDN)             │
-│              (275+ Edge Locations)                  │
-└───────────────────┬─────────────────────────────────┘
-                    │
-        ┌───────────┴───────────┐
-        │                       │
-        ▼                       ▼
-┌──────────────┐       ┌──────────────────┐
-│ Static Assets│       │ Cloudflare Worker│
-│  (Cached)    │       │  (Next.js SSR)   │
-└──────────────┘       └────────┬─────────┘
-                                │
-                    ┌───────────┴───────────┐
-                    │                       │
-                    ▼                       ▼
-           ┌─────────────────┐    ┌─────────────────┐
-           │  D1 Database    │    │ Blog Posts JSON │
-           │  (SQLite)       │    │ (Build-time)    │
-           └─────────────────┘    └─────────────────┘
-```
+![Architecture Diagram](/blogs/cloudflare-nextjs.png)
 
 ---
 
