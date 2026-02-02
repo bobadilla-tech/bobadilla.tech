@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && opennextjs-cloudflare build --skipBuild",
+    "build": "npm run cf-typegen && next build && opennextjs-cloudflare build --skipBuild",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",

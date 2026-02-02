@@ -5,7 +5,17 @@ author: "Eliaz Bobadilla"
 authorRole: "Senior Engineer"
 publishedAt: "2026-02-02"
 updatedAt: "2026-02-02"
-tags: ["Next.js", "Cloudflare", "Workers", "OpenNext", "Architecture", "Edge Computing", "D1", "TypeScript"]
+tags:
+  [
+    "Next.js",
+    "Cloudflare",
+    "Workers",
+    "OpenNext",
+    "Architecture",
+    "Edge Computing",
+    "D1",
+    "TypeScript",
+  ]
 category: "engineering"
 featured: true
 ---
@@ -15,6 +25,7 @@ featured: true
 Building a production-ready Next.js application that's blazingly fast, globally distributed, and cost-effective is completely achievable with Cloudflare Workers. In this comprehensive guide, I'll walk you through exactly how we built [bobadilla.tech](https://bobadilla.tech), including the architecture decisions, deployment process, and performance optimizations that resulted in sub-50ms response times worldwide.
 
 **What you'll learn:**
+
 - How to deploy Next.js 16 to Cloudflare's edge network using OpenNext.js
 - Building a file-based blog system with automatic reading time calculation
 - Implementing static generation for maximum performance
@@ -138,6 +149,7 @@ One of the core features of bobadilla.tech is the blog, and we implemented it us
 ### Why File-Based CMS?
 
 **Advantages:**
+
 - **Version control**: Blog posts live in Git alongside code - full history, branching, and collaboration
 - **No API calls**: Posts are read at build time, not runtime (faster, simpler)
 - **Type-safe**: TypeScript knows the exact shape of your blog data
@@ -146,6 +158,7 @@ One of the core features of bobadilla.tech is the blog, and we implemented it us
 - **No database needed**: One less service to maintain
 
 **Trade-offs:**
+
 - **Build time increases**: More posts = longer builds (mitigated by incremental builds)
 - **No real-time updates**: Need to rebuild to publish (acceptable for blogs)
 - **No admin UI**: Team members need Git access (or use GitHub's web editor)
@@ -162,10 +175,10 @@ The blog system is implemented in `src/data/blog.ts`. Here's the complete flow:
 const BLOG_CONTENT_DIR = path.join(process.cwd(), "src/content/blog");
 
 const files = fs.readdirSync(BLOG_CONTENT_DIR).filter((file) => {
-  const isMarkdown = file.endsWith(".md") || file.endsWith(".mdx");
-  const isNotReadme = !file.toUpperCase().includes("README");
-  const isNotDraft = !file.startsWith("_"); // Draft filtering!
-  return isMarkdown && isNotReadme && isNotDraft;
+	const isMarkdown = file.endsWith(".md") || file.endsWith(".mdx");
+	const isNotReadme = !file.toUpperCase().includes("README");
+	const isNotDraft = !file.startsWith("_"); // Draft filtering!
+	return isMarkdown && isNotReadme && isNotDraft;
 });
 ```
 
@@ -194,50 +207,51 @@ const readingTime = calculateReadingTime(content);
 ```
 
 Our reading time algorithm:
+
 - Removes code blocks, inline code, images, links
 - Strips markdown syntax (headers, bold, lists)
 - Counts words
 - Divides by 225 words per minute (average reading speed)
 - Rounds up to minimum 1 minute
 
-```typescript
+````typescript
 // From src/lib/reading-time.ts
 export function calculateReadingTime(content: string): number {
-  const WORDS_PER_MINUTE = 225;
+	const WORDS_PER_MINUTE = 225;
 
-  // Remove code blocks
-  let cleanContent = content.replace(/```[\s\S]*?```/g, "");
+	// Remove code blocks
+	let cleanContent = content.replace(/```[\s\S]*?```/g, "");
 
-  // Remove inline code
-  cleanContent = cleanContent.replace(/`[^`]*`/g, "");
+	// Remove inline code
+	cleanContent = cleanContent.replace(/`[^`]*`/g, "");
 
-  // Remove markdown syntax
-  cleanContent = cleanContent
-    .replace(/#{1,6}\s/g, "")  // Headers
-    .replace(/[*_]{1,2}([^*_]+)[*_]{1,2}/g, "$1")  // Bold/italic
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");  // Links
+	// Remove markdown syntax
+	cleanContent = cleanContent
+		.replace(/#{1,6}\s/g, "") // Headers
+		.replace(/[*_]{1,2}([^*_]+)[*_]{1,2}/g, "$1") // Bold/italic
+		.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1"); // Links
 
-  // Count words
-  const words = cleanContent
-    .split(/\s+/)
-    .filter((word) => word.length > 0).length;
+	// Count words
+	const words = cleanContent
+		.split(/\s+/)
+		.filter((word) => word.length > 0).length;
 
-  const minutes = Math.ceil(words / WORDS_PER_MINUTE);
-  return Math.max(1, minutes);  // Minimum 1 minute
+	const minutes = Math.ceil(words / WORDS_PER_MINUTE);
+	return Math.max(1, minutes); // Minimum 1 minute
 }
-```
+````
 
 #### Step 4: Map Authors to Avatars
 
 ```typescript
 function getAuthorImage(authorName: string): string {
-  const authorImages: Record<string, string> = {
-    "Eliaz Bobadilla": "/faces/eliaz.jpeg",
-    "Alexandra Flores": "/faces/alexandra.png",
-    "Leonardo Estacio": "/faces/leo.jpeg",
-  };
+	const authorImages: Record<string, string> = {
+		"Eliaz Bobadilla": "/faces/eliaz.jpeg",
+		"Alexandra Flores": "/faces/alexandra.png",
+		"Leonardo Estacio": "/faces/leo.jpeg",
+	};
 
-  return authorImages[authorName] || "/faces/eliaz.jpeg";
+	return authorImages[authorName] || "/faces/eliaz.jpeg";
 }
 ```
 
@@ -247,7 +261,8 @@ Author profile pictures are automatically mapped. Just specify the author name i
 
 ```typescript
 return posts.sort(
-  (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+	(a, b) =>
+		new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
 );
 ```
 
@@ -262,16 +277,16 @@ Here's the complete schema for blog post frontmatter:
 # Required fields
 title: "Your Post Title"
 description: "Brief summary (150-200 chars for SEO)"
-publishedAt: "2026-02-02"  # YYYY-MM-DD format
+publishedAt: "2026-02-02" # YYYY-MM-DD format
 
 # Optional fields
-author: "Eliaz Bobadilla"  # Defaults to "Eliaz Bobadilla"
-authorRole: "Senior Engineer"  # Defaults to "Engineering"
-updatedAt: "2026-02-02"  # Shows "Updated" badge
+author: "Eliaz Bobadilla" # Defaults to "Eliaz Bobadilla"
+authorRole: "Senior Engineer" # Defaults to "Engineering"
+updatedAt: "2026-02-02" # Shows "Updated" badge
 tags: ["Next.js", "Tutorial", "TypeScript"]
-category: "engineering"  # engineering | ai | product | business | tutorial
-featured: true  # Shows "Featured" badge on listing
-coverImage: "/blog/cover.png"  # Optional hero image
+category: "engineering" # engineering | ai | product | business | tutorial
+featured: true # Shows "Featured" badge on listing
+coverImage: "/blog/cover.png" # Optional hero image
 ---
 ```
 
@@ -279,23 +294,23 @@ coverImage: "/blog/cover.png"  # Optional hero image
 
 ```typescript
 export interface BlogPost {
-  id: string;
-  slug: string;
-  title: string;
-  description: string;
-  content: string;  // Markdown content
-  author: {
-    name: string;
-    role: string;
-    image: string;  // Auto-mapped from name
-  };
-  publishedAt: string;  // ISO date string
-  updatedAt?: string;
-  tags: string[];
-  category: "engineering" | "ai" | "product" | "business" | "tutorial";
-  readingTime: number;  // Auto-calculated in minutes
-  featured: boolean;
-  coverImage?: string;
+	id: string;
+	slug: string;
+	title: string;
+	description: string;
+	content: string; // Markdown content
+	author: {
+		name: string;
+		role: string;
+		image: string; // Auto-mapped from name
+	};
+	publishedAt: string; // ISO date string
+	updatedAt?: string;
+	tags: string[];
+	category: "engineering" | "ai" | "product" | "business" | "tutorial";
+	readingTime: number; // Auto-calculated in minutes
+	featured: boolean;
+	coverImage?: string;
 }
 ```
 
@@ -311,10 +326,10 @@ In `src/app/blog/[slug]/page.tsx`, we tell Next.js to pre-generate every blog po
 
 ```typescript
 export async function generateStaticParams() {
-  const posts = getAllPosts();  // Get all non-draft posts
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+	const posts = getAllPosts(); // Get all non-draft posts
+	return posts.map((post) => ({
+		slug: post.slug,
+	}));
 }
 ```
 
@@ -339,28 +354,30 @@ export async function generateStaticParams() {
 Every blog post gets comprehensive SEO metadata automatically:
 
 ```typescript
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const post = getPostBySlug(slug);
+export async function generateMetadata({
+	params,
+}: PageProps): Promise<Metadata> {
+	const { slug } = await params;
+	const post = getPostBySlug(slug);
 
-  if (!post) {
-    return { title: "Post Not Found" };
-  }
+	if (!post) {
+		return { title: "Post Not Found" };
+	}
 
-  return generateSEOMetadata({
-    title: post.title,
-    description: post.description,
-    keywords: post.tags,
-    canonical: `${BASE_URL}/blog/${post.slug}`,
-    ogImage: post.coverImage || `${BASE_URL}/og-blog.png`,
-    ogType: "article",
-    article: {
-      publishedTime: post.publishedAt,
-      modifiedTime: post.updatedAt,
-      author: post.author.name,
-      tags: post.tags,
-    },
-  });
+	return generateSEOMetadata({
+		title: post.title,
+		description: post.description,
+		keywords: post.tags,
+		canonical: `${BASE_URL}/blog/${post.slug}`,
+		ogImage: post.coverImage || `${BASE_URL}/og-blog.png`,
+		ogType: "article",
+		article: {
+			publishedTime: post.publishedAt,
+			modifiedTime: post.updatedAt,
+			author: post.author.name,
+			tags: post.tags,
+		},
+	});
 }
 ```
 
@@ -387,18 +404,21 @@ Now let's dive into the deployment setup. Here's how we take a Next.js applicati
 Coming from traditional hosting (Vercel, AWS, DigitalOcean), here's what sold us on Cloudflare Workers:
 
 **Performance:**
+
 - **Sub-50ms Time to First Byte (TTFB)** from anywhere in the world
 - **275+ edge locations**: North America, Europe, Asia, South America, Africa, Oceania
 - **Zero cold starts**: Workers are always warm, unlike Lambda functions
 - **Instant scaling**: Handle traffic spikes without provisioning
 
 **Cost:**
+
 - **100,000 requests/day free**: Perfect for small to medium traffic sites
 - **$5/month for 10 million requests**: Extremely cost-effective at scale
 - **No bandwidth fees**: Unlike AWS, you don't pay for data transfer
 - **No idle costs**: Only pay for actual requests, not reserved capacity
 
 **Developer Experience:**
+
 - **Simple deployment**: `npm run cf:deploy` and you're live
 - **Built-in observability**: See real-time metrics in Cloudflare dashboard
 - **Instant rollbacks**: Previous versions are one click away
@@ -408,13 +428,13 @@ Coming from traditional hosting (Vercel, AWS, DigitalOcean), here's what sold us
 
 **Cloudflare Workers vs. Vercel vs. AWS Lambda:**
 
-| Feature | Cloudflare Workers | Vercel | AWS Lambda |
-|---------|-------------------|--------|------------|
-| **Cold starts** | None | Minimal | 1-5 seconds |
-| **Global locations** | 275+ | 13 | 30+ regions |
-| **Free tier** | 100k req/day | 100 GB-hours | 1M req/month |
-| **TTFB (global avg)** | <50ms | 50-150ms | 100-300ms |
-| **Pricing beyond free** | $5/10M req | $20/month+ | $0.20/1M req |
+| Feature                 | Cloudflare Workers | Vercel       | AWS Lambda   |
+| ----------------------- | ------------------ | ------------ | ------------ |
+| **Cold starts**         | None               | Minimal      | 1-5 seconds  |
+| **Global locations**    | 275+               | 13           | 30+ regions  |
+| **Free tier**           | 100k req/day       | 100 GB-hours | 1M req/month |
+| **TTFB (global avg)**   | <50ms              | 50-150ms     | 100-300ms    |
+| **Pricing beyond free** | $5/10M req         | $20/month+   | $0.20/1M req |
 
 ### OpenNext.js Configuration
 
@@ -430,12 +450,12 @@ npm install --save-dev @opennextjs/cloudflare
 
 ```json
 {
-  "scripts": {
-    "build": "next build && opennextjs-cloudflare build --skipBuild",
-    "cf:build": "opennextjs-cloudflare build",
-    "cf:deploy": "wrangler deploy",
-    "cf:preview": "wrangler dev"
-  }
+	"scripts": {
+		"build": "next build && opennextjs-cloudflare build --skipBuild",
+		"cf:build": "opennextjs-cloudflare build",
+		"cf:deploy": "wrangler deploy",
+		"cf:preview": "wrangler dev"
+	}
 }
 ```
 
@@ -465,29 +485,29 @@ The `wrangler.jsonc` file configures your Cloudflare Worker:
 
 ```jsonc
 {
-  "name": "bobadilla-work",
-  "main": ".open-next/server/index.js",
-  "compatibility_date": "2025-01-27",
-  "compatibility_flags": [
-    "nodejs_compat",                  // Node.js APIs (fs, path, etc.)
-    "global_fetch_strictly_public",   // Fetch API restrictions
-    "streams_enable_constructors"     // Streaming support
-  ],
-  "observability": {
-    "enabled": true,  // Metrics and logs in dashboard
-    "head_sampling_rate": 1  // Sample all requests
-  },
-  "assets": {
-    "directory": ".open-next/assets",
-    "binding": "ASSETS"
-  },
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "bobadilla-work",
-      "database_id": "78c9ec9c-98be-4426-870a-20ce74f40c10"
-    }
-  ]
+	"name": "bobadilla-work",
+	"main": ".open-next/server/index.js",
+	"compatibility_date": "2025-01-27",
+	"compatibility_flags": [
+		"nodejs_compat", // Node.js APIs (fs, path, etc.)
+		"global_fetch_strictly_public", // Fetch API restrictions
+		"streams_enable_constructors", // Streaming support
+	],
+	"observability": {
+		"enabled": true, // Metrics and logs in dashboard
+		"head_sampling_rate": 1, // Sample all requests
+	},
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS",
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "bobadilla-work",
+			"database_id": "78c9ec9c-98be-4426-870a-20ce74f40c10",
+		},
+	],
 }
 ```
 
@@ -503,6 +523,7 @@ The `wrangler.jsonc` file configures your Cloudflare Worker:
 **Steps to configure custom domain:**
 
 1. Add domain to Cloudflare (free):
+
    ```bash
    # In Cloudflare dashboard: Add Site → Enter domain → Select Free plan
    ```
@@ -510,11 +531,12 @@ The `wrangler.jsonc` file configures your Cloudflare Worker:
 2. Update DNS nameservers at your registrar
 
 3. Add route to `wrangler.jsonc`:
+
    ```jsonc
    {
-     "routes": [
-       { "pattern": "bobadilla.tech/*", "zone_name": "bobadilla.tech" }
-     ]
+   	"routes": [
+   		{ "pattern": "bobadilla.tech/*", "zone_name": "bobadilla.tech" },
+   	],
    }
    ```
 
@@ -535,14 +557,14 @@ D1 is SQLite running at the edge, globally replicated. Here's how we integrate i
 import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
 
 export const contactMessages = sqliteTable("contact_messages", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
-  name: text("name").notNull(),
-  email: text("email").notNull(),
-  company: text("company"),
-  message: text("message").notNull(),
-  createdAt: integer("created_at", { mode: "timestamp" })
-    .notNull()
-    .default(sql`(unixepoch())`),
+	id: integer("id").primaryKey({ autoIncrement: true }),
+	name: text("name").notNull(),
+	email: text("email").notNull(),
+	company: text("company"),
+	message: text("message").notNull(),
+	createdAt: integer("created_at", { mode: "timestamp" })
+		.notNull()
+		.default(sql`(unixepoch())`),
 });
 ```
 
@@ -553,17 +575,17 @@ import { drizzle } from "drizzle-orm/d1";
 import { contactMessages } from "~/db/schema";
 
 export async function insertContactMessage(
-  db: D1Database,
-  data: { name: string; email: string; company?: string; message: string }
+	db: D1Database,
+	data: { name: string; email: string; company?: string; message: string }
 ) {
-  const drizzleDb = drizzle(db);
+	const drizzleDb = drizzle(db);
 
-  const [inserted] = await drizzleDb
-    .insert(contactMessages)
-    .values(data)
-    .returning();
+	const [inserted] = await drizzleDb
+		.insert(contactMessages)
+		.values(data)
+		.returning();
 
-  return inserted;
+	return inserted;
 }
 ```
 
@@ -572,11 +594,11 @@ export async function insertContactMessage(
 ```typescript
 // In API route
 export async function POST(request: NextRequest) {
-  const env = getCloudflareContext().env;
-  const db = env.DB;  // D1Database instance
+	const env = getCloudflareContext().env;
+	const db = env.DB; // D1Database instance
 
-  const result = await insertContactMessage(db, formData);
-  // ...
+	const result = await insertContactMessage(db, formData);
+	// ...
 }
 ```
 
@@ -624,15 +646,15 @@ import Image from "next/image";
 
 ```javascript
 module.exports = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-        pathname: "/**",
-      },
-    ],
-  },
+	images: {
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "images.unsplash.com",
+				pathname: "/**",
+			},
+		],
+	},
 };
 ```
 
@@ -643,7 +665,7 @@ module.exports = {
 ```javascript
 // next.config.js
 module.exports = {
-  output: "standalone",  // Required for OpenNext.js
+	output: "standalone", // Required for OpenNext.js
 };
 ```
 
@@ -664,16 +686,19 @@ Cloudflare automatically applies Brotli compression to all text responses (HTML,
 ### Caching Strategy
 
 **Static assets** (images, CSS, JS):
+
 - Cached on Cloudflare's CDN for 1 year
 - Cache-Control: `public, max-age=31536000, immutable`
 - Versioned filenames ensure new deploys bust cache
 
 **Dynamic pages** (blog posts after SSG):
+
 - Cached on CDN until next deployment
 - Effectively static after build
 - Can be purged manually if needed
 
 **API routes** (contact form, etc.):
+
 - Not cached (always fresh)
 - Process at the edge for low latency
 
@@ -701,61 +726,61 @@ Our `src/lib/seo.ts` utility generates comprehensive metadata for every page:
 
 ```typescript
 export function generateMetadata(config: SEOConfig): Metadata {
-  const {
-    title,
-    description,
-    keywords = [],
-    canonical,
-    ogImage = `${BASE_URL}/og-default.png`,
-    ogType = "website",
-    article,
-  } = config;
+	const {
+		title,
+		description,
+		keywords = [],
+		canonical,
+		ogImage = `${BASE_URL}/og-default.png`,
+		ogType = "website",
+		article,
+	} = config;
 
-  return {
-    title: `${title} | Bobadilla Tech`,
-    description,
-    keywords: keywords.join(", "),
-    authors: [{ name: "Bobadilla Tech Team" }],
+	return {
+		title: `${title} | Bobadilla Tech`,
+		description,
+		keywords: keywords.join(", "),
+		authors: [{ name: "Bobadilla Tech Team" }],
 
-    // Open Graph
-    openGraph: {
-      type: ogType,
-      locale: "en_US",
-      url: canonical,
-      siteName: "Bobadilla Tech",
-      title,
-      description,
-      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
-      publishedTime: article?.publishedTime,
-      modifiedTime: article?.modifiedTime,
-      authors: article?.author,
-      tags: article?.tags,
-    },
+		// Open Graph
+		openGraph: {
+			type: ogType,
+			locale: "en_US",
+			url: canonical,
+			siteName: "Bobadilla Tech",
+			title,
+			description,
+			images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
+			publishedTime: article?.publishedTime,
+			modifiedTime: article?.modifiedTime,
+			authors: article?.author,
+			tags: article?.tags,
+		},
 
-    // Twitter Card
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
-      creator: "@UltiRequiem",
-      site: "@UltiRequiem",
-    },
+		// Twitter Card
+		twitter: {
+			card: "summary_large_image",
+			title,
+			description,
+			images: [ogImage],
+			creator: "@UltiRequiem",
+			site: "@UltiRequiem",
+		},
 
-    // Robots
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
-    },
+		// Robots
+		robots: {
+			index: true,
+			follow: true,
+			googleBot: {
+				index: true,
+				follow: true,
+				"max-image-preview": "large",
+				"max-snippet": -1,
+			},
+		},
 
-    alternates: { canonical },
-  };
+		alternates: { canonical },
+	};
 }
 ```
 
@@ -835,30 +860,30 @@ import { BASE_URL } from "~/lib/seo";
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const posts = getAllPosts();
+	const posts = getAllPosts();
 
-  const blogUrls = posts.map((post) => ({
-    url: `${BASE_URL}/blog/${post.slug}`,
-    lastModified: post.updatedAt || post.publishedAt,
-    changeFrequency: "weekly" as const,
-    priority: 0.8,
-  }));
+	const blogUrls = posts.map((post) => ({
+		url: `${BASE_URL}/blog/${post.slug}`,
+		lastModified: post.updatedAt || post.publishedAt,
+		changeFrequency: "weekly" as const,
+		priority: 0.8,
+	}));
 
-  return [
-    {
-      url: BASE_URL,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    {
-      url: `${BASE_URL}/blog`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    ...blogUrls,
-  ];
+	return [
+		{
+			url: BASE_URL,
+			lastModified: new Date(),
+			changeFrequency: "monthly",
+			priority: 1,
+		},
+		{
+			url: `${BASE_URL}/blog`,
+			lastModified: new Date(),
+			changeFrequency: "weekly",
+			priority: 0.9,
+		},
+		...blogUrls,
+	];
 }
 ```
 
@@ -878,17 +903,18 @@ Great architecture means more than just performance. It also means maintainabili
 
 ```json
 {
-  "compilerOptions": {
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "forceConsistentCasingInFileNames": true
-  }
+	"compilerOptions": {
+		"strict": true,
+		"noUncheckedIndexedAccess": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"forceConsistentCasingInFileNames": true
+	}
 }
 ```
 
 This catches entire classes of bugs at compile time:
+
 - Undefined/null access
 - Missing return statements
 - Type mismatches
@@ -900,14 +926,14 @@ This catches entire classes of bugs at compile time:
 import { z } from "zod";
 
 const contactSchema = z.object({
-  name: z.string().min(1).max(100),
-  email: z.string().email(),
-  company: z.string().max(100).optional(),
-  message: z.string().min(10).max(1000),
+	name: z.string().min(1).max(100),
+	email: z.string().email(),
+	company: z.string().max(100).optional(),
+	message: z.string().min(10).max(1000),
 });
 
 // Parse and validate
-const data = contactSchema.parse(request.body);  // Throws if invalid
+const data = contactSchema.parse(request.body); // Throws if invalid
 // data is now fully typed!
 ```
 
@@ -916,10 +942,10 @@ const data = contactSchema.parse(request.body);  // Throws if invalid
 ```typescript
 // Schema definition IS the type definition
 export const contactMessages = sqliteTable("contact_messages", {
-  id: integer("id").primaryKey(),
-  name: text("name").notNull(),
-  email: text("email").notNull(),
-  // ...
+	id: integer("id").primaryKey(),
+	name: text("name").notNull(),
+	email: text("email").notNull(),
+	// ...
 });
 
 // Inferred type
@@ -934,14 +960,14 @@ import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
 export const env = createEnv({
-  server: {
-    EMAIL_WORKER_URL: z.string().url().optional(),
-    EMAIL_WORKER_API_KEY: z.string().optional(),
-  },
-  runtimeEnv: {
-    EMAIL_WORKER_URL: process.env.EMAIL_WORKER_URL,
-    EMAIL_WORKER_API_KEY: process.env.EMAIL_WORKER_API_KEY,
-  },
+	server: {
+		EMAIL_WORKER_URL: z.string().url().optional(),
+		EMAIL_WORKER_API_KEY: z.string().optional(),
+	},
+	runtimeEnv: {
+		EMAIL_WORKER_URL: process.env.EMAIL_WORKER_URL,
+		EMAIL_WORKER_API_KEY: process.env.EMAIL_WORKER_API_KEY,
+	},
 });
 
 // Usage: env.EMAIL_WORKER_URL (fully typed, validated at startup)
@@ -1112,10 +1138,10 @@ Add your own tables:
 
 ```typescript
 export const users = sqliteTable("users", {
-  id: integer("id").primaryKey(),
-  email: text("email").notNull().unique(),
-  name: text("name").notNull(),
-  createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
+	id: integer("id").primaryKey(),
+	email: text("email").notNull().unique(),
+	name: text("name").notNull(),
+	createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
 });
 ```
 
@@ -1178,11 +1204,9 @@ If using external images, configure allowed domains:
 
 ```javascript
 module.exports = {
-  images: {
-    remotePatterns: [
-      { protocol: "https", hostname: "yourdomain.com" },
-    ],
-  },
+	images: {
+		remotePatterns: [{ protocol: "https", hostname: "yourdomain.com" }],
+	},
 };
 ```
 
@@ -1193,32 +1217,34 @@ module.exports = {
 We've built a production-ready Next.js application that's fast, scalable, cost-effective, and developer-friendly. Here's what makes this architecture special:
 
 **Performance wins:**
+
 - **Sub-50ms TTFB** from anywhere in the world thanks to Cloudflare's 275+ edge locations
 - **Zero cold starts** compared to traditional serverless
 - **Static generation** for blog posts means instant page loads
 - **Automatic caching** on Cloudflare's CDN
 
 **Cost efficiency:**
+
 - **Generous free tier**: 100,000 requests/day covers most small to medium sites
 - **$5/month for 10 million requests** when you need to scale
 - **No bandwidth charges** unlike AWS
 - **Included SSL certificates** and DDoS protection
 
 **Developer experience:**
+
 - **Type-safe everything**: TypeScript + Zod + Drizzle catch bugs at compile time
 - **Fast builds**: Turbopack makes development iteration quick
 - **Simple deployment**: One command to go live
 - **Full source code**: Learn from a real production application
 
 **SEO optimized:**
+
 - Comprehensive metadata (Open Graph, Twitter Cards)
 - Structured data (JSON-LD) for rich search results
 - Automatic sitemap generation
 - Perfect Core Web Vitals scores
 
 This architecture demonstrates how modern edge computing can deliver exceptional performance at a fraction of traditional infrastructure costs. The entire source code is open source and available on GitHub at [https://github.com/bobadilla-tech/agency-landing](https://github.com/bobadilla-tech/agency-landing), and you can see it running live at [https://bobadilla.tech](https://bobadilla.tech).
-
-
 
 ---
 
