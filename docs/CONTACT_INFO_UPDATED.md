@@ -48,12 +48,12 @@ with your actual details.
 
 ### LinkedIn
 
-- **Company Page**: `https://www.linkedin.com/company/bobadillatech`
+- **Company Page**: `https://www.linkedin.com/company/bobadilla-tech`
 - **Updated in**: Contact section footer
 
 ### GitHub
 
-- **Organization**: `https://github.com/bobadillatech`
+- **Organization**: `https://github.com/bobadilla-tech`
 - **Updated in**: Contact section footer
 
 ---
