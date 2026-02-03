@@ -126,7 +126,7 @@ One of the core features of bobadilla.tech is the blog, implemented using a file
 
 - **Version control**: Blog posts live in Git alongside code - full history, branching, and collaboration
 - **Edge-compatible**: No Node.js file system APIs needed at runtime (works in Cloudflare Workers)
-- **Zero latency**: Posts are pre-processed into JSON, no I/O at request time
+- **Zero latency**: Posts are pre-bundled into JavaScript, no I/O at request time
 - **Type-safe**: TypeScript knows the exact shape of your blog data
 - **Offline editing**: Write in any markdown editor, no internet required
 - **Simple backup**: Just commit to Git
@@ -137,19 +137,75 @@ One of the core features of bobadilla.tech is the blog, implemented using a file
 - **Build time increases**: More posts = longer builds (mitigated by incremental builds)
 - **No real-time updates**: Need to rebuild to publish (acceptable for blogs)
 - **No admin UI**: Team members need Git access (or use GitHub's web editor)
+- **Bundle size impact**: Blog content is included in the JavaScript bundle (78KB for 2 posts)
 
 For our team, these trade-offs are actually benefits. We're all technical people who love writing in markdown and are comfortable in our editors (VS Code, Neovim, etc.). The Git-based workflow feels natural, and we can use all our favorite tools for writing, linting, and previewing content.
+
+### The JSON Import Problem (And Why We Fixed It)
+
+**Important architecture decision:** Our initial implementation used JSON imports, which worked perfectly in local development but failed silently in production on Cloudflare Workers.
+
+#### What Didn't Work
+
+Initially, we generated `blog-posts.json` at build time and imported it:
+
+```typescript
+// ❌ This worked locally but failed in production
+import blogPostsData from './blog-posts.json';
+```
+
+**Why it failed:**
+- The JSON file wasn't being bundled into the Cloudflare Workers deployment
+- Next.js/Turbopack saw the import during build (so `generateStaticParams()` worked)
+- But OpenNext didn't include the JSON file in the `.open-next/` bundle
+- At runtime, the import resolved to `undefined`, causing pages to crash
+
+This is a fundamental difference between Node.js environments and edge runtimes. JSON files aren't guaranteed to be bundled the same way as JavaScript modules.
+
+#### The Solution: TypeScript Module Export
+
+We fixed this by generating a **TypeScript module** instead of JSON:
+
+```typescript
+// ✅ This works everywhere
+import { blogPosts as blogPostsData } from "./blog-posts";
+```
+
+The build script now generates `blog-posts.ts`:
+
+```typescript
+// Auto-generated at build time
+import type { BlogPost } from "./blog";
+
+export const blogPosts: BlogPost[] = [
+  { id: "post-1", title: "...", content: "...", /* ... */ },
+  // ... more posts
+];
+```
+
+**Why this works:**
+- TypeScript modules are compiled to JavaScript during the Next.js build
+- The blog data becomes part of the JavaScript bundle (not an external file)
+- Works identically in Node.js, Cloudflare Workers, and all edge runtimes
+- No special bundler configuration needed
+- Type-safe and tree-shakeable
+
+**Bundle size impact:**
+- 2 blog posts with full markdown content: ~78KB (uncompressed)
+- After Brotli compression: ~25-30KB
+- This is acceptable since it's server-side code, not sent to browsers
+- For 100+ posts, consider moving to Cloudflare KV or R2 storage
 
 ### Blog Build Pipeline
 
 The blog system uses a two-step architecture:
 
-1. **Build time** (`scripts/generate-blog-data.ts`): Process markdown files into JSON
-2. **Runtime** (`src/data/blog.ts`): Import pre-generated JSON (no file system access)
+1. **Build time** (`scripts/generate-blog-data.ts`): Process markdown files into TypeScript module
+2. **Runtime** (`src/data/blog.ts`): Import pre-bundled data (no file system access)
 
 This separation is critical for Cloudflare Workers compatibility, as Workers run in a V8 JavaScript runtime without Node.js APIs like `fs.readFileSync()`.
 
-#### Build-Time: Processing Markdown to JSON
+#### Build-Time: Processing Markdown to TypeScript Module
 
 The build script (`scripts/generate-blog-data.ts`) runs before Next.js compilation:
 
@@ -159,7 +215,7 @@ The build script (`scripts/generate-blog-data.ts`) runs before Next.js compilati
 
 // scripts/generate-blog-data.ts
 const BLOG_CONTENT_DIR = path.join(process.cwd(), "src/content/blog");
-const OUTPUT_FILE = path.join(process.cwd(), "src/data/blog-posts.json");
+const OUTPUT_FILE = path.join(process.cwd(), "src/data/blog-posts.ts");
 
 function generateBlogData(): void {
 	// Step 1: Read markdown files (with draft filtering)
@@ -206,13 +262,22 @@ function generateBlogData(): void {
 		};
 	});
 
-	// Step 6: Sort by date and write to JSON
+	// Step 6: Sort by date and generate TypeScript module
 	const sortedPosts = posts.sort(
 		(a, b) =>
 			new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
 	);
 
-	fs.writeFileSync(OUTPUT_FILE, JSON.stringify(sortedPosts, null, 2));
+	// Generate TypeScript module (not JSON!) for reliable bundling
+	const tsContent = `// Auto-generated at build time from markdown files
+// Do not edit this file directly - edit files in src/content/blog/ instead
+
+import type { BlogPost } from "./blog";
+
+export const blogPosts: BlogPost[] = ${JSON.stringify(sortedPosts, null, 2)};
+`;
+
+	fs.writeFileSync(OUTPUT_FILE, tsContent);
 }
 ```
 
@@ -267,15 +332,15 @@ function getAuthorImage(authorName: string): string {
 }
 ```
 
-#### Runtime: Importing Pre-Generated JSON
+#### Runtime: Importing Pre-Bundled Data
 
-At runtime, the blog data module (`src/data/blog.ts`) simply imports the pre-generated JSON:
+At runtime, the blog data module (`src/data/blog.ts`) imports the pre-generated TypeScript module:
 
 ```typescript
-import blogPostsData from "./blog-posts.json";
+import { blogPosts as blogPostsData } from "./blog-posts";
 
 // Pre-generated blog posts (already sorted by date)
-const allPosts: BlogPost[] = blogPostsData as BlogPost[];
+const allPosts: BlogPost[] = blogPostsData;
 
 // No file system operations - just array operations!
 export function getAllPosts(): BlogPost[] {
@@ -293,10 +358,12 @@ export function getFeaturedPosts(): BlogPost[] {
 
 **Key Benefits:**
 
-- **Zero file system I/O at runtime**: Everything is in memory
+- **Zero file system I/O at runtime**: Everything is in the JavaScript bundle
 - **Works in Cloudflare Workers**: No Node.js APIs needed
 - **Instant lookups**: Array operations are microseconds
-- **Type-safe**: JSON is typed as `BlogPost[]`
+- **Type-safe**: Full TypeScript inference
+- **Guaranteed bundling**: TypeScript modules are always bundled correctly
+- **Edge-compatible**: Works in any JavaScript runtime (Node.js, Workers, Deno, Bun)
 
 ### Frontmatter Schema
 
@@ -1049,8 +1116,9 @@ npx drizzle-kit studio
 cloudflare-env.d.ts
 .next/
 
-# Generated files
-/src/data/blog-posts.json  # Generated at build time from markdown
+# Generated files (auto-generated at build time)
+/src/data/blog-posts.ts   # Generated TypeScript module from markdown
+/src/data/blog-posts.json # Legacy, kept for backwards compatibility
 
 # Environment
 .env
@@ -1203,7 +1271,7 @@ featured: true
 Your markdown content...
 ```
 
-The build script (`scripts/generate-blog-data.ts`) automatically processes all markdown files into JSON. The generated `blog-posts.json` is gitignored and regenerated on every build.
+The build script (`scripts/generate-blog-data.ts`) automatically processes all markdown files into a TypeScript module. The generated `blog-posts.ts` is gitignored and regenerated on every build. This ensures the blog data is reliably bundled into your Cloudflare Workers deployment.
 
 **Markdown components** (`src/app/blog/[slug]/page.tsx`):
 
@@ -1238,15 +1306,42 @@ export const DEFAULT_AUTHOR = "Your Company Team";
 
 ### Common Gotchas
 
-**1. Cloudflare Workers and Node.js APIs**
+**1. JSON Imports Don't Bundle Reliably**
+
+**Problem:** JSON imports (`import data from './file.json'`) may work in local development but fail in production on Cloudflare Workers.
+
+**Why:** The bundler (Turbopack/webpack) might not include JSON files in the OpenNext output, especially when deploying to edge runtimes. The import works at build time (for static generation) but fails at runtime.
+
+**Solution:** Use TypeScript modules instead:
+
+```typescript
+// ❌ Don't do this - unreliable bundling
+import data from './data.json';
+
+// ✅ Do this instead - guaranteed bundling
+// Generate data.ts at build time:
+export const data = [ /* ... */ ];
+```
+
+Our blog system generates `blog-posts.ts` (not `.json`) specifically to ensure the data is bundled into the JavaScript code.
+
+**Why other approaches don't work:**
+- **Direct filesystem access**: Cloudflare Workers have no `fs` module
+- **Reading markdown at runtime**: No filesystem APIs available
+- **Static HTML only**: React Server Components need source data for client-side navigation
+- **External storage (KV/R2)**: Adds latency and complexity for static data
+
+The TypeScript module approach is the simplest solution that works reliably across all environments.
+
+**2. Cloudflare Workers and Node.js APIs**
 
 Cloudflare Workers run in a V8 JavaScript runtime, NOT Node.js. This means Node.js APIs like `fs`, `path`, and `process` are not available at runtime (even with `nodejs_compat` compatibility flag, these APIs are limited).
 
 **Solution:** Move any file system operations to build time:
 
 - ✅ Read files during build (in scripts like `generate-blog-data.ts`)
-- ✅ Generate JSON/static data at build time
-- ✅ Import the generated data in your application
+- ✅ Generate TypeScript modules at build time
+- ✅ Import the generated data as JavaScript modules
 - ❌ Don't use `fs.readFileSync()` or `fs.readdirSync()` in API routes or pages
 
 This is why our blog system processes markdown at build time instead of runtime.

@@ -4,7 +4,7 @@
  * This allows the blog to work in Cloudflare Workers without file system access
  */
 
-import blogPostsData from "./blog-posts.json";
+import { blogPosts as blogPostsData } from "./blog-posts";
 
 export interface BlogPost {
 	id: string;
