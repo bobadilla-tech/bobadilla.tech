@@ -4,7 +4,8 @@
  */
 
 export const CAL_LINKS = {
-	ale: "https://cal.com/ale-boba-work/15min",
+	//ale: "https://cal.com/ale-boba-work/15min",
+	ale: "https://cal.com/ultirequiem/15min",
 	eliaz: "https://cal.com/ultirequiem/15min",
 } as const;
 
