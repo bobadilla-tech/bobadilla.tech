@@ -18,7 +18,7 @@ import {
 	Zap,
 } from "lucide-react";
 import Navbar from "@/components/ui/Navbar";
-import ShaderBackground from "@/components/shaders/ShaderBackground";
+import ShaderBackground from "@/components/shaders/ShaderBackgroundLazy";
 import { CAL_LINKS } from "~/lib/constants";
 import { ANIMATION_CONFIG, PRICING_STEPS } from "./constants";
 import type { Selections } from "./types";

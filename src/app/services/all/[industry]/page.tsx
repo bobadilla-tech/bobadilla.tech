@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/ui/Navbar";
-import ShaderBackground from "@/components/shaders/ShaderBackground";
+import ShaderBackground from "@/components/shaders/ShaderBackgroundLazy";
 import { industryServices } from "@/data/services";
 import { ArrowRight } from "lucide-react";
 import { CAL_LINKS } from "~/lib/constants";

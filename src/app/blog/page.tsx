@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/ui/Navbar";
-import ShaderBackground from "@/components/shaders/ShaderBackground";
+import ShaderBackground from "@/components/shaders/ShaderBackgroundLazy";
 import {
 	getAllPosts,
 	getAllCategories,

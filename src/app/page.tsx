@@ -3,7 +3,7 @@ import Hero from "@/components/sections/Hero";
 import Pricing from "@/components/sections/Pricing";
 import Projects from "@/components/sections/Projects";
 import Services from "@/components/sections/Services";
-import ShaderBackground from "@/components/shaders/ShaderBackground";
+import ShaderBackground from "@/components/shaders/ShaderBackgroundLazy";
 import Navbar from "@/components/ui/Navbar";
 import { generateOrganizationSchema } from "~/lib/seo";
 import { COPYRIGHT_TEXT } from "~/lib/constants";

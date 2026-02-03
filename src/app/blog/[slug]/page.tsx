@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Navbar from "@/components/ui/Navbar";
-import ShaderBackground from "@/components/shaders/ShaderBackground";
+import ShaderBackground from "@/components/shaders/ShaderBackgroundLazy";
 import { getPostBySlug, getAllPosts } from "@/data/blog";
 import {
 	Calendar,
