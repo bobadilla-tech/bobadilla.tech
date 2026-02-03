@@ -3,7 +3,7 @@ title: "Mastering Domain Redirects in Cloudflare: A Complete Guide"
 description: "Learn how to properly redirect domains in Cloudflare, troubleshoot common issues like Error 522, and avoid DNS pitfalls. Real-world examples included."
 author: "Eliaz Bobadilla"
 authorRole: "Senior Engineer"
-publishedAt: "2026-02-02"
+publishedAt: "2026-02-10"
 tags:
   [
     "Cloudflare",

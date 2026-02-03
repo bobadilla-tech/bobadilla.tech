@@ -199,6 +199,24 @@ export const blogPosts: BlogPost[] = [
 - This is acceptable since it's server-side code, not sent to browsers
 - For 100+ posts, consider moving to Cloudflare KV or R2 storage
 
+**Worker bundle optimization:**
+
+To keep the Worker bundle size under limits, we moved the syntax highlighter to a client component:
+
+```typescript
+// src/components/ui/CodeBlock.tsx
+"use client";
+
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+
+export function CodeBlock({ language, children }) {
+  return <SyntaxHighlighter language={language} style={vscDarkPlus}>{children}</SyntaxHighlighter>;
+}
+```
+
+This prevents the 500KB+ syntax highlighter library from being bundled into the server Worker, keeping it under Cloudflare's resource limits. The library loads client-side only when needed for rendering code blocks.
+
 ### Blog Build Pipeline
 
 The blog system uses a two-step architecture:
@@ -1119,8 +1137,7 @@ npx drizzle-kit studio
 cloudflare-env.d.ts
 .next/
 
-# Generated files (auto-generated at build time)
-/src/data/blog-posts.ts   # Generated TypeScript module from markdown
+# Generated files
 /src/data/blog-posts.json # Legacy, kept for backwards compatibility
 
 # Environment
@@ -1274,7 +1291,7 @@ featured: true
 Your markdown content...
 ```
 
-The build script (`scripts/generate-blog-data.ts`) automatically processes all markdown files into a TypeScript module. The generated `blog-posts.ts` is gitignored and regenerated on every build. This ensures the blog data is reliably bundled into your Cloudflare Workers deployment.
+The build script (`scripts/generate-blog-data.ts`) automatically processes all markdown files into a TypeScript module. The generated `blog-posts.ts` is committed to git and regenerated during development. This ensures the blog data is always in the bundle and reliably deployed to Cloudflare Workers.
 
 **Markdown components** (`src/app/blog/[slug]/page.tsx`):
 
