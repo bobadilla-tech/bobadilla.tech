@@ -16,8 +16,7 @@ import {
 	Linkedin,
 	Share2,
 } from "lucide-react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { CodeBlock } from "@/components/ui/CodeBlock";
 import {
 	generateMetadata as generateSEOMetadata,
 	BASE_URL,
@@ -206,21 +205,10 @@ export default async function BlogPostPage({ params }: PageProps) {
 											{children}
 										</code>
 									) : (
-										<div className="my-6">
-											<SyntaxHighlighter
-												language={language || "text"}
-												style={vscDarkPlus}
-												customStyle={{
-													padding: "1.5rem",
-													borderRadius: "0.75rem",
-													fontSize: "0.9rem",
-													lineHeight: "1.6",
-													margin: 0,
-												}}
-												showLineNumbers
-											>
+										<div className="my-6 rounded-xl overflow-hidden">
+											<CodeBlock language={language}>
 												{String(children).replace(/\n$/, "")}
-											</SyntaxHighlighter>
+											</CodeBlock>
 										</div>
 									);
 								},

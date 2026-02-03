@@ -45,7 +45,6 @@ next-env.d.ts
 cloudflare-env.d.ts
 
 # generated files (auto-generated at build time)
-/src/data/blog-posts.ts
 /src/data/blog-posts.json
 
 # OpenNext
