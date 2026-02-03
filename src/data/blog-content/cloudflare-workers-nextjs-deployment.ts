@@ -53,7 +53,9 @@ We chose **Next.js 16** for several compelling reasons:
 
 ## 2. TypeScript-Based Blog System
 
-One of the core features of bobadilla.tech is the blog, implemented using inline TypeScript modules with markdown strings. This architecture is specifically designed for Cloudflare Workers, which don't have Node.js file system access at runtime.
+Blog posts are implemented as TypeScript modules containing Markdown strings. They’re fully version-controlled, statically bundled into the application, and served with zero runtime I/O.
+
+This setup works well for our current needs: a lightweight internal blog maintained by developers, deployed on Cloudflare Workers (which has no filesystem access). When content volume increases, we’ll transition to a headless CMS like Contentful or Sanity, consistent with the production architectures we build for clients.
 
 ### Why TypeScript Modules with Inline Markdown?
 
@@ -70,11 +72,13 @@ One of the core features of bobadilla.tech is the blog, implemented using inline
 
 **Trade-offs:**
 
-- **Bundle size impact**: Blog content is included in the JavaScript bundle (manageable with gzip/brotli)
+- **Bundle size impact**: Blog content is included in the JavaScript bundle
 - **No WYSIWYG editor**: Team members edit markdown in code editor (we prefer this!)
 - **Rebuild to publish**: Need to redeploy to update content (acceptable for blogs)
 
-For our team, these trade-offs are actually benefits. We're all technical people who love writing in markdown and are comfortable in our editors (VS Code, Neovim, etc.). The Git-based workflow feels natural, and we can use all our favorite tools for writing, linting, and previewing content.
+**Why this works for us:** This approach is perfect for our internal company blog because we're all developers. We love writing in markdown, are comfortable in our code editors (VS Code, Neovim, etc.), and the Git-based workflow feels natural. Since we have client work to focus on, this zero-maintenance solution lets us publish technical content without managing a CMS.
+
+**For production client work:** We typically implement more robust solutions like headless CMS platforms (Contentful, Sanity, Strapi), WordPress with REST/GraphQL APIs, or custom admin panels depending on client needs. Check our [CMS Development services](/services/cms-development) and [Web Development solutions](/services/web-development) to see what we build for clients who need content management at scale.
 
 ### Blog Data Structure
 
