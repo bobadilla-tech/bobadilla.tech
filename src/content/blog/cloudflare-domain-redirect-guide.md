@@ -19,7 +19,7 @@ featured: true
 
 # Mastering Domain Redirects in Cloudflare: A Complete Guide
 
-Domain redirects are one of the most common tasks when managing web infrastructure, whether you're consolidating brands, migrating to a new domain, or simply redirecting www to non-www. Cloudflare makes this powerful, but there are subtle gotchas that can leave you staring at Error 522 or DNS_PROBE_FINISHED_NXDOMAIN for hours.
+Domain redirects are one of the most common tasks when managing web infrastructure, whether you're consolidating brands, migrating to a new domain, or simply redirecting www to non www sites. Cloudflare makes this powerful, but there are subtle gotchas that can leave you staring at Error 522 or DNS_PROBE_FINISHED_NXDOMAIN for hours.
 
 In this guide, I'll walk you through **exactly** how to redirect domains in Cloudflare, cover the common mistakes that bite developers, and show you how to troubleshoot issues systematically. This comes from real-world experience redirecting bobadilla.work → bobadilla.tech in production.
 
@@ -47,15 +47,19 @@ Before diving into implementation, let's understand when and why you need domain
 ### Common Use Cases
 
 **Brand consolidation**: You acquired a competitor or are rebranding
+
 - Example: `oldcompany.com` → `newcompany.com`
 
 **Domain standardization**: Redirect www to apex or vice versa
+
 - Example: `www.example.com` → `example.com`
 
 **Multiple domains pointing to one site**: You own several TLDs
+
 - Example: `example.net`, `example.org` → `example.com`
 
 **SEO migration**: Preserving search rankings when changing domains
+
 - Example: All pages from old domain to equivalent pages on new domain
 
 **Protocol enforcement**: HTTP → HTTPS (though Cloudflare handles this automatically)
@@ -63,11 +67,13 @@ Before diving into implementation, let's understand when and why you need domain
 ### SEO Implications
 
 **301 (Permanent)**: Tells search engines this is permanent. Use this 95% of the time.
+
 - Transfers 90-99% of link equity
 - Search engines update their index
 - Browser caches aggressively
 
 **302 (Temporary)**: Tells search engines this is temporary. Rarely needed.
+
 - Does NOT transfer link equity
 - Search engines keep indexing the old URL
 - Use for A/B tests or maintenance redirects
@@ -100,6 +106,7 @@ graph TD
 ```
 
 **Key insight**: Redirect Rules only fire if:
+
 1. DNS resolves (A/AAAA/CNAME record exists)
 2. Domain is proxied (orange cloud 🟠)
 3. Request matches the rule condition
@@ -127,6 +134,7 @@ TTL: Auto
 ```
 
 **Why `192.0.2.1`?**
+
 - This is a reserved "dummy" IP (RFC 5737)
 - Used for documentation/testing
 - Never routes anywhere
@@ -135,6 +143,7 @@ TTL: Auto
 **Common mistake #1**: Leaving the name as `example.com` instead of `@`
 
 In Cloudflare DNS:
+
 - `@` = root/apex domain
 - Cloudflare will display it as `example.com` in the UI (this is correct!)
 - If you type `example.com`, Cloudflare creates `example.com.example.com` → NXDOMAIN
@@ -162,6 +171,7 @@ Navigate to: **Rules** → **Redirect Rules** → **Create rule**
 **Rule name**: `Redirect old-domain to new-domain`
 
 **If incoming requests match**:
+
 ```
 Field: Hostname
 Operator: equals
@@ -169,12 +179,14 @@ Value: oldcompany.com
 ```
 
 **Then**:
+
 - Type: `Static redirect`
 - URL: `https://newcompany.com/$1`
 - Status code: `301`
 - ✅ Preserve query string
 
 **Expression preview**:
+
 ```
 (http.host eq "oldcompany.com")
 ```
@@ -182,6 +194,7 @@ Value: oldcompany.com
 #### Advanced Example: Redirect Apex + WWW
 
 **If incoming requests match**:
+
 ```
 Field: Hostname
 Operator: equals
@@ -195,11 +208,13 @@ Value: www.oldcompany.com
 ```
 
 **Expression preview**:
+
 ```
 (http.host eq "oldcompany.com" or http.host eq "www.oldcompany.com")
 ```
 
 **Then**:
+
 - Type: `Dynamic redirect`
 - Expression: `concat("https://newcompany.com", http.request.uri.path)`
 - Status code: `301`
@@ -224,6 +239,7 @@ curl -I http://oldcompany.com/blog/post?id=123
 ```
 
 **Expected output**:
+
 ```
 HTTP/2 301
 location: https://newcompany.com/about
@@ -233,6 +249,7 @@ cf-cache-status: DYNAMIC
 **Common mistake #3**: Testing in the same browser without clearing cache
 
 301 redirects are cached HARD by browsers. Use:
+
 - Incognito/private mode
 - Different browser
 - `curl` command line
@@ -249,12 +266,14 @@ cf-cache-status: DYNAMIC
 **Cause**: Missing or incorrect DNS record.
 
 **Fix checklist**:
+
 - ✅ A record exists for `@` (not the full domain name)
 - ✅ A record exists for `www` (if redirecting www)
 - ✅ Records are saved (click Save!)
 - ✅ Wait 30-60 seconds for DNS propagation
 
 **Debug command**:
+
 ```bash
 dig oldcompany.com
 dig www.oldcompany.com
@@ -269,6 +288,7 @@ dig www.oldcompany.com
 **Cause**: Redirect rule not matching the request.
 
 **Fix checklist**:
+
 - ✅ DNS record is **proxied** (🟠 orange cloud)
 - ✅ Redirect rule includes ALL hostnames (apex + www)
 - ✅ Rule order is correct (should be first)
@@ -299,6 +319,7 @@ Once confirmed working, you can tighten it back to specific hostnames.
 **Cause**: Target domain is redirecting back to source domain.
 
 **Fix checklist**:
+
 - ✅ Check redirect rules on BOTH domains
 - ✅ Ensure target domain has NO redirect rule pointing back
 - ✅ Check `.htaccess` or server config on target
@@ -311,6 +332,7 @@ Once confirmed working, you can tighten it back to specific hostnames.
 **Cause**: Missing www DNS record or redirect rule condition.
 
 **Fix**:
+
 1. Add www A record (same as apex)
 2. Update redirect rule to include `OR` condition for www
 3. Test both in incognito
@@ -374,6 +396,7 @@ curl -I http://www.bobadilla.work/contact?source=email
 ```
 
 **Performance**:
+
 - Redirect latency: <10ms (edge-based)
 - Email unaffected: MX records work normally
 - SEO preserved: 301 transfers link equity
@@ -387,6 +410,7 @@ curl -I http://www.bobadilla.work/contact?source=email
 Page Rules are the old way of doing redirects. They still work but have limitations:
 
 **Limitations**:
+
 - Only 3 rules on free plan
 - Less flexible matching
 - Cloudflare is deprecating in favor of Redirect Rules
@@ -394,6 +418,7 @@ Page Rules are the old way of doing redirects. They still work but have limitati
 **When to use**: Only if you're already heavily invested in Page Rules.
 
 **Configuration**:
+
 ```
 URL: oldcompany.com/*
 Setting: Forwarding URL
@@ -404,6 +429,7 @@ Destination: https://newcompany.com/$1
 ### Cloudflare Workers (Advanced)
 
 Use Workers when you need:
+
 - Complex logic (geo-based redirects, A/B testing)
 - Header manipulation
 - Custom response codes
@@ -435,6 +461,7 @@ export default {
 ```
 
 **Trade-offs**:
+
 - More powerful ✅
 - Requires code ❌
 - Uses Workers quota ❌
@@ -451,6 +478,7 @@ Use Redirect Rules unless you NEED the extra power.
 Unless you have a specific reason (A/B test, temporary maintenance), always use 301.
 
 **Why**:
+
 - Transfers SEO value
 - Signals permanence to search engines
 - Updates Google's index faster
@@ -460,11 +488,13 @@ Unless you have a specific reason (A/B test, temporary maintenance), always use 
 Never redirect everything to the homepage.
 
 **Bad**:
+
 ```
 oldsite.com/blog/post → newsite.com
 ```
 
 **Good**:
+
 ```
 oldsite.com/blog/post → newsite.com/blog/post
 oldsite.com/shop?id=123 → newsite.com/shop?id=123
@@ -475,6 +505,7 @@ oldsite.com/shop?id=123 → newsite.com/shop?id=123
 ### 3. Test All Variations
 
 Don't assume. Test:
+
 - HTTP and HTTPS
 - Apex and www
 - With and without trailing slashes
@@ -484,11 +515,13 @@ Don't assume. Test:
 ### 4. Monitor After Launch
 
 Use Cloudflare Analytics to verify:
+
 - Redirect status codes (should see lots of 301s)
 - No 4xx or 5xx errors
 - Traffic landing on target domain
 
 Check Google Search Console:
+
 - Submit new sitemap
 - Monitor index coverage
 - Check for redirect chains
@@ -496,6 +529,7 @@ Check Google Search Console:
 ### 5. Keep Email Records Separate
 
 **Important**: MX and TXT records should be:
+
 - ☁️ DNS-only (grey cloud)
 - NOT proxied through Cloudflare
 
@@ -508,6 +542,7 @@ Redirects only affect HTTP/HTTPS traffic, but mixing them up can cause confusion
 Use this before going live:
 
 **DNS Setup**:
+
 - [ ] A record for apex (`@`) exists
 - [ ] A record for www exists (if needed)
 - [ ] Both records are proxied (🟠 orange cloud)
@@ -515,6 +550,7 @@ Use this before going live:
 - [ ] Email records (MX, TXT) are grey-clouded
 
 **Redirect Rule**:
+
 - [ ] Rule matches all hostnames (apex + www)
 - [ ] Dynamic redirect preserves path
 - [ ] Query string preservation enabled
@@ -522,6 +558,7 @@ Use this before going live:
 - [ ] Rule order is "First"
 
 **Testing**:
+
 - [ ] Test HTTP apex domain
 - [ ] Test HTTPS apex domain
 - [ ] Test HTTP www subdomain
@@ -531,6 +568,7 @@ Use this before going live:
 - [ ] Test in incognito/curl (avoid cache)
 
 **Post-Launch**:
+
 - [ ] Monitor Cloudflare Analytics for 301 status codes
 - [ ] Check Google Search Console for crawl errors
 - [ ] Submit new sitemap to search engines
@@ -636,11 +674,13 @@ Cloudflare Redirect Rules execute at the edge (275+ locations worldwide):
 ### Redirect Chains Are Bad
 
 Avoid:
+
 ```
 domainA.com → domainB.com → domainC.com
 ```
 
 **Why**:
+
 - Each redirect adds latency
 - Poor user experience
 - SEO penalty (link equity dilution)
@@ -651,6 +691,7 @@ domainA.com → domainB.com → domainC.com
 ### DNS Resolution Time
 
 First-time visitors must:
+
 1. Resolve DNS (typically <50ms with Cloudflare)
 2. TLS handshake
 3. Redirect
@@ -667,6 +708,7 @@ First-time visitors must:
 ### Open Redirect Vulnerability
 
 **Bad** (never do this):
+
 ```javascript
 // Vulnerable to open redirect
 const target = new URL(request.url).searchParams.get("redirect");
@@ -674,12 +716,14 @@ return Response.redirect(target, 302);
 ```
 
 **Attack**:
+
 ```
 https://yoursite.com/?redirect=https://evil.com
 → Redirects to evil.com
 ```
 
 **Good** (Cloudflare Redirect Rules):
+
 ```
 Static or dynamic redirects to hardcoded domains
 No user input in redirect destination
@@ -690,11 +734,13 @@ No user input in redirect destination
 Always redirect to `https://`, not `http://`:
 
 **Bad**:
+
 ```
 concat("http://newsite.com", http.request.uri.path)
 ```
 
 **Good**:
+
 ```
 concat("https://newsite.com", http.request.uri.path)
 ```
@@ -753,23 +799,27 @@ For simple redirects, the **free plan is sufficient**.
 Cloudflare domain redirects are powerful, fast, and free — when configured correctly. The key lessons:
 
 **Critical requirements**:
+
 - DNS must resolve (A record with 🟠 orange cloud)
 - Use `@` for apex, not the full domain name
 - Include www in redirect rules if you use it
 - Always test in incognito/curl
 
 **Best practices**:
+
 - Use 301 for permanent redirects
 - Preserve paths and query strings
 - Test all variations (HTTP/HTTPS, apex/www)
 - Monitor after launch
 
 **Troubleshooting**:
+
 - NXDOMAIN = DNS record missing or wrong name
 - Error 522 = Redirect rule not matching
 - Redirect loop = Check both source and target domains
 
 **When to use what**:
+
 - **Redirect Rules**: 99% of cases (modern, unlimited, fast)
 - **Page Rules**: Only if already using them (legacy)
 - **Workers**: Complex logic, geo-routing, custom code

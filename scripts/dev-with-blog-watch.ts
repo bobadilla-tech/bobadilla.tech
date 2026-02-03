@@ -24,11 +24,11 @@ try {
 	process.exit(1);
 }
 
-// Start Next.js dev server
+// Start Next.js dev server directly (not through pnpm run dev to avoid infinite loop!)
 console.log("▲ Starting Next.js development server...");
-const nextDev = spawn("pnpm", ["run", "dev"], {
+const nextDev = spawn("npx", ["next", "dev"], {
 	stdio: "inherit",
-	shell: true,
+	shell: false, // Disable shell to avoid security warning
 });
 
 // Start blog watcher
