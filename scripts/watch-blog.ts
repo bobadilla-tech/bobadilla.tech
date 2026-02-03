@@ -7,7 +7,6 @@
 
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
 import { execSync } from "child_process";
 
 const BLOG_CONTENT_DIR = path.join(process.cwd(), "src/content/blog");

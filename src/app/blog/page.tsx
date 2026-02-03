@@ -6,7 +6,6 @@ import ShaderBackground from "@/components/shaders/ShaderBackground";
 import {
 	getAllPosts,
 	getAllCategories,
-	getAllTags,
 	getPostsByCategory,
 	getPostsByTag,
 } from "@/data/blog";
@@ -42,13 +41,14 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
 	const allPosts = getAllPosts();
 	const posts = category
-		? getPostsByCategory(category as any)
+		? getPostsByCategory(
+				category as "engineering" | "ai" | "product" | "business" | "tutorial"
+			)
 		: tag
 			? getPostsByTag(tag)
 			: allPosts;
 
 	const categories = getAllCategories();
-	const tags = getAllTags();
 
 	const activeFilter = category || tag;
 
