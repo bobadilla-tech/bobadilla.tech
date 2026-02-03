@@ -114,7 +114,7 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
 								<Link
 									key={service.id}
 									href={`/services/${service.slug}`}
-									className="group p-6 bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-cyan-500/50 transition-all duration-300 hover:scale-105"
+									className="group p-6 bg-linear-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-cyan-500/50 transition-all duration-300 hover:scale-105"
 								>
 									<h3 className="text-xl font-semibold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300">
 										{service.title}

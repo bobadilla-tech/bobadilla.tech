@@ -11,7 +11,7 @@ export const env = createEnv({
 			.default("development"),
 
 		// Email Worker URL (external worker for sending emails)
-		EMAIL_WORKER_URL: z.string().url().optional(),
+		EMAIL_WORKER_URL: z.url().optional(),
 		// Email Worker API Key (for authenticating requests to the worker)
 		EMAIL_WORKER_API_KEY: z.string().optional(),
 	},

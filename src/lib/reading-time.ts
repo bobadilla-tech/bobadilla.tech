@@ -32,12 +32,10 @@ export function calculateReadingTime(content: string): number {
 		// Remove numbered list markers
 		.replace(/^\d+\.\s/gm, "");
 
-	// Count words (split by whitespace and filter empty strings)
 	const words = cleanContent
 		.split(/\s+/)
 		.filter((word) => word.length > 0).length;
 
-	// Calculate minutes and round up (minimum 1 minute)
 	const minutes = Math.ceil(words / WORDS_PER_MINUTE);
 
 	return Math.max(1, minutes);

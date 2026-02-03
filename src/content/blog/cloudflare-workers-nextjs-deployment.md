@@ -151,10 +151,11 @@ Initially, we generated `blog-posts.json` at build time and imported it:
 
 ```typescript
 // ❌ This worked locally but failed in production
-import blogPostsData from './blog-posts.json';
+import blogPostsData from "./blog-posts.json";
 ```
 
 **Why it failed:**
+
 - The JSON file wasn't being bundled into the Cloudflare Workers deployment
 - Next.js/Turbopack saw the import during build (so `generateStaticParams()` worked)
 - But OpenNext didn't include the JSON file in the `.open-next/` bundle
@@ -178,12 +179,13 @@ The build script now generates `blog-posts.ts`:
 import type { BlogPost } from "./blog";
 
 export const blogPosts: BlogPost[] = [
-  { id: "post-1", title: "...", content: "...", /* ... */ },
-  // ... more posts
+	{ id: "post-1", title: "...", content: "..." /* ... */ },
+	// ... more posts
 ];
 ```
 
 **Why this works:**
+
 - TypeScript modules are compiled to JavaScript during the Next.js build
 - The blog data becomes part of the JavaScript bundle (not an external file)
 - Works identically in Node.js, Cloudflare Workers, and all edge runtimes
@@ -191,6 +193,7 @@ export const blogPosts: BlogPost[] = [
 - Type-safe and tree-shakeable
 
 **Bundle size impact:**
+
 - 2 blog posts with full markdown content: ~78KB (uncompressed)
 - After Brotli compression: ~25-30KB
 - This is acceptable since it's server-side code, not sent to browsers
@@ -1316,16 +1319,19 @@ export const DEFAULT_AUTHOR = "Your Company Team";
 
 ```typescript
 // ❌ Don't do this - unreliable bundling
-import data from './data.json';
+import data from "./data.json";
 
 // ✅ Do this instead - guaranteed bundling
 // Generate data.ts at build time:
-export const data = [ /* ... */ ];
+export const data = [
+	/* ... */
+];
 ```
 
 Our blog system generates `blog-posts.ts` (not `.json`) specifically to ensure the data is bundled into the JavaScript code.
 
 **Why other approaches don't work:**
+
 - **Direct filesystem access**: Cloudflare Workers have no `fs` module
 - **Reading markdown at runtime**: No filesystem APIs available
 - **Static HTML only**: React Server Components need source data for client-side navigation

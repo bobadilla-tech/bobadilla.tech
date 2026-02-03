@@ -54,9 +54,7 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
 /**
  * Get posts by category
  */
-export function getPostsByCategory(
-	category: BlogPost["category"]
-): BlogPost[] {
+export function getPostsByCategory(category: BlogPost["category"]): BlogPost[] {
 	return allPosts.filter((post) => post.category === category);
 }
 

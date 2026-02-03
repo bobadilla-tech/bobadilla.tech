@@ -16,6 +16,7 @@ AI is transforming how we build software. Here are our best practices for succes
 ## Start Simple
 
 Don't over-engineer your AI solution. Start with:
+
 - Clear use cases
 - Simple implementations
 - Measurable outcomes
@@ -23,6 +24,7 @@ Don't over-engineer your AI solution. Start with:
 ## Choose the Right Tools
 
 We recommend:
+
 - OpenAI APIs for general-purpose AI
 - Specialized models for domain-specific tasks
 - Edge-deployed models for latency-sensitive operations

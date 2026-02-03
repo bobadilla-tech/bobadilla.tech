@@ -7,6 +7,7 @@ The blog system now supports **automatic hot reloading** when you edit markdown 
 ### How It Works
 
 When you run `pnpm dev`, two processes start automatically:
+
 1. **Next.js dev server** - Your normal development server
 2. **Blog file watcher** - Monitors markdown files and regenerates `blog-posts.ts`
 
@@ -28,12 +29,14 @@ pnpm run dev:blog
 The watcher monitors: `src/content/blog/*.md` and `src/content/blog/*.mdx`
 
 **Auto-regenerates when:**
+
 - ✅ You create a new blog post
 - ✅ You edit existing blog posts
 - ✅ You delete blog posts
 - ✅ You rename blog posts
 
 **Ignores:**
+
 - ❌ `README.md` files
 - ❌ Draft posts (files starting with `_`)
 
@@ -54,6 +57,7 @@ The watcher monitors: `src/content/blog/*.md` and `src/content/blog/*.mdx`
 ### Debouncing
 
 Changes are debounced for 300ms to avoid regenerating on every keystroke. This means:
+
 - Save your file
 - Wait ~300ms
 - See the update in your browser
@@ -63,6 +67,7 @@ Changes are debounced for 300ms to avoid regenerating on every keystroke. This m
 **Changes not showing up?**
 
 1. Check the terminal - you should see:
+
    ```
    📝 Blog change detected: your-post.md
    🔄 Regenerating blog data...
@@ -93,11 +98,13 @@ pnpm run dev:blog
 ### Writing Blog Posts
 
 1. Create a new markdown file in `src/content/blog/`:
+
    ```bash
    touch src/content/blog/my-new-post.md
    ```
 
 2. Add frontmatter:
+
    ```yaml
    ---
    title: "My New Post"

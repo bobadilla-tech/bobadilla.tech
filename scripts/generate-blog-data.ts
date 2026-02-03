@@ -118,7 +118,9 @@ export const blogPosts: BlogPost[] = ${JSON.stringify(sortedPosts, null, 2)};
 
 	fs.writeFileSync(OUTPUT_FILE, tsContent);
 
-	console.log(`✅ Generated ${sortedPosts.length} blog post(s) → ${OUTPUT_FILE}`);
+	console.log(
+		`✅ Generated ${sortedPosts.length} blog post(s) → ${OUTPUT_FILE}`
+	);
 }
 
 // Run the script

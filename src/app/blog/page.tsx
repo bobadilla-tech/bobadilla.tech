@@ -104,7 +104,9 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 											: "px-6 py-2 bg-white/5 backdrop-blur-sm border border-white/10 text-gray-300 rounded-full font-medium hover:bg-white/10 hover:text-white transition-all duration-300"
 									}
 								>
-									{cat === "ai" ? "AI" : cat.charAt(0).toUpperCase() + cat.slice(1)}
+									{cat === "ai"
+										? "AI"
+										: cat.charAt(0).toUpperCase() + cat.slice(1)}
 								</Link>
 							))}
 						</div>
@@ -129,7 +131,10 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 									{/* Category Badge */}
 									<div className="mb-4">
 										<span className="px-3 py-1 bg-cyan-500/20 text-cyan-400 text-xs font-medium rounded-full">
-											{post.category === "ai" ? "AI" : post.category.charAt(0).toUpperCase() + post.category.slice(1)}
+											{post.category === "ai"
+												? "AI"
+												: post.category.charAt(0).toUpperCase() +
+													post.category.slice(1)}
 										</span>
 									</div>
 
@@ -148,11 +153,14 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 										<div className="flex items-center gap-1">
 											<Calendar className="w-4 h-4" />
 											<span>
-												{new Date(post.publishedAt).toLocaleDateString("en-US", {
-													month: "short",
-													day: "numeric",
-													year: "numeric",
-												})}
+												{new Date(post.publishedAt).toLocaleDateString(
+													"en-US",
+													{
+														month: "short",
+														day: "numeric",
+														year: "numeric",
+													}
+												)}
 											</span>
 										</div>
 										<div className="flex items-center gap-1">

@@ -47,6 +47,7 @@ const isNotDraft = !file.startsWith("_");
 ```
 
 **Draft posts:**
+
 - ❌ Are NOT included in blog listing (`/blog`)
 - ❌ Are NOT accessible via URL (404 error)
 - ❌ Are NOT built during deployment
@@ -114,11 +115,11 @@ We have **3 authorized blog authors**. Each author has a profile picture that au
 
 ### Available Authors:
 
-| Author Name             | Image File      | Example Usage                   |
-| ----------------------- | --------------- | ------------------------------- |
-| **Eliaz Bobadilla**   | `eliaz.jpeg`    | `author: "Eliaz Bobadilla"`   |
-| **Alexandra Flores**  | `alexandra.png` | `author: "Alexandra Flores"`  |
-| **Leonardo Estacio**  | `leo.jpeg`      | `author: "Leonardo Estacio"`  |
+| Author Name          | Image File      | Example Usage                |
+| -------------------- | --------------- | ---------------------------- |
+| **Eliaz Bobadilla**  | `eliaz.jpeg`    | `author: "Eliaz Bobadilla"`  |
+| **Alexandra Flores** | `alexandra.png` | `author: "Alexandra Flores"` |
+| **Leonardo Estacio** | `leo.jpeg`      | `author: "Leonardo Estacio"` |
 
 **Author faces are stored in:** `public/faces/`
 
