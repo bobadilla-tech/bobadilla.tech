@@ -141,31 +141,9 @@ One of the core features of bobadilla.tech is the blog, implemented using a file
 
 For our team, these trade-offs are actually benefits. We're all technical people who love writing in markdown and are comfortable in our editors (VS Code, Neovim, etc.). The Git-based workflow feels natural, and we can use all our favorite tools for writing, linting, and previewing content.
 
-### The JSON Import Problem (And Why We Fixed It)
+### TypeScript Module Approach
 
-**Important architecture decision:** Our initial implementation used JSON imports, which worked perfectly in local development but failed silently in production on Cloudflare Workers.
-
-#### What Didn't Work
-
-Initially, we generated `blog-posts.json` at build time and imported it:
-
-```typescript
-// ❌ This worked locally but failed in production
-import blogPostsData from "./blog-posts.json";
-```
-
-**Why it failed:**
-
-- The JSON file wasn't being bundled into the Cloudflare Workers deployment
-- Next.js/Turbopack saw the import during build (so `generateStaticParams()` worked)
-- But OpenNext didn't include the JSON file in the `.open-next/` bundle
-- At runtime, the import resolved to `undefined`, causing pages to crash
-
-This is a fundamental difference between Node.js environments and edge runtimes. JSON files aren't guaranteed to be bundled the same way as JavaScript modules.
-
-#### The Solution: TypeScript Module Export
-
-We fixed this by generating a **TypeScript module** instead of JSON:
+**Key architecture decision:** We generate blog data as a **TypeScript module** instead of JSON for reliable bundling:
 
 ```typescript
 // ✅ This works everywhere
@@ -184,13 +162,12 @@ export const blogPosts: BlogPost[] = [
 ];
 ```
 
-**Why this works:**
+**Why TypeScript modules:**
 
-- TypeScript modules are compiled to JavaScript during the Next.js build
-- The blog data becomes part of the JavaScript bundle (not an external file)
-- Works identically in Node.js, Cloudflare Workers, and all edge runtimes
+- Guaranteed bundling into the JavaScript bundle (unlike JSON files)
+- Works identically across all runtimes (Node.js, Workers, Deno, Bun)
+- Type-safe with full TypeScript inference
 - No special bundler configuration needed
-- Type-safe and tree-shakeable
 
 **Bundle size impact:**
 
