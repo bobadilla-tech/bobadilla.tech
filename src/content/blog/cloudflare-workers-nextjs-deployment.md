@@ -430,21 +430,36 @@ export async function generateStaticParams() {
 
 **What happens at build time:**
 
-1. Build script processes markdown files into `blog-posts.json`
-2. Next.js calls `generateStaticParams()` which imports the JSON
-3. We return an array of all post slugs from the pre-generated data
-4. Next.js generates static HTML for each route:
-   - `/blog/cloudflare-workers-nextjs-deployment` → Static HTML
-   - `/blog/rapid-mvp-development` → Static HTML
-   - `/blog/ai-integration-guide` → Static HTML
+1. Build script processes markdown files into `blog-posts.ts`
+2. Next.js calls `generateStaticParams()` which imports the TypeScript module
+3. We return an array of all post slugs
+4. Next.js pre-renders each page to HTML (SSG):
+   - `/blog/cloudflare-workers-nextjs-deployment` → Pre-rendered HTML (1.2MB)
+   - `/blog/cloudflare-domain-redirect-guide` → Pre-rendered HTML (302KB)
+
+**What happens at runtime (Cloudflare Workers):**
+
+Unlike traditional static hosting where HTML files are served directly from a CDN, OpenNext on Cloudflare Workers works differently:
+
+1. Request hits the Cloudflare Worker
+2. Worker loads the **pre-rendered HTML** from the build
+3. Worker serves the HTML through its runtime
+
+**Why this matters:**
+
+- ✅ Pages ARE pre-rendered (no React rendering at runtime)
+- ✅ SEO-perfect: Search engines get fully-rendered HTML
+- ⚠️ But pages still go through the Worker (not pure static files)
+- ⚠️ Worker must stay under resource limits (CPU/memory)
+
+This is why we moved the syntax highlighter to a client component - the 500KB library was exceeding Worker limits even though pages were pre-rendered.
 
 **Benefits:**
 
-- **Zero file system reads at runtime**: Posts are pre-processed into JSON, bundled with the application
-- **Edge-compatible**: No Node.js APIs needed, works perfectly in Cloudflare Workers
-- **Instant page loads**: HTML is already generated and cached on Cloudflare's CDN
-- **No server-side rendering overhead**: Just serve static files
-- **SEO-perfect**: Search engines get fully-rendered HTML immediately
+- **Zero file system reads at runtime**: Everything pre-bundled
+- **Edge-compatible**: No Node.js APIs needed
+- **Fast page loads**: HTML already rendered, just served through Worker
+- **SEO-perfect**: Fully-rendered HTML for crawlers
 
 ### Metadata Generation for SEO
 
@@ -634,9 +649,7 @@ The `wrangler.jsonc` file configures your Cloudflare Worker:
 
    ```jsonc
    {
-   	"routes": [
-   		{ "pattern": "bobadilla.tech/*", "zone_name": "bobadilla.tech" },
-   	],
+   	"routes": [{ "pattern": "bobadilla.tech", "zone_name": "bobadilla.tech" }],
    }
    ```
 
