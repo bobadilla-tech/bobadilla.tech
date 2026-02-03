@@ -38,6 +38,14 @@ export async function fetchRedditPostTimestamp(
 		);
 	}
 
+	// Check if the response is actually JSON (Reddit may return HTML when blocking requests)
+	const contentType = response.headers.get("content-type");
+	if (!contentType || !contentType.includes("application/json")) {
+		throw new Error(
+			"Reddit blocked the request. Please try again later or use a different URL."
+		);
+	}
+
 	const data = (await response.json()) as RedditApiResponse[];
 	const postData = data[0]?.data?.children?.[0]?.data;
 
