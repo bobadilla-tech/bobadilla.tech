@@ -23,7 +23,7 @@ export const SOCIAL_LINKS = {
 } as const;
 
 export const EXTERNAL_LINKS = {
-	apis: "https://requiems-api.xyz/",
+	apis: "https://requiems.xyz",
 } as const;
 
 export const COPYRIGHT_YEAR = new Date().getFullYear();
