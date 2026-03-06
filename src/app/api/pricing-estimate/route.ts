@@ -8,13 +8,8 @@ import {
 } from "~/lib/server/api-response";
 import { getDb } from "~/db/client";
 import { pricingEstimates } from "~/db/schema";
-
-const estimateSchema = z.object({
-	email: z.string().email("Invalid email address"),
-	totalPrice: z.number().positive("Total price must be positive"),
-	selections: z.record(z.string(), z.array(z.string())),
-	breakdown: z.string(),
-});
+import { logPricingEstimate } from "./logger";
+import { estimateSchema } from "./validation";
 
 export async function POST(request: NextRequest) {
 	try {
@@ -36,10 +31,11 @@ export async function POST(request: NextRequest) {
 			})
 			.returning();
 
-		console.log("📊 Pricing estimate saved:");
-		console.log(`   Email: ${validatedData.email}`);
-		console.log(`   Total: $${validatedData.totalPrice}`);
-		console.log(`   ID: ${inserted.id}`);
+		logPricingEstimate({
+			id: inserted.id,
+			email: validatedData.email,
+			totalPrice: validatedData.totalPrice,
+		});
 
 		return successResponse(
 			{ id: inserted.id },
