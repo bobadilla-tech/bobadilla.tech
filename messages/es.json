@@ -62,6 +62,7 @@
 		"navigation": "Navegación",
 		"dropUsALine": "Escríbenos",
 		"callUs": "Llámanos",
+		"copyright": "© {year} Bobadilla Tech. Todos los derechos reservados.",
 		"links": {
 			"ourServices": "Nuestros Servicios",
 			"projects": "Proyectos",
@@ -88,6 +89,8 @@
 		"heading2": "BOBA TECH",
 		"others": "Otros",
 		"bobatech": "Boba Tech",
+		"yes": "Sí",
+		"no": "No",
 		"rows": [
 			"Entrega rápida y predecible",
 			"Precios transparentes",
@@ -163,7 +166,41 @@
 		"heading1": "NUESTROS",
 		"heading2": "SERVICIOS",
 		"subtitle": "Desarrollo Full-Stack, Integración de IA y Soluciones Empresariales",
-		"learnMore": "Saber más →"
+		"learnMore": "Saber más →",
+		"cards": {
+			"webAppDev": {
+				"title": "Desarrollo de Aplicaciones Web",
+				"description": "Aplicaciones web completas con sistemas backend robustos e interfaces intuitivas."
+			},
+			"webPortalDev": {
+				"title": "Desarrollo de Portales Web",
+				"description": "Portales web personalizados para herramientas internas, paneles de clientes y más."
+			},
+			"mobileAppDev": {
+				"title": "Desarrollo de Apps Móviles",
+				"description": "Aplicaciones móviles nativas y multiplataforma para iOS y Android."
+			},
+			"frontendDev": {
+				"title": "Desarrollo Front-end",
+				"description": "Interfaces de usuario modernas, responsivas y de alto rendimiento."
+			},
+			"backendDev": {
+				"title": "Desarrollo Back-end",
+				"description": "Sistemas backend de nivel empresarial construidos por ingenieros senior."
+			},
+			"webDev": {
+				"title": "Desarrollo Web",
+				"description": "Aplicaciones web personalizadas con tecnologías de vanguardia para rendimiento óptimo y experiencia de usuario."
+			},
+			"cmsDev": {
+				"title": "Desarrollo CMS",
+				"description": "Sistemas de gestión de contenido potentes adaptados a las necesidades de tu negocio."
+			},
+			"mvpDev": {
+				"title": "Desarrollo de MVP",
+				"description": "Lanza tu startup en días o semanas, no meses. Desarrollo rápido de MVP para validar tu idea."
+			}
+		}
 	},
 	"IndustriesSection": {
 		"heading1": "Industrias",

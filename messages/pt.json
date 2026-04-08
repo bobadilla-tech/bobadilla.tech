@@ -62,6 +62,7 @@
 		"navigation": "Navegação",
 		"dropUsALine": "Fale conosco",
 		"callUs": "Ligue para nós",
+		"copyright": "© {year} Bobadilla Tech. Todos os direitos reservados.",
 		"links": {
 			"ourServices": "Nossos Serviços",
 			"projects": "Projetos",
@@ -88,6 +89,8 @@
 		"heading2": "BOBA TECH",
 		"others": "Outros",
 		"bobatech": "Boba Tech",
+		"yes": "Sim",
+		"no": "Não",
 		"rows": [
 			"Entrega rápida e previsível",
 			"Preços transparentes",
@@ -163,7 +166,41 @@
 		"heading1": "NOSSOS",
 		"heading2": "SERVIÇOS",
 		"subtitle": "Desenvolvimento Full-Stack, Integração de IA e Soluções Empresariais",
-		"learnMore": "Saiba mais →"
+		"learnMore": "Saiba mais →",
+		"cards": {
+			"webAppDev": {
+				"title": "Desenvolvimento de Aplicações Web",
+				"description": "Aplicações web completas com sistemas backend robustos e interfaces intuitivas."
+			},
+			"webPortalDev": {
+				"title": "Desenvolvimento de Portais Web",
+				"description": "Portais web personalizados para ferramentas internas, painéis de clientes e mais."
+			},
+			"mobileAppDev": {
+				"title": "Desenvolvimento de Apps Móveis",
+				"description": "Aplicações móveis nativas e multiplataforma para iOS e Android."
+			},
+			"frontendDev": {
+				"title": "Desenvolvimento Front-end",
+				"description": "Interfaces de usuário modernas, responsivas e de alta performance."
+			},
+			"backendDev": {
+				"title": "Desenvolvimento Back-end",
+				"description": "Sistemas backend de nível empresarial construídos por engenheiros seniores."
+			},
+			"webDev": {
+				"title": "Desenvolvimento Web",
+				"description": "Aplicações web personalizadas com tecnologias de ponta para performance ideal e experiência do usuário."
+			},
+			"cmsDev": {
+				"title": "Desenvolvimento CMS",
+				"description": "Sistemas de gerenciamento de conteúdo poderosos adaptados às necessidades do seu negócio."
+			},
+			"mvpDev": {
+				"title": "Desenvolvimento de MVP",
+				"description": "Lance sua startup em dias ou semanas, não meses. Desenvolvimento rápido de MVP para validar sua ideia."
+			}
+		}
 	},
 	"IndustriesSection": {
 		"heading1": "Indústrias",

@@ -1,16 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Link } from "~/i18n/navigation";
 import { CAL_LINKS, SOCIAL_LINKS, EXTERNAL_LINKS } from "~/lib/constants";
 import Button from "./Button";
 
 export default function Navbar() {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+	const [isResourcesOpen, setIsResourcesOpen] = useState(false);
+	const resourcesRef = useRef<HTMLDivElement>(null);
 	const t = useTranslations("Navbar");
 
 	useEffect(() => {
@@ -31,6 +33,18 @@ export default function Navbar() {
 			document.body.style.overflow = "unset";
 		};
 	}, [isMobileMenuOpen]);
+
+	useEffect(() => {
+		const handleClickOutside = (e: MouseEvent) => {
+			if (resourcesRef.current && !resourcesRef.current.contains(e.target as Node)) {
+				setIsResourcesOpen(false);
+			}
+		};
+		if (isResourcesOpen) {
+			document.addEventListener("mousedown", handleClickOutside);
+		}
+		return () => document.removeEventListener("mousedown", handleClickOutside);
+	}, [isResourcesOpen]);
 
 	const resourceLinks = [
 		{ label: t("blog"), href: "/blog" },
@@ -76,18 +90,35 @@ export default function Navbar() {
 							>
 								{t("projects")}
 							</Link>
-							<div className="relative group">
+							<div className="relative group" ref={resourcesRef}>
 								<button
 									type="button"
+									aria-haspopup="menu"
+									aria-expanded={isResourcesOpen}
+									onClick={() => setIsResourcesOpen(!isResourcesOpen)}
+									onKeyDown={(e) => {
+										if (e.key === "Escape") setIsResourcesOpen(false);
+									}}
 									className="font-body text-xl text-brand-primary/80 hover:text-brand-primary transition-colors duration-200 cursor-pointer"
 								>
 									{t("resources")}
 								</button>
-								<div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-48 bg-brand-bg/95 backdrop-blur-lg border border-border rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+								<div
+									role="menu"
+									onKeyDown={(e) => {
+										if (e.key === "Escape") setIsResourcesOpen(false);
+									}}
+									className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-48 bg-brand-bg/95 backdrop-blur-lg border border-border rounded-xl shadow-xl transition-all duration-200 ${
+										isResourcesOpen
+											? "opacity-100 visible"
+											: "opacity-0 invisible group-hover:opacity-100 group-hover:visible"
+									}`}
+								>
 									{resourceLinks.map((link) =>
 										link.external ? (
 											<a
 												key={link.label}
+												role="menuitem"
 												href={link.href}
 												target="_blank"
 												rel="noopener noreferrer"
@@ -98,6 +129,7 @@ export default function Navbar() {
 										) : (
 											<Link
 												key={link.label}
+												role="menuitem"
 												href={link.href}
 												className="block px-4 py-3 font-body text-brand-primary/70 hover:text-brand-primary hover:bg-surface transition-colors duration-200 first:rounded-t-xl last:rounded-b-xl"
 											>
@@ -150,7 +182,7 @@ export default function Navbar() {
 						onClick={() => setIsMobileMenuOpen(false)}
 						aria-hidden="true"
 					/>
-					<div className="fixed left-0 right-0 top-20 bottom-0 bg-brand-bg z-50 md:hidden overflow-y-auto">
+					<div className="fixed left-0 right-0 top-28 bottom-0 bg-brand-bg z-50 md:hidden overflow-y-auto">
 						<div className="flex flex-col space-y-4 p-6">
 							<Link
 								href="/services"

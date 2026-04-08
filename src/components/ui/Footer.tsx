@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { Github, Linkedin, Instagram } from "lucide-react";
 import { getTranslations } from "next-intl/server";
-import { CONTACT, SOCIAL_LINKS, FOOTER_LINKS, COPYRIGHT_TEXT } from "~/lib/constants";
+import { Link } from "~/i18n/navigation";
+import { CONTACT, SOCIAL_LINKS, FOOTER_LINKS } from "~/lib/constants";
 
 const FOOTER_LINK_KEYS = [
 	"ourServices",
@@ -110,7 +110,7 @@ export default async function Footer() {
 
 				<div className="mt-12 pt-8 border-t border-border">
 					<p className="font-body text-brand-primary/30 text-sm text-center">
-						{COPYRIGHT_TEXT}
+						{t("copyright", { year: new Date().getFullYear() })}
 					</p>
 				</div>
 			</div>

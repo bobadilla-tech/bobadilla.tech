@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import {
 	AlertCircle,
 	Calendar,
@@ -26,21 +26,25 @@ type FieldErrors = {
 export default function Contact() {
 	const t = useTranslations("Contact");
 
-	const contactSchema = z.object({
-		name: z
-			.string()
-			.min(1, t("nameRequired"))
-			.max(100, t("nameTooLong")),
-		email: z.string().email(t("invalidEmail")),
-		company: z
-			.string()
-			.max(100, t("companyTooLong"))
-			.optional(),
-		message: z
-			.string()
-			.min(10, t("messageTooShort"))
-			.max(2000, t("messageTooLong")),
-	});
+	const contactSchema = useMemo(
+		() =>
+			z.object({
+				name: z
+					.string()
+					.min(1, t("nameRequired"))
+					.max(100, t("nameTooLong")),
+				email: z.string().email(t("invalidEmail")),
+				company: z
+					.string()
+					.max(100, t("companyTooLong"))
+					.optional(),
+				message: z
+					.string()
+					.min(10, t("messageTooShort"))
+					.max(2000, t("messageTooLong")),
+			}),
+		[t],
+	);
 
 	const [formData, setFormData] = useState({
 		name: "",

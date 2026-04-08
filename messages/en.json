@@ -62,6 +62,7 @@
 		"navigation": "Navigation",
 		"dropUsALine": "Drop us a line",
 		"callUs": "Call us",
+		"copyright": "© {year} Bobadilla Tech. All rights reserved.",
 		"links": {
 			"ourServices": "Our Services",
 			"projects": "Projects",
@@ -88,6 +89,8 @@
 		"heading2": "BOBA TECH",
 		"others": "Others",
 		"bobatech": "Boba Tech",
+		"yes": "Yes",
+		"no": "No",
 		"rows": [
 			"Fast & predictable delivery",
 			"Transparent pricing",
@@ -163,7 +166,41 @@
 		"heading1": "OUR",
 		"heading2": "SERVICES",
 		"subtitle": "Full-Stack Development, AI Integration and Enterprise Solutions",
-		"learnMore": "Learn more →"
+		"learnMore": "Learn more →",
+		"cards": {
+			"webAppDev": {
+				"title": "Web Application Development",
+				"description": "Full-featured web applications with robust backend systems and intuitive interfaces."
+			},
+			"webPortalDev": {
+				"title": "Web Portal Development",
+				"description": "Custom web portals for internal tools, customer dashboards, and more."
+			},
+			"mobileAppDev": {
+				"title": "Mobile App Development",
+				"description": "Native and cross-platform mobile applications for iOS and Android."
+			},
+			"frontendDev": {
+				"title": "Front-end Development",
+				"description": "Modern, responsive, and performant user interfaces."
+			},
+			"backendDev": {
+				"title": "Back-end Development",
+				"description": "Enterprise-grade backend systems built by senior engineering talent."
+			},
+			"webDev": {
+				"title": "Web Development",
+				"description": "Custom web applications built with cutting-edge technologies for optimal performance and user experience."
+			},
+			"cmsDev": {
+				"title": "CMS Development",
+				"description": "Powerful content management systems tailored to your business needs."
+			},
+			"mvpDev": {
+				"title": "MVP Development",
+				"description": "Launch your startup in days or weeks, not months. Rapid MVP development to validate your idea."
+			}
+		}
 	},
 	"IndustriesSection": {
 		"heading1": "Industries",
