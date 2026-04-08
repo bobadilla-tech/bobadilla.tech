@@ -63,7 +63,12 @@ export default function Button({
 				href={href}
 				target={target ?? "_blank"}
 				rel={rel ?? "noopener noreferrer"}
-				className={classes}
+				aria-disabled={disabled || loading}
+				aria-busy={loading}
+				onClick={(e) => {
+					if (disabled || loading) e.preventDefault();
+				}}
+				className={`${classes}${disabled || loading ? " opacity-50 cursor-not-allowed" : ""}`}
 			>
 				{content}
 			</a>
@@ -81,7 +86,7 @@ export default function Button({
 	return (
 		<button
 			type={type}
-			disabled={disabled ?? loading}
+			disabled={disabled || loading}
 			onClick={onClick}
 			className={classes}
 		>

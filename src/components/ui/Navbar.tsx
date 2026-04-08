@@ -83,7 +83,7 @@ export default function Navbar() {
 								>
 									{t("resources")}
 								</button>
-								<div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-48 bg-[#130a0a]/95 backdrop-blur-lg border border-border rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+								<div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-48 bg-brand-bg/95 backdrop-blur-lg border border-border rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
 									{resourceLinks.map((link) =>
 										link.external ? (
 											<a
@@ -213,6 +213,7 @@ export default function Navbar() {
 							<Button
 								href={CAL_LINKS.ale}
 								variant="gold"
+								size="sm"
 								className="mt-4 w-full justify-center"
 								onClick={() => setIsMobileMenuOpen(false)}
 							>

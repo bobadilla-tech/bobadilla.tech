@@ -23,7 +23,7 @@
 /* Base styles */
 body {
   background: linear-gradient(180deg, #0b0505 0%, #0a0504 97%);
-  color: #dbdbd7;
+  color: var(--color-brand-primary);
   font-family: var(--font-body, sans-serif);
 }
 

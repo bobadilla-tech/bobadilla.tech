@@ -7,7 +7,6 @@ import {
 	CheckCircle,
 	Github,
 	Linkedin,
-	Loader2,
 	Mail,
 } from "lucide-react";
 import { motion } from "framer-motion";
@@ -311,14 +310,7 @@ export default function Contact() {
 									variant="gold"
 									className="w-full justify-center"
 								>
-									{status === "loading" ? (
-										<>
-											<Loader2 className="size-4 animate-spin" />
-											{t("sendingButton")}
-										</>
-									) : (
-										t("sendButton")
-									)}
+									{status === "loading" ? t("sendingButton") : t("sendButton")}
 								</Button>
 							</form>
 						</div>

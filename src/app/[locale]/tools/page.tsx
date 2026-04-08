@@ -136,7 +136,7 @@ export default async function ToolsPage() {
 								{t("moreToolsBody")}
 							</p>
 							<Button to="/#contact" variant="outline">
-								<span className="font-body text-sm font-medium">{t("suggestTool")}</span>
+								{t("suggestTool")}
 							</Button>
 						</div>
 					</div>

@@ -110,7 +110,7 @@ export default function PricingCalculator() {
 	};
 
 	const saveEstimate = async () => {
-		if (!email || isValidEmail) {
+		if (!email || !isValidEmail) {
 			setSaveError("Please enter your email");
 			return;
 		}

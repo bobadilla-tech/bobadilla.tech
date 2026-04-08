@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 interface IndustryCardProps {
 	title: string;
@@ -20,10 +21,11 @@ export default function IndustryCard({
 			href={href}
 			className="group relative overflow-hidden rounded-t-3xl block h-[420px]"
 		>
-			<img
+			<Image
 				src={image}
 				alt={alt}
-				className="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-105"
+				fill
+				className="object-cover transition-transform duration-500 group-hover:scale-105"
 			/>
 			<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 			<div className="absolute top-0 left-0 right-0 bg-white h-24 flex items-center justify-center">
