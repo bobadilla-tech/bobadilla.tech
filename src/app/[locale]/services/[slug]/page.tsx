@@ -14,6 +14,7 @@ import {
 	Clock,
 	TrendingUp,
 } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import { CAL_LINKS } from "~/lib/constants";
 import {
 	generateMetadata as generateSEOMetadata,
@@ -74,19 +75,17 @@ export async function generateMetadata({
 	});
 }
 
-const features = [
-	"Custom design and development",
-	"Responsive and mobile-optimized",
-	"SEO and performance optimization",
-	"Integration with third-party services",
-	"Comprehensive testing and QA",
-	"Documentation and training",
-	"Post-launch support",
-	"Ongoing maintenance options",
+const benefitIcons = [
+	<Zap key="zap" className="w-6 h-6" />,
+	<Shield key="shield" className="w-6 h-6" />,
+	<Clock key="clock" className="w-6 h-6" />,
+	<TrendingUp key="trending" className="w-6 h-6" />,
 ];
 
 export default async function ServicePage({ params }: ServicePageProps) {
 	const { slug } = await params;
+	const t = await getTranslations("ServicePage");
+
 	const service =
 		allServices.find((s) => s.slug === slug) ||
 		industryServices.flatMap((i) => i.services).find((s) => s.slug === slug);
@@ -95,7 +94,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
 		notFound();
 	}
 
-	// Find related services from the same industry
 	const relatedIndustry = industryServices.find((industry) =>
 		industry.services.some((s) => s.slug === slug)
 	);
@@ -104,28 +102,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
 		? relatedIndustry.services.filter((s) => s.slug !== slug).slice(0, 3)
 		: allServices.filter((s) => s.slug !== slug).slice(0, 3);
 
-	const benefits = [
-		{
-			icon: <Zap className="w-6 h-6" />,
-			title: "Fast Delivery",
-			description: "Launch in days or weeks, not months",
-		},
-		{
-			icon: <Shield className="w-6 h-6" />,
-			title: "Enterprise Security",
-			description: "Built with security and compliance in mind",
-		},
-		{
-			icon: <Clock className="w-6 h-6" />,
-			title: "24/7 Support",
-			description: "Ongoing support and maintenance available",
-		},
-		{
-			icon: <TrendingUp className="w-6 h-6" />,
-			title: "Scalable Solutions",
-			description: "Architecture designed to grow with your business",
-		},
-	];
+	const features = t.raw("features") as string[];
+	const benefits = t.raw("benefits") as { title: string; description: string }[];
 
 	return (
 		<div className="relative min-h-screen">
@@ -137,14 +115,14 @@ export default async function ServicePage({ params }: ServicePageProps) {
 					<div className="mb-8">
 						<div className="flex items-center space-x-2 text-sm text-brand-primary/40 font-body">
 							<Link href="/" className="hover:text-brand-primary transition-colors">
-								Home
+								{t("home")}
 							</Link>
 							<span>/</span>
 							<Link
 								href="/services"
 								className="hover:text-brand-primary transition-colors"
 							>
-								Services
+								{t("services")}
 							</Link>
 							<span>/</span>
 							<span className="text-brand-primary">{service.title}</span>
@@ -166,26 +144,19 @@ export default async function ServicePage({ params }: ServicePageProps) {
 						<div className="lg:col-span-2 space-y-12">
 							{/* Overview */}
 							<section className="p-8 bg-surface border border-border rounded-2xl">
-								<h2 className="font-heading text-3xl font-bold text-brand-primary mb-6">Overview</h2>
+								<h2 className="font-heading text-3xl font-bold text-brand-primary mb-6">{t("overview")}</h2>
 								<p className="font-body text-brand-primary/70 leading-relaxed mb-6">
-									Our {service.title.toLowerCase()} service combines
-									cutting-edge technology with deep engineering expertise to
-									deliver solutions that drive business results. We work closely
-									with you to understand your unique requirements and create
-									custom solutions that scale with your business.
+									{t("overviewBody1", { service: service.title.toLowerCase() })}
 								</p>
 								<p className="font-body text-brand-primary/70 leading-relaxed">
-									Whether you&apos;re a startup looking to launch your MVP
-									quickly or an enterprise seeking robust, scalable solutions,
-									our team has the experience and expertise to bring your vision
-									to life.
+									{t("overviewBody2")}
 								</p>
 							</section>
 
 							{/* Key Features */}
 							<section>
 								<h2 className="font-heading text-3xl font-bold text-brand-primary mb-6">
-									What&apos;s Included
+									{t("whatsIncluded")}
 								</h2>
 								<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 									{features.map((feature) => (
@@ -203,15 +174,15 @@ export default async function ServicePage({ params }: ServicePageProps) {
 							{/* Benefits */}
 							<section>
 								<h2 className="font-heading text-3xl font-bold text-brand-primary mb-6">
-									Why Choose Us
+									{t("whyChooseUs")}
 								</h2>
 								<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-									{benefits.map((benefit) => (
+									{benefits.map((benefit, i) => (
 										<div
 											key={benefit.title}
 											className="p-6 bg-surface border border-border rounded-xl"
 										>
-											<div className="text-brand-gold mb-4">{benefit.icon}</div>
+											<div className="text-brand-gold mb-4">{benefitIcons[i]}</div>
 											<h3 className="font-heading text-xl font-semibold text-brand-primary mb-2">
 												{benefit.title}
 											</h3>
@@ -227,25 +198,24 @@ export default async function ServicePage({ params }: ServicePageProps) {
 							{/* CTA Card */}
 							<div className="p-8 bg-brand-gold/10 border border-border-gold rounded-2xl sticky top-24">
 								<h3 className="font-heading text-2xl font-bold text-brand-primary mb-4">
-									Get Started Today
+									{t("getStarted")}
 								</h3>
 								<p className="font-body text-brand-primary/60 mb-6">
-									Book a free consultation to discuss your project and receive a
-									custom quote.
+									{t("getStartedBody")}
 								</p>
 								<div className="space-y-3">
 									<Button href={CAL_LINKS.ale} variant="gold" className="w-full justify-center">
-										Book a Call
+										{t("bookCall")}
 									</Button>
 									<Button to="/#contact" variant="ghost" className="w-full justify-center">
-										Contact Us
+										{t("contactUs")}
 									</Button>
 								</div>
 								<div className="mt-6 pt-6 border-t border-border">
-									<p className="font-body text-sm text-brand-primary/40 mb-2">Starting from</p>
+									<p className="font-body text-sm text-brand-primary/40 mb-2">{t("startingFrom")}</p>
 									<p className="font-heading text-3xl font-bold text-brand-primary">$350</p>
 									<p className="font-body text-sm text-brand-primary/40 mt-1">
-										for static websites
+										{t("forStaticWebsites")}
 									</p>
 								</div>
 							</div>
@@ -256,7 +226,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
 					{relatedServices.length > 0 && (
 						<section className="mt-24">
 							<h2 className="font-heading text-3xl font-bold text-brand-primary mb-8">
-								Related Services
+								{t("relatedServices")}
 							</h2>
 							<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 								{relatedServices.map((relatedService) => (
@@ -272,7 +242,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
 											{relatedService.description}
 										</p>
 										<div className="flex items-center text-brand-gold group-hover:text-brand-gold-light transition-colors duration-300 font-body">
-											<span className="text-sm">Learn more</span>
+											<span className="text-sm">{t("learnMore")}</span>
 											<ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
 										</div>
 									</Link>

@@ -21,6 +21,7 @@ import {
 	Truck,
 	Brain,
 } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import { CAL_LINKS } from "~/lib/constants";
 import {
 	generateMetadata as generateSEOMetadata,
@@ -63,7 +64,9 @@ const industryIconMap: Record<string, React.ReactNode> = {
 	"ai-ml": <Brain className="size-8" />,
 };
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+	const t = await getTranslations("ServicesPage");
+
 	return (
 		<div className="relative min-h-screen">
 			<Navbar />
@@ -75,17 +78,18 @@ export default function ServicesPage() {
 						<SectionHeader
 							heading={
 								<>
-									Our <span className="text-brand-gold">Services</span>
+									{t("heading1")}{" "}
+									<span className="text-brand-gold">{t("heading2")}</span>
 								</>
 							}
-							subtitle="From rapid MVP development to enterprise solutions, we deliver cutting-edge technology tailored to your needs."
+							subtitle={t("subtitle")}
 						/>
 					</div>
 
 					{/* Core Services */}
 					<section className="mb-24">
 						<h2 className="font-heading text-2xl font-bold text-brand-primary mb-8">
-							Core Services
+							{t("coreServices")}
 						</h2>
 						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 							{allServices.map((service) => (
@@ -104,10 +108,10 @@ export default function ServicesPage() {
 					{/* Industry Solutions */}
 					<section>
 						<h2 className="font-heading text-2xl font-bold text-brand-primary mb-2">
-							Industry Solutions
+							{t("industrySolutions")}
 						</h2>
 						<p className="font-body text-brand-primary/50 mb-8 max-w-3xl">
-							Specialized solutions tailored for specific industries with deep domain expertise.
+							{t("industrySubtitle")}
 						</p>
 						<div className="space-y-6">
 							{industryServices.map((industry) => (
@@ -129,7 +133,7 @@ export default function ServicesPage() {
 											href={`/services/all/${industry.slug}`}
 											className="font-body px-5 py-2 bg-brand-gold/10 text-brand-gold rounded-full hover:bg-brand-gold/20 transition-all duration-200 whitespace-nowrap text-sm"
 										>
-											View All
+											{t("viewAll")}
 										</Link>
 									</div>
 									<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -154,7 +158,7 @@ export default function ServicesPage() {
 												href={`/services/all/${industry.slug}`}
 												className="font-body text-brand-gold hover:text-brand-gold-light text-sm transition-colors duration-200"
 											>
-												+{industry.services.length - 6} more services
+												{t("moreServices", { count: industry.services.length - 6 })}
 											</Link>
 										</div>
 									)}
@@ -167,17 +171,17 @@ export default function ServicesPage() {
 					<section className="mt-24 text-center">
 						<div className="p-12 bg-brand-gold/10 border border-border-gold rounded-2xl">
 							<h2 className="font-heading text-3xl font-bold text-brand-primary mb-4">
-								Ready to Start Your Project?
+								{t("ctaHeading")}
 							</h2>
 							<p className="font-body text-brand-primary/60 mb-8 max-w-2xl mx-auto">
-								Book a free consultation to discuss your needs and get a custom quote.
+								{t("ctaBody")}
 							</p>
 							<div className="flex flex-col sm:flex-row justify-center gap-4">
 								<Button href={CAL_LINKS.ale} variant="gold">
-									Book a Call
+									{t("bookCall")}
 								</Button>
 								<Button to="/#contact" variant="ghost">
-									Contact Us
+									{t("contactUs")}
 								</Button>
 							</div>
 						</div>

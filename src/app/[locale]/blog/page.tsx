@@ -12,6 +12,7 @@ import {
 	getPostsByTag,
 } from "@/data/blog";
 import { Calendar, Clock, Tag, FileX } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import {
 	generateMetadata as generateSEOMetadata,
 	KEYWORD_SETS,
@@ -40,6 +41,7 @@ interface BlogPageProps {
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
 	const { category, tag } = await searchParams;
+	const t = await getTranslations("BlogPage");
 
 	const allPosts = getAllPosts();
 	const posts = category
@@ -73,10 +75,10 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 							heading={
 								<>
 									{pageTitle}{" "}
-									<span className="text-brand-gold">Posts</span>
+									<span className="text-brand-gold">{t("posts")}</span>
 								</>
 							}
-							subtitle="Insights, tutorials, and best practices from our team."
+							subtitle={t("subtitle")}
 						/>
 					</div>
 
@@ -91,7 +93,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 										: "px-5 py-2 bg-surface border border-border text-brand-primary/70 rounded-full font-body font-medium text-sm hover:border-border-gold hover:text-brand-primary transition-all duration-200"
 								}
 							>
-								All Posts
+								{t("allPosts")}
 							</Link>
 							{categories.map((cat) => (
 								<Link
@@ -154,18 +156,18 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 										</div>
 										<div className="flex items-center gap-1">
 											<Clock className="size-3.5" />
-											<span>{post.readingTime} min read</span>
+											<span>{t("minRead", { n: post.readingTime })}</span>
 										</div>
 									</div>
 
 									<div className="flex flex-wrap gap-2 mb-4">
-										{post.tags.slice(0, 3).map((t) => (
+										{post.tags.slice(0, 3).map((tag_item) => (
 											<span
-												key={t}
+												key={tag_item}
 												className="inline-flex items-center gap-1 px-2 py-1 bg-surface text-brand-primary/40 text-xs rounded font-body"
 											>
 												<Tag className="size-3" />
-												{t}
+												{tag_item}
 											</span>
 										))}
 									</div>
@@ -195,15 +197,15 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 							<div className="p-6 bg-surface border border-border rounded-2xl max-w-md text-center">
 								<FileX className="size-16 text-brand-primary/20 mx-auto mb-4" />
 								<h3 className="font-heading text-xl font-bold text-brand-primary mb-2">
-									No posts found
+									{t("noPostsFound")}
 								</h3>
 								<p className="font-body text-brand-primary/50 mb-6">
 									{activeFilter
-										? `No posts match "${activeFilter}". Try a different filter or browse all posts.`
-										: "No blog posts available yet. Check back soon!"}
+										? t("noPostsFilterMsg", { filter: activeFilter })
+										: t("noPostsEmptyMsg")}
 								</p>
 								<Button to="/blog" variant="gold">
-									View All Posts
+									{t("viewAllPosts")}
 								</Button>
 							</div>
 						</div>
@@ -213,13 +215,13 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 					<section className="mt-24 text-center">
 						<div className="p-12 bg-brand-gold/10 border border-border-gold rounded-2xl">
 							<h2 className="font-heading text-3xl font-bold text-brand-primary mb-4">
-								Want to Build Something Amazing?
+								{t("ctaHeading")}
 							</h2>
 							<p className="font-body text-brand-primary/60 mb-8 max-w-2xl mx-auto">
-								Let&apos;s discuss your project and how we can help you launch faster.
+								{t("ctaBody")}
 							</p>
 							<Button to="/#contact" variant="gold">
-								Get in Touch
+								{t("getInTouch")}
 							</Button>
 						</div>
 					</section>

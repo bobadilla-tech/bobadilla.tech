@@ -61,7 +61,15 @@
 	"Footer": {
 		"navigation": "Navigation",
 		"dropUsALine": "Drop us a line",
-		"callUs": "Call us"
+		"callUs": "Call us",
+		"links": {
+			"ourServices": "Our Services",
+			"projects": "Projects",
+			"dedicatedTeam": "Dedicated Team",
+			"openSource": "Open Source",
+			"pricing": "Pricing",
+			"contact": "Contact"
+		}
 	},
 	"CTABand": {
 		"heading": "Ready to discuss your project with us?",

@@ -20,6 +20,7 @@ import {
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import Button from "@/components/ui/Button";
+import { useTranslations } from "next-intl";
 import { CAL_LINKS } from "~/lib/constants";
 import { ANIMATION_CONFIG, PRICING_STEPS } from "./constants";
 import type { Selections } from "./types";
@@ -32,6 +33,7 @@ import {
 import { validEmail } from "@/app/pricing/validation";
 
 export default function PricingCalculator() {
+	const t = useTranslations("PricingPage");
 	const [currentStep, setCurrentStep] = useState(0);
 	const [selections, setSelections] = useState<Selections>({});
 	const [showSummary, setShowSummary] = useState(false);
@@ -148,6 +150,24 @@ export default function PricingCalculator() {
 	const grandTotal = calculateTotal(selections);
 	const breakdown = getSelectedOptionsByStep(selections);
 
+	// Get translated option name/description by step index and option id
+	const getOptionName = (stepIdx: number, optionId: string): string => {
+		const stepKey = String(stepIdx) as keyof typeof t;
+		try {
+			return t(`steps.${stepIdx}.options.${optionId}.name` as Parameters<typeof t>[0]);
+		} catch {
+			return PRICING_STEPS[stepIdx]?.options.find((o) => o.id === optionId)?.name ?? optionId;
+		}
+	};
+
+	const getOptionDescription = (stepIdx: number, optionId: string): string => {
+		try {
+			return t(`steps.${stepIdx}.options.${optionId}.description` as Parameters<typeof t>[0]);
+		} catch {
+			return PRICING_STEPS[stepIdx]?.options.find((o) => o.id === optionId)?.description ?? "";
+		}
+	};
+
 	const SummarySidebar = () => {
 		if (Object.keys(selections).length === 0) return null;
 
@@ -155,7 +175,7 @@ export default function PricingCalculator() {
 			<div className="bg-surface border border-border rounded-2xl p-6 sticky top-24">
 				<div className="flex items-center gap-2 mb-4">
 					<DollarSign className="size-5 text-brand-gold" />
-					<h3 className="font-heading text-lg font-bold text-brand-primary">Current Estimate</h3>
+					<h3 className="font-heading text-lg font-bold text-brand-primary">{t("currentEstimate")}</h3>
 				</div>
 
 				<div className="space-y-4">
@@ -190,7 +210,7 @@ export default function PricingCalculator() {
 
 					<div className="pt-4 border-t border-brand-gold/30">
 						<div className="flex items-center justify-between">
-							<span className="font-heading text-lg font-bold text-brand-primary">Total</span>
+							<span className="font-heading text-lg font-bold text-brand-primary">{t("total")}</span>
 							<span className="font-heading text-2xl font-bold text-brand-gold">
 								${grandTotal.toLocaleString()}
 							</span>
@@ -206,6 +226,14 @@ export default function PricingCalculator() {
 		const timelineSelection = selections[4]
 			? PRICING_STEPS[4].options.find((opt) => opt.id === selections[4][0])
 			: null;
+
+		const whyItems = t.raw("whyItems") as { title: string; desc: string }[];
+		const whyIcons = [
+			<Zap key="zap" className="size-6 text-brand-gold" />,
+			<Globe key="globe" className="size-6 text-brand-gold" />,
+			<Users key="users" className="size-6 text-brand-gold" />,
+			<Shield key="shield" className="size-6 text-brand-gold" />,
+		];
 
 		return (
 			<div className="min-h-screen">
@@ -224,21 +252,21 @@ export default function PricingCalculator() {
 						<div className="text-center">
 							<Check className="size-16 text-green-500 mx-auto mb-4" />
 							<h1 className="font-heading text-4xl font-bold text-brand-primary mb-2">
-								Your Project Estimate
+								{t("yourEstimate")}
 							</h1>
 							<p className="font-body text-brand-primary/50">
-								Detailed breakdown of your custom solution
+								{t("breakdownSubtitle")}
 							</p>
 						</div>
 
 						{/* Price Display */}
 						<div className="bg-brand-gold/10 border border-border-gold rounded-2xl p-8 text-center">
-							<p className="font-body text-brand-primary/60 mb-2">Total Investment</p>
+							<p className="font-body text-brand-primary/60 mb-2">{t("totalInvestment")}</p>
 							<div className="font-heading text-6xl font-bold text-brand-primary mb-2">
 								${total.toLocaleString()}
 							</div>
 							<p className="font-body text-sm text-brand-primary/40">
-								Competitive LATAM pricing • Same timezone • Cultural alignment
+								{t("pricingNote")}
 							</p>
 						</div>
 
@@ -246,10 +274,10 @@ export default function PricingCalculator() {
 						<div className="bg-surface border border-border rounded-2xl p-8">
 							<div className="max-w-2xl min-h-50 mx-auto">
 								<h3 className="font-heading text-2xl font-bold text-brand-primary mb-4 text-center">
-									Get Your Detailed Quote
+									{t("getDetailedQuote")}
 								</h3>
 								<p className="font-body text-brand-primary/60 mb-6 text-center">
-									Enter your email to save this estimate and book a free consultation
+									{t("emailDesc")}
 								</p>
 								<div className="flex flex-col sm:flex-row gap-4">
 									<div className="flex-1">
@@ -284,7 +312,7 @@ export default function PricingCalculator() {
 										size="lg"
 										loading={isSaving}
 									>
-										{isSaving ? "Saving..." : "Book Free Consultation"}
+										{isSaving ? t("saving") : t("bookConsultation")}
 									</Button>
 								</div>
 							</div>
@@ -293,7 +321,7 @@ export default function PricingCalculator() {
 						{/* Breakdown by Section */}
 						<div className="bg-surface border border-border rounded-2xl p-8">
 							<h2 className="font-heading text-2xl font-bold text-brand-primary mb-6">
-								Cost Breakdown
+								{t("costBreakdown")}
 							</h2>
 							<div className="space-y-6">
 								{breakdown.map((section) => (
@@ -346,8 +374,8 @@ export default function PricingCalculator() {
 										<Info className="size-5" />
 										<p className="font-body font-semibold">
 											{timelineSelection.id === "rush"
-												? "+30% Rush Fee Applied"
-												: "-15% Flexible Timeline Discount Applied"}
+												? t("rushFee")
+												: t("flexibleDiscount")}
 										</p>
 									</div>
 									<p className="font-body text-sm text-brand-primary/50 mt-1 ml-7">
@@ -360,18 +388,13 @@ export default function PricingCalculator() {
 						{/* Why Choose Us */}
 						<div className="bg-brand-gold/10 border border-border-gold rounded-2xl p-8">
 							<h3 className="font-heading text-2xl font-bold text-brand-primary mb-6">
-								Why Work With Us?
+								{t("whyWorkWithUs")}
 							</h3>
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-								{[
-									{ icon: <Zap className="size-6 text-brand-gold" />, title: "Highly Responsive", desc: "Quick turnaround times and constant communication throughout development" },
-									{ icon: <Globe className="size-6 text-brand-gold" />, title: "Same Timezone", desc: "LATAM-based team for seamless real-time collaboration" },
-									{ icon: <Users className="size-6 text-brand-gold" />, title: "Cultural Alignment", desc: "Strong work ethic and cultural compatibility with US/EU teams" },
-									{ icon: <Shield className="size-6 text-brand-gold" />, title: "Offshore Pricing", desc: "Premium quality at competitive LATAM rates - save 40-60%" },
-								].map((item) => (
+								{whyItems.map((item, i) => (
 									<div key={item.title} className="flex items-start gap-4">
 										<div className="p-3 bg-brand-gold/20 rounded-lg shrink-0">
-											{item.icon}
+											{whyIcons[i]}
 										</div>
 										<div>
 											<h4 className="font-heading text-brand-primary font-semibold mb-1">
@@ -389,12 +412,12 @@ export default function PricingCalculator() {
 						{/* Action Buttons */}
 						<div className="flex flex-col sm:flex-row gap-4">
 							<Button onClick={resetCalculator} variant="ghost">
-								Start Over
+								{t("startOver")}
 							</Button>
 						</div>
 
 						<p className="font-body text-center text-sm text-brand-primary/30">
-							*Final pricing may vary based on specific requirements and project scope
+							{t("disclaimer")}
 						</p>
 					</motion.div>
 				</div>
@@ -420,11 +443,11 @@ export default function PricingCalculator() {
 				>
 					<Calculator className="size-16 text-brand-gold mx-auto mb-4" />
 					<h1 className="font-heading text-4xl sm:text-5xl font-bold text-brand-primary mb-4">
-						Project Pricing{" "}
-						<span className="text-brand-gold">Calculator</span>
+						{t("calculatorHeading1")}{" "}
+						<span className="text-brand-gold">{t("calculatorHeading2")}</span>
 					</h1>
 					<p className="font-body text-xl text-brand-primary/50 max-w-2xl mx-auto">
-						Get an instant estimate for your project in just a few steps
+						{t("calculatorSubtitle")}
 					</p>
 				</motion.div>
 
@@ -435,7 +458,7 @@ export default function PricingCalculator() {
 						<div className="mb-8">
 							<div className="flex justify-between items-center mb-2">
 								<span className="font-body text-sm text-brand-primary/50">
-									Step {currentStep + 1} of {PRICING_STEPS.length}
+									{t("step", { current: currentStep + 1, total: PRICING_STEPS.length })}
 								</span>
 								<span className="font-body text-sm text-brand-gold">
 									{Math.round(((currentStep + 1) / PRICING_STEPS.length) * 100)}%
@@ -469,7 +492,7 @@ export default function PricingCalculator() {
 								<div className="flex items-center justify-between">
 									<div className="flex items-center gap-2">
 										<DollarSign className="size-5 text-green-400" />
-										<span className="font-body text-brand-primary/60">Current Step Total:</span>
+										<span className="font-body text-brand-primary/60">{t("currentStepTotal")}</span>
 									</div>
 									<span className="font-heading text-2xl font-bold text-green-400">
 										+${currentTotal.toLocaleString()}
@@ -498,10 +521,10 @@ export default function PricingCalculator() {
 								className="bg-surface border border-border rounded-2xl p-8 mb-8"
 							>
 								<h2 className="font-heading text-3xl font-bold text-brand-primary mb-2">
-									{currentStepData.title}
+									{t(`steps.${currentStep}.title` as Parameters<typeof t>[0])}
 								</h2>
 								<p className="font-body text-brand-primary/50 mb-8">
-									{currentStepData.description}
+									{t(`steps.${currentStep}.description` as Parameters<typeof t>[0])}
 								</p>
 
 								<div className="grid grid-cols-1 gap-4">
@@ -522,7 +545,7 @@ export default function PricingCalculator() {
 													<div className="flex-1">
 														<div className="flex items-center gap-2 mb-1">
 															<h3 className="font-heading text-lg font-semibold text-brand-primary">
-																{option.name}
+																{t(`steps.${currentStep}.options.${option.id}.name` as Parameters<typeof t>[0])}
 															</h3>
 															<Info className="size-4 text-brand-primary/30" />
 														</div>
@@ -555,7 +578,7 @@ export default function PricingCalculator() {
 													className="absolute z-10 left-0 right-0 -bottom-2 translate-y-full p-4 bg-brand-bg border border-border-gold rounded-xl shadow-xl"
 												>
 													<p className="font-body text-sm text-brand-primary/70">
-														{option.description}
+														{t(`steps.${currentStep}.options.${option.id}.description` as Parameters<typeof t>[0])}
 													</p>
 												</motion.div>
 											)}
@@ -565,7 +588,7 @@ export default function PricingCalculator() {
 
 								{isMultiSelect && (
 									<p className="font-body text-sm text-brand-primary/30 mt-4 text-center">
-										💡 You can select multiple options
+										{t("multiSelectHint")}
 									</p>
 								)}
 							</motion.div>
@@ -579,7 +602,7 @@ export default function PricingCalculator() {
 								variant="ghost"
 							>
 								<ArrowLeft className="size-5" />
-								Previous
+								{t("previous")}
 							</Button>
 
 							<Button
@@ -587,7 +610,7 @@ export default function PricingCalculator() {
 								disabled={!canProceed()}
 								variant={canProceed() ? "gold" : "ghost"}
 							>
-								{currentStep === PRICING_STEPS.length - 1 ? "See Estimate" : "Next"}
+								{currentStep === PRICING_STEPS.length - 1 ? t("seeEstimate") : t("next")}
 								<ArrowRight className="size-5" />
 							</Button>
 						</div>

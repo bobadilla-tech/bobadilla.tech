@@ -17,6 +17,7 @@ import {
 	Share2,
 } from "lucide-react";
 import { CodeBlock } from "@/components/ui/CodeBlock";
+import { getTranslations } from "next-intl/server";
 import {
 	generateMetadata as generateSEOMetadata,
 	BASE_URL,
@@ -65,6 +66,7 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ params }: PageProps) {
 	const { slug } = await params;
+	const t = await getTranslations("BlogPostPage");
 	const post = getPostBySlug(slug);
 
 	if (!post) {
@@ -83,7 +85,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 						className="inline-flex items-center gap-2 text-brand-primary/50 hover:text-brand-gold transition-colors duration-200 mb-8 font-body"
 					>
 						<ArrowLeft className="w-4 h-4" />
-						Back to Blog
+						{t("backToBlog")}
 					</Link>
 
 					{/* Category Badge */}
@@ -115,7 +117,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 						</div>
 						<div className="flex items-center gap-2">
 							<Clock className="w-5 h-5" />
-							<span>{post.readingTime} min read</span>
+							<span>{t("minRead", { n: post.readingTime })}</span>
 						</div>
 						<div className="flex items-center gap-3">
 							<Image
@@ -225,9 +227,9 @@ export default async function BlogPostPage({ params }: PageProps) {
 					{/* Share Section */}
 					<div className="mt-16 pt-8 border-t border-border">
 						<h3 className="font-heading text-xl font-bold text-brand-primary mb-4">
-							Found this helpful?
+							{t("foundHelpful")}
 						</h3>
-						<p className="font-body text-brand-primary/50 mb-6">Share it with your network</p>
+						<p className="font-body text-brand-primary/50 mb-6">{t("shareNetwork")}</p>
 
 						{/* Social Share Buttons */}
 						<div className="flex flex-wrap gap-4 mb-12">
@@ -239,7 +241,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 								className="flex items-center gap-2 px-6 py-3 bg-surface hover:bg-surface-hover border border-border hover:border-border-gold text-brand-primary rounded-full font-body font-medium transition-all duration-300"
 							>
 								<Twitter className="w-5 h-5" />
-								<span>Share on X</span>
+								<span>{t("shareOnX")}</span>
 							</a>
 
 							{/* LinkedIn */}
@@ -250,7 +252,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 								className="flex items-center gap-2 px-6 py-3 bg-[#0077B5]/20 hover:bg-[#0077B5]/30 border border-[#0077B5]/30 hover:border-[#0077B5]/50 text-brand-primary rounded-full font-body font-medium transition-all duration-300"
 							>
 								<Linkedin className="w-5 h-5" />
-								<span>Share on LinkedIn</span>
+								<span>{t("shareOnLinkedIn")}</span>
 							</a>
 
 							{/* Reddit */}
@@ -261,7 +263,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 								className="flex items-center gap-2 px-6 py-3 bg-[#FF4500]/20 hover:bg-[#FF4500]/30 border border-[#FF4500]/30 hover:border-[#FF4500]/50 text-brand-primary rounded-full font-body font-medium transition-all duration-300"
 							>
 								<Share2 className="w-5 h-5" />
-								<span>Share on Reddit</span>
+								<span>{t("shareOnReddit")}</span>
 							</a>
 						</div>
 					</div>
@@ -271,10 +273,10 @@ export default async function BlogPostPage({ params }: PageProps) {
 						{/* Requiem API CTA */}
 						<div className="p-6 bg-surface border border-border rounded-xl hover:border-border-gold transition-all duration-300">
 							<h4 className="font-heading text-lg font-bold text-brand-primary mb-2">
-								Need Enterprise APIs?
+								{t("enterpriseAPIsHeading")}
 							</h4>
 							<p className="font-body text-brand-primary/50 text-sm mb-4">
-								Use our Requiem API for scalable, production-ready solutions
+								{t("enterpriseAPIsBody")}
 							</p>
 							<a
 								href={EXTERNAL_LINKS.apis}
@@ -282,7 +284,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 								rel="noopener noreferrer"
 								className="inline-flex items-center gap-2 text-brand-gold hover:text-brand-gold-light font-body font-medium transition-colors duration-300"
 							>
-								Learn More
+								{t("learnMore")}
 								<ArrowLeft className="w-4 h-4 rotate-180" />
 							</a>
 						</div>
@@ -290,16 +292,16 @@ export default async function BlogPostPage({ params }: PageProps) {
 						{/* Consultancy CTA */}
 						<div className="p-6 bg-brand-gold/10 border border-border-gold rounded-xl hover:border-brand-gold/60 transition-all duration-300">
 							<h4 className="font-heading text-lg font-bold text-brand-primary mb-2">
-								Need Development Services?
+								{t("devServicesHeading")}
 							</h4>
 							<p className="font-body text-brand-primary/50 text-sm mb-4">
-								Get expert consultancy to build your next product
+								{t("devServicesBody")}
 							</p>
 							<Link
 								href="/#contact"
 								className="inline-flex items-center gap-2 text-brand-gold hover:text-brand-gold-light font-body font-medium transition-colors duration-300"
 							>
-								Get in Touch
+								{t("getInTouch")}
 								<ArrowLeft className="w-4 h-4 rotate-180" />
 							</Link>
 						</div>
@@ -317,10 +319,10 @@ export default async function BlogPostPage({ params }: PageProps) {
 							return (
 								<div className="text-center py-12">
 									<h2 className="font-heading text-3xl font-bold text-brand-primary mb-4">
-										Stay Tuned
+										{t("stayTuned")}
 									</h2>
 									<p className="font-body text-brand-primary/50 text-lg">
-										More content coming soon. Follow us for updates!
+										{t("moreSoonMsg")}
 									</p>
 								</div>
 							);
@@ -329,7 +331,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 						return (
 							<>
 								<h2 className="font-heading text-3xl font-bold text-brand-primary mb-8">
-									More from our Blog
+									{t("morePosts")}
 								</h2>
 								<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 									{relatedPosts.map((relatedPost) => (
@@ -349,7 +351,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 											</p>
 											<div className="flex items-center gap-2 text-brand-primary/30 text-xs mt-4 font-body">
 												<Clock className="w-4 h-4" />
-												<span>{relatedPost.readingTime} min read</span>
+												<span>{t("minRead", { n: relatedPost.readingTime })}</span>
 											</div>
 										</Link>
 									))}
