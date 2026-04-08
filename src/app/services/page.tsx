@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/ui/Navbar";
-import ShaderBackground from "@/components/shaders/ShaderBackgroundLazy";
+import Footer from "@/components/ui/Footer";
+import ServiceCard from "@/components/ui/ServiceCard";
+import Button from "@/components/ui/Button";
+import SectionHeader from "@/components/ui/SectionHeader";
 import { allServices, industryServices } from "@/data/services";
 import {
 	Code,
@@ -42,100 +45,89 @@ export const metadata: Metadata = generateSEOMetadata({
 });
 
 const serviceIconMap: Record<string, React.ReactNode> = {
-	"web-dev": <Globe className="w-8 h-8" />,
-	"cms-dev": <Boxes className="w-8 h-8" />,
-	"mvp-dev": <Rocket className="w-8 h-8" />,
-	"web-app-dev": <Layout className="w-8 h-8" />,
-	"mobile-app-dev": <Smartphone className="w-8 h-8" />,
-	"backend-dev": <Database className="w-8 h-8" />,
-	"frontend-dev": <Palette className="w-8 h-8" />,
-	"web-portal-dev": <Code className="w-8 h-8" />,
+	"web-dev": <Globe className="size-7" />,
+	"cms-dev": <Boxes className="size-7" />,
+	"mvp-dev": <Rocket className="size-7" />,
+	"web-app-dev": <Layout className="size-7" />,
+	"mobile-app-dev": <Smartphone className="size-7" />,
+	"backend-dev": <Database className="size-7" />,
+	"frontend-dev": <Palette className="size-7" />,
+	"web-portal-dev": <Code className="size-7" />,
 };
 
 const industryIconMap: Record<string, React.ReactNode> = {
-	healthcare: <Heart className="w-10 h-10" />,
-	education: <GraduationCap className="w-10 h-10" />,
-	finance: <DollarSign className="w-10 h-10" />,
-	transportation: <Truck className="w-10 h-10" />,
-	"ai-ml": <Brain className="w-10 h-10" />,
+	healthcare: <Heart className="size-8" />,
+	education: <GraduationCap className="size-8" />,
+	finance: <DollarSign className="size-8" />,
+	transportation: <Truck className="size-8" />,
+	"ai-ml": <Brain className="size-8" />,
 };
 
 export default function ServicesPage() {
 	return (
-		<div className="relative min-h-screen bg-slate-950">
-			<ShaderBackground />
+		<div className="relative min-h-screen">
 			<Navbar />
 
-			<main className="relative z-10 pt-32 pb-24">
+			<main className="pt-32 pb-24">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					{/* Page Header */}
-					<div className="text-center mb-16">
-						<h1 className="text-5xl sm:text-6xl font-bold text-white mb-6">
-							Our{" "}
-							<span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-								Services
-							</span>
-						</h1>
-						<p className="text-xl text-gray-400 max-w-3xl mx-auto">
-							From rapid MVP development to enterprise solutions, we deliver
-							cutting-edge technology solutions tailored to your needs.
-						</p>
+					<div className="flex flex-col items-center mb-16">
+						<SectionHeader
+							heading={
+								<>
+									Our <span className="text-brand-gold">Services</span>
+								</>
+							}
+							subtitle="From rapid MVP development to enterprise solutions, we deliver cutting-edge technology tailored to your needs."
+						/>
 					</div>
 
 					{/* Core Services */}
 					<section className="mb-24">
-						<h2 className="text-3xl font-bold text-white mb-8">
+						<h2 className="font-heading text-2xl font-bold text-brand-primary mb-8">
 							Core Services
 						</h2>
 						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 							{allServices.map((service) => (
-								<Link
+								<ServiceCard
 									key={service.id}
+									title={service.title}
 									href={`/services/${service.slug}`}
-									className="group p-6 bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-cyan-500/50 transition-all duration-300 hover:scale-105"
-								>
-									<div className="text-cyan-400 mb-4 group-hover:text-cyan-300 transition-colors duration-300">
-										{serviceIconMap[service.id] || <Code className="w-8 h-8" />}
-									</div>
-									<h3 className="text-xl font-semibold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300">
-										{service.title}
-									</h3>
-									<p className="text-gray-400 text-sm line-clamp-3">
-										{service.description}
-									</p>
-								</Link>
+									variant="icon"
+									icon={serviceIconMap[service.id] ?? <Code className="size-7" />}
+									description={service.description}
+								/>
 							))}
 						</div>
 					</section>
 
 					{/* Industry Solutions */}
 					<section>
-						<h2 className="text-3xl font-bold text-white mb-4">
+						<h2 className="font-heading text-2xl font-bold text-brand-primary mb-2">
 							Industry Solutions
 						</h2>
-						<p className="text-gray-400 mb-8 max-w-3xl">
-							Specialized solutions tailored for specific industries with deep
-							domain expertise.
+						<p className="font-body text-brand-primary/50 mb-8 max-w-3xl">
+							Specialized solutions tailored for specific industries with deep domain expertise.
 						</p>
 						<div className="space-y-6">
 							{industryServices.map((industry) => (
 								<div
 									key={industry.id}
-									className="p-8 bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-cyan-500/30 transition-all duration-300"
+									className="p-8 bg-surface border border-border rounded-2xl hover:border-border-gold transition-all duration-300"
 								>
-									<div className="flex items-start space-x-6 mb-6">
-										<div className="text-cyan-400 flex-shrink-0">
+									<div className="flex items-start gap-6 mb-6">
+										<div className="text-brand-gold shrink-0">
 											{industryIconMap[industry.id]}
 										</div>
 										<div className="flex-1">
-											<h3 className="text-2xl font-bold text-white mb-2">
+											<h3 className="font-heading text-2xl font-bold text-brand-primary mb-2">
 												{industry.industry}
 											</h3>
-											<p className="text-gray-400">{industry.description}</p>
+											<p className="font-body text-brand-primary/50">{industry.description}</p>
 										</div>
 										<Link
 											href={`/services/all/${industry.slug}`}
-											className="px-6 py-2 bg-cyan-500/20 text-cyan-400 rounded-full hover:bg-cyan-500/30 transition-all duration-300 whitespace-nowrap"
+											className="font-body px-5 py-2 bg-brand-gold/10 text-brand-gold rounded-full hover:bg-brand-gold/20 transition-all duration-200 whitespace-nowrap text-sm"
 										>
 											View All
 										</Link>
@@ -145,12 +137,12 @@ export default function ServicesPage() {
 											<Link
 												key={service.id}
 												href={`/services/${service.slug}`}
-												className="p-4 bg-white/5 rounded-lg hover:bg-white/10 border border-white/5 hover:border-cyan-500/50 transition-all duration-300"
+												className="p-4 bg-surface rounded-lg hover:bg-surface-hover border border-border hover:border-border-gold transition-all duration-200"
 											>
-												<h4 className="text-white font-medium mb-1">
+												<h4 className="font-heading text-brand-primary font-medium mb-1">
 													{service.title}
 												</h4>
-												<p className="text-gray-400 text-sm line-clamp-2">
+												<p className="font-body text-brand-primary/40 text-sm line-clamp-2">
 													{service.description}
 												</p>
 											</Link>
@@ -160,7 +152,7 @@ export default function ServicesPage() {
 										<div className="mt-4 text-center">
 											<Link
 												href={`/services/all/${industry.slug}`}
-												className="text-cyan-400 hover:text-cyan-300 text-sm"
+												className="font-body text-brand-gold hover:text-brand-gold-light text-sm transition-colors duration-200"
 											>
 												+{industry.services.length - 6} more services
 											</Link>
@@ -173,34 +165,27 @@ export default function ServicesPage() {
 
 					{/* CTA Section */}
 					<section className="mt-24 text-center">
-						<div className="p-12 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-2xl">
-							<h2 className="text-3xl font-bold text-white mb-4">
+						<div className="p-12 bg-brand-gold/10 border border-border-gold rounded-2xl">
+							<h2 className="font-heading text-3xl font-bold text-brand-primary mb-4">
 								Ready to Start Your Project?
 							</h2>
-							<p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-								Book a free consultation to discuss your needs and get a custom
-								quote.
+							<p className="font-body text-brand-primary/60 mb-8 max-w-2xl mx-auto">
+								Book a free consultation to discuss your needs and get a custom quote.
 							</p>
 							<div className="flex flex-col sm:flex-row justify-center gap-4">
-								<a
-									href={CAL_LINKS.ale}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300"
-								>
+								<Button href={CAL_LINKS.ale} variant="gold">
 									Book a Call
-								</a>
-								<Link
-									href="/#contact"
-									className="px-8 py-3 bg-white/5 backdrop-blur-sm border border-white/10 text-white rounded-full font-semibold hover:bg-white/10 transition-all duration-300"
-								>
+								</Button>
+								<Button to="/#contact" variant="ghost">
 									Contact Us
-								</Link>
+								</Button>
 							</div>
 						</div>
 					</section>
 				</div>
 			</main>
+
+			<Footer />
 		</div>
 	);
 }

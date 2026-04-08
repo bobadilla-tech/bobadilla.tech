@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/ui/Navbar";
-import ShaderBackground from "@/components/shaders/ShaderBackgroundLazy";
+import Footer from "@/components/ui/Footer";
+import Button from "@/components/ui/Button";
 import { allServices, industryServices } from "@/data/services";
 import {
 	CheckCircle,
@@ -127,36 +128,35 @@ export default async function ServicePage({ params }: ServicePageProps) {
 	];
 
 	return (
-		<div className="relative min-h-screen bg-slate-950">
-			<ShaderBackground />
+		<div className="relative min-h-screen">
 			<Navbar />
 
-			<main className="relative z-10 pt-32 pb-24">
+			<main className="pt-32 pb-24">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					{/* Breadcrumb */}
 					<div className="mb-8">
-						<div className="flex items-center space-x-2 text-sm text-gray-400">
-							<Link href="/" className="hover:text-white transition-colors">
+						<div className="flex items-center space-x-2 text-sm text-brand-primary/40 font-body">
+							<Link href="/" className="hover:text-brand-primary transition-colors">
 								Home
 							</Link>
 							<span>/</span>
 							<Link
 								href="/services"
-								className="hover:text-white transition-colors"
+								className="hover:text-brand-primary transition-colors"
 							>
 								Services
 							</Link>
 							<span>/</span>
-							<span className="text-white">{service.title}</span>
+							<span className="text-brand-primary">{service.title}</span>
 						</div>
 					</div>
 
 					{/* Hero Section */}
 					<div className="mb-16">
-						<h1 className="text-5xl sm:text-6xl font-bold text-white mb-6">
+						<h1 className="font-heading text-5xl sm:text-6xl font-bold text-brand-primary mb-6">
 							{service.title}
 						</h1>
-						<p className="text-xl text-gray-400 max-w-3xl">
+						<p className="font-body text-xl text-brand-primary/60 max-w-3xl">
 							{service.description}
 						</p>
 					</div>
@@ -165,16 +165,16 @@ export default async function ServicePage({ params }: ServicePageProps) {
 						{/* Main Content */}
 						<div className="lg:col-span-2 space-y-12">
 							{/* Overview */}
-							<section className="p-8 bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl">
-								<h2 className="text-3xl font-bold text-white mb-6">Overview</h2>
-								<p className="text-gray-300 leading-relaxed mb-6">
+							<section className="p-8 bg-surface border border-border rounded-2xl">
+								<h2 className="font-heading text-3xl font-bold text-brand-primary mb-6">Overview</h2>
+								<p className="font-body text-brand-primary/70 leading-relaxed mb-6">
 									Our {service.title.toLowerCase()} service combines
 									cutting-edge technology with deep engineering expertise to
 									deliver solutions that drive business results. We work closely
 									with you to understand your unique requirements and create
 									custom solutions that scale with your business.
 								</p>
-								<p className="text-gray-300 leading-relaxed">
+								<p className="font-body text-brand-primary/70 leading-relaxed">
 									Whether you&apos;re a startup looking to launch your MVP
 									quickly or an enterprise seeking robust, scalable solutions,
 									our team has the experience and expertise to bring your vision
@@ -184,17 +184,17 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
 							{/* Key Features */}
 							<section>
-								<h2 className="text-3xl font-bold text-white mb-6">
+								<h2 className="font-heading text-3xl font-bold text-brand-primary mb-6">
 									What&apos;s Included
 								</h2>
 								<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 									{features.map((feature) => (
 										<div
 											key={feature}
-											className="flex items-start space-x-3 p-4 bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-lg"
+											className="flex items-start space-x-3 p-4 bg-surface border border-border rounded-lg"
 										>
-											<CheckCircle className="w-6 h-6 text-cyan-400 flex-shrink-0 mt-0.5" />
-											<span className="text-gray-300">{feature}</span>
+											<CheckCircle className="w-6 h-6 text-brand-gold shrink-0 mt-0.5" />
+											<span className="font-body text-brand-primary/70">{feature}</span>
 										</div>
 									))}
 								</div>
@@ -202,20 +202,20 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
 							{/* Benefits */}
 							<section>
-								<h2 className="text-3xl font-bold text-white mb-6">
+								<h2 className="font-heading text-3xl font-bold text-brand-primary mb-6">
 									Why Choose Us
 								</h2>
 								<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 									{benefits.map((benefit) => (
 										<div
 											key={benefit.title}
-											className="p-6 bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-xl"
+											className="p-6 bg-surface border border-border rounded-xl"
 										>
-											<div className="text-cyan-400 mb-4">{benefit.icon}</div>
-											<h3 className="text-xl font-semibold text-white mb-2">
+											<div className="text-brand-gold mb-4">{benefit.icon}</div>
+											<h3 className="font-heading text-xl font-semibold text-brand-primary mb-2">
 												{benefit.title}
 											</h3>
-											<p className="text-gray-400">{benefit.description}</p>
+											<p className="font-body text-brand-primary/50">{benefit.description}</p>
 										</div>
 									))}
 								</div>
@@ -225,34 +225,26 @@ export default async function ServicePage({ params }: ServicePageProps) {
 						{/* Sidebar */}
 						<div className="space-y-6">
 							{/* CTA Card */}
-							<div className="p-8 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-2xl sticky top-24">
-								<h3 className="text-2xl font-bold text-white mb-4">
+							<div className="p-8 bg-brand-gold/10 border border-border-gold rounded-2xl sticky top-24">
+								<h3 className="font-heading text-2xl font-bold text-brand-primary mb-4">
 									Get Started Today
 								</h3>
-								<p className="text-gray-300 mb-6">
+								<p className="font-body text-brand-primary/60 mb-6">
 									Book a free consultation to discuss your project and receive a
 									custom quote.
 								</p>
 								<div className="space-y-3">
-									<a
-										href={CAL_LINKS.ale}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="block w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold text-center hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300"
-									>
+									<Button href={CAL_LINKS.ale} variant="gold" className="w-full justify-center">
 										Book a Call
-									</a>
-									<Link
-										href="/#contact"
-										className="block w-full py-3 bg-white/5 backdrop-blur-sm border border-white/10 text-white rounded-full font-semibold text-center hover:bg-white/10 transition-all duration-300"
-									>
+									</Button>
+									<Button to="/#contact" variant="ghost" className="w-full justify-center">
 										Contact Us
-									</Link>
+									</Button>
 								</div>
-								<div className="mt-6 pt-6 border-t border-white/10">
-									<p className="text-sm text-gray-400 mb-2">Starting from</p>
-									<p className="text-3xl font-bold text-white">$350</p>
-									<p className="text-sm text-gray-400 mt-1">
+								<div className="mt-6 pt-6 border-t border-border">
+									<p className="font-body text-sm text-brand-primary/40 mb-2">Starting from</p>
+									<p className="font-heading text-3xl font-bold text-brand-primary">$350</p>
+									<p className="font-body text-sm text-brand-primary/40 mt-1">
 										for static websites
 									</p>
 								</div>
@@ -263,7 +255,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
 					{/* Related Services */}
 					{relatedServices.length > 0 && (
 						<section className="mt-24">
-							<h2 className="text-3xl font-bold text-white mb-8">
+							<h2 className="font-heading text-3xl font-bold text-brand-primary mb-8">
 								Related Services
 							</h2>
 							<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -271,15 +263,15 @@ export default async function ServicePage({ params }: ServicePageProps) {
 									<Link
 										key={relatedService.id}
 										href={`/services/${relatedService.slug}`}
-										className="group p-6 bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-cyan-500/50 transition-all duration-300"
+										className="group p-6 bg-surface border border-border rounded-2xl hover:border-border-gold transition-all duration-300"
 									>
-										<h3 className="text-xl font-semibold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300">
+										<h3 className="font-heading text-xl font-semibold text-brand-primary mb-2 group-hover:text-brand-gold transition-colors duration-300">
 											{relatedService.title}
 										</h3>
-										<p className="text-gray-400 text-sm mb-4 line-clamp-2">
+										<p className="font-body text-brand-primary/50 text-sm mb-4 line-clamp-2">
 											{relatedService.description}
 										</p>
-										<div className="flex items-center text-cyan-400 group-hover:text-cyan-300 transition-colors duration-300">
+										<div className="flex items-center text-brand-gold group-hover:text-brand-gold-light transition-colors duration-300 font-body">
 											<span className="text-sm">Learn more</span>
 											<ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
 										</div>
@@ -290,6 +282,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
 					)}
 				</div>
 			</main>
+
+			<Footer />
 		</div>
 	);
 }

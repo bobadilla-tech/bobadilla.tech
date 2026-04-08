@@ -1,12 +1,14 @@
 import Contact from "@/components/sections/Contact";
+import CTABand from "@/components/sections/CTABand";
+import FAQ from "@/components/sections/FAQ";
 import Hero from "@/components/sections/Hero";
-import Pricing from "@/components/sections/Pricing";
-import Projects from "@/components/sections/Projects";
+import Industries from "@/components/sections/Industries";
 import Services from "@/components/sections/Services";
-import ShaderBackground from "@/components/shaders/ShaderBackgroundLazy";
+import StatsBar from "@/components/sections/StatsBar";
+import WhyBobatech from "@/components/sections/WhyBobatech";
+import Footer from "@/components/ui/Footer";
 import Navbar from "@/components/ui/Navbar";
 import { generateOrganizationSchema } from "~/lib/seo";
-import { COPYRIGHT_TEXT } from "~/lib/constants";
 
 export default function Home() {
 	const organizationSchema = generateOrganizationSchema();
@@ -17,24 +19,19 @@ export default function Home() {
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
 			/>
-			<div className="relative min-h-screen bg-slate-950">
-				<ShaderBackground />
+			<div className="relative min-h-screen">
 				<Navbar />
 				<main>
 					<Hero />
+					<StatsBar />
 					<Services />
-					<Projects />
-					<Pricing />
+					<WhyBobatech />
+					<Industries />
+					<FAQ />
+					<CTABand />
 					<Contact />
 				</main>
-				<footer className="relative py-12 border-t border-white/10">
-					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-						<div className="text-center text-gray-400">
-							<p className="mb-2">{COPYRIGHT_TEXT}</p>
-							<p className="text-sm">Built with Deep Engineering Expertise</p>
-						</div>
-					</div>
-				</footer>
+				<Footer />
 			</div>
 		</>
 	);

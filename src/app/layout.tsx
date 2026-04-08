@@ -1,19 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Sora, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import {
 	generateMetadata as generateSEOMetadata,
 	KEYWORD_SETS,
 } from "~/lib/seo";
 
-const geistSans = Geist({
-	variable: "--font-geist-sans",
+const sora = Sora({
+	variable: "--font-sora",
 	subsets: ["latin"],
+	weight: ["300", "400", "600", "700", "800"],
 });
 
-const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
+const spaceGrotesk = Space_Grotesk({
+	variable: "--font-space-grotesk",
 	subsets: ["latin"],
+	weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = generateSEOMetadata({
@@ -37,8 +39,8 @@ export const viewport: Viewport = {
 	initialScale: 1,
 	maximumScale: 5,
 	themeColor: [
-		{ media: "(prefers-color-scheme: dark)", color: "#0f172a" },
-		{ media: "(prefers-color-scheme: light)", color: "#ffffff" },
+		{ media: "(prefers-color-scheme: dark)", color: "#0b0505" },
+		{ media: "(prefers-color-scheme: light)", color: "#0b0505" },
 	],
 };
 
@@ -52,9 +54,7 @@ export default function RootLayout({
 			<head>
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
 			</head>
-			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-			>
+			<body className={`${sora.variable} ${spaceGrotesk.variable} antialiased`}>
 				{children}
 			</body>
 		</html>

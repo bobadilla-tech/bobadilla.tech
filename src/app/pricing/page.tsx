@@ -18,7 +18,8 @@ import {
 	Zap,
 } from "lucide-react";
 import Navbar from "@/components/ui/Navbar";
-import ShaderBackground from "@/components/shaders/ShaderBackgroundLazy";
+import Footer from "@/components/ui/Footer";
+import Button from "@/components/ui/Button";
 import { CAL_LINKS } from "~/lib/constants";
 import { ANIMATION_CONFIG, PRICING_STEPS } from "./constants";
 import type { Selections } from "./types";
@@ -131,7 +132,6 @@ export default function PricingCalculator() {
 				throw new Error("Failed to save estimate");
 			}
 
-			// Redirect to booking with email pre-filled
 			window.open(
 				`${CAL_LINKS.ale}?email=${encodeURIComponent(email)}`,
 				"_blank"
@@ -148,29 +148,28 @@ export default function PricingCalculator() {
 	const grandTotal = calculateTotal(selections);
 	const breakdown = getSelectedOptionsByStep(selections);
 
-	// Summary Sidebar Component
 	const SummarySidebar = () => {
 		if (Object.keys(selections).length === 0) return null;
 
 		return (
-			<div className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sticky top-24">
+			<div className="bg-surface border border-border rounded-2xl p-6 sticky top-24">
 				<div className="flex items-center gap-2 mb-4">
-					<DollarSign className="w-5 h-5 text-cyan-400" />
-					<h3 className="text-lg font-bold text-white">Current Estimate</h3>
+					<DollarSign className="size-5 text-brand-gold" />
+					<h3 className="font-heading text-lg font-bold text-brand-primary">Current Estimate</h3>
 				</div>
 
 				<div className="space-y-4">
 					{breakdown.map((section) => (
 						<div
 							key={section.stepTitle}
-							className="border-b border-white/10 pb-3 last:border-0"
+							className="border-b border-border pb-3 last:border-0"
 						>
 							<div className="flex items-center justify-between mb-2">
-								<span className="text-sm font-semibold text-cyan-400">
+								<span className="font-body text-sm font-semibold text-brand-gold">
 									{section.stepTitle}
 								</span>
 								{section.total > 0 && (
-									<span className="text-sm text-white">
+									<span className="font-body text-sm text-brand-primary">
 										${section.total.toLocaleString()}
 									</span>
 								)}
@@ -179,9 +178,9 @@ export default function PricingCalculator() {
 								{section.options.map((option, idx) => (
 									<div
 										key={idx}
-										className="flex items-center gap-2 text-xs text-gray-400"
+										className="flex items-center gap-2 font-body text-xs text-brand-primary/50"
 									>
-										<Check className="w-3 h-3 text-green-500 flex-shrink-0" />
+										<Check className="size-3 text-green-500 shrink-0" />
 										<span className="truncate">{option?.name}</span>
 									</div>
 								))}
@@ -189,10 +188,10 @@ export default function PricingCalculator() {
 						</div>
 					))}
 
-					<div className="pt-4 border-t border-cyan-500/30">
+					<div className="pt-4 border-t border-brand-gold/30">
 						<div className="flex items-center justify-between">
-							<span className="text-lg font-bold text-white">Total</span>
-							<span className="text-2xl font-bold text-cyan-400">
+							<span className="font-heading text-lg font-bold text-brand-primary">Total</span>
+							<span className="font-heading text-2xl font-bold text-brand-gold">
 								${grandTotal.toLocaleString()}
 							</span>
 						</div>
@@ -209,11 +208,10 @@ export default function PricingCalculator() {
 			: null;
 
 		return (
-			<div className="min-h-screen bg-slate-950">
+			<div className="min-h-screen">
 				<Navbar />
-				<ShaderBackground />
 
-				<div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+				<div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
 					<motion.div
 						initial={{
 							opacity: ANIMATION_CONFIG.initialOpacity,
@@ -224,40 +222,39 @@ export default function PricingCalculator() {
 					>
 						{/* Header */}
 						<div className="text-center">
-							<Check className="w-16 h-16 text-green-500 mx-auto mb-4" />
-							<h1 className="text-4xl font-bold text-white mb-2">
+							<Check className="size-16 text-green-500 mx-auto mb-4" />
+							<h1 className="font-heading text-4xl font-bold text-brand-primary mb-2">
 								Your Project Estimate
 							</h1>
-							<p className="text-gray-400">
+							<p className="font-body text-brand-primary/50">
 								Detailed breakdown of your custom solution
 							</p>
 						</div>
 
 						{/* Price Display */}
-						<div className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-2xl p-8 text-center">
-							<p className="text-gray-300 mb-2">Total Investment</p>
-							<div className="text-6xl font-bold text-white mb-2">
+						<div className="bg-brand-gold/10 border border-border-gold rounded-2xl p-8 text-center">
+							<p className="font-body text-brand-primary/60 mb-2">Total Investment</p>
+							<div className="font-heading text-6xl font-bold text-brand-primary mb-2">
 								${total.toLocaleString()}
 							</div>
-							<p className="text-sm text-gray-400">
+							<p className="font-body text-sm text-brand-primary/40">
 								Competitive LATAM pricing • Same timezone • Cultural alignment
 							</p>
 						</div>
 
 						{/* Email Capture */}
-						<div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/30 rounded-2xl p-8">
+						<div className="bg-surface border border-border rounded-2xl p-8">
 							<div className="max-w-2xl min-h-50 mx-auto">
-								<h3 className="text-2xl font-bold text-white mb-4 text-center">
+								<h3 className="font-heading text-2xl font-bold text-brand-primary mb-4 text-center">
 									Get Your Detailed Quote
 								</h3>
-								<p className="text-gray-300 mb-6 text-center">
-									Enter your email to save this estimate and book a free
-									consultation with our team
+								<p className="font-body text-brand-primary/60 mb-6 text-center">
+									Enter your email to save this estimate and book a free consultation
 								</p>
 								<div className="flex flex-col sm:flex-row gap-4">
 									<div className="flex-1">
 										<div className="relative">
-											<Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+											<Mail className="absolute left-4 top-1/2 -translate-y-1/2 size-5 text-brand-primary/30" />
 											<input
 												type="email"
 												value={email}
@@ -266,48 +263,50 @@ export default function PricingCalculator() {
 												}}
 												onBlur={validateEmail}
 												placeholder="your@email.com"
-												className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-full text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 transition-colors"
+												className="w-full pl-12 pr-4 py-4 bg-surface border border-border rounded-full font-body text-brand-primary placeholder-brand-primary/30 focus:outline-none focus:border-brand-gold/50 transition-colors"
 											/>
 										</div>
 										{saveError && (
 											<div className="flex items-center pt-3 pl-3.5">
 												<CircleAlert color="#ff6467" />
-												<span className="text-sm mt-1 ml-3 mb-1">
-													<p className="underline border-red-400 text-red-400 ">
+												<span className="font-body text-sm mt-1 ml-3 mb-1">
+													<p className="underline border-red-400 text-red-400">
 														{saveError}
 													</p>
 												</span>
 											</div>
 										)}
 									</div>
-									<button
+									<Button
 										onClick={saveEstimate}
 										disabled={isSaving || !isValidEmail}
-										className="px-8 py-4 h-14.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+										variant="gold"
+										size="lg"
+										loading={isSaving}
 									>
 										{isSaving ? "Saving..." : "Book Free Consultation"}
-									</button>
+									</Button>
 								</div>
 							</div>
 						</div>
 
 						{/* Breakdown by Section */}
-						<div className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
-							<h2 className="text-2xl font-bold text-white mb-6">
+						<div className="bg-surface border border-border rounded-2xl p-8">
+							<h2 className="font-heading text-2xl font-bold text-brand-primary mb-6">
 								Cost Breakdown
 							</h2>
 							<div className="space-y-6">
 								{breakdown.map((section) => (
 									<div
 										key={section.stepTitle}
-										className="border-b border-white/10 pb-6 last:border-0"
+										className="border-b border-border pb-6 last:border-0"
 									>
 										<div className="flex items-center justify-between mb-4">
-											<h3 className="text-xl font-bold text-cyan-400">
+											<h3 className="font-heading text-xl font-bold text-brand-gold">
 												{section.stepTitle}
 											</h3>
 											{section.total > 0 && (
-												<span className="text-lg font-semibold text-white">
+												<span className="font-heading text-lg font-semibold text-brand-primary">
 													${section.total.toLocaleString()}
 												</span>
 											)}
@@ -316,21 +315,21 @@ export default function PricingCalculator() {
 											{section.options.map((option, idx) => (
 												<div
 													key={`${section.stepTitle}-${idx}`}
-													className="flex items-start justify-between bg-white/5 rounded-lg p-4"
+													className="flex items-start justify-between bg-surface rounded-lg p-4"
 												>
 													<div className="flex-1">
 														<div className="flex items-center gap-2 mb-1">
-															<Check className="w-4 h-4 text-green-500 flex-shrink-0" />
-															<span className="text-white font-medium">
+															<Check className="size-4 text-green-500 shrink-0" />
+															<span className="font-body text-brand-primary font-medium">
 																{option?.name}
 															</span>
 														</div>
-														<p className="text-sm text-gray-400 ml-6">
+														<p className="font-body text-sm text-brand-primary/50 ml-6">
 															{option?.description}
 														</p>
 													</div>
 													{option && option.price > 0 && (
-														<span className="text-cyan-400 font-semibold ml-4 flex-shrink-0">
+														<span className="font-body text-brand-gold font-semibold ml-4 shrink-0">
 															+${option.price.toLocaleString()}
 														</span>
 													)}
@@ -341,18 +340,17 @@ export default function PricingCalculator() {
 								))}
 							</div>
 
-							{/* Timeline Multiplier Note */}
 							{timelineSelection && timelineSelection.id !== "standard" && (
-								<div className="mt-6 p-4 bg-purple-500/10 border border-purple-500/30 rounded-lg">
-									<div className="flex items-center gap-2 text-purple-300">
-										<Info className="w-5 h-5" />
-										<p className="font-semibold">
+								<div className="mt-6 p-4 bg-brand-gold/10 border border-border-gold rounded-lg">
+									<div className="flex items-center gap-2 text-brand-gold">
+										<Info className="size-5" />
+										<p className="font-body font-semibold">
 											{timelineSelection.id === "rush"
 												? "+30% Rush Fee Applied"
 												: "-15% Flexible Timeline Discount Applied"}
 										</p>
 									</div>
-									<p className="text-sm text-gray-400 mt-1 ml-7">
+									<p className="font-body text-sm text-brand-primary/50 mt-1 ml-7">
 										{timelineSelection.description}
 									</p>
 								</div>
@@ -360,94 +358,57 @@ export default function PricingCalculator() {
 						</div>
 
 						{/* Why Choose Us */}
-						<div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-2xl p-8">
-							<h3 className="text-2xl font-bold text-white mb-6">
+						<div className="bg-brand-gold/10 border border-border-gold rounded-2xl p-8">
+							<h3 className="font-heading text-2xl font-bold text-brand-primary mb-6">
 								Why Work With Us?
 							</h3>
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-								<div className="flex items-start gap-4">
-									<div className="p-3 bg-yellow-500/20 rounded-lg">
-										<Zap className="w-6 h-6 text-yellow-500" />
+								{[
+									{ icon: <Zap className="size-6 text-brand-gold" />, title: "Highly Responsive", desc: "Quick turnaround times and constant communication throughout development" },
+									{ icon: <Globe className="size-6 text-brand-gold" />, title: "Same Timezone", desc: "LATAM-based team for seamless real-time collaboration" },
+									{ icon: <Users className="size-6 text-brand-gold" />, title: "Cultural Alignment", desc: "Strong work ethic and cultural compatibility with US/EU teams" },
+									{ icon: <Shield className="size-6 text-brand-gold" />, title: "Offshore Pricing", desc: "Premium quality at competitive LATAM rates - save 40-60%" },
+								].map((item) => (
+									<div key={item.title} className="flex items-start gap-4">
+										<div className="p-3 bg-brand-gold/20 rounded-lg shrink-0">
+											{item.icon}
+										</div>
+										<div>
+											<h4 className="font-heading text-brand-primary font-semibold mb-1">
+												{item.title}
+											</h4>
+											<p className="font-body text-sm text-brand-primary/50">
+												{item.desc}
+											</p>
+										</div>
 									</div>
-									<div>
-										<h4 className="text-white font-semibold mb-1">
-											Highly Responsive
-										</h4>
-										<p className="text-sm text-gray-400">
-											Quick turnaround times and constant communication
-											throughout development
-										</p>
-									</div>
-								</div>
-								<div className="flex items-start gap-4">
-									<div className="p-3 bg-cyan-500/20 rounded-lg">
-										<Globe className="w-6 h-6 text-cyan-500" />
-									</div>
-									<div>
-										<h4 className="text-white font-semibold mb-1">
-											Same Timezone
-										</h4>
-										<p className="text-sm text-gray-400">
-											LATAM-based team for seamless real-time collaboration
-										</p>
-									</div>
-								</div>
-								<div className="flex items-start gap-4">
-									<div className="p-3 bg-green-500/20 rounded-lg">
-										<Users className="w-6 h-6 text-green-500" />
-									</div>
-									<div>
-										<h4 className="text-white font-semibold mb-1">
-											Cultural Alignment
-										</h4>
-										<p className="text-sm text-gray-400">
-											Strong work ethic and cultural compatibility with US/EU
-											teams
-										</p>
-									</div>
-								</div>
-								<div className="flex items-start gap-4">
-									<div className="p-3 bg-blue-500/20 rounded-lg">
-										<Shield className="w-6 h-6 text-blue-500" />
-									</div>
-									<div>
-										<h4 className="text-white font-semibold mb-1">
-											Offshore Pricing
-										</h4>
-										<p className="text-sm text-gray-400">
-											Premium quality at competitive LATAM rates - save 40-60%
-										</p>
-									</div>
-								</div>
+								))}
 							</div>
 						</div>
 
 						{/* Action Buttons */}
 						<div className="flex flex-col sm:flex-row gap-4">
-							<button
-								onClick={resetCalculator}
-								className="px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full font-semibold hover:bg-white/10 transition-all duration-300"
-							>
+							<Button onClick={resetCalculator} variant="ghost">
 								Start Over
-							</button>
+							</Button>
 						</div>
 
-						<p className="text-center text-sm text-gray-400">
-							*Final pricing may vary based on specific requirements and project
-							scope
+						<p className="font-body text-center text-sm text-brand-primary/30">
+							*Final pricing may vary based on specific requirements and project scope
 						</p>
 					</motion.div>
 				</div>
+
+				<Footer />
 			</div>
 		);
 	}
 
 	return (
-		<div className="min-h-screen bg-slate-950">
+		<div className="min-h-screen">
 			<Navbar />
-			<ShaderBackground />
 
-			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
 				{/* Header */}
 				<motion.div
 					initial={{
@@ -457,14 +418,12 @@ export default function PricingCalculator() {
 					animate={{ opacity: ANIMATION_CONFIG.finalOpacity, y: 0 }}
 					className="text-center mb-12"
 				>
-					<Calculator className="w-16 h-16 text-cyan-400 mx-auto mb-4" />
-					<h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+					<Calculator className="size-16 text-brand-gold mx-auto mb-4" />
+					<h1 className="font-heading text-4xl sm:text-5xl font-bold text-brand-primary mb-4">
 						Project Pricing{" "}
-						<span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-							Calculator
-						</span>
+						<span className="text-brand-gold">Calculator</span>
 					</h1>
-					<p className="text-xl text-gray-400 max-w-2xl mx-auto">
+					<p className="font-body text-xl text-brand-primary/50 max-w-2xl mx-auto">
 						Get an instant estimate for your project in just a few steps
 					</p>
 				</motion.div>
@@ -475,22 +434,21 @@ export default function PricingCalculator() {
 						{/* Progress Bar */}
 						<div className="mb-8">
 							<div className="flex justify-between items-center mb-2">
-								<span className="text-sm text-gray-400">
+								<span className="font-body text-sm text-brand-primary/50">
 									Step {currentStep + 1} of {PRICING_STEPS.length}
 								</span>
-								<span className="text-sm text-cyan-400">
-									{Math.round(((currentStep + 1) / PRICING_STEPS.length) * 100)}
-									%
+								<span className="font-body text-sm text-brand-gold">
+									{Math.round(((currentStep + 1) / PRICING_STEPS.length) * 100)}%
 								</span>
 							</div>
-							<div className="h-2 bg-white/5 rounded-full overflow-hidden">
+							<div className="h-2 bg-surface rounded-full overflow-hidden">
 								<motion.div
 									initial={{ width: ANIMATION_CONFIG.initialWidth }}
 									animate={{
 										width: `${((currentStep + 1) / PRICING_STEPS.length) * 100}%`,
 									}}
 									transition={{ duration: ANIMATION_CONFIG.duration.fast }}
-									className="h-full bg-gradient-to-r from-cyan-500 to-blue-600"
+									className="h-full bg-brand-gold"
 								/>
 							</div>
 						</div>
@@ -506,14 +464,14 @@ export default function PricingCalculator() {
 									opacity: ANIMATION_CONFIG.finalOpacity,
 									scale: ANIMATION_CONFIG.finalScale,
 								}}
-								className="mb-6 p-4 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/30 rounded-xl"
+								className="mb-6 p-4 bg-green-500/10 border border-green-500/30 rounded-xl"
 							>
 								<div className="flex items-center justify-between">
 									<div className="flex items-center gap-2">
-										<DollarSign className="w-5 h-5 text-green-400" />
-										<span className="text-gray-300">Current Step Total:</span>
+										<DollarSign className="size-5 text-green-400" />
+										<span className="font-body text-brand-primary/60">Current Step Total:</span>
 									</div>
-									<span className="text-2xl font-bold text-green-400">
+									<span className="font-heading text-2xl font-bold text-green-400">
 										+${currentTotal.toLocaleString()}
 									</span>
 								</div>
@@ -537,12 +495,12 @@ export default function PricingCalculator() {
 									x: -ANIMATION_CONFIG.initialY.medium,
 								}}
 								transition={{ duration: ANIMATION_CONFIG.duration.fast }}
-								className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl p-8 mb-8"
+								className="bg-surface border border-border rounded-2xl p-8 mb-8"
 							>
-								<h2 className="text-3xl font-bold text-white mb-2">
+								<h2 className="font-heading text-3xl font-bold text-brand-primary mb-2">
 									{currentStepData.title}
 								</h2>
-								<p className="text-gray-400 mb-8">
+								<p className="font-body text-brand-primary/50 mb-8">
 									{currentStepData.description}
 								</p>
 
@@ -556,31 +514,30 @@ export default function PricingCalculator() {
 												onMouseLeave={() => setHoveredOption(null)}
 												className={`w-full relative p-6 text-left rounded-xl border-2 transition-all duration-300 ${
 													isSelected(option.id)
-														? "border-cyan-500 bg-cyan-500/10"
-														: "border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10"
+														? "border-brand-gold bg-brand-gold/10"
+														: "border-border bg-surface hover:border-border-gold hover:bg-surface-hover"
 												}`}
 											>
 												<div className="flex items-start justify-between gap-4">
 													<div className="flex-1">
 														<div className="flex items-center gap-2 mb-1">
-															<h3 className="text-lg font-semibold text-white">
+															<h3 className="font-heading text-lg font-semibold text-brand-primary">
 																{option.name}
 															</h3>
-															<Info className="w-4 h-4 text-gray-500" />
+															<Info className="size-4 text-brand-primary/30" />
 														</div>
 														{option.basePrice > 0 && (
-															<p className="text-cyan-400 font-semibold mt-2">
+															<p className="font-body text-brand-gold font-semibold mt-2">
 																+${option.basePrice.toLocaleString()}
 															</p>
 														)}
 													</div>
 													{isSelected(option.id) && (
-														<Check className="w-6 h-6 text-cyan-400 flex-shrink-0" />
+														<Check className="size-6 text-brand-gold shrink-0" />
 													)}
 												</div>
 											</button>
 
-											{/* Tooltip on Hover */}
 											{hoveredOption === option.id && (
 												<motion.div
 													initial={{
@@ -595,9 +552,9 @@ export default function PricingCalculator() {
 														opacity: ANIMATION_CONFIG.initialOpacity,
 														y: ANIMATION_CONFIG.initialY.small,
 													}}
-													className="absolute z-10 left-0 right-0 -bottom-2 translate-y-full p-4 bg-slate-800 border border-cyan-500/30 rounded-xl shadow-xl"
+													className="absolute z-10 left-0 right-0 -bottom-2 translate-y-full p-4 bg-brand-bg border border-border-gold rounded-xl shadow-xl"
 												>
-													<p className="text-sm text-gray-300">
+													<p className="font-body text-sm text-brand-primary/70">
 														{option.description}
 													</p>
 												</motion.div>
@@ -607,7 +564,7 @@ export default function PricingCalculator() {
 								</div>
 
 								{isMultiSelect && (
-									<p className="text-sm text-gray-500 mt-4 text-center">
+									<p className="font-body text-sm text-brand-primary/30 mt-4 text-center">
 										💡 You can select multiple options
 									</p>
 								)}
@@ -616,35 +573,23 @@ export default function PricingCalculator() {
 
 						{/* Navigation Buttons */}
 						<div className="flex justify-between items-center">
-							<button
-								type="button"
+							<Button
 								onClick={prevStep}
 								disabled={currentStep === 0}
-								className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-									currentStep === 0
-										? "bg-white/5 text-gray-600 cursor-not-allowed"
-										: "bg-white/10 text-white hover:bg-white/20"
-								}`}
+								variant="ghost"
 							>
-								<ArrowLeft className="w-5 h-5" />
+								<ArrowLeft className="size-5" />
 								Previous
-							</button>
+							</Button>
 
-							<button
-								type="button"
+							<Button
 								onClick={nextStep}
 								disabled={!canProceed()}
-								className={`flex items-center gap-2 px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
-									canProceed()
-										? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:shadow-lg hover:shadow-cyan-500/50 transform hover:scale-105"
-										: "bg-white/5 text-gray-600 cursor-not-allowed"
-								}`}
+								variant={canProceed() ? "gold" : "ghost"}
 							>
-								{currentStep === PRICING_STEPS.length - 1
-									? "See Estimate"
-									: "Next"}
-								<ArrowRight className="w-5 h-5" />
-							</button>
+								{currentStep === PRICING_STEPS.length - 1 ? "See Estimate" : "Next"}
+								<ArrowRight className="size-5" />
+							</Button>
 						</div>
 					</div>
 
@@ -654,6 +599,8 @@ export default function PricingCalculator() {
 					</div>
 				</div>
 			</div>
+
+			<Footer />
 		</div>
 	);
 }

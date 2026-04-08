@@ -13,8 +13,9 @@ import {
 import { motion } from "framer-motion";
 import { z } from "zod";
 import { CAL_LINKS, SOCIAL_LINKS } from "~/lib/constants";
+import SectionHeader from "@/components/ui/SectionHeader";
+import Button from "@/components/ui/Button";
 
-// Validation schema (matches backend)
 const contactSchema = z.object({
 	name: z
 		.string()
@@ -76,7 +77,6 @@ export default function Contact() {
 		setErrorMessage("");
 		setFieldErrors({});
 
-		// Validate all fields before submitting
 		try {
 			contactSchema.parse(formData);
 		} catch (error) {
@@ -107,12 +107,9 @@ export default function Contact() {
 			}
 
 			setStatus("success");
-			// Reset form
 			setFormData({ name: "", email: "", company: "", message: "" });
 			setFieldErrors({});
 			setTouchedFields({});
-
-			// Reset success message after 5 seconds
 			setTimeout(() => setStatus("idle"), 5000);
 		} catch (error) {
 			setStatus("error");
@@ -127,12 +124,7 @@ export default function Contact() {
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 	) => {
 		const { name, value } = e.target;
-		setFormData((prev) => ({
-			...prev,
-			[name]: value,
-		}));
-
-		// Validate field if it's been touched
+		setFormData((prev) => ({ ...prev, [name]: value }));
 		if (touchedFields[name]) {
 			validateField(name, value);
 		}
@@ -146,27 +138,22 @@ export default function Contact() {
 		validateField(name, value);
 	};
 
+	const inputBase =
+		"w-full px-4 py-3 bg-surface border rounded-lg text-brand-primary placeholder-brand-primary/30 focus:outline-none transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed font-body";
+
 	return (
 		<section id="contact" className="relative py-24 overflow-hidden">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				{/* Section Header */}
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true }}
-					transition={{ duration: 0.6 }}
-					className="text-center mb-16"
-				>
-					<h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-						Let&apos;s Build{" "}
-						<span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-							Together
-						</span>
-					</h2>
-					<p className="text-xl text-gray-400 max-w-2xl mx-auto">
-						Book a free 15-minute call or request a proposal
-					</p>
-				</motion.div>
+				<div className="mb-16 flex flex-col items-center">
+					<SectionHeader
+						heading={
+							<>
+								Let&apos;s Build <span className="text-brand-gold">Together</span>
+							</>
+						}
+						subtitle="Book a free 15-minute call or send us a message."
+					/>
+				</div>
 
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
 					{/* Contact Form */}
@@ -175,10 +162,9 @@ export default function Contact() {
 						whileInView={{ opacity: 1, x: 0 }}
 						viewport={{ once: true }}
 						transition={{ duration: 0.6 }}
-						className="space-y-6"
 					>
-						<div className="p-8 bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl">
-							<h3 className="text-2xl font-bold text-white mb-6">
+						<div className="p-8 bg-surface border border-border rounded-2xl">
+							<h3 className="font-heading text-2xl font-bold text-brand-primary mb-6">
 								Send us a message
 							</h3>
 
@@ -186,7 +172,7 @@ export default function Contact() {
 								<div>
 									<label
 										htmlFor="name"
-										className="block text-sm font-medium text-gray-300 mb-2"
+										className="block font-body text-sm font-medium text-brand-primary/70 mb-2"
 									>
 										Name *
 									</label>
@@ -198,15 +184,15 @@ export default function Contact() {
 										onChange={handleChange}
 										onBlur={handleBlur}
 										disabled={status === "loading"}
-										className={`w-full px-4 py-3 bg-white/5 border rounded-lg text-white placeholder-gray-500 focus:outline-none transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${
+										className={`${inputBase} ${
 											fieldErrors.name
 												? "border-red-500/50 focus:border-red-500"
-												: "border-white/10 focus:border-cyan-500/50"
+												: "border-border focus:border-brand-gold/50"
 										}`}
 										placeholder="Your name"
 									/>
 									{fieldErrors.name && (
-										<p className="mt-1 text-sm text-red-400">
+										<p className="mt-1 font-body text-sm text-red-400">
 											{fieldErrors.name}
 										</p>
 									)}
@@ -215,7 +201,7 @@ export default function Contact() {
 								<div>
 									<label
 										htmlFor="email"
-										className="block text-sm font-medium text-gray-300 mb-2"
+										className="block font-body text-sm font-medium text-brand-primary/70 mb-2"
 									>
 										Email *
 									</label>
@@ -227,15 +213,15 @@ export default function Contact() {
 										onChange={handleChange}
 										onBlur={handleBlur}
 										disabled={status === "loading"}
-										className={`w-full px-4 py-3 bg-white/5 border rounded-lg text-white placeholder-gray-500 focus:outline-none transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${
+										className={`${inputBase} ${
 											fieldErrors.email
 												? "border-red-500/50 focus:border-red-500"
-												: "border-white/10 focus:border-cyan-500/50"
+												: "border-border focus:border-brand-gold/50"
 										}`}
 										placeholder="your@email.com"
 									/>
 									{fieldErrors.email && (
-										<p className="mt-1 text-sm text-red-400">
+										<p className="mt-1 font-body text-sm text-red-400">
 											{fieldErrors.email}
 										</p>
 									)}
@@ -244,7 +230,7 @@ export default function Contact() {
 								<div>
 									<label
 										htmlFor="company"
-										className="block text-sm font-medium text-gray-300 mb-2"
+										className="block font-body text-sm font-medium text-brand-primary/70 mb-2"
 									>
 										Company (optional)
 									</label>
@@ -256,15 +242,15 @@ export default function Contact() {
 										onChange={handleChange}
 										onBlur={handleBlur}
 										disabled={status === "loading"}
-										className={`w-full px-4 py-3 bg-white/5 border rounded-lg text-white placeholder-gray-500 focus:outline-none transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${
+										className={`${inputBase} ${
 											fieldErrors.company
 												? "border-red-500/50 focus:border-red-500"
-												: "border-white/10 focus:border-cyan-500/50"
+												: "border-border focus:border-brand-gold/50"
 										}`}
 										placeholder="Your company"
 									/>
 									{fieldErrors.company && (
-										<p className="mt-1 text-sm text-red-400">
+										<p className="mt-1 font-body text-sm text-red-400">
 											{fieldErrors.company}
 										</p>
 									)}
@@ -273,7 +259,7 @@ export default function Contact() {
 								<div>
 									<label
 										htmlFor="message"
-										className="block text-sm font-medium text-gray-300 mb-2"
+										className="block font-body text-sm font-medium text-brand-primary/70 mb-2"
 									>
 										Message *
 									</label>
@@ -285,51 +271,51 @@ export default function Contact() {
 										onBlur={handleBlur}
 										disabled={status === "loading"}
 										rows={4}
-										className={`w-full px-4 py-3 bg-white/5 border rounded-lg text-white placeholder-gray-500 focus:outline-none transition-colors duration-300 resize-none disabled:opacity-50 disabled:cursor-not-allowed ${
+										className={`${inputBase} resize-none ${
 											fieldErrors.message
 												? "border-red-500/50 focus:border-red-500"
-												: "border-white/10 focus:border-cyan-500/50"
+												: "border-border focus:border-brand-gold/50"
 										}`}
 										placeholder="Tell us about your project..."
 									/>
 									{fieldErrors.message && (
-										<p className="mt-1 text-sm text-red-400">
+										<p className="mt-1 font-body text-sm text-red-400">
 											{fieldErrors.message}
 										</p>
 									)}
 								</div>
 
-								{/* Status Messages */}
 								{status === "success" && (
-									<div className="flex items-center space-x-2 p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
-										<CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-										<p className="text-green-400 text-sm">
+									<div className="flex items-center gap-2 p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
+										<CheckCircle className="size-5 text-green-400 shrink-0" />
+										<p className="font-body text-green-400 text-sm">
 											Thank you! We&apos;ll get back to you soon.
 										</p>
 									</div>
 								)}
 
 								{status === "error" && (
-									<div className="flex items-start space-x-2 p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
-										<AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
-										<p className="text-red-400 text-sm">{errorMessage}</p>
+									<div className="flex items-start gap-2 p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
+										<AlertCircle className="size-5 text-red-400 shrink-0 mt-0.5" />
+										<p className="font-body text-red-400 text-sm">{errorMessage}</p>
 									</div>
 								)}
 
-								<button
+								<Button
 									type="submit"
-									disabled={status === "loading"}
-									className="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
+									loading={status === "loading"}
+									variant="gold"
+									className="w-full justify-center"
 								>
 									{status === "loading" ? (
 										<>
-											<Loader2 className="w-5 h-5 animate-spin" />
-											<span>Sending...</span>
+											<Loader2 className="size-4 animate-spin" />
+											Sending...
 										</>
 									) : (
-										<span>Send Message</span>
+										"Send Message"
 									)}
-								</button>
+								</Button>
 							</form>
 						</div>
 					</motion.div>
@@ -343,78 +329,74 @@ export default function Contact() {
 						className="space-y-6"
 					>
 						{/* Book a Call Card */}
-						<div className="p-8 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-2xl">
-							<Calendar className="w-12 h-12 text-cyan-400 mb-4" />
-							<h3 className="text-2xl font-bold text-white mb-2">
+						<div className="p-8 bg-brand-gold/10 border border-border-gold rounded-2xl">
+							<Calendar className="size-10 text-brand-gold mb-4" />
+							<h3 className="font-heading text-2xl font-bold text-brand-primary mb-2">
 								Book a Free Call
 							</h3>
-							<p className="text-gray-300 mb-4">
-								Schedule a 15-minute consultation with our Chief Revenue
-								Officer.
+							<p className="font-body text-brand-primary/60 mb-4">
+								Schedule a 15-minute consultation with our Chief Revenue Officer.
 							</p>
-							<p className="text-sm text-gray-400 mb-6">
-								Available 10 AM - 3 PM • Quick response guaranteed
+							<p className="font-body text-sm text-brand-primary/40 mb-6">
+								Available 10 AM – 3 PM • Quick response guaranteed
 							</p>
 							<div className="space-y-3">
-								<a
-									href={CAL_LINKS.ale}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="inline-flex items-center justify-center w-full px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105"
-								>
+								<Button href={CAL_LINKS.ale} variant="gold" className="w-full justify-center">
 									Schedule with Ale
-								</a>
-								<a
+								</Button>
+								<Button
 									href={CAL_LINKS.eliaz}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="inline-flex items-center justify-center w-full px-4 py-2 bg-white/5 border border-white/10 text-gray-300 text-sm rounded-full hover:bg-white/10 transition-all duration-300"
+									variant="ghost"
+									size="sm"
+									className="w-full justify-center"
 								>
-									Enterprise & Fractional CTO
-								</a>
+									Enterprise &amp; Fractional CTO
+								</Button>
 							</div>
 						</div>
 
 						{/* Contact Methods */}
-						<div className="p-8 bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl space-y-6">
-							<h3 className="text-2xl font-bold text-white mb-6">
+						<div className="p-8 bg-surface border border-border rounded-2xl space-y-6">
+							<h3 className="font-heading text-2xl font-bold text-brand-primary">
 								Get in Touch
 							</h3>
 
 							<a
 								href="mailto:ale@bobadilla.tech"
-								className="flex items-center space-x-4 text-gray-300 hover:text-white transition-colors duration-300"
+								className="flex items-center gap-4 font-body text-brand-primary/60 hover:text-brand-primary transition-colors duration-200"
 							>
-								<Mail className="w-6 h-6 text-cyan-400" />
-								<span>ale@bobadilla.tech</span>
+								<Mail className="size-5 text-brand-gold" />
+								ale@bobadilla.tech
 							</a>
 
 							<a
 								href="mailto:eliaz@bobadilla.tech"
-								className="flex items-center space-x-4 text-gray-300 hover:text-white transition-colors duration-300"
+								className="flex items-center gap-4 font-body text-brand-primary/60 hover:text-brand-primary transition-colors duration-200"
 							>
-								<Mail className="w-6 h-6 text-cyan-400" />
-								<span>eliaz@bobadilla.tech</span>
+								<Mail className="size-5 text-brand-gold" />
+								eliaz@bobadilla.tech
 							</a>
 
-							<div className="pt-4 border-t border-white/10">
-								<p className="text-gray-400 mb-4">Follow us</p>
-								<div className="flex space-x-4">
+							<div className="pt-4 border-t border-border">
+								<p className="font-body text-brand-primary/40 text-sm mb-4">
+									Follow us
+								</p>
+								<div className="flex gap-4">
 									<a
 										href={SOCIAL_LINKS.linkedin}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="p-3 bg-white/5 rounded-lg hover:bg-cyan-500/20 text-gray-400 hover:text-cyan-400 transition-all duration-300"
+										className="p-3 bg-surface rounded-lg hover:bg-brand-gold/10 text-brand-primary/50 hover:text-brand-gold transition-all duration-200"
 									>
-										<Linkedin className="w-6 h-6" />
+										<Linkedin className="size-5" />
 									</a>
 									<a
 										href={SOCIAL_LINKS.github}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="p-3 bg-white/5 rounded-lg hover:bg-cyan-500/20 text-gray-400 hover:text-cyan-400 transition-all duration-300"
+										className="p-3 bg-surface rounded-lg hover:bg-brand-gold/10 text-brand-primary/50 hover:text-brand-gold transition-all duration-200"
 									>
-										<Github className="w-6 h-6" />
+										<Github className="size-5" />
 									</a>
 								</div>
 							</div>

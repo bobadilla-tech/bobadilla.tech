@@ -28,11 +28,8 @@
 	"dependencies": {
 		"@libsql/client": "^0.17.0",
 		"@opennextjs/cloudflare": "^1.17.1",
-		"@react-three/drei": "^10.7.7",
-		"@react-three/fiber": "^9.5.0",
 		"@t3-oss/env-nextjs": "^0.13.10",
 		"@types/react-syntax-highlighter": "^15.5.13",
-		"@types/three": "^0.182.0",
 		"dotenv": "^17.3.1",
 		"drizzle-kit": "^0.31.9",
 		"drizzle-orm": "^0.45.1",
@@ -47,7 +44,6 @@
 		"react-markdown": "^10.1.0",
 		"react-syntax-highlighter": "^16.1.0",
 		"remark-gfm": "^4.0.1",
-		"three": "^0.182.0",
 		"zod": "^4.3.6"
 	},
 	"devDependencies": {

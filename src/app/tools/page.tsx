@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/ui/Navbar";
+import Footer from "@/components/ui/Footer";
+import SectionHeader from "@/components/ui/SectionHeader";
+import Button from "@/components/ui/Button";
 import { Calendar, ArrowRight } from "lucide-react";
 import { generateMetadata as generateSEOMetadata, BASE_URL } from "~/lib/seo";
 
@@ -39,40 +42,40 @@ const categories = Array.from(new Set(tools.map((tool) => tool.category)));
 
 export default function ToolsPage() {
 	return (
-		<div className="relative min-h-screen bg-slate-950">
+		<div className="relative min-h-screen">
 			<Navbar />
 
-			<main className="relative z-10 pt-32 pb-24">
+			<main className="pt-32 pb-24">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					{/* Breadcrumb */}
 					<div className="mb-8">
-						<div className="flex items-center space-x-2 text-sm text-gray-400">
-							<Link href="/" className="hover:text-white transition-colors">
+						<div className="flex items-center gap-2 font-body text-sm text-brand-primary/40">
+							<Link href="/" className="hover:text-brand-primary transition-colors duration-200">
 								Home
 							</Link>
 							<span>/</span>
-							<span className="text-white">Tools</span>
+							<span className="text-brand-primary">Tools</span>
 						</div>
 					</div>
 
 					{/* Header */}
-					<div className="mb-16 text-center">
-						<h1 className="text-5xl sm:text-6xl font-bold text-white mb-6">
-							Free{" "}
-							<span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-								Tools
-							</span>
-						</h1>
-						<p className="text-xl text-gray-400 max-w-3xl mx-auto">
-							Powerful online tools built for developers, researchers, and
-							content creators. All tools are free to use and privacy-focused.
-						</p>
+					<div className="flex flex-col items-center mb-16">
+						<SectionHeader
+							heading={
+								<>
+									Free <span className="text-brand-gold">Tools</span>
+								</>
+							}
+							subtitle="Powerful online tools built for developers, researchers, and content creators. All tools are free and privacy-focused."
+						/>
 					</div>
 
 					{/* Tools by Category */}
 					{categories.map((category) => (
 						<div key={category} className="mb-16">
-							<h2 className="text-3xl font-bold text-white mb-8">{category}</h2>
+							<h2 className="font-heading text-2xl font-bold text-brand-primary mb-8">
+								{category}
+							</h2>
 							<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 								{tools
 									.filter((tool) => tool.category === category)
@@ -82,39 +85,34 @@ export default function ToolsPage() {
 											<Link
 												key={tool.id}
 												href={`/tools/${tool.slug}`}
-												className="group p-6 bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-cyan-500/50 transition-all duration-300 hover:scale-105"
+												className="group p-6 bg-surface border border-border rounded-2xl hover:border-border-gold transition-all duration-300 hover:scale-[1.02] flex flex-col gap-4"
 											>
-												{/* Icon */}
-												<div className="w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-xl flex items-center justify-center mb-4">
-													<Icon className="w-6 h-6 text-cyan-400" />
+												<div className="size-12 bg-brand-gold/10 rounded-xl flex items-center justify-center">
+													<Icon className="size-6 text-brand-gold" />
 												</div>
 
-												{/* Title */}
-												<h3 className="text-xl font-semibold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300">
+												<h3 className="font-heading text-xl font-semibold text-brand-primary group-hover:text-brand-gold transition-colors duration-200">
 													{tool.name}
 												</h3>
 
-												{/* Description */}
-												<p className="text-gray-400 text-sm mb-4 line-clamp-2">
+												<p className="font-body text-brand-primary/50 text-sm line-clamp-2">
 													{tool.description}
 												</p>
 
-												{/* Tags */}
-												<div className="flex flex-wrap gap-2 mb-4">
+												<div className="flex flex-wrap gap-2">
 													{tool.tags.map((tag) => (
 														<span
 															key={tag}
-															className="px-2 py-1 bg-white/5 text-gray-400 text-xs rounded"
+															className="px-2 py-1 bg-surface font-body text-brand-primary/40 text-xs rounded"
 														>
 															{tag}
 														</span>
 													))}
 												</div>
 
-												{/* Arrow */}
-												<div className="flex items-center text-cyan-400 group-hover:text-cyan-300 transition-colors duration-300">
-													<span className="text-sm font-medium">Use Tool</span>
-													<ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+												<div className="flex items-center gap-2 text-brand-gold font-body text-sm font-medium mt-auto">
+													<span>Use Tool</span>
+													<ArrowRight className="size-4 group-hover:translate-x-1 transition-transform duration-200" />
 												</div>
 											</Link>
 										);
@@ -125,60 +123,43 @@ export default function ToolsPage() {
 
 					{/* More Tools Coming Soon */}
 					<div className="mt-16 text-center">
-						<div className="inline-block p-8 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-2xl">
-							<h3 className="text-2xl font-bold text-white mb-2">
+						<div className="inline-block p-8 bg-brand-gold/10 border border-border-gold rounded-2xl">
+							<h3 className="font-heading text-2xl font-bold text-brand-primary mb-2">
 								More Tools Coming Soon
 							</h3>
-							<p className="text-gray-400 mb-4">
-								We&apos;re constantly building new tools to help developers and
-								content creators.
+							<p className="font-body text-brand-primary/50 mb-4">
+								We&apos;re constantly building new tools to help developers and content creators.
 							</p>
-							<Link
-								href="/#contact"
-								className="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition-colors duration-300"
-							>
-								<span className="text-sm font-medium">Suggest a Tool</span>
-								<ArrowRight className="w-4 h-4 ml-2" />
-							</Link>
+							<Button to="/#contact" variant="outline">
+								<span className="font-body text-sm font-medium">Suggest a Tool</span>
+							</Button>
 						</div>
 					</div>
 
 					{/* Why Use Our Tools */}
-					<div className="mt-16 bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
-						<h2 className="text-2xl font-bold text-white mb-6">
+					<div className="mt-16 bg-surface border border-border rounded-2xl p-8">
+						<h2 className="font-heading text-2xl font-bold text-brand-primary mb-6">
 							Why Use Our Tools?
 						</h2>
 						<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-							<div>
-								<h3 className="text-lg font-semibold text-white mb-2">
-									100% Free
-								</h3>
-								<p className="text-gray-400 text-sm">
-									All our tools are completely free to use. No hidden fees, no
-									subscriptions.
-								</p>
-							</div>
-							<div>
-								<h3 className="text-lg font-semibold text-white mb-2">
-									Privacy-Focused
-								</h3>
-								<p className="text-gray-400 text-sm">
-									We don&apos;t store your data. Everything happens in your
-									browser.
-								</p>
-							</div>
-							<div>
-								<h3 className="text-lg font-semibold text-white mb-2">
-									No Sign-Up Required
-								</h3>
-								<p className="text-gray-400 text-sm">
-									Start using any tool immediately. No account creation needed.
-								</p>
-							</div>
+							{[
+								{ title: "100% Free", desc: "All our tools are completely free to use. No hidden fees, no subscriptions." },
+								{ title: "Privacy-Focused", desc: "We don't store your data. Everything happens in your browser." },
+								{ title: "No Sign-Up Required", desc: "Start using any tool immediately. No account creation needed." },
+							].map((item) => (
+								<div key={item.title}>
+									<h3 className="font-heading text-lg font-semibold text-brand-primary mb-2">
+										{item.title}
+									</h3>
+									<p className="font-body text-brand-primary/50 text-sm">{item.desc}</p>
+								</div>
+							))}
 						</div>
 					</div>
 				</div>
 			</main>
+
+			<Footer />
 		</div>
 	);
 }

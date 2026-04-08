@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Navbar from "@/components/ui/Navbar";
-import ShaderBackground from "@/components/shaders/ShaderBackgroundLazy";
+import Footer from "@/components/ui/Footer";
 import { getPostBySlug, getAllPosts } from "@/data/blog";
 import {
 	Calendar,
@@ -22,7 +22,7 @@ import {
 	BASE_URL,
 	SITE_NAME,
 } from "~/lib/seo";
-import { EXTERNAL_LINKS, COPYRIGHT_TEXT } from "~/lib/constants";
+import { EXTERNAL_LINKS } from "~/lib/constants";
 
 interface PageProps {
 	params: Promise<{ slug: string }>;
@@ -72,16 +72,15 @@ export default async function BlogPostPage({ params }: PageProps) {
 	}
 
 	return (
-		<div className="relative min-h-screen bg-slate-950">
-			<ShaderBackground />
+		<div className="relative min-h-screen">
 			<Navbar />
 
-			<main className="relative z-10 pt-32 pb-24">
+			<main className="pt-32 pb-24">
 				<article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 					{/* Back Button */}
 					<Link
 						href="/blog"
-						className="inline-flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors duration-200 mb-8"
+						className="inline-flex items-center gap-2 text-brand-primary/50 hover:text-brand-gold transition-colors duration-200 mb-8 font-body"
 					>
 						<ArrowLeft className="w-4 h-4" />
 						Back to Blog
@@ -89,21 +88,21 @@ export default async function BlogPostPage({ params }: PageProps) {
 
 					{/* Category Badge */}
 					<div className="mb-6">
-						<span className="px-4 py-2 bg-cyan-500/20 text-cyan-400 text-sm font-medium rounded-full">
+						<span className="px-4 py-2 bg-brand-gold/10 text-brand-gold text-sm font-medium rounded-full font-body">
 							{post.category}
 						</span>
 					</div>
 
 					{/* Title */}
-					<h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+					<h1 className="font-heading text-4xl sm:text-5xl font-bold text-brand-primary mb-6">
 						{post.title}
 					</h1>
 
 					{/* Description */}
-					<p className="text-xl text-gray-400 mb-8">{post.description}</p>
+					<p className="font-body text-xl text-brand-primary/60 mb-8">{post.description}</p>
 
 					{/* Meta Information */}
-					<div className="flex flex-wrap items-center gap-6 text-gray-400 text-sm mb-8 pb-8 border-b border-white/10">
+					<div className="flex flex-wrap items-center gap-6 text-brand-primary/40 text-sm mb-8 pb-8 border-b border-border font-body">
 						<div className="flex items-center gap-2">
 							<Calendar className="w-5 h-5" />
 							<span>
@@ -127,10 +126,10 @@ export default async function BlogPostPage({ params }: PageProps) {
 								className="rounded-full object-cover"
 							/>
 							<div className="flex flex-col">
-								<span className="font-medium text-white">
+								<span className="font-medium text-brand-primary">
 									{post.author.name}
 								</span>
-								<span className="text-gray-500 text-xs">
+								<span className="text-brand-primary/30 text-xs">
 									{post.author.role}
 								</span>
 							</div>
@@ -143,7 +142,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 							<Link
 								key={tag}
 								href={`/blog?tag=${encodeURIComponent(tag)}`}
-								className="inline-flex items-center gap-1 px-3 py-1 bg-white/5 text-gray-400 text-sm rounded-lg hover:bg-cyan-500/20 hover:text-cyan-400 transition-all duration-200"
+								className="inline-flex items-center gap-1 px-3 py-1 bg-surface text-brand-primary/50 text-sm rounded-lg hover:bg-brand-gold/10 hover:text-brand-gold transition-all duration-200 font-body"
 							>
 								<Tag className="w-4 h-4" />
 								{tag}
@@ -152,27 +151,27 @@ export default async function BlogPostPage({ params }: PageProps) {
 					</div>
 
 					{/* Content */}
-					<div className="prose prose-invert prose-cyan max-w-none text-gray-300 leading-relaxed">
+					<div className="prose prose-invert max-w-none text-brand-primary/80 leading-relaxed">
 						<ReactMarkdown
 							remarkPlugins={[remarkGfm]}
 							components={{
 								h1: ({ children }) => (
-									<h1 className="text-3xl font-bold text-white mt-8 mb-4">
+									<h1 className="font-heading text-3xl font-bold text-brand-primary mt-8 mb-4">
 										{children}
 									</h1>
 								),
 								h2: ({ children }) => (
-									<h2 className="text-2xl font-bold text-white mt-6 mb-3">
+									<h2 className="font-heading text-2xl font-bold text-brand-primary mt-6 mb-3">
 										{children}
 									</h2>
 								),
 								h3: ({ children }) => (
-									<h3 className="text-xl font-bold text-white mt-4 mb-2">
+									<h3 className="font-heading text-xl font-bold text-brand-primary mt-4 mb-2">
 										{children}
 									</h3>
 								),
 								p: ({ children }) => (
-									<p className="mb-4 text-gray-300">{children}</p>
+									<p className="font-body mb-4 text-brand-primary/70">{children}</p>
 								),
 								ul: ({ children }) => (
 									<ul className="list-disc ml-6 mb-4 space-y-2">{children}</ul>
@@ -183,12 +182,12 @@ export default async function BlogPostPage({ params }: PageProps) {
 									</ol>
 								),
 								li: ({ children }) => (
-									<li className="text-gray-300">{children}</li>
+									<li className="font-body text-brand-primary/70">{children}</li>
 								),
 								a: ({ href, children }) => (
 									<a
 										href={href}
-										className="text-cyan-400 hover:text-cyan-300 underline"
+										className="text-brand-gold hover:text-brand-gold-light underline"
 										target="_blank"
 										rel="noopener noreferrer"
 									>
@@ -201,7 +200,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 									const isInline = !className;
 
 									return isInline ? (
-										<code className="bg-slate-800 text-cyan-400 px-1.5 py-0.5 rounded text-sm">
+										<code className="bg-surface text-brand-gold px-1.5 py-0.5 rounded text-sm font-mono">
 											{children}
 										</code>
 									) : (
@@ -213,7 +212,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 									);
 								},
 								blockquote: ({ children }) => (
-									<blockquote className="border-l-4 border-cyan-500 pl-4 italic text-gray-400 my-4">
+									<blockquote className="border-l-4 border-brand-gold pl-4 italic text-brand-primary/50 my-4">
 										{children}
 									</blockquote>
 								),
@@ -224,11 +223,11 @@ export default async function BlogPostPage({ params }: PageProps) {
 					</div>
 
 					{/* Share Section */}
-					<div className="mt-16 pt-8 border-t border-white/10">
-						<h3 className="text-xl font-bold text-white mb-4">
+					<div className="mt-16 pt-8 border-t border-border">
+						<h3 className="font-heading text-xl font-bold text-brand-primary mb-4">
 							Found this helpful?
 						</h3>
-						<p className="text-gray-400 mb-6">Share it with your network</p>
+						<p className="font-body text-brand-primary/50 mb-6">Share it with your network</p>
 
 						{/* Social Share Buttons */}
 						<div className="flex flex-wrap gap-4 mb-12">
@@ -237,7 +236,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 								href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`${BASE_URL}/blog/${post.slug}`)}&via=bobadillatech`}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="flex items-center gap-2 px-6 py-3 bg-black/50 hover:bg-black/70 border border-white/10 hover:border-cyan-500/50 text-white rounded-full font-medium transition-all duration-300"
+								className="flex items-center gap-2 px-6 py-3 bg-surface hover:bg-surface-hover border border-border hover:border-border-gold text-brand-primary rounded-full font-body font-medium transition-all duration-300"
 							>
 								<Twitter className="w-5 h-5" />
 								<span>Share on X</span>
@@ -248,7 +247,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 								href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(`${BASE_URL}/blog/${post.slug}`)}&title=${encodeURIComponent(post.title)}&summary=${encodeURIComponent(post.description)}&source=${encodeURIComponent(SITE_NAME)}`}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="flex items-center gap-2 px-6 py-3 bg-[#0077B5]/20 hover:bg-[#0077B5]/30 border border-[#0077B5]/30 hover:border-[#0077B5]/50 text-white rounded-full font-medium transition-all duration-300"
+								className="flex items-center gap-2 px-6 py-3 bg-[#0077B5]/20 hover:bg-[#0077B5]/30 border border-[#0077B5]/30 hover:border-[#0077B5]/50 text-brand-primary rounded-full font-body font-medium transition-all duration-300"
 							>
 								<Linkedin className="w-5 h-5" />
 								<span>Share on LinkedIn</span>
@@ -259,7 +258,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 								href={`https://reddit.com/submit?url=${encodeURIComponent(`${BASE_URL}/blog/${post.slug}`)}&title=${encodeURIComponent(post.title)}`}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="flex items-center gap-2 px-6 py-3 bg-[#FF4500]/20 hover:bg-[#FF4500]/30 border border-[#FF4500]/30 hover:border-[#FF4500]/50 text-white rounded-full font-medium transition-all duration-300"
+								className="flex items-center gap-2 px-6 py-3 bg-[#FF4500]/20 hover:bg-[#FF4500]/30 border border-[#FF4500]/30 hover:border-[#FF4500]/50 text-brand-primary rounded-full font-body font-medium transition-all duration-300"
 							>
 								<Share2 className="w-5 h-5" />
 								<span>Share on Reddit</span>
@@ -268,20 +267,20 @@ export default async function BlogPostPage({ params }: PageProps) {
 					</div>
 
 					{/* Promotional CTAs */}
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16 pt-8 border-t border-white/10">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16 pt-8 border-t border-border">
 						{/* Requiem API CTA */}
-						<div className="p-6 bg-gradient-to-br from-purple-900/20 to-purple-800/10 border border-purple-500/30 rounded-xl hover:border-purple-500/50 transition-all duration-300">
-							<h4 className="text-lg font-bold text-white mb-2">
+						<div className="p-6 bg-surface border border-border rounded-xl hover:border-border-gold transition-all duration-300">
+							<h4 className="font-heading text-lg font-bold text-brand-primary mb-2">
 								Need Enterprise APIs?
 							</h4>
-							<p className="text-gray-400 text-sm mb-4">
+							<p className="font-body text-brand-primary/50 text-sm mb-4">
 								Use our Requiem API for scalable, production-ready solutions
 							</p>
 							<a
 								href={EXTERNAL_LINKS.apis}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium transition-colors duration-300"
+								className="inline-flex items-center gap-2 text-brand-gold hover:text-brand-gold-light font-body font-medium transition-colors duration-300"
 							>
 								Learn More
 								<ArrowLeft className="w-4 h-4 rotate-180" />
@@ -289,16 +288,16 @@ export default async function BlogPostPage({ params }: PageProps) {
 						</div>
 
 						{/* Consultancy CTA */}
-						<div className="p-6 bg-gradient-to-br from-cyan-900/20 to-cyan-800/10 border border-cyan-500/30 rounded-xl hover:border-cyan-500/50 transition-all duration-300">
-							<h4 className="text-lg font-bold text-white mb-2">
+						<div className="p-6 bg-brand-gold/10 border border-border-gold rounded-xl hover:border-brand-gold/60 transition-all duration-300">
+							<h4 className="font-heading text-lg font-bold text-brand-primary mb-2">
 								Need Development Services?
 							</h4>
-							<p className="text-gray-400 text-sm mb-4">
+							<p className="font-body text-brand-primary/50 text-sm mb-4">
 								Get expert consultancy to build your next product
 							</p>
 							<Link
 								href="/#contact"
-								className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium transition-colors duration-300"
+								className="inline-flex items-center gap-2 text-brand-gold hover:text-brand-gold-light font-body font-medium transition-colors duration-300"
 							>
 								Get in Touch
 								<ArrowLeft className="w-4 h-4 rotate-180" />
@@ -317,10 +316,10 @@ export default async function BlogPostPage({ params }: PageProps) {
 						if (relatedPosts.length === 0) {
 							return (
 								<div className="text-center py-12">
-									<h2 className="text-3xl font-bold text-white mb-4">
+									<h2 className="font-heading text-3xl font-bold text-brand-primary mb-4">
 										Stay Tuned
 									</h2>
-									<p className="text-gray-400 text-lg">
+									<p className="font-body text-brand-primary/50 text-lg">
 										More content coming soon. Follow us for updates!
 									</p>
 								</div>
@@ -329,7 +328,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
 						return (
 							<>
-								<h2 className="text-3xl font-bold text-white mb-8">
+								<h2 className="font-heading text-3xl font-bold text-brand-primary mb-8">
 									More from our Blog
 								</h2>
 								<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -337,18 +336,18 @@ export default async function BlogPostPage({ params }: PageProps) {
 										<Link
 											key={relatedPost.id}
 											href={`/blog/${relatedPost.slug}`}
-											className="group p-6 bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-cyan-500/50 transition-all duration-300 hover:scale-105"
+											className="group p-6 bg-surface border border-border rounded-2xl hover:border-border-gold transition-all duration-300 hover:scale-[1.02]"
 										>
-											<span className="px-3 py-1 bg-cyan-500/20 text-cyan-400 text-xs font-medium rounded-full">
+											<span className="px-3 py-1 bg-brand-gold/10 text-brand-gold text-xs font-medium rounded-full font-body">
 												{relatedPost.category}
 											</span>
-											<h3 className="text-lg font-bold text-white mt-4 mb-2 group-hover:text-cyan-400 transition-colors duration-300">
+											<h3 className="font-heading text-lg font-bold text-brand-primary mt-4 mb-2 group-hover:text-brand-gold transition-colors duration-300">
 												{relatedPost.title}
 											</h3>
-											<p className="text-gray-400 text-sm line-clamp-2">
+											<p className="font-body text-brand-primary/50 text-sm line-clamp-2">
 												{relatedPost.description}
 											</p>
-											<div className="flex items-center gap-2 text-gray-500 text-xs mt-4">
+											<div className="flex items-center gap-2 text-brand-primary/30 text-xs mt-4 font-body">
 												<Clock className="w-4 h-4" />
 												<span>{relatedPost.readingTime} min read</span>
 											</div>
@@ -359,17 +358,9 @@ export default async function BlogPostPage({ params }: PageProps) {
 						);
 					})()}
 				</section>
-
-				{/* Footer */}
-				<footer className="relative py-12 mt-24 border-t border-white/10">
-					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-						<div className="text-center text-gray-400">
-							<p className="mb-2">{COPYRIGHT_TEXT}</p>
-							<p className="text-sm">Built with Deep Engineering Expertise</p>
-						</div>
-					</div>
-				</footer>
 			</main>
+
+			<Footer />
 		</div>
 	);
 }
