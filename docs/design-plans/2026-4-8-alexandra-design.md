@@ -101,7 +101,7 @@ All in `src/components/ui/`:
 
 ## Homepage Section Order (Figma-aligned)
 
-```
+```text
 Navbar → Hero → StatsBar → Services → WhyBobatech → Industries → FAQ → CTABand → Contact → Footer
 ```
 

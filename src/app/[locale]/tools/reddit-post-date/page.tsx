@@ -151,6 +151,7 @@ export default function RedditPostDateExtractor() {
 											</div>
 											<button
 												onClick={() => copyToClipboard(result.utcDate, "utc")}
+												aria-label={copied === "utc" ? "Copied UTC date" : "Copy UTC date"}
 												className="p-1.5 hover:bg-surface-hover rounded transition-colors duration-200"
 											>
 												{copied === "utc" ? (
@@ -176,6 +177,7 @@ export default function RedditPostDateExtractor() {
 												onClick={() =>
 													copyToClipboard(result.localDate, "local")
 												}
+												aria-label={copied === "local" ? "Copied local date" : "Copy local date"}
 												className="p-1.5 hover:bg-surface-hover rounded transition-colors duration-200"
 											>
 												{copied === "local" ? (
