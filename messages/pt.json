@@ -1,0 +1,49 @@
+{
+	"ServiceHero": {
+		"bookCall": "AGENDAR CHAMADA"
+	},
+	"ServiceReasons": {
+		"heading1": "Razões para",
+		"heading2": "trabalhar conosco",
+		"featuredTitle": "Construído por especialistas reais",
+		"featuredBody": "Você trabalha diretamente com\ndesenvolvedores experientes",
+		"reasons": [
+			"Prazos claros,\nsem surpresas",
+			"Produtos reais,\nnão apenas ideias",
+			"Execução rápida\ne focada",
+			"Uso inteligente\nda tecnologia",
+			"Suporte\nalém do lançamento"
+		]
+	},
+	"ServiceTechStack": {
+		"heading": "NOSSA STACK TECNOLÓGICA"
+	},
+	"ServiceFAQ": {
+		"infoBoxBody": "Tem perguntas ou quer explorar possibilidades? Entre em contato pelo LinkedIn ou agende uma chamada.",
+		"linkedinCta": "CONECTAR NO LINKEDIN",
+		"bookCall": "Agendar uma chamada",
+		"defaults": [
+			{
+				"q": "Com que rapidez vocês entregam um projeto?",
+				"a": "Dependendo da complexidade, MVPs podem ser entregues em 2–4 semanas, produtos completos em 6–12 semanas. Nos comprometemos com prazos claros desde o início."
+			},
+			{
+				"q": "O que acontece se os prazos não forem cumpridos?",
+				"a": "Garantimos nossos compromissos de entrega. Se perdermos um prazo, trabalhamos horas extras sem custo adicional até que esteja concluído."
+			},
+			{
+				"q": "Vocês trabalham com startups?",
+				"a": "Com certeza — trabalhamos com startups em estágio inicial até equipes empresariais. Adaptamos nosso processo ao seu estágio e orçamento."
+			},
+			{
+				"q": "Vocês oferecem suporte após o lançamento?",
+				"a": "Sim. Oferecemos pacotes contínuos de manutenção, monitoramento e crescimento para que seu produto continue melhorando após o lançamento."
+			}
+		]
+	},
+	"ServiceEstimateCTA": {
+		"body": "Candidate-se a um workshop de descoberta gratuito e receba uma <gold>proposta detalhada do projeto</gold> com <gold>cronograma</gold> e <gold>detalhamento de custos</gold>. Disponibilidade limitada — Candidate-se hoje!",
+		"subheading": "OBTENHA UMA ESTIMATIVA GRATUITA",
+		"button": "VERIFIQUE SE VOCÊ SE QUALIFICA"
+	}
+}

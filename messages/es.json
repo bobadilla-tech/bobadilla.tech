@@ -1,0 +1,49 @@
+{
+	"ServiceHero": {
+		"bookCall": "AGENDAR LLAMADA"
+	},
+	"ServiceReasons": {
+		"heading1": "Razones para",
+		"heading2": "trabajar con nosotros",
+		"featuredTitle": "Construido por expertos reales",
+		"featuredBody": "Trabajas directamente con\ndesarrolladores experimentados",
+		"reasons": [
+			"Plazos claros,\nsin sorpresas",
+			"Productos reales,\nno solo ideas",
+			"Ejecución rápida\ny enfocada",
+			"Uso inteligente\nde la tecnología",
+			"Soporte\nmás allá del lanzamiento"
+		]
+	},
+	"ServiceTechStack": {
+		"heading": "NUESTRO STACK TECNOLÓGICO"
+	},
+	"ServiceFAQ": {
+		"infoBoxBody": "¿Tienes preguntas o quieres explorar posibilidades? Contáctanos en LinkedIn o agenda una llamada.",
+		"linkedinCta": "CONECTAR EN LINKEDIN",
+		"bookCall": "Agendar una llamada",
+		"defaults": [
+			{
+				"q": "¿Qué tan rápido pueden entregar un proyecto?",
+				"a": "Según la complejidad, los MVPs pueden entregarse en 2–4 semanas, los productos completos en 6–12 semanas. Nos comprometemos con plazos claros desde el inicio."
+			},
+			{
+				"q": "¿Qué pasa si no se cumplen los plazos?",
+				"a": "Garantizamos nuestros compromisos de entrega. Si no cumplimos un plazo, trabajamos horas extra sin costo adicional hasta que esté listo."
+			},
+			{
+				"q": "¿Trabajan con startups?",
+				"a": "Absolutamente — hemos trabajado con startups en etapas tempranas hasta equipos empresariales. Adaptamos nuestro proceso a tu etapa y presupuesto."
+			},
+			{
+				"q": "¿Ofrecen soporte después del lanzamiento?",
+				"a": "Sí. Ofrecemos paquetes de mantenimiento continuo, monitoreo y crecimiento para que tu producto siga mejorando después del lanzamiento."
+			}
+		]
+	},
+	"ServiceEstimateCTA": {
+		"body": "Solicita un taller de descubrimiento gratuito y recibe una <gold>propuesta de proyecto detallada</gold> con <gold>cronograma</gold> y <gold>desglose de costos</gold>. Disponibilidad limitada — ¡Aplica hoy!",
+		"subheading": "OBTÉN UNA ESTIMACIÓN GRATUITA",
+		"button": "VERIFICA SI CALIFICAS"
+	}
+}

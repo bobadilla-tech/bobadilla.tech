@@ -1,0 +1,49 @@
+{
+	"ServiceHero": {
+		"bookCall": "BOOK A CALL"
+	},
+	"ServiceReasons": {
+		"heading1": "Reasons to",
+		"heading2": "work with us",
+		"featuredTitle": "Built by real experts",
+		"featuredBody": "You work directly with\nexperienced developers",
+		"reasons": [
+			"Clear timelines,\nno surprises",
+			"Real products,\nnot just ideas",
+			"Fast, focused\nexecution",
+			"Smart use\nof technology",
+			"Support\nbeyond launch"
+		]
+	},
+	"ServiceTechStack": {
+		"heading": "OUR CORE TECH STACK"
+	},
+	"ServiceFAQ": {
+		"infoBoxBody": "Have questions or want to explore possibilities? Feel free to reach out on LinkedIn or book a call.",
+		"linkedinCta": "CONNECT ON LINKEDIN",
+		"bookCall": "Book a Call",
+		"defaults": [
+			{
+				"q": "How fast can you deliver a project?",
+				"a": "Depending on complexity, MVPs can be delivered in 2–4 weeks, full products in 6–12 weeks. We commit to clear timelines upfront."
+			},
+			{
+				"q": "What happens if deadlines aren't met?",
+				"a": "We guarantee our delivery commitments. If we miss a deadline, we work overtime at no extra cost until it's done."
+			},
+			{
+				"q": "Do you work with startups?",
+				"a": "Absolutely — we've worked with early-stage startups through to enterprise teams. We adapt our process to your stage and budget."
+			},
+			{
+				"q": "Do you offer support after launch?",
+				"a": "Yes. We offer ongoing maintenance, monitoring, and growth packages so your product keeps improving after launch."
+			}
+		]
+	},
+	"ServiceEstimateCTA": {
+		"body": "Apply for a complimentary discovery workshop and receive a detailed <gold>project proposal</gold> with <gold>timeline</gold> and <gold>cost breakdown</gold>. Limited availability — Apply today!",
+		"subheading": "GET A FREE PROJECT ESTIMATE",
+		"button": "CHECK IF YOU QUALIFY"
+	}
+}
