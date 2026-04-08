@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { allServices } from "@/data/services";
-import Link from "next/link";
+import { Link } from "~/i18n/navigation";
 
 export default function Services() {
 	const t = useTranslations("ServicesSection");
@@ -49,7 +49,7 @@ export default function Services() {
 									<img
 										src={service.image}
 										alt={service.imageAlt ?? service.title}
-										className="absolute inset-0 size-full object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-40"
+										className="absolute inset-0 size-full object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-[0.4]"
 									/>
 								)}
 
