@@ -2,16 +2,13 @@
 
 import { motion } from "framer-motion";
 import { Check, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import SectionHeader from "@/components/ui/SectionHeader";
 
-const rows = [
-	"Fast & predictable delivery",
-	"Transparent pricing",
-	"Senior engineers",
-	"6 months support included",
-];
-
 export default function WhyBobatech() {
+	const t = useTranslations("WhyBobatech");
+	const rows = t.raw("rows") as string[];
+
 	return (
 		<section className="relative py-24 overflow-hidden">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,8 +16,8 @@ export default function WhyBobatech() {
 					<SectionHeader
 						heading={
 							<>
-								WHY TEAMS CHOOSE{" "}
-								<span className="text-brand-gold">BOBA TECH</span>?
+								{t("heading1")}{" "}
+								<span className="text-brand-gold">{t("heading2")}</span>?
 							</>
 						}
 					/>
@@ -37,10 +34,10 @@ export default function WhyBobatech() {
 					<div className="grid grid-cols-3 mb-4">
 						<div />
 						<div className="text-center font-body text-brand-primary/50 text-sm font-light tracking-wider uppercase py-3">
-							Others
+							{t("others")}
 						</div>
 						<div className="text-center font-heading text-brand-gold font-semibold tracking-wider uppercase py-3">
-							Boba Tech
+							{t("bobatech")}
 						</div>
 					</div>
 

@@ -12,25 +12,10 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { z } from "zod";
+import { useTranslations } from "next-intl";
 import { CAL_LINKS, SOCIAL_LINKS } from "~/lib/constants";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Button from "@/components/ui/Button";
-
-const contactSchema = z.object({
-	name: z
-		.string()
-		.min(1, "Name is required")
-		.max(100, "Name must be less than 100 characters"),
-	email: z.string().email("Invalid email address"),
-	company: z
-		.string()
-		.max(100, "Company name must be less than 100 characters")
-		.optional(),
-	message: z
-		.string()
-		.min(10, "Message must be at least 10 characters")
-		.max(2000, "Message must be less than 2000 characters"),
-});
 
 type FieldErrors = {
 	name?: string;
@@ -40,6 +25,24 @@ type FieldErrors = {
 };
 
 export default function Contact() {
+	const t = useTranslations("Contact");
+
+	const contactSchema = z.object({
+		name: z
+			.string()
+			.min(1, t("nameRequired"))
+			.max(100, t("nameTooLong")),
+		email: z.string().email(t("invalidEmail")),
+		company: z
+			.string()
+			.max(100, t("companyTooLong"))
+			.optional(),
+		message: z
+			.string()
+			.min(10, t("messageTooShort"))
+			.max(2000, t("messageTooLong")),
+	});
+
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
@@ -88,7 +91,7 @@ export default function Contact() {
 				});
 				setFieldErrors(errors);
 				setStatus("error");
-				setErrorMessage("Please fix the errors below");
+				setErrorMessage(t("errorSummary"));
 				return;
 			}
 		}
@@ -148,10 +151,11 @@ export default function Contact() {
 					<SectionHeader
 						heading={
 							<>
-								Let&apos;s Build <span className="text-brand-gold">Together</span>
+								{t("heading1")}{" "}
+								<span className="text-brand-gold">{t("heading2")}</span>
 							</>
 						}
-						subtitle="Book a free 15-minute call or send us a message."
+						subtitle={t("subtitle")}
 					/>
 				</div>
 
@@ -165,7 +169,7 @@ export default function Contact() {
 					>
 						<div className="p-8 bg-surface border border-border rounded-2xl">
 							<h3 className="font-heading text-2xl font-bold text-brand-primary mb-6">
-								Send us a message
+								{t("formHeading")}
 							</h3>
 
 							<form onSubmit={handleSubmit} className="space-y-4">
@@ -174,7 +178,7 @@ export default function Contact() {
 										htmlFor="name"
 										className="block font-body text-sm font-medium text-brand-primary/70 mb-2"
 									>
-										Name *
+										{t("nameLabel")}
 									</label>
 									<input
 										type="text"
@@ -189,7 +193,7 @@ export default function Contact() {
 												? "border-red-500/50 focus:border-red-500"
 												: "border-border focus:border-brand-gold/50"
 										}`}
-										placeholder="Your name"
+										placeholder={t("namePlaceholder")}
 									/>
 									{fieldErrors.name && (
 										<p className="mt-1 font-body text-sm text-red-400">
@@ -203,7 +207,7 @@ export default function Contact() {
 										htmlFor="email"
 										className="block font-body text-sm font-medium text-brand-primary/70 mb-2"
 									>
-										Email *
+										{t("emailLabel")}
 									</label>
 									<input
 										type="email"
@@ -218,7 +222,7 @@ export default function Contact() {
 												? "border-red-500/50 focus:border-red-500"
 												: "border-border focus:border-brand-gold/50"
 										}`}
-										placeholder="your@email.com"
+										placeholder={t("emailPlaceholder")}
 									/>
 									{fieldErrors.email && (
 										<p className="mt-1 font-body text-sm text-red-400">
@@ -232,7 +236,7 @@ export default function Contact() {
 										htmlFor="company"
 										className="block font-body text-sm font-medium text-brand-primary/70 mb-2"
 									>
-										Company (optional)
+										{t("companyLabel")}
 									</label>
 									<input
 										type="text"
@@ -247,7 +251,7 @@ export default function Contact() {
 												? "border-red-500/50 focus:border-red-500"
 												: "border-border focus:border-brand-gold/50"
 										}`}
-										placeholder="Your company"
+										placeholder={t("companyPlaceholder")}
 									/>
 									{fieldErrors.company && (
 										<p className="mt-1 font-body text-sm text-red-400">
@@ -261,7 +265,7 @@ export default function Contact() {
 										htmlFor="message"
 										className="block font-body text-sm font-medium text-brand-primary/70 mb-2"
 									>
-										Message *
+										{t("messageLabel")}
 									</label>
 									<textarea
 										id="message"
@@ -276,7 +280,7 @@ export default function Contact() {
 												? "border-red-500/50 focus:border-red-500"
 												: "border-border focus:border-brand-gold/50"
 										}`}
-										placeholder="Tell us about your project..."
+										placeholder={t("messagePlaceholder")}
 									/>
 									{fieldErrors.message && (
 										<p className="mt-1 font-body text-sm text-red-400">
@@ -289,7 +293,7 @@ export default function Contact() {
 									<div className="flex items-center gap-2 p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
 										<CheckCircle className="size-5 text-green-400 shrink-0" />
 										<p className="font-body text-green-400 text-sm">
-											Thank you! We&apos;ll get back to you soon.
+											{t("successMessage")}
 										</p>
 									</div>
 								)}
@@ -310,10 +314,10 @@ export default function Contact() {
 									{status === "loading" ? (
 										<>
 											<Loader2 className="size-4 animate-spin" />
-											Sending...
+											{t("sendingButton")}
 										</>
 									) : (
-										"Send Message"
+										t("sendButton")
 									)}
 								</Button>
 							</form>
@@ -332,17 +336,17 @@ export default function Contact() {
 						<div className="p-8 bg-brand-gold/10 border border-border-gold rounded-2xl">
 							<Calendar className="size-10 text-brand-gold mb-4" />
 							<h3 className="font-heading text-2xl font-bold text-brand-primary mb-2">
-								Book a Free Call
+								{t("bookCallHeading")}
 							</h3>
 							<p className="font-body text-brand-primary/60 mb-4">
-								Schedule a 15-minute consultation with our Chief Revenue Officer.
+								{t("bookCallDesc")}
 							</p>
 							<p className="font-body text-sm text-brand-primary/40 mb-6">
-								Available 10 AM – 3 PM • Quick response guaranteed
+								{t("bookCallAvailability")}
 							</p>
 							<div className="space-y-3">
 								<Button href={CAL_LINKS.ale} variant="gold" className="w-full justify-center">
-									Schedule with Ale
+									{t("scheduleWithAle")}
 								</Button>
 								<Button
 									href={CAL_LINKS.eliaz}
@@ -350,7 +354,7 @@ export default function Contact() {
 									size="sm"
 									className="w-full justify-center"
 								>
-									Enterprise &amp; Fractional CTO
+									{t("enterpriseCTO")}
 								</Button>
 							</div>
 						</div>
@@ -358,7 +362,7 @@ export default function Contact() {
 						{/* Contact Methods */}
 						<div className="p-8 bg-surface border border-border rounded-2xl space-y-6">
 							<h3 className="font-heading text-2xl font-bold text-brand-primary">
-								Get in Touch
+								{t("getInTouchHeading")}
 							</h3>
 
 							<a
@@ -379,7 +383,7 @@ export default function Contact() {
 
 							<div className="pt-4 border-t border-border">
 								<p className="font-body text-brand-primary/40 text-sm mb-4">
-									Follow us
+									{t("followUs")}
 								</p>
 								<div className="flex gap-4">
 									<a

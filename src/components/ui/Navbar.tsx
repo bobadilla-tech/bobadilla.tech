@@ -4,12 +4,14 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { CAL_LINKS, SOCIAL_LINKS, EXTERNAL_LINKS } from "~/lib/constants";
 import Button from "./Button";
 
 export default function Navbar() {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+	const t = useTranslations("Navbar");
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -30,19 +32,11 @@ export default function Navbar() {
 		};
 	}, [isMobileMenuOpen]);
 
-	const navLinks = [
-		{ label: "Services", href: "/services" },
-		{ label: "Projects", href: "/#projects" },
-		{ label: "Resources", href: null, dropdown: true },
-		{ label: "Pricing", href: "/pricing" },
-		{ label: "Contact", href: "/#contact" },
-	];
-
 	const resourceLinks = [
-		{ label: "Blog", href: "/blog" },
-		{ label: "Tools", href: "/tools" },
-		{ label: "Open Source", href: SOCIAL_LINKS.github, external: true },
-		{ label: "APIs", href: EXTERNAL_LINKS.apis, external: true },
+		{ label: t("blog"), href: "/blog" },
+		{ label: t("tools"), href: "/tools" },
+		{ label: t("openSource"), href: SOCIAL_LINKS.github, external: true },
+		{ label: t("apis"), href: EXTERNAL_LINKS.apis, external: true },
 	];
 
 	return (
@@ -54,16 +48,16 @@ export default function Navbar() {
 						: "bg-transparent"
 				}`}
 			>
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div className="w-full px-6 lg:px-10">
 					<div className="grid grid-cols-[auto_1fr_auto] items-center h-28 gap-8">
 						{/* Logo — left */}
-						<Link href="/" className="flex items-center shrink-0">
+						<Link href="/" className="shrink-0 h-28 overflow-hidden flex items-center">
 							<Image
 								src="/assets/logo.png"
 								alt="Boba Tech"
-								width={220}
-								height={80}
-								className="h-20 w-auto"
+								width={500}
+								height={500}
+								className="w-44 h-auto"
 								priority
 							/>
 						</Link>
@@ -72,22 +66,22 @@ export default function Navbar() {
 						<div className="hidden md:flex items-center justify-center gap-8">
 							<Link
 								href="/services"
-								className="font-body text-brand-primary/80 hover:text-brand-primary transition-colors duration-200"
+								className="font-body text-xl text-brand-primary/80 hover:text-brand-primary transition-colors duration-200"
 							>
-								Services
+								{t("services")}
 							</Link>
 							<Link
 								href="/#projects"
-								className="font-body text-brand-primary/80 hover:text-brand-primary transition-colors duration-200"
+								className="font-body text-xl text-brand-primary/80 hover:text-brand-primary transition-colors duration-200"
 							>
-								Projects
+								{t("projects")}
 							</Link>
 							<div className="relative group">
 								<button
 									type="button"
-									className="font-body text-brand-primary/80 hover:text-brand-primary transition-colors duration-200 cursor-pointer"
+									className="font-body text-xl text-brand-primary/80 hover:text-brand-primary transition-colors duration-200 cursor-pointer"
 								>
-									Resources
+									{t("resources")}
 								</button>
 								<div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-48 bg-[#130a0a]/95 backdrop-blur-lg border border-border rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
 									{resourceLinks.map((link) =>
@@ -115,22 +109,22 @@ export default function Navbar() {
 							</div>
 							<Link
 								href="/pricing"
-								className="font-body text-brand-primary/80 hover:text-brand-primary transition-colors duration-200"
+								className="font-body text-xl text-brand-primary/80 hover:text-brand-primary transition-colors duration-200"
 							>
-								Pricing
+								{t("pricing")}
 							</Link>
 							<Link
 								href="/#contact"
-								className="font-body text-brand-primary/80 hover:text-brand-primary transition-colors duration-200"
+								className="font-body text-xl text-brand-primary/80 hover:text-brand-primary transition-colors duration-200"
 							>
-								Contact
+								{t("contact")}
 							</Link>
 						</div>
 
 						{/* Book a Call — right */}
 						<div className="hidden md:flex items-center justify-end">
-							<Button href={CAL_LINKS.ale} variant="gold" size="sm">
-								Book a Call
+							<Button href={CAL_LINKS.ale} variant="gold" size="lg">
+								{t("bookCall")}
 							</Button>
 						</div>
 
@@ -163,18 +157,18 @@ export default function Navbar() {
 								className="font-body text-brand-primary/70 hover:text-brand-primary transition-colors duration-200 py-2"
 								onClick={() => setIsMobileMenuOpen(false)}
 							>
-								Services
+								{t("services")}
 							</Link>
 							<Link
 								href="/#projects"
 								className="font-body text-brand-primary/70 hover:text-brand-primary transition-colors duration-200 py-2"
 								onClick={() => setIsMobileMenuOpen(false)}
 							>
-								Projects
+								{t("projects")}
 							</Link>
 							<div>
 								<div className="font-body text-brand-primary/40 text-xs tracking-widest uppercase mb-3">
-									Resources
+									{t("resources")}
 								</div>
 								<div className="pl-4 space-y-3">
 									{resourceLinks.map((link) =>
@@ -207,14 +201,14 @@ export default function Navbar() {
 								className="font-body text-brand-primary/70 hover:text-brand-primary transition-colors duration-200 py-2"
 								onClick={() => setIsMobileMenuOpen(false)}
 							>
-								Pricing
+								{t("pricing")}
 							</Link>
 							<Link
 								href="/#contact"
 								className="font-body text-brand-primary/70 hover:text-brand-primary transition-colors duration-200 py-2"
 								onClick={() => setIsMobileMenuOpen(false)}
 							>
-								Contact
+								{t("contact")}
 							</Link>
 							<Button
 								href={CAL_LINKS.ale}
@@ -222,7 +216,7 @@ export default function Navbar() {
 								className="mt-4 w-full justify-center"
 								onClick={() => setIsMobileMenuOpen(false)}
 							>
-								Book a Call
+								{t("bookCall")}
 							</Button>
 						</div>
 					</div>

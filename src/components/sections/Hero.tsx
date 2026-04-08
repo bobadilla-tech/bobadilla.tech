@@ -3,12 +3,15 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { BadgeCheck } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { CAL_LINKS } from "~/lib/constants";
 import Button from "@/components/ui/Button";
 
 export default function Hero() {
+	const t = useTranslations("Hero");
+
 	return (
-		<section className="relative min-h-screen flex flex-col items-center overflow-hidden">
+		<section className="relative flex flex-col items-center overflow-hidden">
 			{/* Text content */}
 			<div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-44 pb-0 text-center">
 				<motion.div
@@ -26,7 +29,7 @@ export default function Hero() {
 					>
 						<BadgeCheck className="size-5 shrink-0" />
 						<span className="font-body text-sm sm:text-base font-medium tracking-widest uppercase">
-							Top Latam Engineering Agency
+							{t("badge")}
 						</span>
 					</motion.div>
 
@@ -41,19 +44,19 @@ export default function Hero() {
 							className="block whitespace-nowrap text-brand-primary"
 							style={{ fontSize: "clamp(1.4rem, 5.2vw, 5.2rem)" }}
 						>
-							CREATING
+							{t("line1")}
 						</span>
 						<span
 							className="block whitespace-nowrap text-brand-gold"
 							style={{ fontSize: "clamp(1.8rem, 7.6vw, 7.6rem)" }}
 						>
-							WORLD&#8211;CLASS
+							{t("line2")}
 						</span>
 						<span
 							className="block whitespace-nowrap text-brand-primary"
 							style={{ fontSize: "clamp(1.2rem, 4.6vw, 4.6rem)" }}
 						>
-							DIGITAL PRODUCTS
+							{t("line3")}
 						</span>
 					</motion.h1>
 				</motion.div>
@@ -64,7 +67,7 @@ export default function Hero() {
 				initial={{ opacity: 0, scale: 0.97 }}
 				animate={{ opacity: 1, scale: 1 }}
 				transition={{ delay: 0.3, duration: 1 }}
-				className="relative z-0 w-full max-w-7xl mx-auto px-2 -mt-6 sm:-mt-10"
+				className="relative z-0 w-full max-w-7xl mx-auto px-2 -mt-32 sm:-mt-44"
 				style={{
 					maskImage:
 						"linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%), linear-gradient(to bottom, black 55%, transparent 100%)",
@@ -92,7 +95,7 @@ export default function Hero() {
 				className="relative z-10 pb-16"
 			>
 				<Button href={CAL_LINKS.ale} variant="gold" size="lg">
-					Book a Call
+					{t("button")}
 				</Button>
 			</motion.div>
 		</section>

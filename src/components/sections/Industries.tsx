@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { industryServices } from "@/data/services";
 import SectionHeader from "@/components/ui/SectionHeader";
 import IndustryCard from "@/components/ui/IndustryCard";
@@ -10,6 +11,8 @@ const featured = industryServices.filter((i) =>
 );
 
 export default function Industries() {
+	const t = useTranslations("IndustriesSection");
+
 	return (
 		<section id="projects" className="relative py-24 overflow-hidden">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,11 +20,11 @@ export default function Industries() {
 					<SectionHeader
 						heading={
 							<>
-								<span className="text-brand-gold">Industries</span> We Have
-								Experience With
+								<span className="text-brand-gold">{t("heading1")}</span>{" "}
+								{t("heading2")}
 							</>
 						}
-						subtitle="Proven expertise delivering specialized solutions across diverse sectors."
+						subtitle={t("subtitle")}
 					/>
 				</div>
 

@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { Github, Linkedin, Instagram } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import { CONTACT, SOCIAL_LINKS, FOOTER_LINKS, COPYRIGHT_TEXT } from "~/lib/constants";
 
-export default function Footer() {
+export default async function Footer() {
+	const t = await getTranslations("Footer");
+
 	return (
 		<footer className="bg-surface border-t border-border">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -46,7 +49,7 @@ export default function Footer() {
 					{/* Nav links */}
 					<div className="flex flex-col gap-4">
 						<span className="font-body text-xs font-semibold tracking-widest uppercase text-brand-primary/40">
-							Navigation
+							{t("navigation")}
 						</span>
 						<nav className="flex flex-col gap-3">
 							{FOOTER_LINKS.map((link) => (
@@ -64,7 +67,7 @@ export default function Footer() {
 					{/* Drop us a line */}
 					<div className="flex flex-col gap-4">
 						<span className="font-body text-xs font-semibold tracking-widest uppercase text-brand-primary/40">
-							Drop us a line
+							{t("dropUsALine")}
 						</span>
 						<div className="flex flex-col gap-2">
 							<a
@@ -85,7 +88,7 @@ export default function Footer() {
 					{/* Call us */}
 					<div className="flex flex-col gap-4">
 						<span className="font-body text-xs font-semibold tracking-widest uppercase text-brand-primary/40">
-							Call us
+							{t("callUs")}
 						</span>
 						<a
 							href={`tel:${CONTACT.phone}`}

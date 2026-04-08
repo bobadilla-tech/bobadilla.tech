@@ -5,7 +5,8 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import Button from "@/components/ui/Button";
 import FAQItem from "@/components/ui/FAQItem";
-import { CAL_LINKS } from "~/lib/constants";
+import { CAL_LINKS, SOCIAL_LINKS } from "~/lib/constants";
+import { Linkedin } from "lucide-react";
 
 interface ServiceFAQProps {
 	faqs?: { q: string; a: string }[];
@@ -51,16 +52,15 @@ export default function ServiceFAQ({ faqs }: ServiceFAQProps) {
 							<p className="font-body text-brand-primary/60 text-sm leading-relaxed mb-6">
 								{t("infoBoxBody")}
 							</p>
-							<div className="bg-white rounded-[18px] p-3 text-center mb-4">
-								<a
-									href="https://www.linkedin.com/company/bobadilla-tech/"
-									target="_blank"
-									rel="noopener noreferrer"
-									className="font-body font-medium text-black text-sm"
-								>
-									{t("linkedinCta")}
-								</a>
-							</div>
+							<a
+								href={SOCIAL_LINKS.linkedin}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="bg-white rounded-[18px] p-3 flex items-center justify-center gap-2 mb-4 hover:bg-white/90 transition-colors duration-200"
+							>
+								<Linkedin size={16} className="text-[#0A66C2]" />
+								<span className="font-body font-medium text-black text-sm">{t("linkedinCta")}</span>
+							</a>
 						</motion.div>
 
 						<Button href={CAL_LINKS.ale} variant="gold">

@@ -1,10 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { allServices } from "@/data/services";
 import Link from "next/link";
 
 export default function Services() {
+	const t = useTranslations("ServicesSection");
+
 	return (
 		<section className="relative py-24 overflow-hidden">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,13 +22,11 @@ export default function Services() {
 					<h2 className="font-heading font-bold leading-none mb-4"
 						style={{ fontSize: "clamp(3rem, 8vw, 8rem)" }}
 					>
-						<span className="text-brand-primary">OUR </span>
-						<span className="text-brand-gold">SERVICES</span>
+						<span className="text-brand-primary">{t("heading1")} </span>
+						<span className="text-brand-gold">{t("heading2")}</span>
 					</h2>
 					<p className="font-body text-brand-primary/50 text-sm sm:text-base tracking-widest uppercase">
-						Full-Stack Development, AI Integration and{" "}
-						<br className="hidden sm:block" />
-						Enterprise Solutions
+						{t("subtitle")}
 					</p>
 				</motion.div>
 
@@ -71,7 +72,7 @@ export default function Services() {
 										{service.description}
 									</p>
 									<span className="mt-5 inline-block font-body text-brand-gold text-sm font-semibold tracking-wide border-b border-brand-gold/50 pb-0.5">
-										Learn more →
+										{t("learnMore")}
 									</span>
 								</div>
 							</Link>
