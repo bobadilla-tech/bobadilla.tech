@@ -16,8 +16,25 @@ interface ApiErrorResponse {
  * @throws Error if URL is invalid
  */
 export function extractRedditPostId(url: string): string {
-	const redditUrlPattern = /reddit\.com\/r\/[^/]+\/comments\/([a-z0-9]+)/i;
-	const match = url.match(redditUrlPattern);
+	const allowedHostnames = ["reddit.com", "www.reddit.com", "old.reddit.com", "redd.it"];
+
+	let parsed: URL;
+	try {
+		parsed = new URL(url);
+	} catch {
+		throw new Error(
+			"Invalid Reddit URL. Please use format: https://www.reddit.com/r/subreddit/comments/post_id/"
+		);
+	}
+
+	if (!allowedHostnames.includes(parsed.hostname)) {
+		throw new Error(
+			"Invalid Reddit URL. Please use format: https://www.reddit.com/r/subreddit/comments/post_id/"
+		);
+	}
+
+	const redditUrlPattern = /\/r\/[^/]+\/comments\/([a-z0-9]+)/i;
+	const match = parsed.pathname.match(redditUrlPattern);
 
 	if (!match) {
 		throw new Error(

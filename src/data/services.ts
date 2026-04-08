@@ -7,6 +7,8 @@ export interface Service {
 	imageAlt?: string;
 	icon?: string;
 	category?: string;
+	titleKey?: string;
+	descriptionKey?: string;
 }
 
 export interface IndustryService {
@@ -31,6 +33,8 @@ export const allServices: Service[] = [
 		image:
 			"https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80",
 		imageAlt: "Web application development",
+		titleKey: "cards.webAppDev.title",
+		descriptionKey: "cards.webAppDev.description",
 	},
 	{
 		id: "web-portal-dev",
@@ -42,6 +46,8 @@ export const allServices: Service[] = [
 		image:
 			"https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
 		imageAlt: "Web portal development",
+		titleKey: "cards.webPortalDev.title",
+		descriptionKey: "cards.webPortalDev.description",
 	},
 	{
 		id: "mobile-app-dev",
@@ -53,6 +59,8 @@ export const allServices: Service[] = [
 		image:
 			"https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
 		imageAlt: "Mobile app development",
+		titleKey: "cards.mobileAppDev.title",
+		descriptionKey: "cards.mobileAppDev.description",
 	},
 	{
 		id: "frontend-dev",
@@ -63,6 +71,8 @@ export const allServices: Service[] = [
 		image:
 			"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
 		imageAlt: "Front-end development",
+		titleKey: "cards.frontendDev.title",
+		descriptionKey: "cards.frontendDev.description",
 	},
 	{
 		id: "backend-dev",
@@ -74,6 +84,8 @@ export const allServices: Service[] = [
 		image:
 			"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
 		imageAlt: "Back-end development",
+		titleKey: "cards.backendDev.title",
+		descriptionKey: "cards.backendDev.description",
 	},
 	{
 		id: "web-dev",
@@ -85,6 +97,8 @@ export const allServices: Service[] = [
 		image:
 			"https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80",
 		imageAlt: "Web development",
+		titleKey: "cards.webDev.title",
+		descriptionKey: "cards.webDev.description",
 	},
 	{
 		id: "cms-dev",
@@ -96,6 +110,8 @@ export const allServices: Service[] = [
 		image:
 			"https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&q=80",
 		imageAlt: "CMS development",
+		titleKey: "cards.cmsDev.title",
+		descriptionKey: "cards.cmsDev.description",
 	},
 	{
 		id: "mvp-dev",
@@ -107,6 +123,8 @@ export const allServices: Service[] = [
 		image:
 			"https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&q=80",
 		imageAlt: "MVP development",
+		titleKey: "cards.mvpDev.title",
+		descriptionKey: "cards.mvpDev.description",
 	},
 ];
 

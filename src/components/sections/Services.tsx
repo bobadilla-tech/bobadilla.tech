@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { allServices } from "@/data/services";
-import Link from "next/link";
+import { Link } from "~/i18n/navigation";
 
 export default function Services() {
 	const t = useTranslations("ServicesSection");
@@ -49,7 +49,7 @@ export default function Services() {
 									<img
 										src={service.image}
 										alt={service.imageAlt ?? service.title}
-										className="absolute inset-0 size-full object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-40"
+										className="absolute inset-0 size-full object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-[0.4]"
 									/>
 								)}
 
@@ -59,17 +59,17 @@ export default function Services() {
 								{/* Default state — title at bottom-left */}
 								<div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 transition-opacity duration-300 group-hover:opacity-0">
 									<h3 className="font-heading text-white font-extrabold text-xl sm:text-2xl leading-tight">
-										{service.title}
+										{service.titleKey ? t(service.titleKey as any) : service.title}
 									</h3>
 								</div>
 
 								{/* Hover state — description centered */}
 								<div className="absolute inset-0 flex flex-col items-center justify-center p-6 sm:p-8 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
 									<h3 className="font-heading text-white font-extrabold text-xl sm:text-2xl leading-tight mb-3 text-center">
-										{service.title}
+										{service.titleKey ? t(service.titleKey as any) : service.title}
 									</h3>
 									<p className="font-body text-white/80 text-sm sm:text-base text-center leading-relaxed">
-										{service.description}
+										{service.descriptionKey ? t(service.descriptionKey as any) : service.description}
 									</p>
 									<span className="mt-5 inline-block font-body text-brand-gold text-sm font-semibold tracking-wide border-b border-brand-gold/50 pb-0.5">
 										{t("learnMore")}

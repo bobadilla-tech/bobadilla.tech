@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import ServiceHero from "@/components/sections/service-page/ServiceHero";
@@ -18,7 +19,8 @@ type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { locale } = await params;
-	const data = getServicePageData("web-portal-development", locale as Locale)!;
+	const data = getServicePageData("web-portal-development", locale as Locale);
+	if (!data) return {};
 	return genMeta({
 		title: data.eyebrow,
 		description: data.heroSubtitle,
@@ -29,7 +31,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ServicePage({ params }: Props) {
 	const { locale } = await params;
-	const data = getServicePageData("web-portal-development", locale as Locale)!;
+	const data = getServicePageData("web-portal-development", locale as Locale);
+	if (!data) notFound();
 
 	return (
 		<div className="min-h-screen">
