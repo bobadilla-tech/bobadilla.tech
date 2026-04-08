@@ -55,15 +55,15 @@ export default function Navbar() {
 				}`}
 			>
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="grid grid-cols-[auto_1fr_auto] items-center h-20 gap-8">
+					<div className="grid grid-cols-[auto_1fr_auto] items-center h-28 gap-8">
 						{/* Logo — left */}
 						<Link href="/" className="flex items-center shrink-0">
 							<Image
 								src="/assets/logo.png"
 								alt="Boba Tech"
-								width={130}
-								height={44}
-								className="h-11 w-auto"
+								width={220}
+								height={80}
+								className="h-20 w-auto"
 								priority
 							/>
 						</Link>

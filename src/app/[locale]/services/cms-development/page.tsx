@@ -11,17 +11,24 @@ import ServiceFAQ from "@/components/sections/service-page/ServiceFAQ";
 import CTABand from "@/components/sections/CTABand";
 import { getServicePageData } from "@/data/service-pages";
 import { generateMetadata as genMeta, BASE_URL, KEYWORD_SETS } from "~/lib/seo";
+import type { Locale } from "~/i18n/routing";
 
-export const metadata: Metadata = genMeta({
-	title: "CMS Development Services",
-	description: "Headless CMS architecture, Sanity, Strapi, Shopify — built for content editors and developers alike. Fast, flexible, enterprise-secure.",
-	keywords: [...KEYWORD_SETS.core, ...KEYWORD_SETS.services, "cms development", "headless cms", "sanity", "strapi"],
-	canonical: `${BASE_URL}/services/cms-development`,
-});
+type Props = { params: Promise<{ locale: string }> };
 
-const data = getServicePageData("cms-development")!;
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const { locale } = await params;
+	return genMeta({
+		title: "CMS Development Services",
+		description: "Headless CMS architecture, Sanity, Strapi, Shopify — built for content editors and developers alike. Fast, flexible, enterprise-secure.",
+		keywords: [...KEYWORD_SETS.core, ...KEYWORD_SETS.services, "cms development", "headless cms", "sanity", "strapi"],
+		canonical: `${BASE_URL}/${locale}/services/cms-development`,
+	});
+}
 
-export default function CmsDevelopmentPage() {
+export default async function CmsDevelopmentPage({ params }: Props) {
+	const { locale } = await params;
+	const data = getServicePageData("cms-development", locale as Locale)!;
+
 	return (
 		<div className="min-h-screen">
 			<Navbar />

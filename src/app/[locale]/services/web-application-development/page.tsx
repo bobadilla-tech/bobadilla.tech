@@ -12,17 +12,25 @@ import ServiceEstimateCTA from "@/components/sections/service-page/ServiceEstima
 import CTABand from "@/components/sections/CTABand";
 import { getServicePageData } from "@/data/service-pages";
 import { generateMetadata as genMeta, BASE_URL, KEYWORD_SETS } from "~/lib/seo";
+import type { Locale } from "~/i18n/routing";
 
-const data = getServicePageData("web-application-development")!;
+type Props = { params: Promise<{ locale: string }> };
 
-export const metadata: Metadata = genMeta({
-	title: data.eyebrow,
-	description: data.heroSubtitle,
-	keywords: [...KEYWORD_SETS.core, ...KEYWORD_SETS.services],
-	canonical: `${BASE_URL}/services/web-application-development`,
-});
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const { locale } = await params;
+	const data = getServicePageData("web-application-development", locale as Locale)!;
+	return genMeta({
+		title: data.eyebrow,
+		description: data.heroSubtitle,
+		keywords: [...KEYWORD_SETS.core, ...KEYWORD_SETS.services],
+		canonical: `${BASE_URL}/${locale}/services/web-application-development`,
+	});
+}
 
-export default function ServicePage() {
+export default async function ServicePage({ params }: Props) {
+	const { locale } = await params;
+	const data = getServicePageData("web-application-development", locale as Locale)!;
+
 	return (
 		<div className="min-h-screen">
 			<Navbar />

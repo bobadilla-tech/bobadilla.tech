@@ -2,23 +2,27 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Button from "@/components/ui/Button";
 import FAQItem from "@/components/ui/FAQItem";
 import { CAL_LINKS } from "~/lib/constants";
-
-const defaultFaqs = [
-	{ q: "How fast can you deliver a project?", a: "Depending on complexity, MVPs can be delivered in 2–4 weeks, full products in 6–12 weeks. We commit to clear timelines upfront." },
-	{ q: "What happens if deadlines aren't met?", a: "We guarantee our delivery commitments. If we miss a deadline, we work overtime at no extra cost until it's done." },
-	{ q: "Do you work with startups?", a: "Absolutely — we've worked with early-stage startups through to enterprise teams. We adapt our process to your stage and budget." },
-	{ q: "Do you offer support after launch?", a: "Yes. We offer ongoing maintenance, monitoring, and growth packages so your product keeps improving after launch." },
-];
 
 interface ServiceFAQProps {
 	faqs?: { q: string; a: string }[];
 }
 
-export default function ServiceFAQ({ faqs = defaultFaqs }: ServiceFAQProps) {
+export default function ServiceFAQ({ faqs }: ServiceFAQProps) {
+	const t = useTranslations("ServiceFAQ");
 	const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+	const defaultFaqs = [
+		{ q: t("defaults.0.q"), a: t("defaults.0.a") },
+		{ q: t("defaults.1.q"), a: t("defaults.1.a") },
+		{ q: t("defaults.2.q"), a: t("defaults.2.a") },
+		{ q: t("defaults.3.q"), a: t("defaults.3.a") },
+	];
+
+	const activeFaqs = faqs ?? defaultFaqs;
 
 	return (
 		<section className="py-24 px-4 sm:px-6 lg:px-8">
@@ -45,7 +49,7 @@ export default function ServiceFAQ({ faqs = defaultFaqs }: ServiceFAQProps) {
 							className="border border-brand-primary/20 rounded-[38px] p-6"
 						>
 							<p className="font-body text-brand-primary/60 text-sm leading-relaxed mb-6">
-								Have questions or want to explore possibilities? Feel free to reach out on LinkedIn or book a call.
+								{t("infoBoxBody")}
 							</p>
 							<div className="bg-white rounded-[18px] p-3 text-center mb-4">
 								<a
@@ -54,20 +58,20 @@ export default function ServiceFAQ({ faqs = defaultFaqs }: ServiceFAQProps) {
 									rel="noopener noreferrer"
 									className="font-body font-medium text-black text-sm"
 								>
-									CONNECT ON LINKEDIN
+									{t("linkedinCta")}
 								</a>
 							</div>
 						</motion.div>
 
 						<Button href={CAL_LINKS.ale} variant="gold">
-							Book a Call
+							{t("bookCall")}
 						</Button>
 					</div>
 
 					{/* Right column — accordion */}
 					<div className="lg:col-span-2">
 						<div className="space-y-0 divide-y divide-brand-primary/10">
-							{faqs.map((faq, i) => (
+							{activeFaqs.map((faq, i) => (
 								<FAQItem
 									key={faq.q}
 									question={faq.q}

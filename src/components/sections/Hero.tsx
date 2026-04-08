@@ -10,7 +10,7 @@ export default function Hero() {
 	return (
 		<section className="relative min-h-screen flex flex-col items-center overflow-hidden">
 			{/* Text content */}
-			<div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-0 text-center">
+			<div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-44 pb-0 text-center">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
@@ -22,10 +22,10 @@ export default function Hero() {
 						initial={{ opacity: 0, y: 10 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ delay: 0.1, duration: 0.5 }}
-						className="inline-flex items-center gap-2 text-brand-primary/60"
+						className="inline-flex items-center gap-2 text-brand-primary/70"
 					>
-						<BadgeCheck className="size-4 shrink-0" />
-						<span className="font-body text-xs sm:text-sm font-medium tracking-widest uppercase">
+						<BadgeCheck className="size-5 shrink-0" />
+						<span className="font-body text-sm sm:text-base font-medium tracking-widest uppercase">
 							Top Latam Engineering Agency
 						</span>
 					</motion.div>
@@ -39,19 +39,19 @@ export default function Hero() {
 					>
 						<span
 							className="block whitespace-nowrap text-brand-primary"
-							style={{ fontSize: "clamp(1.75rem, 6.5vw, 6.5rem)" }}
+							style={{ fontSize: "clamp(1.4rem, 5.2vw, 5.2rem)" }}
 						>
 							CREATING
 						</span>
 						<span
 							className="block whitespace-nowrap text-brand-gold"
-							style={{ fontSize: "clamp(2.25rem, 9.5vw, 9.5rem)" }}
+							style={{ fontSize: "clamp(1.8rem, 7.6vw, 7.6rem)" }}
 						>
 							WORLD&#8211;CLASS
 						</span>
 						<span
 							className="block whitespace-nowrap text-brand-primary"
-							style={{ fontSize: "clamp(1.5rem, 5.8vw, 5.8rem)" }}
+							style={{ fontSize: "clamp(1.2rem, 4.6vw, 4.6rem)" }}
 						>
 							DIGITAL PRODUCTS
 						</span>
@@ -59,12 +59,20 @@ export default function Hero() {
 				</motion.div>
 			</div>
 
-			{/* Globe illustration */}
+			{/* Globe illustration — masked edges to blend into bg */}
 			<motion.div
 				initial={{ opacity: 0, scale: 0.97 }}
 				animate={{ opacity: 1, scale: 1 }}
 				transition={{ delay: 0.3, duration: 1 }}
-				className="relative z-0 w-full max-w-5xl mx-auto px-4 -mt-4 sm:-mt-8"
+				className="relative z-0 w-full max-w-7xl mx-auto px-2 -mt-6 sm:-mt-10"
+				style={{
+					maskImage:
+						"linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%), linear-gradient(to bottom, black 55%, transparent 100%)",
+					WebkitMaskImage:
+						"linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%), linear-gradient(to bottom, black 55%, transparent 100%)",
+					maskComposite: "intersect",
+					WebkitMaskComposite: "source-in",
+				}}
 			>
 				<Image
 					src="/assets/landing/main.png"

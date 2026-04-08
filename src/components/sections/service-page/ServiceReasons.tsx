@@ -2,17 +2,20 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 
-const reasons = [
-	{ title: "Clear timelines,\nno surprises" },
-	{ title: "Real products,\nnot just ideas" },
-	{ title: "Fast, focused\nexecution" },
-	{ title: "Smart use\nof technology" },
-	{ title: "Support\nbeyond launch" },
-];
-
 export default function ServiceReasons() {
+	const t = useTranslations("ServiceReasons");
+
+	const reasons = [
+		{ title: t("reasons.0") },
+		{ title: t("reasons.1") },
+		{ title: t("reasons.2") },
+		{ title: t("reasons.3") },
+		{ title: t("reasons.4") },
+	];
+
 	return (
 		<section className="py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
 			<div className="max-w-7xl mx-auto">
@@ -22,9 +25,9 @@ export default function ServiceReasons() {
 					viewport={{ once: true }}
 					className="font-heading font-bold text-5xl sm:text-6xl text-center mb-4 tracking-tight"
 				>
-					<span className="text-brand-primary">Reasons to</span>
+					<span className="text-brand-primary">{t("heading1")}</span>
 					<br />
-					<span className="text-brand-gold">work with us</span>
+					<span className="text-brand-gold">{t("heading2")}</span>
 				</motion.h2>
 
 				<div className="mt-16">
@@ -105,10 +108,10 @@ export default function ServiceReasons() {
 										/>
 									</div>
 									<h3 className="font-heading text-black font-medium text-5xl tracking-tight leading-tight mb-4">
-										Built by real experts
+										{t("featuredTitle")}
 									</h3>
 									<p className="font-body text-black font-light text-3xl tracking-tight whitespace-pre-line leading-tight">
-										{"You work directly with\nexperienced developers"}
+										{t("featuredBody")}
 									</p>
 								</motion.div>
 							</CarouselItem>

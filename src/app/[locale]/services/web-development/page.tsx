@@ -14,17 +14,24 @@ import CTABand from "@/components/sections/CTABand";
 import { getServicePageData } from "@/data/service-pages";
 import { CAL_LINKS } from "~/lib/constants";
 import { generateMetadata as genMeta, BASE_URL, KEYWORD_SETS } from "~/lib/seo";
+import type { Locale } from "~/i18n/routing";
 
-export const metadata: Metadata = genMeta({
-	title: "Web Development Services",
-	description: "We build modern websites and web applications optimized for speed, engagement, and growth. Expert LATAM developers, fast delivery.",
-	keywords: [...KEYWORD_SETS.core, ...KEYWORD_SETS.services, "web development", "web applications", "next.js development"],
-	canonical: `${BASE_URL}/services/web-development`,
-});
+type Props = { params: Promise<{ locale: string }> };
 
-const data = getServicePageData("web-development")!;
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const { locale } = await params;
+	return genMeta({
+		title: "Web Development Services",
+		description: "We build modern websites and web applications optimized for speed, engagement, and growth. Expert LATAM developers, fast delivery.",
+		keywords: [...KEYWORD_SETS.core, ...KEYWORD_SETS.services, "web development", "web applications", "next.js development"],
+		canonical: `${BASE_URL}/${locale}/services/web-development`,
+	});
+}
 
-export default function WebDevelopmentPage() {
+export default async function WebDevelopmentPage({ params }: Props) {
+	const { locale } = await params;
+	const data = getServicePageData("web-development", locale as Locale)!;
+
 	return (
 		<div className="min-h-screen">
 			<Navbar />
@@ -40,19 +47,21 @@ export default function WebDevelopmentPage() {
 			{/* 2. Pain Points */}
 			<ServicePainPoints heading={data.painPointsHeading} painPoints={data.painPoints} />
 
-			{/* 3. "Stop wasting time" urgency band — unique to web-dev page */}
-			<section className="py-8 px-4 sm:px-6 lg:px-8">
-				<div className="max-w-7xl mx-auto">
-					<div className="bg-brand-gold/60 rounded-[50px] px-12 py-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-						<p className="font-body text-white text-2xl text-center sm:text-left">
-							Stop wasting time and money. Let&apos;s build it right.
-						</p>
-						<Button href={CAL_LINKS.ale} variant="gold" className="shrink-0">
-							START YOUR PROJECT
-						</Button>
+			{/* 3. Urgency band — unique to web-dev page */}
+			{data.urgencyBandText && (
+				<section className="py-8 px-4 sm:px-6 lg:px-8">
+					<div className="max-w-7xl mx-auto">
+						<div className="bg-brand-gold/60 rounded-[50px] px-12 py-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+							<p className="font-body text-white text-2xl text-center sm:text-left">
+								{data.urgencyBandText}
+							</p>
+							<Button href={CAL_LINKS.ale} variant="gold" className="shrink-0">
+								{data.urgencyBandCta}
+							</Button>
+						</div>
 					</div>
-				</div>
-			</section>
+				</section>
+			)}
 
 			{/* 4. Development Services Offered */}
 			<ServiceOfferings heading={data.servicesHeading} services={data.servicesOffered} />

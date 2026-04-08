@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Button from "@/components/ui/Button";
 import { CAL_LINKS } from "~/lib/constants";
 import { ArrowRight } from "lucide-react";
@@ -13,6 +14,8 @@ interface ServiceHeroProps {
 }
 
 export default function ServiceHero({ eyebrow, line1, line2, subtitle }: ServiceHeroProps) {
+	const t = useTranslations("ServiceHero");
+
 	return (
 		<section className="pt-40 pb-20 text-center px-4 sm:px-6 lg:px-8 overflow-hidden">
 			<motion.div
@@ -38,7 +41,7 @@ export default function ServiceHero({ eyebrow, line1, line2, subtitle }: Service
 				</p>
 
 				<Button href={CAL_LINKS.ale} variant="gold" size="lg" className="inline-flex items-center gap-3">
-					BOOK A CALL
+					{t("bookCall")}
 					<ArrowRight className="w-5 h-5" />
 				</Button>
 			</motion.div>

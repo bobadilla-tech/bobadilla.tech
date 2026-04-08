@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import type { TechCategory } from "@/data/service-pages";
 
 interface ServiceTechStackProps {
@@ -9,6 +10,8 @@ interface ServiceTechStackProps {
 }
 
 export default function ServiceTechStack({ categories }: ServiceTechStackProps) {
+	const t = useTranslations("ServiceTechStack");
+
 	return (
 		<section className="py-24 px-4 sm:px-6 lg:px-8">
 			<div className="max-w-6xl mx-auto">
@@ -19,7 +22,7 @@ export default function ServiceTechStack({ categories }: ServiceTechStackProps) 
 					className="font-heading font-bold text-4xl sm:text-5xl text-center mb-16"
 				>
 					<span className="bg-gradient-to-r from-brand-gold to-brand-primary bg-clip-text text-transparent">
-						OUR CORE TECH STACK
+						{t("heading")}
 					</span>
 				</motion.h2>
 
