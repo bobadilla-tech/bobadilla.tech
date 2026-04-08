@@ -151,8 +151,7 @@ export default function PricingCalculator() {
 	const breakdown = getSelectedOptionsByStep(selections);
 
 	// Get translated option name/description by step index and option id
-	const getOptionName = (stepIdx: number, optionId: string): string => {
-		const stepKey = String(stepIdx) as keyof typeof t;
+	const _getOptionName = (stepIdx: number, optionId: string): string => {
 		try {
 			return t(`steps.${stepIdx}.options.${optionId}.name` as Parameters<typeof t>[0]);
 		} catch {
@@ -160,7 +159,7 @@ export default function PricingCalculator() {
 		}
 	};
 
-	const getOptionDescription = (stepIdx: number, optionId: string): string => {
+	const _getOptionDescription = (stepIdx: number, optionId: string): string => {
 		try {
 			return t(`steps.${stepIdx}.options.${optionId}.description` as Parameters<typeof t>[0]);
 		} catch {
