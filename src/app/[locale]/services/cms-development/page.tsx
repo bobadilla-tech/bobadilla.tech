@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import ServiceHero from "@/components/sections/service-page/ServiceHero";
@@ -17,9 +18,11 @@ type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { locale } = await params;
+	const data = getServicePageData("cms-development", locale as Locale);
+	if (!data) return {};
 	return genMeta({
-		title: "CMS Development Services",
-		description: "Headless CMS architecture, Sanity, Strapi, Shopify — built for content editors and developers alike. Fast, flexible, enterprise-secure.",
+		title: data.eyebrow,
+		description: data.heroSubtitle,
 		keywords: [...KEYWORD_SETS.core, ...KEYWORD_SETS.services, "cms development", "headless cms", "sanity", "strapi"],
 		canonical: `${BASE_URL}/${locale}/services/cms-development`,
 	});
@@ -27,7 +30,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CmsDevelopmentPage({ params }: Props) {
 	const { locale } = await params;
-	const data = getServicePageData("cms-development", locale as Locale)!;
+	const data = getServicePageData("cms-development", locale as Locale);
+	if (!data) notFound();
 
 	return (
 		<div className="min-h-screen">
