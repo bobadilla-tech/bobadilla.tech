@@ -61,7 +61,15 @@
 	"Footer": {
 		"navigation": "Navegação",
 		"dropUsALine": "Fale conosco",
-		"callUs": "Ligue para nós"
+		"callUs": "Ligue para nós",
+		"links": {
+			"ourServices": "Nossos Serviços",
+			"projects": "Projetos",
+			"dedicatedTeam": "Equipe Dedicada",
+			"openSource": "Código Aberto",
+			"pricing": "Preços",
+			"contact": "Contato"
+		}
 	},
 	"CTABand": {
 		"heading": "Pronto para discutir seu projeto conosco?",

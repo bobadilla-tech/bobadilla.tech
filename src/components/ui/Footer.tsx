@@ -3,6 +3,15 @@ import { Github, Linkedin, Instagram } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { CONTACT, SOCIAL_LINKS, FOOTER_LINKS, COPYRIGHT_TEXT } from "~/lib/constants";
 
+const FOOTER_LINK_KEYS = [
+	"ourServices",
+	"projects",
+	"dedicatedTeam",
+	"openSource",
+	"pricing",
+	"contact",
+] as const;
+
 export default async function Footer() {
 	const t = await getTranslations("Footer");
 
@@ -52,13 +61,13 @@ export default async function Footer() {
 							{t("navigation")}
 						</span>
 						<nav className="flex flex-col gap-3">
-							{FOOTER_LINKS.map((link) => (
+							{FOOTER_LINKS.map((link, i) => (
 								<Link
-									key={link.label}
+									key={link.href}
 									href={link.href}
 									className="font-body text-brand-primary/60 hover:text-brand-primary text-sm transition-colors duration-200"
 								>
-									{link.label}
+									{t(`links.${FOOTER_LINK_KEYS[i]}` as Parameters<typeof t>[0])}
 								</Link>
 							))}
 						</nav>
