@@ -305,10 +305,22 @@
 			"Ongoing maintenance options"
 		],
 		"benefits": [
-			{ "title": "Fast Delivery", "description": "Launch in days or weeks, not months" },
-			{ "title": "Enterprise Security", "description": "Built with security and compliance in mind" },
-			{ "title": "24/7 Support", "description": "Ongoing support and maintenance available" },
-			{ "title": "Scalable Solutions", "description": "Architecture designed to grow with your business" }
+			{
+				"title": "Fast Delivery",
+				"description": "Launch in days or weeks, not months"
+			},
+			{
+				"title": "Enterprise Security",
+				"description": "Built with security and compliance in mind"
+			},
+			{
+				"title": "24/7 Support",
+				"description": "Ongoing support and maintenance available"
+			},
+			{
+				"title": "Scalable Solutions",
+				"description": "Architecture designed to grow with your business"
+			}
 		]
 	},
 	"IndustryPage": {
@@ -375,9 +387,18 @@
 		"suggestTool": "Suggest a Tool",
 		"whyUseHeading": "Why Use Our Tools?",
 		"features": [
-			{ "title": "100% Free", "desc": "All our tools are completely free to use. No hidden fees, no subscriptions." },
-			{ "title": "Privacy-Focused", "desc": "We don't store your data. Everything happens in your browser." },
-			{ "title": "No Sign-Up Required", "desc": "Start using any tool immediately. No account creation needed." }
+			{
+				"title": "100% Free",
+				"desc": "All our tools are completely free to use. No hidden fees, no subscriptions."
+			},
+			{
+				"title": "Privacy-Focused",
+				"desc": "We don't store your data. Everything happens in your browser."
+			},
+			{
+				"title": "No Sign-Up Required",
+				"desc": "Start using any tool immediately. No account creation needed."
+			}
 		]
 	},
 	"PricingPage": {
@@ -396,10 +417,22 @@
 		"flexibleDiscount": "-15% Flexible Timeline Discount Applied",
 		"whyWorkWithUs": "Why Work With Us?",
 		"whyItems": [
-			{ "title": "Highly Responsive", "desc": "Quick turnaround times and constant communication throughout development" },
-			{ "title": "Same Timezone", "desc": "LATAM-based team for seamless real-time collaboration" },
-			{ "title": "Cultural Alignment", "desc": "Strong work ethic and cultural compatibility with US/EU teams" },
-			{ "title": "Offshore Pricing", "desc": "Premium quality at competitive LATAM rates - save 40-60%" }
+			{
+				"title": "Highly Responsive",
+				"desc": "Quick turnaround times and constant communication throughout development"
+			},
+			{
+				"title": "Same Timezone",
+				"desc": "LATAM-based team for seamless real-time collaboration"
+			},
+			{
+				"title": "Cultural Alignment",
+				"desc": "Strong work ethic and cultural compatibility with US/EU teams"
+			},
+			{
+				"title": "Offshore Pricing",
+				"desc": "Premium quality at competitive LATAM rates - save 40-60%"
+			}
 		],
 		"startOver": "Start Over",
 		"disclaimer": "*Final pricing may vary based on specific requirements and project scope",
@@ -417,52 +450,118 @@
 				"title": "Project Type",
 				"description": "What type of project do you need?",
 				"options": {
-					"landing": { "name": "Landing Page", "description": "Single page website perfect for product launches, events, or simple business presence" },
-					"website": { "name": "Multi-page Website", "description": "3-10 pages with navigation, perfect for businesses needing multiple content sections" },
-					"webapp": { "name": "Web Application", "description": "Interactive web app with user accounts, dashboards, and business logic" },
-					"mobile": { "name": "Mobile App", "description": "Native or cross-platform mobile app for iOS and Android" },
-					"fullstack": { "name": "Full-stack Platform", "description": "Complete platform with web, mobile, admin panel, and backend infrastructure" }
+					"landing": {
+						"name": "Landing Page",
+						"description": "Single page website perfect for product launches, events, or simple business presence"
+					},
+					"website": {
+						"name": "Multi-page Website",
+						"description": "3-10 pages with navigation, perfect for businesses needing multiple content sections"
+					},
+					"webapp": {
+						"name": "Web Application",
+						"description": "Interactive web app with user accounts, dashboards, and business logic"
+					},
+					"mobile": {
+						"name": "Mobile App",
+						"description": "Native or cross-platform mobile app for iOS and Android"
+					},
+					"fullstack": {
+						"name": "Full-stack Platform",
+						"description": "Complete platform with web, mobile, admin panel, and backend infrastructure"
+					}
 				}
 			},
 			"1": {
 				"title": "Core Features",
 				"description": "Select the features you need (select all that apply)",
 				"options": {
-					"auth": { "name": "User Authentication", "description": "Secure login/signup system with email verification, password reset, and session management" },
-					"payment": { "name": "Payment Integration", "description": "Stripe, PayPal, or other payment gateway integration with checkout flow" },
-					"admin": { "name": "Admin Dashboard", "description": "Backend admin panel for managing users, content, and system settings" },
-					"api": { "name": "REST API", "description": "RESTful API for mobile apps or third-party integrations" },
-					"realtime": { "name": "Real-time Features", "description": "Live updates, chat, notifications using WebSockets or Firebase" },
-					"notifications": { "name": "Push Notifications", "description": "Email and/or mobile push notifications for user engagement" }
+					"auth": {
+						"name": "User Authentication",
+						"description": "Secure login/signup system with email verification, password reset, and session management"
+					},
+					"payment": {
+						"name": "Payment Integration",
+						"description": "Stripe, PayPal, or other payment gateway integration with checkout flow"
+					},
+					"admin": {
+						"name": "Admin Dashboard",
+						"description": "Backend admin panel for managing users, content, and system settings"
+					},
+					"api": {
+						"name": "REST API",
+						"description": "RESTful API for mobile apps or third-party integrations"
+					},
+					"realtime": {
+						"name": "Real-time Features",
+						"description": "Live updates, chat, notifications using WebSockets or Firebase"
+					},
+					"notifications": {
+						"name": "Push Notifications",
+						"description": "Email and/or mobile push notifications for user engagement"
+					}
 				}
 			},
 			"2": {
 				"title": "Integrations",
 				"description": "Third-party integrations needed",
 				"options": {
-					"crm": { "name": "CRM Integration", "description": "Connect to Salesforce, HubSpot, or other CRM for lead management" },
-					"analytics": { "name": "Analytics (GA, Mixpanel)", "description": "User behavior tracking and analytics dashboard integration" },
-					"email": { "name": "Email Service (SendGrid, Mailgun)", "description": "Automated email sending for transactional and marketing emails" },
-					"storage": { "name": "Cloud Storage (AWS S3)", "description": "File upload and storage for user documents, images, or videos" },
-					"social": { "name": "Social Media Login", "description": "Login with Google, Facebook, LinkedIn, or other social providers" }
+					"crm": {
+						"name": "CRM Integration",
+						"description": "Connect to Salesforce, HubSpot, or other CRM for lead management"
+					},
+					"analytics": {
+						"name": "Analytics (GA, Mixpanel)",
+						"description": "User behavior tracking and analytics dashboard integration"
+					},
+					"email": {
+						"name": "Email Service (SendGrid, Mailgun)",
+						"description": "Automated email sending for transactional and marketing emails"
+					},
+					"storage": {
+						"name": "Cloud Storage (AWS S3)",
+						"description": "File upload and storage for user documents, images, or videos"
+					},
+					"social": {
+						"name": "Social Media Login",
+						"description": "Login with Google, Facebook, LinkedIn, or other social providers"
+					}
 				}
 			},
 			"3": {
 				"title": "Design & UI",
 				"description": "Design complexity level",
 				"options": {
-					"basic": { "name": "Basic UI (Template-based)", "description": "Clean, professional design using pre-built components and templates" },
-					"custom": { "name": "Custom Design", "description": "Unique design tailored to your brand with custom components" },
-					"premium": { "name": "Premium Design with Animations", "description": "High-end design with micro-interactions, animations, and advanced UX" }
+					"basic": {
+						"name": "Basic UI (Template-based)",
+						"description": "Clean, professional design using pre-built components and templates"
+					},
+					"custom": {
+						"name": "Custom Design",
+						"description": "Unique design tailored to your brand with custom components"
+					},
+					"premium": {
+						"name": "Premium Design with Animations",
+						"description": "High-end design with micro-interactions, animations, and advanced UX"
+					}
 				}
 			},
 			"4": {
 				"title": "Timeline",
 				"description": "When do you need it delivered?",
 				"options": {
-					"rush": { "name": "Rush (1-2 weeks) +30%", "description": "Express delivery with priority development and extended team hours" },
-					"standard": { "name": "Standard (3-4 weeks)", "description": "Standard timeline with balanced development pace and quality assurance" },
-					"flexible": { "name": "Flexible (5+ weeks) -15%", "description": "Budget-friendly option with flexible delivery schedule" }
+					"rush": {
+						"name": "Rush (1-2 weeks) +30%",
+						"description": "Express delivery with priority development and extended team hours"
+					},
+					"standard": {
+						"name": "Standard (3-4 weeks)",
+						"description": "Standard timeline with balanced development pace and quality assurance"
+					},
+					"flexible": {
+						"name": "Flexible (5+ weeks) -15%",
+						"description": "Budget-friendly option with flexible delivery schedule"
+					}
 				}
 			}
 		}

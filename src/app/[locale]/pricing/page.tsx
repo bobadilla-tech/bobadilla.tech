@@ -150,23 +150,6 @@ export default function PricingCalculator() {
 	const grandTotal = calculateTotal(selections);
 	const breakdown = getSelectedOptionsByStep(selections);
 
-	// Get translated option name/description by step index and option id
-	const _getOptionName = (stepIdx: number, optionId: string): string => {
-		try {
-			return t(`steps.${stepIdx}.options.${optionId}.name` as Parameters<typeof t>[0]);
-		} catch {
-			return PRICING_STEPS[stepIdx]?.options.find((o) => o.id === optionId)?.name ?? optionId;
-		}
-	};
-
-	const _getOptionDescription = (stepIdx: number, optionId: string): string => {
-		try {
-			return t(`steps.${stepIdx}.options.${optionId}.description` as Parameters<typeof t>[0]);
-		} catch {
-			return PRICING_STEPS[stepIdx]?.options.find((o) => o.id === optionId)?.description ?? "";
-		}
-	};
-
 	const SummarySidebar = () => {
 		if (Object.keys(selections).length === 0) return null;
 
@@ -174,7 +157,9 @@ export default function PricingCalculator() {
 			<div className="bg-surface border border-border rounded-2xl p-6 sticky top-24">
 				<div className="flex items-center gap-2 mb-4">
 					<DollarSign className="size-5 text-brand-gold" />
-					<h3 className="font-heading text-lg font-bold text-brand-primary">{t("currentEstimate")}</h3>
+					<h3 className="font-heading text-lg font-bold text-brand-primary">
+						{t("currentEstimate")}
+					</h3>
 				</div>
 
 				<div className="space-y-4">
@@ -209,7 +194,9 @@ export default function PricingCalculator() {
 
 					<div className="pt-4 border-t border-brand-gold/30">
 						<div className="flex items-center justify-between">
-							<span className="font-heading text-lg font-bold text-brand-primary">{t("total")}</span>
+							<span className="font-heading text-lg font-bold text-brand-primary">
+								{t("total")}
+							</span>
 							<span className="font-heading text-2xl font-bold text-brand-gold">
 								${grandTotal.toLocaleString()}
 							</span>
@@ -260,7 +247,9 @@ export default function PricingCalculator() {
 
 						{/* Price Display */}
 						<div className="bg-brand-gold/10 border border-border-gold rounded-2xl p-8 text-center">
-							<p className="font-body text-brand-primary/60 mb-2">{t("totalInvestment")}</p>
+							<p className="font-body text-brand-primary/60 mb-2">
+								{t("totalInvestment")}
+							</p>
 							<div className="font-heading text-6xl font-bold text-brand-primary mb-2">
 								${total.toLocaleString()}
 							</div>
@@ -457,10 +446,14 @@ export default function PricingCalculator() {
 						<div className="mb-8">
 							<div className="flex justify-between items-center mb-2">
 								<span className="font-body text-sm text-brand-primary/50">
-									{t("step", { current: currentStep + 1, total: PRICING_STEPS.length })}
+									{t("step", {
+										current: currentStep + 1,
+										total: PRICING_STEPS.length,
+									})}
 								</span>
 								<span className="font-body text-sm text-brand-gold">
-									{Math.round(((currentStep + 1) / PRICING_STEPS.length) * 100)}%
+									{Math.round(((currentStep + 1) / PRICING_STEPS.length) * 100)}
+									%
 								</span>
 							</div>
 							<div className="h-2 bg-surface rounded-full overflow-hidden">
@@ -491,7 +484,9 @@ export default function PricingCalculator() {
 								<div className="flex items-center justify-between">
 									<div className="flex items-center gap-2">
 										<DollarSign className="size-5 text-green-400" />
-										<span className="font-body text-brand-primary/60">{t("currentStepTotal")}</span>
+										<span className="font-body text-brand-primary/60">
+											{t("currentStepTotal")}
+										</span>
 									</div>
 									<span className="font-heading text-2xl font-bold text-green-400">
 										+${currentTotal.toLocaleString()}
@@ -523,7 +518,11 @@ export default function PricingCalculator() {
 									{t(`steps.${currentStep}.title` as Parameters<typeof t>[0])}
 								</h2>
 								<p className="font-body text-brand-primary/50 mb-8">
-									{t(`steps.${currentStep}.description` as Parameters<typeof t>[0])}
+									{t(
+										`steps.${currentStep}.description` as Parameters<
+											typeof t
+										>[0]
+									)}
 								</p>
 
 								<div className="grid grid-cols-1 gap-4">
@@ -544,7 +543,11 @@ export default function PricingCalculator() {
 													<div className="flex-1">
 														<div className="flex items-center gap-2 mb-1">
 															<h3 className="font-heading text-lg font-semibold text-brand-primary">
-																{t(`steps.${currentStep}.options.${option.id}.name` as Parameters<typeof t>[0])}
+																{t(
+																	`steps.${currentStep}.options.${option.id}.name` as Parameters<
+																		typeof t
+																	>[0]
+																)}
 															</h3>
 															<Info className="size-4 text-brand-primary/30" />
 														</div>
@@ -577,7 +580,11 @@ export default function PricingCalculator() {
 													className="absolute z-10 left-0 right-0 -bottom-2 translate-y-full p-4 bg-brand-bg border border-border-gold rounded-xl shadow-xl"
 												>
 													<p className="font-body text-sm text-brand-primary/70">
-														{t(`steps.${currentStep}.options.${option.id}.description` as Parameters<typeof t>[0])}
+														{t(
+															`steps.${currentStep}.options.${option.id}.description` as Parameters<
+																typeof t
+															>[0]
+														)}
 													</p>
 												</motion.div>
 											)}
@@ -609,7 +616,9 @@ export default function PricingCalculator() {
 								disabled={!canProceed()}
 								variant={canProceed() ? "gold" : "ghost"}
 							>
-								{currentStep === PRICING_STEPS.length - 1 ? t("seeEstimate") : t("next")}
+								{currentStep === PRICING_STEPS.length - 1
+									? t("seeEstimate")
+									: t("next")}
 								<ArrowRight className="size-5" />
 							</Button>
 						</div>

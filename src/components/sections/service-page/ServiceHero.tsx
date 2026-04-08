@@ -13,7 +13,12 @@ interface ServiceHeroProps {
 	subtitle: string;
 }
 
-export default function ServiceHero({ eyebrow, line1, line2, subtitle }: ServiceHeroProps) {
+export default function ServiceHero({
+	eyebrow,
+	line1,
+	line2,
+	subtitle,
+}: ServiceHeroProps) {
 	const t = useTranslations("ServiceHero");
 
 	return (
@@ -40,7 +45,12 @@ export default function ServiceHero({ eyebrow, line1, line2, subtitle }: Service
 					{subtitle}
 				</p>
 
-				<Button href={CAL_LINKS.ale} variant="gold" size="lg" className="inline-flex items-center gap-3">
+				<Button
+					href={CAL_LINKS.ale}
+					variant="gold"
+					size="lg"
+					className="inline-flex items-center gap-3"
+				>
 					{t("bookCall")}
 					<ArrowRight className="w-5 h-5" />
 				</Button>

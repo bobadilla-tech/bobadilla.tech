@@ -3,7 +3,13 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
+import {
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+	CarouselPrevious,
+	CarouselNext,
+} from "@/components/ui/carousel";
 
 export default function ServiceReasons() {
 	const t = useTranslations("ServiceReasons");
@@ -31,14 +37,14 @@ export default function ServiceReasons() {
 				</motion.h2>
 
 				<div className="mt-16">
-					<Carousel
-						opts={{ align: "start", loop: false }}
-						className="w-full"
-					>
+					<Carousel opts={{ align: "start", loop: false }} className="w-full">
 						<CarouselContent className="-ml-6">
 							{/* Regular reason cards */}
 							{reasons.slice(0, 2).map((reason, i) => (
-								<CarouselItem key={reason.title} className="pl-6 basis-[280px] shrink-0">
+								<CarouselItem
+									key={reason.title}
+									className="pl-6 basis-[280px] shrink-0"
+								>
 									<motion.div
 										initial={{ opacity: 0, x: 30 }}
 										whileInView={{ opacity: 1, x: 0 }}
@@ -78,7 +84,8 @@ export default function ServiceReasons() {
 									viewport={{ once: true }}
 									className="bg-white rounded-[70px] h-[457px] flex flex-col justify-end p-12 relative overflow-hidden"
 									style={{
-										boxShadow: "0 0 110px 0 #a6993f, 0 0 63px 0 #a6993f, 0 0 37px 0 #a6993f",
+										boxShadow:
+											"0 0 110px 0 #a6993f, 0 0 63px 0 #a6993f, 0 0 37px 0 #a6993f",
 									}}
 								>
 									<div className="absolute top-10 left-16 w-32 h-32">
@@ -118,7 +125,10 @@ export default function ServiceReasons() {
 
 							{/* Remaining reason cards */}
 							{reasons.slice(2).map((reason, i) => (
-								<CarouselItem key={reason.title} className="pl-6 basis-[280px] shrink-0">
+								<CarouselItem
+									key={reason.title}
+									className="pl-6 basis-[280px] shrink-0"
+								>
 									<motion.div
 										initial={{ opacity: 0, x: -30 }}
 										whileInView={{ opacity: 1, x: 0 }}

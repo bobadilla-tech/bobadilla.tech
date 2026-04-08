@@ -36,7 +36,10 @@ export default function Navbar() {
 
 	useEffect(() => {
 		const handleClickOutside = (e: MouseEvent) => {
-			if (resourcesRef.current && !resourcesRef.current.contains(e.target as Node)) {
+			if (
+				resourcesRef.current &&
+				!resourcesRef.current.contains(e.target as Node)
+			) {
 				setIsResourcesOpen(false);
 			}
 		};
@@ -65,7 +68,10 @@ export default function Navbar() {
 				<div className="w-full px-6 lg:px-10">
 					<div className="grid grid-cols-[auto_1fr_auto] items-center h-28 gap-8">
 						{/* Logo — left */}
-						<Link href="/" className="shrink-0 h-28 overflow-hidden flex items-center">
+						<Link
+							href="/"
+							className="shrink-0 h-28 overflow-hidden flex items-center"
+						>
 							<Image
 								src="/assets/logo.png"
 								alt="Boba Tech"

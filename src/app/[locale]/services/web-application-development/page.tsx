@@ -18,7 +18,10 @@ type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { locale } = await params;
-	const data = getServicePageData("web-application-development", locale as Locale)!;
+	const data = getServicePageData(
+		"web-application-development",
+		locale as Locale
+	)!;
 	return genMeta({
 		title: data.eyebrow,
 		description: data.heroSubtitle,
@@ -29,16 +32,34 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ServicePage({ params }: Props) {
 	const { locale } = await params;
-	const data = getServicePageData("web-application-development", locale as Locale)!;
+	const data = getServicePageData(
+		"web-application-development",
+		locale as Locale
+	)!;
 
 	return (
 		<div className="min-h-screen">
 			<Navbar />
-			<ServiceHero eyebrow={data.eyebrow} line1={data.heroLine1} line2={data.heroLine2} subtitle={data.heroSubtitle} />
-			<ServicePainPoints heading={data.painPointsHeading} painPoints={data.painPoints} />
-			<ServiceOfferings heading={data.servicesHeading} services={data.servicesOffered} />
+			<ServiceHero
+				eyebrow={data.eyebrow}
+				line1={data.heroLine1}
+				line2={data.heroLine2}
+				subtitle={data.heroSubtitle}
+			/>
+			<ServicePainPoints
+				heading={data.painPointsHeading}
+				painPoints={data.painPoints}
+			/>
+			<ServiceOfferings
+				heading={data.servicesHeading}
+				services={data.servicesOffered}
+			/>
 			<ServiceReasons />
-			<ServiceProcess heading={data.processHeading} subtitle={data.processSubtitle} steps={data.processSteps} />
+			<ServiceProcess
+				heading={data.processHeading}
+				subtitle={data.processSubtitle}
+				steps={data.processSteps}
+			/>
 			<ServiceTechStack categories={data.techStack} />
 			<ServiceFAQ faqs={data.faqOverrides} />
 			<ServiceEstimateCTA />

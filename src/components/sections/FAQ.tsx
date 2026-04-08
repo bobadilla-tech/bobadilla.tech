@@ -32,7 +32,12 @@ export default function FAQ() {
 								{t("description")}
 							</p>
 						</div>
-						<Button href={CAL_LINKS.ale} variant="gold" size="md" className="w-fit">
+						<Button
+							href={CAL_LINKS.ale}
+							variant="gold"
+							size="md"
+							className="w-fit"
+						>
 							{t("bookCall")}
 						</Button>
 					</motion.div>

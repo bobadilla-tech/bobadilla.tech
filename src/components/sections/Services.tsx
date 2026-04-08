@@ -19,7 +19,8 @@ export default function Services() {
 					transition={{ duration: 0.6 }}
 					className="text-center mb-6"
 				>
-					<h2 className="font-heading font-bold leading-none mb-4"
+					<h2
+						className="font-heading font-bold leading-none mb-4"
 						style={{ fontSize: "clamp(3rem, 8vw, 8rem)" }}
 					>
 						<span className="text-brand-primary">{t("heading1")} </span>
@@ -59,17 +60,23 @@ export default function Services() {
 								{/* Default state — title at bottom-left */}
 								<div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 transition-opacity duration-300 group-hover:opacity-0">
 									<h3 className="font-heading text-white font-extrabold text-xl sm:text-2xl leading-tight">
-										{service.titleKey ? t(service.titleKey as any) : service.title}
+										{service.titleKey
+											? t(service.titleKey as any)
+											: service.title}
 									</h3>
 								</div>
 
 								{/* Hover state — description centered */}
 								<div className="absolute inset-0 flex flex-col items-center justify-center p-6 sm:p-8 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
 									<h3 className="font-heading text-white font-extrabold text-xl sm:text-2xl leading-tight mb-3 text-center">
-										{service.titleKey ? t(service.titleKey as any) : service.title}
+										{service.titleKey
+											? t(service.titleKey as any)
+											: service.title}
 									</h3>
 									<p className="font-body text-white/80 text-sm sm:text-base text-center leading-relaxed">
-										{service.descriptionKey ? t(service.descriptionKey as any) : service.description}
+										{service.descriptionKey
+											? t(service.descriptionKey as any)
+											: service.description}
 									</p>
 									<span className="mt-5 inline-block font-body text-brand-gold text-sm font-semibold tracking-wide border-b border-brand-gold/50 pb-0.5">
 										{t("learnMore")}

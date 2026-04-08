@@ -7,15 +7,8 @@ import remarkGfm from "remark-gfm";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import { getPostBySlug, getAllPosts } from "@/data/blog";
-import {
-	Calendar,
-	Clock,
-	Tag,
-	ArrowLeft,
-	Twitter,
-	Linkedin,
-	Share2,
-} from "lucide-react";
+import { Calendar, Clock, Tag, ArrowLeft, Share2 } from "lucide-react";
+import { Twitter, Linkedin } from "@/components/ui/BrandIcons";
 import { CodeBlock } from "@/components/ui/CodeBlock";
 import { getTranslations } from "next-intl/server";
 import {
@@ -101,7 +94,9 @@ export default async function BlogPostPage({ params }: PageProps) {
 					</h1>
 
 					{/* Description */}
-					<p className="font-body text-xl text-brand-primary/60 mb-8">{post.description}</p>
+					<p className="font-body text-xl text-brand-primary/60 mb-8">
+						{post.description}
+					</p>
 
 					{/* Meta Information */}
 					<div className="flex flex-wrap items-center gap-6 text-brand-primary/40 text-sm mb-8 pb-8 border-b border-border font-body">
@@ -173,7 +168,9 @@ export default async function BlogPostPage({ params }: PageProps) {
 									</h3>
 								),
 								p: ({ children }) => (
-									<p className="font-body mb-4 text-brand-primary/70">{children}</p>
+									<p className="font-body mb-4 text-brand-primary/70">
+										{children}
+									</p>
 								),
 								ul: ({ children }) => (
 									<ul className="list-disc ml-6 mb-4 space-y-2">{children}</ul>
@@ -184,7 +181,9 @@ export default async function BlogPostPage({ params }: PageProps) {
 									</ol>
 								),
 								li: ({ children }) => (
-									<li className="font-body text-brand-primary/70">{children}</li>
+									<li className="font-body text-brand-primary/70">
+										{children}
+									</li>
 								),
 								a: ({ href, children }) => (
 									<a
@@ -229,7 +228,9 @@ export default async function BlogPostPage({ params }: PageProps) {
 						<h3 className="font-heading text-xl font-bold text-brand-primary mb-4">
 							{t("foundHelpful")}
 						</h3>
-						<p className="font-body text-brand-primary/50 mb-6">{t("shareNetwork")}</p>
+						<p className="font-body text-brand-primary/50 mb-6">
+							{t("shareNetwork")}
+						</p>
 
 						{/* Social Share Buttons */}
 						<div className="flex flex-wrap gap-4 mb-12">
@@ -351,7 +352,9 @@ export default async function BlogPostPage({ params }: PageProps) {
 											</p>
 											<div className="flex items-center gap-2 text-brand-primary/30 text-xs mt-4 font-body">
 												<Clock className="w-4 h-4" />
-												<span>{t("minRead", { n: relatedPost.readingTime })}</span>
+												<span>
+													{t("minRead", { n: relatedPost.readingTime })}
+												</span>
 											</div>
 										</Link>
 									))}

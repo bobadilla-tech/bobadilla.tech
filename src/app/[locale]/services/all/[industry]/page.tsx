@@ -78,7 +78,10 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
 					{/* Breadcrumb */}
 					<div className="mb-8">
 						<div className="flex items-center space-x-2 text-sm text-brand-primary/40 font-body">
-							<Link href="/" className="hover:text-brand-primary transition-colors">
+							<Link
+								href="/"
+								className="hover:text-brand-primary transition-colors"
+							>
 								{t("home")}
 							</Link>
 							<span>/</span>
@@ -123,7 +126,9 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
 										{service.description}
 									</p>
 									<div className="flex items-center text-brand-gold group-hover:text-brand-gold-light transition-colors duration-300 font-body">
-										<span className="text-sm font-medium">{t("learnMore")}</span>
+										<span className="text-sm font-medium">
+											{t("learnMore")}
+										</span>
 										<ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
 									</div>
 								</Link>
@@ -143,7 +148,9 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
 										{t("expertise1Title")}
 									</h3>
 									<p>
-										{t("expertise1Body", { industry: industry.industry.toLowerCase() })}
+										{t("expertise1Body", {
+											industry: industry.industry.toLowerCase(),
+										})}
 									</p>
 								</div>
 								<div>

@@ -20,22 +20,23 @@ The site uses a gold-on-dark brand identity. All design tokens are defined in `s
 
 ### Design Tokens (Tailwind v4 `@theme`)
 
-| CSS Variable | Tailwind Class | Value |
-|---|---|---|
-| `--color-brand-gold` | `text-brand-gold`, `bg-brand-gold` | `#e6be1a` |
-| `--color-brand-gold-light` | `text-brand-gold-light` | `#ffeea8` |
-| `--color-brand-primary` | `text-brand-primary` | `#dbdbd7` |
-| `--color-brand-bg` | `bg-brand-bg` | `#0b0505` |
-| `--color-surface` | `bg-surface` | `rgba(255,255,255,0.04)` |
-| `--color-surface-hover` | `bg-surface-hover` | `rgba(255,255,255,0.08)` |
-| `--color-border` | `border-border` | `rgba(255,255,255,0.10)` |
-| `--color-border-gold` | `border-border-gold` | `rgba(230,190,26,0.40)` |
-| `--font-heading` | `font-heading` | Sora (via `--font-sora`) |
-| `--font-body` | `font-body` | Space Grotesk (via `--font-space-grotesk`) |
+| CSS Variable               | Tailwind Class                     | Value                                      |
+| -------------------------- | ---------------------------------- | ------------------------------------------ |
+| `--color-brand-gold`       | `text-brand-gold`, `bg-brand-gold` | `#e6be1a`                                  |
+| `--color-brand-gold-light` | `text-brand-gold-light`            | `#ffeea8`                                  |
+| `--color-brand-primary`    | `text-brand-primary`               | `#dbdbd7`                                  |
+| `--color-brand-bg`         | `bg-brand-bg`                      | `#0b0505`                                  |
+| `--color-surface`          | `bg-surface`                       | `rgba(255,255,255,0.04)`                   |
+| `--color-surface-hover`    | `bg-surface-hover`                 | `rgba(255,255,255,0.08)`                   |
+| `--color-border`           | `border-border`                    | `rgba(255,255,255,0.10)`                   |
+| `--color-border-gold`      | `border-border-gold`               | `rgba(230,190,26,0.40)`                    |
+| `--font-heading`           | `font-heading`                     | Sora (via `--font-sora`)                   |
+| `--font-body`              | `font-body`                        | Space Grotesk (via `--font-space-grotesk`) |
 
 ### Fonts
 
 Fonts are loaded in `src/app/layout.tsx` via `next/font/google`:
+
 - `Sora` — weights 300/400/600/700/800 — variable `--font-sora`
 - `Space_Grotesk` — weights 300/400/500/600/700 — variable `--font-space-grotesk`
 
@@ -72,10 +73,14 @@ Reusable heading block with built-in Framer Motion scroll animation. Replaces ma
 
 ```tsx
 <SectionHeader
-  overline="OUR SERVICES"          // optional small-caps gold label
-  heading={<>Our <span className="text-brand-gold">Services</span></>}
-  subtitle="Subtitle text here."
-  align="center"                   // "center" | "left"
+	overline="OUR SERVICES" // optional small-caps gold label
+	heading={
+		<>
+			Our <span className="text-brand-gold">Services</span>
+		</>
+	}
+	subtitle="Subtitle text here."
+	align="center" // "center" | "left"
 />
 ```
 
@@ -108,7 +113,7 @@ Standalone footer component. Include at the bottom of every page layout:
 ```tsx
 import Footer from "@/components/ui/Footer";
 // ...
-<Footer />
+<Footer />;
 ```
 
 ---

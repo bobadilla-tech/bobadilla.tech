@@ -56,7 +56,10 @@ export default function RedditPostDateExtractor() {
 					{/* Breadcrumb */}
 					<div className="mb-8">
 						<div className="flex items-center space-x-2 text-sm text-brand-primary/40 font-body">
-							<Link href="/" className="hover:text-brand-primary transition-colors">
+							<Link
+								href="/"
+								className="hover:text-brand-primary transition-colors"
+							>
 								Home
 							</Link>
 							<span>/</span>
@@ -67,7 +70,9 @@ export default function RedditPostDateExtractor() {
 								Tools
 							</Link>
 							<span>/</span>
-							<span className="text-brand-primary">Reddit Post Date Extractor</span>
+							<span className="text-brand-primary">
+								Reddit Post Date Extractor
+							</span>
 						</div>
 					</div>
 
@@ -151,7 +156,9 @@ export default function RedditPostDateExtractor() {
 											</div>
 											<button
 												onClick={() => copyToClipboard(result.utcDate, "utc")}
-												aria-label={copied === "utc" ? "Copied UTC date" : "Copy UTC date"}
+												aria-label={
+													copied === "utc" ? "Copied UTC date" : "Copy UTC date"
+												}
 												className="p-1.5 hover:bg-surface-hover rounded transition-colors duration-200"
 											>
 												{copied === "utc" ? (
@@ -161,7 +168,9 @@ export default function RedditPostDateExtractor() {
 												)}
 											</button>
 										</div>
-										<p className="font-mono text-brand-primary">{result.utcDate}</p>
+										<p className="font-mono text-brand-primary">
+											{result.utcDate}
+										</p>
 									</div>
 
 									{/* Local Date */}
@@ -177,7 +186,11 @@ export default function RedditPostDateExtractor() {
 												onClick={() =>
 													copyToClipboard(result.localDate, "local")
 												}
-												aria-label={copied === "local" ? "Copied local date" : "Copy local date"}
+												aria-label={
+													copied === "local"
+														? "Copied local date"
+														: "Copy local date"
+												}
 												className="p-1.5 hover:bg-surface-hover rounded transition-colors duration-200"
 											>
 												{copied === "local" ? (
@@ -187,7 +200,9 @@ export default function RedditPostDateExtractor() {
 												)}
 											</button>
 										</div>
-										<p className="font-mono text-brand-primary">{result.localDate}</p>
+										<p className="font-mono text-brand-primary">
+											{result.localDate}
+										</p>
 									</div>
 
 									{/* Additional Info */}
@@ -307,7 +322,9 @@ export default function RedditPostDateExtractor() {
 						{/* Privacy Note */}
 						<div className="bg-brand-gold/5 border border-border-gold rounded-2xl p-6">
 							<p className="font-body text-brand-primary/60 text-sm">
-								<span className="font-semibold text-brand-primary">Privacy Note:</span>{" "}
+								<span className="font-semibold text-brand-primary">
+									Privacy Note:
+								</span>{" "}
 								We do not store or share your URLs. They&apos;re used solely to
 								retrieve the creation date for you. All processing happens in
 								your browser.

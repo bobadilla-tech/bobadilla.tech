@@ -98,7 +98,9 @@ export default async function ServicesPage() {
 									title={service.title}
 									href={`/services/${service.slug}`}
 									variant="icon"
-									icon={serviceIconMap[service.id] ?? <Code className="size-7" />}
+									icon={
+										serviceIconMap[service.id] ?? <Code className="size-7" />
+									}
 									description={service.description}
 								/>
 							))}
@@ -127,7 +129,9 @@ export default async function ServicesPage() {
 											<h3 className="font-heading text-2xl font-bold text-brand-primary mb-2">
 												{industry.industry}
 											</h3>
-											<p className="font-body text-brand-primary/50">{industry.description}</p>
+											<p className="font-body text-brand-primary/50">
+												{industry.description}
+											</p>
 										</div>
 										<Link
 											href={`/services/all/${industry.slug}`}
@@ -158,7 +162,9 @@ export default async function ServicesPage() {
 												href={`/services/all/${industry.slug}`}
 												className="font-body text-brand-gold hover:text-brand-gold-light text-sm transition-colors duration-200"
 											>
-												{t("moreServices", { count: industry.services.length - 6 })}
+												{t("moreServices", {
+													count: industry.services.length - 6,
+												})}
 											</Link>
 										</div>
 									)}

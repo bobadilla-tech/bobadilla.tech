@@ -22,8 +22,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { locale } = await params;
 	return genMeta({
 		title: "Web Development Services",
-		description: "We build modern websites and web applications optimized for speed, engagement, and growth. Expert LATAM developers, fast delivery.",
-		keywords: [...KEYWORD_SETS.core, ...KEYWORD_SETS.services, "web development", "web applications", "next.js development"],
+		description:
+			"We build modern websites and web applications optimized for speed, engagement, and growth. Expert LATAM developers, fast delivery.",
+		keywords: [
+			...KEYWORD_SETS.core,
+			...KEYWORD_SETS.services,
+			"web development",
+			"web applications",
+			"next.js development",
+		],
 		canonical: `${BASE_URL}/${locale}/services/web-development`,
 	});
 }
@@ -45,7 +52,10 @@ export default async function WebDevelopmentPage({ params }: Props) {
 			/>
 
 			{/* 2. Pain Points */}
-			<ServicePainPoints heading={data.painPointsHeading} painPoints={data.painPoints} />
+			<ServicePainPoints
+				heading={data.painPointsHeading}
+				painPoints={data.painPoints}
+			/>
 
 			{/* 3. Urgency band — unique to web-dev page */}
 			{data.urgencyBandText && (
@@ -64,7 +74,10 @@ export default async function WebDevelopmentPage({ params }: Props) {
 			)}
 
 			{/* 4. Development Services Offered */}
-			<ServiceOfferings heading={data.servicesHeading} services={data.servicesOffered} />
+			<ServiceOfferings
+				heading={data.servicesHeading}
+				services={data.servicesOffered}
+			/>
 
 			{/* 5. Reasons to Work With Us */}
 			<ServiceReasons />

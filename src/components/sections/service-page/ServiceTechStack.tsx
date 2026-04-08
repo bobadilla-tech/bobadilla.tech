@@ -9,7 +9,9 @@ interface ServiceTechStackProps {
 	categories: TechCategory[];
 }
 
-export default function ServiceTechStack({ categories }: ServiceTechStackProps) {
+export default function ServiceTechStack({
+	categories,
+}: ServiceTechStackProps) {
 	const t = useTranslations("ServiceTechStack");
 
 	return (

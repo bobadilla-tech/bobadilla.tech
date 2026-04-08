@@ -1,14 +1,8 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import {
-	AlertCircle,
-	Calendar,
-	CheckCircle,
-	Github,
-	Linkedin,
-	Mail,
-} from "lucide-react";
+import { AlertCircle, Calendar, CheckCircle, Mail } from "lucide-react";
+import { Github, Linkedin } from "@/components/ui/BrandIcons";
 import { motion } from "framer-motion";
 import { z } from "zod";
 import { useTranslations } from "next-intl";
@@ -29,21 +23,15 @@ export default function Contact() {
 	const contactSchema = useMemo(
 		() =>
 			z.object({
-				name: z
-					.string()
-					.min(1, t("nameRequired"))
-					.max(100, t("nameTooLong")),
+				name: z.string().min(1, t("nameRequired")).max(100, t("nameTooLong")),
 				email: z.string().email(t("invalidEmail")),
-				company: z
-					.string()
-					.max(100, t("companyTooLong"))
-					.optional(),
+				company: z.string().max(100, t("companyTooLong")).optional(),
 				message: z
 					.string()
 					.min(10, t("messageTooShort"))
 					.max(2000, t("messageTooLong")),
 			}),
-		[t],
+		[t]
 	);
 
 	const [formData, setFormData] = useState({
@@ -304,7 +292,9 @@ export default function Contact() {
 								{status === "error" && (
 									<div className="flex items-start gap-2 p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
 										<AlertCircle className="size-5 text-red-400 shrink-0 mt-0.5" />
-										<p className="font-body text-red-400 text-sm">{errorMessage}</p>
+										<p className="font-body text-red-400 text-sm">
+											{errorMessage}
+										</p>
 									</div>
 								)}
 
@@ -341,7 +331,11 @@ export default function Contact() {
 								{t("bookCallAvailability")}
 							</p>
 							<div className="space-y-3">
-								<Button href={CAL_LINKS.ale} variant="gold" className="w-full justify-center">
+								<Button
+									href={CAL_LINKS.ale}
+									variant="gold"
+									className="w-full justify-center"
+								>
 									{t("scheduleWithAle")}
 								</Button>
 								<Button

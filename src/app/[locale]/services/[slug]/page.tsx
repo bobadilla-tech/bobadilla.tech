@@ -103,7 +103,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
 		: allServices.filter((s) => s.slug !== slug).slice(0, 3);
 
 	const features = t.raw("features") as string[];
-	const benefits = t.raw("benefits") as { title: string; description: string }[];
+	const benefits = t.raw("benefits") as {
+		title: string;
+		description: string;
+	}[];
 
 	return (
 		<div className="relative min-h-screen">
@@ -114,7 +117,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
 					{/* Breadcrumb */}
 					<div className="mb-8">
 						<div className="flex items-center space-x-2 text-sm text-brand-primary/40 font-body">
-							<Link href="/" className="hover:text-brand-primary transition-colors">
+							<Link
+								href="/"
+								className="hover:text-brand-primary transition-colors"
+							>
 								{t("home")}
 							</Link>
 							<span>/</span>
@@ -144,7 +150,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
 						<div className="lg:col-span-2 space-y-12">
 							{/* Overview */}
 							<section className="p-8 bg-surface border border-border rounded-2xl">
-								<h2 className="font-heading text-3xl font-bold text-brand-primary mb-6">{t("overview")}</h2>
+								<h2 className="font-heading text-3xl font-bold text-brand-primary mb-6">
+									{t("overview")}
+								</h2>
 								<p className="font-body text-brand-primary/70 leading-relaxed mb-6">
 									{t("overviewBody1", { service: service.title.toLowerCase() })}
 								</p>
@@ -165,7 +173,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
 											className="flex items-start space-x-3 p-4 bg-surface border border-border rounded-lg"
 										>
 											<CheckCircle className="w-6 h-6 text-brand-gold shrink-0 mt-0.5" />
-											<span className="font-body text-brand-primary/70">{feature}</span>
+											<span className="font-body text-brand-primary/70">
+												{feature}
+											</span>
 										</div>
 									))}
 								</div>
@@ -182,11 +192,15 @@ export default async function ServicePage({ params }: ServicePageProps) {
 											key={benefit.title}
 											className="p-6 bg-surface border border-border rounded-xl"
 										>
-											<div className="text-brand-gold mb-4">{benefitIcons[i]}</div>
+											<div className="text-brand-gold mb-4">
+												{benefitIcons[i]}
+											</div>
 											<h3 className="font-heading text-xl font-semibold text-brand-primary mb-2">
 												{benefit.title}
 											</h3>
-											<p className="font-body text-brand-primary/50">{benefit.description}</p>
+											<p className="font-body text-brand-primary/50">
+												{benefit.description}
+											</p>
 										</div>
 									))}
 								</div>
@@ -204,16 +218,28 @@ export default async function ServicePage({ params }: ServicePageProps) {
 									{t("getStartedBody")}
 								</p>
 								<div className="space-y-3">
-									<Button href={CAL_LINKS.ale} variant="gold" className="w-full justify-center">
+									<Button
+										href={CAL_LINKS.ale}
+										variant="gold"
+										className="w-full justify-center"
+									>
 										{t("bookCall")}
 									</Button>
-									<Button to="/#contact" variant="ghost" className="w-full justify-center">
+									<Button
+										to="/#contact"
+										variant="ghost"
+										className="w-full justify-center"
+									>
 										{t("contactUs")}
 									</Button>
 								</div>
 								<div className="mt-6 pt-6 border-t border-border">
-									<p className="font-body text-sm text-brand-primary/40 mb-2">{t("startingFrom")}</p>
-									<p className="font-heading text-3xl font-bold text-brand-primary">$350</p>
+									<p className="font-body text-sm text-brand-primary/40 mb-2">
+										{t("startingFrom")}
+									</p>
+									<p className="font-heading text-3xl font-bold text-brand-primary">
+										$350
+									</p>
 									<p className="font-body text-sm text-brand-primary/40 mt-1">
 										{t("forStaticWebsites")}
 									</p>

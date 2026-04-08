@@ -18,7 +18,8 @@ export default function SectionHeader({
 	align = "center",
 	className = "",
 }: SectionHeaderProps) {
-	const alignClass = align === "center" ? "text-center items-center" : "text-left items-start";
+	const alignClass =
+		align === "center" ? "text-center items-center" : "text-left items-start";
 
 	return (
 		<motion.div

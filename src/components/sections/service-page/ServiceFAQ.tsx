@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import Button from "@/components/ui/Button";
 import FAQItem from "@/components/ui/FAQItem";
 import { CAL_LINKS, SOCIAL_LINKS } from "~/lib/constants";
-import { Linkedin } from "lucide-react";
+import { Linkedin } from "@/components/ui/BrandIcons";
 
 interface ServiceFAQProps {
 	faqs?: { q: string; a: string }[];
@@ -59,7 +59,9 @@ export default function ServiceFAQ({ faqs }: ServiceFAQProps) {
 								className="bg-white rounded-[18px] p-3 flex items-center justify-center gap-2 mb-4 hover:bg-white/90 transition-colors duration-200"
 							>
 								<Linkedin size={16} className="text-[#0A66C2]" />
-								<span className="font-body font-medium text-black text-sm">{t("linkedinCta")}</span>
+								<span className="font-body font-medium text-black text-sm">
+									{t("linkedinCta")}
+								</span>
 							</a>
 						</motion.div>
 

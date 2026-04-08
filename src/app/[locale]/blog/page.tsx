@@ -105,7 +105,9 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 											: "px-5 py-2 bg-surface border border-border text-brand-primary/70 rounded-full font-body font-medium text-sm hover:border-border-gold hover:text-brand-primary transition-all duration-200"
 									}
 								>
-									{cat === "ai" ? "AI" : cat.charAt(0).toUpperCase() + cat.slice(1)}
+									{cat === "ai"
+										? "AI"
+										: cat.charAt(0).toUpperCase() + cat.slice(1)}
 								</Link>
 							))}
 						</div>
@@ -147,11 +149,14 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 										<div className="flex items-center gap-1">
 											<Calendar className="size-3.5" />
 											<span>
-												{new Date(post.publishedAt).toLocaleDateString("en-US", {
-													month: "short",
-													day: "numeric",
-													year: "numeric",
-												})}
+												{new Date(post.publishedAt).toLocaleDateString(
+													"en-US",
+													{
+														month: "short",
+														day: "numeric",
+														year: "numeric",
+													}
+												)}
 											</span>
 										</div>
 										<div className="flex items-center gap-1">

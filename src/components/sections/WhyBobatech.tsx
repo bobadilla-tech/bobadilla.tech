@@ -34,10 +34,16 @@ export default function WhyBobatech() {
 					{/* Table header */}
 					<div role="row" className="grid grid-cols-3 mb-4">
 						<div role="columnheader" />
-						<div role="columnheader" className="text-center font-body text-brand-primary/50 text-sm font-light tracking-wider uppercase py-3">
+						<div
+							role="columnheader"
+							className="text-center font-body text-brand-primary/50 text-sm font-light tracking-wider uppercase py-3"
+						>
 							{t("others")}
 						</div>
-						<div role="columnheader" className="text-center font-heading text-brand-gold font-semibold tracking-wider uppercase py-3">
+						<div
+							role="columnheader"
+							className="text-center font-heading text-brand-gold font-semibold tracking-wider uppercase py-3"
+						>
 							{t("bobatech")}
 						</div>
 					</div>
@@ -56,16 +62,23 @@ export default function WhyBobatech() {
 							transition={{ delay: i * 0.1, duration: 0.4 }}
 							className="grid grid-cols-3 items-center border-b border-border"
 						>
-							<span role="cell" className="font-body text-brand-primary text-base py-5">
+							<span
+								role="cell"
+								className="font-body text-brand-primary text-base py-5"
+							>
 								{row}
 							</span>
 							<div role="cell" className="flex justify-center">
 								<X className="size-6 text-red-400/80" aria-hidden="true" />
-								<span className="sr-only">{t("others")}: {t("no")}</span>
+								<span className="sr-only">
+									{t("others")}: {t("no")}
+								</span>
 							</div>
 							<div role="cell" className="flex justify-center">
 								<Check className="size-6 text-brand-gold" aria-hidden="true" />
-								<span className="sr-only">{t("bobatech")}: {t("yes")}</span>
+								<span className="sr-only">
+									{t("bobatech")}: {t("yes")}
+								</span>
 							</div>
 						</motion.div>
 					))}

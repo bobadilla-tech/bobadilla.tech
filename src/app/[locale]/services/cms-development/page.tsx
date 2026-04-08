@@ -23,7 +23,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	return genMeta({
 		title: data.eyebrow,
 		description: data.heroSubtitle,
-		keywords: [...KEYWORD_SETS.core, ...KEYWORD_SETS.services, "cms development", "headless cms", "sanity", "strapi"],
+		keywords: [
+			...KEYWORD_SETS.core,
+			...KEYWORD_SETS.services,
+			"cms development",
+			"headless cms",
+			"sanity",
+			"strapi",
+		],
 		canonical: `${BASE_URL}/${locale}/services/cms-development`,
 	});
 }
@@ -53,13 +60,19 @@ export default async function CmsDevelopmentPage({ params }: Props) {
 			/>
 
 			{/* 3. Why Us (3 white cards) */}
-			<ServicePainPoints heading={data.painPointsHeading} painPoints={data.painPoints} />
+			<ServicePainPoints
+				heading={data.painPointsHeading}
+				painPoints={data.painPoints}
+			/>
 
 			{/* 4. Reasons to Work With Us */}
 			<ServiceReasons />
 
 			{/* 5. Services Offered */}
-			<ServiceOfferings heading={data.servicesHeading} services={data.servicesOffered} />
+			<ServiceOfferings
+				heading={data.servicesHeading}
+				services={data.servicesOffered}
+			/>
 
 			{/* 6. Tech Stack */}
 			<ServiceTechStack categories={data.techStack} />

@@ -103,7 +103,10 @@
 		"heading2": "RESULTADOS REALES",
 		"subtitle": "De la idea al producto con velocidad, claridad y bases escalables",
 		"stats": [
-			{ "title": "Construido para escalar", "subtitle": "Arquitectura escalable" },
+			{
+				"title": "Construido para escalar",
+				"subtitle": "Arquitectura escalable"
+			},
 			{ "title": "100+", "subtitle": "Proyectos entregados" },
 			{ "title": "24/7", "subtitle": "Soporte disponible" },
 			{ "title": "100%", "subtitle": "Satisfacción del cliente" }
@@ -305,10 +308,22 @@
 			"Opciones de mantenimiento continuo"
 		],
 		"benefits": [
-			{ "title": "Entrega Rápida", "description": "Lanza en días o semanas, no en meses" },
-			{ "title": "Seguridad Empresarial", "description": "Construido con seguridad y cumplimiento en mente" },
-			{ "title": "Soporte 24/7", "description": "Soporte y mantenimiento continuo disponible" },
-			{ "title": "Soluciones Escalables", "description": "Arquitectura diseñada para crecer con tu negocio" }
+			{
+				"title": "Entrega Rápida",
+				"description": "Lanza en días o semanas, no en meses"
+			},
+			{
+				"title": "Seguridad Empresarial",
+				"description": "Construido con seguridad y cumplimiento en mente"
+			},
+			{
+				"title": "Soporte 24/7",
+				"description": "Soporte y mantenimiento continuo disponible"
+			},
+			{
+				"title": "Soluciones Escalables",
+				"description": "Arquitectura diseñada para crecer con tu negocio"
+			}
 		]
 	},
 	"IndustryPage": {
@@ -375,9 +390,18 @@
 		"suggestTool": "Sugerir una Herramienta",
 		"whyUseHeading": "¿Por Qué Usar Nuestras Herramientas?",
 		"features": [
-			{ "title": "100% Gratuitas", "desc": "Todas nuestras herramientas son completamente gratuitas. Sin tarifas ocultas, sin suscripciones." },
-			{ "title": "Enfocadas en la Privacidad", "desc": "No almacenamos tus datos. Todo sucede en tu navegador." },
-			{ "title": "Sin Registro Requerido", "desc": "Comienza a usar cualquier herramienta de inmediato. No se necesita crear una cuenta." }
+			{
+				"title": "100% Gratuitas",
+				"desc": "Todas nuestras herramientas son completamente gratuitas. Sin tarifas ocultas, sin suscripciones."
+			},
+			{
+				"title": "Enfocadas en la Privacidad",
+				"desc": "No almacenamos tus datos. Todo sucede en tu navegador."
+			},
+			{
+				"title": "Sin Registro Requerido",
+				"desc": "Comienza a usar cualquier herramienta de inmediato. No se necesita crear una cuenta."
+			}
 		]
 	},
 	"PricingPage": {
@@ -396,10 +420,22 @@
 		"flexibleDiscount": "-15% Descuento por Plazo Flexible Aplicado",
 		"whyWorkWithUs": "¿Por Qué Trabajar con Nosotros?",
 		"whyItems": [
-			{ "title": "Muy Receptivos", "desc": "Tiempos de respuesta rápidos y comunicación constante durante el desarrollo" },
-			{ "title": "Misma Zona Horaria", "desc": "Equipo basado en LATAM para colaboración en tiempo real sin fricciones" },
-			{ "title": "Alineación Cultural", "desc": "Fuerte ética de trabajo y compatibilidad cultural con equipos de EE.UU./UE" },
-			{ "title": "Precios Offshore", "desc": "Calidad premium a tarifas competitivas de LATAM - ahorra un 40-60%" }
+			{
+				"title": "Muy Receptivos",
+				"desc": "Tiempos de respuesta rápidos y comunicación constante durante el desarrollo"
+			},
+			{
+				"title": "Misma Zona Horaria",
+				"desc": "Equipo basado en LATAM para colaboración en tiempo real sin fricciones"
+			},
+			{
+				"title": "Alineación Cultural",
+				"desc": "Fuerte ética de trabajo y compatibilidad cultural con equipos de EE.UU./UE"
+			},
+			{
+				"title": "Precios Offshore",
+				"desc": "Calidad premium a tarifas competitivas de LATAM - ahorra un 40-60%"
+			}
 		],
 		"startOver": "Empezar de Nuevo",
 		"disclaimer": "*El precio final puede variar según los requisitos específicos y el alcance del proyecto",
@@ -417,52 +453,118 @@
 				"title": "Tipo de Proyecto",
 				"description": "¿Qué tipo de proyecto necesitas?",
 				"options": {
-					"landing": { "name": "Landing Page", "description": "Sitio de una sola página ideal para lanzamientos de productos, eventos o presencia empresarial simple" },
-					"website": { "name": "Sitio Web Multi-página", "description": "3-10 páginas con navegación, ideal para empresas que necesitan múltiples secciones de contenido" },
-					"webapp": { "name": "Aplicación Web", "description": "Aplicación web interactiva con cuentas de usuario, paneles y lógica de negocio" },
-					"mobile": { "name": "Aplicación Móvil", "description": "Aplicación móvil nativa o multiplataforma para iOS y Android" },
-					"fullstack": { "name": "Plataforma Full-stack", "description": "Plataforma completa con web, móvil, panel de administración e infraestructura backend" }
+					"landing": {
+						"name": "Landing Page",
+						"description": "Sitio de una sola página ideal para lanzamientos de productos, eventos o presencia empresarial simple"
+					},
+					"website": {
+						"name": "Sitio Web Multi-página",
+						"description": "3-10 páginas con navegación, ideal para empresas que necesitan múltiples secciones de contenido"
+					},
+					"webapp": {
+						"name": "Aplicación Web",
+						"description": "Aplicación web interactiva con cuentas de usuario, paneles y lógica de negocio"
+					},
+					"mobile": {
+						"name": "Aplicación Móvil",
+						"description": "Aplicación móvil nativa o multiplataforma para iOS y Android"
+					},
+					"fullstack": {
+						"name": "Plataforma Full-stack",
+						"description": "Plataforma completa con web, móvil, panel de administración e infraestructura backend"
+					}
 				}
 			},
 			"1": {
 				"title": "Funcionalidades Principales",
 				"description": "Selecciona las funcionalidades que necesitas (puedes seleccionar varias)",
 				"options": {
-					"auth": { "name": "Autenticación de Usuarios", "description": "Sistema seguro de login/registro con verificación de correo, restablecimiento de contraseña y gestión de sesiones" },
-					"payment": { "name": "Integración de Pagos", "description": "Integración de Stripe, PayPal u otra pasarela de pago con flujo de checkout" },
-					"admin": { "name": "Panel de Administración", "description": "Panel backend para gestionar usuarios, contenido y configuración del sistema" },
-					"api": { "name": "API REST", "description": "API RESTful para aplicaciones móviles o integraciones de terceros" },
-					"realtime": { "name": "Funcionalidades en Tiempo Real", "description": "Actualizaciones en vivo, chat, notificaciones usando WebSockets o Firebase" },
-					"notifications": { "name": "Notificaciones Push", "description": "Notificaciones push por correo electrónico y/o móvil para la participación del usuario" }
+					"auth": {
+						"name": "Autenticación de Usuarios",
+						"description": "Sistema seguro de login/registro con verificación de correo, restablecimiento de contraseña y gestión de sesiones"
+					},
+					"payment": {
+						"name": "Integración de Pagos",
+						"description": "Integración de Stripe, PayPal u otra pasarela de pago con flujo de checkout"
+					},
+					"admin": {
+						"name": "Panel de Administración",
+						"description": "Panel backend para gestionar usuarios, contenido y configuración del sistema"
+					},
+					"api": {
+						"name": "API REST",
+						"description": "API RESTful para aplicaciones móviles o integraciones de terceros"
+					},
+					"realtime": {
+						"name": "Funcionalidades en Tiempo Real",
+						"description": "Actualizaciones en vivo, chat, notificaciones usando WebSockets o Firebase"
+					},
+					"notifications": {
+						"name": "Notificaciones Push",
+						"description": "Notificaciones push por correo electrónico y/o móvil para la participación del usuario"
+					}
 				}
 			},
 			"2": {
 				"title": "Integraciones",
 				"description": "Integraciones de terceros necesarias",
 				"options": {
-					"crm": { "name": "Integración CRM", "description": "Conectar con Salesforce, HubSpot u otro CRM para gestión de leads" },
-					"analytics": { "name": "Analytics (GA, Mixpanel)", "description": "Seguimiento del comportamiento del usuario e integración de panel de analytics" },
-					"email": { "name": "Servicio de Correo (SendGrid, Mailgun)", "description": "Envío automatizado de correos para emails transaccionales y de marketing" },
-					"storage": { "name": "Almacenamiento en la Nube (AWS S3)", "description": "Subida y almacenamiento de archivos para documentos, imágenes o videos de usuarios" },
-					"social": { "name": "Inicio de Sesión con Redes Sociales", "description": "Inicio de sesión con Google, Facebook, LinkedIn u otros proveedores sociales" }
+					"crm": {
+						"name": "Integración CRM",
+						"description": "Conectar con Salesforce, HubSpot u otro CRM para gestión de leads"
+					},
+					"analytics": {
+						"name": "Analytics (GA, Mixpanel)",
+						"description": "Seguimiento del comportamiento del usuario e integración de panel de analytics"
+					},
+					"email": {
+						"name": "Servicio de Correo (SendGrid, Mailgun)",
+						"description": "Envío automatizado de correos para emails transaccionales y de marketing"
+					},
+					"storage": {
+						"name": "Almacenamiento en la Nube (AWS S3)",
+						"description": "Subida y almacenamiento de archivos para documentos, imágenes o videos de usuarios"
+					},
+					"social": {
+						"name": "Inicio de Sesión con Redes Sociales",
+						"description": "Inicio de sesión con Google, Facebook, LinkedIn u otros proveedores sociales"
+					}
 				}
 			},
 			"3": {
 				"title": "Diseño e Interfaz",
 				"description": "Nivel de complejidad del diseño",
 				"options": {
-					"basic": { "name": "Interfaz Básica (Basada en Plantillas)", "description": "Diseño limpio y profesional usando componentes y plantillas prediseñadas" },
-					"custom": { "name": "Diseño Personalizado", "description": "Diseño único adaptado a tu marca con componentes personalizados" },
-					"premium": { "name": "Diseño Premium con Animaciones", "description": "Diseño de alto nivel con micro-interacciones, animaciones y UX avanzada" }
+					"basic": {
+						"name": "Interfaz Básica (Basada en Plantillas)",
+						"description": "Diseño limpio y profesional usando componentes y plantillas prediseñadas"
+					},
+					"custom": {
+						"name": "Diseño Personalizado",
+						"description": "Diseño único adaptado a tu marca con componentes personalizados"
+					},
+					"premium": {
+						"name": "Diseño Premium con Animaciones",
+						"description": "Diseño de alto nivel con micro-interacciones, animaciones y UX avanzada"
+					}
 				}
 			},
 			"4": {
 				"title": "Cronograma",
 				"description": "¿Cuándo necesitas que esté entregado?",
 				"options": {
-					"rush": { "name": "Urgente (1-2 semanas) +30%", "description": "Entrega express con desarrollo prioritario y horas extendidas del equipo" },
-					"standard": { "name": "Estándar (3-4 semanas)", "description": "Cronograma estándar con ritmo de desarrollo equilibrado y aseguramiento de calidad" },
-					"flexible": { "name": "Flexible (5+ semanas) -15%", "description": "Opción económica con horario de entrega flexible" }
+					"rush": {
+						"name": "Urgente (1-2 semanas) +30%",
+						"description": "Entrega express con desarrollo prioritario y horas extendidas del equipo"
+					},
+					"standard": {
+						"name": "Estándar (3-4 semanas)",
+						"description": "Cronograma estándar con ritmo de desarrollo equilibrado y aseguramiento de calidad"
+					},
+					"flexible": {
+						"name": "Flexible (5+ semanas) -15%",
+						"description": "Opción económica con horario de entrega flexible"
+					}
 				}
 			}
 		}

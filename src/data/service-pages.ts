@@ -15,7 +15,7 @@ const byLocale = { en, es, pt } as const;
 
 export function getServicePageData(
 	slug: string,
-	locale: "en" | "es" | "pt" = "en",
+	locale: "en" | "es" | "pt" = "en"
 ) {
 	return byLocale[locale].find((p) => p.slug === slug);
 }

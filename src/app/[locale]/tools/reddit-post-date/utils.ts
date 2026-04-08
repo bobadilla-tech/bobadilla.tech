@@ -16,7 +16,12 @@ interface ApiErrorResponse {
  * @throws Error if URL is invalid
  */
 export function extractRedditPostId(url: string): string {
-	const allowedHostnames = ["reddit.com", "www.reddit.com", "old.reddit.com", "redd.it"];
+	const allowedHostnames = [
+		"reddit.com",
+		"www.reddit.com",
+		"old.reddit.com",
+		"redd.it",
+	];
 
 	let parsed: URL;
 	try {
@@ -81,7 +86,9 @@ export async function fetchRedditPostDate(
 		if (error instanceof Error) {
 			throw error;
 		}
-		throw new Error("An unexpected error occurred while fetching post data");
+		throw new Error("An unexpected error occurred while fetching post data", {
+			cause: error,
+		});
 	}
 }
 

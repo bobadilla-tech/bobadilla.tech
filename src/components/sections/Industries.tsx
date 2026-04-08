@@ -7,7 +7,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import IndustryCard from "@/components/ui/IndustryCard";
 
 const featured = industryServices.filter((i) =>
-	["healthcare", "education", "finance", "transportation"].includes(i.id),
+	["healthcare", "education", "finance", "transportation"].includes(i.id)
 );
 
 export default function Industries() {

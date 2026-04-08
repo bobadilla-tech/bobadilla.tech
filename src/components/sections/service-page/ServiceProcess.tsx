@@ -20,7 +20,11 @@ const unionImages = [
 	"/assets/services/process/union-6.svg",
 ];
 
-export default function ServiceProcess({ heading, subtitle, steps }: ServiceProcessProps) {
+export default function ServiceProcess({
+	heading,
+	subtitle,
+	steps,
+}: ServiceProcessProps) {
 	return (
 		<section className="py-24 px-4 sm:px-6 lg:px-8">
 			<div className="max-w-6xl mx-auto">
@@ -74,7 +78,9 @@ export default function ServiceProcess({ heading, subtitle, steps }: ServiceProc
 								className={`flex items-center gap-8 mb-4 ${isEven ? "flex-row" : "flex-row-reverse"}`}
 							>
 								{/* Description bubble on alternating side */}
-								<div className={`flex-1 flex ${isEven ? "justify-end" : "justify-start"}`}>
+								<div
+									className={`flex-1 flex ${isEven ? "justify-end" : "justify-start"}`}
+								>
 									{descriptionCard}
 								</div>
 
@@ -90,7 +96,9 @@ export default function ServiceProcess({ heading, subtitle, steps }: ServiceProc
 									/>
 									{/* Step number dot + title overlay */}
 									<div className="absolute inset-0 flex items-center justify-center">
-										<div className={`flex items-center gap-3 ${isEven ? "" : "flex-row-reverse"}`}>
+										<div
+											className={`flex items-center gap-3 ${isEven ? "" : "flex-row-reverse"}`}
+										>
 											<div className="w-20 h-20 flex-shrink-0">
 												<Image
 													src="/assets/services/shared/ellipse-process.svg"

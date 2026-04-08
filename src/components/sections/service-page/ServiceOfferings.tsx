@@ -8,7 +8,10 @@ interface ServiceOfferingsProps {
 	services: ServiceOffer[];
 }
 
-export default function ServiceOfferings({ heading, services }: ServiceOfferingsProps) {
+export default function ServiceOfferings({
+	heading,
+	services,
+}: ServiceOfferingsProps) {
 	return (
 		<section className="py-24 px-4 sm:px-6 lg:px-8">
 			<div className="max-w-7xl mx-auto">
@@ -32,8 +35,6 @@ export default function ServiceOfferings({ heading, services }: ServiceOfferings
 						const col = i % 3;
 						const row = Math.floor(i / 3);
 						const isLastRow = row === Math.floor((services.length - 1) / 3);
-						const isLastCol = col === Math.min(services.length - 1 - row * 3, 2);
-
 						return (
 							<motion.div
 								key={service.title}

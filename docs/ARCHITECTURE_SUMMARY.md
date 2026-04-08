@@ -83,23 +83,23 @@ src/app/api/[endpoint]/
 
 ```typescript
 export async function POST(request: NextRequest) {
-  try {
-    const body = await request.json();
-    const validatedData = mySchema.parse(body);
+	try {
+		const body = await request.json();
+		const validatedData = mySchema.parse(body);
 
-    const result = await insertRecord(validatedData);
-    logAction(result);
+		const result = await insertRecord(validatedData);
+		logAction(result);
 
-    return successResponse(result, "Success!", 201);
-  } catch (error) {
-    console.error("Error:", error);
+		return successResponse(result, "Success!", 201);
+	} catch (error) {
+		console.error("Error:", error);
 
-    if (error instanceof z.ZodError) {
-      return validationErrorResponse(error);
-    }
+		if (error instanceof z.ZodError) {
+			return validationErrorResponse(error);
+		}
 
-    return errorResponse("Operation failed");
-  }
+		return errorResponse("Operation failed");
+	}
 }
 ```
 

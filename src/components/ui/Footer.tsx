@@ -1,4 +1,4 @@
-import { Github, Linkedin, Instagram } from "lucide-react";
+import { Github, Linkedin, Instagram } from "@/components/ui/BrandIcons";
 import { getTranslations } from "next-intl/server";
 import { Link } from "~/i18n/navigation";
 import { CONTACT, SOCIAL_LINKS, FOOTER_LINKS } from "~/lib/constants";
@@ -21,7 +21,10 @@ export default async function Footer() {
 				<div className="grid grid-cols-1 md:grid-cols-4 gap-12">
 					{/* Logo + social */}
 					<div className="flex flex-col gap-6">
-						<Link href="/" className="font-heading text-2xl font-bold text-brand-gold">
+						<Link
+							href="/"
+							className="font-heading text-2xl font-bold text-brand-gold"
+						>
 							Bobadilla Tech
 						</Link>
 						<div className="flex items-center gap-4">

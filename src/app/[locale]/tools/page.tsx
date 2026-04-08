@@ -54,7 +54,10 @@ export default async function ToolsPage() {
 					{/* Breadcrumb */}
 					<div className="mb-8">
 						<div className="flex items-center gap-2 font-body text-sm text-brand-primary/40">
-							<Link href="/" className="hover:text-brand-primary transition-colors duration-200">
+							<Link
+								href="/"
+								className="hover:text-brand-primary transition-colors duration-200"
+							>
 								{t("home")}
 							</Link>
 							<span>/</span>
@@ -152,7 +155,9 @@ export default async function ToolsPage() {
 									<h3 className="font-heading text-lg font-semibold text-brand-primary mb-2">
 										{item.title}
 									</h3>
-									<p className="font-body text-brand-primary/50 text-sm">{item.desc}</p>
+									<p className="font-body text-brand-primary/50 text-sm">
+										{item.desc}
+									</p>
 								</div>
 							))}
 						</div>
