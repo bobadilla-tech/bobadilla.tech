@@ -1,0 +1,433 @@
+{
+	"ServiceHero": {
+		"bookCall": "BOOK A CALL"
+	},
+	"ServiceReasons": {
+		"heading1": "Reasons to",
+		"heading2": "work with us",
+		"featuredTitle": "Built by real experts",
+		"featuredBody": "You work directly with\nexperienced developers",
+		"reasons": [
+			"Clear timelines,\nno surprises",
+			"Real products,\nnot just ideas",
+			"Fast, focused\nexecution",
+			"Smart use\nof technology",
+			"Support\nbeyond launch"
+		]
+	},
+	"ServiceTechStack": {
+		"heading": "OUR CORE TECH STACK"
+	},
+	"ServiceFAQ": {
+		"infoBoxBody": "Have questions or want to explore possibilities? Feel free to reach out on LinkedIn or book a call.",
+		"linkedinCta": "CONNECT ON LINKEDIN",
+		"bookCall": "Book a Call",
+		"defaults": [
+			{
+				"q": "How fast can you deliver a project?",
+				"a": "Depending on complexity, MVPs can be delivered in 2–4 weeks, full products in 6–12 weeks. We commit to clear timelines upfront."
+			},
+			{
+				"q": "What happens if deadlines aren't met?",
+				"a": "We guarantee our delivery commitments. If we miss a deadline, we work overtime at no extra cost until it's done."
+			},
+			{
+				"q": "Do you work with startups?",
+				"a": "Absolutely — we've worked with early-stage startups through to enterprise teams. We adapt our process to your stage and budget."
+			},
+			{
+				"q": "Do you offer support after launch?",
+				"a": "Yes. We offer ongoing maintenance, monitoring, and growth packages so your product keeps improving after launch."
+			}
+		]
+	},
+	"ServiceEstimateCTA": {
+		"body": "Apply for a complimentary discovery workshop and receive a detailed <gold>project proposal</gold> with <gold>timeline</gold> and <gold>cost breakdown</gold>. Limited availability — Apply today!",
+		"subheading": "GET A FREE PROJECT ESTIMATE",
+		"button": "CHECK IF YOU QUALIFY"
+	},
+	"Navbar": {
+		"services": "Services",
+		"projects": "Projects",
+		"resources": "Resources",
+		"pricing": "Pricing",
+		"contact": "Contact",
+		"blog": "Blog",
+		"tools": "Tools",
+		"openSource": "Open Source",
+		"apis": "APIs",
+		"bookCall": "Book a Call"
+	},
+	"Footer": {
+		"navigation": "Navigation",
+		"dropUsALine": "Drop us a line",
+		"callUs": "Call us",
+		"links": {
+			"ourServices": "Our Services",
+			"projects": "Projects",
+			"dedicatedTeam": "Dedicated Team",
+			"openSource": "Open Source",
+			"pricing": "Pricing",
+			"contact": "Contact"
+		}
+	},
+	"CTABand": {
+		"heading": "Ready to discuss your project with us?",
+		"subtitle": "Let's build a product experience that not only looks great, but drives real results.",
+		"button": "Book a Call"
+	},
+	"Hero": {
+		"badge": "Top Latam Engineering Agency",
+		"line1": "CREATING",
+		"line2": "WORLD\u2013CLASS",
+		"line3": "DIGITAL PRODUCTS",
+		"button": "Book a Call"
+	},
+	"WhyBobatech": {
+		"heading1": "WHY TEAMS CHOOSE",
+		"heading2": "BOBA TECH",
+		"others": "Others",
+		"bobatech": "Boba Tech",
+		"rows": [
+			"Fast & predictable delivery",
+			"Transparent pricing",
+			"Senior engineers",
+			"6 months support included"
+		]
+	},
+	"StatsBar": {
+		"heading1": "BUILT TO DELIVER",
+		"heading2": "REAL RESULTS",
+		"subtitle": "From idea to product with speed, clarity and scalable foundations",
+		"stats": [
+			{ "title": "Built to Scale", "subtitle": "Scalable architecture" },
+			{ "title": "100+", "subtitle": "Projects Delivered" },
+			{ "title": "24/7", "subtitle": "Support Available" },
+			{ "title": "100%", "subtitle": "Client Satisfaction" }
+		]
+	},
+	"HomeFAQ": {
+		"description": "Have questions or want to explore possibilities? Feel free to reach out or book a call.",
+		"bookCall": "Book a Call",
+		"faqs": [
+			{
+				"q": "How fast can you deliver a project?",
+				"a": "Depending on the scope, we can deliver an MVP in as little as 3–14 days. For larger projects, we work in tight 2-week sprints and keep you updated every step of the way with clear milestones."
+			},
+			{
+				"q": "What happens if deadlines aren't met?",
+				"a": "We take delivery commitments seriously. If a deadline is at risk, we flag it early and work overtime at no extra cost to meet it. Transparent communication is core to how we operate."
+			},
+			{
+				"q": "Do you work with startups?",
+				"a": "Absolutely — startups are our sweet spot. We understand the pace and constraints of early-stage companies and can adapt to your runway, whether that means a lean MVP or a full product build."
+			},
+			{
+				"q": "Do you offer support after launch?",
+				"a": "Yes. All of our engagements include 6 months of post-launch support. We're here to fix bugs, monitor performance, and iterate with you as your product grows."
+			}
+		]
+	},
+	"Contact": {
+		"heading1": "Let's Build",
+		"heading2": "Together",
+		"subtitle": "Book a free 15-minute call or send us a message.",
+		"formHeading": "Send us a message",
+		"nameLabel": "Name *",
+		"emailLabel": "Email *",
+		"companyLabel": "Company (optional)",
+		"messageLabel": "Message *",
+		"namePlaceholder": "Your name",
+		"emailPlaceholder": "your@email.com",
+		"companyPlaceholder": "Your company",
+		"messagePlaceholder": "Tell us about your project...",
+		"successMessage": "Thank you! We'll get back to you soon.",
+		"errorSummary": "Please fix the errors below",
+		"sendButton": "Send Message",
+		"sendingButton": "Sending...",
+		"bookCallHeading": "Book a Free Call",
+		"bookCallDesc": "Schedule a 15-minute consultation with our Chief Revenue Officer.",
+		"bookCallAvailability": "Available 10 AM – 3 PM • Quick response guaranteed",
+		"scheduleWithAle": "Schedule with Ale",
+		"enterpriseCTO": "Enterprise & Fractional CTO",
+		"getInTouchHeading": "Get in Touch",
+		"followUs": "Follow us",
+		"nameRequired": "Name is required",
+		"nameTooLong": "Name must be less than 100 characters",
+		"invalidEmail": "Invalid email address",
+		"companyTooLong": "Company name must be less than 100 characters",
+		"messageTooShort": "Message must be at least 10 characters",
+		"messageTooLong": "Message must be less than 2000 characters"
+	},
+	"ServicesSection": {
+		"heading1": "OUR",
+		"heading2": "SERVICES",
+		"subtitle": "Full-Stack Development, AI Integration and Enterprise Solutions",
+		"learnMore": "Learn more →"
+	},
+	"IndustriesSection": {
+		"heading1": "Industries",
+		"heading2": "We Have Experience With",
+		"subtitle": "Proven expertise delivering specialized solutions across diverse sectors."
+	},
+	"PricingSection": {
+		"heading1": "Simple,",
+		"heading2": "Transparent Pricing",
+		"subtitle": "Static website packages designed for speed and quality.",
+		"calculatorButton": "Try Our Pricing Calculator",
+		"mostPopular": "Most Popular",
+		"getStarted": "Get Started",
+		"ctaHeading": "Need a custom MVP or full-stack application?",
+		"ctaBody": "We offer hourly consultancy and fractional CTO services. Book a call to discuss your project.",
+		"ctaButton": "Book a Call with an Experienced Fractional CTO",
+		"plans": [
+			{
+				"name": "Starter Landing Page",
+				"description": "Perfect for startups and small businesses",
+				"features": [
+					"Single landing page",
+					"Responsive design",
+					"Basic SEO optimization",
+					"Contact form integration",
+					"2 rounds of revisions",
+					"7-10 day delivery",
+					"Mobile optimized"
+				]
+			},
+			{
+				"name": "Multi-Page Website",
+				"description": "1-5 pages for growing businesses",
+				"features": [
+					"Up to 5 custom pages",
+					"Advanced responsive design",
+					"SEO optimization",
+					"CMS integration (optional)",
+					"Contact & lead forms",
+					"3 rounds of revisions",
+					"14-21 day delivery",
+					"Analytics integration",
+					"Social media integration"
+				]
+			},
+			{
+				"name": "Premium Web Experience",
+				"description": "Custom solutions for enterprises",
+				"features": [
+					"Unlimited pages",
+					"Custom design & animations",
+					"Advanced SEO & performance",
+					"Full CMS integration",
+					"E-commerce capabilities",
+					"API integrations",
+					"Unlimited revisions",
+					"Priority support",
+					"Ongoing maintenance (optional)",
+					"Custom features & functionality"
+				]
+			}
+		]
+	},
+	"ServicesPage": {
+		"heading1": "Our",
+		"heading2": "Services",
+		"subtitle": "From rapid MVP development to enterprise solutions, we deliver cutting-edge technology tailored to your needs.",
+		"coreServices": "Core Services",
+		"industrySolutions": "Industry Solutions",
+		"industrySubtitle": "Specialized solutions tailored for specific industries with deep domain expertise.",
+		"viewAll": "View All",
+		"moreServices": "+{count} more services",
+		"ctaHeading": "Ready to Start Your Project?",
+		"ctaBody": "Book a free consultation to discuss your needs and get a custom quote.",
+		"bookCall": "Book a Call",
+		"contactUs": "Contact Us"
+	},
+	"ServicePage": {
+		"home": "Home",
+		"services": "Services",
+		"overview": "Overview",
+		"overviewBody1": "Our {service} service combines cutting-edge technology with deep engineering expertise to deliver solutions that drive business results. We work closely with you to understand your unique requirements and create custom solutions that scale with your business.",
+		"overviewBody2": "Whether you're a startup looking to launch your MVP quickly or an enterprise seeking robust, scalable solutions, our team has the experience and expertise to bring your vision to life.",
+		"whatsIncluded": "What's Included",
+		"whyChooseUs": "Why Choose Us",
+		"getStarted": "Get Started Today",
+		"getStartedBody": "Book a free consultation to discuss your project and receive a custom quote.",
+		"bookCall": "Book a Call",
+		"contactUs": "Contact Us",
+		"startingFrom": "Starting from",
+		"forStaticWebsites": "for static websites",
+		"relatedServices": "Related Services",
+		"learnMore": "Learn more",
+		"features": [
+			"Custom design and development",
+			"Responsive and mobile-optimized",
+			"SEO and performance optimization",
+			"Integration with third-party services",
+			"Comprehensive testing and QA",
+			"Documentation and training",
+			"Post-launch support",
+			"Ongoing maintenance options"
+		],
+		"benefits": [
+			{ "title": "Fast Delivery", "description": "Launch in days or weeks, not months" },
+			{ "title": "Enterprise Security", "description": "Built with security and compliance in mind" },
+			{ "title": "24/7 Support", "description": "Ongoing support and maintenance available" },
+			{ "title": "Scalable Solutions", "description": "Architecture designed to grow with your business" }
+		]
+	},
+	"IndustryPage": {
+		"home": "Home",
+		"services": "Services",
+		"solutions": "Solutions",
+		"allServicesHeading": "All {industry} Services",
+		"whyChooseHeading": "Why Choose Bobadilla Tech for {industry}?",
+		"expertise1Title": "Deep Industry Expertise",
+		"expertise1Body": "Our team has extensive experience building solutions for the {industry} sector, understanding both technical requirements and industry-specific regulations.",
+		"expertise2Title": "Proven Track Record",
+		"expertise2Body": "We've successfully delivered projects for clients ranging from startups to enterprises, consistently meeting deadlines and exceeding expectations.",
+		"expertise3Title": "Senior Engineering Team",
+		"expertise3Body": "Led by senior engineers with backgrounds in enterprise backend systems and cutting-edge AI solutions, not just another agency.",
+		"expertise4Title": "Fast Delivery",
+		"expertise4Body": "Launch your MVP in days or weeks, not months. We focus on rapid iteration and getting your product to market quickly.",
+		"ctaHeading": "Ready to Transform Your {industry} Business?",
+		"ctaBody": "Book a free consultation to discuss your project and receive a custom proposal tailored to your needs.",
+		"bookCall": "Book a Free Call",
+		"contactUs": "Contact Us",
+		"otherIndustries": "Other Industries We Serve",
+		"explore": "Explore",
+		"learnMore": "Learn more"
+	},
+	"BlogPage": {
+		"posts": "Posts",
+		"subtitle": "Insights, tutorials, and best practices from our team.",
+		"allPosts": "All Posts",
+		"noPostsFound": "No posts found",
+		"noPostsFilterMsg": "No posts match \"{filter}\". Try a different filter or browse all posts.",
+		"noPostsEmptyMsg": "No blog posts available yet. Check back soon!",
+		"viewAllPosts": "View All Posts",
+		"ctaHeading": "Want to Build Something Amazing?",
+		"ctaBody": "Let's discuss your project and how we can help you launch faster.",
+		"getInTouch": "Get in Touch",
+		"minRead": "{n} min read"
+	},
+	"BlogPostPage": {
+		"backToBlog": "Back to Blog",
+		"foundHelpful": "Found this helpful?",
+		"shareNetwork": "Share it with your network",
+		"shareOnX": "Share on X",
+		"shareOnLinkedIn": "Share on LinkedIn",
+		"shareOnReddit": "Share on Reddit",
+		"enterpriseAPIsHeading": "Need Enterprise APIs?",
+		"enterpriseAPIsBody": "Use our Requiem API for scalable, production-ready solutions",
+		"learnMore": "Learn More",
+		"devServicesHeading": "Need Development Services?",
+		"devServicesBody": "Get expert consultancy to build your next product",
+		"getInTouch": "Get in Touch",
+		"stayTuned": "Stay Tuned",
+		"moreSoonMsg": "More content coming soon. Follow us for updates!",
+		"morePosts": "More from our Blog",
+		"minRead": "{n} min read"
+	},
+	"ToolsPage": {
+		"home": "Home",
+		"heading1": "Free",
+		"heading2": "Tools",
+		"subtitle": "Powerful online tools built for developers, researchers, and content creators. All tools are free and privacy-focused.",
+		"useTool": "Use Tool",
+		"moreToolsHeading": "More Tools Coming Soon",
+		"moreToolsBody": "We're constantly building new tools to help developers and content creators.",
+		"suggestTool": "Suggest a Tool",
+		"whyUseHeading": "Why Use Our Tools?",
+		"features": [
+			{ "title": "100% Free", "desc": "All our tools are completely free to use. No hidden fees, no subscriptions." },
+			{ "title": "Privacy-Focused", "desc": "We don't store your data. Everything happens in your browser." },
+			{ "title": "No Sign-Up Required", "desc": "Start using any tool immediately. No account creation needed." }
+		]
+	},
+	"PricingPage": {
+		"currentEstimate": "Current Estimate",
+		"total": "Total",
+		"yourEstimate": "Your Project Estimate",
+		"breakdownSubtitle": "Detailed breakdown of your custom solution",
+		"totalInvestment": "Total Investment",
+		"pricingNote": "Competitive LATAM pricing • Same timezone • Cultural alignment",
+		"getDetailedQuote": "Get Your Detailed Quote",
+		"emailDesc": "Enter your email to save this estimate and book a free consultation",
+		"bookConsultation": "Book Free Consultation",
+		"saving": "Saving...",
+		"costBreakdown": "Cost Breakdown",
+		"rushFee": "+30% Rush Fee Applied",
+		"flexibleDiscount": "-15% Flexible Timeline Discount Applied",
+		"whyWorkWithUs": "Why Work With Us?",
+		"whyItems": [
+			{ "title": "Highly Responsive", "desc": "Quick turnaround times and constant communication throughout development" },
+			{ "title": "Same Timezone", "desc": "LATAM-based team for seamless real-time collaboration" },
+			{ "title": "Cultural Alignment", "desc": "Strong work ethic and cultural compatibility with US/EU teams" },
+			{ "title": "Offshore Pricing", "desc": "Premium quality at competitive LATAM rates - save 40-60%" }
+		],
+		"startOver": "Start Over",
+		"disclaimer": "*Final pricing may vary based on specific requirements and project scope",
+		"calculatorHeading1": "Project Pricing",
+		"calculatorHeading2": "Calculator",
+		"calculatorSubtitle": "Get an instant estimate for your project in just a few steps",
+		"step": "Step {current} of {total}",
+		"currentStepTotal": "Current Step Total:",
+		"multiSelectHint": "💡 You can select multiple options",
+		"previous": "Previous",
+		"next": "Next",
+		"seeEstimate": "See Estimate",
+		"steps": {
+			"0": {
+				"title": "Project Type",
+				"description": "What type of project do you need?",
+				"options": {
+					"landing": { "name": "Landing Page", "description": "Single page website perfect for product launches, events, or simple business presence" },
+					"website": { "name": "Multi-page Website", "description": "3-10 pages with navigation, perfect for businesses needing multiple content sections" },
+					"webapp": { "name": "Web Application", "description": "Interactive web app with user accounts, dashboards, and business logic" },
+					"mobile": { "name": "Mobile App", "description": "Native or cross-platform mobile app for iOS and Android" },
+					"fullstack": { "name": "Full-stack Platform", "description": "Complete platform with web, mobile, admin panel, and backend infrastructure" }
+				}
+			},
+			"1": {
+				"title": "Core Features",
+				"description": "Select the features you need (select all that apply)",
+				"options": {
+					"auth": { "name": "User Authentication", "description": "Secure login/signup system with email verification, password reset, and session management" },
+					"payment": { "name": "Payment Integration", "description": "Stripe, PayPal, or other payment gateway integration with checkout flow" },
+					"admin": { "name": "Admin Dashboard", "description": "Backend admin panel for managing users, content, and system settings" },
+					"api": { "name": "REST API", "description": "RESTful API for mobile apps or third-party integrations" },
+					"realtime": { "name": "Real-time Features", "description": "Live updates, chat, notifications using WebSockets or Firebase" },
+					"notifications": { "name": "Push Notifications", "description": "Email and/or mobile push notifications for user engagement" }
+				}
+			},
+			"2": {
+				"title": "Integrations",
+				"description": "Third-party integrations needed",
+				"options": {
+					"crm": { "name": "CRM Integration", "description": "Connect to Salesforce, HubSpot, or other CRM for lead management" },
+					"analytics": { "name": "Analytics (GA, Mixpanel)", "description": "User behavior tracking and analytics dashboard integration" },
+					"email": { "name": "Email Service (SendGrid, Mailgun)", "description": "Automated email sending for transactional and marketing emails" },
+					"storage": { "name": "Cloud Storage (AWS S3)", "description": "File upload and storage for user documents, images, or videos" },
+					"social": { "name": "Social Media Login", "description": "Login with Google, Facebook, LinkedIn, or other social providers" }
+				}
+			},
+			"3": {
+				"title": "Design & UI",
+				"description": "Design complexity level",
+				"options": {
+					"basic": { "name": "Basic UI (Template-based)", "description": "Clean, professional design using pre-built components and templates" },
+					"custom": { "name": "Custom Design", "description": "Unique design tailored to your brand with custom components" },
+					"premium": { "name": "Premium Design with Animations", "description": "High-end design with micro-interactions, animations, and advanced UX" }
+				}
+			},
+			"4": {
+				"title": "Timeline",
+				"description": "When do you need it delivered?",
+				"options": {
+					"rush": { "name": "Rush (1-2 weeks) +30%", "description": "Express delivery with priority development and extended team hours" },
+					"standard": { "name": "Standard (3-4 weeks)", "description": "Standard timeline with balanced development pace and quality assurance" },
+					"flexible": { "name": "Flexible (5+ weeks) -15%", "description": "Budget-friendly option with flexible delivery schedule" }
+				}
+			}
+		}
+	}
+}

@@ -3,6 +3,8 @@ export interface Service {
 	title: string;
 	slug: string;
 	description: string;
+	image?: string;
+	imageAlt?: string;
 	icon?: string;
 	category?: string;
 }
@@ -14,33 +16,11 @@ export interface IndustryService {
 	description: string;
 	services: Service[];
 	icon?: string;
+	image?: string;
+	imageAlt?: string;
 }
 
 export const allServices: Service[] = [
-	{
-		id: "web-dev",
-		title: "Web Development",
-		slug: "web-development",
-		description:
-			"Custom web applications built with cutting-edge technologies for optimal performance and user experience.",
-		category: "development",
-	},
-	{
-		id: "cms-dev",
-		title: "CMS Development",
-		slug: "cms-development",
-		description:
-			"Powerful content management systems tailored to your business needs.",
-		category: "development",
-	},
-	{
-		id: "mvp-dev",
-		title: "MVP Development",
-		slug: "mvp-development",
-		description:
-			"Launch your startup in days or weeks, not months. Rapid MVP development to validate your idea.",
-		category: "development",
-	},
 	{
 		id: "web-app-dev",
 		title: "Web Application Development",
@@ -48,29 +28,9 @@ export const allServices: Service[] = [
 		description:
 			"Full-featured web applications with robust backend systems and intuitive interfaces.",
 		category: "development",
-	},
-	{
-		id: "mobile-app-dev",
-		title: "Mobile App Development",
-		slug: "mobile-app-development",
-		description:
-			"Native and cross-platform mobile applications for iOS and Android.",
-		category: "development",
-	},
-	{
-		id: "backend-dev",
-		title: "Back-end Development",
-		slug: "back-end-development",
-		description:
-			"Enterprise-grade backend systems built by senior engineering talent.",
-		category: "development",
-	},
-	{
-		id: "frontend-dev",
-		title: "Front-end Development",
-		slug: "front-end-development",
-		description: "Modern, responsive, and performant user interfaces.",
-		category: "development",
+		image:
+			"https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80",
+		imageAlt: "Web application development",
 	},
 	{
 		id: "web-portal-dev",
@@ -79,6 +39,74 @@ export const allServices: Service[] = [
 		description:
 			"Custom web portals for internal tools, customer dashboards, and more.",
 		category: "development",
+		image:
+			"https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
+		imageAlt: "Web portal development",
+	},
+	{
+		id: "mobile-app-dev",
+		title: "Mobile App Development",
+		slug: "mobile-app-development",
+		description:
+			"Native and cross-platform mobile applications for iOS and Android.",
+		category: "development",
+		image:
+			"https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
+		imageAlt: "Mobile app development",
+	},
+	{
+		id: "frontend-dev",
+		title: "Front-end Development",
+		slug: "front-end-development",
+		description: "Modern, responsive, and performant user interfaces.",
+		category: "development",
+		image:
+			"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
+		imageAlt: "Front-end development",
+	},
+	{
+		id: "backend-dev",
+		title: "Back-end Development",
+		slug: "back-end-development",
+		description:
+			"Enterprise-grade backend systems built by senior engineering talent.",
+		category: "development",
+		image:
+			"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+		imageAlt: "Back-end development",
+	},
+	{
+		id: "web-dev",
+		title: "Web Development",
+		slug: "web-development",
+		description:
+			"Custom web applications built with cutting-edge technologies for optimal performance and user experience.",
+		category: "development",
+		image:
+			"https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80",
+		imageAlt: "Web development",
+	},
+	{
+		id: "cms-dev",
+		title: "CMS Development",
+		slug: "cms-development",
+		description:
+			"Powerful content management systems tailored to your business needs.",
+		category: "development",
+		image:
+			"https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&q=80",
+		imageAlt: "CMS development",
+	},
+	{
+		id: "mvp-dev",
+		title: "MVP Development",
+		slug: "mvp-development",
+		description:
+			"Launch your startup in days or weeks, not months. Rapid MVP development to validate your idea.",
+		category: "development",
+		image:
+			"https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&q=80",
+		imageAlt: "MVP development",
 	},
 ];
 
@@ -89,6 +117,9 @@ export const industryServices: IndustryService[] = [
 		slug: "healthcare",
 		description:
 			"HIPAA-compliant healthcare solutions with enterprise security and scalability.",
+		image:
+			"https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
+		imageAlt: "Healthcare technology solutions",
 		services: [
 			{
 				id: "healthcare-software",
@@ -152,6 +183,9 @@ export const industryServices: IndustryService[] = [
 		slug: "education",
 		description:
 			"Transform learning experiences with innovative educational technology solutions.",
+		image:
+			"https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80",
+		imageAlt: "Education technology solutions",
 		services: [
 			{
 				id: "education-software",
@@ -207,6 +241,9 @@ export const industryServices: IndustryService[] = [
 		slug: "finance",
 		description:
 			"Secure, compliant financial technology solutions built with enterprise-grade security.",
+		image:
+			"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80",
+		imageAlt: "Finance technology solutions",
 		services: [
 			{
 				id: "financial-software",
@@ -250,10 +287,13 @@ export const industryServices: IndustryService[] = [
 	},
 	{
 		id: "transportation",
-		industry: "Transportation and Logistics",
+		industry: "Transportation & Logistics",
 		slug: "transportation-logistics",
 		description:
 			"Optimize operations with intelligent transportation and logistics solutions.",
+		image:
+			"https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=800&q=80",
+		imageAlt: "Transportation and logistics solutions",
 		services: [
 			{
 				id: "transportation-software",

@@ -1,1 +1,37 @@
 @import "tailwindcss";
+
+@theme {
+  /* Brand colors */
+  --color-brand-gold: #e6be1a;
+  --color-brand-gold-light: #ffeea8;
+  --color-brand-gold-dark: #c9a916;
+  --color-brand-primary: #dbdbd7;
+  --color-brand-bg: #0b0505;
+  --color-brand-bg-alt: #0a0504;
+
+  /* Surface / glass */
+  --color-surface: rgb(255 255 255 / 0.04);
+  --color-surface-hover: rgb(255 255 255 / 0.08);
+  --color-border: rgb(255 255 255 / 0.10);
+  --color-border-gold: rgb(230 190 26 / 0.40);
+
+  /* Font families — CSS variables injected by next/font */
+  --font-heading: var(--font-sora);
+  --font-body: var(--font-space-grotesk);
+}
+
+/* Base styles */
+body {
+  background: linear-gradient(180deg, #0b0505 0%, #0a0504 97%);
+  color: var(--color-brand-primary);
+  font-family: var(--font-body, sans-serif);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading, sans-serif);
+}

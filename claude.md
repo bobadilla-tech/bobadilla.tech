@@ -5,12 +5,113 @@ This document outlines the architectural patterns and conventions for this Next.
 ## 📋 Table of Contents
 
 - [Overview](#overview)
+- [Design System](#design-system)
+- [UI Component Architecture](#ui-component-architecture)
 - [API Endpoints Architecture](#api-endpoints-architecture)
 - [Tools Architecture](#tools-architecture)
 - [Shared Utilities](#shared-utilities)
 - [Directory Structure](#directory-structure)
 - [Conventions](#conventions)
 - [Examples](#examples)
+
+## 🎨 Design System
+
+The site uses a gold-on-dark brand identity. All design tokens are defined in `src/app/globals.css` via a Tailwind v4 `@theme` block — **do not use a `tailwind.config.ts`**.
+
+### Design Tokens (Tailwind v4 `@theme`)
+
+| CSS Variable | Tailwind Class | Value |
+|---|---|---|
+| `--color-brand-gold` | `text-brand-gold`, `bg-brand-gold` | `#e6be1a` |
+| `--color-brand-gold-light` | `text-brand-gold-light` | `#ffeea8` |
+| `--color-brand-primary` | `text-brand-primary` | `#dbdbd7` |
+| `--color-brand-bg` | `bg-brand-bg` | `#0b0505` |
+| `--color-surface` | `bg-surface` | `rgba(255,255,255,0.04)` |
+| `--color-surface-hover` | `bg-surface-hover` | `rgba(255,255,255,0.08)` |
+| `--color-border` | `border-border` | `rgba(255,255,255,0.10)` |
+| `--color-border-gold` | `border-border-gold` | `rgba(230,190,26,0.40)` |
+| `--font-heading` | `font-heading` | Sora (via `--font-sora`) |
+| `--font-body` | `font-body` | Space Grotesk (via `--font-space-grotesk`) |
+
+### Fonts
+
+Fonts are loaded in `src/app/layout.tsx` via `next/font/google`:
+- `Sora` — weights 300/400/600/700/800 — variable `--font-sora`
+- `Space_Grotesk` — weights 300/400/500/600/700 — variable `--font-space-grotesk`
+
+Always use `font-heading` on headings and `font-body` on body text.
+
+### Color Usage Rules
+
+- **Never** use raw Tailwind colors (`text-white`, `text-gray-400`, `bg-slate-950`, `text-cyan-400`) — always use brand tokens
+- Cards/panels: `bg-surface border border-border rounded-2xl`
+- Gold-highlighted cards: `bg-brand-gold/10 border border-border-gold`
+- Body text hierarchy: `text-brand-primary` → `text-brand-primary/70` → `text-brand-primary/50` → `text-brand-primary/30`
+
+---
+
+## 🧩 UI Component Architecture
+
+Shared UI primitives live in `src/components/ui/`. All new pages and sections should use these.
+
+### `Button.tsx`
+
+Universal button/link component. Always use this instead of raw `<a>` or `<Link>` for CTAs.
+
+```tsx
+<Button variant="gold" href="https://cal.com/...">Book a Call</Button>  // external link
+<Button variant="outline" to="/pricing">View Pricing</Button>            // internal link
+<Button variant="ghost" onClick={fn}>Cancel</Button>                     // interactive
+```
+
+Props: `variant: "gold" | "outline" | "ghost"`, `size: "sm" | "md" | "lg"`, `href` (external), `to` (internal `<Link>`), `loading`, `disabled`, `type`, `className`, `onClick`.
+
+### `SectionHeader.tsx`
+
+Reusable heading block with built-in Framer Motion scroll animation. Replaces manual heading patterns.
+
+```tsx
+<SectionHeader
+  overline="OUR SERVICES"          // optional small-caps gold label
+  heading={<>Our <span className="text-brand-gold">Services</span></>}
+  subtitle="Subtitle text here."
+  align="center"                   // "center" | "left"
+/>
+```
+
+### `StatCard.tsx`
+
+White-background stat card (inverted from dark page). Used in `StatsBar.tsx`.
+
+### `ServiceCard.tsx`
+
+```tsx
+<ServiceCard variant="image" image="/img.jpg" title="Web Dev" href="/services/web-dev" description="..." />
+<ServiceCard variant="icon" icon={<Globe />} title="Web Dev" href="/services/web-dev" description="..." />
+```
+
+- `image` variant: homepage-style dark image with text overlay at bottom
+- `icon` variant: services listing page style with icon in gold container
+
+### `IndustryCard.tsx`
+
+Image card with white title bar and gold text. Used in `Industries.tsx`.
+
+### `FAQItem.tsx`
+
+Controlled accordion item. Requires `isOpen` + `onToggle` props (state managed by parent).
+
+### `Footer.tsx`
+
+Standalone footer component. Include at the bottom of every page layout:
+
+```tsx
+import Footer from "@/components/ui/Footer";
+// ...
+<Footer />
+```
+
+---
 
 ## 🏗️ Overview
 

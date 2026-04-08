@@ -1,0 +1,433 @@
+{
+	"ServiceHero": {
+		"bookCall": "AGENDAR CHAMADA"
+	},
+	"ServiceReasons": {
+		"heading1": "Razões para",
+		"heading2": "trabalhar conosco",
+		"featuredTitle": "Construído por especialistas reais",
+		"featuredBody": "Você trabalha diretamente com\ndesenvolvedores experientes",
+		"reasons": [
+			"Prazos claros,\nsem surpresas",
+			"Produtos reais,\nnão apenas ideias",
+			"Execução rápida\ne focada",
+			"Uso inteligente\nda tecnologia",
+			"Suporte\nalém do lançamento"
+		]
+	},
+	"ServiceTechStack": {
+		"heading": "NOSSA STACK TECNOLÓGICA"
+	},
+	"ServiceFAQ": {
+		"infoBoxBody": "Tem perguntas ou quer explorar possibilidades? Entre em contato pelo LinkedIn ou agende uma chamada.",
+		"linkedinCta": "CONECTAR NO LINKEDIN",
+		"bookCall": "Agendar uma chamada",
+		"defaults": [
+			{
+				"q": "Com que rapidez vocês entregam um projeto?",
+				"a": "Dependendo da complexidade, MVPs podem ser entregues em 2–4 semanas, produtos completos em 6–12 semanas. Nos comprometemos com prazos claros desde o início."
+			},
+			{
+				"q": "O que acontece se os prazos não forem cumpridos?",
+				"a": "Garantimos nossos compromissos de entrega. Se perdermos um prazo, trabalhamos horas extras sem custo adicional até que esteja concluído."
+			},
+			{
+				"q": "Vocês trabalham com startups?",
+				"a": "Com certeza — trabalhamos com startups em estágio inicial até equipes empresariais. Adaptamos nosso processo ao seu estágio e orçamento."
+			},
+			{
+				"q": "Vocês oferecem suporte após o lançamento?",
+				"a": "Sim. Oferecemos pacotes contínuos de manutenção, monitoramento e crescimento para que seu produto continue melhorando após o lançamento."
+			}
+		]
+	},
+	"ServiceEstimateCTA": {
+		"body": "Candidate-se a um workshop de descoberta gratuito e receba uma <gold>proposta detalhada do projeto</gold> com <gold>cronograma</gold> e <gold>detalhamento de custos</gold>. Disponibilidade limitada — Candidate-se hoje!",
+		"subheading": "OBTENHA UMA ESTIMATIVA GRATUITA",
+		"button": "VERIFIQUE SE VOCÊ SE QUALIFICA"
+	},
+	"Navbar": {
+		"services": "Serviços",
+		"projects": "Projetos",
+		"resources": "Recursos",
+		"pricing": "Preços",
+		"contact": "Contato",
+		"blog": "Blog",
+		"tools": "Ferramentas",
+		"openSource": "Código Aberto",
+		"apis": "APIs",
+		"bookCall": "Agendar Chamada"
+	},
+	"Footer": {
+		"navigation": "Navegação",
+		"dropUsALine": "Fale conosco",
+		"callUs": "Ligue para nós",
+		"links": {
+			"ourServices": "Nossos Serviços",
+			"projects": "Projetos",
+			"dedicatedTeam": "Equipe Dedicada",
+			"openSource": "Código Aberto",
+			"pricing": "Preços",
+			"contact": "Contato"
+		}
+	},
+	"CTABand": {
+		"heading": "Pronto para discutir seu projeto conosco?",
+		"subtitle": "Vamos construir uma experiência de produto que não apenas pareça ótima, mas que gere resultados reais.",
+		"button": "Agendar Chamada"
+	},
+	"Hero": {
+		"badge": "Principal Agência de Engenharia da Latam",
+		"line1": "CRIANDO",
+		"line2": "PRODUTOS DE",
+		"line3": "CLASSE MUNDIAL",
+		"button": "Agendar Chamada"
+	},
+	"WhyBobatech": {
+		"heading1": "POR QUE AS EQUIPES ESCOLHEM",
+		"heading2": "BOBA TECH",
+		"others": "Outros",
+		"bobatech": "Boba Tech",
+		"rows": [
+			"Entrega rápida e previsível",
+			"Preços transparentes",
+			"Engenheiros sênior",
+			"6 meses de suporte incluído"
+		]
+	},
+	"StatsBar": {
+		"heading1": "CONSTRUÍDO PARA ENTREGAR",
+		"heading2": "RESULTADOS REAIS",
+		"subtitle": "Da ideia ao produto com velocidade, clareza e bases escaláveis",
+		"stats": [
+			{ "title": "Construído para Escalar", "subtitle": "Arquitetura escalável" },
+			{ "title": "100+", "subtitle": "Projetos entregues" },
+			{ "title": "24/7", "subtitle": "Suporte disponível" },
+			{ "title": "100%", "subtitle": "Satisfação do cliente" }
+		]
+	},
+	"HomeFAQ": {
+		"description": "Tem perguntas ou quer explorar possibilidades? Entre em contato ou agende uma chamada.",
+		"bookCall": "Agendar Chamada",
+		"faqs": [
+			{
+				"q": "Com que rapidez vocês entregam um projeto?",
+				"a": "Dependendo do escopo, podemos entregar um MVP em apenas 3–14 dias. Para projetos maiores, trabalhamos em sprints de 2 semanas e mantemos você informado em cada etapa com marcos claros."
+			},
+			{
+				"q": "O que acontece se os prazos não forem cumpridos?",
+				"a": "Levamos muito a sério os compromissos de entrega. Se um prazo estiver em risco, comunicamos com antecedência e trabalhamos horas extras sem custo adicional. A comunicação transparente é fundamental na nossa forma de operar."
+			},
+			{
+				"q": "Vocês trabalham com startups?",
+				"a": "Com certeza — startups são nosso ponto forte. Entendemos o ritmo e as restrições de empresas em estágio inicial e podemos nos adaptar ao seu runway, seja um MVP enxuto ou um produto completo."
+			},
+			{
+				"q": "Vocês oferecem suporte após o lançamento?",
+				"a": "Sim. Todos os nossos engajamentos incluem 6 meses de suporte pós-lançamento. Estamos aqui para corrigir bugs, monitorar o desempenho e iterar com você à medida que seu produto cresce."
+			}
+		]
+	},
+	"Contact": {
+		"heading1": "Vamos Construir",
+		"heading2": "Juntos",
+		"subtitle": "Agende uma chamada gratuita de 15 minutos ou envie-nos uma mensagem.",
+		"formHeading": "Envie-nos uma mensagem",
+		"nameLabel": "Nome *",
+		"emailLabel": "E-mail *",
+		"companyLabel": "Empresa (opcional)",
+		"messageLabel": "Mensagem *",
+		"namePlaceholder": "Seu nome",
+		"emailPlaceholder": "seu@email.com",
+		"companyPlaceholder": "Sua empresa",
+		"messagePlaceholder": "Conte-nos sobre seu projeto...",
+		"successMessage": "Obrigado! Entraremos em contato em breve.",
+		"errorSummary": "Por favor corrija os erros abaixo",
+		"sendButton": "Enviar Mensagem",
+		"sendingButton": "Enviando...",
+		"bookCallHeading": "Agende uma Chamada Gratuita",
+		"bookCallDesc": "Agende uma consulta de 15 minutos com nossa Chief Revenue Officer.",
+		"bookCallAvailability": "Disponível 10h – 15h • Resposta rápida garantida",
+		"scheduleWithAle": "Agendar com Ale",
+		"enterpriseCTO": "Enterprise e CTO Fracionário",
+		"getInTouchHeading": "Entre em Contato",
+		"followUs": "Siga-nos",
+		"nameRequired": "O nome é obrigatório",
+		"nameTooLong": "O nome deve ter menos de 100 caracteres",
+		"invalidEmail": "Endereço de e-mail inválido",
+		"companyTooLong": "O nome da empresa deve ter menos de 100 caracteres",
+		"messageTooShort": "A mensagem deve ter pelo menos 10 caracteres",
+		"messageTooLong": "A mensagem deve ter menos de 2000 caracteres"
+	},
+	"ServicesSection": {
+		"heading1": "NOSSOS",
+		"heading2": "SERVIÇOS",
+		"subtitle": "Desenvolvimento Full-Stack, Integração de IA e Soluções Empresariais",
+		"learnMore": "Saiba mais →"
+	},
+	"IndustriesSection": {
+		"heading1": "Indústrias",
+		"heading2": "Com as quais Temos Experiência",
+		"subtitle": "Expertise comprovada entregando soluções especializadas em diversos setores."
+	},
+	"PricingSection": {
+		"heading1": "Preços",
+		"heading2": "Simples e Transparentes",
+		"subtitle": "Pacotes de sites estáticos projetados para velocidade e qualidade.",
+		"calculatorButton": "Experimentar Nossa Calculadora de Preços",
+		"mostPopular": "Mais Popular",
+		"getStarted": "Começar",
+		"ctaHeading": "Precisa de um MVP personalizado ou aplicação full-stack?",
+		"ctaBody": "Oferecemos consultoria por hora e serviços de CTO Fracionário. Agende uma chamada para discutir seu projeto.",
+		"ctaButton": "Agendar Chamada com um CTO Fracionário Experiente",
+		"plans": [
+			{
+				"name": "Landing Page Inicial",
+				"description": "Perfeito para startups e pequenas empresas",
+				"features": [
+					"Uma única landing page",
+					"Design responsivo",
+					"Otimização SEO básica",
+					"Integração de formulário de contato",
+					"2 rodadas de revisões",
+					"Entrega em 7-10 dias",
+					"Otimizado para mobile"
+				]
+			},
+			{
+				"name": "Site Multi-página",
+				"description": "1-5 páginas para negócios em crescimento",
+				"features": [
+					"Até 5 páginas personalizadas",
+					"Design responsivo avançado",
+					"Otimização SEO",
+					"Integração CMS (opcional)",
+					"Formulários de contato e leads",
+					"3 rodadas de revisões",
+					"Entrega em 14-21 dias",
+					"Integração de analytics",
+					"Integração de redes sociais"
+				]
+			},
+			{
+				"name": "Experiência Web Premium",
+				"description": "Soluções personalizadas para empresas",
+				"features": [
+					"Páginas ilimitadas",
+					"Design personalizado e animações",
+					"SEO e performance avançados",
+					"Integração CMS completa",
+					"Capacidades de e-commerce",
+					"Integrações de API",
+					"Revisões ilimitadas",
+					"Suporte prioritário",
+					"Manutenção contínua (opcional)",
+					"Funcionalidades e recursos personalizados"
+				]
+			}
+		]
+	},
+	"ServicesPage": {
+		"heading1": "Nossos",
+		"heading2": "Serviços",
+		"subtitle": "Desde o desenvolvimento rápido de MVPs até soluções empresariais, entregamos tecnologia de ponta adaptada às suas necessidades.",
+		"coreServices": "Serviços Principais",
+		"industrySolutions": "Soluções por Setor",
+		"industrySubtitle": "Soluções especializadas para setores específicos com profundo conhecimento do domínio.",
+		"viewAll": "Ver Todos",
+		"moreServices": "+{count} serviços a mais",
+		"ctaHeading": "Pronto para Iniciar seu Projeto?",
+		"ctaBody": "Agende uma consulta gratuita para discutir suas necessidades e obter um orçamento personalizado.",
+		"bookCall": "Agendar Chamada",
+		"contactUs": "Fale Conosco"
+	},
+	"ServicePage": {
+		"home": "Início",
+		"services": "Serviços",
+		"overview": "Visão geral",
+		"overviewBody1": "Nosso serviço de {service} combina tecnologia de ponta com profunda expertise em engenharia para entregar soluções que impulsionam resultados de negócios. Trabalhamos em estreita colaboração com você para entender seus requisitos únicos e criar soluções personalizadas que crescem com seu negócio.",
+		"overviewBody2": "Seja você uma startup querendo lançar seu MVP rapidamente ou uma empresa buscando soluções robustas e escaláveis, nossa equipe tem a experiência e o conhecimento para dar vida à sua visão.",
+		"whatsIncluded": "O Que Está Incluído?",
+		"whyChooseUs": "Por Que Nos Escolher?",
+		"getStarted": "Comece Hoje",
+		"getStartedBody": "Agende uma consulta gratuita para discutir seu projeto e receber um orçamento personalizado.",
+		"bookCall": "Agendar Chamada",
+		"contactUs": "Fale Conosco",
+		"startingFrom": "A partir de",
+		"forStaticWebsites": "para sites estáticos",
+		"relatedServices": "Serviços Relacionados",
+		"learnMore": "Saiba mais",
+		"features": [
+			"Design e desenvolvimento personalizado",
+			"Responsivo e otimizado para mobile",
+			"Otimização de SEO e performance",
+			"Integração com serviços de terceiros",
+			"Testes abrangentes e controle de qualidade",
+			"Documentação e treinamento",
+			"Suporte pós-lançamento",
+			"Opções de manutenção contínua"
+		],
+		"benefits": [
+			{ "title": "Entrega Rápida", "description": "Lance em dias ou semanas, não em meses" },
+			{ "title": "Segurança Empresarial", "description": "Construído com segurança e conformidade em mente" },
+			{ "title": "Suporte 24/7", "description": "Suporte e manutenção contínuos disponíveis" },
+			{ "title": "Soluções Escaláveis", "description": "Arquitetura projetada para crescer com seu negócio" }
+		]
+	},
+	"IndustryPage": {
+		"home": "Início",
+		"services": "Serviços",
+		"solutions": "Soluções",
+		"allServicesHeading": "Todos os Serviços de {industry}",
+		"whyChooseHeading": "Por Que Escolher a Bobadilla Tech para {industry}?",
+		"expertise1Title": "Profunda Expertise no Setor",
+		"expertise1Body": "Nossa equipe tem ampla experiência construindo soluções para o setor {industry}, entendendo tanto os requisitos técnicos quanto as regulamentações específicas do setor.",
+		"expertise2Title": "Histórico Comprovado",
+		"expertise2Body": "Entregamos projetos com sucesso para clientes que vão desde startups até empresas, cumprindo consistentemente os prazos e superando as expectativas.",
+		"expertise3Title": "Equipe de Engenharia Sênior",
+		"expertise3Body": "Liderado por engenheiros sênior com experiência em sistemas backend empresariais e soluções de IA de ponta, não apenas mais uma agência.",
+		"expertise4Title": "Entrega Rápida",
+		"expertise4Body": "Lance seu MVP em dias ou semanas, não em meses. Focamos em iteração rápida e em levar seu produto ao mercado o mais rápido possível.",
+		"ctaHeading": "Pronto para Transformar seu Negócio de {industry}?",
+		"ctaBody": "Agende uma consulta gratuita para discutir seu projeto e receber uma proposta personalizada adaptada às suas necessidades.",
+		"bookCall": "Agendar Chamada Gratuita",
+		"contactUs": "Fale Conosco",
+		"otherIndustries": "Outros Setores que Atendemos",
+		"explore": "Explorar",
+		"learnMore": "Saiba mais"
+	},
+	"BlogPage": {
+		"posts": "Artigos",
+		"subtitle": "Insights, tutoriais e melhores práticas da nossa equipe.",
+		"allPosts": "Todos os Artigos",
+		"noPostsFound": "Nenhum artigo encontrado",
+		"noPostsFilterMsg": "Nenhum artigo corresponde a \"{filter}\". Tente um filtro diferente ou navegue por todos os artigos.",
+		"noPostsEmptyMsg": "Ainda não há artigos disponíveis. Volte em breve!",
+		"viewAllPosts": "Ver Todos os Artigos",
+		"ctaHeading": "Quer Construir Algo Incrível?",
+		"ctaBody": "Vamos discutir seu projeto e como podemos ajudá-lo a lançar mais rápido.",
+		"getInTouch": "Fale Conosco",
+		"minRead": "{n} min de leitura"
+	},
+	"BlogPostPage": {
+		"backToBlog": "Voltar ao Blog",
+		"foundHelpful": "Achou útil?",
+		"shareNetwork": "Compartilhe com sua rede",
+		"shareOnX": "Compartilhar no X",
+		"shareOnLinkedIn": "Compartilhar no LinkedIn",
+		"shareOnReddit": "Compartilhar no Reddit",
+		"enterpriseAPIsHeading": "Precisa de APIs Empresariais?",
+		"enterpriseAPIsBody": "Use nossa API Requiem para soluções escaláveis prontas para produção",
+		"learnMore": "Saiba Mais",
+		"devServicesHeading": "Precisa de Serviços de Desenvolvimento?",
+		"devServicesBody": "Obtenha consultoria especializada para construir seu próximo produto",
+		"getInTouch": "Fale Conosco",
+		"stayTuned": "Fique Ligado",
+		"moreSoonMsg": "Mais conteúdo em breve. Siga-nos para atualizações!",
+		"morePosts": "Mais do Blog",
+		"minRead": "{n} min de leitura"
+	},
+	"ToolsPage": {
+		"home": "Início",
+		"heading1": "Ferramentas",
+		"heading2": "Gratuitas",
+		"subtitle": "Ferramentas online para desenvolvedores, pesquisadores e criadores de conteúdo. Todas são gratuitas e focadas em privacidade.",
+		"useTool": "Usar Ferramenta",
+		"moreToolsHeading": "Mais Ferramentas em Breve",
+		"moreToolsBody": "Estamos constantemente construindo novas ferramentas para ajudar desenvolvedores e criadores de conteúdo.",
+		"suggestTool": "Sugerir uma Ferramenta",
+		"whyUseHeading": "Por Que Usar Nossas Ferramentas?",
+		"features": [
+			{ "title": "100% Gratuitas", "desc": "Todas as nossas ferramentas são completamente gratuitas. Sem taxas ocultas, sem assinaturas." },
+			{ "title": "Focadas em Privacidade", "desc": "Não armazenamos seus dados. Tudo acontece no seu navegador." },
+			{ "title": "Sem Cadastro Necessário", "desc": "Comece a usar qualquer ferramenta imediatamente. Não é necessário criar uma conta." }
+		]
+	},
+	"PricingPage": {
+		"currentEstimate": "Estimativa Atual",
+		"total": "Total",
+		"yourEstimate": "Sua Estimativa de Projeto",
+		"breakdownSubtitle": "Detalhamento da sua solução personalizada",
+		"totalInvestment": "Investimento Total",
+		"pricingNote": "Preços competitivos da LATAM • Mesmo fuso horário • Alinhamento cultural",
+		"getDetailedQuote": "Obtenha seu Orçamento Detalhado",
+		"emailDesc": "Insira seu e-mail para salvar esta estimativa e agendar uma consulta gratuita",
+		"bookConsultation": "Agendar Consulta Gratuita",
+		"saving": "Salvando...",
+		"costBreakdown": "Detalhamento de Custos",
+		"rushFee": "+30% Taxa de Urgência Aplicada",
+		"flexibleDiscount": "-15% Desconto por Prazo Flexível Aplicado",
+		"whyWorkWithUs": "Por Que Trabalhar Conosco?",
+		"whyItems": [
+			{ "title": "Muito Responsivos", "desc": "Prazos de resposta rápidos e comunicação constante durante o desenvolvimento" },
+			{ "title": "Mesmo Fuso Horário", "desc": "Equipe baseada na LATAM para colaboração em tempo real sem atritos" },
+			{ "title": "Alinhamento Cultural", "desc": "Forte ética de trabalho e compatibilidade cultural com equipes dos EUA/UE" },
+			{ "title": "Preços Offshore", "desc": "Qualidade premium a tarifas competitivas da LATAM - economize 40-60%" }
+		],
+		"startOver": "Recomeçar",
+		"disclaimer": "*O preço final pode variar com base nos requisitos específicos e no escopo do projeto",
+		"calculatorHeading1": "Calculadora de",
+		"calculatorHeading2": "Preços",
+		"calculatorSubtitle": "Obtenha uma estimativa instantânea para seu projeto em poucos passos",
+		"step": "Passo {current} de {total}",
+		"currentStepTotal": "Total do Passo Atual:",
+		"multiSelectHint": "💡 Você pode selecionar múltiplas opções",
+		"previous": "Anterior",
+		"next": "Próximo",
+		"seeEstimate": "Ver Estimativa",
+		"steps": {
+			"0": {
+				"title": "Tipo de Projeto",
+				"description": "Que tipo de projeto você precisa?",
+				"options": {
+					"landing": { "name": "Landing Page", "description": "Site de página única ideal para lançamentos de produtos, eventos ou presença empresarial simples" },
+					"website": { "name": "Site Multi-página", "description": "3-10 páginas com navegação, ideal para empresas que precisam de múltiplas seções de conteúdo" },
+					"webapp": { "name": "Aplicação Web", "description": "Aplicação web interativa com contas de usuário, painéis e lógica de negócios" },
+					"mobile": { "name": "Aplicativo Mobile", "description": "Aplicativo mobile nativo ou multiplataforma para iOS e Android" },
+					"fullstack": { "name": "Plataforma Full-stack", "description": "Plataforma completa com web, mobile, painel administrativo e infraestrutura backend" }
+				}
+			},
+			"1": {
+				"title": "Funcionalidades Principais",
+				"description": "Selecione as funcionalidades que você precisa (pode selecionar várias)",
+				"options": {
+					"auth": { "name": "Autenticação de Usuários", "description": "Sistema seguro de login/cadastro com verificação de e-mail, redefinição de senha e gerenciamento de sessão" },
+					"payment": { "name": "Integração de Pagamentos", "description": "Integração de Stripe, PayPal ou outro gateway de pagamento com fluxo de checkout" },
+					"admin": { "name": "Painel Administrativo", "description": "Painel backend para gerenciar usuários, conteúdo e configurações do sistema" },
+					"api": { "name": "API REST", "description": "API RESTful para aplicativos mobile ou integrações de terceiros" },
+					"realtime": { "name": "Funcionalidades em Tempo Real", "description": "Atualizações ao vivo, chat, notificações usando WebSockets ou Firebase" },
+					"notifications": { "name": "Notificações Push", "description": "Notificações push por e-mail e/ou mobile para engajamento do usuário" }
+				}
+			},
+			"2": {
+				"title": "Integrações",
+				"description": "Integrações de terceiros necessárias",
+				"options": {
+					"crm": { "name": "Integração CRM", "description": "Conectar ao Salesforce, HubSpot ou outro CRM para gestão de leads" },
+					"analytics": { "name": "Analytics (GA, Mixpanel)", "description": "Rastreamento do comportamento do usuário e integração de painel de analytics" },
+					"email": { "name": "Serviço de E-mail (SendGrid, Mailgun)", "description": "Envio automatizado de e-mails para e-mails transacionais e de marketing" },
+					"storage": { "name": "Armazenamento na Nuvem (AWS S3)", "description": "Upload e armazenamento de arquivos para documentos, imagens ou vídeos de usuários" },
+					"social": { "name": "Login com Redes Sociais", "description": "Login com Google, Facebook, LinkedIn ou outros provedores sociais" }
+				}
+			},
+			"3": {
+				"title": "Design e Interface",
+				"description": "Nível de complexidade do design",
+				"options": {
+					"basic": { "name": "Interface Básica (Baseada em Templates)", "description": "Design limpo e profissional usando componentes e templates pré-construídos" },
+					"custom": { "name": "Design Personalizado", "description": "Design único adaptado à sua marca com componentes personalizados" },
+					"premium": { "name": "Design Premium com Animações", "description": "Design de alto nível com micro-interações, animações e UX avançada" }
+				}
+			},
+			"4": {
+				"title": "Cronograma",
+				"description": "Quando você precisa que seja entregue?",
+				"options": {
+					"rush": { "name": "Urgente (1-2 semanas) +30%", "description": "Entrega expressa com desenvolvimento prioritário e horas estendidas da equipe" },
+					"standard": { "name": "Padrão (3-4 semanas)", "description": "Cronograma padrão com ritmo de desenvolvimento equilibrado e garantia de qualidade" },
+					"flexible": { "name": "Flexível (5+ semanas) -15%", "description": "Opção econômica com cronograma de entrega flexível" }
+				}
+			}
+		}
+	}
+}
