@@ -36,11 +36,13 @@
 
 ## 📝 Draft Posts
 
-Posts prefixed with `_` are treated as **drafts** and excluded from the build. This allows you to work on blog posts without publishing them.
+Posts prefixed with `_` are treated as **drafts** and excluded from the build.
+This allows you to work on blog posts without publishing them.
 
 ### How It Works
 
-The blog loader (`src/data/blog.ts`) automatically filters out any files that start with an underscore:
+The blog loader (`src/data/blog.ts`) automatically filters out any files that
+start with an underscore:
 
 ```typescript
 const isNotDraft = !file.startsWith("_");
@@ -111,7 +113,8 @@ npm run cf:deploy
 
 ## 👥 Blog Authors
 
-We have **3 authorized blog authors**. Each author has a profile picture that automatically appears on their posts.
+We have **3 authorized blog authors**. Each author has a profile picture that
+automatically appears on their posts.
 
 ### Available Authors:
 
@@ -180,12 +183,9 @@ authorRole: "Senior Engineer"
 
 ### H3 Heading
 
-**Bold text**
-_Italic text_
-~~Strikethrough~~
+**Bold text** _Italic text_ ~~Strikethrough~~
 
-[Links](https://example.com)
-![Images](/path/to/image.png)
+[Links](https://example.com) ![Images](/path/to/image.png)
 
 - Bullet lists
 - Item 2
@@ -195,15 +195,10 @@ _Italic text_
 
 `inline code`
 
-\`\`\`typescript
-// Code blocks with syntax highlighting
-function example() {
-return "Hello";
-}
-\`\`\`
+\`\`\`typescript // Code blocks with syntax highlighting function example() {
+return "Hello"; } \`\`\`
 
-> Blockquotes
-> Multi-line quotes
+> Blockquotes Multi-line quotes
 
 | Tables | Are | Supported |
 | ------ | --- | --------- |
@@ -457,9 +452,7 @@ Introduction paragraph...
 
 ## Step 1: Setup
 
-\`\`\`bash
-npx create-next-app@latest
-\`\`\`
+\`\`\`bash npx create-next-app@latest \`\`\`
 
 ...
 ```
@@ -508,6 +501,5 @@ We implemented...
 
 ---
 
-**Status**: ✅ Active
-**Last Updated**: February 2, 2026
-**Maintained By**: Bobadilla Tech Team
+**Status**: ✅ Active **Last Updated**: February 2, 2026 **Maintained By**:
+Bobadilla Tech Team

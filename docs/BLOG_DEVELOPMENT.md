@@ -2,14 +2,16 @@
 
 ## Live Reloading for Blog Posts
 
-The blog system now supports **automatic hot reloading** when you edit markdown files during development!
+The blog system now supports **automatic hot reloading** when you edit markdown
+files during development!
 
 ### How It Works
 
 When you run `pnpm dev`, two processes start automatically:
 
 1. **Next.js dev server** - Your normal development server
-2. **Blog file watcher** - Monitors markdown files and regenerates `blog-posts.ts`
+2. **Blog file watcher** - Monitors markdown files and regenerates
+   `blog-posts.ts`
 
 ### Development Commands
 
@@ -56,7 +58,8 @@ The watcher monitors: `src/content/blog/*.md` and `src/content/blog/*.mdx`
 
 ### Debouncing
 
-Changes are debounced for 300ms to avoid regenerating on every keystroke. This means:
+Changes are debounced for 300ms to avoid regenerating on every keystroke. This
+means:
 
 - Save your file
 - Wait ~300ms
