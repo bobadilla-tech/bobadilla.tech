@@ -5,17 +5,19 @@ on Cloudflare Workers.
 
 ## 🚀 Tech Stack
 
-- **Framework:** Next.js 16.1.6 (App Router with Turbopack)
+- **Framework:** Next.js 16 (App Router with Turbopack)
 - **Deployment:** Cloudflare Workers via OpenNext.js
+- **CMS:** Sanity — blog posts authored and managed in [studio-bobadilla-tech-blogs](https://github.com/UltiRequiem/studio-bobadilla-tech-blogs)
 - **Database:** Cloudflare D1 (SQLite)
 - **ORM:** Drizzle ORM
-- **Styling:** Tailwind CSS
+- **Styling:** Tailwind CSS v4
 - **Language:** TypeScript
 - **Validation:** Zod
 - **Email:** External Cloudflare Worker
 
 ## 📋 Features
 
+- **Blog** - Posts authored in Sanity Studio, fetched at build time, served as static HTML
 - **Contact Form** - Database-backed with email notifications
 - **Tools Section** - Utility tools (e.g., Reddit Post Date Extractor)
 - **Modular API Architecture** - Clean, maintainable endpoint structure
@@ -52,7 +54,16 @@ src/
         └── api-response.ts     # Standardized responses
 ```
 
-See [claude.md](claude.md) for complete architecture documentation.
+See [CLAUDE.md](CLAUDE.md) for complete architecture documentation.
+
+## ✍️ Blog (Sanity CMS)
+
+Blog posts are managed in a separate Sanity Studio:
+**[github.com/UltiRequiem/studio-bobadilla-tech-blogs](https://github.com/UltiRequiem/studio-bobadilla-tech-blogs)**
+
+The Next.js site fetches published posts from Sanity at build time (`generateStaticParams`) — no API key required for reads. The Sanity project ID (`5j8mujwd`, dataset `production`) is public.
+
+To publish a new post: open the Studio → write → publish → redeploy this site.
 
 ## 🛠️ Development
 

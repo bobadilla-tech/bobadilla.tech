@@ -18,6 +18,8 @@ import {
 } from "~/lib/seo";
 import { EXTERNAL_LINKS } from "~/lib/constants";
 
+export const dynamic = "force-static";
+
 interface PageProps {
 	params: Promise<{ slug: string }>;
 }
