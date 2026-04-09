@@ -1,10 +1,10 @@
 import { allServices, industryServices } from "~/data/services";
-import { getAllPosts } from "~/data/blog";
+import { getAllPosts } from "~/lib/sanity/queries";
 import type { MetadataRoute } from "next";
 
 const BASE_URL = "https://bobadilla.tech";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const currentDate = new Date();
 
 	const staticPages: MetadataRoute.Sitemap = [
@@ -75,8 +75,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		},
 	];
 
-	const blogPosts: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
-		url: `${BASE_URL}/blog/${post.slug}`,
+	const blogPosts: MetadataRoute.Sitemap = (await getAllPosts()).map((post) => ({
+		url: `${BASE_URL}/blog/${post.slug.current}`,
 		lastModified: post.updatedAt
 			? new Date(post.updatedAt)
 			: new Date(post.publishedAt),

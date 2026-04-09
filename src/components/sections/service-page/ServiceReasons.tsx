@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
@@ -9,10 +10,20 @@ import {
 	CarouselItem,
 	CarouselPrevious,
 	CarouselNext,
+	type CarouselApi,
 } from "@/components/ui/carousel";
 
 export default function ServiceReasons() {
 	const t = useTranslations("ServiceReasons");
+	const [api, setApi] = useState<CarouselApi>();
+	const [selectedIndex, setSelectedIndex] = useState(2);
+
+	useEffect(() => {
+		if (!api) return;
+		const onSelect = () => setSelectedIndex(api.selectedScrollSnap());
+		api.on("select", onSelect);
+		return () => { api.off("select", onSelect); };
+	}, [api]);
 
 	const reasons = [
 		{ title: t("reasons.0") },
@@ -37,7 +48,7 @@ export default function ServiceReasons() {
 				</motion.h2>
 
 				<div className="mt-16">
-					<Carousel opts={{ align: "start", loop: false }} className="w-full">
+					<Carousel opts={{ align: "start", loop: false }} className="w-full" setApi={setApi}>
 						<CarouselContent className="-ml-6">
 							{/* Regular reason cards */}
 							{reasons.slice(0, 2).map((reason, i) => (
@@ -50,7 +61,15 @@ export default function ServiceReasons() {
 										whileInView={{ opacity: 1, x: 0 }}
 										viewport={{ once: true }}
 										transition={{ delay: i * 0.1 }}
-										className="bg-white rounded-[55px] p-8 h-[358px] flex flex-col justify-end relative overflow-hidden"
+										className="bg-white rounded-[55px] p-8 h-[358px] flex flex-col justify-end relative overflow-hidden transition-shadow duration-300"
+										style={
+											selectedIndex === i
+												? {
+														boxShadow:
+															"0 0 110px 0 #a6993f, 0 0 63px 0 #a6993f, 0 0 37px 0 #a6993f",
+													}
+												: undefined
+										}
 									>
 										<div className="absolute top-10 left-12 w-24 h-24">
 											<Image
@@ -82,11 +101,15 @@ export default function ServiceReasons() {
 									initial={{ opacity: 0, scale: 0.95 }}
 									whileInView={{ opacity: 1, scale: 1 }}
 									viewport={{ once: true }}
-									className="bg-white rounded-[70px] h-[457px] flex flex-col justify-end p-12 relative overflow-hidden"
-									style={{
-										boxShadow:
-											"0 0 110px 0 #a6993f, 0 0 63px 0 #a6993f, 0 0 37px 0 #a6993f",
-									}}
+									className="bg-white rounded-[70px] h-[457px] flex flex-col justify-end p-12 relative overflow-hidden transition-shadow duration-300"
+									style={
+										selectedIndex === 2
+											? {
+													boxShadow:
+														"0 0 110px 0 #a6993f, 0 0 63px 0 #a6993f, 0 0 37px 0 #a6993f",
+												}
+											: undefined
+									}
 								>
 									<div className="absolute top-10 left-16 w-32 h-32">
 										<Image
@@ -134,7 +157,15 @@ export default function ServiceReasons() {
 										whileInView={{ opacity: 1, x: 0 }}
 										viewport={{ once: true }}
 										transition={{ delay: i * 0.1 }}
-										className="bg-white rounded-[55px] p-8 h-[358px] flex flex-col justify-end relative overflow-hidden"
+										className="bg-white rounded-[55px] p-8 h-[358px] flex flex-col justify-end relative overflow-hidden transition-shadow duration-300"
+										style={
+											selectedIndex === i + 3
+												? {
+														boxShadow:
+															"0 0 110px 0 #a6993f, 0 0 63px 0 #a6993f, 0 0 37px 0 #a6993f",
+													}
+												: undefined
+										}
 									>
 										<div className="absolute top-10 left-12 w-24 h-24">
 											<Image

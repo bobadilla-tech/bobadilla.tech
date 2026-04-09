@@ -77,7 +77,7 @@ export default function Navbar() {
 								alt="Boba Tech"
 								width={500}
 								height={500}
-								className="w-44 h-auto"
+								className="w-32 sm:w-44 h-auto"
 								priority
 							/>
 						</Link>
@@ -167,10 +167,10 @@ export default function Navbar() {
 						</div>
 
 						{/* Mobile hamburger */}
-						<div className="md:hidden flex justify-end">
+						<div className="md:hidden flex justify-end col-start-3">
 							<button
 								onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-								className="text-brand-primary/70 hover:text-brand-primary transition-colors duration-200"
+								className="text-brand-primary hover:text-brand-primary/80 transition-colors duration-200"
 								aria-label="Toggle menu"
 							>
 								{isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}

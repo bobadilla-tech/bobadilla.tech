@@ -32,39 +32,68 @@ export default function ServicePainPoints({
 				</motion.div>
 
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-					{painPoints.map((point, i) => (
-						<motion.div
-							key={point.title}
-							initial={{ opacity: 0, y: 30 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.4, delay: i * 0.1 }}
-							className="bg-white rounded-[26px] p-8 relative overflow-hidden"
-						>
-							{/* Icon */}
-							<div className="w-32 h-32 mb-6">
-								<Image
-									src={point.icon}
-									alt={point.title}
-									width={128}
-									height={128}
-									className="w-full h-full object-contain"
-									unoptimized
-								/>
-							</div>
+					{painPoints.map((point, i) =>
+						point.stat ? (
+							// Stats variant (MVP page)
+							<motion.div
+								key={point.title}
+								initial={{ opacity: 0, y: 30 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.4, delay: i * 0.1 }}
+								className="bg-white rounded-[26px] p-8 flex flex-col"
+							>
+								<h3 className="font-heading text-[#1a1919] text-2xl font-normal mb-3 leading-tight">
+									{point.title}
+								</h3>
+								<p className="font-body text-[#191818] text-base font-extralight leading-relaxed mb-6 flex-1">
+									{point.description}
+								</p>
+								<div className="w-full h-px bg-black/10 mb-6" />
+								<div className="flex items-baseline gap-2">
+									<span className="font-heading text-4xl font-bold text-brand-gold">
+										{point.stat}
+									</span>
+									<span className="font-body text-sm text-black/60 leading-tight">
+										{point.statLabel}
+									</span>
+								</div>
+							</motion.div>
+						) : (
+							// Icon variant (default)
+							<motion.div
+								key={point.title}
+								initial={{ opacity: 0, y: 30 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.4, delay: i * 0.1 }}
+								className="bg-white rounded-[26px] p-8 relative overflow-hidden"
+							>
+								{/* Icon */}
+								<div className="w-32 h-32 mb-6">
+									<Image
+										src={point.icon}
+										alt={point.title}
+										width={128}
+										height={128}
+										className="w-full h-full object-contain"
+										unoptimized
+									/>
+								</div>
 
-							{/* Divider */}
-							<div className="w-full h-px bg-black/10 mb-6" />
+								{/* Divider */}
+								<div className="w-full h-px bg-black/10 mb-6" />
 
-							{/* Content */}
-							<h3 className="font-heading text-[#1a1919] text-2xl font-normal mb-4 leading-tight">
-								{point.title}
-							</h3>
-							<p className="font-body text-[#191818] text-lg font-extralight leading-relaxed">
-								{point.description}
-							</p>
-						</motion.div>
-					))}
+								{/* Content */}
+								<h3 className="font-heading text-[#1a1919] text-2xl font-normal mb-4 leading-tight">
+									{point.title}
+								</h3>
+								<p className="font-body text-[#191818] text-lg font-extralight leading-relaxed">
+									{point.description}
+								</p>
+							</motion.div>
+						)
+					)}
 				</div>
 			</div>
 		</section>

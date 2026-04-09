@@ -3,9 +3,10 @@ import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import ServiceHero from "@/components/sections/service-page/ServiceHero";
 import ServicePainPoints from "@/components/sections/service-page/ServicePainPoints";
-import ServiceOfferings from "@/components/sections/service-page/ServiceOfferings";
+import ServiceSolutions from "@/components/sections/service-page/ServiceSolutions";
+import ServiceForWho from "@/components/sections/service-page/ServiceForWho";
+import ServiceProcessMVP from "@/components/sections/service-page/ServiceProcessMVP";
 import ServiceReasons from "@/components/sections/service-page/ServiceReasons";
-import ServiceProcess from "@/components/sections/service-page/ServiceProcess";
 import ServiceTechStack from "@/components/sections/service-page/ServiceTechStack";
 import ServiceFAQ from "@/components/sections/service-page/ServiceFAQ";
 import ServiceEstimateCTA from "@/components/sections/service-page/ServiceEstimateCTA";
@@ -39,24 +40,29 @@ export default async function ServicePage({ params }: Props) {
 				line1={data.heroLine1}
 				line2={data.heroLine2}
 				subtitle={data.heroSubtitle}
+				featureBadges={data.featureBadges}
 			/>
 			<ServicePainPoints
 				heading={data.painPointsHeading}
 				painPoints={data.painPoints}
 			/>
-			<ServiceOfferings
-				heading={data.servicesHeading}
-				services={data.servicesOffered}
-			/>
+			{data.solutionsHeading && data.mvpSolutions && (
+				<ServiceSolutions
+					heading={data.solutionsHeading}
+					solutions={data.mvpSolutions}
+				/>
+			)}
+			{data.forWhoHeading && data.forWho && (
+				<ServiceForWho
+					heading={data.forWhoHeading}
+					forWho={data.forWho}
+				/>
+			)}
+			<ServiceProcessMVP />
 			<ServiceReasons />
-			<ServiceProcess
-				heading={data.processHeading}
-				subtitle={data.processSubtitle}
-				steps={data.processSteps}
-			/>
+			<ServiceEstimateCTA />
 			<ServiceTechStack categories={data.techStack} />
 			<ServiceFAQ faqs={data.faqOverrides} />
-			<ServiceEstimateCTA />
 			<CTABand />
 			<Footer />
 		</div>

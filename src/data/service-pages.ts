@@ -4,6 +4,8 @@ export type {
 	ProcessStep,
 	TechCategory,
 	ServicePageData,
+	MvpSolution,
+	MvpForWho,
 } from "./service-pages.shared";
 export { sharedTechStack } from "./service-pages.shared";
 

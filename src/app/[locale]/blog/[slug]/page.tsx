@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import { PortableText } from "@portabletext/react";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
-import { getPostBySlug, getAllPosts } from "@/data/blog";
+import { getPostBySlug, getAllSlugs, getAllPosts } from "~/lib/sanity/queries";
+import { urlFor } from "~/lib/sanity/image";
+import { portableTextComponents } from "~/lib/sanity/portable-text";
 import { Calendar, Clock, Tag, ArrowLeft, Share2 } from "lucide-react";
 import { Twitter, Linkedin } from "@/components/ui/BrandIcons";
-import { CodeBlock } from "@/components/ui/CodeBlock";
 import { getTranslations } from "next-intl/server";
 import {
 	generateMetadata as generateSEOMetadata,
@@ -18,35 +18,35 @@ import {
 } from "~/lib/seo";
 import { EXTERNAL_LINKS } from "~/lib/constants";
 
+export const dynamic = "force-static";
+
 interface PageProps {
 	params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-	const posts = getAllPosts();
-	return posts.map((post) => ({
-		slug: post.slug,
-	}));
+	const slugs = await getAllSlugs();
+	return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
 	params,
 }: PageProps): Promise<Metadata> {
 	const { slug } = await params;
-	const post = getPostBySlug(slug);
+	const post = await getPostBySlug(slug);
 
 	if (!post) {
-		return {
-			title: "Post Not Found",
-		};
+		return { title: "Post Not Found" };
 	}
 
 	return generateSEOMetadata({
 		title: post.title,
 		description: post.description,
 		keywords: post.tags,
-		canonical: `${BASE_URL}/blog/${post.slug}`,
-		ogImage: post.coverImage || `${BASE_URL}/og-blog.png`,
+		canonical: `${BASE_URL}/blog/${post.slug.current}`,
+		ogImage: post.coverImage
+			? urlFor(post.coverImage).width(1200).height(630).url()
+			: `${BASE_URL}/og-blog.png`,
 		ogType: "article",
 		article: {
 			publishedTime: post.publishedAt,
@@ -60,11 +60,22 @@ export async function generateMetadata({
 export default async function BlogPostPage({ params }: PageProps) {
 	const { slug } = await params;
 	const t = await getTranslations("BlogPostPage");
-	const post = getPostBySlug(slug);
+	const [post, allPosts] = await Promise.all([
+		getPostBySlug(slug),
+		getAllPosts(),
+	]);
 
 	if (!post) {
 		notFound();
 	}
+
+	const authorImageSrc = post.author.image
+		? urlFor(post.author.image).width(80).height(80).url()
+		: null;
+
+	const relatedPosts = allPosts
+		.filter((p) => p.slug.current !== post.slug.current)
+		.slice(0, 3);
 
 	return (
 		<div className="relative min-h-screen">
@@ -84,7 +95,10 @@ export default async function BlogPostPage({ params }: PageProps) {
 					{/* Category Badge */}
 					<div className="mb-6">
 						<span className="px-4 py-2 bg-brand-gold/10 text-brand-gold text-sm font-medium rounded-full font-body">
-							{post.category}
+							{post.category === "ai"
+								? "AI"
+								: post.category.charAt(0).toUpperCase() +
+									post.category.slice(1)}
 						</span>
 					</div>
 
@@ -115,13 +129,19 @@ export default async function BlogPostPage({ params }: PageProps) {
 							<span>{t("minRead", { n: post.readingTime })}</span>
 						</div>
 						<div className="flex items-center gap-3">
-							<Image
-								src={post.author.image}
-								alt={post.author.name}
-								width={40}
-								height={40}
-								className="rounded-full object-cover"
-							/>
+							{authorImageSrc ? (
+								<Image
+									src={authorImageSrc}
+									alt={post.author.name}
+									width={40}
+									height={40}
+									className="rounded-full object-cover"
+								/>
+							) : (
+								<div className="w-10 h-10 rounded-full bg-surface border border-border flex items-center justify-center text-brand-primary/40 font-body">
+									{post.author.name.charAt(0)}
+								</div>
+							)}
 							<div className="flex flex-col">
 								<span className="font-medium text-brand-primary">
 									{post.author.name}
@@ -135,7 +155,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
 					{/* Tags */}
 					<div className="flex flex-wrap gap-2 mb-12">
-						{post.tags.map((tag) => (
+						{post.tags?.map((tag) => (
 							<Link
 								key={tag}
 								href={`/blog?tag=${encodeURIComponent(tag)}`}
@@ -147,80 +167,25 @@ export default async function BlogPostPage({ params }: PageProps) {
 						))}
 					</div>
 
-					{/* Content */}
-					<div className="prose prose-invert max-w-none text-brand-primary/80 leading-relaxed">
-						<ReactMarkdown
-							remarkPlugins={[remarkGfm]}
-							components={{
-								h1: ({ children }) => (
-									<h1 className="font-heading text-3xl font-bold text-brand-primary mt-8 mb-4">
-										{children}
-									</h1>
-								),
-								h2: ({ children }) => (
-									<h2 className="font-heading text-2xl font-bold text-brand-primary mt-6 mb-3">
-										{children}
-									</h2>
-								),
-								h3: ({ children }) => (
-									<h3 className="font-heading text-xl font-bold text-brand-primary mt-4 mb-2">
-										{children}
-									</h3>
-								),
-								p: ({ children }) => (
-									<p className="font-body mb-4 text-brand-primary/70">
-										{children}
-									</p>
-								),
-								ul: ({ children }) => (
-									<ul className="list-disc ml-6 mb-4 space-y-2">{children}</ul>
-								),
-								ol: ({ children }) => (
-									<ol className="list-decimal ml-6 mb-4 space-y-2">
-										{children}
-									</ol>
-								),
-								li: ({ children }) => (
-									<li className="font-body text-brand-primary/70">
-										{children}
-									</li>
-								),
-								a: ({ href, children }) => (
-									<a
-										href={href}
-										className="text-brand-gold hover:text-brand-gold-light underline"
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										{children}
-									</a>
-								),
-								code: ({ children, className }) => {
-									const match = /language-(\w+)/.exec(className || "");
-									const language = match ? match[1] : "";
-									const isInline = !className;
+					{/* Cover Image */}
+					{post.coverImage && (
+						<div className="mb-12 rounded-2xl overflow-hidden">
+							<Image
+								src={urlFor(post.coverImage).width(896).height(504).url()}
+								alt={post.title}
+								width={896}
+								height={504}
+								className="w-full"
+							/>
+						</div>
+					)}
 
-									return isInline ? (
-										<code className="bg-surface text-brand-gold px-1.5 py-0.5 rounded text-sm font-mono">
-											{children}
-										</code>
-									) : (
-										<div className="my-6 rounded-xl overflow-hidden">
-											<CodeBlock language={language}>
-												{String(children).replace(/\n$/, "")}
-											</CodeBlock>
-										</div>
-									);
-								},
-								blockquote: ({ children }) => (
-									<blockquote className="border-l-4 border-brand-gold pl-4 italic text-brand-primary/50 my-4">
-										{children}
-									</blockquote>
-								),
-							}}
-						>
-							{post.content}
-						</ReactMarkdown>
+					{/* Body */}
+					<div className="prose prose-invert max-w-none">
+						<PortableText
+							value={post.body}
+							components={portableTextComponents}
+						/>
 					</div>
 
 					{/* Share Section */}
@@ -232,11 +197,9 @@ export default async function BlogPostPage({ params }: PageProps) {
 							{t("shareNetwork")}
 						</p>
 
-						{/* Social Share Buttons */}
 						<div className="flex flex-wrap gap-4 mb-12">
-							{/* Twitter/X */}
 							<a
-								href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`${BASE_URL}/blog/${post.slug}`)}&via=bobadillatech`}
+								href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`${BASE_URL}/blog/${post.slug.current}`)}&via=bobadillatech`}
 								target="_blank"
 								rel="noopener noreferrer"
 								className="flex items-center gap-2 px-6 py-3 bg-surface hover:bg-surface-hover border border-border hover:border-border-gold text-brand-primary rounded-full font-body font-medium transition-all duration-300"
@@ -245,9 +208,8 @@ export default async function BlogPostPage({ params }: PageProps) {
 								<span>{t("shareOnX")}</span>
 							</a>
 
-							{/* LinkedIn */}
 							<a
-								href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(`${BASE_URL}/blog/${post.slug}`)}&title=${encodeURIComponent(post.title)}&summary=${encodeURIComponent(post.description)}&source=${encodeURIComponent(SITE_NAME)}`}
+								href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(`${BASE_URL}/blog/${post.slug.current}`)}&title=${encodeURIComponent(post.title)}&summary=${encodeURIComponent(post.description)}&source=${encodeURIComponent(SITE_NAME)}`}
 								target="_blank"
 								rel="noopener noreferrer"
 								className="flex items-center gap-2 px-6 py-3 bg-[#0077B5]/20 hover:bg-[#0077B5]/30 border border-[#0077B5]/30 hover:border-[#0077B5]/50 text-brand-primary rounded-full font-body font-medium transition-all duration-300"
@@ -256,9 +218,8 @@ export default async function BlogPostPage({ params }: PageProps) {
 								<span>{t("shareOnLinkedIn")}</span>
 							</a>
 
-							{/* Reddit */}
 							<a
-								href={`https://reddit.com/submit?url=${encodeURIComponent(`${BASE_URL}/blog/${post.slug}`)}&title=${encodeURIComponent(post.title)}`}
+								href={`https://reddit.com/submit?url=${encodeURIComponent(`${BASE_URL}/blog/${post.slug.current}`)}&title=${encodeURIComponent(post.title)}`}
 								target="_blank"
 								rel="noopener noreferrer"
 								className="flex items-center gap-2 px-6 py-3 bg-[#FF4500]/20 hover:bg-[#FF4500]/30 border border-[#FF4500]/30 hover:border-[#FF4500]/50 text-brand-primary rounded-full font-body font-medium transition-all duration-300"
@@ -271,7 +232,6 @@ export default async function BlogPostPage({ params }: PageProps) {
 
 					{/* Promotional CTAs */}
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16 pt-8 border-t border-border">
-						{/* Requiem API CTA */}
 						<div className="p-6 bg-surface border border-border rounded-xl hover:border-border-gold transition-all duration-300">
 							<h4 className="font-heading text-lg font-bold text-brand-primary mb-2">
 								{t("enterpriseAPIsHeading")}
@@ -290,7 +250,6 @@ export default async function BlogPostPage({ params }: PageProps) {
 							</a>
 						</div>
 
-						{/* Consultancy CTA */}
 						<div className="p-6 bg-brand-gold/10 border border-border-gold rounded-xl hover:border-brand-gold/60 transition-all duration-300">
 							<h4 className="font-heading text-lg font-bold text-brand-primary mb-2">
 								{t("devServicesHeading")}
@@ -311,57 +270,47 @@ export default async function BlogPostPage({ params }: PageProps) {
 
 				{/* More Posts Section */}
 				<section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
-					{(() => {
-						const relatedPosts = getAllPosts()
-							.filter((p) => p.slug !== post.slug)
-							.slice(0, 3);
-
-						if (relatedPosts.length === 0) {
-							return (
-								<div className="text-center py-12">
-									<h2 className="font-heading text-3xl font-bold text-brand-primary mb-4">
-										{t("stayTuned")}
-									</h2>
-									<p className="font-body text-brand-primary/50 text-lg">
-										{t("moreSoonMsg")}
-									</p>
-								</div>
-							);
-						}
-
-						return (
-							<>
-								<h2 className="font-heading text-3xl font-bold text-brand-primary mb-8">
-									{t("morePosts")}
-								</h2>
-								<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-									{relatedPosts.map((relatedPost) => (
-										<Link
-											key={relatedPost.id}
-											href={`/blog/${relatedPost.slug}`}
-											className="group p-6 bg-surface border border-border rounded-2xl hover:border-border-gold transition-all duration-300 hover:scale-[1.02]"
-										>
-											<span className="px-3 py-1 bg-brand-gold/10 text-brand-gold text-xs font-medium rounded-full font-body">
-												{relatedPost.category}
+					{relatedPosts.length === 0 ? (
+						<div className="text-center py-12">
+							<h2 className="font-heading text-3xl font-bold text-brand-primary mb-4">
+								{t("stayTuned")}
+							</h2>
+							<p className="font-body text-brand-primary/50 text-lg">
+								{t("moreSoonMsg")}
+							</p>
+						</div>
+					) : (
+						<>
+							<h2 className="font-heading text-3xl font-bold text-brand-primary mb-8">
+								{t("morePosts")}
+							</h2>
+							<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+								{relatedPosts.map((relatedPost) => (
+									<Link
+										key={relatedPost._id}
+										href={`/blog/${relatedPost.slug.current}`}
+										className="group p-6 bg-surface border border-border rounded-2xl hover:border-border-gold transition-all duration-300 hover:scale-[1.02]"
+									>
+										<span className="px-3 py-1 bg-brand-gold/10 text-brand-gold text-xs font-medium rounded-full font-body">
+											{relatedPost.category}
+										</span>
+										<h3 className="font-heading text-lg font-bold text-brand-primary mt-4 mb-2 group-hover:text-brand-gold transition-colors duration-300">
+											{relatedPost.title}
+										</h3>
+										<p className="font-body text-brand-primary/50 text-sm line-clamp-2">
+											{relatedPost.description}
+										</p>
+										<div className="flex items-center gap-2 text-brand-primary/30 text-xs mt-4 font-body">
+											<Clock className="w-4 h-4" />
+											<span>
+												{t("minRead", { n: relatedPost.readingTime })}
 											</span>
-											<h3 className="font-heading text-lg font-bold text-brand-primary mt-4 mb-2 group-hover:text-brand-gold transition-colors duration-300">
-												{relatedPost.title}
-											</h3>
-											<p className="font-body text-brand-primary/50 text-sm line-clamp-2">
-												{relatedPost.description}
-											</p>
-											<div className="flex items-center gap-2 text-brand-primary/30 text-xs mt-4 font-body">
-												<Clock className="w-4 h-4" />
-												<span>
-													{t("minRead", { n: relatedPost.readingTime })}
-												</span>
-											</div>
-										</Link>
-									))}
-								</div>
-							</>
-						);
-					})()}
+										</div>
+									</Link>
+								))}
+							</div>
+						</>
+					)}
 				</section>
 			</main>
 

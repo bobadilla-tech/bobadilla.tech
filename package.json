@@ -28,7 +28,11 @@
 	"dependencies": {
 		"@libsql/client": "^0.17.2",
 		"@opennextjs/cloudflare": "^1.18.1",
+		"@portabletext/react": "^6.0.3",
+		"@portabletext/types": "^4.0.2",
 		"@radix-ui/react-slot": "^1.2.4",
+		"@sanity/client": "^7.20.0",
+		"@sanity/image-url": "^2.1.1",
 		"@t3-oss/env-nextjs": "^0.13.11",
 		"@types/react-syntax-highlighter": "^15.5.13",
 		"class-variance-authority": "^0.7.1",

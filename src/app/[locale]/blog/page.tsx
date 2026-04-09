@@ -10,7 +10,8 @@ import {
 	getAllCategories,
 	getPostsByCategory,
 	getPostsByTag,
-} from "@/data/blog";
+} from "~/lib/sanity/queries";
+import { urlFor } from "~/lib/sanity/image";
 import { Calendar, Clock, Tag, FileX } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import {
@@ -18,6 +19,7 @@ import {
 	KEYWORD_SETS,
 	BASE_URL,
 } from "~/lib/seo";
+import type { SanityPost } from "~/lib/sanity/types";
 
 export const metadata: Metadata = generateSEOMetadata({
 	title: "Blog - Engineering Insights & Tutorials",
@@ -43,17 +45,13 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 	const { category, tag } = await searchParams;
 	const t = await getTranslations("BlogPage");
 
-	const allPosts = getAllPosts();
-	const posts = category
-		? getPostsByCategory(
-				category as "engineering" | "ai" | "product" | "business" | "tutorial"
-			)
+	const posts: SanityPost[] = category
+		? await getPostsByCategory(category)
 		: tag
-			? getPostsByTag(tag)
-			: allPosts;
+			? await getPostsByTag(tag)
+			: await getAllPosts();
 
 	const categories = getAllCategories();
-
 	const activeFilter = category || tag;
 
 	const formatCategory = (cat: string) => {
@@ -116,86 +114,99 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 					{/* Blog Posts Grid or Empty State */}
 					{posts.length > 0 ? (
 						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-							{posts.map((post) => (
-								<Link
-									key={post.id}
-									href={`/blog/${post.slug}`}
-									className="group relative flex flex-col p-6 bg-surface border border-border rounded-2xl hover:border-border-gold transition-all duration-300 hover:scale-[1.02]"
-								>
-									{post.featured && (
-										<div className="absolute top-4 right-4 px-3 py-1 bg-brand-gold text-black text-xs font-semibold rounded-full font-body">
-											Featured
-										</div>
-									)}
+							{posts.map((post) => {
+								const authorImageSrc =
+									post.author.image
+										? urlFor(post.author.image).width(64).height(64).url()
+										: null;
 
-									<div className="mb-4">
-										<span className="px-3 py-1 bg-brand-gold/10 text-brand-gold text-xs font-medium rounded-full font-body">
-											{post.category === "ai"
-												? "AI"
-												: post.category.charAt(0).toUpperCase() +
-													post.category.slice(1)}
-										</span>
-									</div>
+								return (
+									<Link
+										key={post._id}
+										href={`/blog/${post.slug.current}`}
+										className="group relative flex flex-col p-6 bg-surface border border-border rounded-2xl hover:border-border-gold transition-all duration-300 hover:scale-[1.02]"
+									>
+										{post.featured && (
+											<div className="absolute top-4 right-4 px-3 py-1 bg-brand-gold text-black text-xs font-semibold rounded-full font-body">
+												Featured
+											</div>
+										)}
 
-									<h3 className="font-heading text-xl font-bold text-brand-primary mb-3 group-hover:text-brand-gold transition-colors duration-200 line-clamp-2">
-										{post.title}
-									</h3>
-
-									<p className="font-body text-brand-primary/50 text-sm mb-4 line-clamp-3">
-										{post.description}
-									</p>
-
-									<div className="flex flex-wrap gap-4 text-brand-primary/30 text-xs mb-4 font-body">
-										<div className="flex items-center gap-1">
-											<Calendar className="size-3.5" />
-											<span>
-												{new Date(post.publishedAt).toLocaleDateString(
-													"en-US",
-													{
-														month: "short",
-														day: "numeric",
-														year: "numeric",
-													}
-												)}
+										<div className="mb-4">
+											<span className="px-3 py-1 bg-brand-gold/10 text-brand-gold text-xs font-medium rounded-full font-body">
+												{post.category === "ai"
+													? "AI"
+													: post.category.charAt(0).toUpperCase() +
+														post.category.slice(1)}
 											</span>
 										</div>
-										<div className="flex items-center gap-1">
-											<Clock className="size-3.5" />
-											<span>{t("minRead", { n: post.readingTime })}</span>
-										</div>
-									</div>
 
-									<div className="flex flex-wrap gap-2 mb-4">
-										{post.tags.slice(0, 3).map((tag_item) => (
-											<span
-												key={tag_item}
-												className="inline-flex items-center gap-1 px-2 py-1 bg-surface text-brand-primary/40 text-xs rounded font-body"
-											>
-												<Tag className="size-3" />
-												{tag_item}
-											</span>
-										))}
-									</div>
+										<h3 className="font-heading text-xl font-bold text-brand-primary mb-3 group-hover:text-brand-gold transition-colors duration-200 line-clamp-2">
+											{post.title}
+										</h3>
 
-									<div className="mt-auto pt-4 border-t border-border flex items-center gap-2">
-										<Image
-											src={post.author.image}
-											alt={post.author.name}
-											width={32}
-											height={32}
-											className="rounded-full object-cover"
-										/>
-										<div className="flex flex-col">
-											<span className="font-body text-brand-primary/70 text-sm font-medium">
-												{post.author.name}
-											</span>
-											<span className="font-body text-brand-primary/30 text-xs">
-												{post.author.role}
-											</span>
+										<p className="font-body text-brand-primary/50 text-sm mb-4 line-clamp-3">
+											{post.description}
+										</p>
+
+										<div className="flex flex-wrap gap-4 text-brand-primary/30 text-xs mb-4 font-body">
+											<div className="flex items-center gap-1">
+												<Calendar className="size-3.5" />
+												<span>
+													{new Date(post.publishedAt).toLocaleDateString(
+														"en-US",
+														{
+															month: "short",
+															day: "numeric",
+															year: "numeric",
+														}
+													)}
+												</span>
+											</div>
+											<div className="flex items-center gap-1">
+												<Clock className="size-3.5" />
+												<span>{t("minRead", { n: post.readingTime })}</span>
+											</div>
 										</div>
-									</div>
-								</Link>
-							))}
+
+										<div className="flex flex-wrap gap-2 mb-4">
+											{post.tags?.slice(0, 3).map((tag_item) => (
+												<span
+													key={tag_item}
+													className="inline-flex items-center gap-1 px-2 py-1 bg-surface text-brand-primary/40 text-xs rounded font-body"
+												>
+													<Tag className="size-3" />
+													{tag_item}
+												</span>
+											))}
+										</div>
+
+										<div className="mt-auto pt-4 border-t border-border flex items-center gap-2">
+											{authorImageSrc ? (
+												<Image
+													src={authorImageSrc}
+													alt={post.author.name}
+													width={32}
+													height={32}
+													className="rounded-full object-cover"
+												/>
+											) : (
+												<div className="w-8 h-8 rounded-full bg-surface border border-border flex items-center justify-center text-brand-primary/40 text-xs font-body">
+													{post.author.name.charAt(0)}
+												</div>
+											)}
+											<div className="flex flex-col">
+												<span className="font-body text-brand-primary/70 text-sm font-medium">
+													{post.author.name}
+												</span>
+												<span className="font-body text-brand-primary/30 text-xs">
+													{post.author.role}
+												</span>
+											</div>
+										</div>
+									</Link>
+								);
+							})}
 						</div>
 					) : (
 						<div className="flex flex-col items-center justify-center py-24">

@@ -7,6 +7,20 @@ export interface PainPoint {
 	icon: string; // path under /assets/services/pain-points/ (SVG)
 	title: string;
 	description: string;
+	stat?: string;       // e.g. "2x" — when present, renders stats variant
+	statLabel?: string;  // e.g. "faster launch speed"
+}
+
+export interface MvpSolution {
+	title: string;
+	description: string;
+	icon: "prototype" | "functional" | "refinement";
+}
+
+export interface MvpForWho {
+	tag: string;
+	title: string;
+	description: string;
 }
 
 export interface ServiceOffer {
@@ -43,6 +57,13 @@ export interface ServicePageData {
 	/** Optional urgency band (web-development page only) */
 	urgencyBandText?: string;
 	urgencyBandCta?: string;
+	/** Optional feature badges shown in ServiceHero (MVP page) */
+	featureBadges?: { text: string; icon: "zap" | "timer" }[];
+	/** Optional MVP-specific sections */
+	solutionsHeading?: string;
+	mvpSolutions?: MvpSolution[];
+	forWhoHeading?: string;
+	forWho?: MvpForWho[];
 }
 
 // Tech names are proper nouns and don't change across locales.
