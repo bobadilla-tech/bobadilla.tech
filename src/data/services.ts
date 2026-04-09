@@ -69,7 +69,7 @@ export const allServices: Service[] = [
 		description: "Modern, responsive, and performant user interfaces.",
 		category: "development",
 		image:
-			"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
+			"https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&q=80",
 		imageAlt: "Front-end development",
 		titleKey: "cards.frontendDev.title",
 		descriptionKey: "cards.frontendDev.description",
