@@ -8,30 +8,118 @@ import {
 	Carousel,
 	CarouselContent,
 	CarouselItem,
-	CarouselPrevious,
-	CarouselNext,
 	type CarouselApi,
 } from "@/components/ui/carousel";
+
+const AUTOPLAY_MS = 3000;
+const FEATURED_INDEX = 2;
+
+const ACTIVE_STYLE: React.CSSProperties = {
+	// inset acts as a border without affecting dimensions or triggering overflow clipping
+	boxShadow: "inset 0 0 0 2px #e6be1a, 0 16px 48px rgba(230,190,26,0.20)",
+};
+
+interface CardProps {
+	title: string;
+	body?: string;
+	featured?: boolean;
+	active: boolean;
+}
+
+function Card({ title, body, featured, active }: CardProps) {
+	return (
+		<div
+			className="bg-white rounded-[55px] p-8 h-89.5 w-full flex flex-col justify-end relative overflow-hidden transition-all duration-500"
+			style={active ? ACTIVE_STYLE : undefined}
+		>
+			{/* Icon area */}
+			<div className={`absolute top-8 left-10 ${featured ? "w-28 h-28" : "w-24 h-24"}`}>
+				<Image
+					src={
+						featured
+							? "/assets/services/shared/ellipse-circle.svg"
+							: "/assets/services/shared/ellipse-gold.svg"
+					}
+					alt=""
+					width={featured ? 112 : 96}
+					height={featured ? 112 : 96}
+					unoptimized
+				/>
+				<Image
+					src={
+						featured
+							? "/assets/services/shared/computer-lg.svg"
+							: "/assets/services/shared/computer.svg"
+					}
+					alt=""
+					width={featured ? 72 : 64}
+					height={featured ? 72 : 64}
+					className="absolute inset-0 m-auto object-contain"
+					style={{ width: featured ? "4.5rem" : "4rem", height: "auto" }}
+					unoptimized
+				/>
+			</div>
+
+			{featured && (
+				<div className="absolute top-8 right-8 w-10 h-10">
+					<Image
+						src="/assets/services/shared/ellipse-dot.svg"
+						alt=""
+						width={40}
+						height={40}
+						unoptimized
+					/>
+				</div>
+			)}
+
+			{/* Text */}
+			<h3 className="font-heading text-black font-medium text-2xl tracking-tight leading-tight mb-1">
+				{title}
+			</h3>
+			{body && (
+				<p className="font-body text-black/60 font-light text-base leading-snug mt-1">
+					{body}
+				</p>
+			)}
+		</div>
+	);
+}
 
 export default function ServiceReasons() {
 	const t = useTranslations("ServiceReasons");
 	const [api, setApi] = useState<CarouselApi>();
-	const [selectedIndex, setSelectedIndex] = useState(2);
+	const [selectedIndex, setSelectedIndex] = useState(FEATURED_INDEX);
+
+	const reasons = [
+		t("reasons.0"),
+		t("reasons.1"),
+		t("reasons.2"),
+		t("reasons.3"),
+		t("reasons.4"),
+	];
+
+	// order: reason[0], reason[1], featured, reason[2], reason[3], reason[4]
+	const items = [
+		...reasons.slice(0, 2).map((title) => ({ featured: false, title, body: undefined })),
+		{ featured: true, title: t("featuredTitle"), body: t("featuredBody") },
+		...reasons.slice(2).map((title) => ({ featured: false, title, body: undefined })),
+	];
 
 	useEffect(() => {
 		if (!api) return;
+
+		api.scrollTo(FEATURED_INDEX, false);
+
 		const onSelect = () => setSelectedIndex(api.selectedScrollSnap());
 		api.on("select", onSelect);
-		return () => { api.off("select", onSelect); };
-	}, [api]);
 
-	const reasons = [
-		{ title: t("reasons.0") },
-		{ title: t("reasons.1") },
-		{ title: t("reasons.2") },
-		{ title: t("reasons.3") },
-		{ title: t("reasons.4") },
-	];
+		const timer = setInterval(() => api.scrollNext(), AUTOPLAY_MS);
+
+		return () => {
+			api.off("select", onSelect);
+			clearInterval(timer);
+		};
+	}, [api]);
 
 	return (
 		<section className="py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -48,151 +136,26 @@ export default function ServiceReasons() {
 				</motion.h2>
 
 				<div className="mt-16">
-					<Carousel opts={{ align: "start", loop: false }} className="w-full" setApi={setApi}>
+					<Carousel
+						opts={{ align: "center", loop: true }}
+						setApi={setApi}
+						className="w-full"
+					>
 						<CarouselContent className="-ml-6">
-							{/* Regular reason cards */}
-							{reasons.slice(0, 2).map((reason, i) => (
+							{items.map((item, i) => (
 								<CarouselItem
-									key={reason.title}
-									className="pl-6 basis-[280px] shrink-0"
+									key={item.featured ? "featured" : item.title}
+									className="pl-6 basis-70 shrink-0"
 								>
-									<motion.div
-										initial={{ opacity: 0, x: 30 }}
-										whileInView={{ opacity: 1, x: 0 }}
-										viewport={{ once: true }}
-										transition={{ delay: i * 0.1 }}
-										className="bg-white rounded-[55px] p-8 h-[358px] flex flex-col justify-end relative overflow-hidden transition-shadow duration-300"
-										style={
-											selectedIndex === i
-												? {
-														boxShadow:
-															"0 0 110px 0 #a6993f, 0 0 63px 0 #a6993f, 0 0 37px 0 #a6993f",
-													}
-												: undefined
-										}
-									>
-										<div className="absolute top-10 left-12 w-24 h-24">
-											<Image
-												src="/assets/services/shared/ellipse-gold.svg"
-												alt=""
-												width={96}
-												height={96}
-												unoptimized
-											/>
-											<Image
-												src="/assets/services/shared/computer.svg"
-												alt=""
-												width={64}
-												height={64}
-												className="absolute inset-0 m-auto w-16 h-16 object-contain"
-												unoptimized
-											/>
-										</div>
-										<h3 className="font-heading text-black font-medium text-3xl tracking-tight whitespace-pre-line leading-tight">
-											{reason.title}
-										</h3>
-									</motion.div>
-								</CarouselItem>
-							))}
-
-							{/* Featured center card */}
-							<CarouselItem className="pl-6 basis-[400px] shrink-0">
-								<motion.div
-									initial={{ opacity: 0, scale: 0.95 }}
-									whileInView={{ opacity: 1, scale: 1 }}
-									viewport={{ once: true }}
-									className="bg-white rounded-[70px] h-[457px] flex flex-col justify-end p-12 relative overflow-hidden transition-shadow duration-300"
-									style={
-										selectedIndex === 2
-											? {
-													boxShadow:
-														"0 0 110px 0 #a6993f, 0 0 63px 0 #a6993f, 0 0 37px 0 #a6993f",
-												}
-											: undefined
-									}
-								>
-									<div className="absolute top-10 left-16 w-32 h-32">
-										<Image
-											src="/assets/services/shared/ellipse-circle.svg"
-											alt=""
-											width={128}
-											height={128}
-											unoptimized
-										/>
-										<Image
-											src="/assets/services/shared/computer-lg.svg"
-											alt=""
-											width={80}
-											height={80}
-											className="absolute inset-0 m-auto w-20 h-20 object-contain"
-											unoptimized
-										/>
-									</div>
-									<div className="absolute top-10 right-10 w-14 h-14">
-										<Image
-											src="/assets/services/shared/ellipse-dot.svg"
-											alt=""
-											width={56}
-											height={56}
-											unoptimized
-										/>
-									</div>
-									<h3 className="font-heading text-black font-medium text-5xl tracking-tight leading-tight mb-4">
-										{t("featuredTitle")}
-									</h3>
-									<p className="font-body text-black font-light text-3xl tracking-tight whitespace-pre-line leading-tight">
-										{t("featuredBody")}
-									</p>
-								</motion.div>
-							</CarouselItem>
-
-							{/* Remaining reason cards */}
-							{reasons.slice(2).map((reason, i) => (
-								<CarouselItem
-									key={reason.title}
-									className="pl-6 basis-[280px] shrink-0"
-								>
-									<motion.div
-										initial={{ opacity: 0, x: -30 }}
-										whileInView={{ opacity: 1, x: 0 }}
-										viewport={{ once: true }}
-										transition={{ delay: i * 0.1 }}
-										className="bg-white rounded-[55px] p-8 h-[358px] flex flex-col justify-end relative overflow-hidden transition-shadow duration-300"
-										style={
-											selectedIndex === i + 3
-												? {
-														boxShadow:
-															"0 0 110px 0 #a6993f, 0 0 63px 0 #a6993f, 0 0 37px 0 #a6993f",
-													}
-												: undefined
-										}
-									>
-										<div className="absolute top-10 left-12 w-24 h-24">
-											<Image
-												src="/assets/services/shared/ellipse-gold.svg"
-												alt=""
-												width={96}
-												height={96}
-												unoptimized
-											/>
-											<Image
-												src="/assets/services/shared/computer.svg"
-												alt=""
-												width={64}
-												height={64}
-												className="absolute inset-0 m-auto w-16 h-16 object-contain"
-												unoptimized
-											/>
-										</div>
-										<h3 className="font-heading text-black font-medium text-3xl tracking-tight whitespace-pre-line leading-tight">
-											{reason.title}
-										</h3>
-									</motion.div>
+									<Card
+										title={item.title}
+										body={item.body}
+										featured={item.featured}
+										active={selectedIndex === i}
+									/>
 								</CarouselItem>
 							))}
 						</CarouselContent>
-						<CarouselPrevious className="-left-4" />
-						<CarouselNext className="-right-4" />
 					</Carousel>
 				</div>
 			</div>
