@@ -32,6 +32,7 @@ import { validEmail } from "@/app/pricing/validation";
 
 export default function PricingCalculator() {
 	const t = useTranslations("PricingPage");
+	
 	const [currentStep, setCurrentStep] = useState(0);
 	const [selections, setSelections] = useState<Selections>({});
 	const [showSummary, setShowSummary] = useState(false);

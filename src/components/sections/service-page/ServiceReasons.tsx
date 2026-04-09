@@ -14,11 +14,6 @@ import {
 const AUTOPLAY_MS = 3000;
 const FEATURED_INDEX = 2;
 
-const ACTIVE_STYLE: React.CSSProperties = {
-	// inset acts as a border without affecting dimensions or triggering overflow clipping
-	boxShadow: "inset 0 0 0 2px #e6be1a, 0 16px 48px rgba(230,190,26,0.20)",
-};
-
 interface CardProps {
 	title: string;
 	body?: string;
@@ -29,8 +24,14 @@ interface CardProps {
 function Card({ title, body, featured, active }: CardProps) {
 	return (
 		<div
-			className="bg-white rounded-[55px] p-8 h-89.5 w-full flex flex-col justify-end relative overflow-hidden transition-all duration-500"
-			style={active ? ACTIVE_STYLE : undefined}
+			className={`bg-white rounded-[55px] p-8 h-89.5 w-full flex flex-col justify-end relative overflow-hidden transition-all duration-500 ${
+				active ? "scale-100 opacity-100" : "scale-[0.88] opacity-40"
+			}`}
+			style={
+				active
+					? { boxShadow: "inset 0 0 0 2px #e6be1a, 0 20px 60px rgba(230,190,26,0.25)" }
+					: undefined
+			}
 		>
 			{/* Icon area */}
 			<div className={`absolute top-8 left-10 ${featured ? "w-28 h-28" : "w-24 h-24"}`}>
@@ -122,8 +123,8 @@ export default function ServiceReasons() {
 	}, [api]);
 
 	return (
-		<section className="py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-			<div className="max-w-7xl mx-auto">
+		<section className="py-24 overflow-hidden">
+			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<motion.h2
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
@@ -134,30 +135,34 @@ export default function ServiceReasons() {
 					<br />
 					<span className="text-brand-gold">{t("heading2")}</span>
 				</motion.h2>
+			</div>
 
-				<div className="mt-16">
-					<Carousel
-						opts={{ align: "center", loop: true }}
-						setApi={setApi}
-						className="w-full"
+			<div className="mt-16 px-6 sm:px-10 lg:px-16">
+				<Carousel opts={{ align: "center", loop: true }} setApi={setApi}>
+					{/*
+					 * viewportClassName="overflow-visible" lets scale(1) active card
+					 * render above shrunken neighbours without getting clipped.
+					 * The section's own overflow-hidden clips everything at the page edge.
+					 */}
+					<CarouselContent
+						viewportClassName="overflow-visible py-6"
+						className="-ml-4"
 					>
-						<CarouselContent className="-ml-6">
-							{items.map((item, i) => (
-								<CarouselItem
-									key={item.featured ? "featured" : item.title}
-									className="pl-6 basis-70 shrink-0"
-								>
-									<Card
-										title={item.title}
-										body={item.body}
-										featured={item.featured}
-										active={selectedIndex === i}
-									/>
-								</CarouselItem>
-							))}
-						</CarouselContent>
-					</Carousel>
-				</div>
+						{items.map((item, i) => (
+							<CarouselItem
+								key={item.featured ? "featured" : item.title}
+								className="pl-4 basis-[78%] sm:basis-[52%] lg:basis-[36%]"
+							>
+								<Card
+									title={item.title}
+									body={item.body}
+									featured={item.featured}
+									active={selectedIndex === i}
+								/>
+							</CarouselItem>
+						))}
+					</CarouselContent>
+				</Carousel>
 			</div>
 		</section>
 	);
