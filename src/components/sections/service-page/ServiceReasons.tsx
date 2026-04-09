@@ -19,68 +19,86 @@ interface CardProps {
 	body?: string;
 	featured?: boolean;
 	active: boolean;
+	index: number;
 }
 
-function Card({ title, body, featured, active }: CardProps) {
+function Card({ title, body, featured, active, index }: CardProps) {
 	return (
 		<div
-			className={`bg-white rounded-[55px] p-8 h-89.5 w-full flex flex-col justify-end relative overflow-hidden transition-all duration-500 ${
+			className={`bg-white rounded-[48px] w-full h-89.5 relative overflow-hidden transition-all duration-500 flex flex-col ${
 				active ? "scale-100 opacity-100" : "scale-[0.88] opacity-40"
 			}`}
 			style={
 				active
-					? { boxShadow: "inset 0 0 0 2px #e6be1a, 0 20px 60px rgba(230,190,26,0.25)" }
+					? { boxShadow: "inset 0 0 0 2px #e6be1a, 0 24px 64px rgba(230,190,26,0.22)" }
 					: undefined
 			}
 		>
-			{/* Icon area */}
-			<div className={`absolute top-8 left-10 ${featured ? "w-28 h-28" : "w-24 h-24"}`}>
-				<Image
-					src={
-						featured
-							? "/assets/services/shared/ellipse-circle.svg"
-							: "/assets/services/shared/ellipse-gold.svg"
-					}
-					alt=""
-					width={featured ? 112 : 96}
-					height={featured ? 112 : 96}
-					unoptimized
-				/>
-				<Image
-					src={
-						featured
-							? "/assets/services/shared/computer-lg.svg"
-							: "/assets/services/shared/computer.svg"
-					}
-					alt=""
-					width={featured ? 72 : 64}
-					height={featured ? 72 : 64}
-					className="absolute inset-0 m-auto object-contain"
-					style={{ width: featured ? "4.5rem" : "4rem", height: "auto" }}
-					unoptimized
-				/>
-			</div>
-
-			{featured && (
-				<div className="absolute top-8 right-8 w-10 h-10">
+			{/* Top section: icon + number */}
+			<div className="flex items-start justify-between px-8 pt-8">
+				<div className={`relative ${featured ? "w-24 h-24" : "w-20 h-20"}`}>
 					<Image
-						src="/assets/services/shared/ellipse-dot.svg"
+						src={
+							featured
+								? "/assets/services/shared/ellipse-circle.svg"
+								: "/assets/services/shared/ellipse-gold.svg"
+						}
 						alt=""
-						width={40}
-						height={40}
+						fill
+						className="object-contain"
+						unoptimized
+					/>
+					<Image
+						src={
+							featured
+								? "/assets/services/shared/computer-lg.svg"
+								: "/assets/services/shared/computer.svg"
+						}
+						alt=""
+						width={featured ? 56 : 48}
+						height={featured ? 56 : 48}
+						className="absolute inset-0 m-auto object-contain"
 						unoptimized
 					/>
 				</div>
-			)}
 
-			{/* Text */}
-			<h3 className="font-heading text-black font-medium text-2xl tracking-tight leading-tight mb-1">
-				{title}
-			</h3>
-			{body && (
-				<p className="font-body text-black/60 font-light text-base leading-snug mt-1">
-					{body}
-				</p>
+				{featured ? (
+					<Image
+						src="/assets/services/shared/ellipse-dot.svg"
+						alt=""
+						width={36}
+						height={36}
+						unoptimized
+					/>
+				) : (
+					<span className="font-heading text-sm font-semibold text-black/20 tracking-widest mt-1">
+						{String(index).padStart(2, "0")}
+					</span>
+				)}
+			</div>
+
+			{/* Bottom section: text */}
+			<div className="mt-auto px-8 pb-8">
+				{featured && (
+					<div className="w-8 h-0.5 bg-brand-gold mb-4 rounded-full" />
+				)}
+				<h3
+					className={`font-heading text-black font-semibold tracking-tight leading-tight whitespace-pre-line ${
+						featured ? "text-3xl" : "text-2xl"
+					}`}
+				>
+					{title}
+				</h3>
+				{body && (
+					<p className="font-body text-black/50 font-light text-sm leading-relaxed mt-2 whitespace-pre-line">
+						{body}
+					</p>
+				)}
+			</div>
+
+			{/* Featured: gold bottom accent */}
+			{featured && active && (
+				<div className="absolute bottom-0 left-8 right-8 h-0.5 bg-linear-to-r from-transparent via-brand-gold to-transparent rounded-full" />
 			)}
 		</div>
 	);
@@ -158,6 +176,7 @@ export default function ServiceReasons() {
 									body={item.body}
 									featured={item.featured}
 									active={selectedIndex === i}
+									index={i + 1}
 								/>
 							</CarouselItem>
 						))}
