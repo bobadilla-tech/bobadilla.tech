@@ -2,22 +2,34 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { Zap, Timer, ArrowRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { CAL_LINKS } from "~/lib/constants";
-import { ArrowRight } from "lucide-react";
+
+interface FeatureBadge {
+	text: string;
+	icon: "zap" | "timer";
+}
 
 interface ServiceHeroProps {
 	eyebrow: string;
 	line1: string;
 	line2: string;
 	subtitle: string;
+	featureBadges?: FeatureBadge[];
 }
+
+const badgeIcons = {
+	zap: Zap,
+	timer: Timer,
+};
 
 export default function ServiceHero({
 	eyebrow,
 	line1,
 	line2,
 	subtitle,
+	featureBadges,
 }: ServiceHeroProps) {
 	const t = useTranslations("ServiceHero");
 
@@ -41,9 +53,28 @@ export default function ServiceHero({
 					</span>
 				</h1>
 
-				<p className="font-body text-xl text-brand-primary/60 max-w-3xl mx-auto mb-12">
+				<p className="font-body text-xl text-brand-primary/60 max-w-3xl mx-auto mb-10">
 					{subtitle}
 				</p>
+
+				{featureBadges && featureBadges.length > 0 && (
+					<div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto mb-10">
+						{featureBadges.map((badge) => {
+							const Icon = badgeIcons[badge.icon];
+							return (
+								<div
+									key={badge.text}
+									className="bg-surface border border-border rounded-xl px-4 py-3 flex items-center gap-3 text-left"
+								>
+									<Icon className="w-5 h-5 text-brand-gold shrink-0" />
+									<span className="font-body text-sm text-brand-primary/80">
+										{badge.text}
+									</span>
+								</div>
+							);
+						})}
+					</div>
+				)}
 
 				<Button
 					href={CAL_LINKS.ale}

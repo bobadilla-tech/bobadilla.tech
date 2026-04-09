@@ -42,19 +42,19 @@ export default function Hero() {
 					>
 						<span
 							className="block whitespace-nowrap text-brand-primary"
-							style={{ fontSize: "clamp(1.4rem, 5.2vw, 5.2rem)" }}
+							style={{ fontSize: "clamp(1.8rem, 5.2vw, 5.2rem)" }}
 						>
 							{t("line1")}
 						</span>
 						<span
 							className="block whitespace-nowrap text-brand-gold"
-							style={{ fontSize: "clamp(1.8rem, 7.6vw, 7.6rem)" }}
+							style={{ fontSize: "clamp(2.2rem, 7.6vw, 7.6rem)" }}
 						>
 							{t("line2")}
 						</span>
 						<span
 							className="block whitespace-nowrap text-brand-primary"
-							style={{ fontSize: "clamp(1.2rem, 4.6vw, 4.6rem)" }}
+							style={{ fontSize: "clamp(1.5rem, 4.6vw, 4.6rem)" }}
 						>
 							{t("line3")}
 						</span>
@@ -67,12 +67,12 @@ export default function Hero() {
 				initial={{ opacity: 0, scale: 0.97 }}
 				animate={{ opacity: 1, scale: 1 }}
 				transition={{ delay: 0.3, duration: 1 }}
-				className="relative z-0 w-full max-w-7xl mx-auto px-2 -mt-32 sm:-mt-44"
+				className="relative z-0 w-full max-w-7xl mx-auto px-2 -mt-4 sm:-mt-24 md:-mt-44"
 				style={{
 					maskImage:
-						"linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%), linear-gradient(to bottom, black 55%, transparent 100%)",
+						"linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%), linear-gradient(to bottom, black 40%, transparent 100%)",
 					WebkitMaskImage:
-						"linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%), linear-gradient(to bottom, black 55%, transparent 100%)",
+						"linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%), linear-gradient(to bottom, black 40%, transparent 100%)",
 					maskComposite: "intersect",
 					WebkitMaskComposite: "source-in",
 				}}

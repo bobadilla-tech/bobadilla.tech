@@ -545,29 +545,79 @@ export const servicePages: ServicePageData[] = [
 	{
 		slug: "mvp-development",
 		eyebrow: "MVP DEVELOPMENT",
-		heroLine1: "FROM IDEA TO",
-		heroLine2: "PRODUCT IN WEEKS",
+		heroLine1: "FROM CONCEPT TO LAUNCH —",
+		heroLine2: "WE TURN IDEAS INTO WHAT'S NEXT",
 		heroSubtitle:
-			"We build focused MVPs that validate your core assumption, ship fast, and give you real user data to grow from.",
-		painPointsHeading: "WHY MOST MVPs FAIL",
+			"We design, build, and launch scalable MVPs — helping you validate faster and grow smarter.",
+		featureBadges: [
+			{ text: "Full-cycle development by a high-performance team", icon: "zap" },
+			{ text: "Fast delivery with predictable timelines", icon: "timer" },
+		],
+		painPointsHeading: "MVP PITBALLS THAT DRAIN TIME AND BUDGET",
 		painPoints: [
 			{
 				icon: "/assets/services/pain-points/calendar-clock.svg",
-				title: "Building too much, too soon",
-				description:
-					"Feature-heavy v1s take 12 months and validate nothing. Scope must be ruthlessly cut.",
+				title: "Stop wasting months on your MVP",
+				description: "Launch faster by focusing only on what truly matters.",
+				stat: "2x",
+				statLabel: "faster launch speed",
 			},
 			{
 				icon: "/assets/services/pain-points/social-distance.svg",
-				title: "Wrong team, wrong speed",
+				title: "Don't build blindly",
 				description:
-					"Agencies that treat MVPs like enterprise projects miss the entire point of a prototype.",
+					"Validate your idea before investing heavily in development.",
+				stat: "0%",
+				statLabel: "uncertainty in your product",
 			},
 			{
 				icon: "/assets/services/pain-points/aq-indoor.svg",
-				title: "No path to scale",
+				title: "More features ≠ better product",
+				description: "We help you build lean, test fast, and scale smart.",
+				stat: "40%",
+				statLabel: "less waste in development",
+			},
+		],
+		solutionsHeading: "MVP SOLUTIONS BUILT AROUND YOUR PROJECT",
+		mvpSolutions: [
+			{
+				title: "Clickable prototype",
 				description:
-					"MVPs built with throwaway code block growth and require full rewrites at Series A.",
+					"Interactive prototypes to validate your idea before development.",
+				icon: "prototype",
+			},
+			{
+				title: "Functional MVP",
+				description:
+					"A fully working product built to launch and test in real conditions.",
+				icon: "functional",
+			},
+			{
+				title: "MVP refinement",
+				description:
+					"Improve, scale, and refine your product based on real user feedback.",
+				icon: "refinement",
+			},
+		],
+		forWhoHeading: "WHO OUR MVP SOLUTIONS ARE FOR",
+		forWho: [
+			{
+				tag: "GOT AN IDEA TO VALIDATE?",
+				title: "Founders building their first product",
+				description:
+					"Turn your idea into a real product fast and validate it with real users from day one.",
+			},
+			{
+				tag: "TESTING A NEW OPPORTUNITY?",
+				title: "Teams exploring new product directions",
+				description:
+					"Validate new features or markets without slowing down your core roadmap.",
+			},
+			{
+				tag: "NEED TO LAUNCH SOMETHING NEW?",
+				title: "Companies launching digital products",
+				description:
+					"We help you go from concept to launch with speed, clarity, and scalability.",
 			},
 		],
 		servicesHeading: "MVP SERVICES WE OFFER",
@@ -603,7 +653,7 @@ export const servicePages: ServicePageData[] = [
 					"After launch, we help you prioritize the features that matter based on real data.",
 			},
 		],
-		processHeading: "OUR MVP PROCESS",
+		processHeading: "FROM IDEA TO LAUNCH",
 		processSubtitle:
 			"Four focused steps to get from idea to live product with no wasted motion.",
 		processSteps: sharedProcessSteps.slice(0, 4),
