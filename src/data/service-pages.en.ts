@@ -598,6 +598,18 @@ export const servicePages: ServicePageData[] = [
 					"Improve, scale, and refine your product based on real user feedback.",
 				icon: "refinement",
 			},
+			{
+				title: "Feature-focused MVP",
+				description:
+					"Test a single core idea fast before committing to full development.",
+				icon: "feature-focused",
+			},
+			{
+				title: "Scaling & growth",
+				description:
+					"We help you evolve your MVP into a scalable product.",
+				icon: "growth",
+			},
 		],
 		forWhoHeading: "WHO OUR MVP SOLUTIONS ARE FOR",
 		forWho: [

@@ -15,19 +15,19 @@ export default function ServiceEstimateCTA() {
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
-					className="bg-brand-bg border border-brand-primary/20 rounded-[80px] p-16 text-center shadow-[0_10px_10px_0_white/5]"
+					className="bg-brand-bg border border-brand-primary/20 rounded-[40px] sm:rounded-[64px] lg:rounded-[80px] px-6 py-10 sm:p-12 lg:p-16 text-center shadow-[0_10px_10px_0_white/5]"
 				>
-					<h2 className="font-heading font-bold text-4xl sm:text-5xl text-brand-primary mb-8 max-w-3xl mx-auto">
+					<p className="font-heading text-xs font-semibold tracking-[0.2em] uppercase text-brand-gold mb-6">
+						{t("subheading")}
+					</p>
+
+					<p className="font-body text-brand-primary text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto mb-8">
 						{t.rich("body", {
 							gold: (chunks) => (
-								<span className="text-brand-gold">{chunks}</span>
+								<span className="text-brand-gold font-semibold">{chunks}</span>
 							),
 						})}
-					</h2>
-
-					<h3 className="font-heading font-bold text-3xl text-brand-primary mb-8">
-						{t("subheading")}
-					</h3>
+					</p>
 
 					<Button href={CAL_LINKS.ale} variant="gold">
 						{t("button")}

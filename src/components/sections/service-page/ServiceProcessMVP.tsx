@@ -48,47 +48,75 @@ export default function ServiceProcessMVP() {
 					<span className="text-brand-primary">TO LAUNCH</span>
 				</motion.h2>
 
-				{/* Circle chain — scrollable on mobile */}
-				<div className="overflow-x-auto pb-4">
-					<div className="flex items-center justify-center min-w-[480px] px-4">
-						{steps.map((step, i) => (
-							<motion.div
-								key={step.label}
-								initial={{ opacity: 0, scale: 0.85 }}
-								whileInView={{ opacity: 1, scale: 1 }}
-								viewport={{ once: true }}
-								transition={{ duration: 0.4, delay: i * 0.1 }}
-								className="relative flex flex-col items-center"
-								style={{ marginLeft: i > 0 ? "-2rem" : 0 }}
+				{/* Mobile: 2×2 grid — no horizontal scroll */}
+				<div className="grid grid-cols-2 gap-6 sm:hidden">
+					{steps.map((step, i) => (
+						<motion.div
+							key={step.label}
+							initial={{ opacity: 0, scale: 0.85 }}
+							whileInView={{ opacity: 1, scale: 1 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.4, delay: i * 0.1 }}
+							className="flex flex-col items-center"
+						>
+							<div
+								className="w-32 h-32 rounded-full flex flex-col items-center justify-center shadow-lg"
+								style={{ backgroundColor: step.bg }}
 							>
-								{/* Circle */}
-								<div
-									className="w-36 h-36 sm:w-44 sm:h-44 rounded-full flex flex-col items-center justify-center relative z-10 shadow-lg"
-									style={{ backgroundColor: step.bg }}
+								<span
+									className="font-heading text-xs font-semibold tracking-widest uppercase mb-1"
+									style={{ color: step.textColor, opacity: 0.8 }}
 								>
-									<span
-										className="font-heading text-xs font-semibold tracking-widest uppercase mb-1"
-										style={{ color: step.textColor, opacity: 0.8 }}
-									>
-										{step.label}
-									</span>
-									<span
-										className="font-heading text-4xl sm:text-5xl font-bold leading-none"
-										style={{ color: step.textColor }}
-									>
-										{step.number}
-									</span>
-								</div>
+									{step.label}
+								</span>
+								<span
+									className="font-heading text-4xl font-bold leading-none"
+									style={{ color: step.textColor }}
+								>
+									{step.number}
+								</span>
+							</div>
+							<p className="font-body text-xs text-brand-primary/60 text-center mt-3 max-w-25 leading-snug">
+								{step.description}
+							</p>
+						</motion.div>
+					))}
+				</div>
 
-								{/* Description below */}
-								<p
-									className="font-body text-xs sm:text-sm text-brand-primary/60 text-center mt-3 max-w-[120px] leading-snug"
+				{/* Desktop: overlapping chain */}
+				<div className="hidden sm:flex items-center justify-center">
+					{steps.map((step, i) => (
+						<motion.div
+							key={step.label}
+							initial={{ opacity: 0, scale: 0.85 }}
+							whileInView={{ opacity: 1, scale: 1 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.4, delay: i * 0.1 }}
+							className="relative flex flex-col items-center"
+							style={{ marginLeft: i > 0 ? "-2rem" : 0 }}
+						>
+							<div
+								className="w-44 h-44 rounded-full flex flex-col items-center justify-center relative z-10 shadow-lg"
+								style={{ backgroundColor: step.bg }}
+							>
+								<span
+									className="font-heading text-xs font-semibold tracking-widest uppercase mb-1"
+									style={{ color: step.textColor, opacity: 0.8 }}
 								>
-									{step.description}
-								</p>
-							</motion.div>
-						))}
-					</div>
+									{step.label}
+								</span>
+								<span
+									className="font-heading text-5xl font-bold leading-none"
+									style={{ color: step.textColor }}
+								>
+									{step.number}
+								</span>
+							</div>
+							<p className="font-body text-sm text-brand-primary/60 text-center mt-3 max-w-30 leading-snug">
+								{step.description}
+							</p>
+						</motion.div>
+					))}
 				</div>
 			</div>
 		</section>

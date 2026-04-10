@@ -401,6 +401,49 @@ import {
 } from "~/lib/server/api-response";
 ```
 
+### `src/lib/sanity/` - Sanity CMS (Blog)
+
+All Sanity integration lives here. Blog post data is fetched via GROQ queries — never import from `src/data/blog*` (those files no longer exist).
+
+#### `client.ts`
+
+Singleton `@sanity/client` instance. Project ID `5j8mujwd`, dataset `production`, CDN enabled. No API token needed for public reads.
+
+#### `queries.ts`
+
+Async GROQ query functions — the direct replacement for the old `src/data/blog.ts` helpers:
+
+```typescript
+import {
+	getAllPosts,
+	getPostBySlug,
+	getPostsByCategory,
+	getPostsByTag,
+	getAllSlugs,
+	getAllCategories,
+} from "~/lib/sanity/queries";
+```
+
+All functions are `async` and return typed `SanityPost` objects.
+
+#### `image.ts`
+
+```typescript
+import { urlFor } from "~/lib/sanity/image";
+
+// Usage
+urlFor(post.author.image).width(64).height(64).url()
+urlFor(post.coverImage).width(1200).height(630).url()
+```
+
+#### `portable-text.tsx`
+
+Component map for `<PortableText>`. Handles headings, paragraphs, lists, inline code, links, images, and fenced code blocks (rendered via the existing `CodeBlock` component).
+
+#### `types.ts`
+
+`SanityPost` and `SanityAuthor` interfaces. Import these instead of the old `BlogPost` type.
+
 ### Future Shared Utilities
 
 As the project grows, add shared utilities here:
@@ -408,7 +451,6 @@ As the project grows, add shared utilities here:
 - `src/lib/server/auth.ts` - Authentication utilities
 - `src/lib/server/middleware.ts` - Request middleware
 - `src/lib/server/cache.ts` - Caching utilities
-- `src/lib/client/` - Client-side shared utilities
 
 ## 📁 Directory Structure
 
@@ -439,7 +481,17 @@ bobadilla-work/
 │   ├── lib/
 │   │   ├── server/                 # Server-only utilities
 │   │   │   └── api-response.ts
+│   │   ├── sanity/                 # Sanity CMS integration (blog)
+│   │   │   ├── client.ts           # @sanity/client singleton
+│   │   │   ├── image.ts            # urlFor() image URL builder
+│   │   │   ├── queries.ts          # GROQ query functions
+│   │   │   ├── types.ts            # TypeScript types for Sanity documents
+│   │   │   └── portable-text.tsx   # PortableText component map
 │   │   └── ... (other shared code)
+│   │
+│   ├── data/
+│   │   ├── services.ts             # Services data
+│   │   └── service-pages.*.ts      # Localized service page content
 │   │
 │   ├── db/
 │   │   ├── client.ts               # Database client
@@ -447,7 +499,7 @@ bobadilla-work/
 │   │
 │   └── env.ts                      # Environment config
 │
-├── claude.md                       # This file
+├── CLAUDE.md                       # This file
 └── ... (config files)
 ```
 
@@ -664,8 +716,10 @@ This project is deployed on Cloudflare Workers using OpenNext.js. Key configurat
 
 For SEO optimization, the project includes:
 
-- Automated sitemap generation for all pages
+- Automated sitemap generation for all pages (including blog posts fetched from Sanity)
 - Structured data (JSON-LD) for organization and services
 - Canonical URLs and Open Graph metadata via `src/lib/seo.ts`
+
+Blog posts are pre-rendered as static pages at build time (`● Static` in the build output). The blog listing page (`/blog`) is dynamic to support category/tag filtering via `searchParams`.
 
 See `README.md` for deployment commands and database operations.

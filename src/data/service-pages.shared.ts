@@ -14,7 +14,7 @@ export interface PainPoint {
 export interface MvpSolution {
 	title: string;
 	description: string;
-	icon: "prototype" | "functional" | "refinement";
+	icon: "prototype" | "functional" | "refinement" | "feature-focused" | "growth";
 }
 
 export interface MvpForWho {
