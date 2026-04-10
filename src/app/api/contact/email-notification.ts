@@ -33,7 +33,7 @@ export async function sendEmailNotification(data: ContactData): Promise<void> {
 	);
 
 	const { error } = await resend.emails.send({
-		from: "Bobadilla.tech <notifications@bobadilla.tech>",
+		from: "Bobadilla.tech <notifications@mail.bobadilla.tech>",
 		to: OBSERVERS,
 		replyTo: data.email,
 		subject: `New message from ${data.name}`,

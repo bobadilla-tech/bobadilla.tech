@@ -2,8 +2,16 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { useTranslations } from "next-intl";
+import {
+	Clock,
+	Package,
+	Code2,
+	Zap,
+	Cpu,
+	HeartHandshake,
+	type LucideIcon,
+} from "lucide-react";
 import {
 	Carousel,
 	CarouselContent,
@@ -13,6 +21,7 @@ import {
 
 const AUTOPLAY_MS = 3000;
 const FEATURED_INDEX = 2;
+const ICONS: LucideIcon[] = [Clock, Package, Code2, Zap, Cpu, HeartHandshake];
 
 interface CardProps {
 	title: string;
@@ -20,12 +29,13 @@ interface CardProps {
 	featured?: boolean;
 	active: boolean;
 	index: number;
+	icon: LucideIcon;
 }
 
-function Card({ title, body, featured, active, index }: CardProps) {
+function Card({ title, body, featured, active, index, icon: Icon }: CardProps) {
 	return (
 		<div
-			className={`bg-white rounded-[48px] w-full h-89.5 relative overflow-hidden transition-all duration-500 flex flex-col ${
+			className={`bg-white rounded-[48px] w-full min-h-48 relative overflow-hidden transition-all duration-500 flex flex-col ${
 				active ? "scale-100 opacity-100" : "scale-[0.88] opacity-40"
 			}`}
 			style={
@@ -36,49 +46,24 @@ function Card({ title, body, featured, active, index }: CardProps) {
 		>
 			{/* Top section: icon + number */}
 			<div className="flex items-start justify-between px-8 pt-8">
-				<div className={`relative ${featured ? "w-24 h-24" : "w-20 h-20"}`}>
-					<Image
-						src={
-							featured
-								? "/assets/services/shared/ellipse-circle.svg"
-								: "/assets/services/shared/ellipse-gold.svg"
-						}
-						alt=""
-						fill
-						className="object-contain"
-						unoptimized
-					/>
-					<Image
-						src={
-							featured
-								? "/assets/services/shared/computer-lg.svg"
-								: "/assets/services/shared/computer.svg"
-						}
-						alt=""
-						width={featured ? 56 : 48}
-						height={featured ? 56 : 48}
-						className="absolute inset-0 m-auto object-contain"
-						unoptimized
+				<div
+					className={`rounded-2xl flex items-center justify-center ${
+						featured ? "w-16 h-16" : "w-12 h-12"
+					}`}
+					style={{ backgroundColor: featured ? "#e6be1a22" : "#dbdbd712" }}
+				>
+					<Icon
+						className={featured ? "text-brand-gold" : "text-brand-primary/60"}
+						size={featured ? 32 : 24}
 					/>
 				</div>
-
-				{featured ? (
-					<Image
-						src="/assets/services/shared/ellipse-dot.svg"
-						alt=""
-						width={36}
-						height={36}
-						unoptimized
-					/>
-				) : (
-					<span className="font-heading text-sm font-semibold text-black/20 tracking-widest mt-1">
-						{String(index).padStart(2, "0")}
-					</span>
-				)}
+				<span className="font-heading text-sm font-semibold text-black/20 tracking-widest mt-1">
+					{String(index).padStart(2, "0")}
+				</span>
 			</div>
 
 			{/* Bottom section: text */}
-			<div className="mt-auto px-8 pb-8">
+			<div className="mt-auto px-8 pb-8 pt-6">
 				{featured && (
 					<div className="w-8 h-0.5 bg-brand-gold mb-4 rounded-full" />
 				)}
@@ -119,9 +104,9 @@ export default function ServiceReasons() {
 
 	// order: reason[0], reason[1], featured, reason[2], reason[3], reason[4]
 	const items = [
-		...reasons.slice(0, 2).map((title) => ({ featured: false, title, body: undefined })),
-		{ featured: true, title: t("featuredTitle"), body: t("featuredBody") },
-		...reasons.slice(2).map((title) => ({ featured: false, title, body: undefined })),
+		...reasons.slice(0, 2).map((title, j) => ({ featured: false, title, body: undefined, icon: ICONS[j] })),
+		{ featured: true, title: t("featuredTitle"), body: t("featuredBody"), icon: ICONS[2] },
+		...reasons.slice(2).map((title, j) => ({ featured: false, title, body: undefined, icon: ICONS[j + 3] })),
 	];
 
 	useEffect(() => {
@@ -177,6 +162,7 @@ export default function ServiceReasons() {
 									featured={item.featured}
 									active={selectedIndex === i}
 									index={i + 1}
+									icon={item.icon}
 								/>
 							</CarouselItem>
 						))}
