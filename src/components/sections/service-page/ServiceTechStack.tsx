@@ -36,33 +36,33 @@ export default function ServiceTechStack({
 							whileInView={{ opacity: 1, x: 0 }}
 							viewport={{ once: true }}
 							transition={{ delay: i * 0.1 }}
-							className="flex items-start gap-12 py-8 border-b border-brand-primary/20"
+							className="flex flex-col sm:flex-row sm:items-start sm:gap-12 py-6 sm:py-8 border-b border-brand-primary/20 gap-3"
 						>
 							{/* Category label */}
-							<div className="w-32 flex-shrink-0 flex items-center h-12">
-								<span className="font-heading font-bold text-brand-primary text-2xl">
+							<div className="sm:w-32 sm:shrink-0 sm:flex sm:items-center sm:h-10">
+								<span className="font-heading font-bold text-brand-primary text-lg sm:text-2xl">
 									{cat.label}
 								</span>
 							</div>
 
 							{/* Tech badges */}
-							<div className="flex flex-wrap gap-3">
+							<div className="flex flex-wrap gap-2 sm:gap-3">
 								{cat.items.map((tech) => (
 									<div
 										key={tech.name}
-										className="flex items-center gap-2 border border-brand-gold/40 rounded-full px-3 py-1.5 h-12"
+										className="flex items-center gap-1.5 border border-brand-gold/40 rounded-full px-2.5 py-1 sm:px-3 sm:py-1.5 h-9 sm:h-10"
 									>
-										<div className="w-9 h-9 flex-shrink-0 rounded-full overflow-hidden">
+										<div className="w-6 h-6 sm:w-7 sm:h-7 shrink-0 rounded-full overflow-hidden">
 											<Image
 												src={tech.icon}
 												alt={tech.name}
-												width={36}
-												height={36}
+												width={28}
+												height={28}
 												className="w-full h-full object-cover"
 												unoptimized
 											/>
 										</div>
-										<span className="font-body font-light text-brand-primary text-base whitespace-nowrap">
+										<span className="font-body font-light text-brand-primary text-sm sm:text-base whitespace-nowrap">
 											{tech.name}
 										</span>
 									</div>
