@@ -25,6 +25,7 @@
 			"binding": "DB",
 			"database_name": "bobadilla-work",
 			"database_id": "78c9ec9c-98be-4426-870a-20ce74f40c10",
+			"migrations_dir": "drizzle/migrations",
 		},
 	],
 }
