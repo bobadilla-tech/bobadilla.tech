@@ -10,10 +10,12 @@ export const env = createEnv({
 			.enum(["development", "production", "test"])
 			.default("development"),
 
-		// Email Worker URL (external worker for sending emails)
-		EMAIL_WORKER_URL: z.url().optional(),
-		// Email Worker API Key (for authenticating requests to the worker)
-		EMAIL_WORKER_API_KEY: z.string().optional(),
+		// Resend API Key (for sending email notifications)
+		RESEND_API_KEY: z.string().min(1),
+
+		// Better Auth
+		BETTER_AUTH_SECRET: z.string().min(32),
+		BETTER_AUTH_URL: z.url(),
 	},
 
 	/**

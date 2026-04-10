@@ -1,9 +1,9 @@
+import { Resend } from "resend";
+import { render } from "@react-email/render";
 import { env } from "~/env";
+import { ContactEmail } from "./contact-email";
 
-/**
- * Email notification service using external email worker microservice
- * @see https://github.com/UltiRequiem/email-worker
- */
+const OBSERVERS = ["eliaz@bobadilla.tech", "ale@bobadilla.tech"];
 
 interface ContactData {
 	name: string;
@@ -13,54 +13,38 @@ interface ContactData {
 	createdAt: string | Date;
 }
 
-/**
- * Send contact form notification to external email worker
- * @param data Contact form data to send
- * @throws Error if the fetch fails
- */
 export async function sendEmailNotification(data: ContactData): Promise<void> {
-	if (!env.EMAIL_WORKER_URL || !env.EMAIL_WORKER_API_KEY) {
-		if (env.NODE_ENV !== "production") {
-			console.log(
-				"📧 Email sending skipped: no EMAIL_WORKER_URL or API_KEY configured"
-			);
-		}
-		return;
+	const resend = new Resend(env.RESEND_API_KEY);
+
+	const receivedAt = new Date(data.createdAt).toLocaleString("en-US", {
+		timeZone: "America/Lima",
+		dateStyle: "medium",
+		timeStyle: "short",
+	});
+
+	const html = await render(
+		ContactEmail({
+			name: data.name,
+			email: data.email,
+			company: data.company,
+			message: data.message,
+			receivedAt,
+		})
+	);
+
+	const { error } = await resend.emails.send({
+		from: "Bobadilla.tech <notifications@bobadilla.tech>",
+		to: OBSERVERS,
+		replyTo: data.email,
+		subject: `New message from ${data.name}`,
+		html,
+	});
+
+	if (error) {
+		throw new Error(`Resend error: ${error.message}`);
 	}
 
-	try {
-		console.log(
-			`📤 Sending email notification to worker: URL=${env.EMAIL_WORKER_URL}, Name="${data.name}", Email="${data.email}"`
-		);
-
-		const response = await fetch(env.EMAIL_WORKER_URL, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-				"X-API-Key": env.EMAIL_WORKER_API_KEY,
-			},
-			body: JSON.stringify({
-				name: data.name,
-				email: data.email,
-				company: data.company,
-				message: data.message,
-				createdAt: data.createdAt,
-			}),
-		});
-
-		if (!response.ok) {
-			throw new Error(
-				`Email worker responded with ${response.status}: ${response.statusText}`
-			);
-		}
-
-		console.log(
-			`✅ Email notification sent successfully: Status=${response.status}, Name="${data.name}"`
-		);
-	} catch (error) {
-		console.error(
-			`❌ Email notification failed: ${error instanceof Error ? error.message : "Unknown error"}, Name="${data.name}", Email="${data.email}"`
-		);
-		throw error;
-	}
+	console.log(
+		`✅ Notification sent to observers for message from "${data.name}" <${data.email}>`
+	);
 }

@@ -15,6 +15,13 @@
       "when": 1764817079632,
       "tag": "0001_square_vargas",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1775786622453,
+      "tag": "0002_chubby_clea",
+      "breakpoints": true
     }
   ]
 }

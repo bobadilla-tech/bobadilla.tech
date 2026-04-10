@@ -1,2 +1,5 @@
 # Load .env.development* files when running `wrangler dev`
 NEXTJS_ENV=development
+
+# Resend API Key — https://resend.com/api-keys
+RESEND_API_KEY=re_your_key_here

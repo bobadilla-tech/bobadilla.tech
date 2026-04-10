@@ -70,7 +70,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 	return (
 		<html lang={locale}>
 			<head>
-				<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+				<link rel="icon" href="/assets/logo.png" type="image/png" />
 			</head>
 			<body className={`${sora.variable} ${spaceGrotesk.variable} antialiased`}>
 				<NextIntlClientProvider messages={messages}>

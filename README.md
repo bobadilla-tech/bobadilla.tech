@@ -1,7 +1,7 @@
 <p align="center">
   <p align="center">
     <a href="https://bobadilla.tech" target="_blank">
-      <img src="https://bobadilla.tech/og-blog.png" alt="Bobadilla Tech" width="480" />
+      <img src="public/assets/logo.png" alt="Bobadilla Tech" width="480" />
     </a>
   </p>
   <p align="center">
