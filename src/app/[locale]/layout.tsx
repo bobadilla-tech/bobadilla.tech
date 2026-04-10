@@ -1,27 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Sora, Space_Grotesk } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "~/i18n/routing";
 import type { Locale } from "~/i18n/routing";
-import "../globals.css";
 import {
 	generateMetadata as generateSEOMetadata,
 	KEYWORD_SETS,
 } from "~/lib/seo";
-
-const sora = Sora({
-	variable: "--font-sora",
-	subsets: ["latin"],
-	weight: ["300", "400", "600", "700", "800"],
-});
-
-const spaceGrotesk = Space_Grotesk({
-	variable: "--font-space-grotesk",
-	subsets: ["latin"],
-	weight: ["300", "400", "500", "600", "700"],
-});
 
 export const metadata: Metadata = generateSEOMetadata({
 	title: "Bobadilla Tech - Launch Your MVP in Days",
@@ -68,15 +54,8 @@ export default async function LocaleLayout({ children, params }: Props) {
 	const messages = await getMessages();
 
 	return (
-		<html lang={locale}>
-			<head>
-				<link rel="icon" href="/assets/logo.png" type="image/png" />
-			</head>
-			<body className={`${sora.variable} ${spaceGrotesk.variable} antialiased`}>
-				<NextIntlClientProvider messages={messages}>
-					{children}
-				</NextIntlClientProvider>
-			</body>
-		</html>
+		<NextIntlClientProvider messages={messages}>
+			{children}
+		</NextIntlClientProvider>
 	);
 }
