@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://bobadilla.tech" target="_blank">
-    <img src="public/logo.svg" alt="Bobadilla Tech" width="260" />
+    <img src="public/assets/logo.png" alt="Bobadilla Tech" width="260" />
   </a>
 </p>
 
@@ -8,7 +8,6 @@
 
 [![Live](https://img.shields.io/badge/Live-bobadilla.tech-gold)](https://bobadilla.tech)
 [![Docs](https://img.shields.io/badge/Docs-docs/core-blue)](./docs/core/architecture.md)
-[![Studio](https://img.shields.io/badge/Blog_CMS-Studio-green)](https://github.com/UltiRequiem/studio-bobadilla-tech-blogs)
 
 ## What's bobadilla.tech?
 
