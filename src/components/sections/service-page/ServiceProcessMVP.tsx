@@ -49,22 +49,19 @@ export default function ServiceProcessMVP() {
 				</motion.h2>
 
 				{/* Mobile: vertical stacked steps */}
-				<div className="flex flex-col items-center sm:hidden">
+				<div className="flex flex-col items-center gap-0 sm:hidden">
 					{steps.map((step, i) => (
-						<div key={step.label}>
+						<div key={step.label} className="flex flex-col items-start w-full max-w-xs">
 							<motion.div
 								initial={{ opacity: 0, x: -20 }}
 								whileInView={{ opacity: 1, x: 0 }}
 								viewport={{ once: true }}
 								transition={{ duration: 0.4, delay: i * 0.1 }}
-								className="flex flex-row items-center gap-4 w-full max-w-xs"
+								className="flex flex-row items-center gap-4 w-full"
 							>
 								<div
 									className="w-20 h-20 rounded-full border-4 flex flex-col items-center justify-center shrink-0"
-									style={{
-										borderColor: step.bg,
-										backgroundColor: step.bg + "18",
-									}}
+									style={{ borderColor: step.bg }}
 								>
 									<span
 										className="font-heading text-[9px] font-semibold tracking-widest uppercase"
@@ -85,14 +82,14 @@ export default function ServiceProcessMVP() {
 							</motion.div>
 
 							{i < steps.length - 1 && (
-								<div className="w-px h-6 bg-brand-primary/20 ml-10" />
+								<div className="w-px h-5 bg-brand-primary/20 ml-10 my-1" />
 							)}
 						</div>
 					))}
 				</div>
 
 				{/* Desktop: overlapping chain of rings */}
-				<div className="hidden sm:flex items-end justify-center">
+				<div className="hidden sm:flex items-center justify-center">
 					{steps.map((step, i) => (
 						<motion.div
 							key={step.label}
@@ -101,20 +98,14 @@ export default function ServiceProcessMVP() {
 							viewport={{ once: true }}
 							transition={{ duration: 0.4, delay: i * 0.1 }}
 							className="relative flex flex-col items-center"
-							style={{
-								marginLeft: i > 0 ? "-4rem" : 0,
-								zIndex: i + 1,
-							}}
+							style={{ marginLeft: i > 0 ? "-2rem" : 0, zIndex: i + 1 }}
 						>
 							<div
-								className="w-36 h-36 rounded-full border-8 flex flex-col items-center justify-center shadow-lg"
-								style={{
-									borderColor: step.bg,
-									backgroundColor: step.bg + "18",
-								}}
+								className="w-44 h-44 rounded-full border-10 flex flex-col items-center justify-center shadow-lg"
+								style={{ borderColor: step.bg }}
 							>
 								<span
-									className="font-heading text-[10px] font-semibold tracking-widest uppercase"
+									className="font-heading text-xs font-semibold tracking-widest uppercase mb-1"
 									style={{ color: step.bg, opacity: 0.9 }}
 								>
 									{step.label}
@@ -126,7 +117,7 @@ export default function ServiceProcessMVP() {
 									{step.number}
 								</span>
 							</div>
-							<p className="font-body text-sm text-brand-primary/60 text-center mt-3 max-w-28 leading-snug">
+							<p className="font-body text-sm text-brand-primary/60 text-center mt-3 max-w-30 leading-snug">
 								{step.description}
 							</p>
 						</motion.div>
