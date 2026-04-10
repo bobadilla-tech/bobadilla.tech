@@ -4,18 +4,17 @@ import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Button from "@/components/ui/Button";
-import { Calendar, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { generateMetadata as generateSEOMetadata, BASE_URL } from "~/lib/seo";
 
 export const metadata: Metadata = generateSEOMetadata({
 	title: "Free Online Developer Tools",
 	description:
-		"Free online tools for developers, researchers, and content creators. Privacy-focused utilities including Reddit post date extractor, code formatters, and more. No sign-up required.",
+		"Free online tools for developers, researchers, and content creators. Privacy-focused utilities with no sign-up required.",
 	keywords: [
 		"free developer tools",
 		"online tools",
-		"reddit post date",
 		"developer utilities",
 		"free software tools",
 		"web tools",
@@ -26,18 +25,8 @@ export const metadata: Metadata = generateSEOMetadata({
 	ogImage: `${BASE_URL}/og-tools.png`,
 });
 
-const tools = [
-	{
-		id: "reddit-post-date",
-		name: "Reddit Post Date Extractor",
-		description:
-			"Extract the exact creation date and time from any Reddit post. Perfect for research, verification, and accurate citations.",
-		icon: Calendar,
-		slug: "reddit-post-date",
-		category: "Social Media",
-		tags: ["Reddit", "Date", "Research", "Verification"],
-	},
-];
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const tools: any[] = [];
 
 const categories = Array.from(new Set(tools.map((tool) => tool.category)));
 
@@ -108,7 +97,7 @@ export default async function ToolsPage() {
 												</p>
 
 												<div className="flex flex-wrap gap-2">
-													{tool.tags.map((tag) => (
+													{tool.tags.map((tag: string) => (
 														<span
 															key={tag}
 															className="px-2 py-1 bg-surface font-body text-brand-primary/40 text-xs rounded"

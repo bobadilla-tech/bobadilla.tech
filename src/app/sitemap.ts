@@ -66,15 +66,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			}))
 	);
 
-	const toolPages: MetadataRoute.Sitemap = [
-		{
-			url: `${BASE_URL}/tools/reddit-post-date`,
-			lastModified: currentDate,
-			changeFrequency: "yearly",
-			priority: 0.5,
-		},
-	];
-
 	const blogPosts: MetadataRoute.Sitemap = (await getAllPosts()).map((post) => ({
 		url: `${BASE_URL}/blog/${post.slug.current}`,
 		lastModified: post.updatedAt
@@ -89,7 +80,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		...allServicePages,
 		...industryPages,
 		...industryServicePages,
-		...toolPages,
 		...blogPosts,
 	];
 

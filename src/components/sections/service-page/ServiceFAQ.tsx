@@ -3,9 +3,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import Button from "@/components/ui/Button";
 import FAQItem from "@/components/ui/FAQItem";
-import { CAL_LINKS, SOCIAL_LINKS } from "~/lib/constants";
+import { SOCIAL_LINKS } from "~/lib/constants";
 import { Linkedin } from "@/components/ui/BrandIcons";
 
 interface ServiceFAQProps {
@@ -42,32 +41,31 @@ export default function ServiceFAQ({ faqs }: ServiceFAQProps) {
 							</span>
 						</motion.h2>
 
-						<motion.div
-							initial={{ opacity: 0 }}
-							whileInView={{ opacity: 1 }}
-							viewport={{ once: true }}
-							transition={{ delay: 0.1 }}
-							className="border border-brand-primary/20 rounded-[38px] p-6"
-						>
-							<p className="font-body text-brand-primary/60 text-sm leading-relaxed mb-6">
-								{t("infoBoxBody")}
-							</p>
-							<a
-								href={SOCIAL_LINKS.linkedin}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="bg-white rounded-[18px] p-3 flex items-center justify-center gap-2 mb-4 hover:bg-white/90 transition-colors duration-200"
+						<div className="hidden lg:block">
+							<motion.div
+								initial={{ opacity: 0 }}
+								whileInView={{ opacity: 1 }}
+								viewport={{ once: true }}
+								transition={{ delay: 0.1 }}
+								className="border border-brand-primary/20 rounded-[38px] p-6"
 							>
-								<Linkedin size={16} className="text-[#0A66C2]" />
-								<span className="font-body font-medium text-black text-sm">
-									{t("linkedinCta")}
-								</span>
-							</a>
-						</motion.div>
+								<p className="font-body text-brand-primary/60 text-sm leading-relaxed mb-6">
+									{t("infoBoxBody")}
+								</p>
+								<a
+									href={SOCIAL_LINKS.linkedin}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="bg-white rounded-[18px] p-3 flex items-center justify-center gap-2 mb-4 hover:bg-white/90 transition-colors duration-200"
+								>
+									<Linkedin size={16} className="text-[#0A66C2]" />
+									<span className="font-body font-medium text-black text-sm">
+										{t("linkedinCta")}
+									</span>
+								</a>
+							</motion.div>
+						</div>
 
-						<Button href={CAL_LINKS.ale} variant="gold">
-							{t("bookCall")}
-						</Button>
 					</div>
 
 					{/* Right column — accordion */}
