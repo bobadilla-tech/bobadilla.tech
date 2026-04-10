@@ -21,6 +21,7 @@ export function createAuth(d1: D1Database) {
 		}),
 		emailAndPassword: {
 			enabled: true,
+			disableSignUp: true,
 		},
 		plugins: [
 			adminPlugin(),
