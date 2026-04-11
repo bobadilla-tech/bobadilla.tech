@@ -693,16 +693,6 @@ src/app/api/reddit-post-date/
 - [ ] Verified TypeScript types
 - [ ] Documented any non-obvious logic
 
-## 🔄 Migration Guide
-
-If you find an endpoint not following this architecture:
-
-1. Create the modular file structure
-2. Extract validation to `validation.ts`
-3. Extract database operations to `db.ts`
-4. Extract external services to separate files
-5. Update `route.ts` to use standardized responses
-6. Test thoroughly
 
 ## 🚀 Deployment & Configuration
 
