@@ -43,7 +43,7 @@
 		"framer-motion": "^12.38.0",
 		"lucide-react": "^1.7.0",
 		"next": "16.2.3",
-		"next-intl": "^4.9.0",
+		"next-intl": "^4.9.1",
 		"react": "19.2.5",
 		"react-dom": "19.2.5",
 		"react-email": "^5.2.10",
