@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
 import ServicesPage from "@/features/services/pages/ServicesPage";
 import { generateSEOMetadata, BASE_URL } from "~/lib/seo";
+
+import type { Metadata } from "next";
 
 export async function generateMetadata({
 	params,

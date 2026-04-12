@@ -76,14 +76,12 @@ export async function generateMetadata({
 export default async function Page({ params }: ServicePageProps) {
 	const { slug, locale } = await params;
 
-	// Check for rich service page data first
 	const richData = getServicePageData(slug, locale as Locale);
 
 	if (richData) {
 		return <RichServicePage data={richData} />;
 	}
-
-	// Fall through to generic layout for industry/other slugs
+	
 	const service =
 		allServices.find((s) => s.slug === slug) ||
 		industryServices.flatMap((i) => i.services).find((s) => s.slug === slug);
