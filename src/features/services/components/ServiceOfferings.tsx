@@ -21,7 +21,7 @@ export default function ServiceOfferings({
 					viewport={{ once: true }}
 					className="font-heading font-bold text-4xl sm:text-5xl text-center mb-16"
 				>
-					<span className="bg-gradient-to-r from-brand-gold to-brand-primary bg-clip-text text-transparent">
+					<span className="bg-linear-to-r from-brand-gold to-brand-primary bg-clip-text text-transparent">
 						{heading.split(" ").slice(0, 2).join(" ")}{" "}
 					</span>
 					<span className="text-brand-primary">

@@ -1,4 +1,3 @@
-export { getServicePageData } from "./api/getServicePage";
 export { getServiceBySlug, getIndustryBySlug, getRelatedServices } from "./api/queries";
 export { allServices, industryServices } from "./model/services";
 export type {
