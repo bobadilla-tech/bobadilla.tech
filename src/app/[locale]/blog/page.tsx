@@ -2,7 +2,7 @@ import Navbar from "@/shared/components/Navbar";
 import Footer from "@/shared/components/Footer";
 import { BlogList } from "@/features/blog";
 import {
-	generateMetadata as generateSEOMetadata,
+	generateSEOMetadata as generateSEOMetadata,
 	KEYWORD_SETS,
 	BASE_URL,
 } from "~/lib/seo";

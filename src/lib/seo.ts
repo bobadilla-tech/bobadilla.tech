@@ -40,7 +40,7 @@ export const DEFAULT_SEO: Omit<SEOConfig, "title" | "description"> = {
 /**
  * Generate comprehensive metadata for a page
  */
-export function generateMetadata(config: SEOConfig): Metadata {
+export function generateSEOMetadata(config: SEOConfig): Metadata {
 	const {
 		title,
 		description,

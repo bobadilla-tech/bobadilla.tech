@@ -58,6 +58,7 @@ export async function getAllSlugs(): Promise<string[]> {
 	const results = await sanityClient.fetch<{ slug: { current: string } }[]>(
 		`*[_type == "post"]{ slug }`
 	);
+	
 	return results.map((r: { slug: { current: string } }) => r.slug.current);
 }
 

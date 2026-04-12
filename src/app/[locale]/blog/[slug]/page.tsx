@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
 import Navbar from "@/shared/components/Navbar";
 import Footer from "@/shared/components/Footer";
 import { BlogPost, getPostBySlug, getAllSlugs } from "@/features/blog";
 import { urlFor } from "~/lib/sanity/image";
-import { generateMetadata as generateSEOMetadata, BASE_URL } from "~/lib/seo";
+import { generateSEOMetadata, BASE_URL } from "~/lib/seo";
+
+import type { Metadata } from "next";
 
 export const dynamic = "force-static";
 
@@ -13,6 +14,7 @@ interface PageProps {
 
 export async function generateStaticParams() {
 	const slugs = await getAllSlugs();
+	
 	return slugs.map((slug) => ({ slug }));
 }
 

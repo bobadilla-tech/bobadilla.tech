@@ -19,7 +19,7 @@ import {
 import { getTranslations } from "next-intl/server";
 import { CAL_LINKS } from "~/lib/constants";
 import {
-	generateMetadata as generateSEOMetadata,
+	generateSEOMetadata as generateSEOMetadata,
 	KEYWORD_SETS,
 	BASE_URL,
 } from "~/lib/seo";

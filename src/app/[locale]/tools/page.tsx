@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/shared/components/Navbar";
 import Footer from "@/shared/components/Footer";
 import { ToolsCatalog } from "@/features/tools";
-import { generateMetadata as generateSEOMetadata, BASE_URL } from "~/lib/seo";
+import { generateSEOMetadata as generateSEOMetadata, BASE_URL } from "~/lib/seo";
 
 export const metadata: Metadata = generateSEOMetadata({
 	title: "Free Online Developer Tools",

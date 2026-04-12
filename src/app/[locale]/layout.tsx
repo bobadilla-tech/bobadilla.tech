@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { routing } from "~/i18n/routing";
 import type { Locale } from "~/i18n/routing";
 import {
-	generateMetadata as generateSEOMetadata,
+	generateSEOMetadata as generateSEOMetadata,
 	KEYWORD_SETS,
 } from "~/lib/seo";
 
