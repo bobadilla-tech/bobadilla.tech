@@ -11,7 +11,10 @@ Browser → Cloudflare Edge → Cloudflare Worker (OpenNext)
                                     └── Sanity CDN (blog posts, GROQ at build time)
 ```
 
-**Runtime constraints:** Cloudflare Workers has no Node.js APIs and no filesystem access. All content is either pre-bundled or fetched over HTTP. Blog posts are fetched from Sanity at build time and rendered to static HTML — no runtime CMS calls.
+**Runtime constraints:** Cloudflare Workers has no Node.js APIs and no
+filesystem access. All content is either pre-bundled or fetched over HTTP. Blog
+posts are fetched from Sanity at build time and rendered to static HTML — no
+runtime CMS calls.
 
 ---
 
@@ -92,7 +95,11 @@ src/app/api/[endpoint]/
 All endpoints use `src/lib/server/api-response.ts`:
 
 ```typescript
-import { successResponse, errorResponse, validationErrorResponse } from "~/lib/server/api-response";
+import {
+  errorResponse,
+  successResponse,
+  validationErrorResponse,
+} from "~/lib/server/api-response";
 
 // { success: true, message: "...", data: { ... } }
 return successResponse(data, "Created", 201);
@@ -120,15 +127,18 @@ export async function POST(request: NextRequest) {
 }
 ```
 
-**Reference implementation:** `src/app/api/contact/` — covers DB writes, external email service, and logging.
+**Reference implementation:** `src/app/api/contact/` — covers DB writes,
+external email service, and logging.
 
 ---
 
 ## Blog / CMS (Sanity)
 
-**Project:** `5j8mujwd` · **Dataset:** `production` · **Public read** (no token needed)
+**Project:** `5j8mujwd` · **Dataset:** `production` · **Public read** (no token
+needed)
 
-**Studio:** [github.com/UltiRequiem/studio-bobadilla-tech-blogs](https://github.com/UltiRequiem/studio-bobadilla-tech-blogs)
+**Studio:**
+[github.com/UltiRequiem/studio-bobadilla-tech-blogs](https://github.com/UltiRequiem/studio-bobadilla-tech-blogs)
 
 ### Data flow
 
@@ -142,25 +152,31 @@ Sanity Studio (author publishes)
 
 ### Blog post pages — static
 
-`src/app/[locale]/blog/[slug]/page.tsx` has `export const dynamic = "force-static"` and `generateStaticParams` that calls `getAllSlugs()`. Every published post becomes a pre-rendered static page at build time.
+`src/app/[locale]/blog/[slug]/page.tsx` has
+`export const dynamic = "force-static"` and `generateStaticParams` that calls
+`getAllSlugs()`. Every published post becomes a pre-rendered static page at
+build time.
 
 ### Blog listing page — dynamic
 
-`src/app/[locale]/blog/page.tsx` is dynamic because it reads `searchParams` for category/tag filtering. It fetches from Sanity on each request (served fast from Cloudflare's cache).
+`src/app/[locale]/blog/page.tsx` is dynamic because it reads `searchParams` for
+category/tag filtering. It fetches from Sanity on each request (served fast from
+Cloudflare's cache).
 
 ### Key files
 
-| File | Purpose |
-|---|---|
-| `src/lib/sanity/client.ts` | Sanity CDN client (`useCdn: true`) |
-| `src/lib/sanity/queries.ts` | `getAllPosts`, `getPostBySlug`, `getPostsByCategory`, `getPostsByTag`, `getAllSlugs` |
-| `src/lib/sanity/image.ts` | `urlFor(sanityImageRef).width(n).url()` |
-| `src/lib/sanity/portable-text.tsx` | `portableTextComponents` map for `<PortableText>` |
-| `src/lib/sanity/types.ts` | `SanityPost`, `SanityAuthor` |
+| File                               | Purpose                                                                              |
+| ---------------------------------- | ------------------------------------------------------------------------------------ |
+| `src/lib/sanity/client.ts`         | Sanity CDN client (`useCdn: true`)                                                   |
+| `src/lib/sanity/queries.ts`        | `getAllPosts`, `getPostBySlug`, `getPostsByCategory`, `getPostsByTag`, `getAllSlugs` |
+| `src/lib/sanity/image.ts`          | `urlFor(sanityImageRef).width(n).url()`                                              |
+| `src/lib/sanity/portable-text.tsx` | `portableTextComponents` map for `<PortableText>`                                    |
+| `src/lib/sanity/types.ts`          | `SanityPost`, `SanityAuthor`                                                         |
 
 ### Publishing flow
 
-Write and publish in Studio → trigger a Cloudflare deploy (webhook or manual `pnpm deploy`) → new build fetches latest posts → static pages regenerated.
+Write and publish in Studio → trigger a Cloudflare deploy (webhook or manual
+`pnpm deploy`) → new build fetches latest posts → static pages regenerated.
 
 ---
 
@@ -168,32 +184,38 @@ Write and publish in Studio → trigger a Cloudflare deploy (webhook or manual `
 
 **Library:** next-intl · **Locales:** `en` (default), `es`, `pt`
 
-All routes live under `[locale]/`. The middleware in `src/middleware.ts` redirects un-prefixed URLs to `/en/`.
+All routes live under `[locale]/`. The middleware in `src/middleware.ts`
+redirects un-prefixed URLs to `/en/`.
 
-| Content type | Location |
-|---|---|
-| UI strings (buttons, labels, nav) | `messages/{en,es,pt}.json` |
-| Service page editorial content | `src/data/service-pages.{en,es,pt}.ts` |
-| Blog post content | Sanity documents with a `language` field |
+| Content type                      | Location                                 |
+| --------------------------------- | ---------------------------------------- |
+| UI strings (buttons, labels, nav) | `messages/{en,es,pt}.json`               |
+| Service page editorial content    | `src/data/service-pages.{en,es,pt}.ts`   |
+| Blog post content                 | Sanity documents with a `language` field |
 
-Blog posts currently only exist in `en`. When ES/PT posts are needed, create a Sanity document with the same `slug.current` and `language: "es"` / `"pt"`, then update `getPostBySlug` in `src/lib/sanity/queries.ts` to also filter by locale.
+Blog posts currently only exist in `en`. When ES/PT posts are needed, create a
+Sanity document with the same `slug.current` and `language: "es"` / `"pt"`, then
+update `getPostBySlug` in `src/lib/sanity/queries.ts` to also filter by locale.
 
 ---
 
 ## Design System
 
-Design tokens are defined in `src/app/globals.css` as a Tailwind v4 `@theme` block. Never use raw Tailwind color utilities (`text-white`, `bg-slate-900`) — always use brand tokens. See `CLAUDE.md` for the full token table and component conventions.
+Design tokens are defined in `src/app/globals.css` as a Tailwind v4 `@theme`
+block. Never use raw Tailwind color utilities (`text-white`, `bg-slate-900`) —
+always use brand tokens. See `CLAUDE.md` for the full token table and component
+conventions.
 
 ---
 
 ## Key Files Reference
 
-| File | Purpose |
-|---|---|
-| `CLAUDE.md` | Coding conventions, naming rules, component patterns |
-| `src/lib/server/api-response.ts` | Standardized API responses — required for all endpoints |
-| `src/lib/seo.ts` | `generateMetadata()`, `BASE_URL`, `SITE_NAME`, `KEYWORD_SETS` |
-| `src/lib/constants.ts` | Cal.com links, social URLs, contact info |
-| `src/env.ts` | T3 Env validated environment variables |
-| `src/app/api/contact/` | Reference implementation for DB-backed endpoints |
-| `wrangler.jsonc` | Cloudflare Workers config (D1 binding, compatibility flags) |
+| File                             | Purpose                                                       |
+| -------------------------------- | ------------------------------------------------------------- |
+| `CLAUDE.md`                      | Coding conventions, naming rules, component patterns          |
+| `src/lib/server/api-response.ts` | Standardized API responses — required for all endpoints       |
+| `src/lib/seo.ts`                 | `generateMetadata()`, `BASE_URL`, `SITE_NAME`, `KEYWORD_SETS` |
+| `src/lib/constants.ts`           | Cal.com links, social URLs, contact info                      |
+| `src/env.ts`                     | T3 Env validated environment variables                        |
+| `src/app/api/contact/`           | Reference implementation for DB-backed endpoints              |
+| `wrangler.jsonc`                 | Cloudflare Workers config (D1 binding, compatibility flags)   |

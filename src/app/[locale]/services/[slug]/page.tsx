@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Navbar from "@/components/ui/Navbar";
-import Footer from "@/components/ui/Footer";
-import Button from "@/components/ui/Button";
-import { allServices, industryServices } from "@/data/services";
+import Navbar from "@/shared/components/Navbar";
+import Footer from "@/shared/components/Footer";
+import Button from "@/shared/ui/Button";
+import { allServices, industryServices } from "@/features/services/model/services";
+import { getServicePageData } from "@/features/services/api/getServicePage";
+import RichServicePage from "@/features/services/components/RichServicePage";
 import {
 	CheckCircle,
 	ArrowRight,
@@ -21,9 +23,11 @@ import {
 	KEYWORD_SETS,
 	BASE_URL,
 } from "~/lib/seo";
+import type { Locale } from "~/i18n/routing";
 
 interface ServicePageProps {
 	params: Promise<{
+		locale: string;
 		slug: string;
 	}>;
 }
@@ -45,7 +49,19 @@ export async function generateStaticParams() {
 export async function generateMetadata({
 	params,
 }: ServicePageProps): Promise<Metadata> {
-	const { slug } = await params;
+	const { slug, locale } = await params;
+
+	// Rich pages have their own metadata
+	const richData = getServicePageData(slug, locale as Locale);
+	if (richData) {
+		return generateSEOMetadata({
+			title: richData.eyebrow,
+			description: richData.heroSubtitle,
+			keywords: [...KEYWORD_SETS.core, ...KEYWORD_SETS.services],
+			canonical: `${BASE_URL}/${locale}/services/${slug}`,
+		});
+	}
+
 	const service =
 		allServices.find((s) => s.slug === slug) ||
 		industryServices.flatMap((i) => i.services).find((s) => s.slug === slug);
@@ -83,7 +99,15 @@ const benefitIcons = [
 ];
 
 export default async function ServicePage({ params }: ServicePageProps) {
-	const { slug } = await params;
+	const { slug, locale } = await params;
+
+	// Check for rich service page data first
+	const richData = getServicePageData(slug, locale as Locale);
+	if (richData) {
+		return <RichServicePage data={richData} />;
+	}
+
+	// Fall through to generic layout for industry/other slugs
 	const t = await getTranslations("ServicePage");
 
 	const service =

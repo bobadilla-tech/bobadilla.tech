@@ -1,6 +1,6 @@
 import type { PortableTextComponents } from "@portabletext/react";
 import Image from "next/image";
-import { CodeBlock } from "@/components/ui/CodeBlock";
+import { CodeBlock } from "@/shared/ui/CodeBlock";
 import { urlFor } from "./image";
 
 export const portableTextComponents: PortableTextComponents = {

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Navbar from "@/components/ui/Navbar";
-import Footer from "@/components/ui/Footer";
-import ServiceCard from "@/components/ui/ServiceCard";
-import Button from "@/components/ui/Button";
-import SectionHeader from "@/components/ui/SectionHeader";
-import { allServices, industryServices } from "@/data/services";
+import Navbar from "@/shared/components/Navbar";
+import Footer from "@/shared/components/Footer";
+import ServiceCard from "@/shared/ui/ServiceCard";
+import Button from "@/shared/ui/Button";
+import SectionHeader from "@/shared/ui/SectionHeader";
+import { allServices, industryServices } from "@/features/services/model/services";
 import {
 	Code,
 	Globe,
