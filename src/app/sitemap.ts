@@ -1,5 +1,6 @@
 import { allServices, industryServices } from "~/data/services";
 import { getAllPosts } from "~/lib/sanity/queries";
+
 import type { MetadataRoute } from "next";
 
 const BASE_URL = "https://bobadilla.tech";
