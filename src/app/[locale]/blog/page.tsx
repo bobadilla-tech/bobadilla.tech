@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/ui/Navbar";
-import Footer from "@/components/ui/Footer";
+import Navbar from "@/shared/components/Navbar";
+import Footer from "@/shared/components/Footer";
 import { BlogList } from "@/features/blog";
 import {
 	generateMetadata as generateSEOMetadata,

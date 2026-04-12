@@ -7,7 +7,7 @@ import {
 	Carousel,
 	CarouselContent,
 	CarouselItem,
-} from "@/components/ui/carousel";
+} from "@/shared/ui/carousel";
 
 const solutionIcons = {
 	prototype: MousePointer2,

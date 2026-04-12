@@ -1,8 +1,8 @@
 import { CTABand } from "@/shared/components";
 import { ContactForm } from "@/features/leads";
 import { Hero, StatsBar, Services, WhyBobatech, Industries, FAQ } from "@/features/home";
-import Footer from "@/components/ui/Footer";
-import Navbar from "@/components/ui/Navbar";
+import Footer from "@/shared/components/Footer";
+import Navbar from "@/shared/components/Navbar";
 import { generateOrganizationSchema } from "~/lib/seo";
 
 export default function Home() {

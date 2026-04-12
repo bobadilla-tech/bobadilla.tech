@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import SectionHeader from "@/components/ui/SectionHeader";
-import Button from "@/components/ui/Button";
+import SectionHeader from "@/shared/ui/SectionHeader";
+import Button from "@/shared/ui/Button";
 import {
 	getAllPosts,
 	getAllCategories,

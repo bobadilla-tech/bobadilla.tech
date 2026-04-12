@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Check, X } from "lucide-react";
 import { useTranslations } from "next-intl";
-import SectionHeader from "@/components/ui/SectionHeader";
+import SectionHeader from "@/shared/ui/SectionHeader";
 
 export default function WhyBobatech() {
 	const t = useTranslations("WhyBobatech");

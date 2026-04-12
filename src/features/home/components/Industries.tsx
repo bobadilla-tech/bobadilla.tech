@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { industryServices } from "@/features/services/model/services";
-import SectionHeader from "@/components/ui/SectionHeader";
-import IndustryCard from "@/components/ui/IndustryCard";
+import SectionHeader from "@/shared/ui/SectionHeader";
+import IndustryCard from "@/shared/ui/IndustryCard";
 
 const featured = industryServices.filter((i) =>
 	["healthcare", "education", "finance", "transportation"].includes(i.id)

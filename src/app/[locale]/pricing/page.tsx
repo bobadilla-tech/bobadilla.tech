@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/ui/Navbar";
-import Footer from "@/components/ui/Footer";
+import Navbar from "@/shared/components/Navbar";
+import Footer from "@/shared/components/Footer";
 import { PricingCalculator } from "@/features/pricing";
 import { generateMetadata as genMeta, BASE_URL, KEYWORD_SETS } from "~/lib/seo";
 

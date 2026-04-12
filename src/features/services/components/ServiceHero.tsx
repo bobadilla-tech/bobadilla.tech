@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Zap, Timer, ArrowRight } from "lucide-react";
-import Button from "@/components/ui/Button";
+import Button from "@/shared/ui/Button";
 import { CAL_LINKS } from "~/lib/constants";
 
 interface FeatureBadge {

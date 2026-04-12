@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { BadgeCheck } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { CAL_LINKS } from "~/lib/constants";
-import Button from "@/components/ui/Button";
+import Button from "@/shared/ui/Button";
 
 export default function Hero() {
 	const t = useTranslations("Hero");

@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import FAQItem from "@/components/ui/FAQItem";
+import FAQItem from "@/shared/ui/FAQItem";
 import { SOCIAL_LINKS } from "~/lib/constants";
-import { Linkedin } from "@/components/ui/BrandIcons";
+import { Linkedin } from "@/shared/ui/BrandIcons";
 
 interface ServiceFAQProps {
 	faqs?: { q: string; a: string }[];

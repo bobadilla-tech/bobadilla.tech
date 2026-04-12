@@ -1,6 +1,6 @@
-import Navbar from "@/components/ui/Navbar";
-import Footer from "@/components/ui/Footer";
-import Button from "@/components/ui/Button";
+import Navbar from "@/shared/components/Navbar";
+import Footer from "@/shared/components/Footer";
+import Button from "@/shared/ui/Button";
 import CTABand from "@/shared/components/CTABand";
 import { CAL_LINKS } from "~/lib/constants";
 import type { ServicePageData } from "@/features/services/model/types";

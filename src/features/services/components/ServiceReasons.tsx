@@ -17,7 +17,7 @@ import {
 	CarouselContent,
 	CarouselItem,
 	type CarouselApi,
-} from "@/components/ui/carousel";
+} from "@/shared/ui/carousel";
 
 const AUTOPLAY_MS = 3000;
 const FEATURED_INDEX = 2;

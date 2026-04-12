@@ -1,6 +1,6 @@
 import Link from "next/link";
-import SectionHeader from "@/components/ui/SectionHeader";
-import Button from "@/components/ui/Button";
+import SectionHeader from "@/shared/ui/SectionHeader";
+import Button from "@/shared/ui/Button";
 import { ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 

@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import FAQItem from "@/components/ui/FAQItem";
-import Button from "@/components/ui/Button";
+import FAQItem from "@/shared/ui/FAQItem";
+import Button from "@/shared/ui/Button";
 import { CAL_LINKS } from "~/lib/constants";
 
 export default function FAQ() {

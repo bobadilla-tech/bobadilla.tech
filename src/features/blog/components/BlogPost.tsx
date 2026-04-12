@@ -6,7 +6,7 @@ import { getPostBySlug, getAllPosts } from "~/lib/sanity/queries";
 import { urlFor } from "~/lib/sanity/image";
 import { portableTextComponents } from "~/lib/sanity/portable-text";
 import { Calendar, Clock, Tag, ArrowLeft, Share2 } from "lucide-react";
-import { Twitter, Linkedin } from "@/components/ui/BrandIcons";
+import { Twitter, Linkedin } from "@/shared/ui/BrandIcons";
 import { getTranslations } from "next-intl/server";
 import { BASE_URL, SITE_NAME } from "~/lib/seo";
 import { EXTERNAL_LINKS } from "~/lib/constants";
