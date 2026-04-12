@@ -1,14 +1,15 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AlertCircle, Calendar, CheckCircle, Mail } from "lucide-react";
 import { Github, Linkedin } from "@/shared/ui/BrandIcons";
 import { motion } from "framer-motion";
-import { z } from "zod";
+import { ZodError, type ZodIssue } from "zod";
 import { useTranslations } from "next-intl";
 import { CAL_LINKS, SOCIAL_LINKS } from "~/lib/constants";
 import SectionHeader from "@/shared/ui/SectionHeader";
 import Button from "@/shared/ui/Button";
+import { contactSchema } from "@/features/leads/model/contactSchema";
 
 type FieldErrors = {
 	name?: string;
@@ -19,20 +20,6 @@ type FieldErrors = {
 
 export default function Contact() {
 	const t = useTranslations("Contact");
-
-	const contactSchema = useMemo(
-		() =>
-			z.object({
-				name: z.string().min(1, t("nameRequired")).max(100, t("nameTooLong")),
-				email: z.string().email(t("invalidEmail")),
-				company: z.string().max(100, t("companyTooLong")).optional(),
-				message: z
-					.string()
-					.min(10, t("messageTooShort"))
-					.max(2000, t("messageTooLong")),
-			}),
-		[t]
-	);
 
 	const [formData, setFormData] = useState({
 		name: "",
@@ -48,6 +35,44 @@ export default function Contact() {
 	const [touchedFields, setTouchedFields] = useState<Record<string, boolean>>(
 		{}
 	);
+	const resetTimeoutIdsRef = useRef<number[]>([]);
+
+	const getLocalizedFieldError = (
+		field: keyof FieldErrors,
+		issue?: ZodIssue
+	): string => {
+		switch (field) {
+			case "name":
+				if (issue?.code === "too_small") return t("nameRequired");
+				if (issue?.code === "too_big") return t("nameTooLong");
+				return t("nameRequired");
+			case "email":
+				return t("invalidEmail");
+			case "company":
+				if (issue?.code === "too_big") return t("companyTooLong");
+				return t("companyTooLong");
+			case "message":
+				if (issue?.code === "too_small") return t("messageTooShort");
+				if (issue?.code === "too_big") return t("messageTooLong");
+				return t("messageTooShort");
+			default:
+				return t("errorSummary");
+		}
+	};
+
+	const scheduleStatusReset = () => {
+		const timeoutId = window.setTimeout(() => setStatus("idle"), 5000);
+		resetTimeoutIdsRef.current.push(timeoutId);
+	};
+
+	useEffect(() => {
+		return () => {
+			for (const timeoutId of resetTimeoutIdsRef.current) {
+				window.clearTimeout(timeoutId);
+			}
+			resetTimeoutIdsRef.current = [];
+		};
+	}, []);
 
 	const validateField = (name: string, value: string) => {
 		try {
@@ -56,10 +81,11 @@ export default function Contact() {
 			fieldSchema.parse(value);
 			setFieldErrors((prev) => ({ ...prev, [name]: undefined }));
 		} catch (error) {
-			if (error instanceof z.ZodError) {
+			if (error instanceof ZodError) {
+				const field = name as keyof FieldErrors;
 				setFieldErrors((prev) => ({
 					...prev,
-					[name]: error.issues[0]?.message,
+					[field]: getLocalizedFieldError(field, error.issues[0]),
 				}));
 			}
 		}
@@ -74,11 +100,11 @@ export default function Contact() {
 		try {
 			contactSchema.parse(formData);
 		} catch (error) {
-			if (error instanceof z.ZodError) {
+			if (error instanceof ZodError) {
 				const errors: FieldErrors = {};
 				error.issues.forEach((err) => {
 					const field = err.path[0] as keyof FieldErrors;
-					if (field) errors[field] = err.message;
+					if (field) errors[field] = getLocalizedFieldError(field, err);
 				});
 				setFieldErrors(errors);
 				setStatus("error");
@@ -104,13 +130,13 @@ export default function Contact() {
 			setFormData({ name: "", email: "", company: "", message: "" });
 			setFieldErrors({});
 			setTouchedFields({});
-			setTimeout(() => setStatus("idle"), 5000);
+			scheduleStatusReset();
 		} catch (error) {
 			setStatus("error");
 			setErrorMessage(
 				error instanceof Error ? error.message : "Something went wrong"
 			);
-			setTimeout(() => setStatus("idle"), 5000);
+			scheduleStatusReset();
 		}
 	};
 
@@ -281,7 +307,12 @@ export default function Contact() {
 								</div>
 
 								{status === "success" && (
-									<div className="flex items-center gap-2 p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
+									<div
+										role="status"
+										aria-live="polite"
+										aria-atomic="true"
+										className="flex items-center gap-2 p-4 bg-green-500/10 border border-green-500/30 rounded-lg"
+									>
 										<CheckCircle className="size-5 text-green-400 shrink-0" />
 										<p className="font-body text-green-400 text-sm">
 											{t("successMessage")}
@@ -290,7 +321,11 @@ export default function Contact() {
 								)}
 
 								{status === "error" && (
-									<div className="flex items-start gap-2 p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
+									<div
+										role="alert"
+										aria-atomic="true"
+										className="flex items-start gap-2 p-4 bg-red-500/10 border border-red-500/30 rounded-lg"
+									>
 										<AlertCircle className="size-5 text-red-400 shrink-0 mt-0.5" />
 										<p className="font-body text-red-400 text-sm">
 											{errorMessage}

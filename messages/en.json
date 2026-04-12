@@ -412,6 +412,12 @@
 		"emailDesc": "Enter your email to save this estimate and book a free consultation",
 		"bookConsultation": "Book Free Consultation",
 		"saving": "Saving...",
+		"errors": {
+			"emailRequired": "Please enter your email",
+			"invalidEmail": "Invalid email address",
+			"saveFailed": "Failed to save. Please try again.",
+			"validationUnexpected": "An unexpected error occurred during validation"
+		},
 		"costBreakdown": "Cost Breakdown",
 		"rushFee": "+30% Rush Fee Applied",
 		"flexibleDiscount": "-15% Flexible Timeline Discount Applied",

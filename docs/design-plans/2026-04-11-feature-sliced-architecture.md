@@ -14,7 +14,7 @@ must survive unchanged at each step.
 
 ## Target Structure
 
-```
+```text
 src/
 ├── app/                    # routing ONLY — thin wrappers, no business logic
 │   ├── [locale]/           # next-intl routes (unchanged)
@@ -44,7 +44,7 @@ src/
 
 ### Feature structure (each feature)
 
-```
+```text
 features/<name>/
 ├── components/   # UI specific to this feature
 ├── lib/          # Pure business logic
@@ -255,10 +255,10 @@ import { servicePages as pt } from "./service-pages.pt";
 const byLocale = { en, es, pt } as const;
 
 export function getServicePageData(
-  slug: string,
-  locale: "en" | "es" | "pt" = "en",
+	slug: string,
+	locale: "en" | "es" | "pt" = "en"
 ) {
-  return byLocale[locale].find((p) => p.slug === slug);
+	return byLocale[locale].find((p) => p.slug === slug);
 }
 ```
 
@@ -330,16 +330,18 @@ Each feature gets an `index.ts`. Leave stubs at all original component paths.
 Delete all bridge stubs and empty legacy directories.
 
 1. Audit remaining stubs:
-   ```
-   grep -r "export.*from.*@/features\|export.*from.*@/shared" src/components src/data --include="*.ts" --include="*.tsx"
-   ```
+
+```bash
+rg --hidden --glob '!.git' --glob '!node_modules' -n "export.*from.*@/features|export.*from.*@/shared" src/components src/data
+```
+
 2. Update `src/app/sitemap.ts` import → `@/features/services`.
 3. Delete stub files, then empty directories: `src/components/`, `src/data/`,
    stubs in `src/app/[locale]/pricing/`.
 
 **Final verification:**
 
-```
+```bash
 pnpm vitest run --coverage
 pnpm build
 ```

@@ -415,6 +415,12 @@
 		"emailDesc": "Insira seu e-mail para salvar esta estimativa e agendar uma consulta gratuita",
 		"bookConsultation": "Agendar Consulta Gratuita",
 		"saving": "Salvando...",
+		"errors": {
+			"emailRequired": "Por favor, insira seu e-mail",
+			"invalidEmail": "Endereço de e-mail inválido",
+			"saveFailed": "Não foi possível salvar. Tente novamente.",
+			"validationUnexpected": "Ocorreu um erro inesperado durante a validação"
+		},
 		"costBreakdown": "Detalhamento de Custos",
 		"rushFee": "+30% Taxa de Urgência Aplicada",
 		"flexibleDiscount": "-15% Desconto por Prazo Flexível Aplicado",

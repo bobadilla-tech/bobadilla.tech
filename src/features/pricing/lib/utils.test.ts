@@ -197,9 +197,9 @@ describe("getSelectedOptionsByStep", () => {
 		const result = getSelectedOptionsByStep(selections);
 
 		expect(result).toHaveLength(1);
-		expect(result[0].stepTitle).toBe("Project Type");
+		expect(result[0].stepTitle).toBe("0");
 		expect(result[0].options).toHaveLength(1);
-		expect(result[0].options[0].name).toBe("Landing Page");
+		expect(result[0].options[0].nameKey).toBe("landing");
 		expect(result[0].options[0].price).toBe(350);
 		expect(result[0].total).toBe(350);
 	});
@@ -212,11 +212,11 @@ describe("getSelectedOptionsByStep", () => {
 		const result = getSelectedOptionsByStep(selections);
 
 		expect(result).toHaveLength(2);
-		expect(result[0].stepTitle).toBe("Project Type");
+		expect(result[0].stepTitle).toBe("0");
 		expect(result[0].options).toHaveLength(1);
 		expect(result[0].total).toBe(2500);
 
-		expect(result[1].stepTitle).toBe("Core Features");
+		expect(result[1].stepTitle).toBe("1");
 		expect(result[1].options).toHaveLength(2);
 		expect(result[1].total).toBe(1300);
 	});
@@ -226,10 +226,10 @@ describe("getSelectedOptionsByStep", () => {
 		const result = getSelectedOptionsByStep(selections);
 
 		expect(result[0].options[0]).toEqual({
-			name: "User Authentication",
+			id: "auth",
+			nameKey: "auth",
+			descriptionKey: "auth",
 			price: 500,
-			description:
-				"Secure login/signup system with email verification, password reset, and session management",
 		});
 	});
 
@@ -248,7 +248,7 @@ describe("getSelectedOptionsByStep", () => {
 		const result = getSelectedOptionsByStep(selections);
 
 		expect(result).toHaveLength(1);
-		expect(result[0].stepTitle).toBe("Integrations");
+		expect(result[0].stepTitle).toBe("2");
 		expect(result[0].options).toHaveLength(3);
 		expect(result[0].total).toBe(300 + 400 + 350); // 1050
 	});
@@ -267,7 +267,7 @@ describe("getSelectedOptionsByStep", () => {
 		const result = getSelectedOptionsByStep(selections);
 
 		expect(result[0].options).toHaveLength(1);
-		expect(result[0].options[0].name).toBe("Landing Page");
+		expect(result[0].options[0].nameKey).toBe("landing");
 	});
 
 	it("should handle design options correctly", () => {
@@ -275,8 +275,8 @@ describe("getSelectedOptionsByStep", () => {
 		const result = getSelectedOptionsByStep(selections);
 
 		expect(result).toHaveLength(1);
-		expect(result[0].stepTitle).toBe("Design & UI");
-		expect(result[0].options[0].name).toBe("Basic UI (Template-based)");
+		expect(result[0].stepTitle).toBe("3");
+		expect(result[0].options[0].nameKey).toBe("basic");
 		expect(result[0].options[0].price).toBe(0);
 		expect(result[0].total).toBe(0);
 	});
@@ -286,8 +286,8 @@ describe("getSelectedOptionsByStep", () => {
 		const result = getSelectedOptionsByStep(selections);
 
 		expect(result).toHaveLength(1);
-		expect(result[0].stepTitle).toBe("Timeline");
-		expect(result[0].options[0].name).toBe("Rush (1-2 weeks) +30%");
+		expect(result[0].stepTitle).toBe("4");
+		expect(result[0].options[0].nameKey).toBe("rush");
 	});
 
 	it("should handle all steps with selections", () => {
@@ -302,11 +302,11 @@ describe("getSelectedOptionsByStep", () => {
 
 		expect(result).toHaveLength(5);
 		expect(result.map((r) => r.stepTitle)).toEqual([
-			"Project Type",
-			"Core Features",
-			"Integrations",
-			"Design & UI",
-			"Timeline",
+			"0",
+			"1",
+			"2",
+			"3",
+			"4",
 		]);
 	});
 });
@@ -316,16 +316,14 @@ describe("formatSelectionsSummary", () => {
 		const selections: Selections = { 0: ["landing"] };
 		const result = formatSelectionsSummary(selections);
 
-		expect(result).toBe("Project Type:\n  - Landing Page");
+		expect(result).toBe("step:0\n  - landing");
 	});
 
 	it("should format multiple selections in one step", () => {
 		const selections: Selections = { 1: ["auth", "payment"] };
 		const result = formatSelectionsSummary(selections);
 
-		expect(result).toBe(
-			"Core Features:\n  - User Authentication\n  - Payment Integration"
-		);
+		expect(result).toBe("step:1\n  - auth\n  - payment");
 	});
 
 	it("should format multiple steps with separator", () => {
@@ -335,9 +333,7 @@ describe("formatSelectionsSummary", () => {
 		};
 		const result = formatSelectionsSummary(selections);
 
-		expect(result).toBe(
-			"Project Type:\n  - Web Application\n\nCore Features:\n  - User Authentication"
-		);
+		expect(result).toBe("step:0\n  - webapp\n\nstep:1\n  - auth");
 	});
 
 	it("should format complex selection with all steps", () => {
@@ -350,13 +346,11 @@ describe("formatSelectionsSummary", () => {
 		};
 		const result = formatSelectionsSummary(selections);
 
-		expect(result).toContain("Project Type:\n  - Landing Page");
-		expect(result).toContain(
-			"Core Features:\n  - User Authentication\n  - Payment Integration"
-		);
-		expect(result).toContain("Integrations:\n  - Analytics (GA, Mixpanel)");
-		expect(result).toContain("Design & UI:\n  - Custom Design");
-		expect(result).toContain("Timeline:\n  - Rush (1-2 weeks) +30%");
+		expect(result).toContain("step:0\n  - landing");
+		expect(result).toContain("step:1\n  - auth\n  - payment");
+		expect(result).toContain("step:2\n  - analytics");
+		expect(result).toContain("step:3\n  - custom");
+		expect(result).toContain("step:4\n  - rush");
 	});
 
 	it("should return empty string for empty selections", () => {
@@ -370,7 +364,7 @@ describe("formatSelectionsSummary", () => {
 		const selections: Selections = { 4: ["flexible"] };
 		const result = formatSelectionsSummary(selections);
 
-		expect(result).toBe("Timeline:\n  - Flexible (5+ weeks) -15%");
+		expect(result).toBe("step:4\n  - flexible");
 	});
 
 	it("should ignore invalid option IDs", () => {
@@ -380,7 +374,7 @@ describe("formatSelectionsSummary", () => {
 		};
 		const result = formatSelectionsSummary(selections);
 
-		expect(result).toBe("Project Type:\n  - Landing Page");
+		expect(result).toBe("step:0\n  - landing");
 	});
 });
 

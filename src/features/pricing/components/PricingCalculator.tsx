@@ -29,7 +29,6 @@ import type { Selections } from "@/features/pricing/model/types";
 import {
 	calculateStepTotal,
 	calculateTotal,
-	formatSelectionsSummary,
 	getSelectedOptionsByStep,
 } from "@/features/pricing/lib/utils";
 import { validEmail } from "@/features/pricing/model/validation";
@@ -121,6 +120,20 @@ export default function PricingCalculator() {
 		setIsValidEmail(false);
 	};
 
+	const getLocalizedBreakdownSummary = () => {
+		return breakdown
+			.map(
+				(section) =>
+					`${t(`steps.${section.stepTitle}.title` as Parameters<typeof t>[0])}:\n${section.options
+						.map(
+							(option) =>
+								`  - ${t(`steps.${section.stepTitle}.options.${option.nameKey}.name` as Parameters<typeof t>[0])}`
+						)
+						.join("\n")}`
+			)
+			.join("\n\n");
+	};
+
 	const saveEstimate = async () => {
 		const emailToSave = email.trim();
 		if (!emailToSave) {
@@ -148,7 +161,7 @@ export default function PricingCalculator() {
 					email: emailToSave,
 					totalPrice: calculateTotal(selections),
 					selections,
-					breakdown: formatSelectionsSummary(selections),
+					breakdown: getLocalizedBreakdownSummary(),
 				}),
 			});
 
