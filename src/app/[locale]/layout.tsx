@@ -8,6 +8,8 @@ import {
 	generateSEOMetadata as generateSEOMetadata,
 	KEYWORD_SETS,
 } from "~/lib/seo";
+import Navbar from "@/shared/components/Navbar";
+import Footer from "@/shared/components/Footer";
 
 export const metadata: Metadata = generateSEOMetadata({
 	title: "Bobadilla Tech - Launch Your MVP in Days",
@@ -55,7 +57,11 @@ export default async function LocaleLayout({ children, params }: Props) {
 
 	return (
 		<NextIntlClientProvider messages={messages}>
-			{children}
+			<div className="relative min-h-screen">
+				<Navbar />
+				<main>{children}</main>
+				<Footer />
+			</div>
 		</NextIntlClientProvider>
 	);
 }

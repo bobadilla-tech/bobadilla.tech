@@ -2,6 +2,7 @@ import type { PortableTextComponents } from "@portabletext/react";
 import Image from "next/image";
 import { CodeBlock } from "@/shared/ui/CodeBlock";
 import { urlFor } from "./image";
+import { BLOG_CONTENT_IMAGE_WIDTH, BLOG_CONTENT_IMAGE_HEIGHT } from "~/lib/seo";
 
 export const portableTextComponents: PortableTextComponents = {
 	types: {
@@ -9,15 +10,15 @@ export const portableTextComponents: PortableTextComponents = {
 			<CodeBlock language={value.language}>{value.code}</CodeBlock>
 		),
 		image: ({ value }) => {
-			const src = urlFor(value).width(800).url();
+			const src = urlFor(value).width(BLOG_CONTENT_IMAGE_WIDTH).url();
 			return (
 				<figure className="my-8">
 					<div className="rounded-xl overflow-hidden">
 						<Image
 							src={src}
 							alt={value.alt ?? ""}
-							width={800}
-							height={450}
+							width={BLOG_CONTENT_IMAGE_WIDTH}
+							height={BLOG_CONTENT_IMAGE_HEIGHT}
 							className="w-full"
 						/>
 					</div>

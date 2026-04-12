@@ -11,6 +11,7 @@ import {
 import { urlFor } from "~/lib/sanity/image";
 import { Calendar, Clock, Tag, FileX } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import { BLOG_AVATAR_SMALL_SIZE } from "~/lib/seo";
 import type { SanityPost } from "~/lib/sanity/types";
 
 interface BlogListProps {
@@ -87,8 +88,7 @@ export default async function BlogList({ searchParams }: BlogListProps) {
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{posts.map((post) => {
 							const authorImageSrc = post.author.image
-								? urlFor(post.author.image).width(64).height(64).url()
-								: null;
+							? urlFor(post.author.image).width(BLOG_AVATAR_SMALL_SIZE).height(BLOG_AVATAR_SMALL_SIZE).url()
 
 							return (
 								<Link

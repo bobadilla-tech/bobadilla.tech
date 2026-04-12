@@ -1,8 +1,6 @@
-import Navbar from "@/shared/components/Navbar";
-import Footer from "@/shared/components/Footer";
 import { BlogList } from "@/features/blog";
 import {
-	generateSEOMetadata as generateSEOMetadata,
+	generateSEOMetadata,
 	KEYWORD_SETS,
 	BASE_URL,
 } from "~/lib/seo";
@@ -31,11 +29,6 @@ interface BlogPageProps {
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
 	const { category, tag } = await searchParams;
-	return (
-		<div className="relative min-h-screen">
-			<Navbar />
-			<BlogList searchParams={{ category, tag }} />
-			<Footer />
-		</div>
-	);
+
+	return <BlogList searchParams={{ category, tag }} />;
 }

@@ -10,6 +10,21 @@ export const BASE_URL = "https://bobadilla.tech";
 export const SITE_NAME = "Bobadilla Tech";
 export const DEFAULT_AUTHOR = "Bobadilla Tech Team";
 
+/**
+ * Image Dimension Constants
+ * These values are carefully selected to optimize for different use cases:
+ * - OG images use 1200×630 (standard Open Graph dimensions, 1.9:1 aspect ratio)
+ *   ensures compatibility with major social platforms (LinkedIn, Twitter, Facebook)
+ * - Blog content images use 800×450 for optimal readability within article layouts
+ * - Blog avatars: 80×80 for prominent byline display, 64×64 for list/card view
+ */
+export const OG_IMAGE_WIDTH = 1200;
+export const OG_IMAGE_HEIGHT = 630;
+export const BLOG_CONTENT_IMAGE_WIDTH = 800;
+export const BLOG_CONTENT_IMAGE_HEIGHT = 450;
+export const BLOG_AVATAR_LARGE_SIZE = 80;
+export const BLOG_AVATAR_SMALL_SIZE = 64;
+
 export interface SEOConfig {
 	title: string;
 	description: string;
@@ -98,8 +113,8 @@ export function generateSEOMetadata(config: SEOConfig): Metadata {
 				? [
 						{
 							url: ogImage,
-							width: 1200,
-							height: 630,
+							width: OG_IMAGE_WIDTH,
+							height: OG_IMAGE_HEIGHT,
 							alt: title,
 						},
 					]

@@ -8,7 +8,7 @@ import { portableTextComponents } from "~/lib/sanity/portable-text";
 import { Calendar, Clock, Tag, ArrowLeft, Share2 } from "lucide-react";
 import { Twitter, Linkedin } from "@/shared/ui/BrandIcons";
 import { getTranslations } from "next-intl/server";
-import { BASE_URL, SITE_NAME } from "~/lib/seo";
+import { BASE_URL, SITE_NAME, BLOG_AVATAR_LARGE_SIZE } from "~/lib/seo";
 import { EXTERNAL_LINKS } from "~/lib/constants";
 
 interface BlogPostProps {
@@ -24,7 +24,7 @@ export default async function BlogPost({ slug }: BlogPostProps) {
 	}
 
 	const authorImageSrc = post.author.image
-		? urlFor(post.author.image).width(80).height(80).url()
+		? urlFor(post.author.image).width(BLOG_AVATAR_LARGE_SIZE).height(BLOG_AVATAR_LARGE_SIZE).url()
 		: null;
 
 	const relatedPosts = allPosts

@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Navbar from "@/shared/components/Navbar";
-import Footer from "@/shared/components/Footer";
 import Button from "@/shared/ui/Button";
 import { allServices, industryServices } from "@/features/services/model/services";
 import { getServicePageData } from "@/features/services/api/getServicePage";
@@ -133,10 +131,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
 	}[];
 
 	return (
-		<div className="relative min-h-screen">
-			<Navbar />
-
-			<main className="pt-32 pb-24">
+		<div className="pt-32 pb-24">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					{/* Breadcrumb */}
 					<div className="mb-8">
@@ -301,9 +296,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
 						</section>
 					)}
 				</div>
-			</main>
-
-			<Footer />
+			</div>
 		</div>
 	);
 }

@@ -1,8 +1,6 @@
-import Navbar from "@/shared/components/Navbar";
-import Footer from "@/shared/components/Footer";
 import { BlogPost, getPostBySlug, getAllSlugs } from "@/features/blog";
 import { urlFor } from "~/lib/sanity/image";
-import { generateSEOMetadata, BASE_URL } from "~/lib/seo";
+import { generateSEOMetadata, BASE_URL, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from "~/lib/seo";
 
 import type { Metadata } from "next";
 
@@ -14,7 +12,7 @@ interface PageProps {
 
 export async function generateStaticParams() {
 	const slugs = await getAllSlugs();
-	
+
 	return slugs.map((slug) => ({ slug }));
 }
 
@@ -34,7 +32,7 @@ export async function generateMetadata({
 		keywords: post.tags,
 		canonical: `${BASE_URL}/blog/${post.slug.current}`,
 		ogImage: post.coverImage
-			? urlFor(post.coverImage).width(1200).height(630).url()
+			? urlFor(post.coverImage).width(OG_IMAGE_WIDTH).height(OG_IMAGE_HEIGHT).url()
 			: `${BASE_URL}/og-blog.png`,
 		ogType: "article",
 		article: {
@@ -48,11 +46,5 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ params }: PageProps) {
 	const { slug } = await params;
-	return (
-		<div className="relative min-h-screen">
-			<Navbar />
-			<BlogPost slug={slug} />
-			<Footer />
-		</div>
-	);
+	return <BlogPost slug={slug} />;
 }

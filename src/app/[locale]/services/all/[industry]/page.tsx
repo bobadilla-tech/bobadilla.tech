@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Navbar from "@/shared/components/Navbar";
-import Footer from "@/shared/components/Footer";
 import Button from "@/shared/ui/Button";
 import { industryServices } from "@/features/services/model/services";
 import { ArrowRight } from "lucide-react";

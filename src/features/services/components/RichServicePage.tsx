@@ -1,5 +1,3 @@
-import Navbar from "@/shared/components/Navbar";
-import Footer from "@/shared/components/Footer";
 import Button from "@/shared/ui/Button";
 import CTABand from "@/shared/components/CTABand";
 import { CAL_LINKS } from "~/lib/constants";
@@ -24,8 +22,7 @@ export default function RichServicePage({ data }: RichServicePageProps) {
 	// MVP variant: has mvpSolutions
 	if (data.mvpSolutions) {
 		return (
-			<div className="min-h-screen">
-				<Navbar />
+			<>
 				<ServiceHero
 					eyebrow={data.eyebrow}
 					line1={data.heroLine1}
