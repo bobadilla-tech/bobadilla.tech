@@ -6,26 +6,33 @@ import { routing } from "~/i18n/routing";
 import type { Locale } from "~/i18n/routing";
 import {
 	generateSEOMetadata as generateSEOMetadata,
-	KEYWORD_SETS,
 } from "~/lib/seo";
 import Navbar from "@/shared/components/Navbar";
 import Footer from "@/shared/components/Footer";
 
-export const metadata: Metadata = generateSEOMetadata({
-	title: "Bobadilla Tech - Launch Your MVP in Days",
-	description:
-		"Top LATAM engineering agency specializing in rapid MVP development, enterprise backend systems, and cutting-edge AI solutions. Launch your startup in days or weeks, not months. Expert full-stack development team ready to build your next product.",
-	keywords: [
-		...KEYWORD_SETS.core,
-		...KEYWORD_SETS.mvp,
-		"offshore development",
-		"nearshore development",
-		"agile development",
-		"fast turnaround",
-	],
-	canonical: "https://bobadilla.tech",
-	ogImage: "https://bobadilla.tech/og-home.png",
-});
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+	const { locale } = await params;
+
+	return generateSEOMetadata({
+		title: "Bobadilla Tech - Launch Your MVP in Days",
+		description:
+			"Top LATAM engineering agency specializing in rapid MVP development, enterprise backend systems, and cutting-edge AI solutions. Launch your startup in days or weeks, not months. Expert full-stack development team ready to build your next product.",
+		keywordSets: ["core", "mvp"],
+		additionalKeywords: [
+			"offshore development",
+			"nearshore development",
+			"agile development",
+			"fast turnaround",
+		],
+		path: "/",
+		ogImage: "https://bobadilla.tech/og-home.png",
+		locale,
+	});
+}
 
 export const viewport: Viewport = {
 	width: "device-width",

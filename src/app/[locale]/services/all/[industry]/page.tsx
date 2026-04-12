@@ -8,12 +8,12 @@ import { getTranslations } from "next-intl/server";
 import { CAL_LINKS } from "~/lib/constants";
 import {
 	generateSEOMetadata as generateSEOMetadata,
-	KEYWORD_SETS,
 	BASE_URL,
 } from "~/lib/seo";
 
 interface IndustryPageProps {
 	params: Promise<{
+		locale: string;
 		industry: string;
 	}>;
 }
@@ -27,7 +27,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
 	params,
 }: IndustryPageProps): Promise<Metadata> {
-	const { industry: industrySlug } = await params;
+	const { industry: industrySlug, locale } = await params;
 	const industry = industryServices.find((i) => i.slug === industrySlug);
 
 	if (!industry) {
@@ -42,10 +42,8 @@ export async function generateMetadata({
 	return generateSEOMetadata({
 		title: `${industry.industry} Software Development Services`,
 		description: `${industry.description} Expert ${industryText} software solutions from top LATAM developers. Custom development, fast delivery, enterprise quality.`,
-		keywords: [
-			...KEYWORD_SETS.core,
-			...KEYWORD_SETS.services,
-			...KEYWORD_SETS.industries,
+		keywordSets: ["core", "services", "industries"],
+		additionalKeywords: [
 			`${industryText} software`,
 			`${industryText} development`,
 			`${industryText} solutions`,
@@ -53,8 +51,9 @@ export async function generateMetadata({
 			"industry-specific development",
 			"specialized solutions",
 		],
-		canonical: `${BASE_URL}/services/all/${industrySlug}`,
+		path: `/services/all/${industrySlug}`,
 		ogImage: `${BASE_URL}/og-industry-${industrySlug}.png`,
+		locale,
 	});
 }
 

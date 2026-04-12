@@ -23,25 +23,31 @@ import { getTranslations } from "next-intl/server";
 import { CAL_LINKS } from "~/lib/constants";
 import {
 	generateSEOMetadata,
-	KEYWORD_SETS,
 	BASE_URL,
 } from "~/lib/seo";
 
-export const metadata: Metadata = generateSEOMetadata({
-	title: "Our Services",
-	description:
-		"Expert software development services including full-stack development, MVP creation, AI integration, and enterprise solutions. Specialized industry expertise in healthcare, fintech, education, and more. Fast delivery with senior engineering talent.",
-	keywords: [
-		...KEYWORD_SETS.core,
-		...KEYWORD_SETS.services,
-		...KEYWORD_SETS.technologies,
-		"custom software development",
-		"enterprise software",
-		"industry solutions",
-	],
-	canonical: `${BASE_URL}/services`,
-	ogImage: `${BASE_URL}/og-services.png`,
-});
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+	const { locale } = await params;
+
+	return generateSEOMetadata({
+		title: "Our Services",
+		description:
+			"Expert software development services including full-stack development, MVP creation, AI integration, and enterprise solutions. Specialized industry expertise in healthcare, fintech, education, and more. Fast delivery with senior engineering talent.",
+		keywordSets: ["core", "services", "technologies"],
+		additionalKeywords: [
+			"custom software development",
+			"enterprise software",
+			"industry solutions",
+		],
+		path: "/services",
+		ogImage: `${BASE_URL}/og-services.png`,
+		locale,
+	});
+}
 
 const serviceIconMap: Record<string, React.ReactNode> = {
 	"web-dev": <Globe className="size-7" />,

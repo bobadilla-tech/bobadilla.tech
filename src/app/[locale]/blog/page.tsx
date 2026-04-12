@@ -1,27 +1,34 @@
 import { BlogList } from "@/features/blog";
 import {
 	generateSEOMetadata,
-	KEYWORD_SETS,
 	BASE_URL,
 } from "~/lib/seo";
 
 import type { Metadata } from "next";
 
-export const metadata: Metadata = generateSEOMetadata({
-	title: "Blog - Engineering Insights & Tutorials",
-	description:
-		"Technical articles about MVP development, AI integration, Next.js, Cloudflare Workers, and modern web development best practices from the Bobadilla Tech team.",
-	keywords: [
-		...KEYWORD_SETS.core,
-		...KEYWORD_SETS.technologies,
-		"technical blog",
-		"engineering blog",
-		"web development tutorials",
-		"AI tutorials",
-	],
-	canonical: `${BASE_URL}/blog`,
-	ogImage: `${BASE_URL}/og-blog.png`,
-});
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+	const { locale } = await params;
+
+	return generateSEOMetadata({
+		title: "Blog - Engineering Insights & Tutorials",
+		description:
+			"Technical articles about MVP development, AI integration, Next.js, Cloudflare Workers, and modern web development best practices from the Bobadilla Tech team.",
+		keywordSets: ["core", "technologies"],
+		additionalKeywords: [
+			"technical blog",
+			"engineering blog",
+			"web development tutorials",
+			"AI tutorials",
+		],
+		path: "/blog",
+		ogImage: `${BASE_URL}/og-blog.png`,
+		locale,
+	});
+}
 
 interface BlogPageProps {
 	searchParams: Promise<{ category?: string; tag?: string }>;

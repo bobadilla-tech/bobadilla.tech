@@ -88,7 +88,11 @@ export default async function BlogList({ searchParams }: BlogListProps) {
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{posts.map((post) => {
 							const authorImageSrc = post.author.image
-							? urlFor(post.author.image).width(BLOG_AVATAR_SMALL_SIZE).height(BLOG_AVATAR_SMALL_SIZE).url()
+								? urlFor(post.author.image)
+										.width(BLOG_AVATAR_SMALL_SIZE)
+										.height(BLOG_AVATAR_SMALL_SIZE)
+										.url()
+								: undefined;
 
 							return (
 								<Link

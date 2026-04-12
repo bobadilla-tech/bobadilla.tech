@@ -1,14 +1,16 @@
-import type { Metadata } from "next";
 import { SOCIAL_LINKS } from "./constants";
+
+import type { Metadata } from "next";
+
 
 /**
  * SEO Configuration and Utilities
  * Implements best practices for SEO including Open Graph, Twitter Cards, and structured data
  */
-
 export const BASE_URL = "https://bobadilla.tech";
 export const SITE_NAME = "Bobadilla Tech";
 export const DEFAULT_AUTHOR = "Bobadilla Tech Team";
+export const TWITTER_HANDLE = "@UltiRequiem";
 
 /**
  * Image Dimension Constants
@@ -25,86 +27,113 @@ export const BLOG_CONTENT_IMAGE_HEIGHT = 450;
 export const BLOG_AVATAR_LARGE_SIZE = 80;
 export const BLOG_AVATAR_SMALL_SIZE = 64;
 
-export interface SEOConfig {
+
+/**
+ * SEO configuration for standard pages
+ */
+export interface PageSEOConfig {
 	title: string;
 	description: string;
-	keywords?: string[];
+	keywordSets?: Array<keyof typeof KEYWORD_SETS>;
+	additionalKeywords?: string[];
+	path?: string;
 	canonical?: string;
 	ogImage?: string;
-	ogType?: "website" | "article";
-	twitterCard?: "summary" | "summary_large_image";
-	noindex?: boolean;
-	article?: {
-		publishedTime?: string;
-		modifiedTime?: string;
-		author?: string;
-		tags?: string[];
-	};
+	locale?: string;
+}
+
+/**
+ * SEO configuration for blog articles
+ */
+export interface ArticleSEOConfig {
+	title: string;
+	description: string;
+	publishedTime: string;
+	author: string;
+	keywordSets?: Array<keyof typeof KEYWORD_SETS>;
+	additionalKeywords?: string[];
+	tags?: string[];
+	modifiedTime?: string;
+	path?: string;
+	canonical?: string;
+	ogImage?: string;
+	locale?: string;
 }
 
 /**
  * Default SEO configuration
  */
-export const DEFAULT_SEO: Omit<SEOConfig, "title" | "description"> = {
-	ogType: "website",
-	twitterCard: "summary_large_image",
+export const DEFAULT_SEO = {
 	ogImage: `${BASE_URL}/og-default.png`,
-	noindex: false,
 };
 
 /**
- * Generate comprehensive metadata for a page
+ * Map locale code to OpenGraph locale format
  */
-export function generateSEOMetadata(config: SEOConfig): Metadata {
+function getOpenGraphLocale(locale: string | undefined): string {
+	if (!locale) return "en_US";
+	
+	const localeMap: Record<string, string> = {
+		en: "en_US",
+		es: "es_ES",
+		pt: "pt_BR",
+	};
+
+	return localeMap[locale] || "en_US";
+}
+
+/**
+ * Generate comprehensive metadata for a page (simplified interface)
+ */
+export function generateSEOMetadata(config: PageSEOConfig): Metadata {
 	const {
 		title,
 		description,
-		keywords = [],
+		keywordSets = [],
+		additionalKeywords = [],
+		path,
 		canonical,
 		ogImage = DEFAULT_SEO.ogImage,
-		ogType = DEFAULT_SEO.ogType,
-		twitterCard = DEFAULT_SEO.twitterCard,
-		noindex = false,
-		article,
+		locale,
 	} = config;
 
 	const fullTitle = title.includes(SITE_NAME)
 		? title
 		: `${title} | ${SITE_NAME}`;
-	const canonicalUrl = canonical || BASE_URL;
+
+	const canonicalUrl = canonical || (path ? `${BASE_URL}${locale ? `/${locale}` : ''}${path}` : BASE_URL);
+
+	const ogLocale = getOpenGraphLocale(locale);
+
+	// Expand keyword sets and merge with additional keywords
+	const expandedKeywords = [
+		...keywordSets.flatMap((set) => KEYWORD_SETS[set]),
+		...additionalKeywords,
+	];
 
 	const metadata: Metadata = {
 		title: fullTitle,
 		description,
-		keywords: keywords.length > 0 ? keywords.join(", ") : undefined,
+		keywords: expandedKeywords.length > 0 ? expandedKeywords.join(", ") : undefined,
 		authors: [{ name: DEFAULT_AUTHOR }],
 		creator: SITE_NAME,
 		publisher: SITE_NAME,
-		robots: noindex
-			? {
-					index: false,
-					follow: false,
-					googleBot: {
-						index: false,
-						follow: false,
-					},
-				}
-			: {
-					index: true,
-					follow: true,
-					googleBot: {
-						index: true,
-						follow: true,
-						"max-image-preview": "large",
-						"max-snippet": -1,
-					},
-				},
+		robots: {
+			index: true,
+			follow: true,
+			googleBot: {
+				index: true,
+				follow: true,
+				"max-image-preview": "large",
+				"max-snippet": -1,
+			},
+		},
 		alternates: {
 			canonical: canonicalUrl,
 		},
 		openGraph: {
-			type: ogType,
-			locale: "en_US",
+			type: "website",
+			locale: ogLocale,
 			url: canonicalUrl,
 			siteName: SITE_NAME,
 			title: fullTitle,
@@ -121,28 +150,106 @@ export function generateSEOMetadata(config: SEOConfig): Metadata {
 				: undefined,
 		},
 		twitter: {
-			card: twitterCard,
+			card: "summary_large_image",
 			title: fullTitle,
 			description,
 			images: ogImage ? [ogImage] : undefined,
-			creator: "@UltiRequiem",
-			site: "@UltiRequiem",
+			creator: TWITTER_HANDLE,
+			site: TWITTER_HANDLE,
 		},
 	};
 
-	if (article && ogType === "article") {
-		metadata.openGraph = {
-			...metadata.openGraph,
+	return metadata;
+}
+
+/**
+ * Generate metadata for blog articles (simplified interface)
+ */
+export function generateArticleMetadata(config: ArticleSEOConfig): Metadata {
+	const {
+		title,
+		description,
+		publishedTime,
+		author,
+		keywordSets = [],
+		additionalKeywords = [],
+		tags,
+		modifiedTime,
+		path,
+		canonical,
+		ogImage = `${BASE_URL}/og-blog.png`,
+		locale,
+	} = config;
+
+	const fullTitle = title.includes(SITE_NAME)
+		? title
+		: `${title} | ${SITE_NAME}`;
+
+	const canonicalUrl = canonical || (path ? `${BASE_URL}${locale ? `/${locale}` : ''}${path}` : BASE_URL);
+
+	const ogLocale = getOpenGraphLocale(locale);
+
+	// Expand keyword sets and merge with additional keywords
+	const expandedKeywords = [
+		...keywordSets.flatMap((set) => KEYWORD_SETS[set]),
+		...additionalKeywords,
+	];
+
+	const metadata: Metadata = {
+		title: fullTitle,
+		description,
+		keywords: expandedKeywords.length > 0 ? expandedKeywords.join(", ") : undefined,
+		authors: [{ name: author }],
+		creator: SITE_NAME,
+		publisher: SITE_NAME,
+		robots: {
+			index: true,
+			follow: true,
+			googleBot: {
+				index: true,
+				follow: true,
+				"max-image-preview": "large",
+				"max-snippet": -1,
+			},
+		},
+		alternates: {
+			canonical: canonicalUrl,
+		},
+		openGraph: {
 			type: "article",
-			publishedTime: article.publishedTime,
-			modifiedTime: article.modifiedTime,
-			authors: article.author ? [article.author] : undefined,
-			tags: article.tags,
-		};
-	}
+			locale: ogLocale,
+			url: canonicalUrl,
+			siteName: SITE_NAME,
+			title: fullTitle,
+			description,
+			publishedTime,
+			modifiedTime,
+			authors: [author],
+			tags: tags,
+			images: ogImage
+				? [
+						{
+							url: ogImage,
+							width: OG_IMAGE_WIDTH,
+							height: OG_IMAGE_HEIGHT,
+							alt: title,
+						},
+					]
+				: undefined,
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: fullTitle,
+			description,
+			images: ogImage ? [ogImage] : undefined,
+			creator: TWITTER_HANDLE,
+			site: TWITTER_HANDLE,
+		},
+	};
 
 	return metadata;
 }
+
 
 /**
  * Common keyword sets for different page types
@@ -267,7 +374,7 @@ export function generateServiceSchema(service: {
  * Generate JSON-LD structured data for breadcrumbs
  */
 export function generateBreadcrumbSchema(
-	items: Array<{ name: string; url: string }>
+	items: { name: string; url: string }[]
 ) {
 	return {
 		"@context": "https://schema.org",
@@ -285,7 +392,7 @@ export function generateBreadcrumbSchema(
  * Generate JSON-LD structured data for FAQ
  */
 export function generateFAQSchema(
-	faqs: Array<{ question: string; answer: string }>
+	faqs: { question: string; answer: string }[]
 ) {
 	return {
 		"@context": "https://schema.org",

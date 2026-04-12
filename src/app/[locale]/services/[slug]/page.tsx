@@ -18,7 +18,6 @@ import { getTranslations } from "next-intl/server";
 import { CAL_LINKS } from "~/lib/constants";
 import {
 	generateSEOMetadata as generateSEOMetadata,
-	KEYWORD_SETS,
 	BASE_URL,
 } from "~/lib/seo";
 import type { Locale } from "~/i18n/routing";
@@ -55,8 +54,9 @@ export async function generateMetadata({
 		return generateSEOMetadata({
 			title: richData.eyebrow,
 			description: richData.heroSubtitle,
-			keywords: [...KEYWORD_SETS.core, ...KEYWORD_SETS.services],
-			canonical: `${BASE_URL}/${locale}/services/${slug}`,
+			keywordSets: ["core", "services"],
+			path: `/services/${slug}`,
+			locale,
 		});
 	}
 
@@ -74,18 +74,17 @@ export async function generateMetadata({
 	return generateSEOMetadata({
 		title: service.title,
 		description: `${service.description} Professional ${service.title.toLowerCase()} services from expert LATAM developers. Fast delivery, enterprise quality, competitive pricing.`,
-		keywords: [
-			...KEYWORD_SETS.core,
-			...KEYWORD_SETS.services,
-			...KEYWORD_SETS.technologies,
+		keywordSets: ["core", "services", "technologies"],
+		additionalKeywords: [
 			service.title.toLowerCase(),
 			`${service.title.toLowerCase()} development`,
 			`${service.title.toLowerCase()} services`,
 			"professional development",
 			"expert developers",
 		],
-		canonical: `${BASE_URL}/services/${slug}`,
+		path: `/services/${slug}`,
 		ogImage: `${BASE_URL}/og-service-${slug}.png`,
+		locale,
 	});
 }
 
@@ -297,6 +296,5 @@ export default async function ServicePage({ params }: ServicePageProps) {
 					)}
 				</div>
 			</div>
-		</div>
 	);
 }
