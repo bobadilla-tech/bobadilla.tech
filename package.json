@@ -35,6 +35,7 @@
 		"@sanity/client": "^7.20.0",
 		"@sanity/image-url": "^2.1.1",
 		"@t3-oss/env-nextjs": "^0.13.11",
+		"@tanstack/react-table": "^8.21.3",
 		"better-auth": "^1.6.2",
 		"clsx": "^2.1.1",
 		"drizzle-kit": "^0.31.10",

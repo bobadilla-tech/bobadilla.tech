@@ -17,7 +17,7 @@ export default function SignInForm() {
 		const result = await signIn.email({
 			email,
 			password,
-			callbackURL: "/admin/messages",
+			callbackURL: "/admin/leads",
 		});
 
 		if (result.error) {
