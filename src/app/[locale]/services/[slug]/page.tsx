@@ -48,8 +48,8 @@ export async function generateMetadata({
 }: ServicePageProps): Promise<Metadata> {
 	const { slug, locale } = await params;
 
-	// Rich pages have their own metadata
 	const richData = getServicePageData(slug, locale as Locale);
+
 	if (richData) {
 		return generateSEOMetadata({
 			title: richData.eyebrow,
@@ -100,6 +100,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
 	// Check for rich service page data first
 	const richData = getServicePageData(slug, locale as Locale);
+	
 	if (richData) {
 		return <RichServicePage data={richData} />;
 	}
