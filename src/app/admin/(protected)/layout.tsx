@@ -2,15 +2,16 @@ import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { createAuth } from "~/lib/auth";
-import { SignOutButton } from "../_components/SignOutButton";
+import { SignOutButton } from "@/features/admin";
 
 export default async function ProtectedAdminLayout({
 	children,
 }: {
 	children: React.ReactNode;
 }) {
-	const { env } = await getCloudflareContext();
+	const { env } = getCloudflareContext();
 	const auth = createAuth(env.DB);
+	
 	const session = await auth.api.getSession({ headers: await headers() });
 
 	if (!session || session.user.role !== "admin") {
