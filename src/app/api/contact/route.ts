@@ -7,10 +7,10 @@ import {
 	validationErrorResponse,
 } from "~/lib/server/api-response";
 import { getDb } from "~/db/client";
-import { insertContactMessage } from "./db";
-import { sendEmailNotification } from "./email-notification";
-import { logContactSubmission } from "./logger";
-import { contactSchema } from "./validation";
+import { insertContactMessage } from "@/features/leads/api/db";
+import { sendEmailNotification } from "@/features/leads/api/email-notification";
+import { logContactSubmission } from "@/features/leads/api/logger";
+import { contactSchema } from "@/features/leads/model/contactSchema";
 
 export async function POST(request: NextRequest) {
 	try {
