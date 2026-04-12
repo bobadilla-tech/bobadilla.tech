@@ -1,9 +1,5 @@
 # Architecture
 
-**Last updated:** 2026-04-12
-
-## System Overview
-
 ```
 Browser → Cloudflare Edge → Cloudflare Worker (OpenNext)
                                     ├── Static HTML (pre-rendered pages)
