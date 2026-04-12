@@ -7,6 +7,7 @@
 # Bobadilla Tech
 
 [![Live](https://img.shields.io/badge/Live-bobadilla.tech-gold)](https://bobadilla.tech)
+[![codecov](https://codecov.io/gh/bobadilla-tech/bobadilla.tech/graph/badge.svg?token=N3O0R9J0SN)](https://codecov.io/gh/bobadilla-tech/bobadilla.tech)
 [![Docs](https://img.shields.io/badge/Docs-docs/core-blue)](./docs/core/architecture.md)
 
 ## What's bobadilla.tech?
