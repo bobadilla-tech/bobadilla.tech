@@ -14,9 +14,11 @@ function isSelectedOption(
 ): value is SelectedOption {
 	return (
 		value !== null &&
-		typeof value.name === "string" &&
+		typeof value.id === "string" &&
+		typeof value.nameKey === "string" &&
+		typeof value.descriptionKey === "string" &&
 		typeof value.price === "number" &&
-		typeof value.description === "string"
+		value.price >= 0
 	);
 }
 
@@ -35,6 +37,10 @@ export function calculateStepTotal(
 	selections: Selections
 ): number {
 	const step = PRICING_STEPS[stepIndex];
+	if (!step) {
+		return 0;
+	}
+
 	const stepSelections = selections[stepIndex] || [];
 	let total = 0;
 
@@ -114,16 +120,17 @@ export function getSelectedOptionsByStep(
 				const option = step.options.find((opt) => opt.id === selectionId);
 				return option
 					? {
-							name: option.name,
+						id: option.id,
+						nameKey: option.nameKey || option.id,
+						descriptionKey: option.descriptionKey || option.id,
 							price: option.basePrice,
-							description: option.description,
 						}
 					: null;
 			})
 			.filter(isSelectedOption);
 
 		return {
-			stepTitle: step.title,
+			stepTitle: String(stepIndex),
 			options: selectedOptions,
 			total: selectedOptions.reduce((sum, opt) => sum + opt.price, 0),
 		};
@@ -151,7 +158,7 @@ export function formatSelectionsSummary(selections: Selections): string {
 	return breakdown
 		.map(
 			(section) =>
-				`${section.stepTitle}:\n${section.options.map((opt) => `  - ${opt?.name}`).join("\n")}`
+				`step:${section.stepTitle}\n${section.options.map((opt) => `  - ${opt?.id}`).join("\n")}`
 		)
 		.join("\n\n");
 }

@@ -3,6 +3,8 @@ export interface ProjectRequirement {
 	name: string;
 	basePrice: number;
 	description: string;
+	nameKey?: string;
+	descriptionKey?: string;
 }
 
 export interface Step {
@@ -14,9 +16,10 @@ export interface Step {
 }
 
 export interface SelectedOption {
-	name: string;
+	id: string;
+	nameKey: string;
+	descriptionKey: string;
 	price: number;
-	description: string;
 }
 
 export interface StepBreakdown {

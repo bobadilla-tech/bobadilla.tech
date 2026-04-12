@@ -79,7 +79,15 @@ export default function Button({
 
 	if (to) {
 		return (
-			<Link href={to} className={classes}>
+			<Link
+				href={to}
+				className={`${classes}${disabled || loading ? " opacity-50 cursor-not-allowed" : ""}`}
+				aria-disabled={disabled || loading}
+				aria-busy={loading}
+				onClick={(e) => {
+					if (disabled || loading) e.preventDefault();
+				}}
+			>
 				{content}
 			</Link>
 		);

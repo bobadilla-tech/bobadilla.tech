@@ -1,5 +1,7 @@
 import type { Step } from "./types";
 
+export const TIMELINE_STEP_ID = 5;
+
 export const PRICING_STEPS: Step[] = [
 	{
 		id: 1,
@@ -163,7 +165,7 @@ export const PRICING_STEPS: Step[] = [
 		],
 	},
 	{
-		id: 5,
+		id: TIMELINE_STEP_ID,
 		title: "Timeline",
 		description: "When do you need it delivered?",
 		options: [
@@ -191,7 +193,6 @@ export const PRICING_STEPS: Step[] = [
 	},
 ];
 
-export const TIMELINE_STEP_ID = 5;
 export const RUSH_MULTIPLIER = 1.3;
 export const FLEXIBLE_MULTIPLIER = 0.85;
 export const STANDARD_MULTIPLIER = 1;

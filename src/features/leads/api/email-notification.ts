@@ -48,9 +48,7 @@ export async function sendEmailNotification(data: ContactData): Promise<void> {
 		throw new Error(`Resend error: ${error.message}`);
 	}
 
-	console.log(
-		`✅ Notification sent to observers for message from "${data.name}" <${data.email}>`
-	);
+	console.log(`✅ Notification sent to observers (observerCount=${OBSERVERS.length})`);
 }
 
 function escapeHtml(value: string): string {

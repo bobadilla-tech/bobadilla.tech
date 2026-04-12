@@ -52,6 +52,7 @@ export default function FAQ() {
 					>
 						{faqs.map((faq, i) => (
 							<FAQItem
+								id={`home-${i}`}
 								key={faq.q}
 								question={faq.q}
 								answer={faq.a}

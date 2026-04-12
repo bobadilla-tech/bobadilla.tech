@@ -19,7 +19,7 @@ export default function IndustryCard({
 	return (
 		<Link
 			href={href}
-			className="group relative overflow-hidden rounded-t-3xl block h-[420px]"
+			className="group relative overflow-hidden rounded-t-3xl block h-[420px] focus:outline-none"
 		>
 			<Image
 				src={image}
@@ -34,7 +34,7 @@ export default function IndustryCard({
 				</span>
 			</div>
 			{description && (
-				<div className="absolute bottom-0 left-0 right-0 p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+				<div className="absolute bottom-0 left-0 right-0 p-5 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100 sm:group-focus-within:opacity-100 transition-opacity duration-300">
 					<p className="font-body text-white text-sm">{description}</p>
 				</div>
 			)}

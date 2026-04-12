@@ -29,12 +29,12 @@ export const EXTERNAL_LINKS = {
 } as const;
 
 export const FOOTER_LINKS = [
-	{ label: "Our Services", href: "/services" },
-	{ label: "Projects", href: "/#projects" },
-	{ label: "Dedicated Team", href: "/services/dedicated-team-development" },
-	{ label: "Open Source", href: "https://github.com/bobadilla-tech" },
-	{ label: "Pricing", href: "/pricing" },
-	{ label: "Contact", href: "/#contact" },
+	{ id: "ourServices", href: "/services" },
+	{ id: "projects", href: "/#projects" },
+	{ id: "dedicatedTeam", href: "/services/dedicated-team-development" },
+	{ id: "openSource", href: "https://github.com/bobadilla-tech" },
+	{ id: "pricing", href: "/pricing" },
+	{ id: "contact", href: "/#contact" },
 ] as const;
 
 export const COPYRIGHT_YEAR = new Date().getFullYear();

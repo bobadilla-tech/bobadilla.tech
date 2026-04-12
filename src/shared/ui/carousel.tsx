@@ -86,6 +86,17 @@ const Carousel = React.forwardRef<
 
 		const handleKeyDown = React.useCallback(
 			(event: React.KeyboardEvent<HTMLDivElement>) => {
+				if (orientation === "vertical") {
+					if (event.key === "ArrowUp") {
+						event.preventDefault();
+						scrollPrev();
+					} else if (event.key === "ArrowDown") {
+						event.preventDefault();
+						scrollNext();
+					}
+					return;
+				}
+
 				if (event.key === "ArrowLeft") {
 					event.preventDefault();
 					scrollPrev();
@@ -94,7 +105,7 @@ const Carousel = React.forwardRef<
 					scrollNext();
 				}
 			},
-			[scrollPrev, scrollNext]
+			[orientation, scrollPrev, scrollNext]
 		);
 
 		React.useEffect(() => {
@@ -211,8 +222,13 @@ const CarouselPrevious = React.forwardRef<
 				className
 			)}
 			disabled={!canScrollPrev}
-			onClick={scrollPrev}
 			{...props}
+			onClick={(event) => {
+				props.onClick?.(event);
+				if (!event.defaultPrevented) {
+					scrollPrev();
+				}
+			}}
 		>
 			<ArrowLeft className="h-4 w-4" />
 			<span className="sr-only">Previous slide</span>
@@ -238,8 +254,13 @@ const CarouselNext = React.forwardRef<
 				className
 			)}
 			disabled={!canScrollNext}
-			onClick={scrollNext}
 			{...props}
+			onClick={(event) => {
+				props.onClick?.(event);
+				if (!event.defaultPrevented) {
+					scrollNext();
+				}
+			}}
 		>
 			<ArrowRight className="h-4 w-4" />
 			<span className="sr-only">Next slide</span>

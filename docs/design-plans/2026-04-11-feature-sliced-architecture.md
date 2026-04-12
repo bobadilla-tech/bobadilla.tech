@@ -255,10 +255,10 @@ import { servicePages as pt } from "./service-pages.pt";
 const byLocale = { en, es, pt } as const;
 
 export function getServicePageData(
-	slug: string,
-	locale: "en" | "es" | "pt" = "en"
+  slug: string,
+  locale: "en" | "es" | "pt" = "en",
 ) {
-	return byLocale[locale].find((p) => p.slug === slug);
+  return byLocale[locale].find((p) => p.slug === slug);
 }
 ```
 

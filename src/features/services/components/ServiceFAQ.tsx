@@ -73,6 +73,7 @@ export default function ServiceFAQ({ faqs }: ServiceFAQProps) {
 						<div className="space-y-0 divide-y divide-brand-primary/10">
 							{activeFaqs.map((faq, i) => (
 								<FAQItem
+									id={`service-${i}`}
 									key={faq.q}
 									question={faq.q}
 									answer={faq.a}

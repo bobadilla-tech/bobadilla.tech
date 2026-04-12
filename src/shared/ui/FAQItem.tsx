@@ -1,8 +1,10 @@
 "use client";
 
+import { useId } from "react";
 import { Plus, X } from "lucide-react";
 
 interface FAQItemProps {
+	id?: string;
 	question: string;
 	answer: string;
 	isOpen: boolean;
@@ -10,16 +12,21 @@ interface FAQItemProps {
 }
 
 export default function FAQItem({
+	id,
 	question,
 	answer,
 	isOpen,
 	onToggle,
 }: FAQItemProps) {
-	const panelId = `faq-panel-${question.replace(/\s+/g, "-").toLowerCase().slice(0, 40)}`;
+	const generatedId = useId();
+	const faqId = id ?? generatedId;
+	const panelId = `faq-panel-${faqId}`;
+	const buttonId = `faq-button-${faqId}`;
 
 	return (
 		<div className="border-b border-border">
 			<button
+				id={buttonId}
 				type="button"
 				onClick={onToggle}
 				aria-expanded={isOpen}
@@ -37,6 +44,7 @@ export default function FAQItem({
 				<p
 					id={panelId}
 					role="region"
+					aria-labelledby={buttonId}
 					className="font-body text-brand-primary/60 pb-6 text-base leading-relaxed"
 				>
 					{answer}

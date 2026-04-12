@@ -28,5 +28,9 @@ export async function insertContactMessage(
 		})
 		.returning();
 
+	if (!insertedMessage || !insertedMessage.id) {
+		throw new Error("Failed to insert contact message: no record returned");
+	}
+
 	return insertedMessage;
 }

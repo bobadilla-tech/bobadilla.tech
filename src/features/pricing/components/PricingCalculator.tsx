@@ -20,7 +20,11 @@ import {
 import Button from "@/shared/ui/Button";
 import { useTranslations } from "next-intl";
 import { CAL_LINKS } from "~/lib/constants";
-import { ANIMATION_CONFIG, PRICING_STEPS } from "@/features/pricing/model/constants";
+import {
+	ANIMATION_CONFIG,
+	PRICING_STEPS,
+	TIMELINE_STEP_ID,
+} from "@/features/pricing/model/constants";
 import type { Selections } from "@/features/pricing/model/types";
 import {
 	calculateStepTotal,
@@ -42,6 +46,15 @@ export default function PricingCalculator() {
 	const [isValidEmail, setIsValidEmail] = useState(false);
 	const [saveError, setSaveError] = useState("");
 
+	const isEmailValid = useCallback((value: string) => {
+		try {
+			validEmail(value);
+			return true;
+		} catch {
+			return false;
+		}
+	}, []);
+
 	const validateEmail = useCallback(() => {
 		try {
 			validEmail(email);
@@ -50,14 +63,14 @@ export default function PricingCalculator() {
 		} catch (error) {
 			setIsValidEmail(false);
 			if (error instanceof ZodError) {
-				setSaveError(error.issues[0].message);
+				setSaveError(error.issues[0]?.message ?? t("errors.invalidEmail"));
 			} else if (error instanceof Error) {
-				setSaveError(error.message);
+				setSaveError(error.message || t("errors.invalidEmail"));
 			} else {
-				setSaveError("An unexpected error occurred during validation");
+				setSaveError(t("errors.validationUnexpected"));
 			}
 		}
-	}, [email]);
+	}, [email, t]);
 
 	const currentStepData = PRICING_STEPS[currentStep];
 	const isMultiSelect = currentStepData?.multiSelect || false;
@@ -109,20 +122,30 @@ export default function PricingCalculator() {
 	};
 
 	const saveEstimate = async () => {
-		if (!email || !isValidEmail) {
-			setSaveError("Please enter your email");
+		const emailToSave = email.trim();
+		if (!emailToSave) {
+			setIsValidEmail(false);
+			setSaveError(t("errors.emailRequired"));
 			return;
 		}
 
+		if (!isEmailValid(emailToSave)) {
+			setIsValidEmail(false);
+			setSaveError(t("errors.invalidEmail"));
+			return;
+		}
+
+		setIsValidEmail(true);
 		setIsSaving(true);
 		setSaveError("");
+		const bookingWindow = window.open("about:blank", "_blank", "noopener,noreferrer");
 
 		try {
 			const response = await fetch("/api/pricing-estimate", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({
-					email,
+					email: emailToSave,
 					totalPrice: calculateTotal(selections),
 					selections,
 					breakdown: formatSelectionsSummary(selections),
@@ -133,13 +156,18 @@ export default function PricingCalculator() {
 				throw new Error("Failed to save estimate");
 			}
 
-			window.open(
-				`${CAL_LINKS.ale}?email=${encodeURIComponent(email)}`,
-				"_blank"
-			);
+			const bookingUrl = `${CAL_LINKS.ale}?email=${encodeURIComponent(emailToSave)}`;
+			if (bookingWindow) {
+				bookingWindow.location.href = bookingUrl;
+			} else {
+				window.open(bookingUrl, "_blank", "noopener,noreferrer");
+			}
 		} catch (error) {
+			if (bookingWindow && !bookingWindow.closed) {
+				bookingWindow.close();
+			}
 			console.error("Error saving estimate:", error);
-			setSaveError("Failed to save. Please try again.");
+			setSaveError(t("errors.saveFailed"));
 		} finally {
 			setIsSaving(false);
 		}
@@ -169,7 +197,9 @@ export default function PricingCalculator() {
 						>
 							<div className="flex items-center justify-between mb-2">
 								<span className="font-body text-sm font-semibold text-brand-gold">
-									{section.stepTitle}
+									{t(
+										`steps.${section.stepTitle}.title` as Parameters<typeof t>[0]
+									)}
 								</span>
 								{section.total > 0 && (
 									<span className="font-body text-sm text-brand-primary">
@@ -180,11 +210,17 @@ export default function PricingCalculator() {
 							<div className="space-y-1">
 								{section.options.map((option, idx) => (
 									<div
-										key={idx}
+										key={`${option.id}-${idx}`}
 										className="flex items-center gap-2 font-body text-xs text-brand-primary/50"
 									>
 										<Check className="size-3 text-green-500 shrink-0" />
-										<span className="truncate">{option?.name}</span>
+										<span className="truncate">
+											{t(
+												`steps.${section.stepTitle}.options.${option.nameKey}.name` as Parameters<
+													typeof t
+												>[0]
+											)}
+										</span>
 									</div>
 								))}
 							</div>
@@ -208,9 +244,15 @@ export default function PricingCalculator() {
 
 	if (showSummary) {
 		const total = grandTotal;
-		const timelineSelection = selections[4]
-			? PRICING_STEPS[4].options.find((opt) => opt.id === selections[4][0])
-			: null;
+		const timelineStepIndex = PRICING_STEPS.findIndex(
+			(step) => step.id === TIMELINE_STEP_ID
+		);
+		const timelineSelection =
+			timelineStepIndex >= 0 && selections[timelineStepIndex]
+				? PRICING_STEPS[timelineStepIndex].options.find(
+						(opt) => opt.id === selections[timelineStepIndex][0]
+					)
+				: null;
 
 		const whyItems = t.raw("whyItems") as { title: string; desc: string }[];
 		const whyIcons = [
@@ -271,7 +313,13 @@ export default function PricingCalculator() {
 											type="email"
 											value={email}
 											onChange={(e) => {
-												setEmail(e.target.value);
+												const nextEmail = e.target.value;
+												setEmail(nextEmail);
+												const nextIsValid = isEmailValid(nextEmail);
+												setIsValidEmail(nextIsValid);
+												if (saveError && nextIsValid) {
+													setSaveError("");
+												}
 											}}
 											onBlur={validateEmail}
 											placeholder="your@email.com"
@@ -315,7 +363,9 @@ export default function PricingCalculator() {
 								>
 									<div className="flex items-center justify-between mb-4">
 										<h3 className="font-heading text-xl font-bold text-brand-gold">
-											{section.stepTitle}
+											{t(
+												`steps.${section.stepTitle}.title` as Parameters<typeof t>[0]
+											)}
 										</h3>
 										{section.total > 0 && (
 											<span className="font-heading text-lg font-semibold text-brand-primary">
@@ -333,11 +383,23 @@ export default function PricingCalculator() {
 													<div className="flex items-center gap-2 mb-1">
 														<Check className="size-4 text-green-500 shrink-0" />
 														<span className="font-body text-brand-primary font-medium">
-															{option?.name}
+															{option
+																? t(
+																		`steps.${section.stepTitle}.options.${option.nameKey}.name` as Parameters<
+																		typeof t
+																	>[0]
+																)
+																: ""}
 														</span>
 													</div>
 													<p className="font-body text-sm text-brand-primary/50 ml-6">
-														{option?.description}
+														{option
+															? t(
+																	`steps.${section.stepTitle}.options.${option.descriptionKey}.description` as Parameters<
+																		typeof t
+																	>[0]
+																)
+															: ""}
 													</p>
 												</div>
 												{option && option.price > 0 && (

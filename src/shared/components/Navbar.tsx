@@ -96,7 +96,18 @@ export default function Navbar() {
 							>
 								{t("projects")}
 							</Link>
-							<div className="relative group" ref={resourcesRef}>
+							<div
+								className="relative"
+								ref={resourcesRef}
+								onMouseEnter={() => setIsResourcesOpen(true)}
+								onMouseLeave={() => setIsResourcesOpen(false)}
+								onFocusCapture={() => setIsResourcesOpen(true)}
+								onBlurCapture={(e) => {
+									if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+										setIsResourcesOpen(false);
+									}
+								}}
+							>
 								<button
 									type="button"
 									aria-haspopup="menu"
@@ -115,9 +126,7 @@ export default function Navbar() {
 										if (e.key === "Escape") setIsResourcesOpen(false);
 									}}
 									className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-48 bg-brand-bg/95 backdrop-blur-lg border border-border rounded-xl shadow-xl transition-all duration-200 ${
-										isResourcesOpen
-											? "opacity-100 visible"
-											: "opacity-0 invisible group-hover:opacity-100 group-hover:visible"
+										isResourcesOpen ? "opacity-100 visible" : "opacity-0 invisible"
 									}`}
 								>
 									{resourceLinks.map((link) =>

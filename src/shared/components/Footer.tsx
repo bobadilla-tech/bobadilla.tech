@@ -3,14 +3,12 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "~/i18n/navigation";
 import { CONTACT, SOCIAL_LINKS, FOOTER_LINKS } from "~/lib/constants";
 
-const FOOTER_LINK_KEYS = [
-	"ourServices",
-	"projects",
-	"dedicatedTeam",
-	"openSource",
-	"pricing",
-	"contact",
-] as const;
+function toTelUri(phoneNumber: string): string {
+	const trimmed = phoneNumber.trim();
+	const hasLeadingPlus = trimmed.startsWith("+");
+	const digitsOnly = trimmed.replace(/\D/g, "");
+	return `${hasLeadingPlus ? "+" : ""}${digitsOnly}`;
+}
 
 export default async function Footer() {
 	const t = await getTranslations("Footer");
@@ -64,13 +62,13 @@ export default async function Footer() {
 							{t("navigation")}
 						</span>
 						<nav className="flex flex-col gap-3">
-							{FOOTER_LINKS.map((link, i) => (
+							{FOOTER_LINKS.map((link) => (
 								<Link
 									key={link.href}
 									href={link.href}
 									className="font-body text-brand-primary/60 hover:text-brand-primary text-sm transition-colors duration-200"
 								>
-									{t(`links.${FOOTER_LINK_KEYS[i]}` as Parameters<typeof t>[0])}
+									{t(`links.${link.id}` as Parameters<typeof t>[0])}
 								</Link>
 							))}
 						</nav>
@@ -103,7 +101,7 @@ export default async function Footer() {
 							{t("callUs")}
 						</span>
 						<a
-							href={`tel:${CONTACT.phone}`}
+							href={`tel:${toTelUri(CONTACT.phone)}`}
 							className="font-body text-brand-primary/60 hover:text-brand-primary text-sm transition-colors duration-200"
 						>
 							{CONTACT.phone}

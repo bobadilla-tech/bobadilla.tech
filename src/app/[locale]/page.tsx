@@ -1,4 +1,4 @@
-import { CTABand } from "@/shared/components";
+import { CTABand } from "@/shared/components/client";
 import { ContactForm } from "@/features/leads";
 import { Hero, StatsBar, Services, WhyBobatech, Industries, FAQ } from "@/features/home";
 import Footer from "@/shared/components/Footer";
