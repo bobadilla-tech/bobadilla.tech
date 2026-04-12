@@ -1,8 +1,14 @@
 # Feature-Sliced Design Migration
 
-The project currently uses a route-centric layout: business logic lives inside `app/[locale]/pricing/`, service-page components sit in a flat `components/sections/service-page/` folder, and data lives in a top-level `data/` directory. This makes onboarding slow, discourages co-location, and creates coupling that will block scaling to thousands of SEO pages.
+The project currently uses a route-centric layout: business logic lives inside
+`app/[locale]/pricing/`, service-page components sit in a flat
+`components/sections/service-page/` folder, and data lives in a top-level
+`data/` directory. This makes onboarding slow, discourages co-location, and
+creates coupling that will block scaling to thousands of SEO pages.
 
-The goal is to migrate to Feature-Sliced Design (FSD): one feature = one self-contained directory. Every URL, every test, and every existing behavior must survive unchanged at each step.
+The goal is to migrate to Feature-Sliced Design (FSD): one feature = one
+self-contained directory. Every URL, every test, and every existing behavior
+must survive unchanged at each step.
 
 ---
 
@@ -51,24 +57,31 @@ features/<name>/
 
 ## Core Rules
 
-- `app/` contains only routing and metadata — no business logic, no JSX beyond layout composition
+- `app/` contains only routing and metadata — no business logic, no JSX beyond
+  layout composition
 - `app/api/*/route.ts` files never move — Next.js requires them under `app/api/`
 - `middleware.ts` and `i18n/` never move — i18n routing must stay intact
-- If a component is used in multiple features → `shared/`; otherwise it stays in its feature
-- Each feature exports a single public API via `index.ts`; consumers never import sub-paths directly
-- `lib/` is for external integrations (Sanity, auth, DB, email) — not for feature logic
+- If a component is used in multiple features → `shared/`; otherwise it stays in
+  its feature
+- Each feature exports a single public API via `index.ts`; consumers never
+  import sub-paths directly
+- `lib/` is for external integrations (Sanity, auth, DB, email) — not for
+  feature logic
 
 ---
 
 ## Migration Phases
 
-Each phase leaves the app fully deployable. The strategy is **expand-then-contract**: create the new location, leave a re-export stub at the old path, update the route file, then delete the stub in Phase 6.
+Each phase leaves the app fully deployable. The strategy is
+**expand-then-contract**: create the new location, leave a re-export stub at the
+old path, update the route file, then delete the stub in Phase 6.
 
 ---
 
 ### Phase 0 — Baseline
 
-1. Verify both `@/*` and `~/*` aliases already resolve to `./src/*` in `tsconfig.json` — no changes needed.
+1. Verify both `@/*` and `~/*` aliases already resolve to `./src/*` in
+   `tsconfig.json` — no changes needed.
 2. Create the empty directory skeleton (`src/features/`, `src/shared/`).
 3. Run `pnpm vitest run` — all 3 suites must pass before anything moves:
    - `src/app/[locale]/pricing/utils.test.ts`
@@ -79,7 +92,8 @@ Each phase leaves the app fully deployable. The strategy is **expand-then-contra
 
 ### Phase 1 — Shared Layer
 
-Copy each file to its new location, then replace the original with a re-export stub.
+Copy each file to its new location, then replace the original with a re-export
+stub.
 
 **UI primitives** (`src/components/ui/` → `src/shared/ui/`):
 
@@ -129,7 +143,9 @@ Create barrel exports:
 
 Co-locate all pricing logic and fix the duplicate `validation.ts` bug.
 
-**Bug**: `pricing-calculator.tsx:31` imports `validEmail` from `@/app/pricing/validation` — a legacy root-level file that diverged from the canonical `src/app/[locale]/pricing/validation.ts`.
+**Bug**: `pricing-calculator.tsx:31` imports `validEmail` from
+`@/app/pricing/validation` — a legacy root-level file that diverged from the
+canonical `src/app/[locale]/pricing/validation.ts`.
 
 **Files to move:**
 
@@ -166,9 +182,12 @@ export type { Selections } from "./model/types";
 import { PricingCalculator } from "@/features/pricing";
 ```
 
-Leave stubs at original `constants.ts`, `types.ts`, `utils.ts`, `validation.ts` paths (delete Phase 6).
+Leave stubs at original `constants.ts`, `types.ts`, `utils.ts`, `validation.ts`
+paths (delete Phase 6).
 
-**Verification**: `pnpm vitest run` (test now at `src/features/pricing/lib/utils.test.ts`). Visit `/en/pricing`, submit an estimate.
+**Verification**: `pnpm vitest run` (test now at
+`src/features/pricing/lib/utils.test.ts`). Visit `/en/pricing`, submit an
+estimate.
 
 ---
 
@@ -204,13 +223,16 @@ export { default as ContactForm } from "./components/ContactForm";
 export { contactSchema } from "./model/contactSchema";
 ```
 
-**Verification**: `pnpm vitest run` (test now at `src/features/leads/model/contactSchema.test.ts`). Submit the contact form end-to-end.
+**Verification**: `pnpm vitest run` (test now at
+`src/features/leads/model/contactSchema.test.ts`). Submit the contact form
+end-to-end.
 
 ---
 
 ### Phase 4 — Feature: `services`
 
-Co-locate service data and components; eliminate the 8 hardcoded service page folders.
+Co-locate service data and components; eliminate the 8 hardcoded service page
+folders.
 
 #### 4.1 — Data layer
 
@@ -233,10 +255,10 @@ import { servicePages as pt } from "./service-pages.pt";
 const byLocale = { en, es, pt } as const;
 
 export function getServicePageData(
-	slug: string,
-	locale: "en" | "es" | "pt" = "en"
+  slug: string,
+  locale: "en" | "es" | "pt" = "en",
 ) {
-	return byLocale[locale].find((p) => p.slug === slug);
+  return byLocale[locale].find((p) => p.slug === slug);
 }
 ```
 
@@ -244,11 +266,18 @@ Leave bridge stubs at all `src/data/*.ts` original paths.
 
 #### 4.2 — Component layer
 
-Move all 11 files from `src/components/sections/service-page/` to `src/features/services/components/`. Leave bridge re-exports at all original paths.
+Move all 11 files from `src/components/sections/service-page/` to
+`src/features/services/components/`. Leave bridge re-exports at all original
+paths.
 
 #### 4.3 — Eliminate 8 hardcoded service page folders
 
-The 8 folders (`web-development/`, `mobile-app-development/`, `web-application-development/`, `web-portal-development/`, `front-end-development/`, `back-end-development/`, `cms-development/`, `mvp-development/`) each render the rich service layout via `getServicePageData`. The current `[slug]/page.tsx` uses a completely different generic layout and does not call `getServicePageData`.
+The 8 folders (`web-development/`, `mobile-app-development/`,
+`web-application-development/`, `web-portal-development/`,
+`front-end-development/`, `back-end-development/`, `cms-development/`,
+`mvp-development/`) each render the rich service layout via
+`getServicePageData`. The current `[slug]/page.tsx` uses a completely different
+generic layout and does not call `getServicePageData`.
 
 **Strict order:**
 
@@ -260,25 +289,37 @@ The 8 folders (`web-development/`, `mobile-app-development/`, `web-application-d
    // fallback: existing generic layout
    ```
 
-2. Create `src/features/services/components/RichServicePage.tsx` — consolidate the shared layout from the 8 hardcoded pages. Handle the MVP variant via conditional rendering on `data.mvpSolutions`.
+2. Create `src/features/services/components/RichServicePage.tsx` — consolidate
+   the shared layout from the 8 hardcoded pages. Handle the MVP variant via
+   conditional rendering on `data.mvpSolutions`.
 
-3. Confirm all 8 slugs render correctly via the upgraded `[slug]/page.tsx` in the dev server.
+3. Confirm all 8 slugs render correctly via the upgraded `[slug]/page.tsx` in
+   the dev server.
 
 4. Delete the 8 hardcoded folders.
 
-**Verification**: All 8 rich service URLs return correct content. `pnpm build` generates all static params. `/en/sitemap.xml` lists all service paths.
+**Verification**: All 8 rich service URLs return correct content. `pnpm build`
+generates all static params. `/en/sitemap.xml` lists all service paths.
 
 ---
 
 ### Phase 5 — Features: `home`, `blog`, `admin`, `tools`
 
-**home**: Move `Hero`, `StatsBar`, `Services`, `Industries`, `WhyBobatech`, `FAQ` → `src/features/home/components/`. Update `app/[locale]/page.tsx` to import from `@/features/home` and `@/features/leads`.
+**home**: Move `Hero`, `StatsBar`, `Services`, `Industries`, `WhyBobatech`,
+`FAQ` → `src/features/home/components/`. Update `app/[locale]/page.tsx` to
+import from `@/features/home` and `@/features/leads`.
 
-**blog**: Extract listing JSX → `src/features/blog/components/BlogList.tsx`. Extract post JSX → `src/features/blog/components/BlogPost.tsx`. Create `src/features/blog/api/queries.ts` re-exporting from `~/lib/sanity/queries`. Thin the two blog route files.
+**blog**: Extract listing JSX → `src/features/blog/components/BlogList.tsx`.
+Extract post JSX → `src/features/blog/components/BlogPost.tsx`. Create
+`src/features/blog/api/queries.ts` re-exporting from `~/lib/sanity/queries`.
+Thin the two blog route files.
 
-**admin**: Move `SignOutButton` → `src/features/admin/components/`. Extract messages list → `MessagesView.tsx`. Extract sign-in form → `SignInForm.tsx`. Update route files.
+**admin**: Move `SignOutButton` → `src/features/admin/components/`. Extract
+messages list → `MessagesView.tsx`. Extract sign-in form → `SignInForm.tsx`.
+Update route files.
 
-**tools**: Extract tools page body → `src/features/tools/components/ToolsCatalog.tsx`.
+**tools**: Extract tools page body →
+`src/features/tools/components/ToolsCatalog.tsx`.
 
 Each feature gets an `index.ts`. Leave stubs at all original component paths.
 
@@ -293,7 +334,8 @@ Delete all bridge stubs and empty legacy directories.
    grep -r "export.*from.*@/features\|export.*from.*@/shared" src/components src/data --include="*.ts" --include="*.tsx"
    ```
 2. Update `src/app/sitemap.ts` import → `@/features/services`.
-3. Delete stub files, then empty directories: `src/components/`, `src/data/`, stubs in `src/app/[locale]/pricing/`.
+3. Delete stub files, then empty directories: `src/components/`, `src/data/`,
+   stubs in `src/app/[locale]/pricing/`.
 
 **Final verification:**
 

@@ -58,18 +58,18 @@ Auto-generates utility classes.
 
 ```css
 @theme {
-	--color-brand-gold: #e6be1a;
-	--color-brand-gold-light: #ffeea8;
-	--color-brand-gold-dark: #c9a916;
-	--color-brand-primary: #dbdbd7;
-	--color-brand-bg: #0b0505;
-	--color-brand-bg-alt: #0a0504;
-	--color-surface: rgb(255 255 255 / 0.04);
-	--color-surface-hover: rgb(255 255 255 / 0.08);
-	--color-border: rgb(255 255 255 / 0.1);
-	--color-border-gold: rgb(230 190 26 / 0.4);
-	--font-heading: var(--font-sora);
-	--font-body: var(--font-space-grotesk);
+  --color-brand-gold: #e6be1a;
+  --color-brand-gold-light: #ffeea8;
+  --color-brand-gold-dark: #c9a916;
+  --color-brand-primary: #dbdbd7;
+  --color-brand-bg: #0b0505;
+  --color-brand-bg-alt: #0a0504;
+  --color-surface: rgb(255 255 255 / 0.04);
+  --color-surface-hover: rgb(255 255 255 / 0.08);
+  --color-border: rgb(255 255 255 / 0.1);
+  --color-border-gold: rgb(230 190 26 / 0.4);
+  --font-heading: var(--font-sora);
+  --font-body: var(--font-space-grotesk);
 }
 ```
 

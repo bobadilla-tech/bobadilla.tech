@@ -5,7 +5,7 @@ import Footer from "@/components/ui/Footer";
 import ServiceCard from "@/components/ui/ServiceCard";
 import Button from "@/components/ui/Button";
 import SectionHeader from "@/components/ui/SectionHeader";
-import { allServices, industryServices } from "@/data/services";
+import { allServices, industryServices } from "@/features/services/model/services";
 import {
 	Code,
 	Globe,
