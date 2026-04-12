@@ -1,7 +1,6 @@
 import z, { ZodError } from "zod";
 
 const emailSchema = z
-	.string()
 	.email({ message: "Invalid email. Please enter valid email address" });
 
 export const validEmail = (email: string) => {
