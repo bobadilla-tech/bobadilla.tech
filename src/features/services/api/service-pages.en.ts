@@ -199,6 +199,8 @@ export const servicePages: ServicePageData[] = [
 		heroLine2: "SCALE AND PERFORMANCE",
 		heroSubtitle:
 			"Custom web applications designed around your workflows — fast, secure, and ready to grow with your business.",
+		reasonsHeadingLine1: "WHY OUR WEB APPS",
+		reasonsHeadingLine2: "STAND OUT",
 		painPointsHeading: "COMMON WEB APP PITFALLS",
 		painPoints: [
 			{
@@ -366,31 +368,49 @@ export const servicePages: ServicePageData[] = [
 				title: "React & Next.js applications",
 				description:
 					"Modern, server-rendered or static React apps optimized for SEO and performance.",
+				image:
+					"https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&q=80",
+				imageAlt: "Frontend code editor showing a React application",
 			},
 			{
 				title: "Design system implementation",
 				description:
 					"Convert Figma designs into robust component libraries with full documentation.",
+				image:
+					"https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80",
+				imageAlt: "Design system and UI planning workspace",
 			},
 			{
 				title: "Performance optimization",
 				description:
 					"Bundle analysis, lazy loading, and caching strategies to hit green Core Web Vitals.",
+				image:
+					"https://images.unsplash.com/photo-1518773553398-650c184e0bb3?w=1200&q=80",
+				imageAlt: "Developer workstation focused on performance tuning",
 			},
 			{
 				title: "Responsive & adaptive UI",
 				description:
 					"Interfaces that work beautifully across every breakpoint and device.",
+				image:
+					"https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=1200&q=80",
+				imageAlt: "Responsive interface shown across multiple devices",
 			},
 			{
 				title: "Accessibility (WCAG)",
 				description:
 					"AA-compliant frontends that work for every user, with or without assistive technology.",
+				image:
+					"https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=1200&q=80",
+				imageAlt: "Accessible digital interface and inclusive interaction",
 			},
 			{
 				title: "Frontend architecture",
 				description:
 					"Scalable monorepos, state management, and data-fetching patterns for large teams.",
+				image:
+					"https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=1200&q=80",
+				imageAlt: "Software architecture diagrams for frontend systems",
 			},
 		],
 		processHeading: "OUR FRONTEND PROCESS",
