@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import type { ProcessStep } from "@/features/services/model/types";
@@ -20,11 +21,18 @@ const unionImages = [
 	"/assets/services/process/union-6.svg",
 ];
 
+const PROCESS_CARD_WIDTH = "16rem";
+const CLOSED_X_OFFSET = 24;
+const CLOSED_SCALE = 0.96;
+
 export default function ServiceProcess({
 	heading,
 	subtitle,
 	steps,
 }: ServiceProcessProps) {
+	const [activeStep, setActiveStep] = useState<number | null>(null);
+	const [hoveredStep, setHoveredStep] = useState<number | null>(null);
+
 	return (
 		<section className="py-24 px-4 sm:px-6 lg:px-8">
 			<div className="max-w-6xl mx-auto">
@@ -54,17 +62,31 @@ export default function ServiceProcess({
 				<div className="relative">
 					{steps.map((step, i) => {
 						const isEven = i % 2 === 0;
+						const isDescriptionOpen = activeStep === i || hoveredStep === i;
 						const descriptionCard = (
 							<motion.div
 								initial={{ opacity: 0, x: isEven ? 30 : -30 }}
-								whileInView={{ opacity: 1, x: 0 }}
+								animate={{
+									opacity: isDescriptionOpen ? 1 : 0,
+									x: isDescriptionOpen
+										? 0
+										: isEven
+											? CLOSED_X_OFFSET
+											: -CLOSED_X_OFFSET,
+									scale: isDescriptionOpen ? 1 : CLOSED_SCALE,
+									maxWidth: isDescriptionOpen ? PROCESS_CARD_WIDTH : "0rem",
+								}}
 								viewport={{ once: true }}
-								transition={{ delay: 0.1 }}
-								className="bg-white rounded-[47px] p-8 w-64 flex-shrink-0"
+								transition={{ duration: 0.2 }}
+								className="flex-shrink-0 overflow-hidden"
+								aria-hidden={!isDescriptionOpen}
+								style={{ pointerEvents: isDescriptionOpen ? "auto" : "none" }}
 							>
-								<p className="font-body text-black text-xl font-light leading-snug text-center">
-									{step.description}
-								</p>
+								<div className="bg-white rounded-[47px] p-8 w-64">
+									<p className="font-body text-black text-xl font-light leading-snug text-center">
+										{step.description}
+									</p>
+								</div>
 							</motion.div>
 						);
 
@@ -76,6 +98,8 @@ export default function ServiceProcess({
 								viewport={{ once: true }}
 								transition={{ delay: i * 0.08 }}
 								className={`flex items-center gap-8 mb-4 ${isEven ? "flex-row" : "flex-row-reverse"}`}
+								onMouseEnter={() => setHoveredStep(i)}
+								onMouseLeave={() => setHoveredStep(null)}
 							>
 								{/* Description bubble on alternating side */}
 								<div
@@ -99,15 +123,17 @@ export default function ServiceProcess({
 										<div
 											className={`flex items-center gap-3 ${isEven ? "" : "flex-row-reverse"}`}
 										>
-											<div className="w-20 h-20 flex-shrink-0">
-												<Image
-													src="/assets/services/shared/ellipse-process.svg"
-													alt=""
-													width={80}
-													height={80}
-													unoptimized
-												/>
-											</div>
+											<button
+												type="button"
+												onClick={() =>
+													setActiveStep((current) => (current === i ? null : i))
+												}
+												aria-expanded={isDescriptionOpen}
+												aria-label={`${step.title}: ${isDescriptionOpen ? "Hide" : "Show"} details`}
+												className="w-20 h-20 flex-shrink-0 rounded-full border border-brand-primary/80 flex items-center justify-center font-body text-brand-primary text-4xl leading-none transition-colors hover:bg-brand-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/80 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-bg"
+											>
+												{isDescriptionOpen ? "−" : "+"}
+											</button>
 											<h3 className="font-heading font-bold text-white text-2xl whitespace-nowrap">
 												{step.title}
 											</h3>
