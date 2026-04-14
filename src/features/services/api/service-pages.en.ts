@@ -199,6 +199,8 @@ export const servicePages: ServicePageData[] = [
 		heroLine2: "SCALE AND PERFORMANCE",
 		heroSubtitle:
 			"Custom web applications designed around your workflows — fast, secure, and ready to grow with your business.",
+		reasonsHeadingLine1: "WHY OUR WEB APPS",
+		reasonsHeadingLine2: "STAND OUT",
 		painPointsHeading: "COMMON WEB APP PITFALLS",
 		painPoints: [
 			{

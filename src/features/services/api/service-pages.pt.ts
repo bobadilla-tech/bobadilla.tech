@@ -200,6 +200,8 @@ export const servicePages: ServicePageData[] = [
 		heroLine2: "ESCALA E DESEMPENHO",
 		heroSubtitle:
 			"Aplicações web personalizadas projetadas em torno dos seus fluxos de trabalho — rápidas, seguras e prontas para crescer com seu negócio.",
+		reasonsHeadingLine1: "POR QUE NOSSAS APLICAÇÕES WEB",
+		reasonsHeadingLine2: "SE DESTACAM",
 		painPointsHeading: "ERROS COMUNS EM APPS WEB",
 		painPoints: [
 			{

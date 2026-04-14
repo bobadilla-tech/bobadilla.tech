@@ -89,7 +89,15 @@ function Card({ title, body, featured, active, index, icon: Icon }: CardProps) {
 	);
 }
 
-export default function ServiceReasons() {
+interface ServiceReasonsProps {
+	headingLine1?: string;
+	headingLine2?: string;
+}
+
+export default function ServiceReasons({
+	headingLine1,
+	headingLine2,
+}: ServiceReasonsProps = {}) {
 	const t = useTranslations("ServiceReasons");
 	const [api, setApi] = useState<CarouselApi>();
 	const [selectedIndex, setSelectedIndex] = useState(FEATURED_INDEX);
@@ -144,9 +152,13 @@ export default function ServiceReasons() {
 					viewport={{ once: true }}
 					className="font-heading font-bold text-5xl sm:text-6xl text-center mb-4 tracking-tight"
 				>
-					<span className="text-brand-primary">{t("heading1")}</span>
+					<span className="text-brand-primary">
+						{headingLine1 ?? t("heading1")}
+					</span>
 					<br />
-					<span className="text-brand-gold">{t("heading2")}</span>
+					<span className="text-brand-gold">
+						{headingLine2 ?? t("heading2")}
+					</span>
 				</motion.h2>
 			</div>
 
