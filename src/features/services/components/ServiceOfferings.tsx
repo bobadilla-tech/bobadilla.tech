@@ -8,6 +8,38 @@ interface ServiceOfferingsProps {
 	services: ServiceOffer[];
 }
 
+/**
+ * Returns responsive divider classes for service cards in a 1/2/3-column grid.
+ * Mobile: bottom border between items. Medium: right border on left column and
+ * bottom border between rows. Large: right border on first two columns and
+ * bottom border between rows.
+ */
+function getServiceItemBorderClasses(index: number, totalServices: number): string {
+	const isLastItem = index === totalServices - 1;
+	const mediumScreenColumn = index % 2;
+	const mediumScreenRow = Math.floor(index / 2);
+	const largeScreenColumn = index % 3;
+	const largeScreenRow = Math.floor(index / 3);
+	const isLastMediumScreenRow =
+		mediumScreenRow === Math.floor((totalServices - 1) / 2);
+	const isLastLargeScreenRow =
+		largeScreenRow === Math.floor((totalServices - 1) / 3);
+	const hasMediumScreenRightNeighbor =
+		mediumScreenColumn === 0 && index + 1 < totalServices;
+	const hasLargeScreenRightNeighbor =
+		largeScreenColumn < 2 && index + 1 < totalServices;
+
+	return [
+		!isLastItem ? "border-b" : "",
+		!isLastMediumScreenRow ? "md:border-b" : "md:border-b-0",
+		!isLastLargeScreenRow ? "lg:border-b" : "lg:border-b-0",
+		hasMediumScreenRightNeighbor ? "md:border-r" : "md:border-r-0",
+		hasLargeScreenRightNeighbor ? "lg:border-r" : "lg:border-r-0",
+	]
+		.filter(Boolean)
+		.join(" ");
+}
+
 export default function ServiceOfferings({
 	heading,
 	services,
@@ -31,26 +63,15 @@ export default function ServiceOfferings({
 
 				{/* 2×3 grid with dividers */}
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-					{services.map((service, i) => {
-						const totalServices = services.length;
-						const isLastItem = i === totalServices - 1;
-						const mdCol = i % 2;
-						const mdRow = Math.floor(i / 2);
-						const lgCol = i % 3;
-						const lgRow = Math.floor(i / 3);
-						const isLastMdRow = mdRow === Math.floor((totalServices - 1) / 2);
-						const isLastLgRow = lgRow === Math.floor((totalServices - 1) / 3);
-						const hasMdRightNeighbor = mdCol === 0 && i + 1 < totalServices;
-						const hasLgRightNeighbor = lgCol < 2 && i + 1 < totalServices;
-
+					{services.map((service, serviceIndex) => {
 						return (
 							<motion.div
 								key={service.title}
 								initial={{ opacity: 0, y: 20 }}
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true }}
-								transition={{ duration: 0.4, delay: i * 0.08 }}
-								className={`border-border p-8 ${!isLastItem ? "border-b" : ""} ${!isLastMdRow ? "md:border-b" : "md:border-b-0"} ${!isLastLgRow ? "lg:border-b" : "lg:border-b-0"} ${hasMdRightNeighbor ? "md:border-r" : "md:border-r-0"} ${hasLgRightNeighbor ? "lg:border-r" : "lg:border-r-0"}`}
+								transition={{ duration: 0.4, delay: serviceIndex * 0.08 }}
+								className={`border-border p-8 ${getServiceItemBorderClasses(serviceIndex, services.length)}`}
 							>
 								<h3 className="font-heading font-bold text-brand-primary text-xl mb-4 leading-snug">
 									{service.title}
