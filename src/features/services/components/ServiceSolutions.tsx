@@ -7,6 +7,8 @@ import {
 	Carousel,
 	CarouselContent,
 	CarouselItem,
+	CarouselNext,
+	CarouselPrevious,
 } from "@/shared/ui/carousel";
 
 const solutionIcons = {
@@ -16,6 +18,10 @@ const solutionIcons = {
 	"feature-focused": Target,
 	growth: TrendingUp,
 };
+const containerPadding = "px-4 sm:px-6 lg:px-8";
+const carouselEndPadding = "pr-4 sm:pr-6 lg:pr-8";
+const navButtonStyles =
+	"!static !translate-y-0 h-10 w-10 border-border-gold bg-surface text-brand-primary transition-all duration-300 hover:scale-105 hover:bg-surface-hover";
 
 interface ServiceSolutionsProps {
 	heading: string;
@@ -46,9 +52,9 @@ export default function ServiceSolutions({
 				</motion.h2>
 			</div>
 
-			<div className="px-4 sm:px-6">
+			<div className={containerPadding}>
 				<Carousel opts={{ align: "start", loop: false, dragFree: true }}>
-					<CarouselContent className="-ml-4">
+					<CarouselContent className={`-ml-4 ${carouselEndPadding}`}>
 						{solutions.map((solution, i) => {
 							const Icon = solutionIcons[solution.icon];
 							return (
@@ -77,6 +83,16 @@ export default function ServiceSolutions({
 							);
 						})}
 					</CarouselContent>
+					<motion.div
+						initial={{ opacity: 0, y: 14 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.35, delay: 0.15 }}
+						className={`mt-6 ${containerPadding} flex items-center justify-center gap-3`}
+					>
+						<CarouselPrevious className={navButtonStyles} />
+						<CarouselNext className={navButtonStyles} />
+					</motion.div>
 				</Carousel>
 			</div>
 		</section>

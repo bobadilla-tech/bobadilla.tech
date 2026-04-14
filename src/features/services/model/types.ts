@@ -26,6 +26,8 @@ export interface MvpForWho {
 export interface ServiceOffer {
 	title: string;
 	description: string;
+	image?: string;
+	imageAlt?: string;
 }
 
 export interface ServiceHighlight {
@@ -50,6 +52,8 @@ export interface ServicePageData {
 	heroLine1: string;
 	heroLine2: string;
 	heroSubtitle: string;
+	reasonsHeadingLine1?: string;
+	reasonsHeadingLine2?: string;
 	painPointsHeading: string;
 	painPoints: PainPoint[];
 	servicesHeading: string;
