@@ -32,9 +32,17 @@ export default function ServiceOfferings({
 				{/* 2×3 grid with dividers */}
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 					{services.map((service, i) => {
-						const col = i % 3;
-						const row = Math.floor(i / 3);
-						const isLastRow = row === Math.floor((services.length - 1) / 3);
+						const totalServices = services.length;
+						const isLastItem = i === totalServices - 1;
+						const mdCol = i % 2;
+						const mdRow = Math.floor(i / 2);
+						const lgCol = i % 3;
+						const lgRow = Math.floor(i / 3);
+						const isLastMdRow = mdRow === Math.floor((totalServices - 1) / 2);
+						const isLastLgRow = lgRow === Math.floor((totalServices - 1) / 3);
+						const hasMdRightNeighbor = mdCol === 0 && i + 1 < totalServices;
+						const hasLgRightNeighbor = lgCol < 2 && i + 1 < totalServices;
+
 						return (
 							<motion.div
 								key={service.title}
@@ -42,7 +50,7 @@ export default function ServiceOfferings({
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true }}
 								transition={{ duration: 0.4, delay: i * 0.08 }}
-								className={`p-8 ${!isLastRow ? "border-b border-border" : ""} ${col < 2 ? "lg:border-r lg:border-border" : ""}`}
+								className={`border-border p-8 ${!isLastItem ? "border-b" : ""} ${!isLastMdRow ? "md:border-b" : "md:border-b-0"} ${!isLastLgRow ? "lg:border-b" : "lg:border-b-0"} ${hasMdRightNeighbor ? "md:border-r" : "md:border-r-0"} ${hasLgRightNeighbor ? "lg:border-r" : "lg:border-r-0"}`}
 							>
 								<h3 className="font-heading font-bold text-brand-primary text-xl mb-4 leading-snug">
 									{service.title}
