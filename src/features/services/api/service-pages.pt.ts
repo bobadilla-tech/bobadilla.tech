@@ -270,6 +270,33 @@ export const servicePages: ServicePageData[] = [
 		heroLine2: "PESSOAS E PROCESSOS",
 		heroSubtitle:
 			"Portais para clientes, fornecedores e intranets para funcionários — construídos com controle de acesso seguro e fluxos de usuário fluidos.",
+		highlightsHeading: "TUDO O QUE OS USUÁRIOS PRECISAM EM UM SÓ LUGAR",
+		highlights: [
+			{
+				icon: "/assets/services/pain-points/aq-indoor.svg",
+				title: "Dashboard unificado",
+				description:
+					"Dê a cada perfil uma visão única do portal com as ferramentas, alertas e dados mais importantes.",
+			},
+			{
+				icon: "/assets/services/pain-points/encrypted.svg",
+				title: "Acesso seguro por função",
+				description:
+					"Proteja dados sensíveis com camadas de permissão adaptadas por função, equipe e conta.",
+			},
+			{
+				icon: "/assets/services/pain-points/manufacturing.svg",
+				title: "Automação de fluxos",
+				description:
+					"Substitua tarefas repetitivas por aprovações, notificações e fluxos de autoatendimento.",
+			},
+			{
+				icon: "/assets/services/pain-points/social-distance.svg",
+				title: "Sistemas conectados",
+				description:
+					"Sincronize ERP, CRM, faturamento e suporte para que os usuários sempre trabalhem com dados atualizados.",
+			},
+		],
 		painPointsHeading: "DESAFIOS DE PORTAIS QUE RESOLVEMOS",
 		painPoints: [
 			{
