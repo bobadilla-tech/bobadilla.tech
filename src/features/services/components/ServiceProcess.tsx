@@ -21,12 +21,16 @@ const unionImages = [
 	"/assets/services/process/union-6.svg",
 ];
 
+const PROCESS_CARD_WIDTH = "16rem";
+const CLOSED_X_OFFSET = 24;
+const CLOSED_SCALE = 0.96;
+
 export default function ServiceProcess({
 	heading,
 	subtitle,
 	steps,
 }: ServiceProcessProps) {
-	const [activeStep, setActiveStep] = useState<number | null>(0);
+	const [activeStep, setActiveStep] = useState<number | null>(null);
 	const [hoveredStep, setHoveredStep] = useState<number | null>(null);
 
 	return (
@@ -64,18 +68,25 @@ export default function ServiceProcess({
 								initial={{ opacity: 0, x: isEven ? 30 : -30 }}
 								animate={{
 									opacity: isDescriptionOpen ? 1 : 0,
-									x: isDescriptionOpen ? 0 : isEven ? 24 : -24,
-									scale: isDescriptionOpen ? 1 : 0.96,
+									x: isDescriptionOpen
+										? 0
+										: isEven
+											? CLOSED_X_OFFSET
+											: -CLOSED_X_OFFSET,
+									scale: isDescriptionOpen ? 1 : CLOSED_SCALE,
+									maxWidth: isDescriptionOpen ? PROCESS_CARD_WIDTH : "0rem",
 								}}
 								viewport={{ once: true }}
 								transition={{ duration: 0.2 }}
-								className="bg-white rounded-[47px] p-8 w-64 flex-shrink-0"
+								className="flex-shrink-0 overflow-hidden"
 								aria-hidden={!isDescriptionOpen}
 								style={{ pointerEvents: isDescriptionOpen ? "auto" : "none" }}
 							>
-								<p className="font-body text-black text-xl font-light leading-snug text-center">
-									{step.description}
-								</p>
+								<div className="bg-white rounded-[47px] p-8 w-64">
+									<p className="font-body text-black text-xl font-light leading-snug text-center">
+										{step.description}
+									</p>
+								</div>
 							</motion.div>
 						);
 
@@ -119,9 +130,9 @@ export default function ServiceProcess({
 												}
 												aria-expanded={isDescriptionOpen}
 												aria-label={`${step.title}: ${isDescriptionOpen ? "Hide" : "Show"} details`}
-												className="w-20 h-20 flex-shrink-0 rounded-full border border-white/80 flex items-center justify-center font-body text-white text-4xl leading-none transition-colors hover:bg-white/10"
+												className="w-20 h-20 flex-shrink-0 rounded-full border border-brand-primary/80 flex items-center justify-center font-body text-brand-primary text-4xl leading-none transition-colors hover:bg-brand-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/80 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-bg"
 											>
-												+
+												{isDescriptionOpen ? "−" : "+"}
 											</button>
 											<h3 className="font-heading font-bold text-white text-2xl whitespace-nowrap">
 												{step.title}
