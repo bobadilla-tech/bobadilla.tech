@@ -28,11 +28,10 @@ export default function ServiceHighlights({
 					transition={{ duration: 0.5 }}
 					className="text-center mb-16"
 				>
-					<h2 className="font-heading font-bold text-4xl sm:text-5xl text-brand-primary">
+					<h2 className="font-heading font-bold text-4xl sm:text-5xl">
 						<span className="bg-gradient-to-r from-brand-gold to-brand-primary bg-clip-text text-transparent">
-							{heading.split(" ").slice(0, 2).join(" ")}{" "}
+							{heading}
 						</span>
-						{heading.split(" ").slice(2).join(" ")}
 					</h2>
 				</motion.div>
 			</div>
@@ -50,7 +49,7 @@ export default function ServiceHighlights({
 									whileInView={{ opacity: 1, y: 0 }}
 									viewport={{ once: true }}
 									transition={{ duration: 0.4, delay: i * 0.08 }}
-									className="bg-white rounded-[26px] p-8 h-full"
+									className="bg-brand-primary rounded-[26px] p-8 h-full"
 								>
 									<div className="w-32 h-32 mb-6">
 										<Image
@@ -62,11 +61,11 @@ export default function ServiceHighlights({
 											unoptimized
 										/>
 									</div>
-									<div className="w-full h-px bg-black/10 mb-6" />
-									<h3 className="font-heading text-[#1a1919] text-2xl font-normal mb-4 leading-tight">
+									<div className="w-full h-px bg-brand-bg/10 mb-6" />
+									<h3 className="font-heading text-brand-bg text-2xl font-normal mb-4 leading-tight">
 										{item.title}
 									</h3>
-									<p className="font-body text-[#191818] text-lg font-extralight leading-relaxed">
+									<p className="font-body text-brand-bg/80 text-lg font-extralight leading-relaxed">
 										{item.description}
 									</p>
 								</motion.div>
