@@ -89,6 +89,10 @@ function Card({ title, body, featured, active, index, icon: Icon }: CardProps) {
 	);
 }
 
+/**
+ * Optional heading overrides for pages that need custom title copy
+ * while reusing the same reasons carousel content.
+ */
 interface ServiceReasonsProps {
 	headingLine1?: string;
 	headingLine2?: string;
@@ -97,7 +101,7 @@ interface ServiceReasonsProps {
 export default function ServiceReasons({
 	headingLine1,
 	headingLine2,
-}: ServiceReasonsProps = {}) {
+}: ServiceReasonsProps) {
 	const t = useTranslations("ServiceReasons");
 	const [api, setApi] = useState<CarouselApi>();
 	const [selectedIndex, setSelectedIndex] = useState(FEATURED_INDEX);

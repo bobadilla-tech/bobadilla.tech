@@ -21,8 +21,8 @@ interface RichServicePageProps {
 }
 
 export default function RichServicePage({ data }: RichServicePageProps) {
-	const showWebAppStandoutSection =
-		data.slug === "web-application-development";
+	const showReasonsAbovePainPoints =
+		Boolean(data.reasonsHeadingLine1 || data.reasonsHeadingLine2);
 
 	// MVP variant: has mvpSolutions
 	if (data.mvpSolutions) {
@@ -106,7 +106,7 @@ export default function RichServicePage({ data }: RichServicePageProps) {
 				line2={data.heroLine2}
 				subtitle={data.heroSubtitle}
 			/>
-			{showWebAppStandoutSection && (
+			{showReasonsAbovePainPoints && (
 				<ServiceReasons
 					headingLine1={data.reasonsHeadingLine1}
 					headingLine2={data.reasonsHeadingLine2}
@@ -135,7 +135,7 @@ export default function RichServicePage({ data }: RichServicePageProps) {
 				heading={data.servicesHeading}
 				services={data.servicesOffered}
 			/>
-			{!showWebAppStandoutSection && <ServiceReasons />}
+			{!showReasonsAbovePainPoints && <ServiceReasons />}
 			<ServiceProcess
 				heading={data.processHeading}
 				subtitle={data.processSubtitle}
