@@ -21,6 +21,9 @@ interface RichServicePageProps {
 }
 
 export default function RichServicePage({ data }: RichServicePageProps) {
+	const showReasonsAbovePainPoints =
+		Boolean(data.reasonsHeadingLine1 || data.reasonsHeadingLine2);
+
 	// MVP variant: has mvpSolutions
 	if (data.mvpSolutions) {
 		return (
@@ -103,6 +106,12 @@ export default function RichServicePage({ data }: RichServicePageProps) {
 				line2={data.heroLine2}
 				subtitle={data.heroSubtitle}
 			/>
+			{showReasonsAbovePainPoints && (
+				<ServiceReasons
+					headingLine1={data.reasonsHeadingLine1}
+					headingLine2={data.reasonsHeadingLine2}
+				/>
+			)}
 			<ServicePainPoints
 				heading={data.painPointsHeading}
 				painPoints={data.painPoints}
@@ -126,7 +135,7 @@ export default function RichServicePage({ data }: RichServicePageProps) {
 				heading={data.servicesHeading}
 				services={data.servicesOffered}
 			/>
-			<ServiceReasons />
+			{!showReasonsAbovePainPoints && <ServiceReasons />}
 			<ServiceProcess
 				heading={data.processHeading}
 				subtitle={data.processSubtitle}

@@ -44,6 +44,8 @@ export interface ServicePageData {
 	heroLine1: string;
 	heroLine2: string;
 	heroSubtitle: string;
+	reasonsHeadingLine1?: string;
+	reasonsHeadingLine2?: string;
 	painPointsHeading: string;
 	painPoints: PainPoint[];
 	servicesHeading: string;
