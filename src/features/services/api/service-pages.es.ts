@@ -200,6 +200,8 @@ export const servicePages: ServicePageData[] = [
 		heroLine2: "ESCALA Y RENDIMIENTO",
 		heroSubtitle:
 			"Aplicaciones web personalizadas diseñadas en torno a tus flujos de trabajo — rápidas, seguras y listas para crecer con tu negocio.",
+		reasonsHeadingLine1: "POR QUÉ NUESTRAS APPS WEB",
+		reasonsHeadingLine2: "DESTACAN",
 		painPointsHeading: "ERRORES COMUNES EN APPS WEB",
 		painPoints: [
 			{
@@ -367,31 +369,49 @@ export const servicePages: ServicePageData[] = [
 				title: "Aplicaciones React y Next.js",
 				description:
 					"Apps React modernas, server-rendered o estáticas, optimizadas para SEO y rendimiento.",
+				image:
+					"https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&q=80",
+				imageAlt: "Editor de código frontend con una aplicación React",
 			},
 			{
 				title: "Implementación de design systems",
 				description:
 					"Convierte diseños de Figma en robustas librerías de componentes con documentación completa.",
+				image:
+					"https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80",
+				imageAlt: "Espacio de trabajo de design system y planificación UI",
 			},
 			{
 				title: "Optimización de rendimiento",
 				description:
 					"Análisis de bundles, lazy loading y estrategias de caché para alcanzar Core Web Vitals en verde.",
+				image:
+					"https://images.unsplash.com/photo-1518773553398-650c184e0bb3?w=1200&q=80",
+				imageAlt: "Estación de desarrollo enfocada en optimización de rendimiento",
 			},
 			{
 				title: "UI responsiva y adaptativa",
 				description:
 					"Interfaces que funcionan perfectamente en cada breakpoint y dispositivo.",
+				image:
+					"https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=1200&q=80",
+				imageAlt: "Interfaz responsiva mostrada en múltiples dispositivos",
 			},
 			{
 				title: "Accesibilidad (WCAG)",
 				description:
 					"Frontends conformes con AA que funcionan para cada usuario, con o sin tecnología asistiva.",
+				image:
+					"https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=1200&q=80",
+				imageAlt: "Interfaz digital accesible e interacción inclusiva",
 			},
 			{
 				title: "Arquitectura frontend",
 				description:
 					"Monorepos escalables, gestión de estado y patrones de fetching de datos para equipos grandes.",
+				image:
+					"https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=1200&q=80",
+				imageAlt: "Diagramas de arquitectura de software para frontend",
 			},
 		],
 		processHeading: "NUESTRO PROCESO FRONTEND",

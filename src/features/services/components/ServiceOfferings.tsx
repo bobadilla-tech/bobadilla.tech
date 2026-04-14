@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import type { ServiceOffer } from "@/features/services/model/types";
 
 interface ServiceOfferingsProps {
@@ -44,6 +45,8 @@ export default function ServiceOfferings({
 	heading,
 	services,
 }: ServiceOfferingsProps) {
+	const useCardLayout = services.some((service) => Boolean(service.image));
+
 	return (
 		<section className="py-24 px-4 sm:px-6 lg:px-8">
 			<div className="max-w-7xl mx-auto">
@@ -61,10 +64,41 @@ export default function ServiceOfferings({
 					</span>
 				</motion.h2>
 
-				{/* 2×3 grid with dividers */}
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-					{services.map((service, serviceIndex) => {
-						return (
+				{useCardLayout ? (
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+						{services.map((service, i) => (
+							<motion.div
+								key={service.title}
+								initial={{ opacity: 0, y: 20 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.4, delay: i * 0.08 }}
+								className="group relative overflow-hidden rounded-2xl border border-border aspect-[4/5]"
+							>
+								{service.image && (
+									<Image
+										src={service.image}
+										alt={service.imageAlt ?? service.title}
+										fill
+										sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+										className="object-cover transition-transform duration-500 group-hover:scale-105"
+									/>
+								)}
+								<div className="absolute inset-0 bg-gradient-to-t from-brand-bg via-brand-bg/40 to-transparent" />
+								<div className="absolute inset-x-0 bottom-0 p-6">
+									<h3 className="font-heading font-bold text-brand-primary text-xl mb-3 leading-snug">
+										{service.title}
+									</h3>
+									<p className="font-body text-brand-primary/80 text-base leading-relaxed">
+										{service.description}
+									</p>
+								</div>
+							</motion.div>
+						))}
+					</div>
+				) : (
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+						{services.map((service, serviceIndex) => (
 							<motion.div
 								key={service.title}
 								initial={{ opacity: 0, y: 20 }}
@@ -80,9 +114,9 @@ export default function ServiceOfferings({
 									{service.description}
 								</p>
 							</motion.div>
-						);
-					})}
-				</div>
+						))}
+					</div>
+				)}
 			</div>
 		</section>
 	);
