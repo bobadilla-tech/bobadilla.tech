@@ -48,10 +48,11 @@ export default function ServiceOfferings({
 										src={service.image}
 										alt={service.imageAlt ?? service.title}
 										fill
+										sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
 										className="object-cover transition-transform duration-500 group-hover:scale-105"
 									/>
 								)}
-								<div className="absolute inset-0 bg-linear-to-t from-brand-bg via-brand-bg/40 to-transparent" />
+								<div className="absolute inset-0 bg-gradient-to-t from-brand-bg via-brand-bg/40 to-transparent" />
 								<div className="absolute inset-x-0 bottom-0 p-6">
 									<h3 className="font-heading font-bold text-brand-primary text-xl mb-3 leading-snug">
 										{service.title}
