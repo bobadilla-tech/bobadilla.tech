@@ -369,31 +369,49 @@ export const servicePages: ServicePageData[] = [
 				title: "Aplicações React e Next.js",
 				description:
 					"Apps React modernas, server-rendered ou estáticas, otimizadas para SEO e desempenho.",
+				image:
+					"https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&q=80",
+				imageAlt: "Editor de código frontend com uma aplicação React",
 			},
 			{
 				title: "Implementação de design systems",
 				description:
 					"Converta designs do Figma em bibliotecas de componentes robustas com documentação completa.",
+				image:
+					"https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80",
+				imageAlt: "Ambiente de design system e planejamento de UI",
 			},
 			{
 				title: "Otimização de desempenho",
 				description:
 					"Análise de bundles, lazy loading e estratégias de cache para atingir Core Web Vitals no verde.",
+				image:
+					"https://images.unsplash.com/photo-1518773553398-650c184e0bb3?w=1200&q=80",
+				imageAlt: "Estação de desenvolvimento focada em performance",
 			},
 			{
 				title: "UI responsiva e adaptativa",
 				description:
 					"Interfaces que funcionam perfeitamente em cada breakpoint e dispositivo.",
+				image:
+					"https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=1200&q=80",
+				imageAlt: "Interface responsiva exibida em múltiplos dispositivos",
 			},
 			{
 				title: "Acessibilidade (WCAG)",
 				description:
 					"Frontends conformes com AA que funcionam para cada usuário, com ou sem tecnologia assistiva.",
+				image:
+					"https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=1200&q=80",
+				imageAlt: "Interface digital acessível e interação inclusiva",
 			},
 			{
 				title: "Arquitetura frontend",
 				description:
 					"Monorepos escaláveis, gerenciamento de estado e padrões de fetching de dados para equipes grandes.",
+				image:
+					"https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=1200&q=80",
+				imageAlt: "Diagramas de arquitetura de software para frontend",
 			},
 		],
 		processHeading: "NOSSO PROCESSO FRONTEND",

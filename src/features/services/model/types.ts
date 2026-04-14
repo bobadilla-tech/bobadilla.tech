@@ -26,6 +26,8 @@ export interface MvpForWho {
 export interface ServiceOffer {
 	title: string;
 	description: string;
+	image?: string;
+	imageAlt?: string;
 }
 
 export interface ProcessStep {
