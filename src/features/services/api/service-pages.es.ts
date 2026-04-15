@@ -176,7 +176,7 @@ export const servicePages: ServicePageData[] = [
 			{
 				title: "Integraciones de API CMS",
 				description:
-					"Conecta tu CMS a servicios de terceros — analíticas, correo, pasarelas de pago y más.",
+					"Conecta tu CMS a servicios de terceros, incluyendo analíticas, correo, pasarelas de pago y más.",
 			},
 			{
 				title: "Diseño de experiencia de edición",
