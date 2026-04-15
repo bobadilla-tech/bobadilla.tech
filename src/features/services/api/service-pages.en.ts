@@ -271,6 +271,33 @@ export const servicePages: ServicePageData[] = [
 		heroLine2: "PEOPLE AND PROCESSES",
 		heroSubtitle:
 			"Client portals, vendor portals, and employee intranets — built with secure access control and seamless user workflows.",
+		highlightsHeading: "EVERYTHING USERS NEED IN ONE PLACE",
+		highlights: [
+			{
+				icon: "/assets/services/pain-points/aq-indoor.svg",
+				title: "Unified dashboard",
+				description:
+					"Give each user role a single portal view with the tools, alerts, and data they need most.",
+			},
+			{
+				icon: "/assets/services/pain-points/encrypted.svg",
+				title: "Secure role-based access",
+				description:
+					"Protect sensitive data with permission layers that adapt by role, team, and account.",
+			},
+			{
+				icon: "/assets/services/pain-points/manufacturing.svg",
+				title: "Workflow automation",
+				description:
+					"Replace repetitive back-and-forth with approvals, notifications, and self-service flows.",
+			},
+			{
+				icon: "/assets/services/pain-points/social-distance.svg",
+				title: "Connected systems",
+				description:
+					"Sync ERP, CRM, billing, and support tools so users always work with up-to-date information.",
+			},
+		],
 		painPointsHeading: "PORTAL CHALLENGES WE SOLVE",
 		painPoints: [
 			{

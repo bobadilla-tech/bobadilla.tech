@@ -30,6 +30,12 @@ export interface ServiceOffer {
 	imageAlt?: string;
 }
 
+export interface ServiceHighlight {
+	icon: string;
+	title: string;
+	description: string;
+}
+
 export interface ProcessStep {
 	title: string;
 	description: string;
@@ -68,6 +74,9 @@ export interface ServicePageData {
 	mvpSolutions?: MvpSolution[];
 	forWhoHeading?: string;
 	forWho?: MvpForWho[];
+	/** Optional carousel shown above pain points */
+	highlightsHeading?: string;
+	highlights?: ServiceHighlight[];
 }
 
 export interface Service {

@@ -15,6 +15,7 @@ import ServiceFAQ from "./ServiceFAQ";
 import ServiceEstimateCTA from "./ServiceEstimateCTA";
 import ServiceSolutions from "./ServiceSolutions";
 import ServiceForWho from "./ServiceForWho";
+import ServiceHighlights from "./ServiceHighlights";
 
 interface RichServicePageProps {
 	data: ServicePageData;
@@ -106,6 +107,12 @@ export default function RichServicePage({ data }: RichServicePageProps) {
 				line2={data.heroLine2}
 				subtitle={data.heroSubtitle}
 			/>
+			{data.highlightsHeading && data.highlights && (
+				<ServiceHighlights
+					heading={data.highlightsHeading}
+					highlights={data.highlights}
+				/>
+			)}
 			{showReasonsAbovePainPoints && (
 				<ServiceReasons
 					headingLine1={data.reasonsHeadingLine1}
