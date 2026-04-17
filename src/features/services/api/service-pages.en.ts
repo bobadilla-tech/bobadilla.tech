@@ -451,11 +451,11 @@ export const servicePages: ServicePageData[] = [
 	// ─── BACKEND ────────────────────────────────────────────────────────────
 	{
 		slug: "back-end-development",
-		eyebrow: "BACKEND DEVELOPMENT",
-		heroLine1: "BACKENDS BUILT FOR",
-		heroLine2: "RELIABILITY AND SCALE",
+		eyebrow: "BACK END DEVELOPMENT SERVICES",
+		heroLine1: "ROBUST BACKEND SYSTEMS",
+		heroLine2: "THAT POWER YOUR APPLICATION",
 		heroSubtitle:
-			"From REST APIs to event-driven microservices — we architect backend systems that handle real production load.",
+			"We design and develop fast, scalable, and user-focused web applications tailored to your business needs.",
 		painPointsHeading: "BACKEND RISKS WE ELIMINATE",
 		painPoints: [
 			{

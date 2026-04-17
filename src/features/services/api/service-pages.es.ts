@@ -452,11 +452,11 @@ export const servicePages: ServicePageData[] = [
 	// ─── BACKEND ────────────────────────────────────────────────────────────
 	{
 		slug: "back-end-development",
-		eyebrow: "DESARROLLO BACKEND",
-		heroLine1: "BACKENDS CONSTRUIDOS PARA",
-		heroLine2: "CONFIABILIDAD Y ESCALA",
+		eyebrow: "SERVICIOS DE DESARROLLO BACKEND",
+		heroLine1: "SISTEMAS BACKEND ROBUSTOS",
+		heroLine2: "QUE POTENCIAN TU APLICACIÓN",
 		heroSubtitle:
-			"Desde APIs REST hasta microservicios event-driven — arquitectamos sistemas backend que manejan carga real de producción.",
+			"Diseñamos y desarrollamos aplicaciones web rápidas, escalables y centradas en el usuario, adaptadas a las necesidades de tu negocio.",
 		painPointsHeading: "RIESGOS BACKEND QUE ELIMINAMOS",
 		painPoints: [
 			{
