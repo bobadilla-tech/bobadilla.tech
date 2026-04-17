@@ -900,5 +900,64 @@
 			"bookCall": "Reservar llamada",
 			"allCaseStudies": "Ver todos los casos de estudio"
 		}
+	},
+	"HirePage": {
+		"overline": "Bobadilla Tech",
+		"heading": "Sistemas en producción, construidos por",
+		"headingGold": "los ingenieros que escriben el código.",
+		"intro": "Para fundadores técnicos y equipos que necesitan sistemas backend, integraciones de IA o infraestructura escalable — hecho por ingenieros senior, no delegado hacia abajo.",
+		"cta1": "Obtener una evaluación técnica",
+		"cta2": "O empieza con un proyecto pequeño",
+		"whoHeading": "Para quién es esto",
+		"who": [
+			"Tienes una idea de MVP y necesitas que esté lista para producción — no un prototipo",
+			"Tu backend está fallando bajo carga real",
+			"Quieres IA integrada en tu producto — no una demo, un sistema real",
+			"Has trabajado con agencias y obtuviste entregas lentas y código de juniors",
+			"Necesitas una segunda opinión sobre un sistema antes de escalarlo",
+			"Eres suficientemente técnico para saber cuándo el trabajo es bueno"
+		],
+		"servicesHeading": "Qué hacemos",
+		"servicesSubtitle": "Trabajo enfocado en las áreas en las que realmente somos buenos.",
+		"services": [
+			{ "title": "Desarrollo de MVP", "description": "Full-stack o enfocado en backend. Desde el diseño del esquema hasta la API desplegada. Definimos el alcance bien, construimos correctamente y entregamos en semanas — no meses.", "outcome": "Un sistema funcionando en producción" },
+			{ "title": "Sistemas de IA y Automatización", "description": "Pipelines de LLM, RAG, agentes, embeddings, fine-tuning. Integraciones reales en tu producto — no un wrapper alrededor de una llamada a API.", "outcome": "IA que realmente hace algo útil" },
+			{ "title": "Backend e Infraestructura", "description": "APIs, bases de datos, colas, infraestructura cloud. Construido para escalar bajo carga real — no solo para pasar una demo. Incluye decisiones de arquitectura, no solo código.", "outcome": "Un backend que no falla cuando importa" },
+			{ "title": "Optimización de Sistemas", "description": "Identifica cuellos de botella, reduce latencia, arregla lo frágil antes de que falle en producción. Incluye un informe escrito y un plan de acción priorizado.", "outcome": "Claridad sobre qué arreglar y cómo" }
+		],
+		"howHeading": "Cómo trabajamos",
+		"howNote": "Hablas directamente con los ingenieros construyendo tu sistema. Sin project managers, sin account managers, sin nadie repitiendo lo que acabas de decir en otra reunión.",
+		"steps": [
+			{ "number": "01", "title": "Entender", "body": "Llamada breve o brief escrito. Hacemos preguntas directas sobre lo que necesitas, lo que has intentado y lo que realmente importa." },
+			{ "number": "02", "title": "Alcance", "body": "Definimos exactamente qué se construye y por cuánto. Precio fijo, por escrito. Sin sorpresas después." },
+			{ "number": "03", "title": "Construir", "body": "Los ingenieros senior escriben el código. Recibes actualizaciones conforme avanza el trabajo. Sin transferencias a juniors." },
+			{ "number": "04", "title": "Entregar e Iterar", "body": "Entregamos. Revisas. Ajustamos. No desaparecemos después de la primera entrega." }
+		],
+		"whyHeading": "Por qué nosotros",
+		"why": [
+			"3 ingenieros senior en el equipo base — no una firma de staffing ni una operación de outsourcing",
+			"Hemos entregado y mantenemos productos internos (Requiems API, CompileStrength) — sistemas reales que son nuestros",
+			"Un equipo pequeño significa responsabilidad directa — sabes quién construyó qué y por qué",
+			"Sin outsourcing, sin juniors con trabajo de senior, sin capas de project managers en medio"
+		],
+		"smallHeading": "¿No estás listo para comprometerte con un proyecto completo?",
+		"smallBody": "La mejor manera de ver cómo trabajamos es hacer juntos una pequeña pieza de trabajo real. Alcance fijo, precio fijo, sin compromiso a largo plazo.",
+		"startSmall": {
+			"title": "Empieza Pequeño",
+			"body": "Una construcción de feature, un endpoint de API o un trabajo con alcance definido. Precio fijo, entregado en 1–2 semanas.",
+			"price": "$400–$1.000",
+			"cta": "Ver ejemplos"
+		},
+		"audit": {
+			"title": "Auditoría de Sistema",
+			"body": "Revisión de tu codebase, backend e infraestructura. Informe escrito con recomendaciones específicas y un plan de acción priorizado.",
+			"price": "$1.000–$2.000",
+			"cta": "Saber más"
+		},
+		"finalHeading": "¿Listo para hablar?",
+		"finalBody": "Reserva una llamada técnica breve. Entenderemos tu problema y te diremos honestamente si somos el fit adecuado.",
+		"finalNote": "Sin pitch de ventas. Sin presión. Solo una conversación directa.",
+		"bookCall": "Reservar llamada técnica",
+		"startSmallCta": "Empezar con un proyecto pequeño"
 	}
 }
