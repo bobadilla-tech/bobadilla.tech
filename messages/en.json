@@ -897,5 +897,64 @@
 			"bookCall": "Book a call",
 			"allCaseStudies": "See all case studies"
 		}
+	},
+	"HirePage": {
+		"overline": "Bobadilla Tech",
+		"heading": "Production systems, built by",
+		"headingGold": "the engineers writing the code.",
+		"intro": "For technical founders and teams who need backend systems, AI integrations, or scalable infrastructure — done by senior engineers, not delegated down.",
+		"cta1": "Get a Technical Assessment",
+		"cta2": "Or start with a small project",
+		"whoHeading": "Who this is for",
+		"who": [
+			"You have an MVP idea and need it production-ready — not a prototype",
+			"Your backend is breaking under real load",
+			"You want AI integrated into your product — not a demo, a real system",
+			"You've worked with dev shops and got slow delivery and junior code",
+			"You need a second opinion on a system before you scale it",
+			"You're technical enough to know when the work is good"
+		],
+		"servicesHeading": "What we do",
+		"servicesSubtitle": "Focused work in the areas we're actually good at.",
+		"services": [
+			{ "title": "MVP Development", "description": "Full-stack or backend-focused. From schema design to deployed API. We scope it tight, build it right, and ship it in weeks — not months.", "outcome": "A working system in production" },
+			{ "title": "AI Systems & Automation", "description": "LLM pipelines, RAG, agents, embeddings, fine-tuning. Real integrations into your product — not a wrapper around an API call.", "outcome": "AI that actually does something useful" },
+			{ "title": "Backend & Infrastructure", "description": "APIs, databases, queues, cloud infra. Built to scale under real load — not just to pass a demo. Includes architecture decisions, not just code.", "outcome": "A backend that doesn't break when it matters" },
+			{ "title": "System Optimization", "description": "Identify bottlenecks, reduce latency, fix what's fragile before it breaks in production. Includes a written report and prioritized action plan.", "outcome": "Clarity on what to fix and how" }
+		],
+		"howHeading": "How we work",
+		"howNote": "You talk directly to the engineers building your system. No project managers, no account managers, no one repeating what you just said in a different meeting.",
+		"steps": [
+			{ "number": "01", "title": "Understand", "body": "Short call or written brief. We ask direct questions about what you need, what you've tried, and what actually matters." },
+			{ "number": "02", "title": "Scope", "body": "We define exactly what gets built and for how much. Fixed price, written down. No surprises after." },
+			{ "number": "03", "title": "Build", "body": "Senior engineers write the code. You get updates as work progresses. No handoffs to junior devs." },
+			{ "number": "04", "title": "Ship & Iterate", "body": "We deliver. You review. We adjust. We don't disappear after the first delivery." }
+		],
+		"whyHeading": "Why us",
+		"why": [
+			"3 core senior engineers — not a staffing firm or an outsourcing operation",
+			"We've shipped and maintain internal products (Requiems API, CompileStrength) — real systems we own",
+			"Small team means direct accountability — you know who built what and why",
+			"No outsourcing, no junior devs handed senior work, no layer of project managers in between"
+		],
+		"smallHeading": "Not ready to commit to a full project?",
+		"smallBody": "The best way to see how we work is to do a small piece of real work together. Fixed scope, fixed price, no long-term commitment.",
+		"startSmall": {
+			"title": "Start Small",
+			"body": "A feature build, an API endpoint, or a scoped piece of work. Fixed price, delivered in 1–2 weeks.",
+			"price": "$400–$1,000",
+			"cta": "See examples"
+		},
+		"audit": {
+			"title": "System Audit",
+			"body": "Review of your codebase, backend, and infrastructure. Written report with specific recommendations and a prioritized action plan.",
+			"price": "$1,000–$2,000",
+			"cta": "Learn more"
+		},
+		"finalHeading": "Ready to talk?",
+		"finalBody": "Book a short technical call. We'll understand your problem and tell you honestly whether we're the right fit.",
+		"finalNote": "No sales pitch. No pressure. Just a direct conversation.",
+		"bookCall": "Book a Technical Call",
+		"startSmallCta": "Start with a small project"
 	}
 }
