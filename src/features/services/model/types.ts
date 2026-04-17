@@ -28,6 +28,19 @@ export interface ServiceOffer {
 	description: string;
 	image?: string;
 	imageAlt?: string;
+	/** When set, renders the icon-card layout (e.g. backend services) */
+	icon?: string;
+}
+
+export interface WhyItMattersData {
+	heading: string;
+	items: Array<{ label: string; color: "gold" | "red" | "blue" }>;
+}
+
+export interface KeyBenefitsData {
+	heading: string;
+	subtitle: string;
+	items: Array<{ icon: "user" | "link-2" | "trending-up" | "shield" | "layers" | "zap"; title: string; body: string }>;
 }
 
 export interface ServiceHighlight {
@@ -77,6 +90,10 @@ export interface ServicePageData {
 	/** Optional carousel shown above pain points */
 	highlightsHeading?: string;
 	highlights?: ServiceHighlight[];
+	/** Replaces the Process section for frontend/backend pages */
+	whyItMatters?: WhyItMattersData;
+	/** Replaces the Process section for web-portal page */
+	keyBenefits?: KeyBenefitsData;
 }
 
 export interface Service {

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Code2 } from "lucide-react";
 import type { ServiceOffer } from "@/features/services/model/types";
 
 interface ServiceOfferingsProps {
