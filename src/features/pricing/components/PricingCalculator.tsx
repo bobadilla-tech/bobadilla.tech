@@ -151,8 +151,14 @@ export default function PricingCalculator() {
 		setIsValidEmail(true);
 		setIsSaving(true);
 		setSaveError("");
-		const bookingWindow = window.open("about:blank", "_blank", "noopener,noreferrer");
 
+		// Open the booking window synchronously (still within the user gesture) so
+		// popup blockers allow it. Using noopener/noreferrer makes window.open()
+		// return null, preventing navigation — so we omit those flags here.
+		const bookingUrl = `${CAL_LINKS.ale}?email=${encodeURIComponent(emailToSave)}`;
+		window.open(bookingUrl, "_blank");
+
+		// Save the estimate in the background — don't block the user on this.
 		try {
 			const response = await fetch("/api/pricing-estimate", {
 				method: "POST",
@@ -166,21 +172,10 @@ export default function PricingCalculator() {
 			});
 
 			if (!response.ok) {
-				throw new Error("Failed to save estimate");
-			}
-
-			const bookingUrl = `${CAL_LINKS.ale}?email=${encodeURIComponent(emailToSave)}`;
-			if (bookingWindow) {
-				bookingWindow.location.href = bookingUrl;
-			} else {
-				window.open(bookingUrl, "_blank", "noopener,noreferrer");
+				console.error("Failed to save estimate (non-blocking)");
 			}
 		} catch (error) {
-			if (bookingWindow && !bookingWindow.closed) {
-				bookingWindow.close();
-			}
-			console.error("Error saving estimate:", error);
-			setSaveError(t("errors.saveFailed"));
+			console.error("Error saving estimate (non-blocking):", error);
 		} finally {
 			setIsSaving(false);
 		}

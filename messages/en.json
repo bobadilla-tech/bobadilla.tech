@@ -587,6 +587,117 @@
 			}
 		}
 	},
+	"FounderPage": {
+		"overline": "Founder",
+		"name": "Eliaz Bobadilla",
+		"role": "Founder & Lead Engineer",
+		"intro": "Founder and lead engineer at Bobadilla Tech. I build systems that ship and hold up — not prototypes dressed as products.",
+		"background": {
+			"heading": "Background",
+			"p1": "I started writing code at 14. Not tutorials — actual projects. That early habit of building to understand (instead of reading to understand) still defines how I work.",
+			"p2": "Over the past decade I've worked across early-stage startups, scale-up teams, and client projects spanning fintech, fitness, developer tooling, and infrastructure. Some of those shipped to thousands of users. Some got scrapped for the right reasons. All of them taught me something concrete.",
+			"p3": "My focus has shifted progressively toward backend architecture, AI systems integration, and scalable infrastructure — areas where engineering decisions made early compound hard in both directions."
+		},
+		"approach": {
+			"heading": "How I approach building software",
+			"p1": "I don't start with architecture. I start with the constraint. What's the real bottleneck — latency, cost, complexity, time to market? The answer changes the design more than any framework choice does.",
+			"p2": "I default toward simple and boring. That means reaching for proven tools before new ones, writing code that the next engineer can read without context, and treating every abstraction as debt until it proves its worth.",
+			"p3": "When AI is part of the stack, I treat it as an integration problem, not a research problem. The goal is reliable output, bounded behavior, and clear fallback logic — not a demo."
+		},
+		"expect": {
+			"heading": "What to expect working with me",
+			"items": [
+				{ "title": "Direct scoping", "body": "I'll tell you what's achievable, what's not, and where the real unknowns are — before we start." },
+				{ "title": "No middlemen", "body": "You talk to the engineer doing the work. There's no account manager between us." },
+				{ "title": "Fast feedback loops", "body": "I ship early and often. You see real progress, not status updates." },
+				{ "title": "Honest tradeoffs", "body": "If a simpler solution exists, I'll say so. Complexity should be justified, not default." }
+			]
+		},
+		"cta": {
+			"heading": "Want to talk through a project?",
+			"body": "15 minutes. No pitch. Just an honest conversation about what you're building and whether we're a fit.",
+			"button": "Book a call"
+		}
+	},
+	"TeamPage": {
+		"overline": "Team",
+		"heading": "A small team.",
+		"headingGold": "No overhead.",
+		"intro": "Three senior engineers on every project. Specialists brought in when the work calls for it. No juniors learning on your budget.",
+		"core": {
+			"heading": "Core team",
+			"badge": "3 engineers",
+			"description": "These three are consistent across every engagement. High ownership, direct communication, no hand-offs.",
+			"members": [
+				{ "role": "Founder & Lead Engineer", "focus": "Backend architecture, AI systems, infrastructure", "note": "On every project. Sets technical direction and does the work." },
+				{ "role": "Senior Full-Stack Engineer", "focus": "Frontend systems, API design, performance", "note": "Owns the client layer end-to-end. Strong opinions on UX." },
+				{ "role": "Senior Backend Engineer", "focus": "Databases, integrations, deployment pipelines", "note": "Deep in the plumbing. Reliable on complex data models and edge cases." }
+			]
+		},
+		"extended": {
+			"heading": "Extended network",
+			"badge": "5–8 collaborators",
+			"description": "Trusted specialists we've worked with across multiple projects. They come in when the scope requires their depth — not to pad headcount.",
+			"items": [
+				{ "label": "Mobile", "detail": "iOS and Android, native and cross-platform" },
+				{ "label": "DevOps / Infra", "detail": "Cloudflare, AWS, containerization, CI/CD" },
+				{ "label": "AI / ML", "detail": "Model integration, fine-tuning, evaluation pipelines" },
+				{ "label": "Design", "detail": "Product design, design systems, prototyping" },
+				{ "label": "QA", "detail": "Test strategy, automation, load testing" },
+				{ "label": "Compliance", "detail": "Security review, audit prep, HIPAA / SOC2 context" }
+			]
+		},
+		"why": {
+			"heading": "Why this structure works",
+			"items": [
+				{ "heading": "You get the right people, not the available ones", "body": "Large agencies staff projects with whoever's free. We staff projects with whoever fits. If a specialist isn't right for your work, they're not on it." },
+				{ "heading": "No dilution", "body": "Senior engineers don't delegate to juniors then review at the end. The people you speak to are the people writing the code." },
+				{ "heading": "Tight feedback loops", "body": "Three engineers who know each other's work can move fast and catch problems early. More people usually means slower cycles, not faster ones." }
+			]
+		},
+		"cta": {
+			"heading": "Want to meet the team?",
+			"body": "Book a short call. We'll walk through your project and tell you exactly who would be involved.",
+			"button": "Book a call"
+		}
+	},
+	"StartSmallPage": {
+		"overline": "Start Small",
+		"heading": "Work together",
+		"headingGold": "before committing big.",
+		"intro": "The best way to know if we're a fit is to do a small piece of real work together. A focused project — fixed scope, fixed price — so you can see how we think and what we ship before deciding anything larger.",
+		"why": {
+			"heading": "Why starting small works",
+			"items": [
+				{ "heading": "You see the actual quality", "body": "A small deliverable tells you more than any sales call. You see how we scope work, how we communicate, and what the code looks like — before any long-term commitment." },
+				{ "heading": "The risk is low", "body": "Fixed scope, fixed price. If the output isn't what you expected, you're not locked in. Most clients who start small come back for more, but that's your call to make." },
+				{ "heading": "We learn your codebase", "body": "Even a small project gives us real context on your stack, your constraints, and how your team works. That pays off immediately if we continue." }
+			]
+		},
+		"projects": {
+			"heading": "Example starter projects",
+			"note": "These are illustrative — we'll scope your specific work before quoting.",
+			"items": [
+				{ "title": "Feature build", "description": "A scoped, production-ready feature added to your existing codebase. Authentication flow, payment integration, notification system, dashboard widget — something real, something shipped.", "price": "$500–$800" },
+				{ "title": "API endpoint", "description": "A single API endpoint or small group of endpoints, fully implemented — validation, error handling, tests, documented. Not a scaffold. A finished piece of backend.", "price": "$400–$700" },
+				{ "title": "System audit", "description": "A technical review of your architecture, codebase, or infrastructure. We'll identify the real risks and bottlenecks, not a checklist. You get a written report and a follow-up call.", "price": "$600–$1,000" }
+			]
+		},
+		"how": {
+			"heading": "How it works",
+			"steps": [
+				{ "number": "01", "title": "Brief", "body": "Tell us what you need. A short conversation or a written brief — either works." },
+				{ "number": "02", "title": "Quote", "body": "We scope it, price it, and send you a fixed quote. No surprises after." },
+				{ "number": "03", "title": "Deliver", "body": "We build it. You review it. We ship it. Typically 1–2 weeks." }
+			]
+		},
+		"cta": {
+			"heading": "Ready to start?",
+			"body": "Tell us what you need. We'll scope it and send you a fixed quote within 24 hours.",
+			"note": "No retainer. No minimum. Just the work.",
+			"button": "Book a 15-min call"
+		}
+	},
 	"CaseStudiesPage": {
 		"overline": "Case Studies",
 		"heading1": "Work we've",

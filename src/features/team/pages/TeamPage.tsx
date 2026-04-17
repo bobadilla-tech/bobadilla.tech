@@ -1,15 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Button from "@/shared/ui/Button";
-import { CAL_LINKS } from "~/lib/constants";
-
-const fadeUp = {
-	initial: { opacity: 0, y: 24 },
-	whileInView: { opacity: 1, y: 0 },
-	viewport: { once: true },
-	transition: { duration: 0.6 },
-};
+import BookCallCTA from "@/shared/ui/BookCallCTA";
+import { fadeUp } from "@/shared/ui/animations";
 
 const coreTeam = [
 	{
@@ -160,21 +153,10 @@ export default function TeamPage() {
 				</motion.section>
 
 				{/* CTA */}
-				<motion.div
-					{...fadeUp}
-					className="bg-brand-gold/10 border border-border-gold rounded-2xl p-10 text-center"
-				>
-					<h2 className="font-heading text-2xl font-bold text-brand-primary mb-3">
-						Want to meet the team?
-					</h2>
-					<p className="font-body text-brand-primary/60 mb-8 max-w-md mx-auto">
-						Book a short call. We'll walk through your project and tell you exactly
-						who would be involved.
-					</p>
-					<Button href={CAL_LINKS.eliaz} variant="gold" size="md">
-						Book a call
-					</Button>
-				</motion.div>
+				<BookCallCTA
+					heading="Want to meet the team?"
+					body="Book a short call. We'll walk through your project and tell you exactly who would be involved."
+				/>
 			</div>
 		</div>
 	);

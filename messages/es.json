@@ -709,7 +709,7 @@
 				{
 					"name": "Go API",
 					"role": "Lógica de negocio principal",
-					"detail": "Router Chi, driver pgx (jackc/pgx v5), golang-migrate para gestión de esquemas, Sentry para rastreo de errores. Todas las categorías de API (email, ubicación, finanzas, texto, tecnología) están separadas por dominio. Rápida, sin estado, escalable horizontalmente."
+					"detail": "Router Chi, driver pgx (jackc/pgx v5), golang-migrate para gestión de esquemas, Sentry para rastreo de errores. Las 8 categorías de API están separadas por dominio. Rápida, sin estado, escalable horizontalmente."
 				},
 				{
 					"name": "Auth Gateway",
@@ -741,7 +741,7 @@
 				},
 				{
 					"heading": "Aislamiento de dominio en Go",
-					"body": "Cada categoría de API (email, ubicación, finanzas, etc.) es un paquete de dominio separado. Esto facilita escalar, probar o reemplazar categorías de API individuales sin tocar las demás. El router conecta los dominios — no contiene lógica de negocio."
+					"body": "Cada una de las 8 categorías de API es un paquete de dominio separado. Esto facilita escalar, probar o reemplazar categorías individuales sin tocar las demás. El router conecta los dominios — no contiene lógica de negocio."
 				},
 				{
 					"heading": "Rails sin SPA",
@@ -756,7 +756,10 @@
 				{ "name": "Ubicación y Geografía", "detail": "Ciudades, códigos postales, zona horaria, geocodificación, feriados, días laborables" },
 				{ "name": "Finanzas", "detail": "Divisas, tasas de cambio, utilidades de datos financieros" },
 				{ "name": "Texto", "detail": "Utilidades de formateo, transformación y análisis" },
-				{ "name": "Tecnología", "detail": "Generación de códigos QR, utilidades de contraseñas, análisis de user agent" }
+				{ "name": "Tecnología", "detail": "Generación de códigos QR, utilidades de contraseñas, análisis de user agent" },
+				{ "name": "Redes", "detail": "Utilidades de DNS, IP y red" },
+				{ "name": "Salud", "detail": "Cálculos de IMC, calorías, datos de nutrición" },
+				{ "name": "Entretenimiento", "detail": "Datos de juegos, citas, trivias" }
 			]
 		},
 		"stack": {
@@ -775,7 +778,7 @@
 		"results": {
 			"heading": "Resultados",
 			"items": [
-				{ "stat": "5 categorías de API", "label": "Unificadas bajo una sola clave, un SDK, una relación de facturación" },
+				{ "stat": "8 categorías de API", "label": "Unificadas bajo una sola clave, un SDK, una relación de facturación" },
 				{ "stat": "Capa de auth en el edge", "label": "La validación de claves y el rate limiting ocurren antes de que las solicitudes lleguen a Go — mínima latencia adicional" },
 				{ "stat": "Herramientas completas", "label": "Panel, gestión de claves, analíticas de uso y documentación Swagger — todo lanzado" }
 			]

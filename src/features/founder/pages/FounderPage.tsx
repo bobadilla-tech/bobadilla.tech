@@ -1,16 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Button from "@/shared/ui/Button";
-import SectionHeader from "@/shared/ui/SectionHeader";
-import { CAL_LINKS } from "~/lib/constants";
-
-const fadeUp = {
-	initial: { opacity: 0, y: 24 },
-	whileInView: { opacity: 1, y: 0 },
-	viewport: { once: true },
-	transition: { duration: 0.6 },
-};
+import BookCallCTA from "@/shared/ui/BookCallCTA";
+import { fadeUp } from "@/shared/ui/animations";
 
 export default function FounderPage() {
 	return (
@@ -121,21 +113,10 @@ export default function FounderPage() {
 				</motion.section>
 
 				{/* CTA */}
-				<motion.div
-					{...fadeUp}
-					className="bg-brand-gold/10 border border-border-gold rounded-2xl p-10 text-center"
-				>
-					<h2 className="font-heading text-2xl font-bold text-brand-primary mb-3">
-						Want to talk through a project?
-					</h2>
-					<p className="font-body text-brand-primary/60 mb-8 max-w-lg mx-auto">
-						15 minutes. No pitch. Just an honest conversation about what you're
-						building and whether we're a fit.
-					</p>
-					<Button href={CAL_LINKS.eliaz} variant="gold" size="md">
-						Book a call
-					</Button>
-				</motion.div>
+				<BookCallCTA
+					heading="Want to talk through a project?"
+					body="15 minutes. No pitch. Just an honest conversation about what you're building and whether we're a fit."
+				/>
 			</div>
 		</div>
 	);
