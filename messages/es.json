@@ -590,6 +590,117 @@
 			}
 		}
 	},
+	"FounderPage": {
+		"overline": "Fundador",
+		"name": "Eliaz Bobadilla",
+		"role": "Fundador e Ingeniero Principal",
+		"intro": "Fundador e ingeniero principal de Bobadilla Tech. Construyo sistemas que se envían y se mantienen — no prototipos disfrazados de productos.",
+		"background": {
+			"heading": "Trayectoria",
+			"p1": "Empecé a escribir código a los 14 años. No tutoriales — proyectos reales. Ese hábito temprano de construir para entender (en lugar de leer para entender) todavía define cómo trabajo.",
+			"p2": "Durante la última década he trabajado en startups en etapa temprana, equipos en crecimiento y proyectos de clientes en fintech, fitness, herramientas para desarrolladores e infraestructura. Algunos llegaron a miles de usuarios. Algunos fueron descartados por las razones correctas. Todos me enseñaron algo concreto.",
+			"p3": "Mi enfoque ha evolucionado progresivamente hacia la arquitectura backend, la integración de sistemas de IA y la infraestructura escalable — áreas donde las decisiones de ingeniería tomadas al inicio se acumulan fuertemente en ambas direcciones."
+		},
+		"approach": {
+			"heading": "Cómo abordo la construcción de software",
+			"p1": "No comienzo con la arquitectura. Comienzo con la restricción. ¿Cuál es el verdadero cuello de botella — latencia, costo, complejidad, tiempo de comercialización? La respuesta cambia el diseño más que cualquier elección de framework.",
+			"p2": "Mi predeterminado es lo simple y lo probado. Eso significa usar herramientas consolidadas antes que nuevas, escribir código que el próximo ingeniero pueda leer sin contexto, y tratar toda abstracción como deuda hasta que demuestre su valor.",
+			"p3": "Cuando la IA es parte del stack, la trato como un problema de integración, no de investigación. El objetivo es una salida confiable, comportamiento acotado y lógica de respaldo clara — no una demo."
+		},
+		"expect": {
+			"heading": "Qué esperar al trabajar conmigo",
+			"items": [
+				{ "title": "Alcance directo", "body": "Te diré qué es alcanzable, qué no, y dónde están las verdaderas incógnitas — antes de empezar." },
+				{ "title": "Sin intermediarios", "body": "Hablas con el ingeniero que hace el trabajo. No hay un account manager entre nosotros." },
+				{ "title": "Ciclos de retroalimentación rápidos", "body": "Entrego temprano y con frecuencia. Ves progreso real, no actualizaciones de estado." },
+				{ "title": "Compromisos honestos", "body": "Si existe una solución más simple, lo digo. La complejidad debe justificarse, no ser la opción predeterminada." }
+			]
+		},
+		"cta": {
+			"heading": "¿Quieres hablar sobre un proyecto?",
+			"body": "15 minutos. Sin pitch. Solo una conversación honesta sobre lo que estás construyendo y si somos compatibles.",
+			"button": "Reservar llamada"
+		}
+	},
+	"TeamPage": {
+		"overline": "Equipo",
+		"heading": "Un equipo pequeño.",
+		"headingGold": "Sin sobrecarga.",
+		"intro": "Tres ingenieros senior en cada proyecto. Especialistas incorporados cuando el trabajo lo requiere. Sin juniors aprendiendo a tu costo.",
+		"core": {
+			"heading": "Equipo base",
+			"badge": "3 ingenieros",
+			"description": "Estos tres son constantes en cada compromiso. Alta responsabilidad, comunicación directa, sin transferencias.",
+			"members": [
+				{ "role": "Fundador e Ingeniero Principal", "focus": "Arquitectura backend, sistemas de IA, infraestructura", "note": "En cada proyecto. Define la dirección técnica y hace el trabajo." },
+				{ "role": "Ingeniero Full-Stack Senior", "focus": "Sistemas frontend, diseño de API, rendimiento", "note": "Dueño de la capa cliente de extremo a extremo. Opiniones sólidas sobre UX." },
+				{ "role": "Ingeniero Backend Senior", "focus": "Bases de datos, integraciones, pipelines de despliegue", "note": "Profundo en la fontanería. Confiable en modelos de datos complejos y casos extremos." }
+			]
+		},
+		"extended": {
+			"heading": "Red extendida",
+			"badge": "5–8 colaboradores",
+			"description": "Especialistas de confianza con quienes hemos trabajado en múltiples proyectos. Entran cuando el alcance requiere su profundidad — no para inflar el headcount.",
+			"items": [
+				{ "label": "Mobile", "detail": "iOS y Android, nativo y multiplataforma" },
+				{ "label": "DevOps / Infra", "detail": "Cloudflare, AWS, contenedores, CI/CD" },
+				{ "label": "IA / ML", "detail": "Integración de modelos, fine-tuning, pipelines de evaluación" },
+				{ "label": "Diseño", "detail": "Diseño de producto, sistemas de diseño, prototipado" },
+				{ "label": "QA", "detail": "Estrategia de pruebas, automatización, pruebas de carga" },
+				{ "label": "Compliance", "detail": "Revisión de seguridad, preparación para auditorías, contexto HIPAA / SOC2" }
+			]
+		},
+		"why": {
+			"heading": "Por qué esta estructura funciona",
+			"items": [
+				{ "heading": "Obtienes las personas correctas, no las disponibles", "body": "Las grandes agencias asignan proyectos con quien esté libre. Nosotros asignamos proyectos con quien encaje. Si un especialista no es adecuado para tu trabajo, no está en él." },
+				{ "heading": "Sin dilución", "body": "Los ingenieros senior no delegan a juniors para luego revisar al final. Las personas con quienes hablas son las personas que escriben el código." },
+				{ "heading": "Ciclos de retroalimentación ajustados", "body": "Tres ingenieros que conocen el trabajo del otro pueden moverse rápido y detectar problemas temprano. Más personas generalmente significa ciclos más lentos, no más rápidos." }
+			]
+		},
+		"cta": {
+			"heading": "¿Quieres conocer al equipo?",
+			"body": "Reserva una llamada breve. Revisaremos tu proyecto y te diremos exactamente quién estaría involucrado.",
+			"button": "Reservar llamada"
+		}
+	},
+	"StartSmallPage": {
+		"overline": "Empieza Pequeño",
+		"heading": "Trabajemos juntos",
+		"headingGold": "antes de comprometerte en grande.",
+		"intro": "La mejor manera de saber si somos compatibles es hacer juntos una pequeña pieza de trabajo real. Un proyecto enfocado — alcance fijo, precio fijo — para que veas cómo pensamos y qué entregamos antes de decidir algo más grande.",
+		"why": {
+			"heading": "Por qué empezar pequeño funciona",
+			"items": [
+				{ "heading": "Ves la calidad real", "body": "Un entregable pequeño te dice más que cualquier llamada de ventas. Ves cómo definimos el alcance, cómo nos comunicamos y cómo se ve el código — antes de cualquier compromiso a largo plazo." },
+				{ "heading": "El riesgo es bajo", "body": "Alcance fijo, precio fijo. Si el resultado no es lo que esperabas, no estás atrapado. La mayoría de los clientes que empiezan pequeño vuelven por más, pero esa es tu decisión." },
+				{ "heading": "Aprendemos tu codebase", "body": "Incluso un proyecto pequeño nos da contexto real sobre tu stack, tus restricciones y cómo trabaja tu equipo. Eso paga dividendos inmediatamente si continuamos." }
+			]
+		},
+		"projects": {
+			"heading": "Proyectos de inicio de ejemplo",
+			"note": "Estos son ilustrativos — definiremos el alcance de tu trabajo específico antes de cotizar.",
+			"items": [
+				{ "title": "Construcción de feature", "description": "Un feature delimitado y listo para producción agregado a tu codebase existente. Flujo de autenticación, integración de pagos, sistema de notificaciones, widget de dashboard — algo real, algo enviado.", "price": "$500–$800" },
+				{ "title": "Endpoint de API", "description": "Un solo endpoint de API o un pequeño grupo de endpoints, completamente implementados — validación, manejo de errores, pruebas, documentados. No un scaffold. Una pieza terminada de backend.", "price": "$400–$700" },
+				{ "title": "Auditoría de sistema", "description": "Una revisión técnica de tu arquitectura, codebase o infraestructura. Identificaremos los riesgos y cuellos de botella reales, no una lista de verificación. Obtienes un informe escrito y una llamada de seguimiento.", "price": "$600–$1.000" }
+			]
+		},
+		"how": {
+			"heading": "Cómo funciona",
+			"steps": [
+				{ "number": "01", "title": "Brief", "body": "Cuéntanos qué necesitas. Una conversación breve o un brief escrito — cualquiera funciona." },
+				{ "number": "02", "title": "Cotización", "body": "Definimos el alcance, fijamos el precio y te enviamos una cotización fija. Sin sorpresas después." },
+				{ "number": "03", "title": "Entrega", "body": "Lo construimos. Lo revisas. Lo enviamos. Típicamente 1–2 semanas." }
+			]
+		},
+		"cta": {
+			"heading": "¿Listo para empezar?",
+			"body": "Cuéntanos qué necesitas. Definiremos el alcance y te enviaremos una cotización fija en 24 horas.",
+			"note": "Sin retainer. Sin mínimo. Solo el trabajo.",
+			"button": "Reservar llamada de 15 min"
+		}
+	},
 	"CaseStudiesPage": {
 		"overline": "Casos de Estudio",
 		"heading1": "Trabajo que hemos",

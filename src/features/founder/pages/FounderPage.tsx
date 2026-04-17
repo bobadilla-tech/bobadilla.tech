@@ -1,102 +1,78 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import BookCallCTA from "@/shared/ui/BookCallCTA";
 import { fadeUp } from "@/shared/ui/animations";
 
 export default function FounderPage() {
+	const t = useTranslations("FounderPage");
+	const expectItems = t.raw("expect.items") as Array<{ title: string; body: string }>;
+
 	return (
 		<div className="pt-32 pb-24">
 			<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 				{/* Hero */}
 				<motion.div {...fadeUp} className="mb-20">
 					<span className="font-body text-sm font-semibold tracking-widest uppercase text-brand-gold">
-						Founder
+						{t("overline")}
 					</span>
-					<h1 className="font-heading text-5xl md:text-6xl font-bold text-brand-primary leading-tight mt-4 mb-6">
-						Eliaz Bobadilla
-					</h1>
+					<div className="flex flex-col sm:flex-row sm:items-center gap-8 mt-4 mb-6">
+						<div className="flex-1">
+							<h1 className="font-heading text-5xl md:text-6xl font-bold text-brand-primary leading-tight mb-2">
+								{t("name")}
+							</h1>
+							<p className="font-body text-brand-gold font-semibold">
+								{t("role")}
+							</p>
+						</div>
+						<div className="shrink-0">
+							<Image
+								src="/faces/eliaz.jpeg"
+								alt={t("name")}
+								width={120}
+								height={120}
+								className="rounded-2xl object-cover"
+							/>
+						</div>
+					</div>
 					<p className="font-body text-xl text-brand-primary/70 leading-relaxed max-w-2xl">
-						Founder and lead engineer at Bobadilla Tech. I build systems that ship
-						and hold up — not prototypes dressed as products.
+						{t("intro")}
 					</p>
 				</motion.div>
 
 				{/* Background */}
 				<motion.section {...fadeUp} className="mb-16">
 					<h2 className="font-heading text-2xl font-bold text-brand-primary mb-5">
-						Background
+						{t("background.heading")}
 					</h2>
 					<div className="space-y-4 font-body text-brand-primary/70 leading-relaxed">
-						<p>
-							I started writing code at 14. Not tutorials — actual projects. That
-							early habit of building to understand (instead of reading to
-							understand) still defines how I work.
-						</p>
-						<p>
-							Over the past decade I've worked across early-stage startups,
-							scale-up teams, and client projects spanning fintech, fitness, developer
-							tooling, and infrastructure. Some of those shipped to thousands of
-							users. Some got scrapped for the right reasons. All of them taught me
-							something concrete.
-						</p>
-						<p>
-							My focus has shifted progressively toward backend architecture, AI
-							systems integration, and scalable infrastructure — areas where
-							engineering decisions made early compound hard in both directions.
-						</p>
+						<p>{t("background.p1")}</p>
+						<p>{t("background.p2")}</p>
+						<p>{t("background.p3")}</p>
 					</div>
 				</motion.section>
 
 				{/* How he builds */}
 				<motion.section {...fadeUp} className="mb-16">
 					<h2 className="font-heading text-2xl font-bold text-brand-primary mb-5">
-						How I approach building software
+						{t("approach.heading")}
 					</h2>
 					<div className="space-y-4 font-body text-brand-primary/70 leading-relaxed">
-						<p>
-							I don't start with architecture. I start with the constraint. What's
-							the real bottleneck — latency, cost, complexity, time to market? The
-							answer changes the design more than any framework choice does.
-						</p>
-						<p>
-							I default toward simple and boring. That means reaching for proven
-							tools before new ones, writing code that the next engineer can read
-							without context, and treating every abstraction as debt until it proves
-							its worth.
-						</p>
-						<p>
-							When AI is part of the stack, I treat it as an integration problem, not
-							a research problem. The goal is reliable output, bounded behavior, and
-							clear fallback logic — not a demo.
-						</p>
+						<p>{t("approach.p1")}</p>
+						<p>{t("approach.p2")}</p>
+						<p>{t("approach.p3")}</p>
 					</div>
 				</motion.section>
 
 				{/* What to expect */}
 				<motion.section {...fadeUp} className="mb-20">
 					<h2 className="font-heading text-2xl font-bold text-brand-primary mb-6">
-						What to expect working with me
+						{t("expect.heading")}
 					</h2>
 					<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-						{[
-							{
-								title: "Direct scoping",
-								body: "I'll tell you what's achievable, what's not, and where the real unknowns are — before we start.",
-							},
-							{
-								title: "No middlemen",
-								body: "You talk to the engineer doing the work. There's no account manager between us.",
-							},
-							{
-								title: "Fast feedback loops",
-								body: "I ship early and often. You see real progress, not status updates.",
-							},
-							{
-								title: "Honest tradeoffs",
-								body: "If a simpler solution exists, I'll say so. Complexity should be justified, not default.",
-							},
-						].map((item) => (
+						{expectItems.map((item) => (
 							<div
 								key={item.title}
 								className="bg-surface border border-border rounded-2xl p-6"
@@ -114,8 +90,9 @@ export default function FounderPage() {
 
 				{/* CTA */}
 				<BookCallCTA
-					heading="Want to talk through a project?"
-					body="15 minutes. No pitch. Just an honest conversation about what you're building and whether we're a fit."
+					heading={t("cta.heading")}
+					body={t("cta.body")}
+					buttonLabel={t("cta.button")}
 				/>
 			</div>
 		</div>

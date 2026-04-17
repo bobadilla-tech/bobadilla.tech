@@ -590,6 +590,117 @@
 			}
 		}
 	},
+	"FounderPage": {
+		"overline": "Fundador",
+		"name": "Eliaz Bobadilla",
+		"role": "Fundador e Engenheiro Principal",
+		"intro": "Fundador e engenheiro principal da Bobadilla Tech. Construo sistemas que funcionam e se mantêm — não protótipos disfarçados de produtos.",
+		"background": {
+			"heading": "Trajetória",
+			"p1": "Comecei a escrever código aos 14 anos. Não tutoriais — projetos reais. Esse hábito precoce de construir para entender (em vez de ler para entender) ainda define como trabalho.",
+			"p2": "Na última década trabalhei em startups em estágio inicial, equipes em crescimento e projetos de clientes em fintech, fitness, ferramentas para desenvolvedores e infraestrutura. Alguns chegaram a milhares de usuários. Alguns foram descartados pelos motivos certos. Todos me ensinaram algo concreto.",
+			"p3": "Meu foco evoluiu progressivamente para arquitetura backend, integração de sistemas de IA e infraestrutura escalável — áreas onde decisões de engenharia tomadas cedo se acumulam fortemente em ambas as direções."
+		},
+		"approach": {
+			"heading": "Como abordo a construção de software",
+			"p1": "Não começo pela arquitetura. Começo pela restrição. Qual é o gargalo real — latência, custo, complexidade, tempo de mercado? A resposta muda o design mais do que qualquer escolha de framework.",
+			"p2": "Meu padrão é o simples e o comprovado. Isso significa usar ferramentas consolidadas antes das novas, escrever código que o próximo engenheiro possa ler sem contexto, e tratar toda abstração como dívida até que prove seu valor.",
+			"p3": "Quando a IA faz parte do stack, trato como um problema de integração, não de pesquisa. O objetivo é saída confiável, comportamento delimitado e lógica de fallback clara — não uma demo."
+		},
+		"expect": {
+			"heading": "O que esperar ao trabalhar comigo",
+			"items": [
+				{ "title": "Escopo direto", "body": "Vou te dizer o que é alcançável, o que não é, e onde estão as verdadeiras incógnitas — antes de começar." },
+				{ "title": "Sem intermediários", "body": "Você fala com o engenheiro que faz o trabalho. Não há account manager entre nós." },
+				{ "title": "Ciclos de feedback rápidos", "body": "Entrego cedo e com frequência. Você vê progresso real, não atualizações de status." },
+				{ "title": "Compensações honestas", "body": "Se existe uma solução mais simples, vou dizer. Complexidade deve ser justificada, não ser o padrão." }
+			]
+		},
+		"cta": {
+			"heading": "Quer conversar sobre um projeto?",
+			"body": "15 minutos. Sem pitch. Apenas uma conversa honesta sobre o que você está construindo e se somos compatíveis.",
+			"button": "Agendar chamada"
+		}
+	},
+	"TeamPage": {
+		"overline": "Equipe",
+		"heading": "Uma equipe pequena.",
+		"headingGold": "Sem overhead.",
+		"intro": "Três engenheiros sênior em cada projeto. Especialistas trazidos quando o trabalho exige. Sem juniores aprendendo no seu orçamento.",
+		"core": {
+			"heading": "Equipe base",
+			"badge": "3 engenheiros",
+			"description": "Esses três são constantes em cada engajamento. Alta responsabilidade, comunicação direta, sem transferências.",
+			"members": [
+				{ "role": "Fundador e Engenheiro Principal", "focus": "Arquitetura backend, sistemas de IA, infraestrutura", "note": "Em cada projeto. Define a direção técnica e faz o trabalho." },
+				{ "role": "Engenheiro Full-Stack Sênior", "focus": "Sistemas frontend, design de API, performance", "note": "Responsável pela camada cliente de ponta a ponta. Opiniões fortes sobre UX." },
+				{ "role": "Engenheiro Backend Sênior", "focus": "Bancos de dados, integrações, pipelines de deploy", "note": "Fundo na infraestrutura. Confiável em modelos de dados complexos e casos extremos." }
+			]
+		},
+		"extended": {
+			"heading": "Rede estendida",
+			"badge": "5–8 colaboradores",
+			"description": "Especialistas de confiança com quem trabalhamos em múltiplos projetos. Entram quando o escopo requer sua profundidade — não para inflar o headcount.",
+			"items": [
+				{ "label": "Mobile", "detail": "iOS e Android, nativo e multiplataforma" },
+				{ "label": "DevOps / Infra", "detail": "Cloudflare, AWS, contêineres, CI/CD" },
+				{ "label": "IA / ML", "detail": "Integração de modelos, fine-tuning, pipelines de avaliação" },
+				{ "label": "Design", "detail": "Design de produto, design systems, prototipagem" },
+				{ "label": "QA", "detail": "Estratégia de testes, automação, testes de carga" },
+				{ "label": "Compliance", "detail": "Revisão de segurança, preparação para auditorias, contexto HIPAA / SOC2" }
+			]
+		},
+		"why": {
+			"heading": "Por que esta estrutura funciona",
+			"items": [
+				{ "heading": "Você recebe as pessoas certas, não as disponíveis", "body": "Grandes agências alocam projetos com quem está livre. Alocamos projetos com quem se encaixa. Se um especialista não é adequado para o seu trabalho, não está nele." },
+				{ "heading": "Sem diluição", "body": "Engenheiros sênior não delegam para juniores para revisar no final. As pessoas com quem você fala são as pessoas que escrevem o código." },
+				{ "heading": "Ciclos de feedback ajustados", "body": "Três engenheiros que conhecem o trabalho um do outro podem se mover rápido e detectar problemas cedo. Mais pessoas geralmente significa ciclos mais lentos, não mais rápidos." }
+			]
+		},
+		"cta": {
+			"heading": "Quer conhecer a equipe?",
+			"body": "Agende uma chamada breve. Vamos revisar seu projeto e dizer exatamente quem estaria envolvido.",
+			"button": "Agendar chamada"
+		}
+	},
+	"StartSmallPage": {
+		"overline": "Comece Pequeno",
+		"heading": "Trabalhemos juntos",
+		"headingGold": "antes de se comprometer com grande.",
+		"intro": "A melhor maneira de saber se somos compatíveis é fazer juntos uma pequena parte de trabalho real. Um projeto focado — escopo fixo, preço fixo — para que você veja como pensamos e o que entregamos antes de decidir algo maior.",
+		"why": {
+			"heading": "Por que começar pequeno funciona",
+			"items": [
+				{ "heading": "Você vê a qualidade real", "body": "Um entregável pequeno diz mais do que qualquer chamada de vendas. Você vê como definimos o escopo, como nos comunicamos e como o código se parece — antes de qualquer compromisso de longo prazo." },
+				{ "heading": "O risco é baixo", "body": "Escopo fixo, preço fixo. Se o resultado não for o que você esperava, não está preso. A maioria dos clientes que começa pequeno volta para mais, mas essa é a sua decisão." },
+				{ "heading": "Aprendemos sua codebase", "body": "Mesmo um projeto pequeno nos dá contexto real sobre o seu stack, suas restrições e como sua equipe trabalha. Isso compensa imediatamente se continuarmos." }
+			]
+		},
+		"projects": {
+			"heading": "Projetos iniciais de exemplo",
+			"note": "Estes são ilustrativos — vamos definir o escopo do seu trabalho específico antes de cotizar.",
+			"items": [
+				{ "title": "Construção de feature", "description": "Uma feature delimitada e pronta para produção adicionada à sua codebase existente. Fluxo de autenticação, integração de pagamento, sistema de notificações, widget de dashboard — algo real, algo entregue.", "price": "$500–$800" },
+				{ "title": "Endpoint de API", "description": "Um único endpoint de API ou um pequeno grupo de endpoints, completamente implementados — validação, tratamento de erros, testes, documentados. Não um scaffold. Uma peça finalizada de backend.", "price": "$400–$700" },
+				{ "title": "Auditoria de sistema", "description": "Uma revisão técnica da sua arquitetura, codebase ou infraestrutura. Identificaremos os riscos e gargalos reais, não uma lista de verificação. Você recebe um relatório escrito e uma chamada de acompanhamento.", "price": "$600–$1.000" }
+			]
+		},
+		"how": {
+			"heading": "Como funciona",
+			"steps": [
+				{ "number": "01", "title": "Brief", "body": "Conte-nos o que você precisa. Uma conversa breve ou um brief escrito — qualquer um funciona." },
+				{ "number": "02", "title": "Cotação", "body": "Definimos o escopo, fixamos o preço e enviamos uma cotação fixa. Sem surpresas depois." },
+				{ "number": "03", "title": "Entrega", "body": "Construímos. Você revisa. Entregamos. Tipicamente 1–2 semanas." }
+			]
+		},
+		"cta": {
+			"heading": "Pronto para começar?",
+			"body": "Conte-nos o que você precisa. Vamos definir o escopo e enviar uma cotação fixa em 24 horas.",
+			"note": "Sem retainer. Sem mínimo. Apenas o trabalho.",
+			"button": "Agendar chamada de 15 min"
+		}
+	},
 	"CaseStudiesPage": {
 		"overline": "Estudos de Caso",
 		"heading1": "Trabalho que",
@@ -709,7 +820,7 @@
 				{
 					"name": "Go API",
 					"role": "Lógica de negócios principal",
-					"detail": "Router Chi, driver pgx (jackc/pgx v5), golang-migrate para gerenciamento de esquemas, Sentry para rastreamento de erros. Todas as categorias de API (email, localização, finanças, texto, tecnologia) são separadas por domínio. Rápida, sem estado, horizontalmente escalável."
+					"detail": "Router Chi, driver pgx (jackc/pgx v5), golang-migrate para gerenciamento de esquemas, Sentry para rastreamento de erros. As 8 categorias de API são separadas por domínio. Rápida, sem estado, horizontalmente escalável."
 				},
 				{
 					"name": "Auth Gateway",
@@ -741,7 +852,7 @@
 				},
 				{
 					"heading": "Isolamento de domínio em Go",
-					"body": "Cada categoria de API (email, localização, finanças, etc.) é um pacote de domínio separado. Isso facilita escalar, testar ou substituir categorias de API individuais sem tocar nas outras. O router conecta os domínios — não contém lógica de negócios."
+					"body": "Cada uma das 8 categorias de API é um pacote de domínio separado. Isso facilita escalar, testar ou substituir categorias individuais sem tocar nas outras. O router conecta os domínios — não contém lógica de negócios."
 				},
 				{
 					"heading": "Rails sem SPA",
@@ -756,7 +867,10 @@
 				{ "name": "Localização e Geografia", "detail": "Cidades, CEPs, fuso horário, geocodificação, feriados, dias úteis" },
 				{ "name": "Finanças", "detail": "Moedas, taxas de câmbio, utilitários de dados financeiros" },
 				{ "name": "Texto", "detail": "Utilitários de formatação, transformação e análise" },
-				{ "name": "Tecnologia", "detail": "Geração de QR code, utilitários de senhas, análise de user agent" }
+				{ "name": "Tecnologia", "detail": "Geração de QR code, utilitários de senhas, análise de user agent" },
+				{ "name": "Redes", "detail": "Utilitários de DNS, IP e rede" },
+				{ "name": "Saúde", "detail": "Cálculos de IMC, calorias, dados nutricionais" },
+				{ "name": "Entretenimento", "detail": "Dados de jogos, citações, trivia" }
 			]
 		},
 		"stack": {
@@ -775,7 +889,7 @@
 		"results": {
 			"heading": "Resultados",
 			"items": [
-				{ "stat": "5 categorias de API", "label": "Unificadas sob uma chave, um SDK, um relacionamento de faturamento" },
+				{ "stat": "8 categorias de API", "label": "Unificadas sob uma chave, um SDK, um relacionamento de faturamento" },
 				{ "stat": "Camada de auth no edge", "label": "Validação de chaves e rate limiting ocorrem antes das requisições chegarem ao Go — overhead mínimo de latência" },
 				{ "stat": "Ferramentas completas", "label": "Painel, gerenciamento de chaves, analytics de uso e docs Swagger — tudo entregue" }
 			]
