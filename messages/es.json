@@ -589,5 +589,202 @@
 				}
 			}
 		}
+	},
+	"CaseStudiesPage": {
+		"overline": "Casos de Estudio",
+		"heading1": "Trabajo que hemos",
+		"heading2": "lanzado",
+		"subtitle": "Dos publicados hasta ahora. Sistemas reales, decisiones reales, compromisos reales.",
+		"readCaseStudy": "Leer caso de estudio",
+		"studies": [
+			{
+				"slug": "compilestrength",
+				"title": "CompileStrength",
+				"tagline": "SaaS de fitness con IA",
+				"description": "Producto SaaS por suscripción con un agente de IA que genera programas de entrenamiento personalizados. Construido en Next.js, Cloudflare Workers y Neon PostgreSQL. Lanzado de extremo a extremo — facturación, autenticación, IA y despliegue en el edge incluidos."
+			},
+			{
+				"slug": "requiems-api",
+				"title": "Requiems API",
+				"tagline": "Plataforma de API multi-lenguaje",
+				"description": "Una plataforma de API en producción que expone validación de email, localización, finanzas y endpoints de utilidades bajo una sola clave. Construida como un monorepo multi-lenguaje — API en Go, panel en Rails, dos Cloudflare Workers para autenticación y gestión de claves."
+			}
+		]
+	},
+	"CompileStrengthPage": {
+		"breadcrumb": "Casos de Estudio",
+		"overline": "Caso de Estudio",
+		"title": "CompileStrength",
+		"intro": "Un SaaS de fitness impulsado por IA. Los usuarios conversan con un agente que genera programas de entrenamiento personalizados y basados en ciencia, y realiza seguimiento de sesiones conforme el entrenamiento evoluciona.",
+		"overview": {
+			"heading": "Descripción general",
+			"p1": "CompileStrength es un producto SaaS por suscripción para levantadores serios que quieren programación fundamentada en ciencia del entrenamiento, no plantillas genéricas. El producto principal es un agente de IA que pregunta sobre historial de entrenamiento, objetivos y restricciones — luego genera un programa periodizado completo.",
+			"p2": "Más allá de la generación, los usuarios registran sesiones, siguen su progreso y observan cómo su programa se adapta con el tiempo. El producto incluye una suite de calculadoras públicas para adquisición y una capa de facturación por suscripción para monetización."
+		},
+		"problem": {
+			"heading": "Problema",
+			"p1": "Las apps de fitness o te dan plantillas rígidas o te ponen frente a un chatbot genérico. Ninguna produce un programa periodizado coherente. Los que realmente saben de programación — los entrenadores — no escalan. Los que quieren buena programación — levantadores intermedios y avanzados — no tienen acceso a ellos.",
+			"p2": "El desafío técnico fue construir un agente de IA que produzca programas de entrenamiento estructurados y válidos, no texto conversacional. El resultado debía ser legible por máquina, consistente y seguro para mostrar — no solo prosa coherente."
+		},
+		"solution": {
+			"heading": "Solución",
+			"p1": "Construimos la capa de IA sobre Mastra — un framework de agentes que permite definir flujos de trabajo con esquemas de entrada/salida estructurados, no solo prompts libres. El agente compilador de entrenamientos sigue un flujo fijo: recopilar contexto, validar restricciones, generar bloques del programa, validar estructura de salida, retornar al usuario.",
+			"p2": "La facturación (LemonSqueezy) y la autenticación (Better Auth) se integraron como preocupaciones de primera clase desde el inicio. Los límites de generación del agente están condicionados por el nivel de suscripción, y el seguimiento de sesiones está vinculado al historial de programas del usuario — no a un modelo de datos separado."
+		},
+		"technicalApproach": {
+			"heading": "Enfoque técnico",
+			"p1": "Todo el backend se ejecuta en Cloudflare Workers vía OpenNext.js. Esto significa no hay servidor tradicional, no hay cold starts y distribución global en el edge — pero también significa un runtime restringido. La superficie de la API de Node.js disponible en Workers es limitada, lo que descartó varias bibliotecas comunes.",
+			"p2": "Neon PostgreSQL con Drizzle ORM fue elegido específicamente por su driver basado en HTTP, que funciona dentro del runtime de Workers donde las conexiones TCP estándar no funcionan. Drizzle maneja esquema, migraciones y consultas — todo con inferencia de tipos TypeScript completa.",
+			"p3": "La gestión de estado (Zustand) está limitada a preocupaciones del lado del cliente: UI de sesión de entrenamiento activa, estado de animación, preferencias del usuario. Ningún estado del servidor se duplica en el cliente."
+		},
+		"stack": {
+			"heading": "Stack",
+			"items": [
+				{ "layer": "Frontend", "items": "Next.js 16 App Router, React 19, Tailwind CSS v4" },
+				{ "layer": "Backend / Runtime", "items": "Cloudflare Workers vía OpenNext.js — desplegado en el edge, sin cold starts" },
+				{ "layer": "Base de datos", "items": "Neon PostgreSQL (serverless) + Drizzle ORM con driver HTTP" },
+				{ "layer": "Autenticación", "items": "Better Auth con adaptador Drizzle (manejo de sesiones compatible con Cloudflare)" },
+				{ "layer": "Facturación", "items": "LemonSqueezy — suscripciones, webhooks, medición de uso" },
+				{ "layer": "IA", "items": "Framework de agentes Mastra + Google Gemini (agente compilador de entrenamientos)" },
+				{ "layer": "Estado", "items": "Zustand para estado global del lado del cliente" },
+				{ "layer": "Validación", "items": "Zod en toda la app — límites de API y entradas de formularios" },
+				{ "layer": "Herramientas", "items": "Bun, Biome, TypeScript en modo estricto" }
+			]
+		},
+		"results": {
+			"heading": "Resultados",
+			"items": [
+				{ "stat": "SaaS completo", "label": "Listo para suscripciones — facturación, autenticación, IA y despliegue en el edge integrados" },
+				{ "stat": "Sin cold starts", "label": "Runtime de Cloudflare Workers en el edge, distribuido globalmente desde el lanzamiento" },
+				{ "stat": "Salida de IA estructurada", "label": "El agente genera programas válidos y legibles por máquina — no texto conversacional" }
+			]
+		},
+		"takeaways": {
+			"heading": "Conclusiones clave",
+			"items": [
+				{
+					"heading": "Edge primero desde el día uno",
+					"body": "Ejecutar en Cloudflare Workers significa no hay cold starts y distribución global sin gestión de infraestructura. El compromiso es un runtime restringido — sin APIs de Node.js, módulos nativos limitados. Adaptamos el stack a esa restricción, no contra ella."
+				},
+				{
+					"heading": "IA como funcionalidad, no como prueba de concepto",
+					"body": "El agente Mastra no solo llama a un modelo — sigue un flujo de trabajo estructurado, valida las salidas y falla graciosamente cuando la generación falla. Los usuarios no ven el modelo; ven un programa de entrenamiento."
+				},
+				{
+					"heading": "Facturación integrada desde el inicio",
+					"body": "El manejo de webhooks de LemonSqueezy fue parte de la construcción inicial, no incorporado después. El estado de suscripción fluye hacia la UI y los límites de uso del agente de IA desde la misma fuente de verdad."
+				}
+			]
+		},
+		"cta": {
+			"heading": "¿Construyendo algo similar?",
+			"body": "Productos de IA, suscripciones SaaS, sistemas desplegados en el edge — hablemos de tu proyecto.",
+			"bookCall": "Reservar llamada",
+			"allCaseStudies": "Ver todos los casos de estudio"
+		}
+	},
+	"RequiemsApiPage": {
+		"breadcrumb": "Casos de Estudio",
+		"overline": "Caso de Estudio",
+		"title": "Requiems API",
+		"intro": "Una plataforma de API en producción que unifica validación de email, localización, finanzas y APIs de utilidades bajo una sola clave. Construida como un monorepo multi-lenguaje con Go, Rails y Cloudflare Workers.",
+		"overview": {
+			"heading": "Descripción general",
+			"p1": "Requiems API es una plataforma de API orientada a desarrolladores. Una sola clave de API da acceso a un conjunto creciente de APIs categorizadas — validación de email, datos geográficos, utilidades financieras, procesamiento de texto y herramientas tecnológicas. El objetivo es eliminar la sobrecarga de sourcing, validación e infraestructura que conlleva integrar múltiples fuentes de datos de terceros.",
+			"p2": "La plataforma incluye una API pública (vía un gateway de Cloudflare Worker), un panel de desarrolladores (Rails), un servicio de gestión de claves y un backend en Go de alto rendimiento que maneja toda la lógica de negocio."
+		},
+		"problem": {
+			"heading": "Problema",
+			"p1": "Los desarrolladores que construyen aplicaciones reales necesitan acceso a APIs de datos confiables — validación de email antes del registro, datos de zona horaria para agendamiento, tasas de cambio para facturación. El estado actual implica integrar cinco APIs diferentes con cinco SDKs, esquemas de autenticación, políticas de rate limiting y perfiles de confiabilidad distintos.",
+			"p2": "El desafío técnico aquí fue multidimensional: una sola plataforma que sirve diferentes categorías de API con distintas características de datos, una capa de autenticación suficientemente rápida para no agregar latencia perceptible, y una interfaz de administración que no requiera un despliegue completo de SPA."
+		},
+		"solution": {
+			"heading": "Solución",
+			"p1": "Elegimos un monorepo poliglota. Go maneja el núcleo de la API — es rápido, compila a un binario pequeño y el modelo de concurrencia se adapta al manejo de alto volumen de solicitudes. Rails maneja el panel de desarrolladores — viene con pilas incluidas para UIs de administración y Hotwire significa que no hay pipeline de build frontend separado. Dos Cloudflare Workers manejan el edge público: uno para autenticación y rate limiting, otro para gestión de claves y analíticas.",
+			"p2": "pnpm workspaces gestiona los servicios de JavaScript. Docker Compose orquesta el stack completo localmente — API en Go, Rails, ambos Workers (vía Wrangler), PostgreSQL y Redis — desde un solo comando."
+		},
+		"architecture": {
+			"heading": "Arquitectura",
+			"items": [
+				{
+					"name": "Go API",
+					"role": "Lógica de negocio principal",
+					"detail": "Router Chi, driver pgx (jackc/pgx v5), golang-migrate para gestión de esquemas, Sentry para rastreo de errores. Todas las categorías de API (email, ubicación, finanzas, texto, tecnología) están separadas por dominio. Rápida, sin estado, escalable horizontalmente."
+				},
+				{
+					"name": "Auth Gateway",
+					"role": "Punto de entrada edge público",
+					"detail": "Cloudflare Worker construido con Hono. Maneja validación de claves de API, rate limiting y proxying de solicitudes a la API en Go. Cloudflare D1 rastrea el uso por clave. Spec OpenAPI generada desde las definiciones de rutas. Este es el único servicio expuesto públicamente."
+				},
+				{
+					"name": "API Management Worker",
+					"role": "Servicio interno de claves y analíticas",
+					"detail": "Segundo Cloudflare Worker para emisión de claves, exportaciones de uso y analíticas de desarrolladores. Swagger UI se sirve directamente desde el Worker para exploración interactiva de la API. No tiene ruta pública."
+				},
+				{
+					"name": "Rails 8 Dashboard",
+					"role": "UI de usuario y administración",
+					"detail": "Rails 8.1 con Hotwire (Turbo + Stimulus) para páginas reactivas sin un build frontend separado. Tailwind CSS para estilos. Usado por desarrolladores que gestionan claves y por administradores que monitorean el uso. PostgreSQL vía ActiveRecord."
+				}
+			]
+		},
+		"performance": {
+			"heading": "Decisiones de rendimiento y escalado",
+			"items": [
+				{
+					"heading": "Autenticación en el edge, lógica en Go",
+					"body": "El Cloudflare Worker valida las claves de API y verifica los rate limits antes de que una solicitud llegue a la API en Go. D1 (SQLite en el edge) maneja los contadores de uso. Esta separación significa que la API en Go solo procesa solicitudes autenticadas y con rate limit verificado — no toca la sobrecarga de autenticación."
+				},
+				{
+					"heading": "Redis para caché en el camino crítico",
+					"body": "Las consultas geográficas y las respuestas de datos financieros que son costosas de calcular o que es poco probable que cambien dentro de una ventana de tiempo se almacenan en caché en Redis. La API en Go maneja la lógica cache-aside por categoría de API con TTLs independientes."
+				},
+				{
+					"heading": "Aislamiento de dominio en Go",
+					"body": "Cada categoría de API (email, ubicación, finanzas, etc.) es un paquete de dominio separado. Esto facilita escalar, probar o reemplazar categorías de API individuales sin tocar las demás. El router conecta los dominios — no contiene lógica de negocio."
+				},
+				{
+					"heading": "Rails sin SPA",
+					"body": "Hotwire (Turbo + Stimulus) le da al panel actualizaciones de página en tiempo real sin enviar una app React. El servidor Rails renderiza HTML; Turbo maneja el reemplazo parcial de páginas vía websockets o fetch. Esto simplifica el despliegue y elimina la necesidad de un build frontend separado."
+				}
+			]
+		},
+		"apiCategories": {
+			"heading": "Categorías de API",
+			"items": [
+				{ "name": "Email", "detail": "Validación, detección de desechables, búsqueda MX" },
+				{ "name": "Ubicación y Geografía", "detail": "Ciudades, códigos postales, zona horaria, geocodificación, feriados, días laborables" },
+				{ "name": "Finanzas", "detail": "Divisas, tasas de cambio, utilidades de datos financieros" },
+				{ "name": "Texto", "detail": "Utilidades de formateo, transformación y análisis" },
+				{ "name": "Tecnología", "detail": "Generación de códigos QR, utilidades de contraseñas, análisis de user agent" }
+			]
+		},
+		"stack": {
+			"heading": "Stack",
+			"items": [
+				{ "layer": "Runtime de API", "items": "Go 1.26 — Router Chi, pgx v5, golang-migrate" },
+				{ "layer": "Caché", "items": "Redis (go-redis) — caché de respuestas, contadores de rate limit" },
+				{ "layer": "Edge workers", "items": "Cloudflare Workers — framework Hono, TypeScript, Zod" },
+				{ "layer": "Almacenamiento edge", "items": "Cloudflare D1 (SQLite) — rastreo de uso por clave de API" },
+				{ "layer": "Panel", "items": "Rails 8.1 — Hotwire, Turbo, Stimulus, Tailwind CSS" },
+				{ "layer": "Base de datos", "items": "PostgreSQL — compartida entre la API en Go y el panel de Rails" },
+				{ "layer": "Monorepo", "items": "pnpm workspaces, Docker Compose para desarrollo local" },
+				{ "layer": "Observabilidad", "items": "Sentry (Go), logging estructurado, Biome para linting de TS" }
+			]
+		},
+		"results": {
+			"heading": "Resultados",
+			"items": [
+				{ "stat": "5 categorías de API", "label": "Unificadas bajo una sola clave, un SDK, una relación de facturación" },
+				{ "stat": "Capa de auth en el edge", "label": "La validación de claves y el rate limiting ocurren antes de que las solicitudes lleguen a Go — mínima latencia adicional" },
+				{ "stat": "Herramientas completas", "label": "Panel, gestión de claves, analíticas de uso y documentación Swagger — todo lanzado" }
+			]
+		},
+		"cta": {
+			"heading": "¿Necesitas un backend así?",
+			"body": "Plataformas de API, arquitecturas multi-servicio, backends en Go — hablemos de lo que estás construyendo.",
+			"bookCall": "Reservar llamada",
+			"allCaseStudies": "Ver todos los casos de estudio"
+		}
 	}
 }
