@@ -16,6 +16,8 @@ import ServiceEstimateCTA from "./ServiceEstimateCTA";
 import ServiceSolutions from "./ServiceSolutions";
 import ServiceForWho from "./ServiceForWho";
 import ServiceHighlights from "./ServiceHighlights";
+import ServiceWhyItMatters from "./ServiceWhyItMatters";
+import ServiceKeyBenefits from "./ServiceKeyBenefits";
 
 interface RichServicePageProps {
 	data: ServicePageData;
@@ -121,12 +123,6 @@ export default function RichServicePage({ data }: RichServicePageProps) {
 					highlights={data.highlights}
 				/>
 			)}
-			{showReasonsAbovePainPoints && (
-				<ServiceReasons
-					headingLine1={data.reasonsHeadingLine1}
-					headingLine2={data.reasonsHeadingLine2}
-				/>
-			)}
 			<ServicePainPoints
 				heading={data.painPointsHeading}
 				painPoints={data.painPoints}
@@ -150,11 +146,21 @@ export default function RichServicePage({ data }: RichServicePageProps) {
 				heading={data.servicesHeading}
 				services={data.servicesOffered}
 			/>
-			{!showReasonsAbovePainPoints && <ServiceReasons />}
-			<ServiceProcess
-				heading={data.processHeading}
-				subtitle={data.processSubtitle}
-				steps={data.processSteps}
+			{/* Process section — replaced by whyItMatters or keyBenefits when present */}
+			{data.whyItMatters ? (
+				<ServiceWhyItMatters data={data.whyItMatters} />
+			) : data.keyBenefits ? (
+				<ServiceKeyBenefits data={data.keyBenefits} />
+			) : (
+				<ServiceProcess
+					heading={data.processHeading}
+					subtitle={data.processSubtitle}
+					steps={data.processSteps}
+				/>
+			)}
+			<ServiceReasons
+				headingLine1={data.reasonsHeadingLine1}
+				headingLine2={data.reasonsHeadingLine2}
 			/>
 			<ServiceTechStack categories={data.techStack} />
 			<ServiceFAQ faqs={data.faqOverrides} />

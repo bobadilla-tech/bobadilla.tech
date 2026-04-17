@@ -356,6 +356,28 @@ export const servicePages: ServicePageData[] = [
 		processSubtitle:
 			"Discovery-first approach to understand your users before writing a single line of code.",
 		processSteps: sharedProcessSteps,
+		keyBenefits: {
+			heading: "KEY BENEFITS",
+			subtitle:
+				"A great portal is not just a tool — it's the backbone of how your users interact with your business.",
+			items: [
+				{
+					icon: "user",
+					title: "Seamless user experiences",
+					body: "Deliver consistent and intuitive journeys across all touchpoints.",
+				},
+				{
+					icon: "link-2",
+					title: "Centralized control",
+					body: "Manage your data, users and operations from one powerful hub.",
+				},
+				{
+					icon: "trending-up",
+					title: "Built to Scale",
+					body: "Flexible architecture designed to grow with your business.",
+				},
+			],
+		},
 		techStack: sharedTechStack,
 		faqOverrides: sharedFaq,
 	},
@@ -444,6 +466,14 @@ export const servicePages: ServicePageData[] = [
 		processSubtitle:
 			"Design-to-code workflows that eliminate back-and-forth and deliver pixel-perfect results.",
 		processSteps: sharedProcessSteps,
+		whyItMatters: {
+			heading: "WHY IT MATTERS",
+			items: [
+				{ label: "First impressions define user trust", color: "gold" },
+				{ label: "Better UX increases engagement and conversions", color: "red" },
+				{ label: "Fast interfaces improve retention", color: "blue" },
+			],
+		},
 		techStack: sharedTechStack,
 		faqOverrides: sharedFaq,
 	},
@@ -483,37 +513,51 @@ export const servicePages: ServicePageData[] = [
 				title: "REST & GraphQL APIs",
 				description:
 					"Well-documented, versioned APIs that integrate cleanly with any frontend or third-party.",
+				icon: "code-2",
 			},
 			{
 				title: "Microservices architecture",
 				description:
 					"Independent, deployable services connected via message queues and service meshes.",
+				icon: "code-2",
 			},
 			{
 				title: "Authentication & authorization",
 				description:
 					"JWT, OAuth2, RBAC — secure auth flows for every use case.",
+				icon: "code-2",
 			},
 			{
 				title: "Database design & optimization",
 				description:
 					"Schema design, indexing strategies, and query optimization for high-traffic systems.",
+				icon: "code-2",
 			},
 			{
 				title: "Background jobs & queues",
 				description:
 					"Reliable task processing with RabbitMQ, Bull, or SQS — no dropped jobs.",
+				icon: "code-2",
 			},
 			{
 				title: "Cloud infrastructure (AWS)",
 				description:
 					"Serverless functions, containers, and managed services deployed with infrastructure-as-code.",
+				icon: "code-2",
 			},
 		],
 		processHeading: "OUR BACKEND PROCESS",
 		processSubtitle:
 			"Architecture-first approach that prevents expensive rewrites and unplanned downtime.",
 		processSteps: sharedProcessSteps,
+		whyItMatters: {
+			heading: "WHY IT MATTERS",
+			items: [
+				{ label: "Ensures system reliability", color: "red" },
+				{ label: "Supports scalability and growth", color: "blue" },
+				{ label: "Protects critical data", color: "gold" },
+			],
+		},
 		techStack: sharedTechStack,
 		faqOverrides: sharedFaq,
 	},

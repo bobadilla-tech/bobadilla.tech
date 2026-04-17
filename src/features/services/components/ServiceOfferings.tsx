@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Code2 } from "lucide-react";
 import type { ServiceOffer } from "@/features/services/model/types";
 
 interface ServiceOfferingsProps {
@@ -45,7 +46,8 @@ export default function ServiceOfferings({
 	heading,
 	services,
 }: ServiceOfferingsProps) {
-	const useCardLayout = services.some((service) => Boolean(service.image));
+	const useImageCardLayout = services.some((service) => Boolean(service.image));
+	const useIconCardLayout = !useImageCardLayout && services.some((service) => Boolean(service.icon));
 
 	return (
 		<section className="py-24 px-4 sm:px-6 lg:px-8">
@@ -64,7 +66,7 @@ export default function ServiceOfferings({
 					</span>
 				</motion.h2>
 
-				{useCardLayout ? (
+				{useImageCardLayout ? (
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 						{services.map((service, i) => (
 							<motion.div
@@ -90,6 +92,31 @@ export default function ServiceOfferings({
 										{service.title}
 									</h3>
 									<p className="font-body text-brand-primary/80 text-base leading-relaxed">
+										{service.description}
+									</p>
+								</div>
+							</motion.div>
+						))}
+					</div>
+				) : useIconCardLayout ? (
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+						{services.map((service, i) => (
+							<motion.div
+								key={service.title}
+								initial={{ opacity: 0, y: 20 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.4, delay: i * 0.08 }}
+								className="bg-surface border border-border rounded-2xl p-6 flex flex-col gap-4"
+							>
+								<div className="w-10 h-10 rounded-lg bg-brand-gold/10 border border-border-gold flex items-center justify-center shrink-0">
+									<Code2 className="w-5 h-5 text-brand-gold" />
+								</div>
+								<div>
+									<h3 className="font-heading font-bold text-brand-primary text-lg mb-2 leading-snug">
+										{service.title}
+									</h3>
+									<p className="font-body text-brand-primary/60 text-sm leading-relaxed">
 										{service.description}
 									</p>
 								</div>

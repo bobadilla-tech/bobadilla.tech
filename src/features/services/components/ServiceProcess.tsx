@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import type { ProcessStep } from "@/features/services/model/types";
 
@@ -21,17 +21,12 @@ const unionImages = [
 	"/assets/services/process/union-6.svg",
 ];
 
-const PROCESS_CARD_WIDTH = "16rem";
-const CLOSED_X_OFFSET = 24;
-const CLOSED_SCALE = 0.96;
-
 export default function ServiceProcess({
 	heading,
 	subtitle,
 	steps,
 }: ServiceProcessProps) {
 	const [activeStep, setActiveStep] = useState<number | null>(null);
-	const [hoveredStep, setHoveredStep] = useState<number | null>(null);
 
 	return (
 		<section className="py-24 px-4 sm:px-6 lg:px-8">
@@ -62,33 +57,7 @@ export default function ServiceProcess({
 				<div className="relative">
 					{steps.map((step, i) => {
 						const isEven = i % 2 === 0;
-						const isDescriptionOpen = activeStep === i || hoveredStep === i;
-						const descriptionCard = (
-							<motion.div
-								initial={{ opacity: 0, x: isEven ? 30 : -30 }}
-								animate={{
-									opacity: isDescriptionOpen ? 1 : 0,
-									x: isDescriptionOpen
-										? 0
-										: isEven
-											? CLOSED_X_OFFSET
-											: -CLOSED_X_OFFSET,
-									scale: isDescriptionOpen ? 1 : CLOSED_SCALE,
-									maxWidth: isDescriptionOpen ? PROCESS_CARD_WIDTH : "0rem",
-								}}
-								viewport={{ once: true }}
-								transition={{ duration: 0.2 }}
-								className="flex-shrink-0 overflow-hidden"
-								aria-hidden={!isDescriptionOpen}
-								style={{ pointerEvents: isDescriptionOpen ? "auto" : "none" }}
-							>
-								<div className="bg-white rounded-[47px] p-8 w-64">
-									<p className="font-body text-black text-xl font-light leading-snug text-center">
-										{step.description}
-									</p>
-								</div>
-							</motion.div>
-						);
+						const isOpen = activeStep === i;
 
 						return (
 							<motion.div
@@ -97,19 +66,10 @@ export default function ServiceProcess({
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true }}
 								transition={{ delay: i * 0.08 }}
-								className={`flex items-center gap-8 mb-4 ${isEven ? "flex-row" : "flex-row-reverse"}`}
-								onMouseEnter={() => setHoveredStep(i)}
-								onMouseLeave={() => setHoveredStep(null)}
+								className="flex justify-center mb-4"
 							>
-								{/* Description bubble on alternating side */}
-								<div
-									className={`flex-1 flex ${isEven ? "justify-end" : "justify-start"}`}
-								>
-									{descriptionCard}
-								</div>
-
-								{/* Center: Union ribbon + step label */}
-								<div className="relative flex items-center justify-center flex-shrink-0 w-[340px] sm:w-[500px]">
+								{/* Ribbon wrapper — cards are absolutely positioned relative to this */}
+								<div className="relative flex items-center justify-center w-[340px] sm:w-[500px]">
 									<Image
 										src={unionImages[i % unionImages.length]}
 										alt=""
@@ -118,7 +78,8 @@ export default function ServiceProcess({
 										className="w-full"
 										unoptimized
 									/>
-									{/* Step number dot + title overlay */}
+
+									{/* Step button + title overlay */}
 									<div className="absolute inset-0 flex items-center justify-center">
 										<div
 											className={`flex items-center gap-3 ${isEven ? "" : "flex-row-reverse"}`}
@@ -128,21 +89,56 @@ export default function ServiceProcess({
 												onClick={() =>
 													setActiveStep((current) => (current === i ? null : i))
 												}
-												aria-expanded={isDescriptionOpen}
-												aria-label={`${step.title}: ${isDescriptionOpen ? "Hide" : "Show"} details`}
+												aria-expanded={isOpen}
+												aria-label={`${step.title}: ${isOpen ? "Hide" : "Show"} details`}
 												className="w-20 h-20 flex-shrink-0 rounded-full border border-brand-primary/80 flex items-center justify-center font-body text-brand-primary text-4xl leading-none transition-colors hover:bg-brand-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/80 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-bg"
 											>
-												{isDescriptionOpen ? "−" : "+"}
+												{isOpen ? "−" : "+"}
 											</button>
 											<h3 className="font-heading font-bold text-white text-2xl whitespace-nowrap">
 												{step.title}
 											</h3>
 										</div>
 									</div>
+
+									{/* Desktop description card — floats on the alternating side, never shifts the ribbon */}
+									<motion.div
+										className={`absolute top-1/2 -translate-y-1/2 hidden sm:block ${isEven ? "right-full mr-6" : "left-full ml-6"}`}
+										animate={{
+											opacity: isOpen ? 1 : 0,
+											scale: isOpen ? 1 : 0.95,
+											x: isOpen ? 0 : isEven ? 10 : -10,
+										}}
+										transition={{ duration: 0.2 }}
+										style={{ pointerEvents: isOpen ? "auto" : "none" }}
+										aria-hidden={!isOpen}
+									>
+										<div className="bg-white rounded-[47px] p-8 w-64">
+											<p className="font-body text-black text-xl font-light leading-snug text-center">
+												{step.description}
+											</p>
+										</div>
+									</motion.div>
 								</div>
 
-								{/* Empty spacer on other side */}
-								<div className="flex-1" />
+								{/* Mobile description card — expands below the ribbon */}
+								<AnimatePresence>
+									{isOpen && (
+										<motion.div
+											className="sm:hidden absolute top-full left-1/2 -translate-x-1/2 mt-2 z-10 w-64"
+											initial={{ opacity: 0, y: -8 }}
+											animate={{ opacity: 1, y: 0 }}
+											exit={{ opacity: 0, y: -8 }}
+											transition={{ duration: 0.2 }}
+										>
+											<div className="bg-white rounded-[47px] p-8">
+												<p className="font-body text-black text-xl font-light leading-snug text-center">
+													{step.description}
+												</p>
+											</div>
+										</motion.div>
+									)}
+								</AnimatePresence>
 							</motion.div>
 						);
 					})}

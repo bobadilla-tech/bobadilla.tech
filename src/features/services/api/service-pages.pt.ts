@@ -357,6 +357,28 @@ export const servicePages: ServicePageData[] = [
 		processSubtitle:
 			"Abordagem discovery-first para entender seus usuários antes de escrever uma única linha de código.",
 		processSteps: sharedProcessSteps,
+		keyBenefits: {
+			heading: "PRINCIPAIS BENEFÍCIOS",
+			subtitle:
+				"Um grande portal não é apenas uma ferramenta — é a espinha dorsal de como seus usuários interagem com o seu negócio.",
+			items: [
+				{
+					icon: "user",
+					title: "Experiências de usuário fluidas",
+					body: "Ofereça jornadas consistentes e intuitivas em todos os pontos de contato.",
+				},
+				{
+					icon: "link-2",
+					title: "Controle centralizado",
+					body: "Gerencie seus dados, usuários e operações a partir de um hub centralizado.",
+				},
+				{
+					icon: "trending-up",
+					title: "Projetado para escalar",
+					body: "Arquitetura flexível projetada para crescer com o seu negócio.",
+				},
+			],
+		},
 		techStack: sharedTechStack,
 		faqOverrides: sharedFaq,
 	},
@@ -445,6 +467,14 @@ export const servicePages: ServicePageData[] = [
 		processSubtitle:
 			"Fluxos de trabalho de design a código que eliminam idas e vindas e entregam resultados pixel-perfect.",
 		processSteps: sharedProcessSteps,
+		whyItMatters: {
+			heading: "POR QUE IMPORTA",
+			items: [
+				{ label: "Primeiras impressões definem a confiança do usuário", color: "gold" },
+				{ label: "Melhor UX aumenta engajamento e conversões", color: "red" },
+				{ label: "Interfaces rápidas melhoram a retenção", color: "blue" },
+			],
+		},
 		techStack: sharedTechStack,
 		faqOverrides: sharedFaq,
 	},
@@ -484,37 +514,51 @@ export const servicePages: ServicePageData[] = [
 				title: "APIs REST e GraphQL",
 				description:
 					"APIs bem documentadas e versionadas que se integram limpoamente com qualquer frontend ou terceiro.",
+				icon: "code-2",
 			},
 			{
 				title: "Arquitetura de microsserviços",
 				description:
 					"Serviços independentes e implantáveis conectados via filas de mensagens e service meshes.",
+				icon: "code-2",
 			},
 			{
 				title: "Autenticação e autorização",
 				description:
 					"JWT, OAuth2, RBAC — fluxos de autenticação seguros para cada caso de uso.",
+				icon: "code-2",
 			},
 			{
 				title: "Design e otimização de banco de dados",
 				description:
 					"Design de esquema, estratégias de indexação e otimização de consultas para sistemas de alto tráfego.",
+				icon: "code-2",
 			},
 			{
 				title: "Jobs em background e filas",
 				description:
 					"Processamento de tarefas confiável com RabbitMQ, Bull ou SQS — sem jobs perdidos.",
+				icon: "code-2",
 			},
 			{
 				title: "Infraestrutura cloud (AWS)",
 				description:
 					"Funções serverless, contêineres e serviços gerenciados implantados com infraestrutura como código.",
+				icon: "code-2",
 			},
 		],
 		processHeading: "NOSSO PROCESSO BACKEND",
 		processSubtitle:
 			"Abordagem arquitetura-primeiro que previne reescritas caras e indisponibilidades não planejadas.",
 		processSteps: sharedProcessSteps,
+		whyItMatters: {
+			heading: "POR QUE IMPORTA",
+			items: [
+				{ label: "Garante a confiabilidade do sistema", color: "red" },
+				{ label: "Suporta escalabilidade e crescimento", color: "blue" },
+				{ label: "Protege dados críticos", color: "gold" },
+			],
+		},
 		techStack: sharedTechStack,
 		faqOverrides: sharedFaq,
 	},
