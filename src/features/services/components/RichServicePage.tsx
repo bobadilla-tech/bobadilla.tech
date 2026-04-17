@@ -21,7 +21,18 @@ interface RichServicePageProps {
 	data: ServicePageData;
 }
 
+const ESTIMATE_CTA_EXCLUDED_SLUGS = new Set([
+	"mobile-app-development",
+	"front-end-development",
+	"web-application-development",
+	"back-end-development",
+]);
+
 export default function RichServicePage({ data }: RichServicePageProps) {
+	const showReasonsAbovePainPoints =
+		Boolean(data.reasonsHeadingLine1 || data.reasonsHeadingLine2);
+	const showEstimateCTA = !ESTIMATE_CTA_EXCLUDED_SLUGS.has(data.slug);
+
 	// MVP variant: has mvpSolutions
 	if (data.mvpSolutions) {
 		return (
@@ -144,7 +155,7 @@ export default function RichServicePage({ data }: RichServicePageProps) {
 			/>
 			<ServiceTechStack categories={data.techStack} />
 			<ServiceFAQ faqs={data.faqOverrides} />
-			<ServiceEstimateCTA />
+			{showEstimateCTA && <ServiceEstimateCTA />}
 			<CTABand />
 			<Footer />
 		</div>
