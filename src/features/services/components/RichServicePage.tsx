@@ -21,7 +21,12 @@ interface RichServicePageProps {
 	data: ServicePageData;
 }
 
-const ESTIMATE_CTA_EXCLUDED_SLUGS = new Set(["mobile-app-development"]);
+const ESTIMATE_CTA_EXCLUDED_SLUGS = new Set([
+	"mobile-app-development",
+	"front-end-development",
+	"web-application-development",
+	"back-end-development",
+]);
 
 export default function RichServicePage({ data }: RichServicePageProps) {
 	const showReasonsAbovePainPoints =
