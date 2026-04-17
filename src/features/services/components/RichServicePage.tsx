@@ -150,7 +150,7 @@ export default function RichServicePage({ data }: RichServicePageProps) {
 			/>
 			<ServiceTechStack categories={data.techStack} />
 			<ServiceFAQ faqs={data.faqOverrides} />
-			<ServiceEstimateCTA />
+			{data.slug !== "mobile-app-development" && <ServiceEstimateCTA />}
 			<CTABand />
 			<Footer />
 		</div>
