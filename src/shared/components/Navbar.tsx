@@ -58,10 +58,11 @@ export default function Navbar() {
 	}, [isResourcesOpen, isCompanyOpen]);
 
 	const companyLinks = [
-		{ label: t("founder"), href: "/founder" },
-		{ label: t("team"), href: "/team" },
-		{ label: t("caseStudies"), href: "/case-studies" },
+		{ label: t("hire"), href: "/hire" },
 		{ label: t("startSmall"), href: "/start-small" },
+		{ label: t("caseStudies"), href: "/case-studies" },
+		{ label: t("team"), href: "/team" },
+		{ label: t("founder"), href: "/founder" },
 	];
 
 	const resourceLinks = [

@@ -44,7 +44,7 @@ export default function CaseStudiesPage() {
 								<span className="text-brand-gold">shipped</span>
 							</>
 						}
-						subtitle="Two projects built end-to-end. Real systems, real decisions, real tradeoffs."
+						subtitle="Two published so far. Real systems, real decisions, real tradeoffs."
 						align="left"
 					/>
 				</motion.div>

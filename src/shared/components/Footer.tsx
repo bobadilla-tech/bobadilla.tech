@@ -81,10 +81,12 @@ export default async function Footer() {
 						</span>
 						<nav className="flex flex-col gap-3">
 							{[
-								{ href: "/founder", label: "Founder" },
-								{ href: "/team", label: "Team" },
-								{ href: "/case-studies", label: "Case Studies" },
+								{ href: "/hire", label: "Work With Us" },
 								{ href: "/start-small", label: "Start Small" },
+								{ href: "/system-audit", label: "System Audit" },
+								{ href: "/case-studies", label: "Case Studies" },
+								{ href: "/team", label: "Team" },
+								{ href: "/founder", label: "Founder" },
 							].map((link) => (
 								<Link
 									key={link.href}
