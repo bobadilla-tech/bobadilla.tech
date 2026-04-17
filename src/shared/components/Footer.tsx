@@ -16,7 +16,7 @@ export default async function Footer() {
 	return (
 		<footer className="bg-surface border-t border-border">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-				<div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
 					{/* Logo + social */}
 					<div className="flex flex-col gap-6">
 						<Link
@@ -69,6 +69,31 @@ export default async function Footer() {
 									className="font-body text-brand-primary/60 hover:text-brand-primary text-sm transition-colors duration-200"
 								>
 									{t(`links.${link.id}` as Parameters<typeof t>[0])}
+								</Link>
+							))}
+						</nav>
+					</div>
+
+					{/* Company */}
+					<div className="flex flex-col gap-4">
+						<span className="font-body text-xs font-semibold tracking-widest uppercase text-brand-primary/40">
+							{t("company")}
+						</span>
+						<nav className="flex flex-col gap-3">
+							{[
+								{ href: "/hire", label: "Work With Us" },
+								{ href: "/start-small", label: "Start Small" },
+								{ href: "/system-audit", label: "System Audit" },
+								{ href: "/case-studies", label: "Case Studies" },
+								{ href: "/team", label: "Team" },
+								{ href: "/founder", label: "Founder" },
+							].map((link) => (
+								<Link
+									key={link.href}
+									href={link.href}
+									className="font-body text-brand-primary/60 hover:text-brand-primary text-sm transition-colors duration-200"
+								>
+									{link.label}
 								</Link>
 							))}
 						</nav>

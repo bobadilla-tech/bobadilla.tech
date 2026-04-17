@@ -57,6 +57,13 @@
 		"services": "Services",
 		"projects": "Projects",
 		"resources": "Resources",
+		"company": "Company",
+		"founder": "Founder",
+		"team": "Team",
+		"caseStudies": "Case Studies",
+		"startSmall": "Start Small",
+		"hire": "Work With Us",
+		"systemAudit": "System Audit",
 		"pricing": "Pricing",
 		"contact": "Contact",
 		"blog": "Blog",
@@ -67,6 +74,7 @@
 	},
 	"Footer": {
 		"navigation": "Navigation",
+		"company": "Company",
 		"dropUsALine": "Drop us a line",
 		"callUs": "Call us",
 		"copyright": "© {year} Bobadilla Tech. All rights reserved.",
@@ -578,5 +586,375 @@
 				}
 			}
 		}
+	},
+	"FounderPage": {
+		"overline": "Founder",
+		"name": "Eliaz Bobadilla",
+		"role": "Founder & Lead Engineer",
+		"intro": "Founder and lead engineer at Bobadilla Tech. I build systems that ship and hold up — not prototypes dressed as products.",
+		"background": {
+			"heading": "Background",
+			"p1": "I started writing code at 14. Not tutorials — actual projects. That early habit of building to understand (instead of reading to understand) still defines how I work.",
+			"p2": "Over the past decade I've worked across early-stage startups, scale-up teams, and client projects spanning fintech, fitness, developer tooling, and infrastructure. Some of those shipped to thousands of users. Some got scrapped for the right reasons. All of them taught me something concrete.",
+			"p3": "My focus has shifted progressively toward backend architecture, AI systems integration, and scalable infrastructure — areas where engineering decisions made early compound hard in both directions."
+		},
+		"approach": {
+			"heading": "How I approach building software",
+			"p1": "I don't start with architecture. I start with the constraint. What's the real bottleneck — latency, cost, complexity, time to market? The answer changes the design more than any framework choice does.",
+			"p2": "I default toward simple and boring. That means reaching for proven tools before new ones, writing code that the next engineer can read without context, and treating every abstraction as debt until it proves its worth.",
+			"p3": "When AI is part of the stack, I treat it as an integration problem, not a research problem. The goal is reliable output, bounded behavior, and clear fallback logic — not a demo."
+		},
+		"expect": {
+			"heading": "What to expect working with me",
+			"items": [
+				{ "title": "Direct scoping", "body": "I'll tell you what's achievable, what's not, and where the real unknowns are — before we start." },
+				{ "title": "No middlemen", "body": "You talk to the engineer doing the work. There's no account manager between us." },
+				{ "title": "Fast feedback loops", "body": "I ship early and often. You see real progress, not status updates." },
+				{ "title": "Honest tradeoffs", "body": "If a simpler solution exists, I'll say so. Complexity should be justified, not default." }
+			]
+		},
+		"cta": {
+			"heading": "Want to talk through a project?",
+			"body": "15 minutes. No pitch. Just an honest conversation about what you're building and whether we're a fit.",
+			"button": "Book a call"
+		}
+	},
+	"TeamPage": {
+		"overline": "Team",
+		"heading": "A small team.",
+		"headingGold": "No overhead.",
+		"intro": "Three senior engineers on every project. Specialists brought in when the work calls for it. No juniors learning on your budget.",
+		"core": {
+			"heading": "Core team",
+			"badge": "3 engineers",
+			"description": "These three are consistent across every engagement. High ownership, direct communication, no hand-offs.",
+			"members": [
+				{ "role": "Founder & Lead Engineer", "focus": "Backend architecture, AI systems, infrastructure", "note": "On every project. Sets technical direction and does the work." },
+				{ "role": "Senior Full-Stack Engineer", "focus": "Frontend systems, API design, performance", "note": "Owns the client layer end-to-end. Strong opinions on UX." },
+				{ "role": "Senior Backend Engineer", "focus": "Databases, integrations, deployment pipelines", "note": "Deep in the plumbing. Reliable on complex data models and edge cases." }
+			]
+		},
+		"extended": {
+			"heading": "Extended network",
+			"badge": "5–8 collaborators",
+			"description": "Trusted specialists we've worked with across multiple projects. They come in when the scope requires their depth — not to pad headcount.",
+			"items": [
+				{ "label": "Mobile", "detail": "iOS and Android, native and cross-platform" },
+				{ "label": "DevOps / Infra", "detail": "Cloudflare, AWS, containerization, CI/CD" },
+				{ "label": "AI / ML", "detail": "Model integration, fine-tuning, evaluation pipelines" },
+				{ "label": "Design", "detail": "Product design, design systems, prototyping" },
+				{ "label": "QA", "detail": "Test strategy, automation, load testing" },
+				{ "label": "Compliance", "detail": "Security review, audit prep, HIPAA / SOC2 context" }
+			]
+		},
+		"why": {
+			"heading": "Why this structure works",
+			"items": [
+				{ "heading": "You get the right people, not the available ones", "body": "Large agencies staff projects with whoever's free. We staff projects with whoever fits. If a specialist isn't right for your work, they're not on it." },
+				{ "heading": "No dilution", "body": "Senior engineers don't delegate to juniors then review at the end. The people you speak to are the people writing the code." },
+				{ "heading": "Tight feedback loops", "body": "Three engineers who know each other's work can move fast and catch problems early. More people usually means slower cycles, not faster ones." }
+			]
+		},
+		"cta": {
+			"heading": "Want to meet the team?",
+			"body": "Book a short call. We'll walk through your project and tell you exactly who would be involved.",
+			"button": "Book a call"
+		}
+	},
+	"StartSmallPage": {
+		"overline": "Start Small",
+		"heading": "Work together",
+		"headingGold": "before committing big.",
+		"intro": "The best way to know if we're a fit is to do a small piece of real work together. A focused project — fixed scope, fixed price — so you can see how we think and what we ship before deciding anything larger.",
+		"why": {
+			"heading": "Why starting small works",
+			"items": [
+				{ "heading": "You see the actual quality", "body": "A small deliverable tells you more than any sales call. You see how we scope work, how we communicate, and what the code looks like — before any long-term commitment." },
+				{ "heading": "The risk is low", "body": "Fixed scope, fixed price. If the output isn't what you expected, you're not locked in. Most clients who start small come back for more, but that's your call to make." },
+				{ "heading": "We learn your codebase", "body": "Even a small project gives us real context on your stack, your constraints, and how your team works. That pays off immediately if we continue." }
+			]
+		},
+		"projects": {
+			"heading": "Example starter projects",
+			"note": "These are illustrative — we'll scope your specific work before quoting.",
+			"items": [
+				{ "title": "Feature build", "description": "A scoped, production-ready feature added to your existing codebase. Authentication flow, payment integration, notification system, dashboard widget — something real, something shipped.", "price": "$500–$800" },
+				{ "title": "API endpoint", "description": "A single API endpoint or small group of endpoints, fully implemented — validation, error handling, tests, documented. Not a scaffold. A finished piece of backend.", "price": "$400–$700" },
+				{ "title": "System audit", "description": "A technical review of your architecture, codebase, or infrastructure. We'll identify the real risks and bottlenecks, not a checklist. You get a written report and a follow-up call.", "price": "$600–$1,000" }
+			]
+		},
+		"how": {
+			"heading": "How it works",
+			"steps": [
+				{ "number": "01", "title": "Brief", "body": "Tell us what you need. A short conversation or a written brief — either works." },
+				{ "number": "02", "title": "Quote", "body": "We scope it, price it, and send you a fixed quote. No surprises after." },
+				{ "number": "03", "title": "Deliver", "body": "We build it. You review it. We ship it. Typically 1–2 weeks." }
+			]
+		},
+		"cta": {
+			"heading": "Ready to start?",
+			"body": "Tell us what you need. We'll scope it and send you a fixed quote within 24 hours.",
+			"note": "No retainer. No minimum. Just the work.",
+			"button": "Book a 15-min call"
+		}
+	},
+	"CaseStudiesPage": {
+		"overline": "Case Studies",
+		"heading1": "Work we've",
+		"heading2": "shipped",
+		"subtitle": "Two published so far. Real systems, real decisions, real tradeoffs.",
+		"readCaseStudy": "Read case study",
+		"studies": [
+			{
+				"slug": "compilestrength",
+				"title": "CompileStrength",
+				"tagline": "AI-powered fitness SaaS",
+				"description": "Full-stack subscription product with an AI agent that generates personalized workout programs. Built on Next.js, Cloudflare Workers, and Neon PostgreSQL. Shipped end-to-end — billing, auth, AI, and edge deployment included."
+			},
+			{
+				"slug": "requiems-api",
+				"title": "Requiems API",
+				"tagline": "Multi-language API platform",
+				"description": "A production API platform exposing email validation, location, finance, and utility endpoints under a single key. Built as a multi-language monorepo — Go API, Rails dashboard, two Cloudflare Workers for auth and key management."
+			}
+		]
+	},
+	"CompileStrengthPage": {
+		"breadcrumb": "Case Studies",
+		"overline": "Case Study",
+		"title": "CompileStrength",
+		"intro": "An AI-powered fitness SaaS. Users chat with an agent that generates personalized, science-based workout programs — and tracks sessions over time as training adapts.",
+		"overview": {
+			"heading": "Overview",
+			"p1": "CompileStrength is a subscription SaaS product for serious lifters who want programming grounded in training science, not generic templates. The core product is an AI agent that asks about training history, goals, and constraints — then generates a full periodized program.",
+			"p2": "Beyond generation, users track sessions, log progress, and watch their program adapt over time. The product includes a public calculator suite for acquisition and a subscription billing layer for monetization."
+		},
+		"problem": {
+			"heading": "Problem",
+			"p1": "Fitness apps either give you rigid templates or put you in front of a generic chatbot. Neither produces a coherent, periodized program. The people who actually know programming — coaches — don't scale. The people who want good programming — intermediate and advanced lifters — don't have access to them.",
+			"p2": "The technical challenge was building an AI agent that produces structured, valid workout programs rather than conversational text. Output needed to be machine-readable, consistent, and safe to display — not just coherent prose."
+		},
+		"solution": {
+			"heading": "Solution",
+			"p1": "We built the AI layer on Mastra — an agent framework that lets you define workflows with structured input/output schemas, not just free-form prompts. The workout compiler agent follows a fixed workflow: gather context, validate constraints, generate program blocks, validate output structure, return to the user.",
+			"p2": "Billing (LemonSqueezy) and auth (Better Auth) were integrated as first-class concerns from the start. The agent's generation limits are gated by subscription tier, and session tracking is tied to the user's program history — not a separate data model."
+		},
+		"technicalApproach": {
+			"heading": "Technical approach",
+			"p1": "The entire backend runs on Cloudflare Workers via OpenNext.js. This means no traditional server, no cold starts, and global edge distribution — but it also means a constrained runtime. The Node.js API surface available on Workers is limited, which ruled out several common libraries.",
+			"p2": "Neon PostgreSQL with Drizzle ORM was chosen specifically for its HTTP-based driver, which works inside the Workers runtime where standard TCP database connections don't. Drizzle handles schema, migrations, and queries — all with full TypeScript inference.",
+			"p3": "State management (Zustand) is limited to client-side concerns: active workout session UI, animation state, user preferences. No server state is duplicated client-side."
+		},
+		"stack": {
+			"heading": "Stack",
+			"items": [
+				{ "layer": "Frontend", "items": "Next.js 16 App Router, React 19, Tailwind CSS v4" },
+				{ "layer": "Backend / Runtime", "items": "Cloudflare Workers via OpenNext.js — edge-deployed, zero cold starts" },
+				{ "layer": "Database", "items": "Neon PostgreSQL (serverless) + Drizzle ORM with HTTP driver" },
+				{ "layer": "Auth", "items": "Better Auth with Drizzle adapter (Cloudflare-compatible session handling)" },
+				{ "layer": "Billing", "items": "LemonSqueezy — subscriptions, webhooks, usage metering" },
+				{ "layer": "AI", "items": "Mastra agent framework + Google Gemini (workout compiler agent)" },
+				{ "layer": "State", "items": "Zustand for client-side global state" },
+				{ "layer": "Validation", "items": "Zod throughout — API boundaries and form inputs" },
+				{ "layer": "Tooling", "items": "Bun, Biome, TypeScript strict mode" }
+			]
+		},
+		"results": {
+			"heading": "Results",
+			"items": [
+				{ "stat": "End-to-end SaaS", "label": "Fully subscription-ready — billing, auth, AI, and edge deploy all integrated" },
+				{ "stat": "Zero cold starts", "label": "Cloudflare Workers edge runtime, globally distributed from launch" },
+				{ "stat": "Structured AI output", "label": "Agent generates valid, machine-readable programs — not conversational text" }
+			]
+		},
+		"takeaways": {
+			"heading": "Key takeaways",
+			"items": [
+				{
+					"heading": "Edge-first from day one",
+					"body": "Running on Cloudflare Workers means no cold starts and global distribution without infrastructure management. The tradeoff is a constrained runtime — no Node.js APIs, limited native modules. We scoped the stack around that constraint, not against it."
+				},
+				{
+					"heading": "AI as a feature, not a proof of concept",
+					"body": "The Mastra agent doesn't just call a model — it follows a structured workflow, validates outputs, and falls back gracefully when generation fails. Users don't see the model; they see a workout program."
+				},
+				{
+					"heading": "Billing integrated from the start",
+					"body": "LemonSqueezy webhook handling was part of the initial build, not retrofitted. Subscription state flows into the UI and the AI agent's usage limits from the same source of truth."
+				}
+			]
+		},
+		"cta": {
+			"heading": "Building something similar?",
+			"body": "AI products, SaaS subscriptions, edge-deployed systems — let's talk about your project.",
+			"bookCall": "Book a call",
+			"allCaseStudies": "See all case studies"
+		}
+	},
+	"RequiemsApiPage": {
+		"breadcrumb": "Case Studies",
+		"overline": "Case Study",
+		"title": "Requiems API",
+		"intro": "A production API platform that unifies email validation, location, finance, and utility APIs under a single key. Built as a multi-language monorepo with Go, Rails, and Cloudflare Workers.",
+		"overview": {
+			"heading": "Overview",
+			"p1": "Requiems API is a developer-facing API platform. One API key gives access to a growing set of categorized APIs — email validation, geographic data, financial utilities, text processing, and technology tools. The goal is to eliminate the sourcing, validation, and infrastructure overhead that comes with integrating multiple third-party data sources.",
+			"p2": "The platform includes a public-facing API (via a Cloudflare Worker gateway), a developer dashboard (Rails), a key management service, and a high-performance Go backend that handles all business logic."
+		},
+		"problem": {
+			"heading": "Problem",
+			"p1": "Developers building real applications need access to reliable data APIs — email validation before user registration, timezone data for scheduling, currency rates for billing. The status quo is integrating five different APIs with five different SDKs, auth schemes, rate limit policies, and reliability profiles.",
+			"p2": "The technical challenge here was multi-dimensional: a single platform serving different API categories with different data characteristics, an auth layer that's fast enough to not add perceptible latency, and a management interface that doesn't require a full SPA deployment."
+		},
+		"solution": {
+			"heading": "Solution",
+			"p1": "We chose a polyglot monorepo. Go handles the API core — it's fast, compiles to a small binary, and the concurrency model fits high-volume request handling. Rails handles the developer dashboard — it's batteries-included for admin UIs and Hotwire means no separate frontend build pipeline. Two Cloudflare Workers handle the public edge: one for auth and rate limiting, one for key management and analytics.",
+			"p2": "pnpm workspaces manages the JavaScript services. Docker Compose orchestrates the full stack locally — Go API, Rails, both Workers (via Wrangler), PostgreSQL, and Redis — from a single command."
+		},
+		"architecture": {
+			"heading": "Architecture",
+			"items": [
+				{
+					"name": "Go API",
+					"role": "Core business logic",
+					"detail": "Chi router, pgx driver (jackc/pgx v5), golang-migrate for schema management, Sentry for error tracking. All API categories (email, location, finance, text, technology) are domain-separated. Fast, stateless, horizontally scalable."
+				},
+				{
+					"name": "Auth Gateway",
+					"role": "Public edge entry point",
+					"detail": "Cloudflare Worker built with Hono. Handles API key validation, rate limiting, and request proxying to the Go API. Cloudflare D1 tracks usage per key. OpenAPI spec generated from route definitions. This is the only service exposed publicly."
+				},
+				{
+					"name": "API Management Worker",
+					"role": "Internal key + analytics service",
+					"detail": "Second Cloudflare Worker for key issuance, usage exports, and developer analytics. Swagger UI is served directly from the Worker for interactive API exploration. Not publicly routed."
+				},
+				{
+					"name": "Rails 8 Dashboard",
+					"role": "User and admin UI",
+					"detail": "Rails 8.1 with Hotwire (Turbo + Stimulus) for reactive pages without a separate frontend build. Tailwind CSS for styling. Used by developers managing keys and by admins monitoring usage. PostgreSQL via ActiveRecord."
+				}
+			]
+		},
+		"performance": {
+			"heading": "Performance & scaling decisions",
+			"items": [
+				{
+					"heading": "Auth at the edge, logic in Go",
+					"body": "The Cloudflare Worker validates API keys and checks rate limits before a request ever reaches the Go API. D1 (SQLite at the edge) handles usage counters. This separation means the Go API only processes authenticated, rate-checked requests — it doesn't touch auth overhead."
+				},
+				{
+					"heading": "Redis for hot-path caching",
+					"body": "Geographic lookups and financial data responses that are expensive to compute or unlikely to change within a time window are cached in Redis. The Go API handles cache-aside logic per API category with independent TTLs."
+				},
+				{
+					"heading": "Domain isolation in Go",
+					"body": "Each API category (email, location, finance, etc.) is a separate domain package. This makes it straightforward to scale, test, or replace individual API categories without touching the others. The router wires domains together — it doesn't contain business logic."
+				},
+				{
+					"heading": "Rails without a SPA",
+					"body": "Hotwire (Turbo + Stimulus) gives the dashboard real-time page updates without shipping a React app. The Rails server renders HTML; Turbo handles partial page replacement over websockets or fetch. This simplifies the deployment and removes the need for a separate frontend build."
+				}
+			]
+		},
+		"apiCategories": {
+			"heading": "API categories",
+			"items": [
+				{ "name": "Validation", "detail": "Email validation, disposable detection, MX lookup" },
+				{ "name": "Places", "detail": "Cities, postal codes, timezone, geocoding, holidays, working days" },
+				{ "name": "Finance", "detail": "Currency, exchange rates, financial data utilities" },
+				{ "name": "Text", "detail": "Formatting, transformation, parsing utilities" },
+				{ "name": "Technology", "detail": "QR code generation, password utilities, user agent parsing" },
+				{ "name": "Networking", "detail": "IP lookup, DNS resolution, network utilities" },
+				{ "name": "Health", "detail": "Health data utilities and calculations" },
+				{ "name": "Entertainment", "detail": "Entertainment data and discovery APIs" }
+			]
+		},
+		"stack": {
+			"heading": "Stack",
+			"items": [
+				{ "layer": "API runtime", "items": "Go 1.26 — Chi router, pgx v5, golang-migrate" },
+				{ "layer": "Caching", "items": "Redis (go-redis) — response caching, rate limit counters" },
+				{ "layer": "Edge workers", "items": "Cloudflare Workers — Hono framework, TypeScript, Zod" },
+				{ "layer": "Edge storage", "items": "Cloudflare D1 (SQLite) — usage tracking per API key" },
+				{ "layer": "Dashboard", "items": "Rails 8.1 — Hotwire, Turbo, Stimulus, Tailwind CSS" },
+				{ "layer": "Database", "items": "PostgreSQL — shared between Go API and Rails dashboard" },
+				{ "layer": "Monorepo", "items": "pnpm workspaces, Docker Compose for local development" },
+				{ "layer": "Observability", "items": "Sentry (Go), structured logging, Biome for TS linting" }
+			]
+		},
+		"results": {
+			"heading": "Results",
+			"items": [
+				{ "stat": "8 API categories", "label": "Unified under one key, one SDK, one billing relationship" },
+				{ "stat": "Edge auth layer", "label": "Key validation and rate limiting happen before requests reach Go — minimal latency overhead" },
+				{ "stat": "Full dev tooling", "label": "Dashboard, key management, usage analytics, and Swagger docs — all shipped" }
+			]
+		},
+		"cta": {
+			"heading": "Need a backend like this?",
+			"body": "API platforms, multi-service architectures, Go backends — let's talk about what you're building.",
+			"bookCall": "Book a call",
+			"allCaseStudies": "See all case studies"
+		}
+	},
+	"HirePage": {
+		"overline": "Bobadilla Tech",
+		"heading": "Production systems, built by",
+		"headingGold": "the engineers writing the code.",
+		"intro": "For technical founders and teams who need backend systems, AI integrations, or scalable infrastructure — done by senior engineers, not delegated down.",
+		"cta1": "Get a Technical Assessment",
+		"cta2": "Or start with a small project",
+		"whoHeading": "Who this is for",
+		"who": [
+			"You have an MVP idea and need it production-ready — not a prototype",
+			"Your backend is breaking under real load",
+			"You want AI integrated into your product — not a demo, a real system",
+			"You've worked with dev shops and got slow delivery and junior code",
+			"You need a second opinion on a system before you scale it",
+			"You're technical enough to know when the work is good"
+		],
+		"servicesHeading": "What we do",
+		"servicesSubtitle": "Focused work in the areas we're actually good at.",
+		"services": [
+			{ "title": "MVP Development", "description": "Full-stack or backend-focused. From schema design to deployed API. We scope it tight, build it right, and ship it in weeks — not months.", "outcome": "A working system in production" },
+			{ "title": "AI Systems & Automation", "description": "LLM pipelines, RAG, agents, embeddings, fine-tuning. Real integrations into your product — not a wrapper around an API call.", "outcome": "AI that actually does something useful" },
+			{ "title": "Backend & Infrastructure", "description": "APIs, databases, queues, cloud infra. Built to scale under real load — not just to pass a demo. Includes architecture decisions, not just code.", "outcome": "A backend that doesn't break when it matters" },
+			{ "title": "System Optimization", "description": "Identify bottlenecks, reduce latency, fix what's fragile before it breaks in production. Includes a written report and prioritized action plan.", "outcome": "Clarity on what to fix and how" }
+		],
+		"howHeading": "How we work",
+		"howNote": "You talk directly to the engineers building your system. No project managers, no account managers, no one repeating what you just said in a different meeting.",
+		"steps": [
+			{ "number": "01", "title": "Understand", "body": "Short call or written brief. We ask direct questions about what you need, what you've tried, and what actually matters." },
+			{ "number": "02", "title": "Scope", "body": "We define exactly what gets built and for how much. Fixed price, written down. No surprises after." },
+			{ "number": "03", "title": "Build", "body": "Senior engineers write the code. You get updates as work progresses. No handoffs to junior devs." },
+			{ "number": "04", "title": "Ship & Iterate", "body": "We deliver. You review. We adjust. We don't disappear after the first delivery." }
+		],
+		"whyHeading": "Why us",
+		"why": [
+			"3 core senior engineers — not a staffing firm or an outsourcing operation",
+			"We've shipped and maintain internal products (Requiems API, CompileStrength) — real systems we own",
+			"Small team means direct accountability — you know who built what and why",
+			"No outsourcing, no junior devs handed senior work, no layer of project managers in between"
+		],
+		"smallHeading": "Not ready to commit to a full project?",
+		"smallBody": "The best way to see how we work is to do a small piece of real work together. Fixed scope, fixed price, no long-term commitment.",
+		"startSmall": {
+			"title": "Start Small",
+			"body": "A feature build, an API endpoint, or a scoped piece of work. Fixed price, delivered in 1–2 weeks.",
+			"price": "$400–$1,000",
+			"cta": "See examples"
+		},
+		"audit": {
+			"title": "System Audit",
+			"body": "Review of your codebase, backend, and infrastructure. Written report with specific recommendations and a prioritized action plan.",
+			"price": "$1,000–$2,000",
+			"cta": "Learn more"
+		},
+		"finalHeading": "Ready to talk?",
+		"finalBody": "Book a short technical call. We'll understand your problem and tell you honestly whether we're the right fit.",
+		"finalNote": "No sales pitch. No pressure. Just a direct conversation.",
+		"bookCall": "Book a Technical Call",
+		"startSmallCta": "Start with a small project"
 	}
 }
