@@ -749,11 +749,14 @@
 		"apiCategories": {
 			"heading": "API categories",
 			"items": [
-				{ "name": "Email", "detail": "Validation, disposable detection, MX lookup" },
-				{ "name": "Location & Geography", "detail": "Cities, postal codes, timezone, geocoding, holidays, working days" },
+				{ "name": "Validation", "detail": "Email validation, disposable detection, MX lookup" },
+				{ "name": "Places", "detail": "Cities, postal codes, timezone, geocoding, holidays, working days" },
 				{ "name": "Finance", "detail": "Currency, exchange rates, financial data utilities" },
 				{ "name": "Text", "detail": "Formatting, transformation, parsing utilities" },
-				{ "name": "Technology", "detail": "QR code generation, password utilities, user agent parsing" }
+				{ "name": "Technology", "detail": "QR code generation, password utilities, user agent parsing" },
+				{ "name": "Networking", "detail": "IP lookup, DNS resolution, network utilities" },
+				{ "name": "Health", "detail": "Health data utilities and calculations" },
+				{ "name": "Entertainment", "detail": "Entertainment data and discovery APIs" }
 			]
 		},
 		"stack": {
@@ -772,7 +775,7 @@
 		"results": {
 			"heading": "Results",
 			"items": [
-				{ "stat": "5 API categories", "label": "Unified under one key, one SDK, one billing relationship" },
+				{ "stat": "8 API categories", "label": "Unified under one key, one SDK, one billing relationship" },
 				{ "stat": "Edge auth layer", "label": "Key validation and rate limiting happen before requests reach Go — minimal latency overhead" },
 				{ "stat": "Full dev tooling", "label": "Dashboard, key management, usage analytics, and Swagger docs — all shipped" }
 			]
