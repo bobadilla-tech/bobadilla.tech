@@ -12,7 +12,9 @@ export default function Navbar() {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [isResourcesOpen, setIsResourcesOpen] = useState(false);
+	const [isCompanyOpen, setIsCompanyOpen] = useState(false);
 	const resourcesRef = useRef<HTMLDivElement>(null);
+	const companyRef = useRef<HTMLDivElement>(null);
 	const t = useTranslations("Navbar");
 
 	useEffect(() => {
@@ -42,12 +44,25 @@ export default function Navbar() {
 			) {
 				setIsResourcesOpen(false);
 			}
+			if (
+				companyRef.current &&
+				!companyRef.current.contains(e.target as Node)
+			) {
+				setIsCompanyOpen(false);
+			}
 		};
-		if (isResourcesOpen) {
+		if (isResourcesOpen || isCompanyOpen) {
 			document.addEventListener("mousedown", handleClickOutside);
 		}
 		return () => document.removeEventListener("mousedown", handleClickOutside);
-	}, [isResourcesOpen]);
+	}, [isResourcesOpen, isCompanyOpen]);
+
+	const companyLinks = [
+		{ label: t("founder"), href: "/founder" },
+		{ label: t("team"), href: "/team" },
+		{ label: t("caseStudies"), href: "/case-studies" },
+		{ label: t("startSmall"), href: "/start-small" },
+	];
 
 	const resourceLinks = [
 		{ label: t("blog"), href: "/blog" },
@@ -90,12 +105,51 @@ export default function Navbar() {
 							>
 								{t("services")}
 							</Link>
-							<Link
-								href="/#projects"
-								className="font-body text-xl text-brand-primary/80 hover:text-brand-primary transition-colors duration-200"
+							<div
+								className="relative"
+								ref={companyRef}
+								onMouseEnter={() => setIsCompanyOpen(true)}
+								onMouseLeave={() => setIsCompanyOpen(false)}
+								onFocusCapture={() => setIsCompanyOpen(true)}
+								onBlurCapture={(e) => {
+									if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+										setIsCompanyOpen(false);
+									}
+								}}
 							>
-								{t("projects")}
-							</Link>
+								<button
+									type="button"
+									aria-haspopup="menu"
+									aria-expanded={isCompanyOpen}
+									onClick={() => setIsCompanyOpen(!isCompanyOpen)}
+									onKeyDown={(e) => {
+										if (e.key === "Escape") setIsCompanyOpen(false);
+									}}
+									className="font-body text-xl text-brand-primary/80 hover:text-brand-primary transition-colors duration-200 cursor-pointer"
+								>
+									{t("company")}
+								</button>
+								<div
+									role="menu"
+									onKeyDown={(e) => {
+										if (e.key === "Escape") setIsCompanyOpen(false);
+									}}
+									className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-48 bg-brand-bg/95 backdrop-blur-lg border border-border rounded-xl shadow-xl transition-all duration-200 ${
+										isCompanyOpen ? "opacity-100 visible" : "opacity-0 invisible"
+									}`}
+								>
+									{companyLinks.map((link) => (
+										<Link
+											key={link.label}
+											role="menuitem"
+											href={link.href}
+											className="block px-4 py-3 font-body text-brand-primary/70 hover:text-brand-primary hover:bg-surface transition-colors duration-200 first:rounded-t-xl last:rounded-b-xl"
+										>
+											{link.label}
+										</Link>
+									))}
+								</div>
+							</div>
 							<div
 								className="relative"
 								ref={resourcesRef}
@@ -206,13 +260,23 @@ export default function Navbar() {
 							>
 								{t("services")}
 							</Link>
-							<Link
-								href="/#projects"
-								className="font-body text-brand-primary/70 hover:text-brand-primary transition-colors duration-200 py-2"
-								onClick={() => setIsMobileMenuOpen(false)}
-							>
-								{t("projects")}
-							</Link>
+							<div>
+								<div className="font-body text-brand-primary/40 text-xs tracking-widest uppercase mb-3">
+									{t("company")}
+								</div>
+								<div className="pl-4 space-y-3">
+									{companyLinks.map((link) => (
+										<Link
+											key={link.label}
+											href={link.href}
+											className="block font-body text-brand-primary/70 hover:text-brand-primary transition-colors duration-200 py-1"
+											onClick={() => setIsMobileMenuOpen(false)}
+										>
+											{link.label}
+										</Link>
+									))}
+								</div>
+							</div>
 							<div>
 								<div className="font-body text-brand-primary/40 text-xs tracking-widest uppercase mb-3">
 									{t("resources")}
