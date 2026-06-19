@@ -9,6 +9,7 @@ import {
 } from "~/shared/lib/seo";
 import Navbar from "@/shared/components/Navbar";
 import Footer from "@/shared/components/Footer";
+import ConsentBanner from "@/shared/ui/ConsentBanner";
 
 export async function generateMetadata({
 	params,
@@ -69,6 +70,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 				<main>{children}</main>
 				<Footer />
 			</div>
+			<ConsentBanner />
 		</NextIntlClientProvider>
 	);
 }

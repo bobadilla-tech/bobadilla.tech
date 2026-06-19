@@ -27,10 +27,28 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 			lang={locale}
 			className={`${sora.variable} ${spaceGrotesk.variable}`}
 		>
-			{publicLocale ? <GoogleTagManager gtmId="GTM-NZHKJH48" /> : null}
 			<head>
 				<link rel="icon" href="/assets/logo.png" type="image/png" />
+				{publicLocale ? (
+					<script
+						dangerouslySetInnerHTML={{
+							__html: `
+								window.dataLayer = window.dataLayer || [];
+								function gtag(){dataLayer.push(arguments);}
+								var choice = localStorage.getItem('consent-choice');
+								var state = choice === 'accepted' ? 'granted' : 'denied';
+								gtag('consent', 'default', {
+									ad_storage: state,
+									ad_user_data: state,
+									ad_personalization: state,
+									analytics_storage: state,
+								});
+							`,
+						}}
+					/>
+				) : null}
 			</head>
+			{publicLocale ? <GoogleTagManager gtmId="GTM-NZHKJH48" /> : null}
 			<body className="antialiased bg-brand-bg text-brand-primary font-body">
 				{children}
 			</body>

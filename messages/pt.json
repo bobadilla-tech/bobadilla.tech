@@ -1177,5 +1177,10 @@
 		"detailsPrompt": "Quer enviar detalhes antes da chamada?",
 		"emailSubject": "Contexto antes da chamada",
 		"backHome": "← Voltar ao início"
+	},
+	"CookieBanner": {
+		"message": "Usamos cookies para analisar o tráfego e melhorar sua experiência.",
+		"accept": "Aceitar",
+		"reject": "Rejeitar"
 	}
 }

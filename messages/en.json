@@ -1177,5 +1177,10 @@
 		"detailsPrompt": "Want to send details before the call?",
 		"emailSubject": "Pre-call context",
 		"backHome": "← Back to home"
+	},
+	"CookieBanner": {
+		"message": "We use cookies to analyze traffic and improve your experience.",
+		"accept": "Accept",
+		"reject": "Reject"
 	}
 }
