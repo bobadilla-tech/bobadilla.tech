@@ -24,7 +24,8 @@
 		"db:studio": "drizzle-kit studio",
 		"test": "vitest run",
 		"test:watch": "vitest watch",
-		"test:coverage": "vitest run --coverage"
+		"test:coverage": "vitest run --coverage",
+		"generate:og": "tsx scripts/generate-og-image.ts"
 	},
 	"dependencies": {
 		"@opennextjs/cloudflare": "^1.19.11",
@@ -58,6 +59,7 @@
 		"@cloudflare/workers-types": "^4.20260617.1",
 		"@eslint/eslintrc": "^3.3.5",
 		"@eslint/js": "^10.0.1",
+		"@fontsource/sora": "^5.2.8",
 		"@tailwindcss/postcss": "^4.3.1",
 		"@types/node": "^25.9.3",
 		"@types/react": "19.2.14",
@@ -70,7 +72,10 @@
 		"eslint-plugin-prettier": "^5.5.6",
 		"globals": "^17.6.0",
 		"prettier": "^3.8.4",
+		"satori": "^0.26.0",
+		"sharp": "^0.35.1",
 		"tailwindcss": "^4.3.1",
+		"tsx": "^4.22.4",
 		"typescript": "^6.0.3",
 		"typescript-eslint": "^8.61.1",
 		"vitest": "^4.1.9",

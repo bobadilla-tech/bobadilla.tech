@@ -610,10 +610,22 @@
 		"expect": {
 			"heading": "What to expect working with me",
 			"items": [
-				{ "title": "Direct scoping", "body": "I'll tell you what's achievable, what's not, and where the real unknowns are — before we start." },
-				{ "title": "No middlemen", "body": "You talk to the engineer doing the work. There's no account manager between us." },
-				{ "title": "Fast feedback loops", "body": "I ship early and often. You see real progress, not status updates." },
-				{ "title": "Honest tradeoffs", "body": "If a simpler solution exists, I'll say so. Complexity should be justified, not default." }
+				{
+					"title": "Direct scoping",
+					"body": "I'll tell you what's achievable, what's not, and where the real unknowns are — before we start."
+				},
+				{
+					"title": "No middlemen",
+					"body": "You talk to the engineer doing the work. There's no account manager between us."
+				},
+				{
+					"title": "Fast feedback loops",
+					"body": "I ship early and often. You see real progress, not status updates."
+				},
+				{
+					"title": "Honest tradeoffs",
+					"body": "If a simpler solution exists, I'll say so. Complexity should be justified, not default."
+				}
 			]
 		},
 		"cta": {
@@ -632,9 +644,21 @@
 			"badge": "3 engineers",
 			"description": "These three are consistent across every engagement. High ownership, direct communication, no hand-offs.",
 			"members": [
-				{ "role": "Founder & Lead Engineer", "focus": "Backend architecture, AI systems, infrastructure", "note": "On every project. Sets technical direction and does the work." },
-				{ "role": "Senior Full-Stack Engineer", "focus": "Frontend systems, API design, performance", "note": "Owns the client layer end-to-end. Strong opinions on UX." },
-				{ "role": "Senior Backend Engineer", "focus": "Databases, integrations, deployment pipelines", "note": "Deep in the plumbing. Reliable on complex data models and edge cases." }
+				{
+					"role": "Founder & Lead Engineer",
+					"focus": "Backend architecture, AI systems, infrastructure",
+					"note": "On every project. Sets technical direction and does the work."
+				},
+				{
+					"role": "Senior Full-Stack Engineer",
+					"focus": "Frontend systems, API design, performance",
+					"note": "Owns the client layer end-to-end. Strong opinions on UX."
+				},
+				{
+					"role": "Senior Backend Engineer",
+					"focus": "Databases, integrations, deployment pipelines",
+					"note": "Deep in the plumbing. Reliable on complex data models and edge cases."
+				}
 			]
 		},
 		"extended": {
@@ -642,20 +666,44 @@
 			"badge": "5–8 collaborators",
 			"description": "Trusted specialists we've worked with across multiple projects. They come in when the scope requires their depth — not to pad headcount.",
 			"items": [
-				{ "label": "Mobile", "detail": "iOS and Android, native and cross-platform" },
-				{ "label": "DevOps / Infra", "detail": "Cloudflare, AWS, containerization, CI/CD" },
-				{ "label": "AI / ML", "detail": "Model integration, fine-tuning, evaluation pipelines" },
-				{ "label": "Design", "detail": "Product design, design systems, prototyping" },
+				{
+					"label": "Mobile",
+					"detail": "iOS and Android, native and cross-platform"
+				},
+				{
+					"label": "DevOps / Infra",
+					"detail": "Cloudflare, AWS, containerization, CI/CD"
+				},
+				{
+					"label": "AI / ML",
+					"detail": "Model integration, fine-tuning, evaluation pipelines"
+				},
+				{
+					"label": "Design",
+					"detail": "Product design, design systems, prototyping"
+				},
 				{ "label": "QA", "detail": "Test strategy, automation, load testing" },
-				{ "label": "Compliance", "detail": "Security review, audit prep, HIPAA / SOC2 context" }
+				{
+					"label": "Compliance",
+					"detail": "Security review, audit prep, HIPAA / SOC2 context"
+				}
 			]
 		},
 		"why": {
 			"heading": "Why this structure works",
 			"items": [
-				{ "heading": "You get the right people, not the available ones", "body": "Large agencies staff projects with whoever's free. We staff projects with whoever fits. If a specialist isn't right for your work, they're not on it." },
-				{ "heading": "No dilution", "body": "Senior engineers don't delegate to juniors then review at the end. The people you speak to are the people writing the code." },
-				{ "heading": "Tight feedback loops", "body": "Three engineers who know each other's work can move fast and catch problems early. More people usually means slower cycles, not faster ones." }
+				{
+					"heading": "You get the right people, not the available ones",
+					"body": "Large agencies staff projects with whoever's free. We staff projects with whoever fits. If a specialist isn't right for your work, they're not on it."
+				},
+				{
+					"heading": "No dilution",
+					"body": "Senior engineers don't delegate to juniors then review at the end. The people you speak to are the people writing the code."
+				},
+				{
+					"heading": "Tight feedback loops",
+					"body": "Three engineers who know each other's work can move fast and catch problems early. More people usually means slower cycles, not faster ones."
+				}
 			]
 		},
 		"cta": {
@@ -672,26 +720,59 @@
 		"why": {
 			"heading": "Why starting small works",
 			"items": [
-				{ "heading": "You see the actual quality", "body": "A small deliverable tells you more than any sales call. You see how we scope work, how we communicate, and what the code looks like — before any long-term commitment." },
-				{ "heading": "The risk is low", "body": "Fixed scope, fixed price. If the output isn't what you expected, you're not locked in. Most clients who start small come back for more, but that's your call to make." },
-				{ "heading": "We learn your codebase", "body": "Even a small project gives us real context on your stack, your constraints, and how your team works. That pays off immediately if we continue." }
+				{
+					"heading": "You see the actual quality",
+					"body": "A small deliverable tells you more than any sales call. You see how we scope work, how we communicate, and what the code looks like — before any long-term commitment."
+				},
+				{
+					"heading": "The risk is low",
+					"body": "Fixed scope, fixed price. If the output isn't what you expected, you're not locked in. Most clients who start small come back for more, but that's your call to make."
+				},
+				{
+					"heading": "We learn your codebase",
+					"body": "Even a small project gives us real context on your stack, your constraints, and how your team works. That pays off immediately if we continue."
+				}
 			]
 		},
 		"projects": {
 			"heading": "Example starter projects",
 			"note": "These are illustrative — we'll scope your specific work before quoting.",
 			"items": [
-				{ "title": "Feature build", "description": "A scoped, production-ready feature added to your existing codebase. Authentication flow, payment integration, notification system, dashboard widget — something real, something shipped.", "price": "$500–$800" },
-				{ "title": "API endpoint", "description": "A single API endpoint or small group of endpoints, fully implemented — validation, error handling, tests, documented. Not a scaffold. A finished piece of backend.", "price": "$400–$700" },
-				{ "title": "System audit", "description": "A technical review of your architecture, codebase, or infrastructure. We'll identify the real risks and bottlenecks, not a checklist. You get a written report and a follow-up call.", "price": "$600–$1,000" }
+				{
+					"title": "Feature build",
+					"description": "A scoped, production-ready feature added to your existing codebase. Authentication flow, payment integration, notification system, dashboard widget — something real, something shipped.",
+					"price": "$500–$800"
+				},
+				{
+					"title": "API endpoint",
+					"description": "A single API endpoint or small group of endpoints, fully implemented — validation, error handling, tests, documented. Not a scaffold. A finished piece of backend.",
+					"price": "$400–$700"
+				},
+				{
+					"title": "System audit",
+					"description": "A technical review of your architecture, codebase, or infrastructure. We'll identify the real risks and bottlenecks, not a checklist. You get a written report and a follow-up call.",
+					"price": "$600–$1,000"
+				}
 			]
 		},
 		"how": {
 			"heading": "How it works",
 			"steps": [
-				{ "number": "01", "title": "Brief", "body": "Tell us what you need. A short conversation or a written brief — either works." },
-				{ "number": "02", "title": "Quote", "body": "We scope it, price it, and send you a fixed quote. No surprises after." },
-				{ "number": "03", "title": "Deliver", "body": "We build it. You review it. We ship it. Typically 1–2 weeks." }
+				{
+					"number": "01",
+					"title": "Brief",
+					"body": "Tell us what you need. A short conversation or a written brief — either works."
+				},
+				{
+					"number": "02",
+					"title": "Quote",
+					"body": "We scope it, price it, and send you a fixed quote. No surprises after."
+				},
+				{
+					"number": "03",
+					"title": "Deliver",
+					"body": "We build it. You review it. We ship it. Typically 1–2 weeks."
+				}
 			]
 		},
 		"cta": {
@@ -751,23 +832,53 @@
 		"stack": {
 			"heading": "Stack",
 			"items": [
-				{ "layer": "Frontend", "items": "Next.js 16 App Router, React 19, Tailwind CSS v4" },
-				{ "layer": "Backend / Runtime", "items": "Cloudflare Workers via OpenNext.js — edge-deployed, zero cold starts" },
-				{ "layer": "Database", "items": "Neon PostgreSQL (serverless) + Drizzle ORM with HTTP driver" },
-				{ "layer": "Auth", "items": "Better Auth with Drizzle adapter (Cloudflare-compatible session handling)" },
-				{ "layer": "Billing", "items": "LemonSqueezy — subscriptions, webhooks, usage metering" },
-				{ "layer": "AI", "items": "Mastra agent framework + Google Gemini (workout compiler agent)" },
+				{
+					"layer": "Frontend",
+					"items": "Next.js 16 App Router, React 19, Tailwind CSS v4"
+				},
+				{
+					"layer": "Backend / Runtime",
+					"items": "Cloudflare Workers via OpenNext.js — edge-deployed, zero cold starts"
+				},
+				{
+					"layer": "Database",
+					"items": "Neon PostgreSQL (serverless) + Drizzle ORM with HTTP driver"
+				},
+				{
+					"layer": "Auth",
+					"items": "Better Auth with Drizzle adapter (Cloudflare-compatible session handling)"
+				},
+				{
+					"layer": "Billing",
+					"items": "LemonSqueezy — subscriptions, webhooks, usage metering"
+				},
+				{
+					"layer": "AI",
+					"items": "Mastra agent framework + Google Gemini (workout compiler agent)"
+				},
 				{ "layer": "State", "items": "Zustand for client-side global state" },
-				{ "layer": "Validation", "items": "Zod throughout — API boundaries and form inputs" },
+				{
+					"layer": "Validation",
+					"items": "Zod throughout — API boundaries and form inputs"
+				},
 				{ "layer": "Tooling", "items": "Bun, Biome, TypeScript strict mode" }
 			]
 		},
 		"results": {
 			"heading": "Results",
 			"items": [
-				{ "stat": "End-to-end SaaS", "label": "Fully subscription-ready — billing, auth, AI, and edge deploy all integrated" },
-				{ "stat": "Zero cold starts", "label": "Cloudflare Workers edge runtime, globally distributed from launch" },
-				{ "stat": "Structured AI output", "label": "Agent generates valid, machine-readable programs — not conversational text" }
+				{
+					"stat": "End-to-end SaaS",
+					"label": "Fully subscription-ready — billing, auth, AI, and edge deploy all integrated"
+				},
+				{
+					"stat": "Zero cold starts",
+					"label": "Cloudflare Workers edge runtime, globally distributed from launch"
+				},
+				{
+					"stat": "Structured AI output",
+					"label": "Agent generates valid, machine-readable programs — not conversational text"
+				}
 			]
 		},
 		"takeaways": {
@@ -863,35 +974,92 @@
 		"apiCategories": {
 			"heading": "API categories",
 			"items": [
-				{ "name": "Validation", "detail": "Email validation, disposable detection, MX lookup" },
-				{ "name": "Places", "detail": "Cities, postal codes, timezone, geocoding, holidays, working days" },
-				{ "name": "Finance", "detail": "Currency, exchange rates, financial data utilities" },
-				{ "name": "Text", "detail": "Formatting, transformation, parsing utilities" },
-				{ "name": "Technology", "detail": "QR code generation, password utilities, user agent parsing" },
-				{ "name": "Networking", "detail": "IP lookup, DNS resolution, network utilities" },
-				{ "name": "Health", "detail": "Health data utilities and calculations" },
-				{ "name": "Entertainment", "detail": "Entertainment data and discovery APIs" }
+				{
+					"name": "Validation",
+					"detail": "Email validation, disposable detection, MX lookup"
+				},
+				{
+					"name": "Places",
+					"detail": "Cities, postal codes, timezone, geocoding, holidays, working days"
+				},
+				{
+					"name": "Finance",
+					"detail": "Currency, exchange rates, financial data utilities"
+				},
+				{
+					"name": "Text",
+					"detail": "Formatting, transformation, parsing utilities"
+				},
+				{
+					"name": "Technology",
+					"detail": "QR code generation, password utilities, user agent parsing"
+				},
+				{
+					"name": "Networking",
+					"detail": "IP lookup, DNS resolution, network utilities"
+				},
+				{
+					"name": "Health",
+					"detail": "Health data utilities and calculations"
+				},
+				{
+					"name": "Entertainment",
+					"detail": "Entertainment data and discovery APIs"
+				}
 			]
 		},
 		"stack": {
 			"heading": "Stack",
 			"items": [
-				{ "layer": "API runtime", "items": "Go 1.26 — Chi router, pgx v5, golang-migrate" },
-				{ "layer": "Caching", "items": "Redis (go-redis) — response caching, rate limit counters" },
-				{ "layer": "Edge workers", "items": "Cloudflare Workers — Hono framework, TypeScript, Zod" },
-				{ "layer": "Edge storage", "items": "Cloudflare D1 (SQLite) — usage tracking per API key" },
-				{ "layer": "Dashboard", "items": "Rails 8.1 — Hotwire, Turbo, Stimulus, Tailwind CSS" },
-				{ "layer": "Database", "items": "PostgreSQL — shared between Go API and Rails dashboard" },
-				{ "layer": "Monorepo", "items": "pnpm workspaces, Docker Compose for local development" },
-				{ "layer": "Observability", "items": "Sentry (Go), structured logging, Biome for TS linting" }
+				{
+					"layer": "API runtime",
+					"items": "Go 1.26 — Chi router, pgx v5, golang-migrate"
+				},
+				{
+					"layer": "Caching",
+					"items": "Redis (go-redis) — response caching, rate limit counters"
+				},
+				{
+					"layer": "Edge workers",
+					"items": "Cloudflare Workers — Hono framework, TypeScript, Zod"
+				},
+				{
+					"layer": "Edge storage",
+					"items": "Cloudflare D1 (SQLite) — usage tracking per API key"
+				},
+				{
+					"layer": "Dashboard",
+					"items": "Rails 8.1 — Hotwire, Turbo, Stimulus, Tailwind CSS"
+				},
+				{
+					"layer": "Database",
+					"items": "PostgreSQL — shared between Go API and Rails dashboard"
+				},
+				{
+					"layer": "Monorepo",
+					"items": "pnpm workspaces, Docker Compose for local development"
+				},
+				{
+					"layer": "Observability",
+					"items": "Sentry (Go), structured logging, Biome for TS linting"
+				}
 			]
 		},
 		"results": {
 			"heading": "Results",
 			"items": [
-				{ "stat": "8 API categories", "label": "Unified under one key, one SDK, one billing relationship" },
-				{ "stat": "Edge auth layer", "label": "Key validation and rate limiting happen before requests reach Go — minimal latency overhead" },
-				{ "stat": "Full dev tooling", "label": "Dashboard, key management, usage analytics, and Swagger docs — all shipped" }
+				{
+					"stat": "8 API categories",
+					"label": "Unified under one key, one SDK, one billing relationship"
+				},
+				{
+					"stat": "Edge auth layer",
+					"label": "Key validation and rate limiting happen before requests reach Go — minimal latency overhead"
+				},
+				{
+					"stat": "Full dev tooling",
+					"label": "Dashboard, key management, usage analytics, and Swagger docs — all shipped"
+				}
 			]
 		},
 		"cta": {
@@ -920,18 +1088,50 @@
 		"servicesHeading": "What we do",
 		"servicesSubtitle": "Focused work in the areas we're actually good at.",
 		"services": [
-			{ "title": "MVP Development", "description": "Full-stack or backend-focused. From schema design to deployed API. We scope it tight, build it right, and ship it in weeks — not months.", "outcome": "A working system in production" },
-			{ "title": "AI Systems & Automation", "description": "LLM pipelines, RAG, agents, embeddings, fine-tuning. Real integrations into your product — not a wrapper around an API call.", "outcome": "AI that actually does something useful" },
-			{ "title": "Backend & Infrastructure", "description": "APIs, databases, queues, cloud infra. Built to scale under real load — not just to pass a demo. Includes architecture decisions, not just code.", "outcome": "A backend that doesn't break when it matters" },
-			{ "title": "System Optimization", "description": "Identify bottlenecks, reduce latency, fix what's fragile before it breaks in production. Includes a written report and prioritized action plan.", "outcome": "Clarity on what to fix and how" }
+			{
+				"title": "MVP Development",
+				"description": "Full-stack or backend-focused. From schema design to deployed API. We scope it tight, build it right, and ship it in weeks — not months.",
+				"outcome": "A working system in production"
+			},
+			{
+				"title": "AI Systems & Automation",
+				"description": "LLM pipelines, RAG, agents, embeddings, fine-tuning. Real integrations into your product — not a wrapper around an API call.",
+				"outcome": "AI that actually does something useful"
+			},
+			{
+				"title": "Backend & Infrastructure",
+				"description": "APIs, databases, queues, cloud infra. Built to scale under real load — not just to pass a demo. Includes architecture decisions, not just code.",
+				"outcome": "A backend that doesn't break when it matters"
+			},
+			{
+				"title": "System Optimization",
+				"description": "Identify bottlenecks, reduce latency, fix what's fragile before it breaks in production. Includes a written report and prioritized action plan.",
+				"outcome": "Clarity on what to fix and how"
+			}
 		],
 		"howHeading": "How we work",
 		"howNote": "You talk directly to the engineers building your system. No project managers, no account managers, no one repeating what you just said in a different meeting.",
 		"steps": [
-			{ "number": "01", "title": "Understand", "body": "Short call or written brief. We ask direct questions about what you need, what you've tried, and what actually matters." },
-			{ "number": "02", "title": "Scope", "body": "We define exactly what gets built and for how much. Fixed price, written down. No surprises after." },
-			{ "number": "03", "title": "Build", "body": "Senior engineers write the code. You get updates as work progresses. No handoffs to junior devs." },
-			{ "number": "04", "title": "Ship & Iterate", "body": "We deliver. You review. We adjust. We don't disappear after the first delivery." }
+			{
+				"number": "01",
+				"title": "Understand",
+				"body": "Short call or written brief. We ask direct questions about what you need, what you've tried, and what actually matters."
+			},
+			{
+				"number": "02",
+				"title": "Scope",
+				"body": "We define exactly what gets built and for how much. Fixed price, written down. No surprises after."
+			},
+			{
+				"number": "03",
+				"title": "Build",
+				"body": "Senior engineers write the code. You get updates as work progresses. No handoffs to junior devs."
+			},
+			{
+				"number": "04",
+				"title": "Ship & Iterate",
+				"body": "We deliver. You review. We adjust. We don't disappear after the first delivery."
+			}
 		],
 		"whyHeading": "Why us",
 		"why": [
@@ -959,5 +1159,27 @@
 		"finalNote": "No sales pitch. No pressure. Just a direct conversation.",
 		"bookCall": "Book a Technical Call",
 		"startSmallCta": "Start with a small project"
+	},
+	"BookConfirmedPage": {
+		"title": "You're booked.",
+		"subtitle": "This is a technical conversation, not a sales call.",
+		"beforeCallHeading": "Before the call",
+		"preCallItems": [
+			{
+				"label": "Know what you want to build or fix",
+				"body": "Even a rough description is fine. The more specific, the more useful the call will be."
+			},
+			{
+				"label": "Be ready to share context",
+				"body": "A repo link, architecture diagram, or just a written summary of the problem. Whatever you have."
+			},
+			{
+				"label": "Bring the real problem, not the polished version",
+				"body": "We're engineers. We can handle the messy truth. It'll make the conversation more useful."
+			}
+		],
+		"detailsPrompt": "Want to send details before the call?",
+		"emailSubject": "Pre-call context",
+		"backHome": "← Back to home"
 	}
 }

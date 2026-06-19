@@ -2,10 +2,18 @@
 
 import { motion } from "framer-motion";
 import { CalendarCheck } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Button from "@/shared/ui/Button";
 import { CONTACT } from "~/shared/lib/constants";
 
 export default function BookConfirmedPage() {
+	const t = useTranslations("BookConfirmedPage");
+	
+	const preCallItems = t.raw("preCallItems") as Array<{
+		label: string;
+		body: string;
+	}>;
+
 	return (
 		<div className="pt-32 pb-24 min-h-screen">
 			<div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,10 +27,10 @@ export default function BookConfirmedPage() {
 						<CalendarCheck className="size-8 text-brand-gold" />
 					</div>
 					<h1 className="font-heading text-4xl md:text-5xl font-bold text-brand-primary mb-4">
-						You&apos;re booked.
+						{t("title")}
 					</h1>
 					<p className="font-body text-xl text-brand-primary/60 leading-relaxed">
-						This is a technical conversation, not a sales call.
+						{t("subtitle")}
 					</p>
 				</motion.div>
 
@@ -33,23 +41,10 @@ export default function BookConfirmedPage() {
 					className="bg-surface border border-border rounded-2xl p-8 mb-8"
 				>
 					<h2 className="font-heading text-lg font-semibold text-brand-primary mb-6">
-						Before the call
+						{t("beforeCallHeading")}
 					</h2>
 					<div className="space-y-5">
-						{[
-							{
-								label: "Know what you want to build or fix",
-								body: "Even a rough description is fine. The more specific, the more useful the call will be.",
-							},
-							{
-								label: "Be ready to share context",
-								body: "A repo link, architecture diagram, or just a written summary of the problem. Whatever you have.",
-							},
-							{
-								label: "Bring the real problem, not the polished version",
-								body: "We're engineers. We can handle the messy truth. It'll make the conversation more useful.",
-							},
-						].map((item, i) => (
+						{preCallItems.map((item, i) => (
 							<div key={item.label} className="flex items-start gap-4">
 								<span className="font-heading text-2xl font-bold text-brand-gold/30 shrink-0 w-8">
 									0{i + 1}
@@ -74,16 +69,16 @@ export default function BookConfirmedPage() {
 					className="text-center"
 				>
 					<p className="font-body text-brand-primary/50 text-sm mb-6">
-						Want to send details before the call?{" "}
+						{t("detailsPrompt")}{" "}
 						<a
-							href={`mailto:${CONTACT.email.eliaz}?subject=Pre-call context`}
+							href={`mailto:${CONTACT.email.eliaz}?subject=${encodeURIComponent(t("emailSubject"))}`}
 							className="text-brand-gold hover:text-brand-gold-light transition-colors duration-200"
 						>
 							{CONTACT.email.eliaz}
 						</a>
 					</p>
 					<Button to="/" variant="ghost" size="sm">
-						← Back to home
+						{t("backHome")}
 					</Button>
 				</motion.div>
 			</div>

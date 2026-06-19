@@ -20,6 +20,7 @@ export async function generateMetadata({
 	params,
 }: PageProps): Promise<Metadata> {
 	const { slug, locale } = await params;
+	
 	const post = await getPostBySlug(slug);
 
 	if (!post) {
