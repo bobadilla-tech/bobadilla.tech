@@ -1,4 +1,7 @@
 {
+	"Common": {
+		"bookCall": "Agendar chamada"
+	},
 	"ServiceHero": {
 		"bookCall": "AGENDAR CHAMADA"
 	},

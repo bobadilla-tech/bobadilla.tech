@@ -2,67 +2,28 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
-import { getDb, type DbInstance } from "~/db/client";
+import { getDb } from "~/db/client";
 import {
 	errorResponse,
 	successResponse,
 	validationErrorResponse,
 } from "~/lib/server/api-response";
+import type { RouteHandlerConfig, RouteContext } from "./types";
+import { compose } from "./compose";
 
-export interface RouteContext<TData = unknown> {
-	request: NextRequest;
-	data: TData;
-	db: DbInstance;
-	env: CloudflareEnv;
-}
-
-export type Middleware<TData = unknown> = (
-	ctx: RouteContext<TData>,
-	next: () => Promise<NextResponse>
-) => Promise<NextResponse>;
-
-export interface RouteHandlerConfig<
-	TSchema extends z.ZodTypeAny = z.ZodTypeAny,
-> {
-	schema?: TSchema;
-	successStatus?: number;
-	use?: Middleware<z.infer<TSchema>>[];
-	before?: (ctx: RouteContext<z.infer<TSchema>>) => Promise<void>;
-	handler: (ctx: RouteContext<z.infer<TSchema>>) => Promise<unknown>;
-	after?: (
-		ctx: RouteContext<z.infer<TSchema>>,
-		result: unknown
-	) => Promise<void>;
-}
-
-function compose<TData>(
-	middlewares: Middleware<TData>[],
-	core: (ctx: RouteContext<TData>) => Promise<NextResponse>
-): (ctx: RouteContext<TData>) => Promise<NextResponse> {
-	return (ctx) => {
-		let index = 0;
-		const next = (): Promise<NextResponse> => {
-			if (index >= middlewares.length) return core(ctx);
-			return middlewares[index++](ctx, next);
-		};
-		return next();
-	};
-}
+export type { RouteContext, Middleware, RouteHandlerConfig } from "./types";
 
 export function createRouteHandler<TSchema extends z.ZodTypeAny>(
 	config: RouteHandlerConfig<TSchema>
 ): (request: NextRequest) => Promise<NextResponse> {
 	return async (request: NextRequest): Promise<NextResponse> => {
 		try {
-			const { env } = await getCloudflareContext();
+			const { env } = getCloudflareContext();
 			const db = getDb(env.DB);
 
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			let data = undefined as any;
-			if (config.schema) {
-				const body = await request.json();
-				data = config.schema.parse(body);
-			}
+			const data = config.schema
+				? (config.schema.parse(await request.json()) as z.infer<TSchema>)
+				: (undefined as z.infer<TSchema>);
 
 			const ctx: RouteContext<z.infer<TSchema>> = {
 				request,
@@ -90,6 +51,7 @@ export function createRouteHandler<TSchema extends z.ZodTypeAny>(
 			};
 
 			const chain = compose(config.use ?? [], core);
+			
 			return await chain(ctx);
 		} catch (error) {
 			console.error("[createRouteHandler]", error);

@@ -1,4 +1,4 @@
-import type { Middleware } from "../createRouteHandler";
+import type { Middleware } from "../create-route-handler";
 
 interface RateLimitOptions {
 	// Future: max requests per window, KV namespace key, etc.

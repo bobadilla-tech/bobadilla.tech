@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import Button from "@/shared/ui/Button";
 import { fadeUp } from "@/shared/ui/animations";
@@ -17,9 +18,10 @@ export default function BookCallCTA({
 	heading,
 	body,
 	subtext,
-	buttonLabel = "Book a call",
+	buttonLabel,
 	href = CAL_LINKS.eliaz,
 }: BookCallCTAProps) {
+	const t = useTranslations("Common");
 	return (
 		<motion.div
 			{...fadeUp}
@@ -35,7 +37,7 @@ export default function BookCallCTA({
 				<p className="font-body text-brand-primary/40 text-sm mb-8">{subtext}</p>
 			)}
 			<Button href={href} variant="gold" size="md">
-				{buttonLabel}
+				{buttonLabel ?? t("bookCall")}
 			</Button>
 		</motion.div>
 	);
