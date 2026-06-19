@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { BadgeCheck } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { CAL_LINKS } from "~/lib/constants";
+import { CAL_LINKS } from "~/shared/lib/constants";
 import Button from "@/shared/ui/Button";
 
 export default function Hero() {

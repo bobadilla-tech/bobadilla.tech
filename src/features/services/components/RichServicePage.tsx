@@ -2,7 +2,7 @@ import Button from "@/shared/ui/Button";
 import CTABand from "@/shared/components/CTABand";
 import Footer from "@/shared/components/Footer";
 import Navbar from "@/shared/components/Navbar";
-import { CAL_LINKS } from "~/lib/constants";
+import { CAL_LINKS } from "~/shared/lib/constants";
 import type { ServicePageData } from "@/features/services/model/types";
 import ServiceHero from "./ServiceHero";
 import ServicePainPoints from "./ServicePainPoints";

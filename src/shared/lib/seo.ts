@@ -3,23 +3,11 @@ import { SOCIAL_LINKS } from "./constants";
 import type { Metadata } from "next";
 
 
-/**
- * SEO Configuration and Utilities
- * Implements best practices for SEO including Open Graph, Twitter Cards, and structured data
- */
 export const BASE_URL = "https://bobadilla.tech";
 export const SITE_NAME = "Bobadilla Tech";
 export const DEFAULT_AUTHOR = "Bobadilla Tech Team";
 export const TWITTER_HANDLE = "@UltiRequiem";
 
-/**
- * Image Dimension Constants
- * These values are carefully selected to optimize for different use cases:
- * - OG images use 1200×630 (standard Open Graph dimensions, 1.9:1 aspect ratio)
- *   ensures compatibility with major social platforms (LinkedIn, Twitter, Facebook)
- * - Blog content images use 800×450 for optimal readability within article layouts
- * - Blog avatars: 80×80 for prominent byline display, 64×64 for list/card view
- */
 export const OG_IMAGE_WIDTH = 1200;
 export const OG_IMAGE_HEIGHT = 630;
 export const BLOG_CONTENT_IMAGE_WIDTH = 800;
@@ -29,9 +17,6 @@ export const BLOG_AVATAR_SMALL_SIZE = 64;
 
 
 
-/**
- * SEO configuration for standard pages
- */
 export interface PageSEOConfig {
 	title: string;
 	description: string;
@@ -43,9 +28,6 @@ export interface PageSEOConfig {
 	locale?: string;
 }
 
-/**
- * SEO configuration for blog articles
- */
 export interface ArticleSEOConfig extends PageSEOConfig{
 	publishedTime: string;
 	author: string;
@@ -54,9 +36,6 @@ export interface ArticleSEOConfig extends PageSEOConfig{
 }
 
 
-/**
- * Map locale code to OpenGraph locale format
- */
 const LOCALE_MAP: Record<string, string> = {
 	en: "en_US",
 	es: "es_ES",
@@ -68,9 +47,6 @@ function getOpenGraphLocale(locale: string | undefined): string {
 	return LOCALE_MAP[locale] || "en_US";
 }
 
-/**
- * Internal helper to build base metadata structure
- */
 function buildBaseMetadata(params: {
 	title: string;
 	description: string;
@@ -139,9 +115,6 @@ function buildBaseMetadata(params: {
 	};
 }
 
-/**
- * Generate comprehensive metadata for a page (simplified interface)
- */
 export function generateSEOMetadata(config: PageSEOConfig): Metadata {
 	const {
 		title,
@@ -169,9 +142,6 @@ export function generateSEOMetadata(config: PageSEOConfig): Metadata {
 	});
 }
 
-/**
- * Generate metadata for blog articles (simplified interface)
- */
 export function generateArticleMetadata(config: ArticleSEOConfig): Metadata {
 	const {
 		title,
@@ -216,9 +186,6 @@ export function generateArticleMetadata(config: ArticleSEOConfig): Metadata {
 }
 
 
-/**
- * Common keyword sets for different page types
- */
 export const KEYWORD_SETS = {
 	core: [
 		"web development",
@@ -266,9 +233,6 @@ export const KEYWORD_SETS = {
 export type KeywordSet = keyof typeof KEYWORD_SETS;
 
 
-/**
- * Generate JSON-LD structured data for organization
- */
 export function generateOrganizationSchema() {
 	return {
 		"@context": "https://schema.org",
@@ -293,9 +257,6 @@ export function generateOrganizationSchema() {
 	};
 }
 
-/**
- * Generate JSON-LD structured data for services
- */
 export function generateServiceSchema(service: {
 	name: string;
 	description: string;
@@ -338,9 +299,6 @@ export function generateServiceSchema(service: {
 	};
 }
 
-/**
- * Generate JSON-LD structured data for breadcrumbs
- */
 export function generateBreadcrumbSchema(
 	items: { name: string; url: string }[]
 ) {
@@ -356,9 +314,6 @@ export function generateBreadcrumbSchema(
 	};
 }
 
-/**
- * Generate JSON-LD structured data for FAQ
- */
 export function generateFAQSchema(
 	faqs: { question: string; answer: string }[]
 ) {

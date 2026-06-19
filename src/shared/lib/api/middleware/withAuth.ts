@@ -1,5 +1,5 @@
 import { getSessionCookie } from "better-auth/cookies";
-import { errorResponse } from "~/lib/server/api-response";
+import { errorResponse } from "~/shared/lib/api/api-response";
 import type { Middleware } from "../create-route-handler";
 
 export function withAuth(): Middleware {

@@ -6,7 +6,7 @@ import { Github, Linkedin } from "@/shared/ui/BrandIcons";
 import { motion } from "framer-motion";
 import { ZodError, type ZodIssue } from "zod";
 import { useTranslations } from "next-intl";
-import { CAL_LINKS, SOCIAL_LINKS } from "~/lib/constants";
+import { CAL_LINKS, SOCIAL_LINKS } from "~/shared/lib/constants";
 import SectionHeader from "@/shared/ui/SectionHeader";
 import Button from "@/shared/ui/Button";
 import { contactSchema } from "@/features/leads/model/contactSchema";

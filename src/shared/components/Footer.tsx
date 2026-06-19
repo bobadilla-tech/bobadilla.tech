@@ -1,7 +1,7 @@
 import { Github, Linkedin, Instagram } from "@/shared/ui/BrandIcons";
 import { getTranslations } from "next-intl/server";
 import { Link } from "~/i18n/navigation";
-import { CONTACT, SOCIAL_LINKS, FOOTER_LINKS } from "~/lib/constants";
+import { CONTACT, SOCIAL_LINKS, FOOTER_LINKS } from "~/shared/lib/constants";
 
 function toTelUri(phoneNumber: string): string {
 	const trimmed = phoneNumber.trim();

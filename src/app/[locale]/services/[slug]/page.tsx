@@ -4,7 +4,7 @@ import ServicePage from "@/features/services/pages/ServicePage";
 import RichServicePage from "@/features/services/components/RichServicePage";
 import { allServices, industryServices } from "@/features/services/model/services";
 import { getServicePageData } from "@/features/services/api/getServicePage";
-import { generateSEOMetadata, BASE_URL } from "~/lib/seo";
+import { generateSEOMetadata, BASE_URL } from "~/shared/lib/seo";
 import type { Locale } from "~/i18n/routing";
 
 interface ServicePageProps {

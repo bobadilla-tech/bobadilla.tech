@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ToolsCatalog } from "@/features/tools";
-import { generateSEOMetadata, BASE_URL } from "~/lib/seo";
+import { generateSEOMetadata, BASE_URL } from "~/shared/lib/seo";
 
 export async function generateMetadata({
 	params,

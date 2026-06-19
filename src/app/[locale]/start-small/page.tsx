@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { generateSEOMetadata } from "~/lib/seo";
+import { generateSEOMetadata } from "~/shared/lib/seo";
 import StartSmallPage from "@/features/start-small/pages/StartSmallPage";
 
 export async function generateMetadata({

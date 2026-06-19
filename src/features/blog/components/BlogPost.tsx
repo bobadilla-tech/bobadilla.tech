@@ -2,14 +2,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
-import { getPostBySlug, getAllPosts } from "~/lib/sanity/queries";
-import { urlFor } from "~/lib/sanity/image";
-import { portableTextComponents } from "~/lib/sanity/portable-text";
+import { getPostBySlug, getAllPosts } from "~/shared/lib/sanity/queries";
+import { urlFor } from "~/shared/lib/sanity/image";
+import { portableTextComponents } from "~/shared/lib/sanity/portable-text";
 import { Calendar, Clock, Tag, ArrowLeft, Share2 } from "lucide-react";
 import { Twitter, Linkedin } from "@/shared/ui/BrandIcons";
 import { getTranslations } from "next-intl/server";
-import { BASE_URL, SITE_NAME, BLOG_AVATAR_LARGE_SIZE } from "~/lib/seo";
-import { EXTERNAL_LINKS } from "~/lib/constants";
+import { BASE_URL, SITE_NAME, BLOG_AVATAR_LARGE_SIZE } from "~/shared/lib/seo";
+import { EXTERNAL_LINKS } from "~/shared/lib/constants";
 
 interface BlogPostProps {
 	slug: string;

@@ -4,7 +4,7 @@ import { getServiceBySlug, getRelatedServices } from "../api/queries";
 import { benefitIcons } from "../constants";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { getTranslations } from "next-intl/server";
-import { CAL_LINKS } from "~/lib/constants";
+import { CAL_LINKS } from "~/shared/lib/constants";
 
 interface ServicePageProps {
 	slug: string;

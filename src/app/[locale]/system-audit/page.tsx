@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { generateSEOMetadata } from "~/lib/seo";
+import { generateSEOMetadata } from "~/shared/lib/seo";
 import SystemAuditPage from "@/features/system-audit/pages/SystemAuditPage";
 
 export async function generateMetadata({

@@ -6,7 +6,7 @@ import { routing } from "~/i18n/routing";
 import type { Locale } from "~/i18n/routing";
 import {
 	generateSEOMetadata as generateSEOMetadata,
-} from "~/lib/seo";
+} from "~/shared/lib/seo";
 import Navbar from "@/shared/components/Navbar";
 import Footer from "@/shared/components/Footer";
 

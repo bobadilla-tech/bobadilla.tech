@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import FAQItem from "@/shared/ui/FAQItem";
-import { SOCIAL_LINKS } from "~/lib/constants";
+import { SOCIAL_LINKS } from "~/shared/lib/constants";
 import { Linkedin } from "@/shared/ui/BrandIcons";
 
 interface ServiceFAQProps {

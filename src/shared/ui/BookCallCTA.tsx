@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import Button from "@/shared/ui/Button";
 import { fadeUp } from "@/shared/ui/animations";
-import { CAL_LINKS } from "~/lib/constants";
+import { CAL_LINKS } from "~/shared/lib/constants";
 
 interface BookCallCTAProps {
 	heading: string;

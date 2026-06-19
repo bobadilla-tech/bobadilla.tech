@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { generateSEOMetadata } from "~/lib/seo";
+import { generateSEOMetadata } from "~/shared/lib/seo";
 import RequiemsApiPage from "@/features/case-studies/pages/RequiemsApiPage";
 
 export async function generateMetadata({

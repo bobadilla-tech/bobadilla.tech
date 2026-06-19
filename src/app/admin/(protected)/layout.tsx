@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
-import { createAuth } from "~/lib/auth";
+import { createAuth } from "~/shared/lib/auth/server";
 import { SignOutButton } from "@/features/admin";
 
 export default async function ProtectedAdminLayout({

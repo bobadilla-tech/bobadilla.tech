@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { generateSEOMetadata } from "~/lib/seo";
+import { generateSEOMetadata } from "~/shared/lib/seo";
 import CompileStrengthPage from "@/features/case-studies/pages/CompileStrengthPage";
 
 export async function generateMetadata({

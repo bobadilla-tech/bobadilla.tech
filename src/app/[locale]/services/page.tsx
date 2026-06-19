@@ -1,5 +1,5 @@
 import ServicesPage from "@/features/services/pages/ServicesPage";
-import { generateSEOMetadata, BASE_URL } from "~/lib/seo";
+import { generateSEOMetadata, BASE_URL } from "~/shared/lib/seo";
 
 import type { Metadata } from "next";
 

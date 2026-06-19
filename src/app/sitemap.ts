@@ -1,5 +1,5 @@
 import { allServices, industryServices } from "@/features/services/model/services";
-import { getAllPosts } from "~/lib/sanity/queries";
+import { getAllPosts } from "~/shared/lib/sanity/queries";
 
 import type { MetadataRoute } from "next";
 

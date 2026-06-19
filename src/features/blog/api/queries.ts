@@ -5,4 +5,4 @@ export {
 	getPostsByTag,
 	getAllSlugs,
 	getAllCategories,
-} from "~/lib/sanity/queries";
+} from "~/shared/lib/sanity/queries";

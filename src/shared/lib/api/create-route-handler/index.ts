@@ -7,7 +7,7 @@ import {
 	errorResponse,
 	successResponse,
 	validationErrorResponse,
-} from "~/lib/server/api-response";
+} from "~/shared/lib/api/api-response";
 import type { RouteHandlerConfig, RouteContext } from "./types";
 import { compose } from "./compose";
 

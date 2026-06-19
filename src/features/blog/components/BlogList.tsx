@@ -7,12 +7,12 @@ import {
 	getAllCategories,
 	getPostsByCategory,
 	getPostsByTag,
-} from "~/lib/sanity/queries";
-import { urlFor } from "~/lib/sanity/image";
+} from "~/shared/lib/sanity/queries";
+import { urlFor } from "~/shared/lib/sanity/image";
 import { Calendar, Clock, Tag, FileX } from "lucide-react";
 import { getTranslations } from "next-intl/server";
-import { BLOG_AVATAR_SMALL_SIZE } from "~/lib/seo";
-import type { SanityPost } from "~/lib/sanity/types";
+import { BLOG_AVATAR_SMALL_SIZE } from "~/shared/lib/seo";
+import type { SanityPost } from "~/shared/lib/sanity/types";
 
 interface BlogListProps {
 	searchParams: { category?: string; tag?: string };

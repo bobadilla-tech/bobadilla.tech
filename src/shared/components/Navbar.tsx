@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "~/i18n/navigation";
-import { CAL_LINKS, SOCIAL_LINKS, EXTERNAL_LINKS } from "~/lib/constants";
+import { CAL_LINKS, SOCIAL_LINKS, EXTERNAL_LINKS } from "~/shared/lib/constants";
 import Button from "@/shared/ui/Button";
 
 export default function Navbar() {

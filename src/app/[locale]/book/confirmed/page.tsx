@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { CalendarCheck } from "lucide-react";
 import Button from "@/shared/ui/Button";
-import { CONTACT } from "~/lib/constants";
+import { CONTACT } from "~/shared/lib/constants";
 
 export default function BookConfirmedPage() {
 	return (

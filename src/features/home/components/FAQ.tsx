@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import FAQItem from "@/shared/ui/FAQItem";
 import Button from "@/shared/ui/Button";
-import { CAL_LINKS } from "~/lib/constants";
+import { CAL_LINKS } from "~/shared/lib/constants";
 
 export default function FAQ() {
 	const [openIndex, setOpenIndex] = useState<number | null>(null);

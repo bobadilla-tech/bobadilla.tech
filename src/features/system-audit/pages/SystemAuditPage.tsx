@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 import Button from "@/shared/ui/Button";
-import { CAL_LINKS } from "~/lib/constants";
+import { CAL_LINKS } from "~/shared/lib/constants";
 
 const fadeUp = {
 	initial: { opacity: 0, y: 24 },

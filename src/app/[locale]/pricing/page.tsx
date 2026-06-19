@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PricingCalculator } from "@/features/pricing";
-import { generateSEOMetadata } from "~/lib/seo";
+import { generateSEOMetadata } from "~/shared/lib/seo";
 
 export async function generateMetadata({
 	params,

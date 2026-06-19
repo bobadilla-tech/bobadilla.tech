@@ -2,7 +2,7 @@ import { BlogList } from "@/features/blog";
 import {
 	generateSEOMetadata,
 	BASE_URL,
-} from "~/lib/seo";
+} from "~/shared/lib/seo";
 
 import type { Metadata } from "next";
 

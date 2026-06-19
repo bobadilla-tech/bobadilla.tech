@@ -2,7 +2,7 @@ import type { PortableTextComponents } from "@portabletext/react";
 import Image from "next/image";
 import { CodeBlock } from "@/shared/ui/CodeBlock";
 import { urlFor } from "./image";
-import { BLOG_CONTENT_IMAGE_WIDTH, BLOG_CONTENT_IMAGE_HEIGHT } from "~/lib/seo";
+import { BLOG_CONTENT_IMAGE_WIDTH, BLOG_CONTENT_IMAGE_HEIGHT } from "~/shared/lib/seo";
 
 export const portableTextComponents: PortableTextComponents = {
 	types: {

@@ -1,6 +1,6 @@
 import { BlogPost, getPostBySlug, getAllSlugs } from "@/features/blog";
-import { urlFor } from "~/lib/sanity/image";
-import { generateArticleMetadata, BASE_URL, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from "~/lib/seo";
+import { urlFor } from "~/shared/lib/sanity/image";
+import { generateArticleMetadata, BASE_URL, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from "~/shared/lib/seo";
 
 import type { Metadata } from "next";
 

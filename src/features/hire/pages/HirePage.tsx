@@ -5,7 +5,7 @@ import { ArrowRight, CheckCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Button from "@/shared/ui/Button";
 import { fadeUp } from "@/shared/ui/animations";
-import { CAL_LINKS } from "~/lib/constants";
+import { CAL_LINKS } from "~/shared/lib/constants";
 
 export default function HirePage() {
 	const t = useTranslations("HirePage");

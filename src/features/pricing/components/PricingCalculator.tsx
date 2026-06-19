@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import Button from "@/shared/ui/Button";
 import { useTranslations } from "next-intl";
-import { CAL_LINKS } from "~/lib/constants";
+import { CAL_LINKS } from "~/shared/lib/constants";
 import {
 	ANIMATION_CONFIG,
 	PRICING_STEPS,

@@ -4,7 +4,7 @@ import Navbar from "@/shared/components/Navbar";
 import Footer from "@/shared/components/Footer";
 import IndustryPage from "@/features/services/pages/IndustryPage";
 import { industryServices } from "@/features/services/model/services";
-import { generateSEOMetadata, BASE_URL } from "~/lib/seo";
+import { generateSEOMetadata, BASE_URL } from "~/shared/lib/seo";
 
 interface IndustryPageProps {
 	params: Promise<{
