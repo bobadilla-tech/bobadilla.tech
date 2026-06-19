@@ -58,6 +58,8 @@ describe("validationErrorResponse", () => {
 		});
 
 		expect(result.success).toBe(false);
+		
+		if (result.success) throw new Error("unreachable");
 
 		const response = validationErrorResponse(result.error, "Invalid form data");
 
