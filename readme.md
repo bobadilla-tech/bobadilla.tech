@@ -52,5 +52,3 @@ pnpm test:coverage  # Generate text, JSON, HTML, and lcov coverage reports
 Coverage output is written to `coverage/`, including `coverage/lcov.info` for Codecov uploads.
 
 Keep this baseline focused on unit tests for pure logic and server-safe helpers. Route handlers and component tests can be added later with dedicated runtime mocks.
-
-See [`CLAUDE.md`](./CLAUDE.md) for conventions, architecture patterns, and contributor guidelines.

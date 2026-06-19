@@ -33,13 +33,13 @@ All route handlers are built with the factory from `~/shared/lib/api`:
 import { createRouteHandler } from "~/shared/lib/api";
 
 export const POST = createRouteHandler({
-	schema: contactSchema, // optional Zod schema — infers data type
-	successStatus: 201, // optional (default: 200)
-	use: [withLogging()], // optional middleware chain
-	handler: async ({ data, db, env, request }) => {
-		// data is typed from schema; db is the D1 Drizzle instance
-		return await insertRecord(db, data);
-	},
+  schema: contactSchema, // optional Zod schema — infers data type
+  successStatus: 201, // optional (default: 200)
+  use: [withLogging()], // optional middleware chain
+  handler: async ({ data, db, env, request }) => {
+    // data is typed from schema; db is the D1 Drizzle instance
+    return await insertRecord(db, data);
+  },
 });
 ```
 
@@ -56,10 +56,10 @@ export const POST = createRouteHandler({
 
 ```typescript
 interface RouteContext<TData> {
-	request: NextRequest;
-	data: TData; // typed from schema via z.infer<TSchema>
-	db: DbInstance; // ReturnType<typeof getDb>
-	env: CloudflareEnv; // globally ambient — no import needed
+  request: NextRequest;
+  data: TData; // typed from schema via z.infer<TSchema>
+  db: DbInstance; // ReturnType<typeof getDb>
+  env: CloudflareEnv; // globally ambient — no import needed
 }
 ```
 
@@ -67,8 +67,8 @@ interface RouteContext<TData> {
 
 ```typescript
 type Middleware = (
-	ctx: RouteContext,
-	next: () => Promise<NextResponse>
+  ctx: RouteContext,
+  next: () => Promise<NextResponse>,
 ) => Promise<NextResponse>;
 ```
 
@@ -84,10 +84,10 @@ Built-in middleware factories in `~/shared/lib/api`:
 
 ```typescript
 export const GET = createRouteHandler({
-	handler: async ({ request, db }) => {
-		const id = new URL(request.url).searchParams.get("id");
-		return await getRecord(db, id);
-	},
+  handler: async ({ request, db }) => {
+    const id = new URL(request.url).searchParams.get("id");
+    return await getRecord(db, id);
+  },
 });
 ```
 
