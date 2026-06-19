@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { Sora, Space_Grotesk } from "next/font/google";
 import { headers } from "next/headers";
 import "./globals.css";
@@ -16,15 +17,17 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
-	// next-intl middleware sets this header; falls back to "en" for admin routes
+	// next-intl middleware sets this header only for public localized routes.
 	const heads = await headers();
-	const locale = heads.get("x-next-intl-locale") ?? "en";
+	const publicLocale = heads.get("x-next-intl-locale");
+	const locale = publicLocale ?? "en";
 
 	return (
 		<html
 			lang={locale}
 			className={`${sora.variable} ${spaceGrotesk.variable}`}
 		>
+			{publicLocale ? <GoogleTagManager gtmId="GTM-NZHKJH48" /> : null}
 			<head>
 				<link rel="icon" href="/assets/logo.png" type="image/png" />
 			</head>
