@@ -125,9 +125,18 @@
 				"title": "Construido para escalar",
 				"subtitle": "Arquitectura escalable"
 			},
-			{ "title": "100+", "subtitle": "Proyectos entregados" },
-			{ "title": "24/7", "subtitle": "Soporte disponible" },
-			{ "title": "100%", "subtitle": "Satisfacción del cliente" }
+			{
+				"title": "100+",
+				"subtitle": "Proyectos entregados"
+			},
+			{
+				"title": "24/7",
+				"subtitle": "Soporte disponible"
+			},
+			{
+				"title": "100%",
+				"subtitle": "Satisfacción del cliente"
+			}
 		]
 	},
 	"HomeFAQ": {
@@ -396,31 +405,6 @@
 		"moreSoonMsg": "Más contenido próximamente. ¡Síguenos para actualizaciones!",
 		"morePosts": "Más del Blog",
 		"minRead": "{n} min de lectura"
-	},
-	"ToolsPage": {
-		"home": "Inicio",
-		"heading1": "Herramientas",
-		"heading2": "Gratuitas",
-		"subtitle": "Herramientas en línea para desarrolladores, investigadores y creadores de contenido. Todas son gratuitas y enfocadas en la privacidad.",
-		"useTool": "Usar Herramienta",
-		"moreToolsHeading": "Más Herramientas Próximamente",
-		"moreToolsBody": "Constantemente estamos construyendo nuevas herramientas para ayudar a desarrolladores y creadores de contenido.",
-		"suggestTool": "Sugerir una Herramienta",
-		"whyUseHeading": "¿Por Qué Usar Nuestras Herramientas?",
-		"features": [
-			{
-				"title": "100% Gratuitas",
-				"desc": "Todas nuestras herramientas son completamente gratuitas. Sin tarifas ocultas, sin suscripciones."
-			},
-			{
-				"title": "Enfocadas en la Privacidad",
-				"desc": "No almacenamos tus datos. Todo sucede en tu navegador."
-			},
-			{
-				"title": "Sin Registro Requerido",
-				"desc": "Comienza a usar cualquier herramienta de inmediato. No se necesita crear una cuenta."
-			}
-		]
 	},
 	"PricingPage": {
 		"currentEstimate": "Estimado Actual",
@@ -1006,7 +990,10 @@
 					"name": "Tecnología",
 					"detail": "Generación de códigos QR, utilidades de contraseñas, análisis de user agent"
 				},
-				{ "name": "Redes", "detail": "Utilidades de DNS, IP y red" },
+				{
+					"name": "Redes",
+					"detail": "Utilidades de DNS, IP y red"
+				},
 				{
 					"name": "Salud",
 					"detail": "Cálculos de IMC, calorías, datos de nutrición"

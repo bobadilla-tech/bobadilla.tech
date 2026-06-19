@@ -6,13 +6,10 @@
 
 # Bobadilla Tech
 
-[![Live](https://img.shields.io/badge/Live-bobadilla.tech-gold)](https://bobadilla.tech)
 [![codecov](https://codecov.io/gh/bobadilla-tech/bobadilla.tech/graph/badge.svg?token=N3O0R9J0SN)](https://codecov.io/gh/bobadilla-tech/bobadilla.tech)
 [![Docs](https://img.shields.io/badge/Docs-docs/core-blue)](./docs/core/architecture.md)
 
-## What's bobadilla.tech?
-
-The public website and portfolio for Bobadilla Technologies, a software consultancy. It includes the company landing page, services catalog, pricing, a blog powered by Sanity CMS, and a contact form backed by Cloudflare D1.
+Bobadilla Technologies’ official website and portfolio, built with Next.js. It includes a modern landing page, services catalog, pricing tools, a Sanity-powered blog, and a contact system backed by Cloudflare D1 with an internal admin for lead tracking.
 
 ## Stack
 
@@ -26,10 +23,9 @@ The public website and portfolio for Bobadilla Technologies, a software consulta
 
 ## Blog (Sanity Studio)
 
-Blog posts are authored in a separate Sanity Studio:
-**[github.com/UltiRequiem/studio-bobadilla-tech-blogs](https://github.com/UltiRequiem/studio-bobadilla-tech-blogs)**
+Blog posts are authored in a separate [Sanity Studio](https://github.com/bobadilla-tech/studio-bobadilla-tech-blogs)\*\*
 
-Posts are fetched from Sanity at build time and pre-rendered as static HTML. No API key needed — the dataset is public. To publish: write in the Studio, then redeploy this site.
+Posts are fetched from Sanity at build time and pre-rendered as static HTML. To publish: write in the Studio, then redeploy this site.
 
 ## Docs
 

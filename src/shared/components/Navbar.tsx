@@ -67,7 +67,7 @@ export default function Navbar() {
 
 	const resourceLinks = [
 		{ label: t("blog"), href: "/blog" },
-		{ label: t("tools"), href: "/tools" },
+		{ label: t("tools"), href: "https://requiems.xyz/en/tools", external: true },
 		{ label: t("openSource"), href: SOCIAL_LINKS.github, external: true },
 		{ label: t("apis"), href: EXTERNAL_LINKS.apis, external: true },
 	];

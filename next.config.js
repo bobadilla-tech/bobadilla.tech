@@ -4,6 +4,15 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+	async redirects() {
+		return [
+			{
+				source: "/:locale/tools",
+				destination: "https://requiems.xyz/en/tools",
+				permanent: true,
+			},
+		];
+	},
 	output: "standalone",
 	serverExternalPackages: ["@vercel/og"],
 	images: {

@@ -125,9 +125,18 @@
 				"title": "Construído para Escalar",
 				"subtitle": "Arquitetura escalável"
 			},
-			{ "title": "100+", "subtitle": "Projetos entregues" },
-			{ "title": "24/7", "subtitle": "Suporte disponível" },
-			{ "title": "100%", "subtitle": "Satisfação do cliente" }
+			{
+				"title": "100+",
+				"subtitle": "Projetos entregues"
+			},
+			{
+				"title": "24/7",
+				"subtitle": "Suporte disponível"
+			},
+			{
+				"title": "100%",
+				"subtitle": "Satisfação do cliente"
+			}
 		]
 	},
 	"HomeFAQ": {
@@ -396,31 +405,6 @@
 		"moreSoonMsg": "Mais conteúdo em breve. Siga-nos para atualizações!",
 		"morePosts": "Mais do Blog",
 		"minRead": "{n} min de leitura"
-	},
-	"ToolsPage": {
-		"home": "Início",
-		"heading1": "Ferramentas",
-		"heading2": "Gratuitas",
-		"subtitle": "Ferramentas online para desenvolvedores, pesquisadores e criadores de conteúdo. Todas são gratuitas e focadas em privacidade.",
-		"useTool": "Usar Ferramenta",
-		"moreToolsHeading": "Mais Ferramentas em Breve",
-		"moreToolsBody": "Estamos constantemente construindo novas ferramentas para ajudar desenvolvedores e criadores de conteúdo.",
-		"suggestTool": "Sugerir uma Ferramenta",
-		"whyUseHeading": "Por Que Usar Nossas Ferramentas?",
-		"features": [
-			{
-				"title": "100% Gratuitas",
-				"desc": "Todas as nossas ferramentas são completamente gratuitas. Sem taxas ocultas, sem assinaturas."
-			},
-			{
-				"title": "Focadas em Privacidade",
-				"desc": "Não armazenamos seus dados. Tudo acontece no seu navegador."
-			},
-			{
-				"title": "Sem Cadastro Necessário",
-				"desc": "Comece a usar qualquer ferramenta imediatamente. Não é necessário criar uma conta."
-			}
-		]
 	},
 	"PricingPage": {
 		"currentEstimate": "Estimativa Atual",
@@ -1006,7 +990,10 @@
 					"name": "Tecnologia",
 					"detail": "Geração de QR code, utilitários de senhas, análise de user agent"
 				},
-				{ "name": "Redes", "detail": "Utilitários de DNS, IP e rede" },
+				{
+					"name": "Redes",
+					"detail": "Utilitários de DNS, IP e rede"
+				},
 				{
 					"name": "Saúde",
 					"detail": "Cálculos de IMC, calorias, dados nutricionais"

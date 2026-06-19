@@ -98,7 +98,7 @@
 	"Hero": {
 		"badge": "Top Latam Engineering Agency",
 		"line1": "CREATING",
-		"line2": "WORLD\u2013CLASS",
+		"line2": "WORLD–CLASS",
 		"line3": "DIGITAL PRODUCTS",
 		"button": "Book a Call"
 	},
@@ -121,10 +121,22 @@
 		"heading2": "REAL RESULTS",
 		"subtitle": "From idea to product with speed, clarity and scalable foundations",
 		"stats": [
-			{ "title": "Built to Scale", "subtitle": "Scalable architecture" },
-			{ "title": "100+", "subtitle": "Projects Delivered" },
-			{ "title": "24/7", "subtitle": "Support Available" },
-			{ "title": "100%", "subtitle": "Client Satisfaction" }
+			{
+				"title": "Built to Scale",
+				"subtitle": "Scalable architecture"
+			},
+			{
+				"title": "100+",
+				"subtitle": "Projects Delivered"
+			},
+			{
+				"title": "24/7",
+				"subtitle": "Support Available"
+			},
+			{
+				"title": "100%",
+				"subtitle": "Client Satisfaction"
+			}
 		]
 	},
 	"HomeFAQ": {
@@ -394,31 +406,6 @@
 		"morePosts": "More from our Blog",
 		"minRead": "{n} min read"
 	},
-	"ToolsPage": {
-		"home": "Home",
-		"heading1": "Free",
-		"heading2": "Tools",
-		"subtitle": "Powerful online tools built for developers, researchers, and content creators. All tools are free and privacy-focused.",
-		"useTool": "Use Tool",
-		"moreToolsHeading": "More Tools Coming Soon",
-		"moreToolsBody": "We're constantly building new tools to help developers and content creators.",
-		"suggestTool": "Suggest a Tool",
-		"whyUseHeading": "Why Use Our Tools?",
-		"features": [
-			{
-				"title": "100% Free",
-				"desc": "All our tools are completely free to use. No hidden fees, no subscriptions."
-			},
-			{
-				"title": "Privacy-Focused",
-				"desc": "We don't store your data. Everything happens in your browser."
-			},
-			{
-				"title": "No Sign-Up Required",
-				"desc": "Start using any tool immediately. No account creation needed."
-			}
-		]
-	},
 	"PricingPage": {
 		"currentEstimate": "Current Estimate",
 		"total": "Total",
@@ -682,7 +669,10 @@
 					"label": "Design",
 					"detail": "Product design, design systems, prototyping"
 				},
-				{ "label": "QA", "detail": "Test strategy, automation, load testing" },
+				{
+					"label": "QA",
+					"detail": "Test strategy, automation, load testing"
+				},
 				{
 					"label": "Compliance",
 					"detail": "Security review, audit prep, HIPAA / SOC2 context"
@@ -856,12 +846,18 @@
 					"layer": "AI",
 					"items": "Mastra agent framework + Google Gemini (workout compiler agent)"
 				},
-				{ "layer": "State", "items": "Zustand for client-side global state" },
+				{
+					"layer": "State",
+					"items": "Zustand for client-side global state"
+				},
 				{
 					"layer": "Validation",
 					"items": "Zod throughout — API boundaries and form inputs"
 				},
-				{ "layer": "Tooling", "items": "Bun, Biome, TypeScript strict mode" }
+				{
+					"layer": "Tooling",
+					"items": "Bun, Biome, TypeScript strict mode"
+				}
 			]
 		},
 		"results": {
