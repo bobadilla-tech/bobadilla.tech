@@ -9,107 +9,8 @@ Browser → Cloudflare Edge → Cloudflare Worker (OpenNext)
 
 **Runtime constraints:** Cloudflare Workers has no Node.js APIs and no
 filesystem access. All content is either pre-bundled or fetched over HTTP. Blog
-posts are fetched from Sanity at build time and rendered to static HTML — no
+posts are fetched from Sanity at build time and rendered to static HTML, no
 runtime CMS calls.
-
----
-
-## Directory Structure
-
-```
-src/
-├── app/                            # Routing ONLY — thin wrappers, no business logic
-│   ├── [locale]/                   # i18n-prefixed routes (en, es, pt)
-│   │   ├── page.tsx                # Homepage
-│   │   ├── blog/
-│   │   │   ├── page.tsx            # Blog listing (dynamic — searchParams filtering)
-│   │   │   └── [slug]/page.tsx     # Blog post (force-static + generateStaticParams)
-│   │   ├── pricing/page.tsx
-│   │   ├── services/
-│   │   │   ├── page.tsx
-│   │   │   ├── [slug]/page.tsx     # Rich layout (8 services) + generic fallback
-│   │   │   └── all/[industry]/page.tsx
-│   │   ├── tools/page.tsx
-│   │   └── layout.tsx
-│   ├── admin/
-│   │   ├── sign-in/page.tsx
-│   │   └── (protected)/messages/page.tsx
-│   ├── api/
-│   │   ├── contact/route.ts        # DB-backed, email notification
-│   │   ├── pricing-estimate/route.ts
-│   │   └── auth/[...all]/route.ts  # Better Auth handler
-│   ├── globals.css                 # Tailwind v4 @theme design tokens
-│   ├── layout.tsx
-│   └── sitemap.ts
-│
-├── features/                       # One feature = one self-contained directory
-│   ├── home/
-│   │   ├── components/             # Hero, StatsBar, Services, Industries, WhyBobatech, FAQ
-│   │   └── index.ts
-│   ├── blog/
-│   │   ├── components/             # BlogList, BlogPost
-│   │   ├── api/queries.ts          # Re-exports from ~/lib/sanity/queries
-│   │   └── index.ts
-│   ├── services/
-│   │   ├── components/             # ServiceHero, ServicePainPoints, … (11) + RichServicePage
-│   │   ├── model/                  # types.ts, services.ts (allServices, industryServices)
-│   │   ├── api/                    # service-pages.en/es/pt.ts, getServicePage.ts
-│   │   └── index.ts
-│   ├── pricing/
-│   │   ├── components/             # PricingCalculator
-│   │   ├── model/                  # types.ts, constants.ts, validation.ts
-│   │   ├── lib/                    # utils.ts, utils.test.ts
-│   │   └── index.ts
-│   ├── leads/
-│   │   ├── components/             # ContactForm
-│   │   ├── model/                  # contactSchema.ts, contactSchema.test.ts
-│   │   ├── api/                    # db.ts, email-notification.ts, logger.ts, contact-email.tsx
-│   │   └── index.ts
-│   ├── admin/
-│   │   ├── components/             # SignOutButton, SignInForm, MessagesView
-│   │   └── index.ts
-│   └── tools/
-│       ├── components/             # ToolsCatalog
-│       └── index.ts
-│
-├── shared/                         # Cross-feature primitives, never imports from features/
-│   ├── ui/                         # Button, SectionHeader, ServiceCard, IndustryCard,
-│   │   │                           # FAQItem, BrandIcons, carousel, CodeBlock
-│   │   └── index.ts
-│   ├── components/                 # Navbar, Footer, CTABand (global chrome)
-│   │   └── index.ts
-│   ├── utils/                      # cn()
-│   │   └── index.ts
-│   └── lib/
-│       └── api/                    # createRouteHandler factory + middleware
-│           ├── createRouteHandler.ts
-│           ├── middleware/         # withLogging, withAuth, withRateLimit
-│           └── index.ts
-│
-├── db/
-│   ├── client.ts                   # Cloudflare D1 client (Drizzle)
-│   └── schema.ts
-├── i18n/
-│   ├── routing.ts                  # next-intl locale config
-│   └── request.ts
-├── lib/                            # External integrations — never import from features/
-│   ├── auth.ts / auth-client.ts    # Better Auth server + client
-│   ├── constants.ts                # Cal.com links, social URLs, contact info
-│   ├── seo.ts                      # generateMetadata(), BASE_URL, SITE_NAME, KEYWORD_SETS
-│   ├── utils.ts
-│   ├── server/
-│   │   └── api-response.ts         # Standardized API response utilities
-│   └── sanity/
-│       ├── client.ts               # @sanity/client singleton
-│       ├── image.ts                # urlFor() image URL builder
-│       ├── queries.ts              # GROQ query functions
-│       ├── types.ts                # SanityPost, SanityAuthor
-│       └── portable-text.tsx       # PortableText component map
-├── env.ts                          # T3 Env — validated environment variables
-└── middleware.ts                   # next-intl routing middleware
-```
-
----
 
 ## API Endpoints
 
@@ -132,13 +33,13 @@ All route handlers are built with the factory from `~/shared/lib/api`:
 import { createRouteHandler } from "~/shared/lib/api";
 
 export const POST = createRouteHandler({
-  schema: contactSchema, // optional Zod schema — infers data type
-  successStatus: 201, // optional (default: 200)
-  use: [withLogging()], // optional middleware chain
-  handler: async ({ data, db, env, request }) => {
-    // data is typed from schema; db is the D1 Drizzle instance
-    return await insertRecord(db, data);
-  },
+	schema: contactSchema, // optional Zod schema — infers data type
+	successStatus: 201, // optional (default: 200)
+	use: [withLogging()], // optional middleware chain
+	handler: async ({ data, db, env, request }) => {
+		// data is typed from schema; db is the D1 Drizzle instance
+		return await insertRecord(db, data);
+	},
 });
 ```
 
@@ -155,10 +56,10 @@ export const POST = createRouteHandler({
 
 ```typescript
 interface RouteContext<TData> {
-  request: NextRequest;
-  data: TData; // typed from schema via z.infer<TSchema>
-  db: DbInstance; // ReturnType<typeof getDb>
-  env: CloudflareEnv; // globally ambient — no import needed
+	request: NextRequest;
+	data: TData; // typed from schema via z.infer<TSchema>
+	db: DbInstance; // ReturnType<typeof getDb>
+	env: CloudflareEnv; // globally ambient — no import needed
 }
 ```
 
@@ -166,8 +67,8 @@ interface RouteContext<TData> {
 
 ```typescript
 type Middleware = (
-  ctx: RouteContext,
-  next: () => Promise<NextResponse>,
+	ctx: RouteContext,
+	next: () => Promise<NextResponse>
 ) => Promise<NextResponse>;
 ```
 
@@ -183,10 +84,10 @@ Built-in middleware factories in `~/shared/lib/api`:
 
 ```typescript
 export const GET = createRouteHandler({
-  handler: async ({ request, db }) => {
-    const id = new URL(request.url).searchParams.get("id");
-    return await getRecord(db, id);
-  },
+	handler: async ({ request, db }) => {
+		const id = new URL(request.url).searchParams.get("id");
+		return await getRecord(db, id);
+	},
 });
 ```
 
