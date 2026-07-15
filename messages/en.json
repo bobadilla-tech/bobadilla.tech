@@ -1182,5 +1182,104 @@
 		"message": "We use cookies to analyze traffic and improve your experience.",
 		"accept": "Accept",
 		"reject": "Reject"
+	},
+	"PolladaPage": {
+		"hero": {
+			"overline": "VIRTUAL FUNDRAISER",
+			"heading": "Support our cause",
+			"headingGold": "with a professional portfolio",
+			"intro": "This page is available in Spanish."
+		},
+		"about": {
+			"heading": "What is this?",
+			"body": "This page is only available in Spanish.",
+			"items": []
+		},
+		"portfolio": {
+			"heading": "Example portfolios",
+			"subtitle": "This page is only available in Spanish.",
+			"items": []
+		},
+		"tiers": {
+			"heading": "Choose your plan",
+			"subtitle": "This page is only available in Spanish.",
+			"recommended": "Recommended",
+			"choose": "Choose {plan}",
+			"items": [
+				{ "name": "Arranca", "price": "S/. 50", "badge": null, "features": [] },
+				{
+					"name": "Pro",
+					"price": "S/. 120",
+					"badge": "Most popular",
+					"features": []
+				},
+				{ "name": "Premium", "price": "S/. 280", "badge": null, "features": [] }
+			]
+		},
+		"how": {
+			"heading": "How it works",
+			"steps": []
+		},
+		"payment": {
+			"heading": "Payment methods",
+			"subtitle": "This page is only available in Spanish.",
+			"methods": [],
+			"note": ""
+		},
+		"faq": {
+			"heading": "FAQ",
+			"items": []
+		},
+		"cta": {
+			"heading": "Ready to help?",
+			"body": "Visit the Spanish version of this page.",
+			"button": "Contact us via WhatsApp",
+			"subtext": ""
+		}
+	},
+	"AyudaANalaPage": {
+		"hero": {
+			"overline": "HELP NALA 🐾",
+			"heading": "Help us take care",
+			"headingGold": "of Nala",
+			"intro": "This page is available in Spanish."
+		},
+		"gallery": {
+			"heading": "Meet Nala 🐾",
+			"subtitle": "",
+			"images": [{ "src": "", "alt": "" }]
+		},
+		"examples": {
+			"heading": "Example portfolios",
+			"subtitle": "",
+			"items": []
+		},
+		"tiers": {
+			"heading": "Choose your plan",
+			"subtitle": "This page is only available in Spanish.",
+			"recommended": "Recommended",
+			"choose": "Choose {plan}",
+			"forNala": "",
+			"items": [
+				{ "name": "Arranca", "price": "S/. 50", "badge": null, "features": [] },
+				{
+					"name": "Pro",
+					"price": "S/. 120",
+					"badge": "Most popular",
+					"features": []
+				},
+				{ "name": "Premium", "price": "S/. 280", "badge": null, "features": [] }
+			]
+		},
+		"faq": {
+			"heading": "FAQ",
+			"items": []
+		},
+		"cta": {
+			"heading": "Choose your portfolio and help Nala 💛",
+			"body": "",
+			"button": "Contact us via WhatsApp",
+			"subtext": ""
+		}
 	}
 }

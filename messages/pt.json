@@ -1182,5 +1182,104 @@
 		"message": "Usamos cookies para analisar o tráfego e melhorar sua experiência.",
 		"accept": "Aceitar",
 		"reject": "Rejeitar"
+	},
+	"PolladaPage": {
+		"hero": {
+			"overline": "VAQUINHA VIRTUAL",
+			"heading": "Apoie nossa causa",
+			"headingGold": "com um portfólio profissional",
+			"intro": "Esta página está disponível em espanhol."
+		},
+		"about": {
+			"heading": "O que é isso?",
+			"body": "Esta página está disponível apenas em espanhol.",
+			"items": []
+		},
+		"portfolio": {
+			"heading": "Portfólios de exemplo",
+			"subtitle": "Esta página está disponível apenas em espanhol.",
+			"items": []
+		},
+		"tiers": {
+			"heading": "Escolha seu plano",
+			"subtitle": "Esta página está disponível apenas em espanhol.",
+			"recommended": "Recomendado",
+			"choose": "Escolher {plan}",
+			"items": [
+				{ "name": "Arranca", "price": "S/. 50", "badge": null, "features": [] },
+				{
+					"name": "Pro",
+					"price": "S/. 120",
+					"badge": "Mais popular",
+					"features": []
+				},
+				{ "name": "Premium", "price": "S/. 280", "badge": null, "features": [] }
+			]
+		},
+		"how": {
+			"heading": "Como funciona",
+			"steps": []
+		},
+		"payment": {
+			"heading": "Métodos de pagamento",
+			"subtitle": "Esta página está disponível apenas em espanhol.",
+			"methods": [],
+			"note": ""
+		},
+		"faq": {
+			"heading": "FAQ",
+			"items": []
+		},
+		"cta": {
+			"heading": "Pronto para ajudar?",
+			"body": "Visite a versão em espanhol desta página.",
+			"button": "Contate-nos pelo WhatsApp",
+			"subtext": ""
+		}
+	},
+	"AyudaANalaPage": {
+		"hero": {
+			"overline": "AJUDE A NALA 🐾",
+			"heading": "Ajude-nos a cuidar",
+			"headingGold": "da Nala",
+			"intro": "Esta página está disponível em espanhol."
+		},
+		"gallery": {
+			"heading": "Conheça a Nala 🐾",
+			"subtitle": "",
+			"images": [{ "src": "", "alt": "" }]
+		},
+		"examples": {
+			"heading": "Portfólios de exemplo",
+			"subtitle": "",
+			"items": []
+		},
+		"tiers": {
+			"heading": "Escolha seu plano",
+			"subtitle": "This page is only available in Spanish.",
+			"recommended": "Recomendado",
+			"choose": "Escolher {plan}",
+			"forNala": "",
+			"items": [
+				{ "name": "Arranca", "price": "S/. 50", "badge": null, "features": [] },
+				{
+					"name": "Pro",
+					"price": "S/. 120",
+					"badge": "Mais popular",
+					"features": []
+				},
+				{ "name": "Premium", "price": "S/. 280", "badge": null, "features": [] }
+			]
+		},
+		"faq": {
+			"heading": "FAQ",
+			"items": []
+		},
+		"cta": {
+			"heading": "Escolha seu portfólio e ajude a Nala 💛",
+			"body": "",
+			"button": "Contate-nos pelo WhatsApp",
+			"subtext": ""
+		}
 	}
 }

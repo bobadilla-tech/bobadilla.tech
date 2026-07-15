@@ -1,4 +1,7 @@
-import { allServices, industryServices } from "@/features/services/model/services";
+import {
+	allServices,
+	industryServices,
+} from "@/features/services/model/services";
 import { getAllPosts } from "~/shared/lib/sanity/queries";
 
 import type { MetadataRoute } from "next";
@@ -34,6 +37,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			changeFrequency: "weekly",
 			priority: 0.8,
 		},
+
+		{
+			url: `${BASE_URL}/ayuda-a-nala`,
+			lastModified: currentDate,
+			changeFrequency: "weekly",
+			priority: 0.6,
+		},
 	];
 
 	const allServicePages: MetadataRoute.Sitemap = allServices.map((service) => ({
@@ -62,14 +72,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			}))
 	);
 
-	const blogPosts: MetadataRoute.Sitemap = (await getAllPosts()).map((post) => ({
-		url: `${BASE_URL}/blog/${post.slug.current}`,
-		lastModified: post.updatedAt
-			? new Date(post.updatedAt)
-			: new Date(post.publishedAt),
-		changeFrequency: "monthly",
-		priority: post.featured ? 0.8 : 0.7,
-	}));
+	const blogPosts: MetadataRoute.Sitemap = (await getAllPosts()).map(
+		(post) => ({
+			url: `${BASE_URL}/blog/${post.slug.current}`,
+			lastModified: post.updatedAt
+				? new Date(post.updatedAt)
+				: new Date(post.publishedAt),
+			changeFrequency: "monthly",
+			priority: post.featured ? 0.8 : 0.7,
+		})
+	);
 
 	const allPages = [
 		...staticPages,
