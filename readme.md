@@ -61,4 +61,4 @@ Codecov uploads.
 
 Keep this baseline focused on unit tests for pure logic and server-safe helpers.
 Route handlers and component tests can be added later with dedicated runtime
-mocks.0
+mocks.
