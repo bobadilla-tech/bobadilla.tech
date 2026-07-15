@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Navbar from "@/shared/components/Navbar";
-import Footer from "@/shared/components/Footer";
 import IndustryPage from "@/features/services/pages/IndustryPage";
 import { industryServices } from "@/features/services/model/services";
 import { generateSEOMetadata, BASE_URL } from "~/shared/lib/seo";
@@ -62,9 +60,7 @@ export default async function Page({ params }: IndustryPageProps) {
 
 	return (
 		<div className="relative min-h-screen">
-			<Navbar />
 			<IndustryPage industry={industrySlug} />
-			<Footer />
 		</div>
 	);
 }

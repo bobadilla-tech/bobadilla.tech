@@ -1,7 +1,5 @@
 import Button from "@/shared/ui/Button";
 import CTABand from "@/shared/components/CTABand";
-import Footer from "@/shared/components/Footer";
-import Navbar from "@/shared/components/Navbar";
 import { CAL_LINKS } from "~/shared/lib/constants";
 import type { ServicePageData } from "@/features/services/model/types";
 import ServiceHero from "./ServiceHero";
@@ -39,7 +37,6 @@ export default function RichServicePage({ data }: RichServicePageProps) {
 	if (data.mvpSolutions) {
 		return (
 			<div className="min-h-screen">
-				<Navbar />
 				<ServiceHero
 					eyebrow={data.eyebrow}
 					line1={data.heroLine1}
@@ -69,7 +66,6 @@ export default function RichServicePage({ data }: RichServicePageProps) {
 				<ServiceTechStack categories={data.techStack} />
 				<ServiceFAQ faqs={data.faqOverrides} />
 				<CTABand />
-				<Footer />
 			</div>
 		);
 	}
@@ -78,7 +74,6 @@ export default function RichServicePage({ data }: RichServicePageProps) {
 	if (data.slug === "cms-development") {
 		return (
 			<div className="min-h-screen">
-				<Navbar />
 				<ServiceHero
 					eyebrow={data.eyebrow}
 					line1={data.heroLine1}
@@ -102,7 +97,6 @@ export default function RichServicePage({ data }: RichServicePageProps) {
 				<ServiceTechStack categories={data.techStack} />
 				<ServiceFAQ faqs={data.faqOverrides} />
 				<CTABand />
-				<Footer />
 			</div>
 		);
 	}
@@ -110,7 +104,6 @@ export default function RichServicePage({ data }: RichServicePageProps) {
 	// Standard variant (web-dev, web-app, web-portal, frontend, backend, mobile)
 	return (
 		<div className="min-h-screen">
-			<Navbar />
 			<ServiceHero
 				eyebrow={data.eyebrow}
 				line1={data.heroLine1}
@@ -166,7 +159,6 @@ export default function RichServicePage({ data }: RichServicePageProps) {
 			<ServiceFAQ faqs={data.faqOverrides} />
 			{showEstimateCTA && <ServiceEstimateCTA />}
 			<CTABand />
-			<Footer />
 		</div>
 	);
 }
