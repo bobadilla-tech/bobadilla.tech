@@ -9,12 +9,16 @@
 [![codecov](https://codecov.io/gh/bobadilla-tech/bobadilla.tech/graph/badge.svg?token=N3O0R9J0SN)](https://codecov.io/gh/bobadilla-tech/bobadilla.tech)
 [![Docs](https://img.shields.io/badge/Docs-docs/core-blue)](./docs/core/architecture.md)
 
-Bobadilla Technologies’ official website and portfolio, built with Next.js. It includes a modern landing page, services catalog, pricing tools, a Sanity-powered blog, and a contact system backed by Cloudflare D1 with an internal admin for lead tracking.
+Bobadilla Technologies’ official website and portfolio, built with Next.js. It
+includes a modern landing page, services catalog, pricing tools, a
+Sanity-powered blog, and a contact system backed by Cloudflare D1 with an
+internal admin for lead tracking.
 
 ## Stack
 
 - **Framework** — Next.js 16 App Router (Turbopack)
-- **Deployment** — Cloudflare Workers via [OpenNext.js](https://opennext.js.org/)
+- **Deployment** — Cloudflare Workers via
+  [OpenNext.js](https://opennext.js.org/)
 - **CMS** — [Sanity](https://sanity.io) (blog posts, authors)
 - **Database** — Cloudflare D1 (SQLite) + Drizzle ORM
 - **Styling** — Tailwind CSS v4 with custom design tokens
@@ -23,13 +27,16 @@ Bobadilla Technologies’ official website and portfolio, built with Next.js. It
 
 ## Blog (Sanity Studio)
 
-Blog posts are authored in a separate [Sanity Studio](https://github.com/bobadilla-tech/studio-bobadilla-tech-blogs)\*\*
+Blog posts are authored in a separate
+[Sanity Studio](https://github.com/bobadilla-tech/studio-bobadilla-tech-blogs)\*\*
 
-Posts are fetched from Sanity at build time and pre-rendered as static HTML. To publish: write in the Studio, then redeploy this site.
+Posts are fetched from Sanity at build time and pre-rendered as static HTML. To
+publish: write in the Studio, then redeploy this site.
 
 ## Docs
 
-- [`docs/core/architecture.md`](./docs/core/architecture.md) — system architecture, API patterns, i18n, Sanity integration
+- [`docs/core/architecture.md`](./docs/core/architecture.md) — system
+  architecture, API patterns, i18n, Sanity integration
 - [`docs/design-plans/`](./docs/design-plans/) — per-feature design records
 
 ## Development
@@ -49,6 +56,9 @@ pnpm test:watch     # Watch mode for local development
 pnpm test:coverage  # Generate text, JSON, HTML, and lcov coverage reports
 ```
 
-Coverage output is written to `coverage/`, including `coverage/lcov.info` for Codecov uploads.
+Coverage output is written to `coverage/`, including `coverage/lcov.info` for
+Codecov uploads.
 
-Keep this baseline focused on unit tests for pure logic and server-safe helpers. Route handlers and component tests can be added later with dedicated runtime mocks.0
+Keep this baseline focused on unit tests for pure logic and server-safe helpers.
+Route handlers and component tests can be added later with dedicated runtime
+mocks.0

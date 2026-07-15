@@ -1,6 +1,7 @@
 # Project Architecture Guide
 
-This document outlines the architectural patterns and conventions for this Next.js project.
+This document outlines the architectural patterns and conventions for this
+Next.js project.
 
 ## 📋 Table of Contents
 
@@ -16,7 +17,9 @@ This document outlines the architectural patterns and conventions for this Next.
 
 ## 🎨 Design System
 
-The site uses a gold-on-dark brand identity. All design tokens are defined in `src/app/globals.css` via a Tailwind v4 `@theme` block — **do not use a `tailwind.config.ts`**.
+The site uses a gold-on-dark brand identity. All design tokens are defined in
+`src/app/globals.css` via a Tailwind v4 `@theme` block — **do not use a
+`tailwind.config.ts`**.
 
 ### Design Tokens (Tailwind v4 `@theme`)
 
@@ -38,26 +41,31 @@ The site uses a gold-on-dark brand identity. All design tokens are defined in `s
 Fonts are loaded in `src/app/layout.tsx` via `next/font/google`:
 
 - `Sora` — weights 300/400/600/700/800 — variable `--font-sora`
-- `Space_Grotesk` — weights 300/400/500/600/700 — variable `--font-space-grotesk`
+- `Space_Grotesk` — weights 300/400/500/600/700 — variable
+  `--font-space-grotesk`
 
 Always use `font-heading` on headings and `font-body` on body text.
 
 ### Color Usage Rules
 
-- **Never** use raw Tailwind colors (`text-white`, `text-gray-400`, `bg-slate-950`, `text-cyan-400`) — always use brand tokens
+- **Never** use raw Tailwind colors (`text-white`, `text-gray-400`,
+  `bg-slate-950`, `text-cyan-400`) — always use brand tokens
 - Cards/panels: `bg-surface border border-border rounded-2xl`
 - Gold-highlighted cards: `bg-brand-gold/10 border border-border-gold`
-- Body text hierarchy: `text-brand-primary` → `text-brand-primary/70` → `text-brand-primary/50` → `text-brand-primary/30`
+- Body text hierarchy: `text-brand-primary` → `text-brand-primary/70` →
+  `text-brand-primary/50` → `text-brand-primary/30`
 
 ---
 
 ## 🧩 UI Component Architecture
 
-Shared UI primitives live in `src/components/ui/`. All new pages and sections should use these.
+Shared UI primitives live in `src/components/ui/`. All new pages and sections
+should use these.
 
 ### `Button.tsx`
 
-Universal button/link component. Always use this instead of raw `<a>` or `<Link>` for CTAs.
+Universal button/link component. Always use this instead of raw `<a>` or
+`<Link>` for CTAs.
 
 ```tsx
 <Button variant="gold" href="https://cal.com/...">Book a Call</Button>  // external link
@@ -65,23 +73,26 @@ Universal button/link component. Always use this instead of raw `<a>` or `<Link>
 <Button variant="ghost" onClick={fn}>Cancel</Button>                     // interactive
 ```
 
-Props: `variant: "gold" | "outline" | "ghost"`, `size: "sm" | "md" | "lg"`, `href` (external), `to` (internal `<Link>`), `loading`, `disabled`, `type`, `className`, `onClick`.
+Props: `variant: "gold" | "outline" | "ghost"`, `size: "sm" | "md" | "lg"`,
+`href` (external), `to` (internal `<Link>`), `loading`, `disabled`, `type`,
+`className`, `onClick`.
 
 ### `SectionHeader.tsx`
 
-Reusable heading block with built-in Framer Motion scroll animation. Replaces manual heading patterns.
+Reusable heading block with built-in Framer Motion scroll animation. Replaces
+manual heading patterns.
 
 ```tsx
 <SectionHeader
-	overline="OUR SERVICES" // optional small-caps gold label
-	heading={
-		<>
-			Our <span className="text-brand-gold">Services</span>
-		</>
-	}
-	subtitle="Subtitle text here."
-	align="center" // "center" | "left"
-/>
+  overline="OUR SERVICES" // optional small-caps gold label
+  heading={
+    <>
+      Our <span className="text-brand-gold">Services</span>
+    </>
+  }
+  subtitle="Subtitle text here."
+  align="center" // "center" | "left"
+/>;
 ```
 
 ### `StatCard.tsx`
@@ -104,7 +115,8 @@ Image card with white title bar and gold text. Used in `Industries.tsx`.
 
 ### `FAQItem.tsx`
 
-Controlled accordion item. Requires `isOpen` + `onToggle` props (state managed by parent).
+Controlled accordion item. Requires `isOpen` + `onToggle` props (state managed
+by parent).
 
 ### `Footer.tsx`
 
@@ -122,7 +134,8 @@ import Footer from "@/components/ui/Footer";
 
 This project follows a modular, self-contained architecture where:
 
-- API endpoints are organized with separated concerns (validation, business logic, database, external services)
+- API endpoints are organized with separated concerns (validation, business
+  logic, database, external services)
 - Tools are self-contained features with dedicated client and server logic
 - Shared utilities are centralized in `src/lib/` for reusability
 - Type safety is enforced throughout with TypeScript and Zod
@@ -146,7 +159,8 @@ src/app/api/[endpoint-name]/
 
 #### `route.ts` - Request Handler
 
-The orchestrator that coordinates all operations. Should be thin and delegate to other modules.
+The orchestrator that coordinates all operations. Should be thin and delegate to
+other modules.
 
 **Responsibilities:**
 
@@ -162,32 +176,32 @@ The orchestrator that coordinates all operations. Should be thin and delegate to
 import type { NextRequest } from "next/server";
 import { z } from "zod";
 import {
-	errorResponse,
-	successResponse,
-	validationErrorResponse,
+  errorResponse,
+  successResponse,
+  validationErrorResponse,
 } from "~/lib/server/api-response";
 import { insertRecord } from "./db";
 import { logAction } from "./logger";
 import { mySchema } from "./validation";
 
 export async function POST(request: NextRequest) {
-	try {
-		const body = await request.json();
-		const validatedData = mySchema.parse(body);
+  try {
+    const body = await request.json();
+    const validatedData = mySchema.parse(body);
 
-		const result = await insertRecord(validatedData);
-		logAction(result);
+    const result = await insertRecord(validatedData);
+    logAction(result);
 
-		return successResponse(result, "Success message", 201);
-	} catch (error) {
-		console.error("Error:", error);
+    return successResponse(result, "Success message", 201);
+  } catch (error) {
+    console.error("Error:", error);
 
-		if (error instanceof z.ZodError) {
-			return validationErrorResponse(error);
-		}
+    if (error instanceof z.ZodError) {
+      return validationErrorResponse(error);
+    }
 
-		return errorResponse("Operation failed");
-	}
+    return errorResponse("Operation failed");
+  }
 }
 ```
 
@@ -207,9 +221,9 @@ Zod schemas for request validation and data extraction.
 import { z } from "zod";
 
 export const mySchema = z.object({
-	name: z.string().min(1).max(100),
-	email: z.string().email(),
-	optional: z.string().optional(),
+  name: z.string().min(1).max(100),
+  email: z.string().email(),
+  optional: z.string().optional(),
 });
 
 export type MySchemaType = z.infer<typeof mySchema>;
@@ -232,14 +246,14 @@ import { db } from "~/db/client";
 import { myTable } from "~/db/schema";
 
 interface RecordData {
-	name: string;
-	email: string;
+  name: string;
+  email: string;
 }
 
 export async function insertRecord(data: RecordData) {
-	const [inserted] = await db.insert(myTable).values(data).returning();
+  const [inserted] = await db.insert(myTable).values(data).returning();
 
-	return inserted;
+  return inserted;
 }
 ```
 
@@ -257,17 +271,17 @@ Integration with third-party APIs or services.
 
 ```typescript
 export async function callExternalService(data: SomeData) {
-	const response = await fetch("https://api.example.com/endpoint", {
-		method: "POST",
-		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify(data),
-	});
+  const response = await fetch("https://api.example.com/endpoint", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
 
-	if (!response.ok) {
-		throw new Error("External service failed");
-	}
+  if (!response.ok) {
+    throw new Error("External service failed");
+  }
 
-	return response.json();
+  return response.json();
 }
 ```
 
@@ -285,22 +299,23 @@ Structured logging for this endpoint.
 
 ```typescript
 interface LogData {
-	id: number;
-	name: string;
-	timestamp: Date;
+  id: number;
+  name: string;
+  timestamp: Date;
 }
 
 export function logAction(data: LogData): void {
-	console.log("📝 Action performed:");
-	console.log(`   ID: ${data.id}`);
-	console.log(`   Name: ${data.name}`);
-	console.log(`   Time: ${data.timestamp.toISOString()}`);
+  console.log("📝 Action performed:");
+  console.log(`   ID: ${data.id}`);
+  console.log(`   Name: ${data.name}`);
+  console.log(`   Time: ${data.timestamp.toISOString()}`);
 }
 ```
 
 ### Response Format
 
-All API endpoints **MUST** use standardized response utilities from `~/lib/server/api-response.ts`:
+All API endpoints **MUST** use standardized response utilities from
+`~/lib/server/api-response.ts`:
 
 #### Success Response
 
@@ -395,32 +410,35 @@ Standardized API response helpers. **All endpoints must use these.**
 
 ```typescript
 import {
-	successResponse,
-	errorResponse,
-	validationErrorResponse,
+  errorResponse,
+  successResponse,
+  validationErrorResponse,
 } from "~/lib/server/api-response";
 ```
 
 ### `src/lib/sanity/` - Sanity CMS (Blog)
 
-All Sanity integration lives here. Blog post data is fetched via GROQ queries — never import from `src/data/blog*` (those files no longer exist).
+All Sanity integration lives here. Blog post data is fetched via GROQ queries —
+never import from `src/data/blog*` (those files no longer exist).
 
 #### `client.ts`
 
-Singleton `@sanity/client` instance. Project ID `5j8mujwd`, dataset `production`, CDN enabled. No API token needed for public reads.
+Singleton `@sanity/client` instance. Project ID `5j8mujwd`, dataset
+`production`, CDN enabled. No API token needed for public reads.
 
 #### `queries.ts`
 
-Async GROQ query functions — the direct replacement for the old `src/data/blog.ts` helpers:
+Async GROQ query functions — the direct replacement for the old
+`src/data/blog.ts` helpers:
 
 ```typescript
 import {
-	getAllPosts,
-	getPostBySlug,
-	getPostsByCategory,
-	getPostsByTag,
-	getAllSlugs,
-	getAllCategories,
+  getAllCategories,
+  getAllPosts,
+  getAllSlugs,
+  getPostBySlug,
+  getPostsByCategory,
+  getPostsByTag,
 } from "~/lib/sanity/queries";
 ```
 
@@ -432,17 +450,20 @@ All functions are `async` and return typed `SanityPost` objects.
 import { urlFor } from "~/lib/sanity/image";
 
 // Usage
-urlFor(post.author.image).width(64).height(64).url()
-urlFor(post.coverImage).width(1200).height(630).url()
+urlFor(post.author.image).width(64).height(64).url();
+urlFor(post.coverImage).width(1200).height(630).url();
 ```
 
 #### `portable-text.tsx`
 
-Component map for `<PortableText>`. Handles headings, paragraphs, lists, inline code, links, images, and fenced code blocks (rendered via the existing `CodeBlock` component).
+Component map for `<PortableText>`. Handles headings, paragraphs, lists, inline
+code, links, images, and fenced code blocks (rendered via the existing
+`CodeBlock` component).
 
 #### `types.ts`
 
-`SanityPost` and `SanityAuthor` interfaces. Import these instead of the old `BlogPost` type.
+`SanityPost` and `SanityAuthor` interfaces. Import these instead of the old
+`BlogPost` type.
 
 ### Future Shared Utilities
 
@@ -542,22 +563,22 @@ All endpoints must handle errors consistently:
 
 ```typescript
 try {
-	// Main logic
+  // Main logic
 } catch (error) {
-	console.error("Context-specific error:", error);
+  console.error("Context-specific error:", error);
 
-	// Handle Zod validation errors
-	if (error instanceof z.ZodError) {
-		return validationErrorResponse(error);
-	}
+  // Handle Zod validation errors
+  if (error instanceof z.ZodError) {
+    return validationErrorResponse(error);
+  }
 
-	// Handle known Error instances
-	if (error instanceof Error) {
-		return errorResponse(error.message, 400);
-	}
+  // Handle known Error instances
+  if (error instanceof Error) {
+    return errorResponse(error.message, 400);
+  }
 
-	// Fallback for unknown errors
-	return errorResponse("Unexpected error occurred");
+  // Fallback for unknown errors
+  return errorResponse("Unexpected error occurred");
 }
 ```
 
@@ -639,7 +660,7 @@ src/app/api/reddit-post-date/
    import { z } from "zod";
 
    export const mySchema = z.object({
-   	field: z.string().min(1),
+     field: z.string().min(1),
    });
    ```
 
@@ -649,29 +670,29 @@ src/app/api/reddit-post-date/
    import type { NextRequest } from "next/server";
    import { z } from "zod";
    import {
-   	successResponse,
-   	errorResponse,
-   	validationErrorResponse,
+     errorResponse,
+     successResponse,
+     validationErrorResponse,
    } from "~/lib/server/api-response";
    import { mySchema } from "./validation";
 
    export async function POST(request: NextRequest) {
-   	try {
-   		const body = await request.json();
-   		const validatedData = mySchema.parse(body);
+     try {
+       const body = await request.json();
+       const validatedData = mySchema.parse(body);
 
-   		// Your business logic here
+       // Your business logic here
 
-   		return successResponse({ result: "data" });
-   	} catch (error) {
-   		console.error("Error:", error);
+       return successResponse({ result: "data" });
+     } catch (error) {
+       console.error("Error:", error);
 
-   		if (error instanceof z.ZodError) {
-   			return validationErrorResponse(error);
-   		}
+       if (error instanceof z.ZodError) {
+         return validationErrorResponse(error);
+       }
 
-   		return errorResponse("Operation failed");
-   	}
+       return errorResponse("Operation failed");
+     }
    }
    ```
 
@@ -693,23 +714,29 @@ src/app/api/reddit-post-date/
 - [ ] Verified TypeScript types
 - [ ] Documented any non-obvious logic
 
-
 ## 🚀 Deployment & Configuration
 
-This project is deployed on Cloudflare Workers using OpenNext.js. Key configuration files:
+This project is deployed on Cloudflare Workers using OpenNext.js. Key
+configuration files:
 
-- `wrangler.jsonc` - Cloudflare Workers configuration (compatibility settings, routes, D1 binding)
-- `tsconfig.json` - TypeScript compiler settings (must use `jsx: "preserve"` for Next.js)
-- `.gitignore` - Excludes auto-generated files (`cloudflare-env.d.ts`, `.open-next/`, etc.)
+- `wrangler.jsonc` - Cloudflare Workers configuration (compatibility settings,
+  routes, D1 binding)
+- `tsconfig.json` - TypeScript compiler settings (must use `jsx: "preserve"` for
+  Next.js)
+- `.gitignore` - Excludes auto-generated files (`cloudflare-env.d.ts`,
+  `.open-next/`, etc.)
 - `public/robots.txt` - Search engine crawler instructions
 - `src/app/sitemap.ts` - Dynamic sitemap generation
 
 For SEO optimization, the project includes:
 
-- Automated sitemap generation for all pages (including blog posts fetched from Sanity)
+- Automated sitemap generation for all pages (including blog posts fetched from
+  Sanity)
 - Structured data (JSON-LD) for organization and services
 - Canonical URLs and Open Graph metadata via `src/lib/seo.ts`
 
-Blog posts are pre-rendered as static pages at build time (`● Static` in the build output). The blog listing page (`/blog`) is dynamic to support category/tag filtering via `searchParams`.
+Blog posts are pre-rendered as static pages at build time (`● Static` in the
+build output). The blog listing page (`/blog`) is dynamic to support
+category/tag filtering via `searchParams`.
 
 See `README.md` for deployment commands and database operations.
