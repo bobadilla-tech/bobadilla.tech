@@ -39,7 +39,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		},
 
 		{
-			url: `${BASE_URL}/ayuda-a-nala`,
+			url: `${BASE_URL}/help`,
+			lastModified: currentDate,
+			changeFrequency: "weekly",
+			priority: 0.6,
+		},
+		{
+			url: `${BASE_URL}/help/nala-2026`,
 			lastModified: currentDate,
 			changeFrequency: "weekly",
 			priority: 0.6,

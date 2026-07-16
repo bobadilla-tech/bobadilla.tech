@@ -73,7 +73,8 @@
 		"tools": "Tools",
 		"openSource": "Open Source",
 		"apis": "APIs",
-		"bookCall": "Book a Call"
+		"bookCall": "Book a Call",
+		"help": "Help"
 	},
 	"Footer": {
 		"navigation": "Navigation",
@@ -1206,14 +1207,24 @@
 			"recommended": "Recommended",
 			"choose": "Choose {plan}",
 			"items": [
-				{ "name": "Arranca", "price": "S/. 50", "badge": null, "features": [] },
+				{
+					"name": "Arranca",
+					"price": "S/. 50",
+					"badge": null,
+					"features": []
+				},
 				{
 					"name": "Pro",
 					"price": "S/. 120",
 					"badge": "Most popular",
 					"features": []
 				},
-				{ "name": "Premium", "price": "S/. 280", "badge": null, "features": [] }
+				{
+					"name": "Premium",
+					"price": "S/. 280",
+					"badge": null,
+					"features": []
+				}
 			]
 		},
 		"how": {
@@ -1237,49 +1248,180 @@
 			"subtext": ""
 		}
 	},
-	"AyudaANalaPage": {
+	"NalaCausePage": {
 		"hero": {
 			"overline": "HELP NALA 🐾",
 			"heading": "Help us take care",
 			"headingGold": "of Nala",
-			"intro": "This page is available in Spanish."
+			"intro": "We're helping cover Nala's vet bills — a rescued dog currently recovering. By buying a professional portfolio, you help pay for her check-ups, medication, and care. You get an amazing portfolio, and she gets the care she needs."
 		},
 		"gallery": {
 			"heading": "Meet Nala 🐾",
-			"subtitle": "",
-			"images": [{ "src": "", "alt": "" }]
+			"subtitle": "Here's Nala today, recovering little by little.",
+			"images": [
+				{
+					"src": "/fundraises/nala-2026/nala-01.jpeg",
+					"alt": "Photo of Nala"
+				},
+				{
+					"src": "/fundraises/nala-2026/nala-02.jpeg",
+					"alt": "Photo of Nala"
+				},
+				{
+					"src": "/fundraises/nala-2026/nala-03.jpeg",
+					"alt": "Photo of Nala"
+				},
+				{
+					"src": "/fundraises/nala-2026/nala-04.jpeg",
+					"alt": "Photo of Nala"
+				},
+				{
+					"src": "/fundraises/nala-2026/nala-05.jpeg",
+					"alt": "Photo of Nala"
+				},
+				{
+					"src": "/fundraises/nala-2026/nala-06.jpeg",
+					"alt": "Photo of Nala"
+				},
+				{
+					"src": "/fundraises/nala-2026/nala-07.jpeg",
+					"alt": "Photo of Nala"
+				},
+				{
+					"src": "/fundraises/nala-2026/nala-08.jpeg",
+					"alt": "Photo of Nala"
+				},
+				{
+					"src": "/fundraises/nala-2026/nala-09.jpeg",
+					"alt": "Photo of Nala"
+				}
+			]
 		},
 		"examples": {
-			"heading": "Example portfolios",
-			"subtitle": "",
-			"items": []
+			"heading": "Portfolios we've built",
+			"subtitle": "Here's what the portfolios we deliver look like. Every purchase helps cover Nala's vet bills.",
+			"viewSite": "View site",
+			"items": [
+				{
+					"title": "Leonardo Estacio",
+					"url": "https://crydafan.dev/",
+					"image": "/portfolios/crydafan.png",
+					"description": "Example of a delivered professional portfolio."
+				},
+				{
+					"title": "Eliaz Bobadilla",
+					"url": "https://ultirequiem.xyz/",
+					"image": "/portfolios/ultirequiem.jpeg",
+					"description": "Example of a delivered professional portfolio."
+				}
+			]
 		},
 		"tiers": {
-			"heading": "Choose your plan",
-			"subtitle": "This page is only available in Spanish.",
-			"recommended": "Recommended",
+			"heading": "Choose your portfolio",
+			"subtitle": "Your purchase helps cover Nala's vet bills. You get a professional portfolio, she gets the care she needs.",
+			"pricePeriod": "one-time payment",
 			"choose": "Choose {plan}",
-			"forNala": "",
 			"items": [
-				{ "name": "Arranca", "price": "S/. 50", "badge": null, "features": [] },
+				{
+					"name": "Arranca",
+					"price": "S/. 50",
+					"badge": null,
+					"features": [
+						"Digital portfolio published online",
+						"Hosting included, no recurring cost",
+						"Delivered in 72 hours",
+						"100% of the source code transferred to you",
+						"Helps cover Nala's vet bills 💜"
+					]
+				},
 				{
 					"name": "Pro",
 					"price": "S/. 120",
 					"badge": "Most popular",
-					"features": []
+					"features": [
+						"Everything in Arranca",
+						"Catalog of 5+ designs to choose from",
+						"Custom colors and copy",
+						"AI-retouched professional photo",
+						"Harvard-format resume ready to send",
+						"One round of revisions included",
+						"Helps cover Nala's vet bills 💜"
+					]
 				},
-				{ "name": "Premium", "price": "S/. 280", "badge": null, "features": [] }
+				{
+					"name": "Premium",
+					"price": "S/. 280",
+					"badge": null,
+					"features": [
+						"Everything in Pro",
+						"Unique design based on your visual reference",
+						"Animations and micro-interactions",
+						"Search engine optimization (SEO)",
+						"Professional social preview (Open Graph)",
+						"Unlimited revisions until you approve",
+						"Delivered in 5–7 business days",
+						"Helps cover Nala's vet bills 💜"
+					]
+				}
 			]
 		},
 		"faq": {
-			"heading": "FAQ",
-			"items": []
+			"heading": "Frequently asked questions",
+			"items": [
+				{
+					"q": "Who is Nala?",
+					"a": "Nala is a rescued dog currently receiving veterinary care. We're helping with her recovery."
+				},
+				{
+					"q": "How long until I get my portfolio?",
+					"a": "The Arranca and Pro plans are delivered in 72 hours. Premium is delivered in 5–7 business days due to the level of customization."
+				},
+				{
+					"q": "Can I customize my portfolio?",
+					"a": "Yes. With Pro you pick from 5+ designs with your own colors and copy. With Premium the design is fully custom, built from your reference."
+				},
+				{
+					"q": "How do I buy a portfolio?",
+					"a": "Message us on WhatsApp, we'll share payment details and coordinate your portfolio. Once it's ready, we deliver it with hosting included."
+				},
+				{
+					"q": "Can I adopt Nala?",
+					"a": "Once Nala has fully recovered, we'll look for a responsible home for her. If you're interested, reach out on WhatsApp."
+				}
+			]
 		},
 		"cta": {
 			"heading": "Choose your portfolio and help Nala 💛",
-			"body": "",
-			"button": "Contact us via WhatsApp",
-			"subtext": ""
+			"body": "Every portfolio you buy helps cover her vet bills. Thank you for being part of this chain of help.",
+			"button": "Contact us on WhatsApp",
+			"subtext": "We reply within 24 hours"
+		},
+		"whatsapp": {
+			"genericMessage": "Hi! I want to help Nala",
+			"tierMessage": "Hi! I want to help Nala by choosing the {plan} plan ({price})"
+		},
+		"bookCall": {
+			"heading": "Prefer to talk it through?",
+			"body": "Book a quick call and we'll help you pick the right portfolio for you.",
+			"button": "Schedule a call"
 		}
+	},
+	"HelpPage": {
+		"overline": "COMMUNITY",
+		"heading1": "Causes we",
+		"heading2": "support",
+		"subtitle": "Every month we pick one cause — a pet, a person, or a social project — and dedicate part of our work to helping it.",
+		"statusActive": "Active",
+		"ctaHeading": "Know a cause we could support?",
+		"ctaBody": "Reach out and tell us about it. We pick a new cause to help every month.",
+		"contactUs": "Contact Us",
+		"causes": [
+			{
+				"slug": "nala-2026",
+				"title": "Help Nala",
+				"description": "Nala is a rescued dog who needs help covering her vet bills.",
+				"image": "/fundraises/nala-2026/nala-01.jpeg"
+			}
+		]
 	}
 }

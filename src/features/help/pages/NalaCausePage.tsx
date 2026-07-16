@@ -1,124 +1,72 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Check, Heart, PawPrint } from "lucide-react";
 
 import Button from "@/shared/ui/Button";
 import FAQItem from "@/shared/ui/FAQItem";
 import { fadeUp } from "@/shared/ui/animations";
+import { CAL_LINKS } from "~/shared/lib/constants";
 
-const WHATSAPP_LINK = `https://wa.me/51902482231?text=${encodeURIComponent(`¡Hola! Quiero ayudar a Nala`)}`;
+const WHATSAPP_NUMBER = "51902482231";
 
-const TIERS = [
-	{
-		name: "Arranca",
-		price: "S/. 50",
-		badge: null as string | null,
-		features: [
-			"Portafolio digital publicado en línea",
-			"Hosting incluido sin costo recurrente",
-			"Entrega en 72 horas",
-			"Código fuente 100% transferido",
-			"Apoyas los gastos veterinarios de Nala 💜",
-		],
-	},
-	{
-		name: "Pro",
-		price: "S/. 120",
-		badge: "Mayor demanda",
-		features: [
-			"Todo lo del plan Arranca",
-			"Catálogo de 5+ diseños para escoger",
-			"Colores y texto personalizados",
-			"Foto profesional retocada con IA",
-			"CV en formato Harvard listo para enviar",
-			"Una ronda de ajustes incluida",
-			"Apoyas los gastos veterinarios de Nala 💜",
-		],
-	},
-	{
-		name: "Premium",
-		price: "S/. 280",
-		badge: null,
-		features: [
-			"Todo lo del plan Pro",
-			"Diseño único desde tu referencia visual",
-			"Animaciones y micro-interacciones",
-			"Optimización para buscadores (SEO)",
-			"Previsualización profesional en redes (Open Graph)",
-			"Ajustes ilimitados hasta tu aprobación",
-			"Entrega en 5 a 7 días hábiles",
-			"Apoyas los gastos veterinarios de Nala 💜",
-		],
-	},
-];
-
-const FAQ_ITEMS = [
-	{
-		q: "¿Quién es Nala?",
-		a: "Nala es una perrita rescatada que está recibiendo atención veterinaria. Estamos ayudando en su recuperación.",
-	},
-	{
-		q: "¿En cuánto tiempo tengo mi portafolio?",
-		a: "Los planes Arranca y Pro se entregan en 72 horas. El plan Premium se entrega en 5 a 7 días hábiles por el nivel de personalización.",
-	},
-	{
-		q: "¿Puedo personalizar mi portafolio?",
-		a: "Sí. En el plan Pro eliges entre 5+ diseños con colores y texto a tu medida. En Premium el diseño es completamente único desde tu referencia.",
-	},
-	{
-		q: "¿Cómo compro un portafolio?",
-		a: "Escríbenos por WhatsApp, te daremos los datos de pago y coordinamos los detalles de tu portafolio. Una vez listo, te lo entregamos con hosting incluido.",
-	},
-	{
-		q: "¿Puedo adoptar a Nala?",
-		a: "Cuando Nala se haya recuperado por completo, buscaremos un hogar responsable. Si te interesa, escríbenos por WhatsApp.",
-	},
-];
-
-const NALA_PHOTOS = [
-	"WhatsApp Image 2026-07-15 at 17.26.25 (2).jpeg",
-	"WhatsApp Image 2026-07-15 at 17.26.25.jpeg",
-	"WhatsApp Image 2026-07-15 at 17.26.25 (1).jpeg",
-	"WhatsApp Image 2026-07-15 at 17.26.26 (1).jpeg",
-	"WhatsApp Image 2026-07-15 at 17.26.26 (2).jpeg",
-	"WhatsApp Image 2026-07-15 at 17.26.26 (3).jpeg",
-	"WhatsApp Image 2026-07-15 at 17.26.26 (4).jpeg",
-	"WhatsApp Image 2026-07-15 at 17.26.27 (1).jpeg",
-	"WhatsApp Image 2026-07-15 at 17.26.27.jpeg",
-];
-
-const PINK_THEME = {
+const PINK_THEME_VARS: Record<string, string> = {
 	"--color-brand-gold": "#ec4899",
 	"--color-brand-gold-light": "#fbcfe8",
 	"--color-brand-gold-dark": "#db2777",
 	"--color-brand-primary": "#831843",
-	"--color-brand-bg": "#fff",
-	"--color-brand-bg-alt": "#fdf2f8",
+	"--color-brand-bg": "#fdf2f8",
+	"--color-brand-bg-alt": "#fff",
 	"--color-surface": "#fff",
 	"--color-surface-hover": "#fce7f3",
 	"--color-border": "#f9a8d4",
 	"--color-border-gold": "rgba(236,72,153,0.4)",
-} as React.CSSProperties;
+};
 
-export default function AyudaANalaPage() {
+interface GalleryImage {
+	src: string;
+	alt: string;
+}
+
+interface ExampleItem {
+	title: string;
+	url: string;
+	image: string;
+	description: string;
+}
+
+interface Tier {
+	name: string;
+	price: string;
+	badge: string | null;
+	features: string[];
+}
+
+interface FaqEntry {
+	q: string;
+	a: string;
+}
+
+export default function NalaCausePage() {
+	const t = useTranslations("NalaCausePage");
 	const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+
+	const galleryImages = t.raw("gallery.images") as GalleryImage[];
+	const exampleItems = t.raw("examples.items") as ExampleItem[];
+	const tiers = t.raw("tiers.items") as Tier[];
+	const faqItems = t.raw("faq.items") as FaqEntry[];
+
+	const genericWhatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(t("whatsapp.genericMessage"))}`;
 
 	useEffect(() => {
 		const root = document.documentElement;
 
-		root.style.setProperty("--color-brand-gold", "#ec4899");
-		root.style.setProperty("--color-brand-gold-light", "#fbcfe8");
-		root.style.setProperty("--color-brand-gold-dark", "#db2777");
-		root.style.setProperty("--color-brand-primary", "#831843");
-		root.style.setProperty("--color-brand-bg", "#fdf2f8");
-		root.style.setProperty("--color-brand-bg-alt", "#fff");
-		root.style.setProperty("--color-surface", "#fff");
-		root.style.setProperty("--color-surface-hover", "#fce7f3");
-		root.style.setProperty("--color-border", "#f9a8d4");
-		root.style.setProperty("--color-border-gold", "rgba(236,72,153,0.4)");
-		root.style.backgroundColor = "#fdf2f8";
+		for (const [key, value] of Object.entries(PINK_THEME_VARS)) {
+			root.style.setProperty(key, value);
+		}
+		root.style.backgroundColor = PINK_THEME_VARS["--color-brand-bg"];
 
 		// Switch navbar logo to dark version for light background
 		const navbarLogo = document.querySelector<HTMLImageElement>(
@@ -127,16 +75,9 @@ export default function AyudaANalaPage() {
 		if (navbarLogo) navbarLogo.src = "/assets/logo-dark.png";
 
 		return () => {
-			root.style.removeProperty("--color-brand-gold");
-			root.style.removeProperty("--color-brand-gold-light");
-			root.style.removeProperty("--color-brand-gold-dark");
-			root.style.removeProperty("--color-brand-primary");
-			root.style.removeProperty("--color-brand-bg");
-			root.style.removeProperty("--color-brand-bg-alt");
-			root.style.removeProperty("--color-surface");
-			root.style.removeProperty("--color-surface-hover");
-			root.style.removeProperty("--color-border");
-			root.style.removeProperty("--color-border-gold");
+			for (const key of Object.keys(PINK_THEME_VARS)) {
+				root.style.removeProperty(key);
+			}
 			root.style.backgroundColor = "";
 
 			const oldLogo = document.querySelector<HTMLImageElement>(
@@ -147,7 +88,7 @@ export default function AyudaANalaPage() {
 	}, []);
 
 	return (
-		<div className="bg-pink-50 min-h-screen" style={PINK_THEME}>
+		<div className="bg-pink-50 min-h-screen">
 			<div className="pt-32 pb-24">
 				<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 					{/* ──── Hero ──── */}
@@ -159,23 +100,20 @@ export default function AyudaANalaPage() {
 							className="font-body text-sm font-semibold tracking-widest uppercase"
 							style={{ color: "#ec4899" }}
 						>
-							AYUDA A NALA 🐾
+							{t("hero.overline")}
 						</span>
 						<h1
 							className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mt-4 mb-6"
 							style={{ color: "#831843" }}
 						>
-							Ayúdanos a cuidar{" "}
-							<span style={{ color: "#ec4899" }}>de Nala</span>
+							{t("hero.heading")}{" "}
+							<span style={{ color: "#ec4899" }}>{t("hero.headingGold")}</span>
 						</h1>
 						<p
 							className="font-body text-lg leading-relaxed"
 							style={{ color: "#831843bf" }}
 						>
-							Estamos apoyando en los gastos veterinarios de Nala, una perrita
-							rescatada. Al comprar un portafolio profesional, nos ayudas a
-							cubrir sus consultas, medicamentos y cuidados. Tú te llevas un
-							portafolio increíble y ella recibe la atención que necesita.
+							{t("hero.intro")}
 						</p>
 					</motion.div>
 
@@ -185,26 +123,26 @@ export default function AyudaANalaPage() {
 							className="font-heading text-3xl md:text-4xl font-bold text-center mb-4"
 							style={{ color: "#831843" }}
 						>
-							Conoce a Nala 🐾
+							{t("gallery.heading")}
 						</h2>
 						<p
 							className="font-body text-center max-w-2xl mx-auto mb-10 leading-relaxed"
 							style={{ color: "#83184399" }}
 						>
-							Así está Nala hoy, recuperándose poquito a poco.
+							{t("gallery.subtitle")}
 						</p>
 						<div className="grid grid-cols-2 sm:grid-cols-3 gap-2 md:gap-3 max-w-5xl mx-auto">
-							{NALA_PHOTOS.map((filename, i) => (
+							{galleryImages.map((photo, i) => (
 								<div
-									key={filename}
+									key={photo.src}
 									className={`relative aspect-square rounded-xl overflow-hidden border bg-white shadow-sm ${
 										i === 0 ? "sm:col-span-2 sm:row-span-2" : ""
 									}`}
 									style={{ borderColor: "#f9a8d4" }}
 								>
 									<img
-										src={`/ayuda-a-nala/${encodeURI(filename)}`}
-										alt="Foto de Nala"
+										src={encodeURI(photo.src)}
+										alt={photo.alt}
 										className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-300"
 									/>
 								</div>
@@ -218,28 +156,16 @@ export default function AyudaANalaPage() {
 							className="font-heading text-3xl md:text-4xl font-bold text-center mb-4"
 							style={{ color: "#831843" }}
 						>
-							Portafolios que hemos hecho
+							{t("examples.heading")}
 						</h2>
 						<p
 							className="font-body text-center max-w-2xl mx-auto mb-10 leading-relaxed"
 							style={{ color: "#83184399" }}
 						>
-							Así se ven los portafolios que entregamos. Cada compra ayuda con
-							los gastos veterinarios de Nala.
+							{t("examples.subtitle")}
 						</p>
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-							{[
-								{
-									title: "Leonardo Estacio",
-									url: "https://crydafan.dev/",
-									image: "/portfolios/crydafan.png",
-								},
-								{
-									title: "Eliaz Bobadilla",
-									url: "https://ultirequiem.xyz/",
-									image: "/portfolios/ultirequiem.png",
-								},
-							].map((p) => (
+							{exampleItems.map((p) => (
 								<a
 									key={p.title}
 									href={p.url}
@@ -266,7 +192,7 @@ export default function AyudaANalaPage() {
 											className="font-body text-sm font-medium"
 											style={{ color: "#ec4899" }}
 										>
-											Ver sitio →
+											{t("examples.viewSite")} →
 										</span>
 									</div>
 								</a>
@@ -280,17 +206,16 @@ export default function AyudaANalaPage() {
 							className="font-heading text-3xl md:text-4xl font-bold text-center mb-4"
 							style={{ color: "#831843" }}
 						>
-							Elige tu portafolio
+							{t("tiers.heading")}
 						</h2>
 						<p
 							className="font-body text-center max-w-3xl mx-auto mb-10 leading-relaxed"
 							style={{ color: "#83184399" }}
 						>
-							Tu compra ayuda con los gastos veterinarios de Nala. Tú recibes un
-							portafolio profesional y ella recibe los cuidados que necesita.
+							{t("tiers.subtitle")}
 						</p>
 						<div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-							{TIERS.map((tier, i) => {
+							{tiers.map((tier, i) => {
 								const isPro = i === 1;
 								return (
 									<div
@@ -328,7 +253,7 @@ export default function AyudaANalaPage() {
 													className="font-body text-sm"
 													style={{ color: "#83184366" }}
 												>
-													pago único
+													{t("tiers.pricePeriod")}
 												</span>
 											</div>
 										</div>
@@ -348,12 +273,17 @@ export default function AyudaANalaPage() {
 											))}
 										</ul>
 										<Button
-											href={`https://wa.me/51902482231?text=${encodeURIComponent(`¡Hola! Quiero ayudar a Nala eligiendo el plan ${tier.name} (${tier.price})`)}`}
+											href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+												t("whatsapp.tierMessage", {
+													plan: tier.name,
+													price: tier.price,
+												})
+											)}`}
 											variant={isPro ? "gold" : "outline"}
 											size="md"
 											className="w-full"
 										>
-											Elegir {tier.name}
+											{t("tiers.choose", { plan: tier.name })}
 										</Button>
 									</div>
 								);
@@ -367,13 +297,13 @@ export default function AyudaANalaPage() {
 							className="font-heading text-3xl md:text-4xl font-bold text-center mb-10"
 							style={{ color: "#831843" }}
 						>
-							Preguntas frecuentes
+							{t("faq.heading")}
 						</h2>
 						<div
 							className="bg-white border rounded-2xl px-6 md:px-10 shadow-sm"
 							style={{ borderColor: "#f9a8d4" }}
 						>
-							{FAQ_ITEMS.map((item, i) => (
+							{faqItems.map((item, i) => (
 								<FAQItem
 									key={item.q}
 									question={item.q}
@@ -386,6 +316,22 @@ export default function AyudaANalaPage() {
 							))}
 						</div>
 					</motion.section>
+
+					{/* ──── Low-key "book a call" CTA ──── */}
+					<motion.div
+						{...fadeUp}
+						className="mb-16 max-w-xl mx-auto text-center"
+					>
+						<p
+							className="font-body text-sm mb-3"
+							style={{ color: "#83184399" }}
+						>
+							{t("bookCall.heading")} {t("bookCall.body")}
+						</p>
+						<Button href={CAL_LINKS.eliaz} variant="outline" size="sm">
+							{t("bookCall.button")}
+						</Button>
+					</motion.div>
 
 					{/* ──── Final CTA ──── */}
 					<motion.div
@@ -404,18 +350,17 @@ export default function AyudaANalaPage() {
 							className="font-heading text-2xl md:text-3xl font-bold mb-4 max-w-xl mx-auto"
 							style={{ color: "#831843" }}
 						>
-							Elige tu portafolio y ayuda a Nala 💛
+							{t("cta.heading")}
 						</h2>
 						<p
 							className="font-body max-w-xl mx-auto mb-6 leading-relaxed"
 							style={{ color: "#83184399" }}
 						>
-							Cada portafolio que compras ayuda a cubrir sus gastos
-							veterinarios. Gracias por ser parte de esta cadena de ayuda.
+							{t("cta.body")}
 						</p>
-						<Button href={WHATSAPP_LINK} variant="gold" size="lg">
+						<Button href={genericWhatsappLink} variant="gold" size="lg">
 							<Heart className="size-5" />
-							Contáctanos por WhatsApp
+							{t("cta.button")}
 						</Button>
 					</motion.div>
 				</div>

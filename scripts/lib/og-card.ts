@@ -12,13 +12,30 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 function loadFont(weight: 400 | 700): ArrayBuffer {
 	const file = join(
 		__dirname,
-		`../node_modules/@fontsource/sora/files/sora-latin-${weight}-normal.woff`
+		`../../node_modules/@fontsource/sora/files/sora-latin-${weight}-normal.woff`
 	);
 	const buf = readFileSync(file);
 	return buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength) as ArrayBuffer;
 }
 
-async function main() {
+export interface OgCardConfig {
+	badge: string;
+	badgeColor: string;
+	badgeBg: string;
+	badgeBorder: string;
+	heading: string;
+	headingColor: string;
+	subtitle: string;
+	subtitleColor: string;
+	backgroundColor: string;
+	topBarColor: string;
+	footerText: string;
+	footerTextColor: string;
+	footerRuleColor: string;
+	outPath: string;
+}
+
+export async function generateOgCard(config: OgCardConfig): Promise<void> {
 	const soraRegular = loadFont(400);
 	const soraBold = loadFont(700);
 
@@ -30,18 +47,16 @@ async function main() {
 				height: HEIGHT,
 				display: "flex",
 				flexDirection: "column" as const,
-				backgroundColor: "#0b0505",
+				backgroundColor: config.backgroundColor,
 				fontFamily: "Sora",
 			},
 			children: [
-				// Gold top bar
 				{
 					type: "div",
 					props: {
-						style: { width: "100%", height: 4, backgroundColor: "#e6be1a" },
+						style: { width: "100%", height: 4, backgroundColor: config.topBarColor },
 					},
 				},
-				// Main content area
 				{
 					type: "div",
 					props: {
@@ -53,7 +68,6 @@ async function main() {
 							justifyContent: "space-between",
 						},
 						children: [
-							// Top: badge + heading + subtitle
 							{
 								type: "div",
 								props: {
@@ -63,56 +77,51 @@ async function main() {
 										gap: 28,
 									},
 									children: [
-										// BLOG badge
 										{
 											type: "div",
 											props: {
 												style: {
 													display: "flex",
-													backgroundColor: "rgba(230,190,26,0.12)",
-													border: "1px solid rgba(230,190,26,0.35)",
+													backgroundColor: config.badgeBg,
+													border: `1px solid ${config.badgeBorder}`,
 													borderRadius: 100,
 													padding: "6px 18px",
-													color: "#e6be1a",
+													color: config.badgeColor,
 													fontSize: 13,
 													fontWeight: 700,
 													letterSpacing: 3,
 												},
-												children: "BLOG",
+												children: config.badge,
 											},
 										},
-										// Main heading
 										{
 											type: "div",
 											props: {
 												style: {
-													color: "#dbdbd7",
+													color: config.headingColor,
 													fontSize: 62,
 													fontWeight: 700,
 													lineHeight: 1.15,
 													letterSpacing: -1,
 												},
-												children: "Engineering insights\nand deep dives",
+												children: config.heading,
 											},
 										},
-										// Subtitle
 										{
 											type: "div",
 											props: {
 												style: {
-													color: "rgba(219,219,215,0.5)",
+													color: config.subtitleColor,
 													fontSize: 22,
 													fontWeight: 400,
 													letterSpacing: 0.2,
 												},
-												children:
-													"Web development · AI · Architecture · Open source",
+												children: config.subtitle,
 											},
 										},
 									],
 								},
 							},
-							// Footer: domain + gold rule
 							{
 								type: "div",
 								props: {
@@ -126,12 +135,12 @@ async function main() {
 											type: "div",
 											props: {
 												style: {
-													color: "#e6be1a",
+													color: config.footerTextColor,
 													fontSize: 18,
 													fontWeight: 600,
 													whiteSpace: "nowrap" as const,
 												},
-												children: "bobadilla.tech",
+												children: config.footerText,
 											},
 										},
 										{
@@ -140,7 +149,7 @@ async function main() {
 												style: {
 													flex: 1,
 													height: 1,
-													backgroundColor: "rgba(230,190,26,0.2)",
+													backgroundColor: config.footerRuleColor,
 												},
 											},
 										},
@@ -154,7 +163,7 @@ async function main() {
 		},
 	};
 
-	console.log("Rendering SVG…");
+	console.log(`Rendering SVG for ${config.outPath}…`);
 	const svg = await satori(element as Parameters<typeof satori>[0], {
 		width: WIDTH,
 		height: HEIGHT,
@@ -164,13 +173,6 @@ async function main() {
 		],
 	});
 
-	const outPath = join(__dirname, "../public/og-blog.png");
-
-	await sharp(Buffer.from(svg)).png().toFile(outPath);
-	console.log(`✓ Generated: public/og-blog.png (${WIDTH}×${HEIGHT})`);
+	await sharp(Buffer.from(svg)).png().toFile(config.outPath);
+	console.log(`✓ Generated: ${config.outPath} (${WIDTH}×${HEIGHT})`);
 }
-
-main().catch((err) => {
-	console.error(err);
-	process.exit(1);
-});

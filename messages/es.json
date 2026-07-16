@@ -73,7 +73,8 @@
 		"tools": "Herramientas",
 		"openSource": "Código Abierto",
 		"apis": "APIs",
-		"bookCall": "Agendar Llamada"
+		"bookCall": "Agendar Llamada",
+		"help": "Ayuda"
 	},
 	"Footer": {
 		"navigation": "Navegación",
@@ -1355,70 +1356,104 @@
 			"subtext": "Respondemos en menos de 24 horas"
 		}
 	},
-	"AyudaANalaPage": {
+	"NalaCausePage": {
 		"hero": {
 			"overline": "AYUDA A NALA 🐾",
 			"heading": "Ayúdanos a cuidar",
 			"headingGold": "de Nala",
-			"intro": "Nala es una perrita rescatada que necesita nuestra ayuda. En estos momentos está bajo cuidados veterinarios y necesitamos cubrir sus gastos médicos. Cada aporte, por pequeño que sea, nos acerca a darle la vida que se merece."
+			"intro": "Estamos apoyando en los gastos veterinarios de Nala, una perrita rescatada. Al comprar un portafolio profesional, nos ayudas a cubrir sus consultas, medicamentos y cuidados. Tú te llevas un portafolio increíble y ella recibe la atención que necesita."
 		},
 		"gallery": {
 			"heading": "Conoce a Nala 🐾",
-			"subtitle": "Mira las fotos y videos de Nala en Instagram.",
+			"subtitle": "Así está Nala hoy, recuperándose poquito a poco.",
 			"images": [
 				{
-					"src": "/pollada/ayuda-a-nala/WhatsApp Image 2026-07-15 at 16.47.08.jpeg",
-					"alt": "Nala - Foto 1"
+					"src": "/fundraises/nala-2026/nala-01.jpeg",
+					"alt": "Foto de Nala"
+				},
+				{
+					"src": "/fundraises/nala-2026/nala-02.jpeg",
+					"alt": "Foto de Nala"
+				},
+				{
+					"src": "/fundraises/nala-2026/nala-03.jpeg",
+					"alt": "Foto de Nala"
+				},
+				{
+					"src": "/fundraises/nala-2026/nala-04.jpeg",
+					"alt": "Foto de Nala"
+				},
+				{
+					"src": "/fundraises/nala-2026/nala-05.jpeg",
+					"alt": "Foto de Nala"
+				},
+				{
+					"src": "/fundraises/nala-2026/nala-06.jpeg",
+					"alt": "Foto de Nala"
+				},
+				{
+					"src": "/fundraises/nala-2026/nala-07.jpeg",
+					"alt": "Foto de Nala"
+				},
+				{
+					"src": "/fundraises/nala-2026/nala-08.jpeg",
+					"alt": "Foto de Nala"
+				},
+				{
+					"src": "/fundraises/nala-2026/nala-09.jpeg",
+					"alt": "Foto de Nala"
 				}
 			]
 		},
 		"examples": {
 			"heading": "Portafolios que hemos hecho",
-			"subtitle": "Así se ven los portafolios que entregamos. Cada compra ayuda directamente a Nala.",
+			"subtitle": "Así se ven los portafolios que entregamos. Cada compra ayuda con los gastos veterinarios de Nala.",
+			"viewSite": "Ver sitio",
 			"items": [
 				{
-					"title": "CrydaFan",
+					"title": "Leonardo Estacio",
 					"url": "https://crydafan.dev/",
-					"description": "Portafolio personal con diseño minimalista y enfoque en proyectos creativos."
+					"image": "/portfolios/crydafan.png",
+					"description": "Ejemplo de portafolio profesional entregado."
 				},
 				{
-					"title": "UltiRequiem",
+					"title": "Eliaz Bobadilla",
 					"url": "https://ultirequiem.xyz/",
-					"description": "Portafolio profesional con showcase técnico y blog integrado."
+					"image": "/portfolios/ultirequiem.jpeg",
+					"description": "Ejemplo de portafolio profesional entregado."
 				}
 			]
 		},
 		"tiers": {
-			"heading": "Obtén un portafolio y ayuda a Nala",
-			"subtitle": "Al comprar cualquiera de estos portafolios, el 100% va directo a los gastos veterinarios de Nala. Tú te llevas un portafolio profesional y ella recibe la ayuda que necesita.",
-			"recommended": "Recomendado",
+			"heading": "Elige tu portafolio",
+			"subtitle": "Tu compra ayuda con los gastos veterinarios de Nala. Tú recibes un portafolio profesional y ella recibe los cuidados que necesita.",
+			"pricePeriod": "pago único",
 			"choose": "Elegir {plan}",
-			"forNala": "para ayudar a Nala",
 			"items": [
 				{
 					"name": "Arranca",
 					"price": "S/. 50",
 					"badge": null,
 					"features": [
-						"Portafolio pro publicado",
-						"Hosting de por vida en cofoundy.dev",
-						"Listo en 72h",
-						"Código 100% tuyo",
-						"Ayudas directamente a Nala 💛"
+						"Portafolio digital publicado en línea",
+						"Hosting incluido sin costo recurrente",
+						"Entrega en 72 horas",
+						"Código fuente 100% transferido",
+						"Apoyas los gastos veterinarios de Nala 💜"
 					]
 				},
 				{
 					"name": "Pro",
 					"price": "S/. 120",
-					"badge": "El más elegido",
+					"badge": "Mayor demanda",
 					"features": [
-						"Todo lo de Arranca",
-						"Elige entre 5+ diseños",
-						"Colores y copy a tu medida",
-						"Foto mejorada con IA",
-						"CV formato Harvard (PDF listo p/ enviar)",
-						"1 ronda de ajustes",
-						"Ayudas directamente a Nala 💛"
+						"Todo lo del plan Arranca",
+						"Catálogo de 5+ diseños para escoger",
+						"Colores y texto personalizados",
+						"Foto profesional retocada con IA",
+						"CV en formato Harvard listo para enviar",
+						"Una ronda de ajustes incluida",
+						"Apoyas los gastos veterinarios de Nala 💜"
 					]
 				},
 				{
@@ -1426,49 +1461,75 @@
 					"price": "S/. 280",
 					"badge": null,
 					"features": [
-						"Todo lo de Pro",
-						"Diseño custom desde tu referencia (Figma, Pinterest, etc.)",
-						"Animaciones y motion design",
-						"SEO optimizado (que Google te encuentre)",
-						"Open Graph (se ve pro al compartir en LinkedIn)",
-						"Ajustes ilimitados hasta que apruebes",
-						"Entrega en 5-7 días hábiles",
-						"Ayudas directamente a Nala 💛"
+						"Todo lo del plan Pro",
+						"Diseño único desde tu referencia visual",
+						"Animaciones y micro-interacciones",
+						"Optimización para buscadores (SEO)",
+						"Previsualización profesional en redes (Open Graph)",
+						"Ajustes ilimitados hasta tu aprobación",
+						"Entrega en 5 a 7 días hábiles",
+						"Apoyas los gastos veterinarios de Nala 💜"
 					]
 				}
 			]
 		},
-
 		"faq": {
 			"heading": "Preguntas frecuentes",
 			"items": [
 				{
 					"q": "¿Quién es Nala?",
-					"a": "Nala es una perrita rescatada de la calle que está recibiendo atención veterinaria. Es joven, dócil y está en proceso de recuperación para encontrar un hogar permanente."
+					"a": "Nala es una perrita rescatada que está recibiendo atención veterinaria. Estamos ayudando en su recuperación."
 				},
 				{
-					"q": "¿A dónde va mi donativo?",
-					"a": "El 100% de los donativos se destina a cubrir los gastos veterinarios de Nala: consultas, medicamentos, vacunas, esterilización y alimentación especial. Publicaremos la transparencia de gastos."
+					"q": "¿En cuánto tiempo tengo mi portafolio?",
+					"a": "Los planes Arranca y Pro se entregan en 72 horas. El plan Premium se entrega en 5 a 7 días hábiles por el nivel de personalización."
 				},
 				{
-					"q": "¿Puedo donar desde el extranjero?",
-					"a": "Sí, aceptamos transferencias y tarjetas internacionales. Escríbenos por WhatsApp y te damos las coordenadas."
+					"q": "¿Puedo personalizar mi portafolio?",
+					"a": "Sí. En el plan Pro eliges entre 5+ diseños con colores y texto a tu medida. En Premium el diseño es completamente único desde tu referencia."
 				},
 				{
-					"q": "¿Cómo sé que mi donativo se usó correctamente?",
-					"a": "Publicaremos actualizaciones periódicas del estado de Nala y un desglose de los gastos realizados con total transparencia."
+					"q": "¿Cómo compro un portafolio?",
+					"a": "Escríbenos por WhatsApp, te daremos los datos de pago y coordinamos los detalles de tu portafolio. Una vez listo, te lo entregamos con hosting incluido."
 				},
 				{
 					"q": "¿Puedo adoptar a Nala?",
-					"a": "Una vez que Nala se haya recuperado completamente, buscaremos un hogar responsable para ella. Si te interesa adoptarla, contáctanos por WhatsApp."
+					"a": "Cuando Nala se haya recuperado por completo, buscaremos un hogar responsable. Si te interesa, escríbenos por WhatsApp."
 				}
 			]
 		},
 		"cta": {
 			"heading": "Elige tu portafolio y ayuda a Nala 💛",
-			"body": "Cada portafolio que compras cubre sus gastos veterinarios. Gracias por ser parte de esta cadena de ayuda.",
+			"body": "Cada portafolio que compras ayuda a cubrir sus gastos veterinarios. Gracias por ser parte de esta cadena de ayuda.",
 			"button": "Contáctanos por WhatsApp",
 			"subtext": "Respondemos en menos de 24 horas"
+		},
+		"whatsapp": {
+			"genericMessage": "¡Hola! Quiero ayudar a Nala",
+			"tierMessage": "¡Hola! Quiero ayudar a Nala eligiendo el plan {plan} ({price})"
+		},
+		"bookCall": {
+			"heading": "¿Prefieres hablar primero?",
+			"body": "Agenda una llamada rápida y te ayudamos a elegir el portafolio ideal para ti.",
+			"button": "Agendar una llamada"
 		}
+	},
+	"HelpPage": {
+		"overline": "COMUNIDAD",
+		"heading1": "Causas que",
+		"heading2": "apoyamos",
+		"subtitle": "Cada mes elegimos una causa —una mascota, una persona o un proyecto social— y destinamos parte de nuestro trabajo a ayudarla.",
+		"statusActive": "Activo",
+		"ctaHeading": "¿Conoces una causa que podamos apoyar?",
+		"ctaBody": "Escríbenos y cuéntanos. Cada mes elegimos una nueva causa para ayudar.",
+		"contactUs": "Contáctanos",
+		"causes": [
+			{
+				"slug": "nala-2026",
+				"title": "Ayuda a Nala",
+				"description": "Nala es una perrita rescatada que necesita apoyo con sus gastos veterinarios.",
+				"image": "/fundraises/nala-2026/nala-01.jpeg"
+			}
+		]
 	}
 }

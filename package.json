@@ -25,7 +25,9 @@
 		"test": "vitest run",
 		"test:watch": "vitest watch",
 		"test:coverage": "vitest run --coverage",
-		"generate:og": "tsx scripts/generate-og-image.ts"
+		"generate:og": "tsx scripts/generate-og-image.ts",
+		"generate:og:help": "tsx scripts/generate-og-help.ts",
+		"generate:og:nala": "tsx scripts/generate-og-nala.ts"
 	},
 	"dependencies": {
 		"@next/third-parties": "^16.2.10",
