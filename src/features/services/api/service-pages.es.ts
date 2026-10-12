@@ -1,4 +1,7 @@
-import type { ServicePageData, ProcessStep } from "@/features/services/model/types";
+import type {
+	ServicePageData,
+	ProcessStep,
+} from "@/features/services/model/types";
 import { sharedTechStack } from "@/features/services/model/types";
 
 const sharedProcessSteps: ProcessStep[] = [
@@ -33,15 +36,15 @@ const sharedProcessSteps: ProcessStep[] = [
 const sharedFaq = [
 	{
 		q: "¿Qué tan rápido pueden entregar un proyecto?",
-		a: "Según la complejidad, los MVPs pueden entregarse en 2–4 semanas, los productos completos en 6–12 semanas. Nos comprometemos con plazos claros desde el inicio.",
+		a: "Depende del alcance. Los proyectos pequeños de alcance fijo suelen tomar 1–2 semanas. En proyectos más grandes acordamos hitos y fechas por escrito antes de empezar.",
 	},
 	{
 		q: "¿Qué pasa si no se cumplen los plazos?",
-		a: "Garantizamos nuestros compromisos de entrega. Si no cumplimos un plazo, trabajamos horas extra sin costo adicional hasta que esté listo.",
+		a: "Si una fecha está en riesgo te lo decimos con anticipación, te explicamos por qué y acordamos contigo cómo ajustar el alcance o el plazo.",
 	},
 	{
 		q: "¿Trabajan con startups?",
-		a: "Absolutamente — hemos trabajado con startups en etapas tempranas hasta equipos empresariales. Adaptamos nuestro proceso a tu etapa y presupuesto.",
+		a: "Sí. Adaptamos nuestro proceso a tu etapa y presupuesto — desde un MVP acotado hasta un producto completo.",
 	},
 	{
 		q: "¿Ofrecen soporte después del lanzamiento?",
@@ -436,7 +439,8 @@ export const servicePages: ServicePageData[] = [
 					"Análisis de bundles, lazy loading y estrategias de caché para alcanzar Core Web Vitals en verde.",
 				image:
 					"https://images.unsplash.com/photo-1518773553398-650c184e0bb3?w=1200&q=80",
-				imageAlt: "Estación de desarrollo enfocada en optimización de rendimiento",
+				imageAlt:
+					"Estación de desarrollo enfocada en optimización de rendimiento",
 			},
 			{
 				title: "UI responsiva y adaptativa",
@@ -470,8 +474,14 @@ export const servicePages: ServicePageData[] = [
 		whyItMatters: {
 			heading: "POR QUÉ IMPORTA",
 			items: [
-				{ label: "Las primeras impresiones definen la confianza del usuario", color: "gold" },
-				{ label: "Mejor UX aumenta el engagement y las conversiones", color: "red" },
+				{
+					label: "Las primeras impresiones definen la confianza del usuario",
+					color: "gold",
+				},
+				{
+					label: "Mejor UX aumenta el engagement y las conversiones",
+					color: "red",
+				},
 				{ label: "Interfaces rápidas mejoran la retención", color: "blue" },
 			],
 		},

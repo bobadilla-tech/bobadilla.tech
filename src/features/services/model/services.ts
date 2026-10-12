@@ -57,7 +57,7 @@ export const allServices: Service[] = [
 		title: "Back-end Development",
 		slug: "back-end-development",
 		description:
-			"Enterprise-grade backend systems built by senior engineering talent.",
+			"Backend systems built for real load: APIs, databases, queues, and infrastructure.",
 		category: "development",
 		image:
 			"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
@@ -70,7 +70,7 @@ export const allServices: Service[] = [
 		title: "Web Development",
 		slug: "web-development",
 		description:
-			"Custom web applications built with cutting-edge technologies for optimal performance and user experience.",
+			"Custom web applications built for performance and maintainability.",
 		category: "development",
 		image:
 			"https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80",
@@ -112,7 +112,7 @@ export const industryServices: IndustryService[] = [
 		industry: "Healthcare",
 		slug: "healthcare",
 		description:
-			"HIPAA-compliant healthcare solutions with enterprise security and scalability.",
+			"Healthcare software designed around privacy, security, and regulatory requirements.",
 		image:
 			"https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
 		imageAlt: "Healthcare technology solutions",
@@ -236,7 +236,7 @@ export const industryServices: IndustryService[] = [
 		industry: "Finance",
 		slug: "finance",
 		description:
-			"Secure, compliant financial technology solutions built with enterprise-grade security.",
+			"Financial software built with security and regulatory requirements in mind.",
 		image:
 			"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80",
 		imageAlt: "Finance technology solutions",
@@ -332,7 +332,7 @@ export const industryServices: IndustryService[] = [
 		industry: "Machine Learning & AI",
 		slug: "machine-learning-ai",
 		description:
-			"Cutting-edge AI solutions powered by deep engineering expertise.",
+			"AI features integrated into real products — reliable output, bounded behavior, clear fallbacks.",
 		services: [
 			{
 				id: "ai-consulting",
