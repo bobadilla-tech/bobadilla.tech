@@ -10,7 +10,7 @@ export async function generateMetadata({
 	const { locale } = await params;
 
 	return generateSEOMetadata({
-		title: "CompileStrength — Case Study — Bobadilla Tech",
+		title: "CompileStrength — Case Study",
 		description:
 			"How we built CompileStrength: an AI-powered fitness SaaS with a Mastra agent, Cloudflare Workers edge deployment, Neon PostgreSQL, and LemonSqueezy billing. Full-stack end-to-end.",
 		keywordSets: ["core", "technologies"],

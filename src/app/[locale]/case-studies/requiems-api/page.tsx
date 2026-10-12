@@ -10,7 +10,7 @@ export async function generateMetadata({
 	const { locale } = await params;
 
 	return generateSEOMetadata({
-		title: "Requiems API — Case Study — Bobadilla Tech",
+		title: "Requiems API — Case Study",
 		description:
 			"How we built Requiems API: a multi-language API platform with a Go backend, Rails 8 dashboard, and Cloudflare Workers edge layer. Email, location, finance, and utility APIs under one key.",
 		keywordSets: ["core", "technologies"],

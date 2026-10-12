@@ -1,12 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "~/i18n/routing";
 import type { Locale } from "~/i18n/routing";
-import {
-	generateSEOMetadata as generateSEOMetadata,
-} from "~/shared/lib/seo";
+import { generateSEOMetadata } from "~/shared/lib/seo";
+import { BRAND } from "~/shared/lib/brand";
 import Navbar from "@/shared/components/Navbar";
 import Footer from "@/shared/components/Footer";
 import ConsentBanner from "@/shared/ui/ConsentBanner";
@@ -17,20 +16,17 @@ export async function generateMetadata({
 	params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
 	const { locale } = await params;
-
+	const t = await getTranslations({ locale, namespace: "Metadata.home" });
 	return generateSEOMetadata({
-		title: "Bobadilla Tech - Launch Your MVP in Days",
-		description:
-			"Top LATAM engineering agency specializing in rapid MVP development, enterprise backend systems, and cutting-edge AI solutions. Launch your startup in days or weeks, not months. Expert full-stack development team ready to build your next product.",
+		title: t("title", { brand: BRAND.name }),
+		description: t("description", { brand: BRAND.name }),
 		keywordSets: ["core", "mvp"],
 		additionalKeywords: [
-			"offshore development",
-			"nearshore development",
-			"agile development",
-			"fast turnaround",
+			"software engineering company",
+			"SaaS products",
+			"AI integration",
 		],
 		path: "/",
-		ogImage: "https://bobadilla.tech/og-home.png",
 		locale,
 	});
 }

@@ -10,7 +10,7 @@ export async function generateMetadata({
 	const { locale } = await params;
 
 	return generateSEOMetadata({
-		title: "Pricing Calculator — Bobadilla Tech",
+		title: "Pricing Calculator",
 		description:
 			"Get an instant project estimate. Our pricing calculator helps you understand the investment needed to build your product.",
 		keywordSets: ["core", "mvp"],

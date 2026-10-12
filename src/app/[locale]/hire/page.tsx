@@ -10,9 +10,9 @@ export async function generateMetadata({
 	const { locale } = await params;
 
 	return generateSEOMetadata({
-		title: "Work With Us — Bobadilla Tech",
+		title: "Work With Us",
 		description:
-			"Senior engineering team for technical founders. Backend systems, AI integrations, and scalable infrastructure. Start with a small project or book a technical call.",
+			"An engineering team for technical founders. Backend systems, AI integrations, and scalable infrastructure. Start with a small project or book a call.",
 		keywordSets: ["core", "mvp"],
 		path: "/hire",
 		locale,

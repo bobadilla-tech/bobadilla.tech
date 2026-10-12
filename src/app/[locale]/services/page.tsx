@@ -1,5 +1,5 @@
 import ServicesPage from "@/features/services/pages/ServicesPage";
-import { generateSEOMetadata, BASE_URL } from "~/shared/lib/seo";
+import { generateSEOMetadata } from "~/shared/lib/seo";
 
 import type { Metadata } from "next";
 
@@ -13,7 +13,7 @@ export async function generateMetadata({
 	return generateSEOMetadata({
 		title: "Our Services",
 		description:
-			"Expert software development services including full-stack development, MVP creation, AI integration, and enterprise solutions. Specialized industry expertise in healthcare, fintech, education, and more. Fast delivery with senior engineering talent.",
+			"Software engineering services: full-stack development, backend engineering and infrastructure, AI integration, and MVP builds — planned, built, and maintained by our engineering team.",
 		keywordSets: ["core", "services", "technologies"],
 		additionalKeywords: [
 			"custom software development",
@@ -21,7 +21,6 @@ export async function generateMetadata({
 			"industry solutions",
 		],
 		path: "/services",
-		ogImage: `${BASE_URL}/og-services.png`,
 		locale,
 	});
 }
