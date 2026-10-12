@@ -3,17 +3,15 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import BookCallCTA from "@/shared/ui/BookCallCTA";
+import Button from "@/shared/ui/Button";
 import { fadeUp } from "@/shared/ui/animations";
+import { BRAND } from "~/shared/lib/brand";
 
 export default function FounderPage() {
 	const t = useTranslations("FounderPage");
-	const expectItems = t.raw("expect.items") as Array<{ title: string; body: string }>;
-
 	return (
 		<div className="pt-32 pb-24">
 			<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-				{/* Hero */}
 				<motion.div {...fadeUp} className="mb-20">
 					<span className="font-body text-sm font-semibold tracking-widest uppercase text-brand-gold">
 						{t("overline")}
@@ -27,73 +25,39 @@ export default function FounderPage() {
 								{t("role")}
 							</p>
 						</div>
-						<div className="shrink-0">
-							<Image
-								src="/faces/eliaz.jpeg"
-								alt={t("name")}
-								width={120}
-								height={120}
-								className="rounded-2xl object-cover"
-							/>
-						</div>
+						<Image
+							src="/faces/eliaz.jpeg"
+							alt={t("name")}
+							width={120}
+							height={120}
+							className="rounded-2xl object-cover"
+						/>
 					</div>
 					<p className="font-body text-xl text-brand-primary/70 leading-relaxed max-w-2xl">
-						{t("intro")}
+						{t("intro", { brand: BRAND.name })}
 					</p>
 				</motion.div>
-
-				{/* Background */}
-				<motion.section {...fadeUp} className="mb-16">
+				<motion.section {...fadeUp} className="mb-12">
 					<h2 className="font-heading text-2xl font-bold text-brand-primary mb-5">
-						{t("background.heading")}
+						{t("story.heading")}
 					</h2>
 					<div className="space-y-4 font-body text-brand-primary/70 leading-relaxed">
-						<p>{t("background.p1")}</p>
-						<p>{t("background.p2")}</p>
-						<p>{t("background.p3")}</p>
+						<p>{t("story.p1")}</p>
+						<p>{t("story.p2", { brand: BRAND.name })}</p>
+						<p>{t("story.p3")}</p>
 					</div>
 				</motion.section>
-
-				{/* How he builds */}
-				<motion.section {...fadeUp} className="mb-16">
-					<h2 className="font-heading text-2xl font-bold text-brand-primary mb-5">
-						{t("approach.heading")}
-					</h2>
-					<div className="space-y-4 font-body text-brand-primary/70 leading-relaxed">
-						<p>{t("approach.p1")}</p>
-						<p>{t("approach.p2")}</p>
-						<p>{t("approach.p3")}</p>
-					</div>
-				</motion.section>
-
-				{/* What to expect */}
-				<motion.section {...fadeUp} className="mb-20">
-					<h2 className="font-heading text-2xl font-bold text-brand-primary mb-6">
-						{t("expect.heading")}
-					</h2>
-					<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-						{expectItems.map((item) => (
-							<div
-								key={item.title}
-								className="bg-surface border border-border rounded-2xl p-6"
-							>
-								<h3 className="font-heading text-brand-primary font-semibold mb-2">
-									{item.title}
-								</h3>
-								<p className="font-body text-brand-primary/60 text-sm leading-relaxed">
-									{item.body}
-								</p>
-							</div>
-						))}
-					</div>
-				</motion.section>
-
-				{/* CTA */}
-				<BookCallCTA
-					heading={t("cta.heading")}
-					body={t("cta.body")}
-					buttonLabel={t("cta.button")}
-				/>
+				<div className="flex flex-col sm:flex-row gap-4">
+					<Button href={BRAND.founder.url} variant="gold" size="md">
+						{t("links.personalSite")}
+					</Button>
+					<Button to="/team" variant="outline" size="md">
+						{t("links.team")}
+					</Button>
+					<Button to="/company" variant="ghost" size="md">
+						{t("links.company")}
+					</Button>
+				</div>
 			</div>
 		</div>
 	);
