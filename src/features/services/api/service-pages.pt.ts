@@ -1,4 +1,7 @@
-import type { ServicePageData, ProcessStep } from "@/features/services/model/types";
+import type {
+	ServicePageData,
+	ProcessStep,
+} from "@/features/services/model/types";
 import { sharedTechStack } from "@/features/services/model/types";
 
 const sharedProcessSteps: ProcessStep[] = [
@@ -33,15 +36,15 @@ const sharedProcessSteps: ProcessStep[] = [
 const sharedFaq = [
 	{
 		q: "Com que rapidez vocês entregam um projeto?",
-		a: "Dependendo da complexidade, MVPs podem ser entregues em 2–4 semanas, produtos completos em 6–12 semanas. Nos comprometemos com prazos claros desde o início.",
+		a: "Depende do escopo. Projetos pequenos de escopo fixo costumam levar 1–2 semanas. Em projetos maiores, combinamos marcos e datas por escrito antes de começar.",
 	},
 	{
 		q: "O que acontece se os prazos não forem cumpridos?",
-		a: "Garantimos nossos compromissos de entrega. Se perdermos um prazo, trabalhamos horas extras sem custo adicional até que esteja concluído.",
+		a: "Se uma data estiver em risco, avisamos com antecedência, explicamos o motivo e combinamos com você como ajustar o escopo ou o prazo.",
 	},
 	{
 		q: "Vocês trabalham com startups?",
-		a: "Com certeza — trabalhamos com startups em estágio inicial até equipes empresariais. Adaptamos nosso processo ao seu estágio e orçamento.",
+		a: "Sim. Adaptamos nosso processo ao seu estágio e orçamento — de um MVP enxuto a um produto completo.",
 	},
 	{
 		q: "Vocês oferecem suporte após o lançamento?",
@@ -470,7 +473,10 @@ export const servicePages: ServicePageData[] = [
 		whyItMatters: {
 			heading: "POR QUE IMPORTA",
 			items: [
-				{ label: "Primeiras impressões definem a confiança do usuário", color: "gold" },
+				{
+					label: "Primeiras impressões definem a confiança do usuário",
+					color: "gold",
+				},
 				{ label: "Melhor UX aumenta engajamento e conversões", color: "red" },
 				{ label: "Interfaces rápidas melhoram a retenção", color: "blue" },
 			],

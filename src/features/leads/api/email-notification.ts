@@ -1,3 +1,4 @@
+import { BRAND } from "~/shared/lib/brand";
 import { Resend } from "resend";
 import { env } from "~/env";
 
@@ -36,7 +37,7 @@ export async function sendEmailNotification(data: ContactData): Promise<void> {
 	});
 
 	const { error } = await resend.emails.send({
-		from: "Bobadilla.tech <notifications@mail.bobadilla.tech>",
+		from: `${BRAND.name} <notifications@mail.bobadilla.tech>`,
 		to: OBSERVERS,
 		replyTo: data.email,
 		subject: `New message from ${data.name}`,
@@ -48,7 +49,9 @@ export async function sendEmailNotification(data: ContactData): Promise<void> {
 		throw new Error(`Resend error: ${error.message}`);
 	}
 
-	console.log(`✅ Notification sent to observers (observerCount=${OBSERVERS.length})`);
+	console.log(
+		`✅ Notification sent to observers (observerCount=${OBSERVERS.length})`
+	);
 }
 
 function escapeHtml(value: string): string {

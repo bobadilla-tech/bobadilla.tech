@@ -10,7 +10,7 @@ export async function generateMetadata({
 	const { locale } = await params;
 
 	return generateSEOMetadata({
-		title: "System Audit & Execution Plan — Bobadilla Tech",
+		title: "System Audit & Execution Plan",
 		description:
 			"A technical review of your codebase, backend, and infrastructure. Get a structured report, prioritized action plan, and clear direction — before investing more time or money.",
 		keywordSets: ["core"],

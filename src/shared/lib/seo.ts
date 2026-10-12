@@ -1,12 +1,11 @@
-import { SOCIAL_LINKS } from "./constants";
+import { CONTACT, SOCIAL_LINKS } from "./constants";
+import { BRAND } from "./brand";
 
 import type { Metadata } from "next";
 
-
-export const BASE_URL = "https://bobadilla.tech";
-export const SITE_NAME = "Bobadilla Tech";
-export const DEFAULT_AUTHOR = "Bobadilla Tech Team";
-export const TWITTER_HANDLE = "@UltiRequiem";
+export const BASE_URL = BRAND.url;
+export const SITE_NAME = BRAND.name;
+export const DEFAULT_AUTHOR = `${BRAND.name} Team`;
 
 export const OG_IMAGE_WIDTH = 1200;
 export const OG_IMAGE_HEIGHT = 630;
@@ -14,8 +13,6 @@ export const BLOG_CONTENT_IMAGE_WIDTH = 800;
 export const BLOG_CONTENT_IMAGE_HEIGHT = 450;
 export const BLOG_AVATAR_LARGE_SIZE = 80;
 export const BLOG_AVATAR_SMALL_SIZE = 64;
-
-
 
 export interface PageSEOConfig {
 	title: string;
@@ -28,13 +25,12 @@ export interface PageSEOConfig {
 	locale?: string;
 }
 
-export interface ArticleSEOConfig extends PageSEOConfig{
+export interface ArticleSEOConfig extends PageSEOConfig {
 	publishedTime: string;
 	author: string;
 	tags?: string[];
 	modifiedTime?: string;
 }
-
 
 const LOCALE_MAP: Record<string, string> = {
 	en: "en_US",
@@ -57,9 +53,20 @@ function buildBaseMetadata(params: {
 	ogLocale: string;
 	ogImage: string;
 }): Metadata {
-	const { title, description, author, keywordSets, additionalKeywords, canonicalUrl, ogLocale, ogImage } = params;
+	const {
+		title,
+		description,
+		author,
+		keywordSets,
+		additionalKeywords,
+		canonicalUrl,
+		ogLocale,
+		ogImage,
+	} = params;
 
-	const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
+	const fullTitle = title.includes(SITE_NAME)
+		? title
+		: `${title} | ${SITE_NAME}`;
 
 	const expandedKeywords = [
 		...keywordSets.flatMap((set) => KEYWORD_SETS[set]),
@@ -69,7 +76,8 @@ function buildBaseMetadata(params: {
 	return {
 		title: fullTitle,
 		description,
-		keywords: expandedKeywords.length > 0 ? expandedKeywords.join(", ") : undefined,
+		keywords:
+			expandedKeywords.length > 0 ? expandedKeywords.join(", ") : undefined,
 		authors: [{ name: author }],
 		creator: SITE_NAME,
 		publisher: SITE_NAME,
@@ -109,8 +117,6 @@ function buildBaseMetadata(params: {
 			title: fullTitle,
 			description,
 			images: ogImage ? [ogImage] : undefined,
-			creator: TWITTER_HANDLE,
-			site: TWITTER_HANDLE,
 		},
 	};
 }
@@ -127,7 +133,9 @@ export function generateSEOMetadata(config: PageSEOConfig): Metadata {
 		locale = "en",
 	} = config;
 
-	const canonicalUrl = canonical || (path ? `${BASE_URL}${locale ? `/${locale}` : ''}${path}` : BASE_URL);
+	const canonicalUrl =
+		canonical ||
+		(path ? `${BASE_URL}${locale ? `/${locale}` : ""}${path}` : BASE_URL);
 	const ogLocale = getOpenGraphLocale(locale);
 
 	return buildBaseMetadata({
@@ -158,7 +166,9 @@ export function generateArticleMetadata(config: ArticleSEOConfig): Metadata {
 		locale,
 	} = config;
 
-	const canonicalUrl = canonical || (path ? `${BASE_URL}${locale ? `/${locale}` : ''}${path}` : BASE_URL);
+	const canonicalUrl =
+		canonical ||
+		(path ? `${BASE_URL}${locale ? `/${locale}` : ""}${path}` : BASE_URL);
 	const ogLocale = getOpenGraphLocale(locale);
 
 	const baseMetadata = buildBaseMetadata({
@@ -185,16 +195,15 @@ export function generateArticleMetadata(config: ArticleSEOConfig): Metadata {
 	};
 }
 
-
 export const KEYWORD_SETS = {
 	core: [
 		"web development",
 		"software development",
-		"LATAM agency",
+		"software engineering company",
 		"MVP development",
 		"full-stack development",
 		"startup development",
-		"engineering agency",
+		"software engineering Peru",
 	],
 	services: [
 		"custom software development",
@@ -232,31 +241,39 @@ export const KEYWORD_SETS = {
 
 export type KeywordSet = keyof typeof KEYWORD_SETS;
 
-
 export function generateOrganizationSchema() {
 	return {
 		"@context": "https://schema.org",
 		"@type": "Organization",
-		name: SITE_NAME,
-		alternateName: "Bobadilla Tech Agency",
+		name: BRAND.name,
 		url: BASE_URL,
-		logo: `${BASE_URL}/logo.svg`,
+		logo: `${BASE_URL}${BRAND.logo.light}`,
 		description:
-			"Top LATAM engineering agency specializing in rapid MVP development, enterprise solutions, and AI integration",
+			"Software engineering company from Lima, Peru. Builds production systems for clients and builds and operates its own SaaS products.",
 		address: {
 			"@type": "PostalAddress",
-			addressCountry: "LATAM",
+			addressLocality: BRAND.city,
+			addressCountry: BRAND.country,
 		},
-		sameAs: [SOCIAL_LINKS.github, SOCIAL_LINKS.twitter, SOCIAL_LINKS.linkedin],
+		foundingDate: BRAND.foundingYear,
+		founder: {
+			"@type": "Person",
+			name: BRAND.founder.name,
+			url: BRAND.founder.url,
+		},
+		sameAs: [
+			SOCIAL_LINKS.github,
+			SOCIAL_LINKS.linkedin,
+			SOCIAL_LINKS.instagram,
+		],
 		contactPoint: {
 			"@type": "ContactPoint",
 			contactType: "Sales",
-			email: "ale@bobadilla.tech",
+			email: CONTACT.email.main,
 			availableLanguage: ["English", "Spanish"],
 		},
 	};
 }
-
 export function generateServiceSchema(service: {
 	name: string;
 	description: string;

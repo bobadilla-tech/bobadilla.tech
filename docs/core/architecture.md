@@ -224,12 +224,31 @@ conventions.
 
 ---
 
+## Brand & voice
+
+Brand configuration lives in `src/shared/lib/brand.ts`. Message files in
+`messages/` must not contain brand name literals; use `{brand}` and pass
+`BRAND.name` at each call site. Add any message path that accepts `{brand}` to
+the allow-list in `src/shared/lib/messages.test.ts`. Spanish and Portuguese
+copy should not put an article before `{brand}` so the display name can change
+without grammatical edits.
+
+Use the company voice: write as “we”; avoid superlatives and unsupported
+numbers; describe concrete work; define the company by ownership rather than
+headcount; avoid competitor comparisons; be candid about the team's size; state
+practices without absolute guarantees; and do not claim clients only speak with
+engineers. Describe Eliaz as founder and software engineer, without implying he
+works on every project.
+
+---
+
 ## Key Files Reference
 
 | File                                       | Purpose                                                                  |
 | ------------------------------------------ | ------------------------------------------------------------------------ |
 | `CLAUDE.md`                                | Coding conventions, naming rules, component patterns                     |
 | `src/shared/lib/api/createRouteHandler.ts` | Route handler factory — use for all API endpoints                        |
+| `src/shared/lib/brand.ts`                 | Display name, domain, location, logo paths, and founder identity         |
 | `src/shared/lib/api/index.ts`              | Barrel: `createRouteHandler`, `withLogging`, `withAuth`, `withRateLimit` |
 | `src/lib/server/api-response.ts`           | `successResponse`, `errorResponse`, `validationErrorResponse`            |
 | `src/lib/seo.ts`                           | `generateMetadata()`, `BASE_URL`, `SITE_NAME`, `KEYWORD_SETS`            |

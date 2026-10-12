@@ -6,7 +6,7 @@ import { getAllPosts } from "~/shared/lib/sanity/queries";
 
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://bobadilla.tech";
+import { BASE_URL } from "~/shared/lib/seo";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const currentDate = new Date();
@@ -17,6 +17,60 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			lastModified: currentDate,
 			changeFrequency: "monthly",
 			priority: 1,
+		},
+		{
+			url: `${BASE_URL}/company`,
+			lastModified: currentDate,
+			changeFrequency: "monthly",
+			priority: 0.9,
+		},
+		{
+			url: `${BASE_URL}/products`,
+			lastModified: currentDate,
+			changeFrequency: "monthly",
+			priority: 0.9,
+		},
+		{
+			url: `${BASE_URL}/team`,
+			lastModified: currentDate,
+			changeFrequency: "monthly",
+			priority: 0.7,
+		},
+		{
+			url: `${BASE_URL}/case-studies`,
+			lastModified: currentDate,
+			changeFrequency: "monthly",
+			priority: 0.8,
+		},
+		{
+			url: `${BASE_URL}/case-studies/compilestrength`,
+			lastModified: currentDate,
+			changeFrequency: "monthly",
+			priority: 0.7,
+		},
+		{
+			url: `${BASE_URL}/case-studies/requiems-api`,
+			lastModified: currentDate,
+			changeFrequency: "monthly",
+			priority: 0.7,
+		},
+		{
+			url: `${BASE_URL}/hire`,
+			lastModified: currentDate,
+			changeFrequency: "monthly",
+			priority: 0.8,
+		},
+		{
+			url: `${BASE_URL}/start-small`,
+			lastModified: currentDate,
+			changeFrequency: "monthly",
+			priority: 0.7,
+		},
+		{
+			url: `${BASE_URL}/system-audit`,
+			lastModified: currentDate,
+			changeFrequency: "monthly",
+			priority: 0.7,
 		},
 		{
 			url: `${BASE_URL}/pricing`,

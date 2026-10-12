@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import IndustryPage from "@/features/services/pages/IndustryPage";
 import { industryServices } from "@/features/services/model/services";
-import { generateSEOMetadata, BASE_URL } from "~/shared/lib/seo";
+import { generateSEOMetadata, SITE_NAME } from "~/shared/lib/seo";
 
 interface IndustryPageProps {
 	params: Promise<{
@@ -34,7 +34,7 @@ export async function generateMetadata({
 
 	return generateSEOMetadata({
 		title: `${industry.industry} Software Development Services`,
-		description: `${industry.description} Expert ${industryText} software solutions from top LATAM developers. Custom development, fast delivery, enterprise quality.`,
+		description: `${industry.description} ${industry.industry} software planned, built, and maintained by the ${SITE_NAME} engineering team.`,
 		keywordSets: ["core", "services", "industries"],
 		additionalKeywords: [
 			`${industryText} software`,
@@ -45,7 +45,6 @@ export async function generateMetadata({
 			"specialized solutions",
 		],
 		path: `/services/all/${industrySlug}`,
-		ogImage: `${BASE_URL}/og-industry-${industrySlug}.png`,
 		locale,
 	});
 }

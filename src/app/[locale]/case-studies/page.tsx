@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { generateSEOMetadata } from "~/shared/lib/seo";
+import { generateSEOMetadata, SITE_NAME } from "~/shared/lib/seo";
 import CaseStudiesPage from "@/features/case-studies/pages/CaseStudiesPage";
 
 export async function generateMetadata({
@@ -10,9 +10,8 @@ export async function generateMetadata({
 	const { locale } = await params;
 
 	return generateSEOMetadata({
-		title: "Case Studies — Bobadilla Tech",
-		description:
-			"Real projects built end-to-end by Bobadilla Tech. CompileStrength (AI fitness SaaS) and Requiems API (multi-language API platform).",
+		title: "Case Studies",
+		description: `Systems built end-to-end by ${SITE_NAME}: CompileStrength (AI fitness SaaS) and Requiems API (multi-language API platform) — both our own products.`,
 		keywordSets: ["core"],
 		path: "/case-studies",
 		locale,

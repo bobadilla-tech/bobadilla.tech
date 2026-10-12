@@ -1,4 +1,7 @@
-import type { ServicePageData, ProcessStep } from "@/features/services/model/types";
+import type {
+	ServicePageData,
+	ProcessStep,
+} from "@/features/services/model/types";
 import { sharedTechStack } from "@/features/services/model/types";
 
 const sharedProcessSteps: ProcessStep[] = [
@@ -33,15 +36,15 @@ const sharedProcessSteps: ProcessStep[] = [
 const sharedFaq = [
 	{
 		q: "How fast can you deliver a project?",
-		a: "Depending on complexity, MVPs can be delivered in 2–4 weeks, full products in 6–12 weeks. We commit to clear timelines upfront.",
+		a: "It depends on scope. Small fixed-scope projects typically take 1–2 weeks. For larger builds we agree on milestones and dates in writing before we start.",
 	},
 	{
 		q: "What happens if deadlines aren't met?",
-		a: "We guarantee our delivery commitments. If we miss a deadline, we work overtime at no extra cost until it's done.",
+		a: "If a date is at risk we tell you early, explain why, and agree with you on how to adjust scope or timeline.",
 	},
 	{
 		q: "Do you work with startups?",
-		a: "Absolutely — we've worked with early-stage startups through to enterprise teams. We adapt our process to your stage and budget.",
+		a: "Yes. We adapt our process to your stage and budget — from a lean MVP to a full product build.",
 	},
 	{
 		q: "Do you offer support after launch?",
@@ -470,7 +473,10 @@ export const servicePages: ServicePageData[] = [
 			heading: "WHY IT MATTERS",
 			items: [
 				{ label: "First impressions define user trust", color: "gold" },
-				{ label: "Better UX increases engagement and conversions", color: "red" },
+				{
+					label: "Better UX increases engagement and conversions",
+					color: "red",
+				},
 				{ label: "Fast interfaces improve retention", color: "blue" },
 			],
 		},
@@ -641,7 +647,10 @@ export const servicePages: ServicePageData[] = [
 		heroSubtitle:
 			"We design, build, and launch scalable MVPs — helping you validate faster and grow smarter.",
 		featureBadges: [
-			{ text: "Full-cycle development by a high-performance team", icon: "zap" },
+			{
+				text: "Full-cycle development by a high-performance team",
+				icon: "zap",
+			},
 			{ text: "Fast delivery with predictable timelines", icon: "timer" },
 		],
 		painPointsHeading: "MVP PITBALLS THAT DRAIN TIME AND BUDGET",
@@ -697,8 +706,7 @@ export const servicePages: ServicePageData[] = [
 			},
 			{
 				title: "Scaling & growth",
-				description:
-					"We help you evolve your MVP into a scalable product.",
+				description: "We help you evolve your MVP into a scalable product.",
 				icon: "growth",
 			},
 		],

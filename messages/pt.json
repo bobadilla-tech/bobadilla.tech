@@ -8,8 +8,8 @@
 	"ServiceReasons": {
 		"heading1": "Razões para",
 		"heading2": "trabalhar conosco",
-		"featuredTitle": "Construído por especialistas reais",
-		"featuredBody": "Você trabalha diretamente com\ndesenvolvedores experientes",
+		"featuredTitle": "Acesso direto aos engenheiros",
+		"featuredBody": "Você trabalha diretamente com\nos engenheiros do seu projeto",
 		"reasons": [
 			"Prazos claros,\nsem surpresas",
 			"Produtos reais,\nnão apenas ideias",
@@ -35,15 +35,15 @@
 		"defaults": [
 			{
 				"q": "Com que rapidez vocês entregam um projeto?",
-				"a": "Dependendo da complexidade, MVPs podem ser entregues em 2–4 semanas, produtos completos em 6–12 semanas. Nos comprometemos com prazos claros desde o início."
+				"a": "Depende do escopo. Projetos pequenos de escopo fixo costumam levar 1–2 semanas. Em projetos maiores, combinamos marcos e datas por escrito antes de começar."
 			},
 			{
 				"q": "O que acontece se os prazos não forem cumpridos?",
-				"a": "Garantimos nossos compromissos de entrega. Se perdermos um prazo, trabalhamos horas extras sem custo adicional até que esteja concluído."
+				"a": "Se uma data estiver em risco, avisamos com antecedência, explicamos o motivo e combinamos com você como ajustar o escopo ou o prazo."
 			},
 			{
 				"q": "Vocês trabalham com startups?",
-				"a": "Com certeza — trabalhamos com startups em estágio inicial até equipes empresariais. Adaptamos nosso processo ao seu estágio e orçamento."
+				"a": "Sim. Adaptamos nosso processo ao seu estágio e orçamento — de um MVP enxuto a um produto completo."
 			},
 			{
 				"q": "Vocês oferecem suporte após o lançamento?",
@@ -52,20 +52,19 @@
 		]
 	},
 	"ServiceEstimateCTA": {
-		"body": "Candidate-se a um workshop de descoberta gratuito e receba uma <gold>proposta detalhada do projeto</gold> com <gold>cronograma</gold> e <gold>detalhamento de custos</gold>. Disponibilidade limitada — Candidate-se hoje!",
+		"body": "Conte-nos do que você precisa e enviaremos uma proposta escrita com <gold>escopo</gold>, <gold>prazo</gold> e <gold>custo</gold>.",
 		"subheading": "OBTENHA UMA ESTIMATIVA GRATUITA",
-		"button": "VERIFIQUE SE VOCÊ SE QUALIFICA"
+		"button": "AGENDAR CHAMADA"
 	},
 	"Navbar": {
 		"services": "Serviços",
 		"projects": "Projetos",
 		"resources": "Recursos",
 		"company": "Empresa",
-		"founder": "Fundador",
 		"team": "Equipe",
 		"caseStudies": "Estudos de Caso",
 		"startSmall": "Comece Pequeno",
-		"hire": "Trabalhe Conosco",
+		"hire": "Contrate-nos",
 		"systemAudit": "Auditoria de Sistema",
 		"pricing": "Preços",
 		"contact": "Contato",
@@ -74,69 +73,64 @@
 		"openSource": "Código Aberto",
 		"apis": "APIs",
 		"bookCall": "Agendar Chamada",
-		"help": "Ajuda"
+		"help": "Ajuda",
+		"products": "Produtos",
+		"about": "Sobre nós"
 	},
 	"Footer": {
-		"navigation": "Navegação",
+		"services": "Serviços",
 		"company": "Empresa",
 		"dropUsALine": "Fale conosco",
 		"callUs": "Ligue para nós",
-		"copyright": "© {year} Bobadilla Tech. Todos os direitos reservados.",
+		"copyright": "© {year} {brand}. Todos os direitos reservados.",
 		"links": {
 			"ourServices": "Nossos Serviços",
-			"projects": "Projetos",
-			"dedicatedTeam": "Equipe Dedicada",
-			"openSource": "Código Aberto",
+			"hire": "Contrate-nos",
+			"startSmall": "Comece Pequeno",
+			"systemAudit": "Auditoria de Sistema",
 			"pricing": "Preços",
+			"about": "Sobre nós",
+			"team": "Equipe",
+			"products": "Produtos",
+			"caseStudies": "Estudos de Caso",
+			"blog": "Blog",
+			"openSource": "Código Aberto",
 			"contact": "Contato"
 		}
 	},
 	"CTABand": {
 		"heading": "Pronto para discutir seu projeto conosco?",
-		"subtitle": "Vamos construir uma experiência de produto que não apenas pareça ótima, mas que gere resultados reais.",
+		"subtitle": "Conte-nos o que você está construindo. Vamos dizer com honestidade se somos a equipe certa.",
 		"button": "Agendar Chamada"
 	},
 	"Hero": {
-		"badge": "Principal Agência de Engenharia da Latam",
-		"line1": "CRIANDO",
-		"line2": "PRODUTOS DE",
-		"line3": "CLASSE MUNDIAL",
-		"button": "Agendar Chamada"
-	},
-	"WhyBobatech": {
-		"heading1": "POR QUE AS EQUIPES ESCOLHEM",
-		"heading2": "BOBA TECH",
-		"others": "Outros",
-		"bobatech": "Boba Tech",
-		"yes": "Sim",
-		"no": "Não",
-		"rows": [
-			"Entrega rápida e previsível",
-			"Preços transparentes",
-			"Engenheiros sênior",
-			"6 meses de suporte incluído"
-		]
+		"badge": "Engenharia de software · Lima, Peru",
+		"line1": "CONSTRUÍMOS",
+		"line2": "SOFTWARE",
+		"line3": "E OPERAMOS",
+		"button": "Agendar Chamada",
+		"subtitle": "Uma empresa de engenharia que constrói software para clientes e opera produtos próprios."
 	},
 	"StatsBar": {
-		"heading1": "CONSTRUÍDO PARA ENTREGAR",
-		"heading2": "RESULTADOS REAIS",
-		"subtitle": "Da ideia ao produto com velocidade, clareza e bases escaláveis",
+		"heading1": "ALGUMAS COISAS",
+		"heading2": "QUE VOCÊ PODE VERIFICAR",
+		"subtitle": "GitHub, nossos produtos e nossos preços são públicos",
 		"stats": [
 			{
-				"title": "Construído para Escalar",
-				"subtitle": "Arquitetura escalável"
+				"title": "3",
+				"subtitle": "Produtos SaaS que construímos e operamos"
 			},
 			{
-				"title": "100+",
-				"subtitle": "Projetos entregues"
+				"title": "20+",
+				"subtitle": "Repositórios públicos no GitHub"
 			},
 			{
-				"title": "24/7",
-				"subtitle": "Suporte disponível"
+				"title": "UTC−5",
+				"subtitle": "Horário do Peru — coincide com o horário comercial dos EUA"
 			},
 			{
-				"title": "100%",
-				"subtitle": "Satisfação do cliente"
+				"title": "$400",
+				"subtitle": "Preço inicial (USD) dos nossos projetos pequenos de preço fixo"
 			}
 		]
 	},
@@ -146,19 +140,19 @@
 		"faqs": [
 			{
 				"q": "Com que rapidez vocês entregam um projeto?",
-				"a": "Dependendo do escopo, podemos entregar um MVP em apenas 3–14 dias. Para projetos maiores, trabalhamos em sprints de 2 semanas e mantemos você informado em cada etapa com marcos claros."
+				"a": "Depende do escopo. Projetos pequenos de escopo fixo costumam levar 1–2 semanas. Em projetos maiores, combinamos marcos e datas por escrito antes de começar e trabalhamos em iterações de duas semanas para que você veja o progresso continuamente."
 			},
 			{
 				"q": "O que acontece se os prazos não forem cumpridos?",
-				"a": "Levamos muito a sério os compromissos de entrega. Se um prazo estiver em risco, comunicamos com antecedência e trabalhamos horas extras sem custo adicional. A comunicação transparente é fundamental na nossa forma de operar."
+				"a": "Se uma data estiver em risco, avisamos com antecedência, explicamos o motivo e combinamos com você como ajustar o escopo ou o prazo."
 			},
 			{
 				"q": "Vocês trabalham com startups?",
-				"a": "Com certeza — startups são nosso ponto forte. Entendemos o ritmo e as restrições de empresas em estágio inicial e podemos nos adaptar ao seu runway, seja um MVP enxuto ou um produto completo."
+				"a": "Sim. Adaptamos o escopo ao seu estágio e ao seu runway — de um MVP enxuto a um produto completo. Também operamos nossos próprios produtos, então conhecemos as restrições de uma equipe pequena."
 			},
 			{
 				"q": "Vocês oferecem suporte após o lançamento?",
-				"a": "Sim. Todos os nossos engajamentos incluem 6 meses de suporte pós-lançamento. Estamos aqui para corrigir bugs, monitorar o desempenho e iterar com você à medida que seu produto cresce."
+				"a": "Sim. O que o suporte pós-lançamento cobre — correções, monitoramento, iteração — é definido na proposta, e oferecemos manutenção contínua."
 			}
 		]
 	},
@@ -180,10 +174,8 @@
 		"sendButton": "Enviar Mensagem",
 		"sendingButton": "Enviando...",
 		"bookCallHeading": "Agende uma Chamada Gratuita",
-		"bookCallDesc": "Agende uma consulta de 15 minutos com nossa Chief Revenue Officer.",
-		"bookCallAvailability": "Disponível 10h – 15h • Resposta rápida garantida",
-		"scheduleWithAle": "Agendar com Ale",
-		"enterpriseCTO": "Enterprise e CTO Fracionário",
+		"bookCallDesc": "Agende uma chamada introdutória de 15 minutos com Alexandra, nossa cofundadora e CEO.",
+		"bookCallAvailability": "Escolha o horário que funcionar para você",
 		"getInTouchHeading": "Entre em Contato",
 		"followUs": "Siga-nos",
 		"nameRequired": "O nome é obrigatório",
@@ -191,12 +183,13 @@
 		"invalidEmail": "Endereço de e-mail inválido",
 		"companyTooLong": "O nome da empresa deve ter menos de 100 caracteres",
 		"messageTooShort": "A mensagem deve ter pelo menos 10 caracteres",
-		"messageTooLong": "A mensagem deve ter menos de 2000 caracteres"
+		"messageTooLong": "A mensagem deve ter menos de 2000 caracteres",
+		"bookIntroCall": "Agendar chamada introdutória"
 	},
 	"ServicesSection": {
 		"heading1": "NOSSOS",
 		"heading2": "SERVIÇOS",
-		"subtitle": "Desenvolvimento Full-Stack, Integração de IA e Soluções Empresariais",
+		"subtitle": "Desenvolvimento full-stack, engenharia backend e integração de IA",
 		"learnMore": "Saiba mais →",
 		"cards": {
 			"webAppDev": {
@@ -217,11 +210,11 @@
 			},
 			"backendDev": {
 				"title": "Desenvolvimento Back-end",
-				"description": "Sistemas backend de nível empresarial construídos por engenheiros seniores."
+				"description": "Sistemas backend construídos para carga real: APIs, bancos de dados, filas e infraestrutura."
 			},
 			"webDev": {
 				"title": "Desenvolvimento Web",
-				"description": "Aplicações web personalizadas com tecnologias de ponta para performance ideal e experiência do usuário."
+				"description": "Aplicações web sob medida, com foco em desempenho e facilidade de manutenção."
 			},
 			"cmsDev": {
 				"title": "Desenvolvimento CMS",
@@ -234,74 +227,17 @@
 		}
 	},
 	"IndustriesSection": {
-		"heading1": "Indústrias",
-		"heading2": "Com as quais Temos Experiência",
-		"subtitle": "Expertise comprovada entregando soluções especializadas em diversos setores."
-	},
-	"PricingSection": {
-		"heading1": "Preços",
-		"heading2": "Simples e Transparentes",
-		"subtitle": "Pacotes de sites estáticos projetados para velocidade e qualidade.",
-		"calculatorButton": "Experimentar Nossa Calculadora de Preços",
-		"mostPopular": "Mais Popular",
-		"getStarted": "Começar",
-		"ctaHeading": "Precisa de um MVP personalizado ou aplicação full-stack?",
-		"ctaBody": "Oferecemos consultoria por hora e serviços de CTO Fracionário. Agende uma chamada para discutir seu projeto.",
-		"ctaButton": "Agendar Chamada com um CTO Fracionário Experiente",
-		"plans": [
-			{
-				"name": "Landing Page Inicial",
-				"description": "Perfeito para startups e pequenas empresas",
-				"features": [
-					"Uma única landing page",
-					"Design responsivo",
-					"Otimização SEO básica",
-					"Integração de formulário de contato",
-					"2 rodadas de revisões",
-					"Entrega em 7-10 dias",
-					"Otimizado para mobile"
-				]
-			},
-			{
-				"name": "Site Multi-página",
-				"description": "1-5 páginas para negócios em crescimento",
-				"features": [
-					"Até 5 páginas personalizadas",
-					"Design responsivo avançado",
-					"Otimização SEO",
-					"Integração CMS (opcional)",
-					"Formulários de contato e leads",
-					"3 rodadas de revisões",
-					"Entrega em 14-21 dias",
-					"Integração de analytics",
-					"Integração de redes sociais"
-				]
-			},
-			{
-				"name": "Experiência Web Premium",
-				"description": "Soluções personalizadas para empresas",
-				"features": [
-					"Páginas ilimitadas",
-					"Design personalizado e animações",
-					"SEO e performance avançados",
-					"Integração CMS completa",
-					"Capacidades de e-commerce",
-					"Integrações de API",
-					"Revisões ilimitadas",
-					"Suporte prioritário",
-					"Manutenção contínua (opcional)",
-					"Funcionalidades e recursos personalizados"
-				]
-			}
-		]
+		"heading1": "Software",
+		"heading2": "por Setor",
+		"subtitle": "Serviços adaptados aos requisitos de setores específicos."
 	},
 	"ServicesPage": {
 		"heading1": "Nossos",
 		"heading2": "Serviços",
-		"subtitle": "Desde o desenvolvimento rápido de MVPs até soluções empresariais, entregamos tecnologia de ponta adaptada às suas necessidades.",
+		"subtitle": "De MVPs a sistemas backend de longa duração — planejados, construídos e mantidos pela nossa equipe de engenharia.",
 		"coreServices": "Serviços Principais",
 		"industrySolutions": "Soluções por Setor",
-		"industrySubtitle": "Soluções especializadas para setores específicos com profundo conhecimento do domínio.",
+		"industrySubtitle": "Serviços adaptados aos requisitos de setores específicos.",
 		"viewAll": "Ver Todos",
 		"moreServices": "+{count} serviços a mais",
 		"ctaHeading": "Pronto para Iniciar seu Projeto?",
@@ -313,9 +249,9 @@
 		"home": "Início",
 		"services": "Serviços",
 		"overview": "Visão geral",
-		"overviewBody1": "Nosso serviço de {service} combina tecnologia de ponta com profunda expertise em engenharia para entregar soluções que impulsionam resultados de negócios. Trabalhamos em estreita colaboração com você para entender seus requisitos únicos e criar soluções personalizadas que crescem com seu negócio.",
-		"overviewBody2": "Seja você uma startup querendo lançar seu MVP rapidamente ou uma empresa buscando soluções robustas e escaláveis, nossa equipe tem a experiência e o conhecimento para dar vida à sua visão.",
-		"whatsIncluded": "O Que Está Incluído?",
+		"overviewBody1": "Em {service}, partimos dos seus requisitos e restrições e construímos algo que pode ser mantido e ampliado após o lançamento.",
+		"overviewBody2": "Seja uma startup lançando um MVP ou uma empresa estabelecida que precisa de um sistema que aguente o uso real, ajustamos o escopo ao seu estágio.",
+		"whatsIncluded": "O que pode incluir",
 		"whyChooseUs": "Por Que Nos Escolher?",
 		"getStarted": "Comece Hoje",
 		"getStartedBody": "Agende uma consulta gratuita para discutir seu projeto e receber um orçamento personalizado.",
@@ -337,20 +273,20 @@
 		],
 		"benefits": [
 			{
-				"title": "Entrega Rápida",
-				"description": "Lance em dias ou semanas, não em meses"
+				"title": "Escopo por Escrito",
+				"description": "Escopo, marcos e datas combinados por escrito antes de começar"
 			},
 			{
-				"title": "Segurança Empresarial",
-				"description": "Construído com segurança e conformidade em mente"
+				"title": "Segurança desde a Concepção",
+				"description": "Autenticação, controle de acesso e tratamento de dados projetados desde o início"
 			},
 			{
-				"title": "Suporte 24/7",
-				"description": "Suporte e manutenção contínuos disponíveis"
+				"title": "Suporte após o Lançamento",
+				"description": "Oferecemos manutenção e iteração contínuas"
 			},
 			{
-				"title": "Soluções Escaláveis",
-				"description": "Arquitetura projetada para crescer com seu negócio"
+				"title": "Espaço para Crescer",
+				"description": "Arquitetura dimensionada para hoje, com um caminho claro para escalar"
 			}
 		]
 	},
@@ -359,16 +295,16 @@
 		"services": "Serviços",
 		"solutions": "Soluções",
 		"allServicesHeading": "Todos os Serviços de {industry}",
-		"whyChooseHeading": "Por Que Escolher a Bobadilla Tech para {industry}?",
-		"expertise1Title": "Profunda Expertise no Setor",
-		"expertise1Body": "Nossa equipe tem ampla experiência construindo soluções para o setor {industry}, entendendo tanto os requisitos técnicos quanto as regulamentações específicas do setor.",
-		"expertise2Title": "Histórico Comprovado",
-		"expertise2Body": "Entregamos projetos com sucesso para clientes que vão desde startups até empresas, cumprindo consistentemente os prazos e superando as expectativas.",
-		"expertise3Title": "Equipe de Engenharia Sênior",
-		"expertise3Body": "Liderado por engenheiros sênior com experiência em sistemas backend empresariais e soluções de IA de ponta, não apenas mais uma agência.",
-		"expertise4Title": "Entrega Rápida",
-		"expertise4Body": "Lance seu MVP em dias ou semanas, não em meses. Focamos em iteração rápida e em levar seu produto ao mercado o mais rápido possível.",
-		"ctaHeading": "Pronto para Transformar seu Negócio de {industry}?",
+		"whyChooseHeading": "Por que trabalhar com {brand} em software de {industry}?",
+		"expertise1Title": "Acesso direto aos engenheiros",
+		"expertise1Body": "Depois que o projeto começa, você discute requisitos, restrições e trade-offs diretamente com os engenheiros que constroem seu software de {industry}.",
+		"expertise2Title": "Operamos software em produção",
+		"expertise2Body": "Construímos e operamos nossos próprios produtos SaaS, então confiabilidade, segurança e manutenção são coisas com que lidamos todos os dias — não algo deixado para depois.",
+		"expertise3Title": "Requisitos primeiro",
+		"expertise3Body": "Perguntamos sobre as restrições regulatórias e de dados do seu setor antes de propor uma arquitetura.",
+		"expertise4Title": "Escopo definido, entrega previsível",
+		"expertise4Body": "Escopo e marcos combinados por escrito. Você pode começar com um projeto pequeno antes de se comprometer com um maior.",
+		"ctaHeading": "Construindo software para {industry}?",
 		"ctaBody": "Agende uma consulta gratuita para discutir seu projeto e receber uma proposta personalizada adaptada às suas necessidades.",
 		"bookCall": "Agendar Chamada Gratuita",
 		"contactUs": "Fale Conosco",
@@ -396,11 +332,11 @@
 		"shareOnX": "Compartilhar no X",
 		"shareOnLinkedIn": "Compartilhar no LinkedIn",
 		"shareOnReddit": "Compartilhar no Reddit",
-		"enterpriseAPIsHeading": "Precisa de APIs Empresariais?",
-		"enterpriseAPIsBody": "Use nossa API Requiem para soluções escaláveis prontas para produção",
+		"enterpriseAPIsHeading": "Precisa de APIs de dados?",
+		"enterpriseAPIsBody": "Requiems API: APIs de validação de e-mail, localização, finanças e utilidades com uma única chave.",
 		"learnMore": "Saiba Mais",
 		"devServicesHeading": "Precisa de Serviços de Desenvolvimento?",
-		"devServicesBody": "Obtenha consultoria especializada para construir seu próximo produto",
+		"devServicesBody": "Fale com nossa equipe sobre o seu próximo produto.",
 		"getInTouch": "Fale Conosco",
 		"stayTuned": "Fique Ligado",
 		"moreSoonMsg": "Mais conteúdo em breve. Siga-nos para atualizações!",
@@ -413,7 +349,7 @@
 		"yourEstimate": "Sua Estimativa de Projeto",
 		"breakdownSubtitle": "Detalhamento da sua solução personalizada",
 		"totalInvestment": "Investimento Total",
-		"pricingNote": "Preços competitivos da LATAM • Mesmo fuso horário • Alinhamento cultural",
+		"pricingNote": "Apenas uma estimativa — o escopo e o preço finais são combinados por escrito.",
 		"getDetailedQuote": "Obtenha seu Orçamento Detalhado",
 		"emailDesc": "Insira seu e-mail para salvar esta estimativa e agendar uma consulta gratuita",
 		"bookConsultation": "Agendar Consulta Gratuita",
@@ -430,20 +366,20 @@
 		"whyWorkWithUs": "Por Que Trabalhar Conosco?",
 		"whyItems": [
 			{
-				"title": "Muito Responsivos",
-				"desc": "Prazos de resposta rápidos e comunicação constante durante o desenvolvimento"
+				"title": "Comunicação Direta",
+				"desc": "Você fala com os engenheiros do seu projeto"
 			},
 			{
-				"title": "Mesmo Fuso Horário",
-				"desc": "Equipe baseada na LATAM para colaboração em tempo real sem atritos"
+				"title": "Horário do Peru (UTC−5)",
+				"desc": "Nosso horário de trabalho coincide com o dos EUA"
 			},
 			{
-				"title": "Alinhamento Cultural",
-				"desc": "Forte ética de trabalho e compatibilidade cultural com equipes dos EUA/UE"
+				"title": "Escopo por Escrito",
+				"desc": "O escopo e o preço são combinados por escrito antes de começar"
 			},
 			{
-				"title": "Preços Offshore",
-				"desc": "Qualidade premium a tarifas competitivas da LATAM - economize 40-60%"
+				"title": "Tarifas LATAM",
+				"desc": "Engenharia a preços da América Latina"
 			}
 		],
 		"startOver": "Recomeçar",
@@ -581,78 +517,81 @@
 	"FounderPage": {
 		"overline": "Fundador",
 		"name": "Eliaz Bobadilla",
-		"role": "Fundador e Engenheiro Principal",
-		"intro": "Fundador e engenheiro principal da Bobadilla Tech. Construo sistemas que funcionam e se mantêm — não protótipos disfarçados de produtos.",
-		"background": {
+		"role": "Fundador · Engenheiro de Software",
+		"intro": "Eliaz Bobadilla é engenheiro de software e fundador de {brand}. Trabalha com arquitetura backend, integração de sistemas de IA e infraestrutura.",
+		"story": {
 			"heading": "Trajetória",
-			"p1": "Comecei a escrever código aos 14 anos. Não tutoriais — projetos reais. Esse hábito precoce de construir para entender (em vez de ler para entender) ainda define como trabalho.",
-			"p2": "Na última década trabalhei em startups em estágio inicial, equipes em crescimento e projetos de clientes em fintech, fitness, ferramentas para desenvolvedores e infraestrutura. Alguns chegaram a milhares de usuários. Alguns foram descartados pelos motivos certos. Todos me ensinaram algo concreto.",
-			"p3": "Meu foco evoluiu progressivamente para arquitetura backend, integração de sistemas de IA e infraestrutura escalável — áreas onde decisões de engenharia tomadas cedo se acumulam fortemente em ambas as direções."
+			"p1": "Começou a escrever código aos 14 anos, em projetos reais e não em tutoriais. Na última década, trabalhou em startups em estágio inicial, equipes em crescimento e projetos de clientes em fintech, fitness, ferramentas para desenvolvedores e infraestrutura.",
+			"p2": "{brand} começou como o trabalho do próprio Eliaz para clientes. Conforme os projetos cresceram, ele trouxe desenvolvedores em quem confiava, e a empresa se tornou uma equipe com clientes e produtos próprios.",
+			"p3": "Eliaz continua atuando como engenheiro: projeta sistemas e escreve código."
 		},
-		"approach": {
-			"heading": "Como abordo a construção de software",
-			"p1": "Não começo pela arquitetura. Começo pela restrição. Qual é o gargalo real — latência, custo, complexidade, tempo de mercado? A resposta muda o design mais do que qualquer escolha de framework.",
-			"p2": "Meu padrão é o simples e o comprovado. Isso significa usar ferramentas consolidadas antes das novas, escrever código que o próximo engenheiro possa ler sem contexto, e tratar toda abstração como dívida até que prove seu valor.",
-			"p3": "Quando a IA faz parte do stack, trato como um problema de integração, não de pesquisa. O objetivo é saída confiável, comportamento delimitado e lógica de fallback clara — não uma demo."
-		},
-		"expect": {
-			"heading": "O que esperar ao trabalhar comigo",
-			"items": [
-				{
-					"title": "Escopo direto",
-					"body": "Vou te dizer o que é alcançável, o que não é, e onde estão as verdadeiras incógnitas — antes de começar."
-				},
-				{
-					"title": "Sem intermediários",
-					"body": "Você fala com o engenheiro que faz o trabalho. Não há account manager entre nós."
-				},
-				{
-					"title": "Ciclos de feedback rápidos",
-					"body": "Entrego cedo e com frequência. Você vê progresso real, não atualizações de status."
-				},
-				{
-					"title": "Compensações honestas",
-					"body": "Se existe uma solução mais simples, vou dizer. Complexidade deve ser justificada, não ser o padrão."
-				}
-			]
-		},
-		"cta": {
-			"heading": "Quer conversar sobre um projeto?",
-			"body": "15 minutos. Sem pitch. Apenas uma conversa honesta sobre o que você está construindo e se somos compatíveis.",
-			"button": "Agendar chamada"
+		"links": {
+			"personalSite": "Site pessoal do Eliaz",
+			"team": "Conheça a equipe",
+			"company": "Sobre a empresa"
 		}
 	},
 	"TeamPage": {
 		"overline": "Equipe",
-		"heading": "Uma equipe pequena.",
-		"headingGold": "Sem overhead.",
-		"intro": "Três engenheiros sênior em cada projeto. Especialistas trazidos quando o trabalho exige. Sem juniores aprendendo no seu orçamento.",
-		"core": {
-			"heading": "Equipe base",
-			"badge": "3 engenheiros",
-			"description": "Esses três são constantes em cada engajamento. Alta responsabilidade, comunicação direta, sem transferências.",
-			"members": [
+		"heading": "Uma equipe pequena de engenheiros",
+		"headingGold": "que responde pelo que entrega.",
+		"intro": "Os engenheiros do seu projeto são os que projetam, constroem e mantêm o seu sistema.",
+		"collaboration": {
+			"heading": "Como trabalhamos juntos",
+			"items": [
 				{
-					"role": "Fundador e Engenheiro Principal",
-					"focus": "Arquitetura backend, sistemas de IA, infraestrutura",
-					"note": "Em cada projeto. Define a direção técnica e faz o trabalho."
+					"title": "Uma equipe, contexto compartilhado",
+					"body": "Os engenheiros que trabalham em projetos de clientes também trabalham nos nossos próprios produtos, então o que aprendemos operando um sistema é levado para o próximo."
 				},
 				{
-					"role": "Engenheiro Full-Stack Sênior",
-					"focus": "Sistemas frontend, design de API, performance",
-					"note": "Responsável pela camada cliente de ponta a ponta. Opiniões fortes sobre UX."
+					"title": "A responsabilidade fica com os engenheiros",
+					"body": "Os engenheiros que constroem um sistema são os que o colocam em produção e continuam responsáveis por ele."
 				},
 				{
-					"role": "Engenheiro Backend Sênior",
-					"focus": "Bancos de dados, integrações, pipelines de deploy",
-					"note": "Fundo na infraestrutura. Confiável em modelos de dados complexos e casos extremos."
+					"title": "Decisões por escrito",
+					"body": "Registramos por escrito o escopo e as decisões de arquitetura antes de construir."
 				}
 			]
 		},
+		"leadership": {
+			"heading": "Liderança",
+			"website": "Site",
+			"founderLink": "Perfil do fundador",
+			"items": {
+				"alexandra": {
+					"role": "Cofundadora e CEO · Produto",
+					"bio": "Lidera a empresa e os produtos, e é a primeira pessoa com quem você vai falar."
+				},
+				"eliaz": {
+					"role": "Fundador · Engenheiro de Software",
+					"bio": "Trabalha com arquitetura backend, integração de sistemas de IA e infraestrutura."
+				}
+			}
+		},
+		"people": {
+			"heading": "Engenharia",
+			"description": "As disciplinas por trás do nosso trabalho para clientes e dos nossos próprios produtos.",
+			"items": {
+				"backendAi": {
+					"role": "Engenharia backend e IA",
+					"focus": "APIs, pipelines de dados, integração de IA",
+					"bio": "Sistemas backend e com uso intensivo de IA, em projetos de clientes e nos nossos próprios produtos."
+				},
+				"fullstack": {
+					"role": "Engenharia full-stack",
+					"focus": "Sistemas frontend, design de API, performance",
+					"bio": "O frontend e a camada de API por trás dele, de ponta a ponta."
+				},
+				"backend": {
+					"role": "Engenharia backend",
+					"focus": "Bancos de dados, integrações, pipelines de deploy",
+					"bio": "Modelos de dados complexos, integrações e os casos de borda que vêm com eles."
+				}
+			}
+		},
 		"extended": {
 			"heading": "Rede estendida",
-			"badge": "5–8 colaboradores",
-			"description": "Especialistas de confiança com quem trabalhamos em múltiplos projetos. Entram quando o escopo requer sua profundidade — não para inflar o headcount.",
+			"description": "Especialistas com quem já trabalhamos em vários projetos. Entram quando um projeto precisa da especialidade deles.",
 			"items": [
 				{
 					"label": "Mobile",
@@ -673,33 +612,29 @@
 				{
 					"label": "QA",
 					"detail": "Estratégia de testes, automação, testes de carga"
-				},
-				{
-					"label": "Compliance",
-					"detail": "Revisão de segurança, preparação para auditorias, contexto HIPAA / SOC2"
 				}
 			]
 		},
 		"why": {
-			"heading": "Por que esta estrutura funciona",
+			"heading": "Por que trabalhamos assim",
 			"items": [
 				{
-					"heading": "Você recebe as pessoas certas, não as disponíveis",
-					"body": "Grandes agências alocam projetos com quem está livre. Alocamos projetos com quem se encaixa. Se um especialista não é adequado para o seu trabalho, não está nele."
+					"heading": "As pessoas certas para o trabalho",
+					"body": "Alocamos em cada projeto os engenheiros cuja experiência se encaixa."
 				},
 				{
-					"heading": "Sem diluição",
-					"body": "Engenheiros sênior não delegam para juniores para revisar no final. As pessoas com quem você fala são as pessoas que escrevem o código."
+					"heading": "As mesmas pessoas, do início ao fim",
+					"body": "Mantemos os mesmos engenheiros no seu projeto do início ao fim, para que o contexto não se perca no caminho."
 				},
 				{
-					"heading": "Ciclos de feedback ajustados",
-					"body": "Três engenheiros que conhecem o trabalho um do outro podem se mover rápido e detectar problemas cedo. Mais pessoas geralmente significa ciclos mais lentos, não mais rápidos."
+					"heading": "Ciclos de feedback curtos",
+					"body": "Uma equipe pequena, em que cada um conhece o trabalho do outro, avança rápido e detecta problemas cedo."
 				}
 			]
 		},
 		"cta": {
 			"heading": "Quer conhecer a equipe?",
-			"body": "Agende uma chamada breve. Vamos revisar seu projeto e dizer exatamente quem estaria envolvido.",
+			"body": "Agende uma chamada curta. Vamos analisar seu projeto e dizer exatamente quem estaria envolvido.",
 			"button": "Agendar chamada"
 		}
 	},
@@ -777,7 +712,7 @@
 		"overline": "Estudos de Caso",
 		"heading1": "Trabalho que",
 		"heading2": "entregamos",
-		"subtitle": "Dois publicados até agora. Sistemas reais, decisões reais, trade-offs reais.",
+		"subtitle": "Dois publicados até agora — ambos são produtos próprios. Sistemas reais, decisões reais, trade-offs reais.",
 		"readCaseStudy": "Ler estudo de caso",
 		"studies": [
 			{
@@ -1067,10 +1002,10 @@
 		}
 	},
 	"HirePage": {
-		"overline": "Bobadilla Tech",
+		"overline": "Contrate nossa equipe",
 		"heading": "Sistemas em produção, construídos pelos",
 		"headingGold": "engenheiros que escrevem o código.",
-		"intro": "Para fundadores técnicos e equipes que precisam de sistemas backend, integrações de IA ou infraestrutura escalável — feito por engenheiros sênior, não delegado para baixo.",
+		"intro": "Para fundadores técnicos e equipes que precisam de sistemas backend, integrações de IA ou infraestrutura escalável — construídos por engenheiros que respondem pelo que entregam.",
 		"cta1": "Obter uma avaliação técnica",
 		"cta2": "Ou comece com um projeto pequeno",
 		"whoHeading": "Para quem é isto",
@@ -1078,7 +1013,7 @@
 			"Você tem uma ideia de MVP e precisa que esteja pronta para produção — não um protótipo",
 			"Seu backend está falhando sob carga real",
 			"Você quer IA integrada ao seu produto — não uma demo, um sistema real",
-			"Você trabalhou com agências e obteve entregas lentas e código de juniors",
+			"Você já recebeu trabalho com atraso ou abaixo da qualidade de que precisava",
 			"Você precisa de uma segunda opinião sobre um sistema antes de escalá-lo",
 			"Você é técnico o suficiente para saber quando o trabalho é bom"
 		],
@@ -1104,10 +1039,25 @@
 				"title": "Otimização de Sistemas",
 				"description": "Identifique gargalos, reduza latência, corrija o que é frágil antes de quebrar em produção. Inclui um relatório escrito e plano de ação priorizado.",
 				"outcome": "Clareza sobre o que corrigir e como"
+			},
+			{
+				"title": "Engenheiros dedicados",
+				"description": "Engenheiros que se integram ao seu time e trabalham dentro do seu código e do seu processo.",
+				"outcome": "Mais capacidade de engenharia para o seu time"
+			},
+			{
+				"title": "Parceria de longo prazo",
+				"description": "Continuamos após o lançamento para manter e ampliar o que construímos.",
+				"outcome": "Uma equipe que conhece o seu sistema"
+			},
+			{
+				"title": "CTO fracionado",
+				"description": "Liderança técnica em tempo parcial para equipes sem CTO: decisões de arquitetura, roadmap técnico e apoio em contratações.",
+				"outcome": "Direção técnica sem uma contratação em tempo integral"
 			}
 		],
 		"howHeading": "Como trabalhamos",
-		"howNote": "Você fala diretamente com os engenheiros construindo seu sistema. Sem project managers, sem account managers, sem ninguém repetindo o que você acabou de dizer em outra reunião.",
+		"howNote": "Depois que o projeto começa, você fala diretamente com os engenheiros que constroem seu sistema.",
 		"steps": [
 			{
 				"number": "01",
@@ -1117,12 +1067,12 @@
 			{
 				"number": "02",
 				"title": "Escopo",
-				"body": "Definimos exatamente o que será construído e por quanto. Preço fixo, por escrito. Sem surpresas depois."
+				"body": "Combinamos o que será construído e quanto custa, por escrito, antes de começar. Sem surpresas depois."
 			},
 			{
 				"number": "03",
 				"title": "Construir",
-				"body": "Engenheiros sênior escrevem o código. Você recebe atualizações conforme o trabalho avança. Sem transferências para juniores."
+				"body": "Os engenheiros alocados no seu projeto escrevem o código. Você recebe atualizações conforme o trabalho avança."
 			},
 			{
 				"number": "04",
@@ -1132,10 +1082,10 @@
 		],
 		"whyHeading": "Por que nós",
 		"why": [
-			"3 engenheiros sênior na equipe base — não uma empresa de staffing ou operação de outsourcing",
-			"Entregamos e mantemos produtos internos (Requiems API, CompileStrength) — sistemas reais que são nossos",
-			"Uma equipe pequena significa responsabilidade direta — você sabe quem construiu o quê e por quê",
-			"Sem outsourcing, sem juniores com trabalho de sênior, sem camadas de project managers no meio"
+			"Uma equipe de engenharia que responde pelo que constrói — nos nossos projetos ou dentro do seu time",
+			"Construímos e operamos nossos próprios produtos (Requiems API, CompileStrength, BiasMarket) — sistemas reais que são nossos e que mantemos",
+			"Equipe pequena, responsabilidade direta — você sabe quem construiu o quê e por quê",
+			"Você trabalha diretamente com os engenheiros do seu projeto"
 		],
 		"smallHeading": "Não está pronto para se comprometer com um projeto completo?",
 		"smallBody": "A melhor maneira de ver como trabalhamos é fazer juntos uma pequena parte de trabalho real. Escopo fixo, preço fixo, sem compromisso de longo prazo.",
@@ -1152,14 +1102,14 @@
 			"cta": "Saiba mais"
 		},
 		"finalHeading": "Pronto para conversar?",
-		"finalBody": "Agende uma chamada técnica breve. Vamos entender seu problema e dizer honestamente se somos o fit certo.",
-		"finalNote": "Sem pitch de vendas. Sem pressão. Apenas uma conversa direta.",
-		"bookCall": "Agendar chamada técnica",
+		"finalBody": "Agende uma chamada curta. Vamos entender seu problema e dizer com honestidade se somos a equipe certa.",
+		"finalNote": "Sem pressão. Apenas uma conversa direta.",
+		"bookCall": "Agendar chamada",
 		"startSmallCta": "Começar com um projeto pequeno"
 	},
 	"BookConfirmedPage": {
 		"title": "Sua chamada está agendada.",
-		"subtitle": "Esta é uma conversa técnica, não uma ligação de vendas.",
+		"subtitle": "Vamos usar a chamada para entender o que você está construindo.",
 		"beforeCallHeading": "Antes da chamada",
 		"preCallItems": [
 			{
@@ -1172,7 +1122,7 @@
 			},
 			{
 				"label": "Traga o problema real, não a versão polida",
-				"body": "Somos engenheiros. Conseguimos lidar com a verdade bagunçada. Isso tornará a conversa mais útil."
+				"body": "Conte as coisas como elas são, mesmo que estejam bagunçadas. A conversa será mais útil."
 			}
 		],
 		"detailsPrompt": "Quer enviar detalhes antes da chamada?",
@@ -1183,70 +1133,6 @@
 		"message": "Usamos cookies para analisar o tráfego e melhorar sua experiência.",
 		"accept": "Aceitar",
 		"reject": "Rejeitar"
-	},
-	"PolladaPage": {
-		"hero": {
-			"overline": "VAQUINHA VIRTUAL",
-			"heading": "Apoie nossa causa",
-			"headingGold": "com um portfólio profissional",
-			"intro": "Esta página está disponível em espanhol."
-		},
-		"about": {
-			"heading": "O que é isso?",
-			"body": "Esta página está disponível apenas em espanhol.",
-			"items": []
-		},
-		"portfolio": {
-			"heading": "Portfólios de exemplo",
-			"subtitle": "Esta página está disponível apenas em espanhol.",
-			"items": []
-		},
-		"tiers": {
-			"heading": "Escolha seu plano",
-			"subtitle": "Esta página está disponível apenas em espanhol.",
-			"recommended": "Recomendado",
-			"choose": "Escolher {plan}",
-			"items": [
-				{
-					"name": "Arranca",
-					"price": "S/. 50",
-					"badge": null,
-					"features": []
-				},
-				{
-					"name": "Pro",
-					"price": "S/. 120",
-					"badge": "Mais popular",
-					"features": []
-				},
-				{
-					"name": "Premium",
-					"price": "S/. 280",
-					"badge": null,
-					"features": []
-				}
-			]
-		},
-		"how": {
-			"heading": "Como funciona",
-			"steps": []
-		},
-		"payment": {
-			"heading": "Métodos de pagamento",
-			"subtitle": "Esta página está disponível apenas em espanhol.",
-			"methods": [],
-			"note": ""
-		},
-		"faq": {
-			"heading": "FAQ",
-			"items": []
-		},
-		"cta": {
-			"heading": "Pronto para ajudar?",
-			"body": "Visite a versão em espanhol desta página.",
-			"button": "Contate-nos pelo WhatsApp",
-			"subtext": ""
-		}
 	},
 	"NalaCausePage": {
 		"hero": {
@@ -1423,5 +1309,209 @@
 				"image": "/fundraises/nala-2026/nala-01.jpeg"
 			}
 		]
+	},
+	"Metadata": {
+		"home": {
+			"title": "{brand} — Empresa de Engenharia de Software",
+			"description": "{brand} é uma empresa de engenharia de software do Peru. Construímos software para clientes — produtos full-stack, infraestrutura backend e integrações de IA — e construímos e operamos nossos próprios produtos SaaS."
+		},
+		"company": {
+			"title": "Empresa",
+			"description": "{brand} é uma empresa de engenharia de software do Peru: serviços de engenharia para clientes e produtos de software próprios, feitos pela mesma equipe."
+		},
+		"products": {
+			"title": "Produtos",
+			"description": "Software que nós mesmos projetamos, construímos e operamos: Requiems API, CompileStrength, BiasMarket e bibliotecas de código aberto e ferramentas para desenvolvedores."
+		},
+		"team": {
+			"title": "Equipe",
+			"description": "As pessoas por trás de {brand}, como a equipe de engenharia está organizada e como trabalhamos juntos."
+		},
+		"founder": {
+			"title": "Eliaz Bobadilla — Fundador",
+			"description": "Eliaz Bobadilla é engenheiro de software e fundador de {brand}, focado em arquitetura backend, sistemas de IA e infraestrutura."
+		}
+	},
+	"CompanyPage": {
+		"overline": "Empresa",
+		"heading": "Engenheiros que constroem software",
+		"headingGold": "para clientes e para nós mesmos.",
+		"intro": "{brand} é uma empresa de engenharia de software do Peru. Fazemos engenharia para outras empresas, e projetamos, construímos e operamos nossos próprios produtos de software. As duas coisas são feitas pela mesma equipe, com os mesmos padrões.",
+		"whatWeDo": {
+			"heading": "O que fazemos",
+			"services": {
+				"title": "Serviços de engenharia",
+				"body": "Desenvolvimento de produto full-stack, engenharia backend e infraestrutura, integração de IA e automação, engenheiros dedicados, parcerias de desenvolvimento de longo prazo e serviços de CTO fracionado.",
+				"cta": "Ver serviços"
+			},
+			"products": {
+				"title": "Nossos próprios produtos",
+				"body": "Aplicações SaaS, APIs e ferramentas para desenvolvedores que nós mesmos projetamos, construímos e operamos em produção.",
+				"cta": "Ver produtos"
+			}
+		},
+		"principles": {
+			"heading": "Como construímos",
+			"items": [
+				{
+					"heading": "Começar pela restrição",
+					"body": "Não começamos pela arquitetura. Começamos pelo gargalo real — latência, custo, complexidade ou tempo de chegada ao mercado. A resposta muda o desenho do sistema mais do que qualquer escolha de framework."
+				},
+				{
+					"heading": "Simples e comprovado por padrão",
+					"body": "Usamos ferramentas consolidadas antes das novas, escrevemos código que o próximo engenheiro consiga ler sem contexto e tratamos toda abstração como dívida até que prove seu valor."
+				},
+				{
+					"heading": "IA é um problema de integração, não de pesquisa",
+					"body": "Quando a IA faz parte do stack, o objetivo é uma saída confiável, comportamento delimitado e uma lógica de fallback clara — não uma demo."
+				},
+				{
+					"heading": "Trade-offs honestos",
+					"body": "Dizemos o que é viável, o que não é e onde estão as verdadeiras incógnitas antes de começar. Se existir uma solução mais simples, avisamos."
+				}
+			]
+		},
+		"practices": {
+			"heading": "Práticas que você pode conferir",
+			"description": "Preferimos mostrar como trabalhamos a descrever. Isto é público.",
+			"items": [
+				{
+					"title": "Arquitetura documentada",
+					"body": "A arquitetura e as convenções deste site estão escritas no repositório público do próprio site.",
+					"link": "Ler o documento de arquitetura"
+				},
+				{
+					"title": "Testes automatizados em CI",
+					"body": "No repositório deste site, os testes rodam automaticamente a cada push na main e a cada pull request.",
+					"link": "Ver o workflow de CI"
+				},
+				{
+					"title": "Código aberto",
+					"body": "Publicamos bibliotecas e ferramentas no GitHub sob licenças de código aberto.",
+					"link": "Explorar nosso GitHub"
+				}
+			]
+		},
+		"origin": {
+			"heading": "De onde viemos",
+			"p1": "{brand} nasceu do trabalho de engenharia do fundador, {founder}, que começou a assumir projetos de clientes e reuniu desenvolvedores em quem confiava.",
+			"p2": "Hoje é uma equipe com clientes e produtos próprios. Em cada projeto, os engenheiros que o constroem definem a direção técnica.",
+			"cta": "Sobre o fundador"
+		},
+		"facts": {
+			"items": [
+				{
+					"label": "Localização",
+					"value": "Lima, Peru (UTC−5)"
+				},
+				{
+					"label": "Idiomas de trabalho",
+					"value": "Inglês e espanhol"
+				},
+				{
+					"label": "O que fazemos",
+					"value": "Engenharia para clientes e produtos próprios"
+				}
+			]
+		},
+		"cta": {
+			"heading": "Quer ver como trabalhamos?",
+			"body": "Agende uma chamada curta e conte-nos o que você está construindo.",
+			"button": "Agendar chamada"
+		}
+	},
+	"ProductsPage": {
+		"overline": "Produtos",
+		"heading": "Software que construímos",
+		"headingGold": "e operamos nós mesmos.",
+		"intro": "Além do trabalho para clientes, projetamos, construímos e operamos nossos próprios produtos. É neles que testamos nossas próprias decisões de engenharia em produção.",
+		"visitSite": "Visitar {name}",
+		"readWriteUp": "Análise técnica de {name}",
+		"items": {
+			"requiemsApi": {
+				"tagline": "Plataforma de APIs",
+				"description": "Uma plataforma de APIs em produção que reúne validação de e-mail, localização, finanças e utilidades sob uma única chave. Construída como um monorepo multilinguagem: uma API em Go, um painel em Rails e dois Cloudflare Workers para autenticação e gestão de chaves."
+			},
+			"compileStrength": {
+				"tagline": "SaaS de fitness com IA",
+				"description": "Um produto por assinatura com um agente de IA que gera programas de treino personalizados. Construído com Next.js, Cloudflare Workers e Neon PostgreSQL — com cobrança, autenticação, IA e deploy no edge incluídos."
+			},
+			"biasMarket": {
+				"tagline": "Criador de lojas para vendedoras de merch K-pop",
+				"description": "Uma loja e um gerenciador de pedidos para vendedoras de merch K-pop. Cuida de group orders, claims de photocards e drops de merch — com os pedidos e os comprovantes de pagamento em um só lugar, sem planilhas."
+			}
+		},
+		"openSource": {
+			"heading": "Código aberto",
+			"description": "Bibliotecas e ferramentas de código aberto que mantemos.",
+			"viewAll": "Todos os repositórios no GitHub",
+			"items": {
+				"lorelai": "Um gerador de lorem ipsum para Go.",
+				"isEmailDisposable": "Verifica se um endereço de e-mail é descartável. Funciona offline.",
+				"goIpIntelligence": "Detecta VPNs, proxies, Tor e faixas de IP de hospedagem, com ASN e geolocalização.",
+				"holidaysPerCountry": "Calendários de feriados para Go, incluindo feriados regionais. Funciona offline.",
+				"businessDaysCalculator": "Conta os dias úteis entre duas datas, em Go.",
+				"sentimentGo": "Análise de sentimento leve para Go, com um léxico embutido."
+			}
+		},
+		"cta": {
+			"heading": "Precisa de algo assim?",
+			"body": "A equipe que construiu esses produtos também constrói para clientes. Conte-nos no que você está trabalhando.",
+			"button": "Agendar chamada"
+		}
+	},
+	"WhatWeDo": {
+		"overline": "O QUE FAZEMOS",
+		"heading": "Uma equipe de engenharia,",
+		"headingGold": "duas linhas de trabalho.",
+		"subtitle": "Construímos software para clientes e construímos e operamos nossos próprios produtos. O que aprendemos operando software em produção entra no trabalho que fazemos para você.",
+		"services": {
+			"title": "Serviços de engenharia",
+			"body": "Projetamos, construímos e mantemos software para outras empresas — como equipe de projeto ou com engenheiros dedicados ao seu time.",
+			"items": [
+				"Desenvolvimento de produto full-stack",
+				"Engenharia backend e infraestrutura",
+				"Integração de IA e automação",
+				"Engenheiros dedicados",
+				"Parcerias de desenvolvimento de longo prazo",
+				"CTO fracionado"
+			],
+			"cta": "Ver serviços"
+		},
+		"products": {
+			"title": "Nossos próprios produtos",
+			"body": "Projetamos, construímos e operamos software sob nosso próprio nome, então convivemos com as consequências das nossas próprias decisões de engenharia.",
+			"items": [
+				"Requiems API — uma única chave para APIs de validação de e-mail, localização, finanças e utilidades",
+				"CompileStrength — um SaaS de fitness com IA",
+				"BiasMarket — um criador de lojas para vendedoras de merch K-pop",
+				"Bibliotecas de código aberto e ferramentas para desenvolvedores"
+			],
+			"cta": "Ver produtos"
+		}
+	},
+	"EngineeringPrinciples": {
+		"heading1": "COMO",
+		"heading2": "CONSTRUÍMOS",
+		"subtitle": "Princípios que toda a equipe segue.",
+		"items": [
+			{
+				"title": "Começar pela restrição",
+				"body": "Antes de escolher uma arquitetura, perguntamos qual é o gargalo real — latência, custo, complexidade ou tempo de chegada ao mercado. A resposta define o desenho do sistema mais do que qualquer framework."
+			},
+			{
+				"title": "Simples e comprovado por padrão",
+				"body": "Ferramentas consolidadas antes das novas. Código que o próximo engenheiro consiga ler sem contexto. Toda abstração é dívida até provar seu valor."
+			},
+			{
+				"title": "IA é um problema de integração",
+				"body": "Quando a IA faz parte do stack, o objetivo é uma saída confiável, comportamento delimitado e uma lógica de fallback clara — não uma demo."
+			},
+			{
+				"title": "Acesso direto aos engenheiros",
+				"body": "Depois que o projeto começa, você acompanha o progresso e discute os trade-offs diretamente com os engenheiros que constroem seu sistema."
+			}
+		],
+		"cta": "Mais sobre como trabalhamos"
 	}
 }

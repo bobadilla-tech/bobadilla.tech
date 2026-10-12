@@ -29,8 +29,9 @@ const ESTIMATE_CTA_EXCLUDED_SLUGS = new Set([
 ]);
 
 export default function RichServicePage({ data }: RichServicePageProps) {
-	const showReasonsAbovePainPoints =
-		Boolean(data.reasonsHeadingLine1 || data.reasonsHeadingLine2);
+	const showReasonsAbovePainPoints = Boolean(
+		data.reasonsHeadingLine1 || data.reasonsHeadingLine2
+	);
 	const showEstimateCTA = !ESTIMATE_CTA_EXCLUDED_SLUGS.has(data.slug);
 
 	// MVP variant: has mvpSolutions
@@ -55,10 +56,7 @@ export default function RichServicePage({ data }: RichServicePageProps) {
 					/>
 				)}
 				{data.forWhoHeading && data.forWho && (
-					<ServiceForWho
-						heading={data.forWhoHeading}
-						forWho={data.forWho}
-					/>
+					<ServiceForWho heading={data.forWhoHeading} forWho={data.forWho} />
 				)}
 				<ServiceProcessMVP />
 				<ServiceReasons />
@@ -128,7 +126,11 @@ export default function RichServicePage({ data }: RichServicePageProps) {
 							<p className="font-body text-white text-2xl text-center sm:text-left">
 								{data.urgencyBandText}
 							</p>
-							<Button href={CAL_LINKS.ale} variant="gold" className="shrink-0">
+							<Button
+								href={CAL_LINKS.intro}
+								variant="gold"
+								className="shrink-0"
+							>
 								{data.urgencyBandCta}
 							</Button>
 						</div>

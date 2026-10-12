@@ -1,8 +1,5 @@
 import { BlogList } from "@/features/blog";
-import {
-	generateSEOMetadata,
-	BASE_URL,
-} from "~/shared/lib/seo";
+import { generateSEOMetadata, BASE_URL, SITE_NAME } from "~/shared/lib/seo";
 
 import type { Metadata } from "next";
 
@@ -15,8 +12,7 @@ export async function generateMetadata({
 
 	return generateSEOMetadata({
 		title: "Blog - Engineering Insights & Tutorials",
-		description:
-			"Technical articles about MVP development, AI integration, Next.js, Cloudflare Workers, and modern web development best practices from the Bobadilla Tech team.",
+		description: `Technical articles about MVP development, AI integration, Next.js, Cloudflare Workers, and modern web development best practices from the ${SITE_NAME} team.`,
 		keywordSets: ["core", "technologies"],
 		additionalKeywords: [
 			"technical blog",

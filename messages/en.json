@@ -8,8 +8,8 @@
 	"ServiceReasons": {
 		"heading1": "Reasons to",
 		"heading2": "work with us",
-		"featuredTitle": "Built by real experts",
-		"featuredBody": "You work directly with\nexperienced developers",
+		"featuredTitle": "Direct access to engineers",
+		"featuredBody": "You work directly with\nthe engineers on your project",
 		"reasons": [
 			"Clear timelines,\nno surprises",
 			"Real products,\nnot just ideas",
@@ -35,15 +35,15 @@
 		"defaults": [
 			{
 				"q": "How fast can you deliver a project?",
-				"a": "Depending on complexity, MVPs can be delivered in 2–4 weeks, full products in 6–12 weeks. We commit to clear timelines upfront."
+				"a": "It depends on scope. Small fixed-scope projects typically take 1–2 weeks. For larger builds we agree on milestones and dates in writing before we start."
 			},
 			{
 				"q": "What happens if deadlines aren't met?",
-				"a": "We guarantee our delivery commitments. If we miss a deadline, we work overtime at no extra cost until it's done."
+				"a": "If a date is at risk we tell you early, explain why, and agree with you on how to adjust scope or timeline."
 			},
 			{
 				"q": "Do you work with startups?",
-				"a": "Absolutely — we've worked with early-stage startups through to enterprise teams. We adapt our process to your stage and budget."
+				"a": "Yes. We adapt our process to your stage and budget — from a lean MVP to a full product build."
 			},
 			{
 				"q": "Do you offer support after launch?",
@@ -52,16 +52,15 @@
 		]
 	},
 	"ServiceEstimateCTA": {
-		"body": "Apply for a complimentary discovery workshop and receive a detailed <gold>project proposal</gold> with <gold>timeline</gold> and <gold>cost breakdown</gold>. Limited availability — Apply today!",
+		"body": "Tell us what you need and we'll send a written proposal with <gold>scope</gold>, <gold>timeline</gold>, and <gold>cost</gold>.",
 		"subheading": "GET A FREE PROJECT ESTIMATE",
-		"button": "CHECK IF YOU QUALIFY"
+		"button": "BOOK A CALL"
 	},
 	"Navbar": {
 		"services": "Services",
 		"projects": "Projects",
 		"resources": "Resources",
 		"company": "Company",
-		"founder": "Founder",
 		"team": "Team",
 		"caseStudies": "Case Studies",
 		"startSmall": "Start Small",
@@ -74,69 +73,64 @@
 		"openSource": "Open Source",
 		"apis": "APIs",
 		"bookCall": "Book a Call",
-		"help": "Help"
+		"help": "Help",
+		"products": "Products",
+		"about": "About"
 	},
 	"Footer": {
-		"navigation": "Navigation",
+		"services": "Services",
 		"company": "Company",
 		"dropUsALine": "Drop us a line",
 		"callUs": "Call us",
-		"copyright": "© {year} Bobadilla Tech. All rights reserved.",
+		"copyright": "© {year} {brand}. All rights reserved.",
 		"links": {
 			"ourServices": "Our Services",
-			"projects": "Projects",
-			"dedicatedTeam": "Dedicated Team",
-			"openSource": "Open Source",
+			"hire": "Work With Us",
+			"startSmall": "Start Small",
+			"systemAudit": "System Audit",
 			"pricing": "Pricing",
+			"about": "About",
+			"team": "Team",
+			"products": "Products",
+			"caseStudies": "Case Studies",
+			"blog": "Blog",
+			"openSource": "Open Source",
 			"contact": "Contact"
 		}
 	},
 	"CTABand": {
 		"heading": "Ready to discuss your project with us?",
-		"subtitle": "Let's build a product experience that not only looks great, but drives real results.",
+		"subtitle": "Tell us what you're building. We'll tell you honestly whether we're the right fit.",
 		"button": "Book a Call"
 	},
 	"Hero": {
-		"badge": "Top Latam Engineering Agency",
-		"line1": "CREATING",
-		"line2": "WORLD–CLASS",
-		"line3": "DIGITAL PRODUCTS",
-		"button": "Book a Call"
-	},
-	"WhyBobatech": {
-		"heading1": "WHY TEAMS CHOOSE",
-		"heading2": "BOBA TECH",
-		"others": "Others",
-		"bobatech": "Boba Tech",
-		"yes": "Yes",
-		"no": "No",
-		"rows": [
-			"Fast & predictable delivery",
-			"Transparent pricing",
-			"Senior engineers",
-			"6 months support included"
-		]
+		"badge": "Software engineering · Lima, Peru",
+		"line1": "WE BUILD",
+		"line2": "SOFTWARE",
+		"line3": "AND WE RUN IT",
+		"button": "Book a Call",
+		"subtitle": "An engineering company that builds software for clients and runs its own products."
 	},
 	"StatsBar": {
-		"heading1": "BUILT TO DELIVER",
-		"heading2": "REAL RESULTS",
-		"subtitle": "From idea to product with speed, clarity and scalable foundations",
+		"heading1": "A FEW THINGS",
+		"heading2": "YOU CAN CHECK",
+		"subtitle": "GitHub, our products, and our prices are public",
 		"stats": [
 			{
-				"title": "Built to Scale",
-				"subtitle": "Scalable architecture"
+				"title": "3",
+				"subtitle": "SaaS products we built and operate"
 			},
 			{
-				"title": "100+",
-				"subtitle": "Projects Delivered"
+				"title": "20+",
+				"subtitle": "Public repositories on GitHub"
 			},
 			{
-				"title": "24/7",
-				"subtitle": "Support Available"
+				"title": "UTC−5",
+				"subtitle": "Peru time — overlaps the US workday"
 			},
 			{
-				"title": "100%",
-				"subtitle": "Client Satisfaction"
+				"title": "$400",
+				"subtitle": "Where our fixed-price starter projects begin"
 			}
 		]
 	},
@@ -146,19 +140,19 @@
 		"faqs": [
 			{
 				"q": "How fast can you deliver a project?",
-				"a": "Depending on the scope, we can deliver an MVP in as little as 3–14 days. For larger projects, we work in tight 2-week sprints and keep you updated every step of the way with clear milestones."
+				"a": "It depends on scope. Small fixed-scope projects typically take 1–2 weeks. For larger builds we agree on milestones and dates in writing before we start, and work in two-week iterations so you see progress continuously."
 			},
 			{
 				"q": "What happens if deadlines aren't met?",
-				"a": "We take delivery commitments seriously. If a deadline is at risk, we flag it early and work overtime at no extra cost to meet it. Transparent communication is core to how we operate."
+				"a": "If a date is at risk we tell you early, explain why, and agree with you on how to adjust scope or timeline."
 			},
 			{
 				"q": "Do you work with startups?",
-				"a": "Absolutely — startups are our sweet spot. We understand the pace and constraints of early-stage companies and can adapt to your runway, whether that means a lean MVP or a full product build."
+				"a": "Yes. We adapt scope to your stage and runway — from a lean MVP to a full product build. We run our own products too, so we know the constraints of a small team."
 			},
 			{
 				"q": "Do you offer support after launch?",
-				"a": "Yes. All of our engagements include 6 months of post-launch support. We're here to fix bugs, monitor performance, and iterate with you as your product grows."
+				"a": "Yes. What post-launch support covers — fixes, monitoring, iteration — is set out in the proposal, and ongoing maintenance is available."
 			}
 		]
 	},
@@ -180,10 +174,8 @@
 		"sendButton": "Send Message",
 		"sendingButton": "Sending...",
 		"bookCallHeading": "Book a Free Call",
-		"bookCallDesc": "Schedule a 15-minute consultation with our Chief Revenue Officer.",
-		"bookCallAvailability": "Available 10 AM – 3 PM • Quick response guaranteed",
-		"scheduleWithAle": "Schedule with Ale",
-		"enterpriseCTO": "Enterprise & Fractional CTO",
+		"bookCallDesc": "Schedule a 15-minute intro call with Alexandra, our co-founder and CEO.",
+		"bookCallAvailability": "Pick a time that works for you",
 		"getInTouchHeading": "Get in Touch",
 		"followUs": "Follow us",
 		"nameRequired": "Name is required",
@@ -191,12 +183,13 @@
 		"invalidEmail": "Invalid email address",
 		"companyTooLong": "Company name must be less than 100 characters",
 		"messageTooShort": "Message must be at least 10 characters",
-		"messageTooLong": "Message must be less than 2000 characters"
+		"messageTooLong": "Message must be less than 2000 characters",
+		"bookIntroCall": "Book an intro call"
 	},
 	"ServicesSection": {
 		"heading1": "OUR",
 		"heading2": "SERVICES",
-		"subtitle": "Full-Stack Development, AI Integration and Enterprise Solutions",
+		"subtitle": "Full-stack development, backend engineering and AI integration",
 		"learnMore": "Learn more →",
 		"cards": {
 			"webAppDev": {
@@ -217,11 +210,11 @@
 			},
 			"backendDev": {
 				"title": "Back-end Development",
-				"description": "Enterprise-grade backend systems built by senior engineering talent."
+				"description": "Backend systems built for real load: APIs, databases, queues, and infrastructure."
 			},
 			"webDev": {
 				"title": "Web Development",
-				"description": "Custom web applications built with cutting-edge technologies for optimal performance and user experience."
+				"description": "Custom web applications built for performance and maintainability."
 			},
 			"cmsDev": {
 				"title": "CMS Development",
@@ -234,74 +227,17 @@
 		}
 	},
 	"IndustriesSection": {
-		"heading1": "Industries",
-		"heading2": "We Have Experience With",
-		"subtitle": "Proven expertise delivering specialized solutions across diverse sectors."
-	},
-	"PricingSection": {
-		"heading1": "Simple,",
-		"heading2": "Transparent Pricing",
-		"subtitle": "Static website packages designed for speed and quality.",
-		"calculatorButton": "Try Our Pricing Calculator",
-		"mostPopular": "Most Popular",
-		"getStarted": "Get Started",
-		"ctaHeading": "Need a custom MVP or full-stack application?",
-		"ctaBody": "We offer hourly consultancy and fractional CTO services. Book a call to discuss your project.",
-		"ctaButton": "Book a Call with an Experienced Fractional CTO",
-		"plans": [
-			{
-				"name": "Starter Landing Page",
-				"description": "Perfect for startups and small businesses",
-				"features": [
-					"Single landing page",
-					"Responsive design",
-					"Basic SEO optimization",
-					"Contact form integration",
-					"2 rounds of revisions",
-					"7-10 day delivery",
-					"Mobile optimized"
-				]
-			},
-			{
-				"name": "Multi-Page Website",
-				"description": "1-5 pages for growing businesses",
-				"features": [
-					"Up to 5 custom pages",
-					"Advanced responsive design",
-					"SEO optimization",
-					"CMS integration (optional)",
-					"Contact & lead forms",
-					"3 rounds of revisions",
-					"14-21 day delivery",
-					"Analytics integration",
-					"Social media integration"
-				]
-			},
-			{
-				"name": "Premium Web Experience",
-				"description": "Custom solutions for enterprises",
-				"features": [
-					"Unlimited pages",
-					"Custom design & animations",
-					"Advanced SEO & performance",
-					"Full CMS integration",
-					"E-commerce capabilities",
-					"API integrations",
-					"Unlimited revisions",
-					"Priority support",
-					"Ongoing maintenance (optional)",
-					"Custom features & functionality"
-				]
-			}
-		]
+		"heading1": "Software",
+		"heading2": "by Industry",
+		"subtitle": "Services scoped to the requirements of specific sectors."
 	},
 	"ServicesPage": {
 		"heading1": "Our",
 		"heading2": "Services",
-		"subtitle": "From rapid MVP development to enterprise solutions, we deliver cutting-edge technology tailored to your needs.",
+		"subtitle": "From MVPs to long-running backend systems — planned, built, and maintained by our engineering team.",
 		"coreServices": "Core Services",
 		"industrySolutions": "Industry Solutions",
-		"industrySubtitle": "Specialized solutions tailored for specific industries with deep domain expertise.",
+		"industrySubtitle": "Services scoped to the requirements of specific sectors.",
 		"viewAll": "View All",
 		"moreServices": "+{count} more services",
 		"ctaHeading": "Ready to Start Your Project?",
@@ -313,9 +249,9 @@
 		"home": "Home",
 		"services": "Services",
 		"overview": "Overview",
-		"overviewBody1": "Our {service} service combines cutting-edge technology with deep engineering expertise to deliver solutions that drive business results. We work closely with you to understand your unique requirements and create custom solutions that scale with your business.",
-		"overviewBody2": "Whether you're a startup looking to launch your MVP quickly or an enterprise seeking robust, scalable solutions, our team has the experience and expertise to bring your vision to life.",
-		"whatsIncluded": "What's Included",
+		"overviewBody1": "For {service}, we start from your requirements and constraints and build something that can be maintained and extended after launch.",
+		"overviewBody2": "Whether you're a startup launching an MVP or an established company that needs a system that holds up under real use, we scope the work to your stage.",
+		"whatsIncluded": "What this can include",
 		"whyChooseUs": "Why Choose Us",
 		"getStarted": "Get Started Today",
 		"getStartedBody": "Book a free consultation to discuss your project and receive a custom quote.",
@@ -337,20 +273,20 @@
 		],
 		"benefits": [
 			{
-				"title": "Fast Delivery",
-				"description": "Launch in days or weeks, not months"
+				"title": "Written Scope",
+				"description": "Scope, milestones, and dates agreed in writing before work starts"
 			},
 			{
-				"title": "Enterprise Security",
-				"description": "Built with security and compliance in mind"
+				"title": "Security Built In",
+				"description": "Authentication, access control, and data handling designed in from the start"
 			},
 			{
-				"title": "24/7 Support",
-				"description": "Ongoing support and maintenance available"
+				"title": "Support After Launch",
+				"description": "Ongoing maintenance and iteration available"
 			},
 			{
-				"title": "Scalable Solutions",
-				"description": "Architecture designed to grow with your business"
+				"title": "Room to Grow",
+				"description": "Architecture sized for today, with a clear path to scale"
 			}
 		]
 	},
@@ -359,16 +295,16 @@
 		"services": "Services",
 		"solutions": "Solutions",
 		"allServicesHeading": "All {industry} Services",
-		"whyChooseHeading": "Why Choose Bobadilla Tech for {industry}?",
-		"expertise1Title": "Deep Industry Expertise",
-		"expertise1Body": "Our team has extensive experience building solutions for the {industry} sector, understanding both technical requirements and industry-specific regulations.",
-		"expertise2Title": "Proven Track Record",
-		"expertise2Body": "We've successfully delivered projects for clients ranging from startups to enterprises, consistently meeting deadlines and exceeding expectations.",
-		"expertise3Title": "Senior Engineering Team",
-		"expertise3Body": "Led by senior engineers with backgrounds in enterprise backend systems and cutting-edge AI solutions, not just another agency.",
-		"expertise4Title": "Fast Delivery",
-		"expertise4Body": "Launch your MVP in days or weeks, not months. We focus on rapid iteration and getting your product to market quickly.",
-		"ctaHeading": "Ready to Transform Your {industry} Business?",
+		"whyChooseHeading": "Why work with {brand} on {industry} software?",
+		"expertise1Title": "Direct access to engineers",
+		"expertise1Body": "Once the project starts, you discuss requirements, constraints, and tradeoffs directly with the engineers building your {industry} software.",
+		"expertise2Title": "We run software in production",
+		"expertise2Body": "We build and operate our own SaaS products, so reliability, security, and maintenance are things we deal with every day — not afterthoughts.",
+		"expertise3Title": "Requirements first",
+		"expertise3Body": "We ask about the regulatory and data constraints of your sector before proposing an architecture.",
+		"expertise4Title": "Scoped, predictable delivery",
+		"expertise4Body": "Scope and milestones agreed in writing. You can start with a small project before committing to a larger one.",
+		"ctaHeading": "Building software for {industry}?",
 		"ctaBody": "Book a free consultation to discuss your project and receive a custom proposal tailored to your needs.",
 		"bookCall": "Book a Free Call",
 		"contactUs": "Contact Us",
@@ -396,11 +332,11 @@
 		"shareOnX": "Share on X",
 		"shareOnLinkedIn": "Share on LinkedIn",
 		"shareOnReddit": "Share on Reddit",
-		"enterpriseAPIsHeading": "Need Enterprise APIs?",
-		"enterpriseAPIsBody": "Use our Requiem API for scalable, production-ready solutions",
+		"enterpriseAPIsHeading": "Need data APIs?",
+		"enterpriseAPIsBody": "Requiems API: email validation, location, finance, and utility APIs behind one key.",
 		"learnMore": "Learn More",
 		"devServicesHeading": "Need Development Services?",
-		"devServicesBody": "Get expert consultancy to build your next product",
+		"devServicesBody": "Talk to our team about your next product.",
 		"getInTouch": "Get in Touch",
 		"stayTuned": "Stay Tuned",
 		"moreSoonMsg": "More content coming soon. Follow us for updates!",
@@ -413,7 +349,7 @@
 		"yourEstimate": "Your Project Estimate",
 		"breakdownSubtitle": "Detailed breakdown of your custom solution",
 		"totalInvestment": "Total Investment",
-		"pricingNote": "Competitive LATAM pricing • Same timezone • Cultural alignment",
+		"pricingNote": "Estimate only — final scope and price are agreed in writing.",
 		"getDetailedQuote": "Get Your Detailed Quote",
 		"emailDesc": "Enter your email to save this estimate and book a free consultation",
 		"bookConsultation": "Book Free Consultation",
@@ -430,20 +366,20 @@
 		"whyWorkWithUs": "Why Work With Us?",
 		"whyItems": [
 			{
-				"title": "Highly Responsive",
-				"desc": "Quick turnaround times and constant communication throughout development"
+				"title": "Direct Communication",
+				"desc": "You talk to the engineers on your project"
 			},
 			{
-				"title": "Same Timezone",
-				"desc": "LATAM-based team for seamless real-time collaboration"
+				"title": "Peru Time (UTC−5)",
+				"desc": "Working hours overlap with US time zones"
 			},
 			{
-				"title": "Cultural Alignment",
-				"desc": "Strong work ethic and cultural compatibility with US/EU teams"
+				"title": "Written Scope",
+				"desc": "Scope and price are agreed in writing before work starts"
 			},
 			{
-				"title": "Offshore Pricing",
-				"desc": "Premium quality at competitive LATAM rates - save 40-60%"
+				"title": "LATAM Rates",
+				"desc": "Engineering billed at Latin American rates"
 			}
 		],
 		"startOver": "Start Over",
@@ -581,78 +517,81 @@
 	"FounderPage": {
 		"overline": "Founder",
 		"name": "Eliaz Bobadilla",
-		"role": "Founder & Lead Engineer",
-		"intro": "Founder and lead engineer at Bobadilla Tech. I build systems that ship and hold up — not prototypes dressed as products.",
-		"background": {
+		"role": "Founder · Software Engineer",
+		"intro": "Eliaz Bobadilla is a software engineer and the founder of {brand}. He works on backend architecture, AI systems integration, and infrastructure.",
+		"story": {
 			"heading": "Background",
-			"p1": "I started writing code at 14. Not tutorials — actual projects. That early habit of building to understand (instead of reading to understand) still defines how I work.",
-			"p2": "Over the past decade I've worked across early-stage startups, scale-up teams, and client projects spanning fintech, fitness, developer tooling, and infrastructure. Some of those shipped to thousands of users. Some got scrapped for the right reasons. All of them taught me something concrete.",
-			"p3": "My focus has shifted progressively toward backend architecture, AI systems integration, and scalable infrastructure — areas where engineering decisions made early compound hard in both directions."
+			"p1": "He started writing code at 14, on real projects rather than tutorials. Over the past decade he has worked across early-stage startups, scale-up teams, and client projects in fintech, fitness, developer tooling, and infrastructure.",
+			"p2": "{brand} began as his own client work. As the projects grew, he brought in developers he trusted, and the company became a team with its own clients and products.",
+			"p3": "Eliaz remains a hands-on engineer: he designs systems and writes code."
 		},
-		"approach": {
-			"heading": "How I approach building software",
-			"p1": "I don't start with architecture. I start with the constraint. What's the real bottleneck — latency, cost, complexity, time to market? The answer changes the design more than any framework choice does.",
-			"p2": "I default toward simple and boring. That means reaching for proven tools before new ones, writing code that the next engineer can read without context, and treating every abstraction as debt until it proves its worth.",
-			"p3": "When AI is part of the stack, I treat it as an integration problem, not a research problem. The goal is reliable output, bounded behavior, and clear fallback logic — not a demo."
-		},
-		"expect": {
-			"heading": "What to expect working with me",
-			"items": [
-				{
-					"title": "Direct scoping",
-					"body": "I'll tell you what's achievable, what's not, and where the real unknowns are — before we start."
-				},
-				{
-					"title": "No middlemen",
-					"body": "You talk to the engineer doing the work. There's no account manager between us."
-				},
-				{
-					"title": "Fast feedback loops",
-					"body": "I ship early and often. You see real progress, not status updates."
-				},
-				{
-					"title": "Honest tradeoffs",
-					"body": "If a simpler solution exists, I'll say so. Complexity should be justified, not default."
-				}
-			]
-		},
-		"cta": {
-			"heading": "Want to talk through a project?",
-			"body": "15 minutes. No pitch. Just an honest conversation about what you're building and whether we're a fit.",
-			"button": "Book a call"
+		"links": {
+			"personalSite": "Eliaz's personal site",
+			"team": "Meet the team",
+			"company": "About the company"
 		}
 	},
 	"TeamPage": {
 		"overline": "Team",
-		"heading": "A small team.",
-		"headingGold": "No overhead.",
-		"intro": "Three senior engineers on every project. Specialists brought in when the work calls for it. No juniors learning on your budget.",
-		"core": {
-			"heading": "Core team",
-			"badge": "3 engineers",
-			"description": "These three are consistent across every engagement. High ownership, direct communication, no hand-offs.",
-			"members": [
+		"heading": "A small team of engineers",
+		"headingGold": "who own what they ship.",
+		"intro": "The engineers on your project are the ones who design, build, and maintain your system.",
+		"collaboration": {
+			"heading": "How we work together",
+			"items": [
 				{
-					"role": "Founder & Lead Engineer",
-					"focus": "Backend architecture, AI systems, infrastructure",
-					"note": "On every project. Sets technical direction and does the work."
+					"title": "One team, shared context",
+					"body": "The engineers who work on client projects also work on our own products, so what we learn operating one system carries into the next."
 				},
 				{
-					"role": "Senior Full-Stack Engineer",
-					"focus": "Frontend systems, API design, performance",
-					"note": "Owns the client layer end-to-end. Strong opinions on UX."
+					"title": "Ownership stays with the engineers",
+					"body": "The engineers who build a system are the ones who ship it and remain responsible for it."
 				},
 				{
-					"role": "Senior Backend Engineer",
-					"focus": "Databases, integrations, deployment pipelines",
-					"note": "Deep in the plumbing. Reliable on complex data models and edge cases."
+					"title": "Decisions in writing",
+					"body": "We write down scope and architecture decisions before building."
 				}
 			]
 		},
+		"leadership": {
+			"heading": "Leadership",
+			"website": "Website",
+			"founderLink": "Founder profile",
+			"items": {
+				"alexandra": {
+					"role": "Co-founder & CEO · Product",
+					"bio": "Leads the company and its products, and is the first person you'll talk to."
+				},
+				"eliaz": {
+					"role": "Founder · Software Engineer",
+					"bio": "Works on backend architecture, AI systems integration, and infrastructure."
+				}
+			}
+		},
+		"people": {
+			"heading": "Engineering",
+			"description": "The disciplines behind our client work and our own products.",
+			"items": {
+				"backendAi": {
+					"role": "Backend & AI engineering",
+					"focus": "APIs, data pipelines, AI integration",
+					"bio": "Backend and AI-heavy systems across client projects and our own products."
+				},
+				"fullstack": {
+					"role": "Full-stack engineering",
+					"focus": "Frontend systems, API design, performance",
+					"bio": "Frontend and the API layer behind it, end to end."
+				},
+				"backend": {
+					"role": "Backend engineering",
+					"focus": "Databases, integrations, deployment pipelines",
+					"bio": "Complex data models, integrations, and the edge cases that come with them."
+				}
+			}
+		},
 		"extended": {
 			"heading": "Extended network",
-			"badge": "5–8 collaborators",
-			"description": "Trusted specialists we've worked with across multiple projects. They come in when the scope requires their depth — not to pad headcount.",
+			"description": "Specialists we've worked with across multiple projects. They join when a project needs their specialty.",
 			"items": [
 				{
 					"label": "Mobile",
@@ -673,27 +612,23 @@
 				{
 					"label": "QA",
 					"detail": "Test strategy, automation, load testing"
-				},
-				{
-					"label": "Compliance",
-					"detail": "Security review, audit prep, HIPAA / SOC2 context"
 				}
 			]
 		},
 		"why": {
-			"heading": "Why this structure works",
+			"heading": "Why we work this way",
 			"items": [
 				{
-					"heading": "You get the right people, not the available ones",
-					"body": "Large agencies staff projects with whoever's free. We staff projects with whoever fits. If a specialist isn't right for your work, they're not on it."
+					"heading": "The right people for the work",
+					"body": "We staff a project with the engineers whose experience fits it."
 				},
 				{
-					"heading": "No dilution",
-					"body": "Senior engineers don't delegate to juniors then review at the end. The people you speak to are the people writing the code."
+					"heading": "Same people, start to finish",
+					"body": "We keep the same engineers on your project from start to finish, so context isn't lost along the way."
 				},
 				{
 					"heading": "Tight feedback loops",
-					"body": "Three engineers who know each other's work can move fast and catch problems early. More people usually means slower cycles, not faster ones."
+					"body": "A small team that knows each other's work moves fast and catches problems early."
 				}
 			]
 		},
@@ -777,7 +712,7 @@
 		"overline": "Case Studies",
 		"heading1": "Work we've",
 		"heading2": "shipped",
-		"subtitle": "Two published so far. Real systems, real decisions, real tradeoffs.",
+		"subtitle": "Two published so far — both are our own products. Real systems, real decisions, real tradeoffs.",
 		"readCaseStudy": "Read case study",
 		"studies": [
 			{
@@ -1067,10 +1002,10 @@
 		}
 	},
 	"HirePage": {
-		"overline": "Bobadilla Tech",
+		"overline": "Work with us",
 		"heading": "Production systems, built by",
 		"headingGold": "the engineers writing the code.",
-		"intro": "For technical founders and teams who need backend systems, AI integrations, or scalable infrastructure — done by senior engineers, not delegated down.",
+		"intro": "For technical founders and teams who need backend systems, AI integrations, or scalable infrastructure — built by engineers who stay accountable for what they ship.",
 		"cta1": "Get a Technical Assessment",
 		"cta2": "Or start with a small project",
 		"whoHeading": "Who this is for",
@@ -1078,7 +1013,7 @@
 			"You have an MVP idea and need it production-ready — not a prototype",
 			"Your backend is breaking under real load",
 			"You want AI integrated into your product — not a demo, a real system",
-			"You've worked with dev shops and got slow delivery and junior code",
+			"You've had work delivered late or below the quality you needed",
 			"You need a second opinion on a system before you scale it",
 			"You're technical enough to know when the work is good"
 		],
@@ -1104,10 +1039,25 @@
 				"title": "System Optimization",
 				"description": "Identify bottlenecks, reduce latency, fix what's fragile before it breaks in production. Includes a written report and prioritized action plan.",
 				"outcome": "Clarity on what to fix and how"
+			},
+			{
+				"title": "Dedicated engineers",
+				"description": "Engineers who join your team and work within your codebase and process.",
+				"outcome": "Extra engineering capacity for your team"
+			},
+			{
+				"title": "Long-term partnership",
+				"description": "We stay on after launch to maintain and extend what we built.",
+				"outcome": "One team that knows your system"
+			},
+			{
+				"title": "Fractional CTO",
+				"description": "Part-time technical leadership for teams without a CTO: architecture decisions, technical roadmap, and hiring input.",
+				"outcome": "Technical direction without a full-time hire"
 			}
 		],
 		"howHeading": "How we work",
-		"howNote": "You talk directly to the engineers building your system. No project managers, no account managers, no one repeating what you just said in a different meeting.",
+		"howNote": "Once the project starts, you talk directly to the engineers building your system.",
 		"steps": [
 			{
 				"number": "01",
@@ -1117,12 +1067,12 @@
 			{
 				"number": "02",
 				"title": "Scope",
-				"body": "We define exactly what gets built and for how much. Fixed price, written down. No surprises after."
+				"body": "We agree what gets built and what it costs, in writing, before work starts. No surprises after."
 			},
 			{
 				"number": "03",
 				"title": "Build",
-				"body": "Senior engineers write the code. You get updates as work progresses. No handoffs to junior devs."
+				"body": "The engineers assigned to your project write the code. You get updates as work progresses."
 			},
 			{
 				"number": "04",
@@ -1132,10 +1082,10 @@
 		],
 		"whyHeading": "Why us",
 		"why": [
-			"3 core senior engineers — not a staffing firm or an outsourcing operation",
-			"We've shipped and maintain internal products (Requiems API, CompileStrength) — real systems we own",
-			"Small team means direct accountability — you know who built what and why",
-			"No outsourcing, no junior devs handed senior work, no layer of project managers in between"
+			"An engineering team accountable for what it builds — on our projects or inside your team",
+			"We build and operate our own products (Requiems API, CompileStrength, BiasMarket) — real systems we own and maintain",
+			"Small team, direct accountability — you know who built what and why",
+			"You work directly with the engineers on your project"
 		],
 		"smallHeading": "Not ready to commit to a full project?",
 		"smallBody": "The best way to see how we work is to do a small piece of real work together. Fixed scope, fixed price, no long-term commitment.",
@@ -1152,14 +1102,14 @@
 			"cta": "Learn more"
 		},
 		"finalHeading": "Ready to talk?",
-		"finalBody": "Book a short technical call. We'll understand your problem and tell you honestly whether we're the right fit.",
-		"finalNote": "No sales pitch. No pressure. Just a direct conversation.",
-		"bookCall": "Book a Technical Call",
+		"finalBody": "Book a short call. We'll understand your problem and tell you honestly whether we're the right fit.",
+		"finalNote": "No pressure. Just a direct conversation.",
+		"bookCall": "Book a Call",
 		"startSmallCta": "Start with a small project"
 	},
 	"BookConfirmedPage": {
 		"title": "You're booked.",
-		"subtitle": "This is a technical conversation, not a sales call.",
+		"subtitle": "We'll use the time to understand what you're building.",
 		"beforeCallHeading": "Before the call",
 		"preCallItems": [
 			{
@@ -1172,7 +1122,7 @@
 			},
 			{
 				"label": "Bring the real problem, not the polished version",
-				"body": "We're engineers. We can handle the messy truth. It'll make the conversation more useful."
+				"body": "We can handle the messy truth. It'll make the conversation more useful."
 			}
 		],
 		"detailsPrompt": "Want to send details before the call?",
@@ -1183,70 +1133,6 @@
 		"message": "We use cookies to analyze traffic and improve your experience.",
 		"accept": "Accept",
 		"reject": "Reject"
-	},
-	"PolladaPage": {
-		"hero": {
-			"overline": "VIRTUAL FUNDRAISER",
-			"heading": "Support our cause",
-			"headingGold": "with a professional portfolio",
-			"intro": "This page is available in Spanish."
-		},
-		"about": {
-			"heading": "What is this?",
-			"body": "This page is only available in Spanish.",
-			"items": []
-		},
-		"portfolio": {
-			"heading": "Example portfolios",
-			"subtitle": "This page is only available in Spanish.",
-			"items": []
-		},
-		"tiers": {
-			"heading": "Choose your plan",
-			"subtitle": "This page is only available in Spanish.",
-			"recommended": "Recommended",
-			"choose": "Choose {plan}",
-			"items": [
-				{
-					"name": "Arranca",
-					"price": "S/. 50",
-					"badge": null,
-					"features": []
-				},
-				{
-					"name": "Pro",
-					"price": "S/. 120",
-					"badge": "Most popular",
-					"features": []
-				},
-				{
-					"name": "Premium",
-					"price": "S/. 280",
-					"badge": null,
-					"features": []
-				}
-			]
-		},
-		"how": {
-			"heading": "How it works",
-			"steps": []
-		},
-		"payment": {
-			"heading": "Payment methods",
-			"subtitle": "This page is only available in Spanish.",
-			"methods": [],
-			"note": ""
-		},
-		"faq": {
-			"heading": "FAQ",
-			"items": []
-		},
-		"cta": {
-			"heading": "Ready to help?",
-			"body": "Visit the Spanish version of this page.",
-			"button": "Contact us via WhatsApp",
-			"subtext": ""
-		}
 	},
 	"NalaCausePage": {
 		"hero": {
@@ -1423,5 +1309,209 @@
 				"image": "/fundraises/nala-2026/nala-01.jpeg"
 			}
 		]
+	},
+	"Metadata": {
+		"home": {
+			"title": "{brand} — Software Engineering Company",
+			"description": "{brand} is a software engineering company from Peru. We build software for clients — full-stack products, backend infrastructure, and AI integrations — and we build and operate our own SaaS products."
+		},
+		"company": {
+			"title": "Company",
+			"description": "{brand} is a software engineering company from Peru: engineering services for clients and our own software products, built by the same team."
+		},
+		"products": {
+			"title": "Products",
+			"description": "Software we design, build, and operate ourselves: Requiems API, CompileStrength, BiasMarket, and open-source libraries and developer tools."
+		},
+		"team": {
+			"title": "Team",
+			"description": "The people behind {brand}, how the engineering team is organized, and how we work together."
+		},
+		"founder": {
+			"title": "Eliaz Bobadilla — Founder",
+			"description": "Eliaz Bobadilla is a software engineer and the founder of {brand}, focused on backend architecture, AI systems, and infrastructure."
+		}
+	},
+	"CompanyPage": {
+		"overline": "Company",
+		"heading": "Engineers who build software",
+		"headingGold": "for clients and for ourselves.",
+		"intro": "{brand} is a software engineering company from Peru. We do engineering work for other companies, and we design, build, and operate our own software products. Both are done by the same team, to the same standards.",
+		"whatWeDo": {
+			"heading": "What we do",
+			"services": {
+				"title": "Engineering services",
+				"body": "Full-stack product development, backend engineering and infrastructure, AI integration and automation, dedicated engineers, long-term development partnerships, and fractional CTO services.",
+				"cta": "See services"
+			},
+			"products": {
+				"title": "Our own products",
+				"body": "SaaS applications, APIs, and developer tools that we design, build, and run in production ourselves.",
+				"cta": "See products"
+			}
+		},
+		"principles": {
+			"heading": "How we build",
+			"items": [
+				{
+					"heading": "Start with the constraint",
+					"body": "We don't start with architecture. We start with the real bottleneck — latency, cost, complexity, or time to market. The answer changes the design more than any framework choice does."
+				},
+				{
+					"heading": "Simple and boring by default",
+					"body": "We reach for proven tools before new ones, write code the next engineer can read without context, and treat every abstraction as debt until it proves its worth."
+				},
+				{
+					"heading": "AI is an integration problem, not a research problem",
+					"body": "When AI is part of the stack, the goal is reliable output, bounded behavior, and clear fallback logic — not a demo."
+				},
+				{
+					"heading": "Honest tradeoffs",
+					"body": "We tell you what's achievable, what isn't, and where the real unknowns are before we start. If a simpler solution exists, we say so."
+				}
+			]
+		},
+		"practices": {
+			"heading": "Practices you can inspect",
+			"description": "We'd rather show how we work than describe it. These are public.",
+			"items": [
+				{
+					"title": "Documented architecture",
+					"body": "This website's architecture and conventions are written down in its public repository.",
+					"link": "Read the architecture doc"
+				},
+				{
+					"title": "Automated tests in CI",
+					"body": "In this site's repository, tests run automatically on every push to main and on every pull request.",
+					"link": "See the CI workflow"
+				},
+				{
+					"title": "Open source",
+					"body": "We publish libraries and tools on GitHub under open-source licenses.",
+					"link": "Browse our GitHub"
+				}
+			]
+		},
+		"origin": {
+			"heading": "Where we come from",
+			"p1": "{brand} grew out of the engineering work of its founder, {founder}, who started taking on client projects and brought together developers he trusted.",
+			"p2": "Today it is a team with its own clients and its own products. On each project, the engineers building it set the technical direction.",
+			"cta": "About the founder"
+		},
+		"facts": {
+			"items": [
+				{
+					"label": "Based in",
+					"value": "Lima, Peru (UTC−5)"
+				},
+				{
+					"label": "Working languages",
+					"value": "English and Spanish"
+				},
+				{
+					"label": "What we do",
+					"value": "Client engineering and our own products"
+				}
+			]
+		},
+		"cta": {
+			"heading": "Want to see how we work?",
+			"body": "Book a short call and tell us what you're building.",
+			"button": "Book a call"
+		}
+	},
+	"ProductsPage": {
+		"overline": "Products",
+		"heading": "Software we build",
+		"headingGold": "and run ourselves.",
+		"intro": "Alongside client work, we design, build, and operate our own products. They are where we test our own engineering decisions in production.",
+		"visitSite": "Visit {name}",
+		"readWriteUp": "{name} engineering write-up",
+		"items": {
+			"requiemsApi": {
+				"tagline": "API platform",
+				"description": "A production API platform that puts email validation, location, finance, and utility APIs behind a single key. Built as a multi-language monorepo: a Go API, a Rails dashboard, and two Cloudflare Workers for auth and key management."
+			},
+			"compileStrength": {
+				"tagline": "AI-powered fitness SaaS",
+				"description": "A subscription product with an AI agent that generates personalized workout programs. Built on Next.js, Cloudflare Workers, and Neon PostgreSQL — billing, auth, AI, and edge deployment included."
+			},
+			"biasMarket": {
+				"tagline": "Store builder for K-pop merch sellers",
+				"description": "A storefront and order-management tool for K-pop merch sellers. It handles group orders, photocard claims, and merch drops — tracking orders and payment receipts in one place instead of spreadsheets."
+			}
+		},
+		"openSource": {
+			"heading": "Open source",
+			"description": "Libraries and tools we maintain in the open.",
+			"viewAll": "All repositories on GitHub",
+			"items": {
+				"lorelai": "A lorem ipsum generator for Go.",
+				"isEmailDisposable": "Checks whether an email address is disposable. Works offline.",
+				"goIpIntelligence": "Detects VPNs, proxies, Tor, and hosting ranges, with ASN and geolocation.",
+				"holidaysPerCountry": "Public-holiday calendars for Go, including regional holidays. Works offline.",
+				"businessDaysCalculator": "Counts working days between two dates, in Go.",
+				"sentimentGo": "Lightweight sentiment analysis for Go, with an embedded lexicon."
+			}
+		},
+		"cta": {
+			"heading": "Need something like this?",
+			"body": "The team that built these products also builds for clients. Tell us what you're working on.",
+			"button": "Book a call"
+		}
+	},
+	"WhatWeDo": {
+		"overline": "WHAT WE DO",
+		"heading": "One engineering team,",
+		"headingGold": "two lines of work.",
+		"subtitle": "We build software for clients and we build and operate our own products. What we learn running software in production goes into the work we do for you.",
+		"services": {
+			"title": "Engineering services",
+			"body": "We design, build, and maintain software for other companies — as a project team or as engineers dedicated to yours.",
+			"items": [
+				"Full-stack product development",
+				"Backend engineering and infrastructure",
+				"AI integration and automation",
+				"Dedicated engineers",
+				"Long-term development partnerships",
+				"Fractional CTO"
+			],
+			"cta": "See services"
+		},
+		"products": {
+			"title": "Our own products",
+			"body": "We design, build, and operate software under our own name, so we live with the consequences of our own engineering decisions.",
+			"items": [
+				"Requiems API — one API key for email validation, location, finance, and utility APIs",
+				"CompileStrength — an AI-powered fitness SaaS",
+				"BiasMarket — a store builder for K-pop merch sellers",
+				"Open-source libraries and developer tools"
+			],
+			"cta": "See products"
+		}
+	},
+	"EngineeringPrinciples": {
+		"heading1": "HOW WE",
+		"heading2": "BUILD",
+		"subtitle": "Principles the whole team works by.",
+		"items": [
+			{
+				"title": "Start with the constraint",
+				"body": "Before choosing an architecture we ask what the real bottleneck is — latency, cost, complexity, or time to market. The answer shapes the design more than any framework choice."
+			},
+			{
+				"title": "Simple and boring by default",
+				"body": "Proven tools before new ones. Code the next engineer can read without context. Every abstraction is debt until it proves its worth."
+			},
+			{
+				"title": "AI is an integration problem",
+				"body": "When AI is part of the stack, the goal is reliable output, bounded behavior, and clear fallback logic — not a demo."
+			},
+			{
+				"title": "Direct access to engineers",
+				"body": "Once a project starts, you review progress and discuss tradeoffs directly with the engineers building your system."
+			}
+		],
+		"cta": "More about how we work"
 	}
 }

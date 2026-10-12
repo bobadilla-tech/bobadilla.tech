@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ServicePage from "@/features/services/pages/ServicePage";
 import RichServicePage from "@/features/services/components/RichServicePage";
-import { allServices, industryServices } from "@/features/services/model/services";
+import {
+	allServices,
+	industryServices,
+} from "@/features/services/model/services";
 import { getServicePageData } from "@/features/services/api/getServicePage";
-import { generateSEOMetadata, BASE_URL } from "~/shared/lib/seo";
+import { generateSEOMetadata, SITE_NAME } from "~/shared/lib/seo";
 import type { Locale } from "~/i18n/routing";
 
 interface ServicePageProps {
@@ -58,17 +61,16 @@ export async function generateMetadata({
 
 	return generateSEOMetadata({
 		title: service.title,
-		description: `${service.description} Professional ${service.title.toLowerCase()} services from expert LATAM developers. Fast delivery, enterprise quality, competitive pricing.`,
+		description: `${service.description} Planned, built, and maintained by the ${SITE_NAME} engineering team.`,
 		keywordSets: ["core", "services", "technologies"],
 		additionalKeywords: [
 			service.title.toLowerCase(),
 			`${service.title.toLowerCase()} development`,
 			`${service.title.toLowerCase()} services`,
 			"professional development",
-			"expert developers",
+			"software engineering",
 		],
 		path: `/services/${slug}`,
-		ogImage: `${BASE_URL}/og-service-${slug}.png`,
 		locale,
 	});
 }
@@ -81,7 +83,7 @@ export default async function Page({ params }: ServicePageProps) {
 	if (richData) {
 		return <RichServicePage data={richData} />;
 	}
-	
+
 	const service =
 		allServices.find((s) => s.slug === slug) ||
 		industryServices.flatMap((i) => i.services).find((s) => s.slug === slug);

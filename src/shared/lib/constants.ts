@@ -1,35 +1,44 @@
 export const CAL_LINKS = {
-  ale: "https://cal.com/ultirequiem/15min",
-  eliaz: "https://cal.com/ultirequiem/15min",
+	intro: "https://cal.com/ultirequiem/15min",
+	technical: "https://cal.com/ultirequiem/15min",
 } as const;
 
 export const CONTACT = {
-  email: {
-    ale: "ale@bobadilla.tech",
-    eliaz: "eliaz@bobadilla.tech",
-  },
-  phone: "+51 902 482 231",
+	email: {
+		main: "ale@bobadilla.tech",
+	},
+	phone: "+51 902 482 231",
 } as const;
 
 export const SOCIAL_LINKS = {
-  github: "https://github.com/bobadilla-tech",
-  twitter: "https://twitter.com/UltiRequiem",
-  linkedin: "https://linkedin.com/company/bobadilla-tech",
-  instagram: "https://www.instagram.com/bobadilla.tech",
+	github: "https://github.com/bobadilla-tech",
+	linkedin: "https://linkedin.com/company/bobadilla-tech",
+	instagram: "https://www.instagram.com/bobadilla.tech",
 } as const;
 
 export const EXTERNAL_LINKS = {
-  apis: "https://requiems.xyz",
+	apis: "https://requiemsapi.com",
+	tools: "https://requiemsapi.com/en/tools",
+	architectureDoc:
+		"https://github.com/bobadilla-tech/bobadilla.tech/blob/main/docs/core/architecture.md",
+	ciWorkflow:
+		"https://github.com/bobadilla-tech/bobadilla.tech/actions/workflows/ci.yml",
 } as const;
 
-export const FOOTER_LINKS = [
-  { id: "ourServices", href: "/services" },
-  { id: "projects", href: "/#projects" },
-  { id: "dedicatedTeam", href: "/services/dedicated-team-development" },
-  { id: "openSource", href: "https://github.com/bobadilla-tech" },
-  { id: "pricing", href: "/pricing" },
-  { id: "contact", href: "/#contact" },
+export const FOOTER_SERVICE_LINKS = [
+	{ id: "ourServices", href: "/services" },
+	{ id: "hire", href: "/hire" },
+	{ id: "startSmall", href: "/start-small" },
+	{ id: "systemAudit", href: "/system-audit" },
+	{ id: "pricing", href: "/pricing" },
 ] as const;
 
-export const COPYRIGHT_YEAR = new Date().getFullYear();
-export const COPYRIGHT_TEXT = `© ${COPYRIGHT_YEAR} Bobadilla Tech. All rights reserved.` as const;
+export const FOOTER_COMPANY_LINKS = [
+	{ id: "about", href: "/company" },
+	{ id: "team", href: "/team" },
+	{ id: "products", href: "/products" },
+	{ id: "caseStudies", href: "/case-studies" },
+	{ id: "blog", href: "/blog" },
+	{ id: "openSource", href: SOCIAL_LINKS.github, external: true },
+	{ id: "contact", href: "/#contact" },
+] as const;

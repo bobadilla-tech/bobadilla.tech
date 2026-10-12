@@ -155,7 +155,7 @@ export default function PricingCalculator() {
 		// Open the booking window synchronously (still within the user gesture) so
 		// popup blockers allow it. Using noopener/noreferrer makes window.open()
 		// return null, preventing navigation — so we omit those flags here.
-		const bookingUrl = `${CAL_LINKS.ale}?email=${encodeURIComponent(emailToSave)}`;
+		const bookingUrl = `${CAL_LINKS.intro}?email=${encodeURIComponent(emailToSave)}`;
 		window.open(bookingUrl, "_blank");
 
 		// Save the estimate in the background — don't block the user on this.
@@ -206,7 +206,9 @@ export default function PricingCalculator() {
 							<div className="flex items-center justify-between mb-2">
 								<span className="font-body text-sm font-semibold text-brand-gold">
 									{t(
-										`steps.${section.stepTitle}.title` as Parameters<typeof t>[0]
+										`steps.${section.stepTitle}.title` as Parameters<
+											typeof t
+										>[0]
 									)}
 								</span>
 								{section.total > 0 && (
@@ -372,7 +374,9 @@ export default function PricingCalculator() {
 									<div className="flex items-center justify-between mb-4">
 										<h3 className="font-heading text-xl font-bold text-brand-gold">
 											{t(
-												`steps.${section.stepTitle}.title` as Parameters<typeof t>[0]
+												`steps.${section.stepTitle}.title` as Parameters<
+													typeof t
+												>[0]
 											)}
 										</h3>
 										{section.total > 0 && (
@@ -394,9 +398,9 @@ export default function PricingCalculator() {
 															{option
 																? t(
 																		`steps.${section.stepTitle}.options.${option.nameKey}.name` as Parameters<
-																		typeof t
-																	>[0]
-																)
+																			typeof t
+																		>[0]
+																	)
 																: ""}
 														</span>
 													</div>
@@ -512,8 +516,7 @@ export default function PricingCalculator() {
 								})}
 							</span>
 							<span className="font-body text-sm text-brand-gold">
-								{Math.round(((currentStep + 1) / PRICING_STEPS.length) * 100)}
-								%
+								{Math.round(((currentStep + 1) / PRICING_STEPS.length) * 100)}%
 							</span>
 						</div>
 						<div className="h-2 bg-surface rounded-full overflow-hidden">
@@ -579,9 +582,7 @@ export default function PricingCalculator() {
 							</h2>
 							<p className="font-body text-brand-primary/50 mb-8">
 								{t(
-									`steps.${currentStep}.description` as Parameters<
-										typeof t
-									>[0]
+									`steps.${currentStep}.description` as Parameters<typeof t>[0]
 								)}
 							</p>
 

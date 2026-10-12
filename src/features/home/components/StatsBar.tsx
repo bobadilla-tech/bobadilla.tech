@@ -1,14 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Copy, SquarePlus, History, Trophy } from "lucide-react";
+import { Package, GitBranch, Clock, Receipt } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 const icons = [
-	<Copy key="copy" size={56} strokeWidth={1.5} />,
-	<SquarePlus key="plus" size={56} strokeWidth={1.5} />,
-	<History key="history" size={56} strokeWidth={1.5} />,
-	<Trophy key="trophy" size={56} strokeWidth={1.5} />,
+	<Package key="package" size={56} strokeWidth={1.5} />,
+	<GitBranch key="git" size={56} strokeWidth={1.5} />,
+	<Clock key="clock" size={56} strokeWidth={1.5} />,
+	<Receipt key="receipt" size={56} strokeWidth={1.5} />,
 ];
 
 export default function StatsBar() {
@@ -41,7 +41,7 @@ export default function StatsBar() {
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
 					transition={{ duration: 0.6, delay: 0.1 }}
-					className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6"
+					className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
 				>
 					{stats.map((stat, i) => (
 						<motion.div
@@ -50,7 +50,7 @@ export default function StatsBar() {
 							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
 							transition={{ delay: i * 0.08, duration: 0.5 }}
-							className="bg-white text-black rounded-2xl p-8 flex flex-col items-start justify-between gap-6 min-h-50"
+							className="bg-white text-black rounded-2xl p-6 sm:p-8 flex flex-col items-start justify-between gap-6 min-h-50"
 						>
 							<div className="text-black">{icons[i]}</div>
 							<div className="flex flex-col gap-1">

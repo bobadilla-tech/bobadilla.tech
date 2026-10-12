@@ -9,6 +9,7 @@ import Button from "@/shared/ui/Button";
 import FAQItem from "@/shared/ui/FAQItem";
 import { fadeUp } from "@/shared/ui/animations";
 import { CAL_LINKS } from "~/shared/lib/constants";
+import { BRAND } from "~/shared/lib/brand";
 
 const WHATSAPP_NUMBER = "51902482231";
 
@@ -70,9 +71,9 @@ export default function NalaCausePage() {
 
 		// Switch navbar logo to dark version for light background
 		const navbarLogo = document.querySelector<HTMLImageElement>(
-			'nav img[alt="Boba Tech"]'
+			"nav img[data-brand-logo]"
 		);
-		if (navbarLogo) navbarLogo.src = "/assets/logo-dark.png";
+		if (navbarLogo) navbarLogo.src = BRAND.logo.dark;
 
 		return () => {
 			for (const key of Object.keys(PINK_THEME_VARS)) {
@@ -81,9 +82,9 @@ export default function NalaCausePage() {
 			root.style.backgroundColor = "";
 
 			const oldLogo = document.querySelector<HTMLImageElement>(
-				'nav img[alt="Boba Tech"]'
+				"nav img[data-brand-logo]"
 			);
-			if (oldLogo) oldLogo.src = "/assets/logo.png";
+			if (oldLogo) oldLogo.src = BRAND.logo.light;
 		};
 	}, []);
 
@@ -328,7 +329,7 @@ export default function NalaCausePage() {
 						>
 							{t("bookCall.heading")} {t("bookCall.body")}
 						</p>
-						<Button href={CAL_LINKS.eliaz} variant="outline" size="sm">
+						<Button href={CAL_LINKS.technical} variant="outline" size="sm">
 							{t("bookCall.button")}
 						</Button>
 					</motion.div>

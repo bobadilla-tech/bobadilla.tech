@@ -27,6 +27,7 @@
 		"test:coverage": "vitest run --coverage",
 		"generate:og": "tsx scripts/generate-og-image.ts",
 		"generate:og:help": "tsx scripts/generate-og-help.ts",
+		"generate:og:default": "tsx scripts/generate-og-default.ts",
 		"generate:og:nala": "tsx scripts/generate-og-nala.ts"
 	},
 	"dependencies": {

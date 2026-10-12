@@ -33,7 +33,7 @@ export default function FAQ() {
 							</p>
 						</div>
 						<Button
-							href={CAL_LINKS.ale}
+							href={CAL_LINKS.intro}
 							variant="gold"
 							size="md"
 							className="w-fit"
