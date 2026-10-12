@@ -135,7 +135,7 @@ export default async function ServicePage({ slug }: ServicePageProps) {
 							</p>
 							<div className="space-y-3">
 								<Button
-									href={CAL_LINKS.ale}
+									href={CAL_LINKS.intro}
 									variant="gold"
 									className="w-full justify-center"
 								>

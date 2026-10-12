@@ -24,7 +24,7 @@ export default function CTABand() {
 					<p className="font-body text-black/80 text-lg max-w-xl">
 						{t("subtitle")}
 					</p>
-					<Button href={CAL_LINKS.ale} variant="gold" size="lg">
+					<Button href={CAL_LINKS.intro} variant="gold" size="lg">
 						{t("button")}
 					</Button>
 				</div>

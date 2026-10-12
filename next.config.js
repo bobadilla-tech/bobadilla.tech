@@ -8,7 +8,12 @@ const nextConfig = {
 		return [
 			{
 				source: "/:locale/tools",
-				destination: "https://requiems.xyz/en/tools",
+				destination: "https://requiemsapi.com/en/tools",
+				permanent: true,
+			},
+			{
+				source: "/:locale(en|es|pt)/about",
+				destination: "/:locale/company",
 				permanent: true,
 			},
 		];

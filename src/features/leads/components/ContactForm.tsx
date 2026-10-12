@@ -6,7 +6,7 @@ import { Github, Linkedin } from "@/shared/ui/BrandIcons";
 import { motion } from "framer-motion";
 import { ZodError, type ZodIssue } from "zod";
 import { useTranslations } from "next-intl";
-import { CAL_LINKS, SOCIAL_LINKS } from "~/shared/lib/constants";
+import { CAL_LINKS, CONTACT, SOCIAL_LINKS } from "~/shared/lib/constants";
 import SectionHeader from "@/shared/ui/SectionHeader";
 import Button from "@/shared/ui/Button";
 import { contactSchema } from "@/features/leads/model/contactSchema";
@@ -367,19 +367,11 @@ export default function Contact() {
 							</p>
 							<div className="space-y-3">
 								<Button
-									href={CAL_LINKS.ale}
+									href={CAL_LINKS.intro}
 									variant="gold"
 									className="w-full justify-center"
 								>
-									{t("scheduleWithAle")}
-								</Button>
-								<Button
-									href={CAL_LINKS.eliaz}
-									variant="ghost"
-									size="sm"
-									className="w-full justify-center"
-								>
-									{t("enterpriseCTO")}
+									{t("bookIntroCall")}
 								</Button>
 							</div>
 						</div>
@@ -391,19 +383,11 @@ export default function Contact() {
 							</h3>
 
 							<a
-								href="mailto:ale@bobadilla.tech"
+								href={`mailto:${CONTACT.email.main}`}
 								className="flex items-center gap-4 font-body text-brand-primary/60 hover:text-brand-primary transition-colors duration-200"
 							>
 								<Mail className="size-5 text-brand-gold" />
-								ale@bobadilla.tech
-							</a>
-
-							<a
-								href="mailto:eliaz@bobadilla.tech"
-								className="flex items-center gap-4 font-body text-brand-primary/60 hover:text-brand-primary transition-colors duration-200"
-							>
-								<Mail className="size-5 text-brand-gold" />
-								eliaz@bobadilla.tech
+								{CONTACT.email.main}
 							</a>
 
 							<div className="pt-4 border-t border-border">

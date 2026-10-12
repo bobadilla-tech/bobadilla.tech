@@ -19,7 +19,7 @@ export default function BookCallCTA({
 	body,
 	subtext,
 	buttonLabel,
-	href = CAL_LINKS.eliaz,
+	href = CAL_LINKS.technical,
 }: BookCallCTAProps) {
 	const t = useTranslations("Common");
 	return (
@@ -30,11 +30,15 @@ export default function BookCallCTA({
 			<h2 className="font-heading text-2xl font-bold text-brand-primary mb-3">
 				{heading}
 			</h2>
-			<p className={`font-body text-brand-primary/60 max-w-md mx-auto ${subtext ? "mb-2" : "mb-8"}`}>
+			<p
+				className={`font-body text-brand-primary/60 max-w-md mx-auto ${subtext ? "mb-2" : "mb-8"}`}
+			>
 				{body}
 			</p>
 			{subtext && (
-				<p className="font-body text-brand-primary/40 text-sm mb-8">{subtext}</p>
+				<p className="font-body text-brand-primary/40 text-sm mb-8">
+					{subtext}
+				</p>
 			)}
 			<Button href={href} variant="gold" size="md">
 				{buttonLabel ?? t("bookCall")}

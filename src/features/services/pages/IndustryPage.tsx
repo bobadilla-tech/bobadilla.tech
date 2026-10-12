@@ -5,12 +5,15 @@ import { industryServices } from "../model/services";
 import { ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { CAL_LINKS } from "~/shared/lib/constants";
+import { BRAND } from "~/shared/lib/brand";
 
 interface IndustryPageProps {
 	industry: string;
 }
 
-export default async function IndustryPage({ industry: industrySlug }: IndustryPageProps) {
+export default async function IndustryPage({
+	industry: industrySlug,
+}: IndustryPageProps) {
 	const t = await getTranslations("IndustryPage");
 	const industry = getIndustryBySlug(industrySlug);
 
@@ -72,9 +75,7 @@ export default async function IndustryPage({ industry: industrySlug }: IndustryP
 									{service.description}
 								</p>
 								<div className="flex items-center text-brand-gold group-hover:text-brand-gold-light transition-colors duration-300 font-body">
-									<span className="text-sm font-medium">
-										{t("learnMore")}
-									</span>
+									<span className="text-sm font-medium">{t("learnMore")}</span>
 									<ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
 								</div>
 							</Link>
@@ -86,7 +87,10 @@ export default async function IndustryPage({ industry: industrySlug }: IndustryP
 				<section className="mb-16">
 					<div className="p-12 bg-surface border border-border rounded-2xl">
 						<h2 className="font-heading text-3xl font-bold text-brand-primary mb-6">
-							{t("whyChooseHeading", { industry: industry.industry })}
+							{t("whyChooseHeading", {
+								industry: industry.industry,
+								brand: BRAND.name,
+							})}
 						</h2>
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-brand-primary/70 font-body">
 							<div>
@@ -131,7 +135,7 @@ export default async function IndustryPage({ industry: industrySlug }: IndustryP
 							{t("ctaBody")}
 						</p>
 						<div className="flex flex-col sm:flex-row justify-center gap-4">
-							<Button href={CAL_LINKS.ale} variant="gold">
+							<Button href={CAL_LINKS.intro} variant="gold">
 								{t("bookCall")}
 							</Button>
 							<Button to="/#contact" variant="ghost">

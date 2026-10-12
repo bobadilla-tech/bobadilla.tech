@@ -77,7 +77,7 @@ export default function ServiceHero({
 				)}
 
 				<Button
-					href={CAL_LINKS.ale}
+					href={CAL_LINKS.intro}
 					variant="gold"
 					size="lg"
 					className="inline-flex items-center gap-3"

@@ -8,8 +8,8 @@
 	"ServiceReasons": {
 		"heading1": "Razones para",
 		"heading2": "trabajar con nosotros",
-		"featuredTitle": "Construido por expertos reales",
-		"featuredBody": "Trabajas directamente con\ndesarrolladores experimentados",
+		"featuredTitle": "Acceso directo a los ingenieros",
+		"featuredBody": "Trabajas directamente con\nlos ingenieros de tu proyecto",
 		"reasons": [
 			"Plazos claros,\nsin sorpresas",
 			"Productos reales,\nno solo ideas",
@@ -35,15 +35,15 @@
 		"defaults": [
 			{
 				"q": "¿Qué tan rápido pueden entregar un proyecto?",
-				"a": "Según la complejidad, los MVPs pueden entregarse en 2–4 semanas, los productos completos en 6–12 semanas. Nos comprometemos con plazos claros desde el inicio."
+				"a": "Depende del alcance. Los proyectos pequeños de alcance fijo suelen tomar 1–2 semanas. En proyectos más grandes acordamos hitos y fechas por escrito antes de empezar."
 			},
 			{
 				"q": "¿Qué pasa si no se cumplen los plazos?",
-				"a": "Garantizamos nuestros compromisos de entrega. Si no cumplimos un plazo, trabajamos horas extra sin costo adicional hasta que esté listo."
+				"a": "Si una fecha está en riesgo te lo decimos con anticipación, te explicamos por qué y acordamos contigo cómo ajustar el alcance o el plazo."
 			},
 			{
 				"q": "¿Trabajan con startups?",
-				"a": "Absolutamente — hemos trabajado con startups en etapas tempranas hasta equipos empresariales. Adaptamos nuestro proceso a tu etapa y presupuesto."
+				"a": "Sí. Adaptamos nuestro proceso a tu etapa y presupuesto — desde un MVP acotado hasta un producto completo."
 			},
 			{
 				"q": "¿Ofrecen soporte después del lanzamiento?",
@@ -52,20 +52,19 @@
 		]
 	},
 	"ServiceEstimateCTA": {
-		"body": "Solicita un taller de descubrimiento gratuito y recibe una <gold>propuesta de proyecto detallada</gold> con <gold>cronograma</gold> y <gold>desglose de costos</gold>. Disponibilidad limitada — ¡Aplica hoy!",
+		"body": "Cuéntanos qué necesitas y te enviaremos una propuesta escrita con <gold>alcance</gold>, <gold>plazos</gold> y <gold>costo</gold>.",
 		"subheading": "OBTÉN UNA ESTIMACIÓN GRATUITA",
-		"button": "VERIFICA SI CALIFICAS"
+		"button": "AGENDAR LLAMADA"
 	},
 	"Navbar": {
 		"services": "Servicios",
 		"projects": "Proyectos",
 		"resources": "Recursos",
 		"company": "Compañía",
-		"founder": "Fundador",
 		"team": "Equipo",
 		"caseStudies": "Casos de Estudio",
 		"startSmall": "Empieza Pequeño",
-		"hire": "Trabaja Con Nosotros",
+		"hire": "Contrátanos",
 		"systemAudit": "Auditoría del Sistema",
 		"pricing": "Precios",
 		"contact": "Contacto",
@@ -74,69 +73,64 @@
 		"openSource": "Código Abierto",
 		"apis": "APIs",
 		"bookCall": "Agendar Llamada",
-		"help": "Ayuda"
+		"help": "Ayuda",
+		"products": "Productos",
+		"about": "Nosotros"
 	},
 	"Footer": {
-		"navigation": "Navegación",
-		"company": "Compañía",
+		"services": "Servicios",
+		"company": "Empresa",
 		"dropUsALine": "Escríbenos",
 		"callUs": "Llámanos",
-		"copyright": "© {year} Bobadilla Tech. Todos los derechos reservados.",
+		"copyright": "© {year} {brand}. Todos los derechos reservados.",
 		"links": {
 			"ourServices": "Nuestros Servicios",
-			"projects": "Proyectos",
-			"dedicatedTeam": "Equipo Dedicado",
-			"openSource": "Código Abierto",
+			"hire": "Contrátanos",
+			"startSmall": "Empieza Pequeño",
+			"systemAudit": "Auditoría del Sistema",
 			"pricing": "Precios",
+			"about": "Nosotros",
+			"team": "Equipo",
+			"products": "Productos",
+			"caseStudies": "Casos de Estudio",
+			"blog": "Blog",
+			"openSource": "Código Abierto",
 			"contact": "Contacto"
 		}
 	},
 	"CTABand": {
 		"heading": "¿Listo para hablar de tu proyecto?",
-		"subtitle": "Construyamos una experiencia de producto que no solo se vea bien, sino que genere resultados reales.",
+		"subtitle": "Cuéntanos qué estás construyendo. Te diremos con honestidad si somos el equipo adecuado.",
 		"button": "Agendar Llamada"
 	},
 	"Hero": {
-		"badge": "Agencia de Ingeniería Líder en Latam",
-		"line1": "CREANDO",
-		"line2": "PRODUCTOS DE",
-		"line3": "CLASE MUNDIAL",
-		"button": "Agendar Llamada"
-	},
-	"WhyBobatech": {
-		"heading1": "¿POR QUÉ LOS EQUIPOS ELIGEN",
-		"heading2": "BOBA TECH",
-		"others": "Otros",
-		"bobatech": "Boba Tech",
-		"yes": "Sí",
-		"no": "No",
-		"rows": [
-			"Entrega rápida y predecible",
-			"Precios transparentes",
-			"Ingenieros senior",
-			"6 meses de soporte incluido"
-		]
+		"badge": "Ingeniería de software · Lima, Perú",
+		"line1": "CONSTRUIMOS",
+		"line2": "SOFTWARE",
+		"line3": "Y LO OPERAMOS",
+		"button": "Agendar Llamada",
+		"subtitle": "Una empresa de ingeniería que construye software para clientes y opera sus propios productos."
 	},
 	"StatsBar": {
-		"heading1": "CONSTRUIDO PARA ENTREGAR",
-		"heading2": "RESULTADOS REALES",
-		"subtitle": "De la idea al producto con velocidad, claridad y bases escalables",
+		"heading1": "ALGUNAS COSAS",
+		"heading2": "QUE PUEDES VERIFICAR",
+		"subtitle": "GitHub, nuestros productos y nuestros precios son públicos",
 		"stats": [
 			{
-				"title": "Construido para escalar",
-				"subtitle": "Arquitectura escalable"
+				"title": "3",
+				"subtitle": "Productos SaaS que construimos y operamos"
 			},
 			{
-				"title": "100+",
-				"subtitle": "Proyectos entregados"
+				"title": "20+",
+				"subtitle": "Repositorios públicos en GitHub"
 			},
 			{
-				"title": "24/7",
-				"subtitle": "Soporte disponible"
+				"title": "UTC−5",
+				"subtitle": "Hora de Perú — coincide con el horario laboral de EE. UU."
 			},
 			{
-				"title": "100%",
-				"subtitle": "Satisfacción del cliente"
+				"title": "$400",
+				"subtitle": "Precio inicial (USD) de nuestros proyectos pequeños de precio fijo"
 			}
 		]
 	},
@@ -146,19 +140,19 @@
 		"faqs": [
 			{
 				"q": "¿Qué tan rápido pueden entregar un proyecto?",
-				"a": "Dependiendo del alcance, podemos entregar un MVP en tan solo 3–14 días. Para proyectos más grandes, trabajamos en sprints de 2 semanas y te mantenemos informado en cada paso con hitos claros."
+				"a": "Depende del alcance. Los proyectos pequeños de alcance fijo suelen tomar 1–2 semanas. En proyectos más grandes acordamos hitos y fechas por escrito antes de empezar, y trabajamos en iteraciones de dos semanas para que veas el avance de forma continua."
 			},
 			{
 				"q": "¿Qué pasa si no se cumplen los plazos?",
-				"a": "Nos tomamos muy en serio los compromisos de entrega. Si un plazo está en riesgo, lo comunicamos con anticipación y trabajamos horas extra sin costo adicional. La comunicación transparente es fundamental en nuestra forma de operar."
+				"a": "Si una fecha está en riesgo te lo decimos con anticipación, te explicamos por qué y acordamos contigo cómo ajustar el alcance o el plazo."
 			},
 			{
 				"q": "¿Trabajan con startups?",
-				"a": "Absolutamente — las startups son nuestro punto fuerte. Entendemos el ritmo y las restricciones de las empresas en etapas tempranas y podemos adaptarnos a tu runway, ya sea un MVP ágil o un producto completo."
+				"a": "Sí. Adaptamos el alcance a tu etapa y a tu runway — desde un MVP acotado hasta un producto completo. También operamos nuestros propios productos, así que conocemos las restricciones de un equipo pequeño."
 			},
 			{
 				"q": "¿Ofrecen soporte después del lanzamiento?",
-				"a": "Sí. Todos nuestros compromisos incluyen 6 meses de soporte post-lanzamiento. Estamos aquí para corregir errores, monitorear el rendimiento e iterar contigo a medida que tu producto crece."
+				"a": "Sí. Lo que cubre el soporte post-lanzamiento — correcciones, monitoreo, iteración — se define en la propuesta, y ofrecemos mantenimiento continuo."
 			}
 		]
 	},
@@ -180,10 +174,8 @@
 		"sendButton": "Enviar Mensaje",
 		"sendingButton": "Enviando...",
 		"bookCallHeading": "Agenda una Llamada Gratuita",
-		"bookCallDesc": "Programa una consulta de 15 minutos con nuestra Chief Revenue Officer.",
-		"bookCallAvailability": "Disponible 10 AM – 3 PM • Respuesta rápida garantizada",
-		"scheduleWithAle": "Agendar con Ale",
-		"enterpriseCTO": "Enterprise y CTO Fraccional",
+		"bookCallDesc": "Agenda una llamada introductoria de 15 minutos con Alexandra, nuestra cofundadora y CEO.",
+		"bookCallAvailability": "Elige el horario que te convenga",
 		"getInTouchHeading": "Contáctanos",
 		"followUs": "Síguenos",
 		"nameRequired": "El nombre es obligatorio",
@@ -191,12 +183,13 @@
 		"invalidEmail": "Dirección de correo inválida",
 		"companyTooLong": "El nombre de la empresa debe tener menos de 100 caracteres",
 		"messageTooShort": "El mensaje debe tener al menos 10 caracteres",
-		"messageTooLong": "El mensaje debe tener menos de 2000 caracteres"
+		"messageTooLong": "El mensaje debe tener menos de 2000 caracteres",
+		"bookIntroCall": "Agendar llamada introductoria"
 	},
 	"ServicesSection": {
 		"heading1": "NUESTROS",
 		"heading2": "SERVICIOS",
-		"subtitle": "Desarrollo Full-Stack, Integración de IA y Soluciones Empresariales",
+		"subtitle": "Desarrollo full-stack, ingeniería backend e integración de IA",
 		"learnMore": "Saber más →",
 		"cards": {
 			"webAppDev": {
@@ -217,11 +210,11 @@
 			},
 			"backendDev": {
 				"title": "Desarrollo Back-end",
-				"description": "Sistemas backend de nivel empresarial construidos por ingenieros senior."
+				"description": "Sistemas backend construidos para carga real: APIs, bases de datos, colas e infraestructura."
 			},
 			"webDev": {
 				"title": "Desarrollo Web",
-				"description": "Aplicaciones web personalizadas con tecnologías de vanguardia para rendimiento óptimo y experiencia de usuario."
+				"description": "Aplicaciones web a medida, construidas pensando en el rendimiento y la mantenibilidad."
 			},
 			"cmsDev": {
 				"title": "Desarrollo CMS",
@@ -234,74 +227,17 @@
 		}
 	},
 	"IndustriesSection": {
-		"heading1": "Industrias",
-		"heading2": "Con las que Tenemos Experiencia",
-		"subtitle": "Experiencia comprobada entregando soluciones especializadas en diversos sectores."
-	},
-	"PricingSection": {
-		"heading1": "Precios",
-		"heading2": "Simples y Transparentes",
-		"subtitle": "Paquetes de sitios web estáticos diseñados para velocidad y calidad.",
-		"calculatorButton": "Probar Nuestra Calculadora de Precios",
-		"mostPopular": "Más Popular",
-		"getStarted": "Comenzar",
-		"ctaHeading": "¿Necesitas un MVP personalizado o una aplicación full-stack?",
-		"ctaBody": "Ofrecemos consultoría por horas y servicios de CTO Fraccional. Agenda una llamada para hablar de tu proyecto.",
-		"ctaButton": "Agendar Llamada con un CTO Fraccional Experto",
-		"plans": [
-			{
-				"name": "Landing Page Inicial",
-				"description": "Perfecto para startups y pequeñas empresas",
-				"features": [
-					"Una sola landing page",
-					"Diseño responsive",
-					"Optimización SEO básica",
-					"Integración de formulario de contacto",
-					"2 rondas de revisiones",
-					"Entrega en 7-10 días",
-					"Optimizado para móvil"
-				]
-			},
-			{
-				"name": "Sitio Web Multi-página",
-				"description": "1-5 páginas para negocios en crecimiento",
-				"features": [
-					"Hasta 5 páginas personalizadas",
-					"Diseño responsive avanzado",
-					"Optimización SEO",
-					"Integración CMS (opcional)",
-					"Formularios de contacto y leads",
-					"3 rondas de revisiones",
-					"Entrega en 14-21 días",
-					"Integración de analytics",
-					"Integración de redes sociales"
-				]
-			},
-			{
-				"name": "Experiencia Web Premium",
-				"description": "Soluciones personalizadas para empresas",
-				"features": [
-					"Páginas ilimitadas",
-					"Diseño personalizado y animaciones",
-					"SEO y rendimiento avanzados",
-					"Integración CMS completa",
-					"Capacidades de e-commerce",
-					"Integraciones de API",
-					"Revisiones ilimitadas",
-					"Soporte prioritario",
-					"Mantenimiento continuo (opcional)",
-					"Funcionalidades y características personalizadas"
-				]
-			}
-		]
+		"heading1": "Software",
+		"heading2": "por Industria",
+		"subtitle": "Servicios adaptados a los requisitos de sectores específicos."
 	},
 	"ServicesPage": {
 		"heading1": "Nuestros",
 		"heading2": "Servicios",
-		"subtitle": "Desde el desarrollo rápido de MVPs hasta soluciones empresariales, entregamos tecnología de vanguardia adaptada a tus necesidades.",
+		"subtitle": "Desde MVPs hasta sistemas backend de larga duración — planificados, construidos y mantenidos por nuestro equipo de ingeniería.",
 		"coreServices": "Servicios Principales",
 		"industrySolutions": "Soluciones por Industria",
-		"industrySubtitle": "Soluciones especializadas para industrias específicas con profunda experiencia en el dominio.",
+		"industrySubtitle": "Servicios adaptados a los requisitos de sectores específicos.",
 		"viewAll": "Ver Todos",
 		"moreServices": "+{count} servicios más",
 		"ctaHeading": "¿Listo para Iniciar tu Proyecto?",
@@ -313,9 +249,9 @@
 		"home": "Inicio",
 		"services": "Servicios",
 		"overview": "Descripción general",
-		"overviewBody1": "Nuestro servicio de {service} combina tecnología de vanguardia con profunda experiencia en ingeniería para entregar soluciones que impulsen resultados de negocio. Trabajamos estrechamente contigo para entender tus requisitos únicos y crear soluciones personalizadas que crezcan con tu negocio.",
-		"overviewBody2": "Ya seas una startup que busca lanzar su MVP rápidamente o una empresa que busca soluciones robustas y escalables, nuestro equipo tiene la experiencia y el conocimiento para hacer realidad tu visión.",
-		"whatsIncluded": "¿Qué Incluye?",
+		"overviewBody1": "En {service}, partimos de tus requisitos y restricciones y construimos algo que se puede mantener y extender después del lanzamiento.",
+		"overviewBody2": "Ya seas una startup lanzando un MVP o una empresa establecida que necesita un sistema que aguante el uso real, ajustamos el alcance a tu etapa.",
+		"whatsIncluded": "Qué puede incluir",
 		"whyChooseUs": "¿Por Qué Elegirnos?",
 		"getStarted": "Comienza Hoy",
 		"getStartedBody": "Agenda una consulta gratuita para hablar de tu proyecto y recibir una cotización personalizada.",
@@ -337,20 +273,20 @@
 		],
 		"benefits": [
 			{
-				"title": "Entrega Rápida",
-				"description": "Lanza en días o semanas, no en meses"
+				"title": "Alcance por Escrito",
+				"description": "Alcance, hitos y fechas acordados por escrito antes de empezar"
 			},
 			{
-				"title": "Seguridad Empresarial",
-				"description": "Construido con seguridad y cumplimiento en mente"
+				"title": "Seguridad desde el Diseño",
+				"description": "Autenticación, control de acceso y manejo de datos diseñados desde el inicio"
 			},
 			{
-				"title": "Soporte 24/7",
-				"description": "Soporte y mantenimiento continuo disponible"
+				"title": "Soporte después del Lanzamiento",
+				"description": "Ofrecemos mantenimiento e iteración continuos"
 			},
 			{
-				"title": "Soluciones Escalables",
-				"description": "Arquitectura diseñada para crecer con tu negocio"
+				"title": "Espacio para Crecer",
+				"description": "Arquitectura dimensionada para hoy, con un camino claro para escalar"
 			}
 		]
 	},
@@ -359,16 +295,16 @@
 		"services": "Servicios",
 		"solutions": "Soluciones",
 		"allServicesHeading": "Todos los Servicios de {industry}",
-		"whyChooseHeading": "¿Por Qué Elegir Bobadilla Tech para {industry}?",
-		"expertise1Title": "Profunda Experiencia en la Industria",
-		"expertise1Body": "Nuestro equipo tiene amplia experiencia construyendo soluciones para el sector {industry}, entendiendo tanto los requisitos técnicos como las regulaciones específicas de la industria.",
-		"expertise2Title": "Historial Comprobado",
-		"expertise2Body": "Hemos entregado proyectos exitosamente para clientes que van desde startups hasta empresas, cumpliendo consistentemente con los plazos y superando las expectativas.",
-		"expertise3Title": "Equipo de Ingeniería Senior",
-		"expertise3Body": "Liderado por ingenieros senior con experiencia en sistemas backend empresariales y soluciones de IA de vanguardia, no solo otra agencia.",
-		"expertise4Title": "Entrega Rápida",
-		"expertise4Body": "Lanza tu MVP en días o semanas, no en meses. Nos enfocamos en la iteración rápida y en llevar tu producto al mercado lo antes posible.",
-		"ctaHeading": "¿Listo para Transformar tu Negocio de {industry}?",
+		"whyChooseHeading": "¿Por qué trabajar con {brand} en software de {industry}?",
+		"expertise1Title": "Acceso directo a los ingenieros",
+		"expertise1Body": "Una vez que el proyecto empieza, conversas requisitos, restricciones y trade-offs directamente con los ingenieros que construyen tu software de {industry}.",
+		"expertise2Title": "Operamos software en producción",
+		"expertise2Body": "Construimos y operamos nuestros propios productos SaaS, así que la confiabilidad, la seguridad y el mantenimiento son cosas con las que lidiamos todos los días — no algo que se ve al final.",
+		"expertise3Title": "Primero los requisitos",
+		"expertise3Body": "Preguntamos por las restricciones regulatorias y de datos de tu sector antes de proponer una arquitectura.",
+		"expertise4Title": "Alcance definido, entrega predecible",
+		"expertise4Body": "Alcance e hitos acordados por escrito. Puedes empezar con un proyecto pequeño antes de comprometerte con uno más grande.",
+		"ctaHeading": "¿Construyes software para {industry}?",
 		"ctaBody": "Agenda una consulta gratuita para hablar de tu proyecto y recibir una propuesta personalizada adaptada a tus necesidades.",
 		"bookCall": "Agendar Llamada Gratuita",
 		"contactUs": "Contáctanos",
@@ -396,11 +332,11 @@
 		"shareOnX": "Compartir en X",
 		"shareOnLinkedIn": "Compartir en LinkedIn",
 		"shareOnReddit": "Compartir en Reddit",
-		"enterpriseAPIsHeading": "¿Necesitas APIs Empresariales?",
-		"enterpriseAPIsBody": "Usa nuestra API Requiem para soluciones escalables listas para producción",
+		"enterpriseAPIsHeading": "¿Necesitas APIs de datos?",
+		"enterpriseAPIsBody": "Requiems API: APIs de validación de email, ubicación, finanzas y utilidades con una sola clave.",
 		"learnMore": "Saber Más",
 		"devServicesHeading": "¿Necesitas Servicios de Desarrollo?",
-		"devServicesBody": "Obtén consultoría experta para construir tu próximo producto",
+		"devServicesBody": "Habla con nuestro equipo sobre tu próximo producto.",
 		"getInTouch": "Contáctanos",
 		"stayTuned": "Mantente Atento",
 		"moreSoonMsg": "Más contenido próximamente. ¡Síguenos para actualizaciones!",
@@ -413,7 +349,7 @@
 		"yourEstimate": "Tu Estimado de Proyecto",
 		"breakdownSubtitle": "Desglose detallado de tu solución personalizada",
 		"totalInvestment": "Inversión Total",
-		"pricingNote": "Precios competitivos de LATAM • Misma zona horaria • Alineación cultural",
+		"pricingNote": "Solo una estimación — el alcance y el precio finales se acuerdan por escrito.",
 		"getDetailedQuote": "Obtén tu Cotización Detallada",
 		"emailDesc": "Ingresa tu correo para guardar este estimado y agendar una consulta gratuita",
 		"bookConsultation": "Agendar Consulta Gratuita",
@@ -430,20 +366,20 @@
 		"whyWorkWithUs": "¿Por Qué Trabajar con Nosotros?",
 		"whyItems": [
 			{
-				"title": "Muy Receptivos",
-				"desc": "Tiempos de respuesta rápidos y comunicación constante durante el desarrollo"
+				"title": "Comunicación Directa",
+				"desc": "Hablas con los ingenieros de tu proyecto"
 			},
 			{
-				"title": "Misma Zona Horaria",
-				"desc": "Equipo basado en LATAM para colaboración en tiempo real sin fricciones"
+				"title": "Hora de Perú (UTC−5)",
+				"desc": "Nuestro horario laboral coincide con el de EE. UU."
 			},
 			{
-				"title": "Alineación Cultural",
-				"desc": "Fuerte ética de trabajo y compatibilidad cultural con equipos de EE.UU./UE"
+				"title": "Alcance por Escrito",
+				"desc": "El alcance y el precio se acuerdan por escrito antes de empezar"
 			},
 			{
-				"title": "Precios Offshore",
-				"desc": "Calidad premium a tarifas competitivas de LATAM - ahorra un 40-60%"
+				"title": "Tarifas LATAM",
+				"desc": "Ingeniería a tarifas de Latinoamérica"
 			}
 		],
 		"startOver": "Empezar de Nuevo",
@@ -581,78 +517,81 @@
 	"FounderPage": {
 		"overline": "Fundador",
 		"name": "Eliaz Bobadilla",
-		"role": "Fundador e Ingeniero Principal",
-		"intro": "Fundador e ingeniero principal de Bobadilla Tech. Construyo sistemas que se envían y se mantienen — no prototipos disfrazados de productos.",
-		"background": {
+		"role": "Fundador · Ingeniero de Software",
+		"intro": "Eliaz Bobadilla es ingeniero de software y fundador de {brand}. Trabaja en arquitectura backend, integración de sistemas de IA e infraestructura.",
+		"story": {
 			"heading": "Trayectoria",
-			"p1": "Empecé a escribir código a los 14 años. No tutoriales — proyectos reales. Ese hábito temprano de construir para entender (en lugar de leer para entender) todavía define cómo trabajo.",
-			"p2": "Durante la última década he trabajado en startups en etapa temprana, equipos en crecimiento y proyectos de clientes en fintech, fitness, herramientas para desarrolladores e infraestructura. Algunos llegaron a miles de usuarios. Algunos fueron descartados por las razones correctas. Todos me enseñaron algo concreto.",
-			"p3": "Mi enfoque ha evolucionado progresivamente hacia la arquitectura backend, la integración de sistemas de IA y la infraestructura escalable — áreas donde las decisiones de ingeniería tomadas al inicio se acumulan fuertemente en ambas direcciones."
+			"p1": "Empezó a escribir código a los 14 años, en proyectos reales y no en tutoriales. Durante la última década ha trabajado en startups en etapa temprana, equipos en crecimiento y proyectos de clientes en fintech, fitness, herramientas para desarrolladores e infraestructura.",
+			"p2": "{brand} empezó como el trabajo del propio Eliaz para clientes. A medida que los proyectos crecieron, sumó a desarrolladores en los que confiaba, y la empresa se convirtió en un equipo con sus propios clientes y productos.",
+			"p3": "Eliaz sigue trabajando como ingeniero: diseña sistemas y escribe código."
 		},
-		"approach": {
-			"heading": "Cómo abordo la construcción de software",
-			"p1": "No comienzo con la arquitectura. Comienzo con la restricción. ¿Cuál es el verdadero cuello de botella — latencia, costo, complejidad, tiempo de comercialización? La respuesta cambia el diseño más que cualquier elección de framework.",
-			"p2": "Mi predeterminado es lo simple y lo probado. Eso significa usar herramientas consolidadas antes que nuevas, escribir código que el próximo ingeniero pueda leer sin contexto, y tratar toda abstracción como deuda hasta que demuestre su valor.",
-			"p3": "Cuando la IA es parte del stack, la trato como un problema de integración, no de investigación. El objetivo es una salida confiable, comportamiento acotado y lógica de respaldo clara — no una demo."
-		},
-		"expect": {
-			"heading": "Qué esperar al trabajar conmigo",
-			"items": [
-				{
-					"title": "Alcance directo",
-					"body": "Te diré qué es alcanzable, qué no, y dónde están las verdaderas incógnitas — antes de empezar."
-				},
-				{
-					"title": "Sin intermediarios",
-					"body": "Hablas con el ingeniero que hace el trabajo. No hay un account manager entre nosotros."
-				},
-				{
-					"title": "Ciclos de retroalimentación rápidos",
-					"body": "Entrego temprano y con frecuencia. Ves progreso real, no actualizaciones de estado."
-				},
-				{
-					"title": "Compromisos honestos",
-					"body": "Si existe una solución más simple, lo digo. La complejidad debe justificarse, no ser la opción predeterminada."
-				}
-			]
-		},
-		"cta": {
-			"heading": "¿Quieres hablar sobre un proyecto?",
-			"body": "15 minutos. Sin pitch. Solo una conversación honesta sobre lo que estás construyendo y si somos compatibles.",
-			"button": "Reservar llamada"
+		"links": {
+			"personalSite": "Sitio personal de Eliaz",
+			"team": "Conoce al equipo",
+			"company": "Sobre la empresa"
 		}
 	},
 	"TeamPage": {
 		"overline": "Equipo",
-		"heading": "Un equipo pequeño.",
-		"headingGold": "Sin sobrecarga.",
-		"intro": "Tres ingenieros senior en cada proyecto. Especialistas incorporados cuando el trabajo lo requiere. Sin juniors aprendiendo a tu costo.",
-		"core": {
-			"heading": "Equipo base",
-			"badge": "3 ingenieros",
-			"description": "Estos tres son constantes en cada compromiso. Alta responsabilidad, comunicación directa, sin transferencias.",
-			"members": [
+		"heading": "Un equipo pequeño de ingenieros",
+		"headingGold": "que se hace cargo de lo que entrega.",
+		"intro": "Los ingenieros de tu proyecto son quienes diseñan, construyen y mantienen tu sistema.",
+		"collaboration": {
+			"heading": "Cómo trabajamos juntos",
+			"items": [
 				{
-					"role": "Fundador e Ingeniero Principal",
-					"focus": "Arquitectura backend, sistemas de IA, infraestructura",
-					"note": "En cada proyecto. Define la dirección técnica y hace el trabajo."
+					"title": "Un equipo, contexto compartido",
+					"body": "Los ingenieros que trabajan en proyectos de clientes también trabajan en nuestros propios productos, así que lo que aprendemos operando un sistema se aplica al siguiente."
 				},
 				{
-					"role": "Ingeniero Full-Stack Senior",
-					"focus": "Sistemas frontend, diseño de API, rendimiento",
-					"note": "Dueño de la capa cliente de extremo a extremo. Opiniones sólidas sobre UX."
+					"title": "La responsabilidad se queda con los ingenieros",
+					"body": "Los ingenieros que construyen un sistema son quienes lo ponen en producción y siguen siendo responsables de él."
 				},
 				{
-					"role": "Ingeniero Backend Senior",
-					"focus": "Bases de datos, integraciones, pipelines de despliegue",
-					"note": "Profundo en la fontanería. Confiable en modelos de datos complejos y casos extremos."
+					"title": "Las decisiones quedan por escrito",
+					"body": "Dejamos por escrito el alcance y las decisiones de arquitectura antes de construir."
 				}
 			]
 		},
+		"leadership": {
+			"heading": "Liderazgo",
+			"website": "Sitio web",
+			"founderLink": "Perfil del fundador",
+			"items": {
+				"alexandra": {
+					"role": "Cofundadora y CEO · Producto",
+					"bio": "Dirige la empresa y sus productos, y es la primera persona con la que hablarás."
+				},
+				"eliaz": {
+					"role": "Fundador · Ingeniero de Software",
+					"bio": "Trabaja en arquitectura backend, integración de sistemas de IA e infraestructura."
+				}
+			}
+		},
+		"people": {
+			"heading": "Ingeniería",
+			"description": "Las disciplinas detrás de nuestro trabajo para clientes y de nuestros propios productos.",
+			"items": {
+				"backendAi": {
+					"role": "Ingeniería backend e IA",
+					"focus": "APIs, pipelines de datos, integración de IA",
+					"bio": "Sistemas backend y con uso intensivo de IA, en proyectos de clientes y en nuestros propios productos."
+				},
+				"fullstack": {
+					"role": "Ingeniería full-stack",
+					"focus": "Sistemas frontend, diseño de API, rendimiento",
+					"bio": "El frontend y la capa de API que lo respalda, de extremo a extremo."
+				},
+				"backend": {
+					"role": "Ingeniería backend",
+					"focus": "Bases de datos, integraciones, pipelines de despliegue",
+					"bio": "Modelos de datos complejos, integraciones y los casos borde que traen consigo."
+				}
+			}
+		},
 		"extended": {
 			"heading": "Red extendida",
-			"badge": "5–8 colaboradores",
-			"description": "Especialistas de confianza con quienes hemos trabajado en múltiples proyectos. Entran cuando el alcance requiere su profundidad — no para inflar el headcount.",
+			"description": "Especialistas con quienes hemos trabajado en varios proyectos. Se suman cuando un proyecto necesita su especialidad.",
 			"items": [
 				{
 					"label": "Mobile",
@@ -673,34 +612,30 @@
 				{
 					"label": "QA",
 					"detail": "Estrategia de pruebas, automatización, pruebas de carga"
-				},
-				{
-					"label": "Compliance",
-					"detail": "Revisión de seguridad, preparación para auditorías, contexto HIPAA / SOC2"
 				}
 			]
 		},
 		"why": {
-			"heading": "Por qué esta estructura funciona",
+			"heading": "Por qué trabajamos así",
 			"items": [
 				{
-					"heading": "Obtienes las personas correctas, no las disponibles",
-					"body": "Las grandes agencias asignan proyectos con quien esté libre. Nosotros asignamos proyectos con quien encaje. Si un especialista no es adecuado para tu trabajo, no está en él."
+					"heading": "Las personas adecuadas para el trabajo",
+					"body": "Asignamos a cada proyecto los ingenieros cuya experiencia encaja."
 				},
 				{
-					"heading": "Sin dilución",
-					"body": "Los ingenieros senior no delegan a juniors para luego revisar al final. Las personas con quienes hablas son las personas que escriben el código."
+					"heading": "Las mismas personas, de principio a fin",
+					"body": "Mantenemos a los mismos ingenieros en tu proyecto de principio a fin, para que no se pierda contexto en el camino."
 				},
 				{
-					"heading": "Ciclos de retroalimentación ajustados",
-					"body": "Tres ingenieros que conocen el trabajo del otro pueden moverse rápido y detectar problemas temprano. Más personas generalmente significa ciclos más lentos, no más rápidos."
+					"heading": "Ciclos de retroalimentación cortos",
+					"body": "Un equipo pequeño que conoce el trabajo de los demás avanza rápido y detecta problemas temprano."
 				}
 			]
 		},
 		"cta": {
 			"heading": "¿Quieres conocer al equipo?",
-			"body": "Reserva una llamada breve. Revisaremos tu proyecto y te diremos exactamente quién estaría involucrado.",
-			"button": "Reservar llamada"
+			"body": "Agenda una llamada breve. Revisaremos tu proyecto y te diremos exactamente quién estaría involucrado.",
+			"button": "Agendar llamada"
 		}
 	},
 	"StartSmallPage": {
@@ -777,7 +712,7 @@
 		"overline": "Casos de Estudio",
 		"heading1": "Trabajo que hemos",
 		"heading2": "lanzado",
-		"subtitle": "Dos publicados hasta ahora. Sistemas reales, decisiones reales, compromisos reales.",
+		"subtitle": "Dos publicados hasta ahora — ambos son productos propios. Sistemas reales, decisiones reales, trade-offs reales.",
 		"readCaseStudy": "Leer caso de estudio",
 		"studies": [
 			{
@@ -1067,10 +1002,10 @@
 		}
 	},
 	"HirePage": {
-		"overline": "Bobadilla Tech",
+		"overline": "Contrata al equipo",
 		"heading": "Sistemas en producción, construidos por",
 		"headingGold": "los ingenieros que escriben el código.",
-		"intro": "Para fundadores técnicos y equipos que necesitan sistemas backend, integraciones de IA o infraestructura escalable — hecho por ingenieros senior, no delegado hacia abajo.",
+		"intro": "Para fundadores técnicos y equipos que necesitan sistemas backend, integraciones de IA o infraestructura escalable — construidos por ingenieros que responden por lo que entregan.",
 		"cta1": "Obtener una evaluación técnica",
 		"cta2": "O empieza con un proyecto pequeño",
 		"whoHeading": "Para quién es esto",
@@ -1078,7 +1013,7 @@
 			"Tienes una idea de MVP y necesitas que esté lista para producción — no un prototipo",
 			"Tu backend está fallando bajo carga real",
 			"Quieres IA integrada en tu producto — no una demo, un sistema real",
-			"Has trabajado con agencias y obtuviste entregas lentas y código de juniors",
+			"Has recibido trabajo con retraso o por debajo de la calidad que necesitabas",
 			"Necesitas una segunda opinión sobre un sistema antes de escalarlo",
 			"Eres suficientemente técnico para saber cuándo el trabajo es bueno"
 		],
@@ -1104,10 +1039,25 @@
 				"title": "Optimización de Sistemas",
 				"description": "Identifica cuellos de botella, reduce latencia, arregla lo frágil antes de que falle en producción. Incluye un informe escrito y un plan de acción priorizado.",
 				"outcome": "Claridad sobre qué arreglar y cómo"
+			},
+			{
+				"title": "Ingenieros dedicados",
+				"description": "Ingenieros que se integran a tu equipo y trabajan dentro de tu código y tu proceso.",
+				"outcome": "Más capacidad de ingeniería para tu equipo"
+			},
+			{
+				"title": "Alianza a largo plazo",
+				"description": "Seguimos después del lanzamiento para mantener y extender lo que construimos.",
+				"outcome": "Un equipo que conoce tu sistema"
+			},
+			{
+				"title": "CTO fraccional",
+				"description": "Liderazgo técnico a tiempo parcial para equipos sin CTO: decisiones de arquitectura, roadmap técnico y apoyo en contrataciones.",
+				"outcome": "Dirección técnica sin una contratación a tiempo completo"
 			}
 		],
 		"howHeading": "Cómo trabajamos",
-		"howNote": "Hablas directamente con los ingenieros construyendo tu sistema. Sin project managers, sin account managers, sin nadie repitiendo lo que acabas de decir en otra reunión.",
+		"howNote": "Una vez que el proyecto empieza, hablas directamente con los ingenieros que construyen tu sistema.",
 		"steps": [
 			{
 				"number": "01",
@@ -1117,12 +1067,12 @@
 			{
 				"number": "02",
 				"title": "Alcance",
-				"body": "Definimos exactamente qué se construye y por cuánto. Precio fijo, por escrito. Sin sorpresas después."
+				"body": "Acordamos qué se construye y cuánto cuesta, por escrito, antes de empezar. Sin sorpresas después."
 			},
 			{
 				"number": "03",
 				"title": "Construir",
-				"body": "Los ingenieros senior escriben el código. Recibes actualizaciones conforme avanza el trabajo. Sin transferencias a juniors."
+				"body": "Los ingenieros asignados a tu proyecto escriben el código. Recibes actualizaciones a medida que avanza el trabajo."
 			},
 			{
 				"number": "04",
@@ -1132,10 +1082,10 @@
 		],
 		"whyHeading": "Por qué nosotros",
 		"why": [
-			"3 ingenieros senior en el equipo base — no una firma de staffing ni una operación de outsourcing",
-			"Hemos entregado y mantenemos productos internos (Requiems API, CompileStrength) — sistemas reales que son nuestros",
-			"Un equipo pequeño significa responsabilidad directa — sabes quién construyó qué y por qué",
-			"Sin outsourcing, sin juniors con trabajo de senior, sin capas de project managers en medio"
+			"Un equipo de ingeniería que responde por lo que construye — en nuestros proyectos o dentro de tu equipo",
+			"Construimos y operamos nuestros propios productos (Requiems API, CompileStrength, BiasMarket) — sistemas reales que son nuestros y que mantenemos",
+			"Equipo pequeño, responsabilidad directa — sabes quién construyó qué y por qué",
+			"Trabajas directamente con los ingenieros de tu proyecto"
 		],
 		"smallHeading": "¿No estás listo para comprometerte con un proyecto completo?",
 		"smallBody": "La mejor manera de ver cómo trabajamos es hacer juntos una pequeña pieza de trabajo real. Alcance fijo, precio fijo, sin compromiso a largo plazo.",
@@ -1152,14 +1102,14 @@
 			"cta": "Saber más"
 		},
 		"finalHeading": "¿Listo para hablar?",
-		"finalBody": "Reserva una llamada técnica breve. Entenderemos tu problema y te diremos honestamente si somos el fit adecuado.",
-		"finalNote": "Sin pitch de ventas. Sin presión. Solo una conversación directa.",
-		"bookCall": "Reservar llamada técnica",
+		"finalBody": "Agenda una llamada breve. Entenderemos tu problema y te diremos con honestidad si somos el equipo adecuado.",
+		"finalNote": "Sin presión. Solo una conversación directa.",
+		"bookCall": "Agendar llamada",
 		"startSmallCta": "Empezar con un proyecto pequeño"
 	},
 	"BookConfirmedPage": {
 		"title": "Tu llamada está agendada.",
-		"subtitle": "Esta es una conversación técnica, no una llamada de ventas.",
+		"subtitle": "Usaremos la llamada para entender qué estás construyendo.",
 		"beforeCallHeading": "Antes de la llamada",
 		"preCallItems": [
 			{
@@ -1172,7 +1122,7 @@
 			},
 			{
 				"label": "Trae el problema real, no la versión pulida",
-				"body": "Somos ingenieros. Podemos manejar la verdad desordenada. Hará que la conversación sea más útil."
+				"body": "Cuéntanos las cosas como son, aunque estén desordenadas. La conversación será más útil."
 			}
 		],
 		"detailsPrompt": "¿Quieres enviar detalles antes de la llamada?",
@@ -1183,178 +1133,6 @@
 		"message": "Usamos cookies para analizar el tráfico y mejorar tu experiencia.",
 		"accept": "Aceptar",
 		"reject": "Rechazar"
-	},
-	"PolladaPage": {
-		"hero": {
-			"overline": "POLLADA VIRTUAL",
-			"heading": "Apoya nuestra causa",
-			"headingGold": "con un portafolio profesional",
-			"intro": "Hicimos una pollada virtual 🐔 para recaudar fondos con fines sociales. En lugar de pollo, estamos ofreciendo portafolios web profesionales. Tú te llevas un portafolio increíble y ayudas a quienes más lo necesitan. Todos ganamos."
-		},
-		"about": {
-			"heading": "¿Qué es esto?",
-			"body": "Una pollada virtual es una tradición peruana de reunir fondos para una causa compartida — pero en versión digital. En vez de vender platos de pollada, estamos ofreciendo portafolios web profecionales desarrollados por Bobadilla Tech. El 100% de lo recaudado va destinado a ayuda social.",
-			"items": [
-				{
-					"title": "Tú ganas",
-					"body": "Recibes un portafolio web profesional, listo en 72 horas, con hosting incluido. Ideal para freelancers, profesionales y creadores."
-				},
-				{
-					"title": "Ayudas a otros",
-					"body": "Todo lo recaudado se destina íntegramente a apoyo social. Tu compra tiene un impacto directo."
-				},
-				{
-					"title": "Sin riesgo",
-					"body": "Código 100% tuyo, sin ataduras. El portafolio es completamente funcional y puedes modificarlo cuando quieras."
-				}
-			]
-		},
-		"portfolio": {
-			"heading": "Portafolios de ejemplo",
-			"subtitle": "Así se ven los portafolios que entregamos. Limpios, modernos y profesionales.",
-			"items": [
-				{
-					"title": "Portafolio Minimalista",
-					"description": "Diseño limpio y elegante, perfecto para profesionales creativos.",
-					"imageUrl": "/assets/landing/portfolio-minimal.jpg"
-				},
-				{
-					"title": "Portafolio Developer",
-					"description": "Enfocado en mostrar proyectos técnicos y experiencia en desarrollo.",
-					"imageUrl": "/assets/landing/portfolio-dev.jpg"
-				},
-				{
-					"title": "Portafolio Premium",
-					"description": "Con animaciones, SEO y diseño personalizado para destacar al máximo.",
-					"imageUrl": "/assets/landing/portfolio-premium.jpg"
-				}
-			]
-		},
-		"tiers": {
-			"heading": "Elige tu plan",
-			"subtitle": "Todos incluyen portafolio profesional publicado y hosting de por vida. Solo cambia el nivel de personalización.",
-			"recommended": "Recomendado",
-			"choose": "Elegir {plan}",
-			"items": [
-				{
-					"name": "Arranca",
-					"price": "S/. 50",
-					"badge": null,
-					"features": [
-						"Portafolio pro publicado",
-						"Hosting de por vida en cofoundy.dev",
-						"Listo en 72h",
-						"Código 100% tuyo"
-					]
-				},
-				{
-					"name": "Pro",
-					"price": "S/. 120",
-					"badge": "El más elegido",
-					"features": [
-						"Todo lo de Arranca",
-						"Elige entre 5+ diseños",
-						"Colores y copy a tu medida",
-						"Foto mejorada con IA",
-						"CV formato Harvard (PDF listo p/ enviar)",
-						"1 ronda de ajustes"
-					]
-				},
-				{
-					"name": "Premium",
-					"price": "S/. 280",
-					"badge": null,
-					"features": [
-						"Todo lo de Pro",
-						"Diseño custom desde tu referencia (Figma, Pinterest, etc.)",
-						"Animaciones y motion design",
-						"SEO optimizado (que Google te encuentre)",
-						"Open Graph (se ve pro al compartir en LinkedIn)",
-						"Ajustes ilimitados hasta que apruebes",
-						"Entrega en 5-7 días hábiles"
-					]
-				}
-			]
-		},
-		"how": {
-			"heading": "¿Cómo funciona?",
-			"steps": [
-				{
-					"number": "01",
-					"title": "Elige tu plan",
-					"body": "Selecciona el plan que más se ajuste a lo que necesitas. Desde lo esencial hasta un portafolio completamente personalizado."
-				},
-				{
-					"number": "02",
-					"title": "Recibe tu portafolio",
-					"body": "Te enviamos tu portafolio profesional listo en 72 horas (o 5-7 días para Premium). Código 100% tuyo."
-				},
-				{
-					"number": "03",
-					"title": "Ayudas una causa",
-					"body": "El 100% de los fondos recaudados se destina a ayuda social. Tu portafolio tiene un propósito más grande."
-				}
-			]
-		},
-		"payment": {
-			"heading": "Métodos de pago",
-			"subtitle": "Aceptamos todos los métodos disponibles para que puedas apoyar sin complicaciones.",
-			"methods": [
-				"Yape",
-				"Plin",
-				"Transferencia bancaria",
-				"Tarjeta de crédito/débito"
-			],
-			"note": "Una vez realizado el pago, contáctanos por WhatsApp para confirmar tu pedido."
-		},
-		"campaigns": {
-			"heading": "Campañas activas",
-			"subtitle": "Así es como tus portafolios están ayudando. Cada compra financia una causa real.",
-			"items": [
-				{
-					"title": "Ayuda a Nala 🐾",
-					"description": "Campaña para cubrir los gastos veterinarios de Nala, una perrita rescatada que necesita atención médica urgente.",
-					"goal": "Meta: S/. 1,700",
-					"link": "/pollada/ayuda-a-nala",
-					"cta": "Ver campaña →"
-				}
-			]
-		},
-		"faq": {
-			"heading": "Preguntas frecuentes",
-			"items": [
-				{
-					"q": "¿Qué es una pollada virtual?",
-					"a": "Es una adaptación digital de la tradicional pollada peruana — una reunión para recaudar fondos para una causa. En lugar de pollo, ofrecemos portafolios web profesionales como forma de contribución."
-				},
-				{
-					"q": "¿Cuándo recibo mi portafolio?",
-					"a": "Los planes Arranca y Pro se entregan en 72 horas. El plan Premium se entrega en 5-7 días hábiles debido al nivel de personalización."
-				},
-				{
-					"q": "¿Puedo personalizar mi portafolio?",
-					"a": "Sí. En el plan Pro puedes elegir entre 5+ diseños, colores y copy a tu medida. En Premium, el diseño es completamente custom desde tu referencia."
-				},
-				{
-					"q": "¿El código es realmente mío?",
-					"a": "¡Sí! El código es 100% tuyo. No hay ataduras ni licencias restrictivas. Puedes modificarlo, transferirlo o usarlo como quieras."
-				},
-				{
-					"q": "¿Cómo confirmo mi compra?",
-					"a": "Después de realizar el pago, escríbenos por WhatsApp con tu comprobante y el plan elegido. Te responderemos en menos de 24 horas para iniciar con tu portafolio."
-				},
-				{
-					"q": "¿A dónde va el dinero recaudado?",
-					"a": "El 100% de lo recaudado se destina a ayuda social. Publicaremos la transparencia de los fondos para que puedas ver el impacto de tu contribución."
-				}
-			]
-		},
-		"cta": {
-			"heading": "¿Listo para ayudar y llevarte un portafolio increíble?",
-			"body": "Elige tu plan, haz tu pago y contáctanos por WhatsApp. En 72 horas tendrás tu portafolio profesional. Gracias por tu apoyo 💛",
-			"button": "Contáctanos por WhatsApp",
-			"subtext": "Respondemos en menos de 24 horas"
-		}
 	},
 	"NalaCausePage": {
 		"hero": {
@@ -1531,5 +1309,209 @@
 				"image": "/fundraises/nala-2026/nala-01.jpeg"
 			}
 		]
+	},
+	"Metadata": {
+		"home": {
+			"title": "{brand} — Empresa de Ingeniería de Software",
+			"description": "{brand} es una empresa de ingeniería de software de Perú. Construimos software para clientes — productos full-stack, infraestructura backend e integraciones de IA — y construimos y operamos nuestros propios productos SaaS."
+		},
+		"company": {
+			"title": "Empresa",
+			"description": "{brand} es una empresa de ingeniería de software de Perú: servicios de ingeniería para clientes y productos de software propios, hechos por el mismo equipo."
+		},
+		"products": {
+			"title": "Productos",
+			"description": "Software que diseñamos, construimos y operamos nosotros mismos: Requiems API, CompileStrength, BiasMarket y librerías de código abierto y herramientas para desarrolladores."
+		},
+		"team": {
+			"title": "Equipo",
+			"description": "Las personas detrás de {brand}, cómo está organizado el equipo de ingeniería y cómo trabajamos juntos."
+		},
+		"founder": {
+			"title": "Eliaz Bobadilla — Fundador",
+			"description": "Eliaz Bobadilla es ingeniero de software y fundador de {brand}, enfocado en arquitectura backend, sistemas de IA e infraestructura."
+		}
+	},
+	"CompanyPage": {
+		"overline": "Empresa",
+		"heading": "Ingenieros que construyen software",
+		"headingGold": "para clientes y para nosotros mismos.",
+		"intro": "{brand} es una empresa de ingeniería de software de Perú. Hacemos ingeniería para otras empresas, y diseñamos, construimos y operamos nuestros propios productos de software. Ambas cosas las hace el mismo equipo, con los mismos estándares.",
+		"whatWeDo": {
+			"heading": "Qué hacemos",
+			"services": {
+				"title": "Servicios de ingeniería",
+				"body": "Desarrollo de producto full-stack, ingeniería backend e infraestructura, integración de IA y automatización, ingenieros dedicados, alianzas de desarrollo a largo plazo y servicios de CTO fraccional.",
+				"cta": "Ver servicios"
+			},
+			"products": {
+				"title": "Nuestros propios productos",
+				"body": "Aplicaciones SaaS, APIs y herramientas para desarrolladores que diseñamos, construimos y operamos en producción nosotros mismos.",
+				"cta": "Ver productos"
+			}
+		},
+		"principles": {
+			"heading": "Cómo construimos",
+			"items": [
+				{
+					"heading": "Empezar por la restricción",
+					"body": "No empezamos por la arquitectura. Empezamos por el verdadero cuello de botella — latencia, costo, complejidad o tiempo de salida al mercado. La respuesta cambia el diseño más que cualquier elección de framework."
+				},
+				{
+					"heading": "Simple y probado por defecto",
+					"body": "Usamos herramientas consolidadas antes que nuevas, escribimos código que el próximo ingeniero pueda leer sin contexto y tratamos toda abstracción como deuda hasta que demuestra su valor."
+				},
+				{
+					"heading": "La IA es un problema de integración, no de investigación",
+					"body": "Cuando la IA es parte del stack, el objetivo es una salida confiable, un comportamiento acotado y una lógica de fallback clara — no una demo."
+				},
+				{
+					"heading": "Trade-offs honestos",
+					"body": "Te decimos qué es alcanzable, qué no y dónde están las verdaderas incógnitas antes de empezar. Si existe una solución más simple, lo decimos."
+				}
+			]
+		},
+		"practices": {
+			"heading": "Prácticas que puedes revisar",
+			"description": "Preferimos mostrar cómo trabajamos antes que describirlo. Esto es público.",
+			"items": [
+				{
+					"title": "Arquitectura documentada",
+					"body": "La arquitectura y las convenciones de este sitio web están escritas en su repositorio público.",
+					"link": "Leer el documento de arquitectura"
+				},
+				{
+					"title": "Pruebas automatizadas en CI",
+					"body": "En el repositorio de este sitio, las pruebas se ejecutan automáticamente en cada push a main y en cada pull request.",
+					"link": "Ver el workflow de CI"
+				},
+				{
+					"title": "Código abierto",
+					"body": "Publicamos librerías y herramientas en GitHub con licencias de código abierto.",
+					"link": "Explorar nuestro GitHub"
+				}
+			]
+		},
+		"origin": {
+			"heading": "De dónde venimos",
+			"p1": "{brand} nació del trabajo de ingeniería de su fundador, {founder}, quien empezó a tomar proyectos de clientes y reunió a desarrolladores en los que confiaba.",
+			"p2": "Hoy es un equipo con sus propios clientes y sus propios productos. En cada proyecto, los ingenieros que lo construyen definen la dirección técnica.",
+			"cta": "Sobre el fundador"
+		},
+		"facts": {
+			"items": [
+				{
+					"label": "Ubicación",
+					"value": "Lima, Perú (UTC−5)"
+				},
+				{
+					"label": "Idiomas de trabajo",
+					"value": "Inglés y español"
+				},
+				{
+					"label": "Qué hacemos",
+					"value": "Ingeniería para clientes y productos propios"
+				}
+			]
+		},
+		"cta": {
+			"heading": "¿Quieres ver cómo trabajamos?",
+			"body": "Agenda una llamada breve y cuéntanos qué estás construyendo.",
+			"button": "Agendar llamada"
+		}
+	},
+	"ProductsPage": {
+		"overline": "Productos",
+		"heading": "Software que construimos",
+		"headingGold": "y operamos nosotros mismos.",
+		"intro": "Además del trabajo para clientes, diseñamos, construimos y operamos nuestros propios productos. Ahí es donde ponemos a prueba nuestras propias decisiones de ingeniería en producción.",
+		"visitSite": "Visitar {name}",
+		"readWriteUp": "Análisis técnico de {name}",
+		"items": {
+			"requiemsApi": {
+				"tagline": "Plataforma de APIs",
+				"description": "Una plataforma de APIs en producción que reúne validación de email, ubicación, finanzas y utilidades bajo una sola clave. Construida como un monorepo multilenguaje: una API en Go, un panel en Rails y dos Cloudflare Workers para autenticación y gestión de claves."
+			},
+			"compileStrength": {
+				"tagline": "SaaS de fitness con IA",
+				"description": "Un producto por suscripción con un agente de IA que genera programas de entrenamiento personalizados. Construido sobre Next.js, Cloudflare Workers y Neon PostgreSQL — con facturación, autenticación, IA y despliegue en el edge incluidos."
+			},
+			"biasMarket": {
+				"tagline": "Creador de tiendas para vendedoras de merch K-pop",
+				"description": "Una tienda y un gestor de pedidos para vendedoras de merch K-pop. Maneja group orders, claims de photocards y drops de merch — con los pedidos y los comprobantes de pago en un solo lugar, sin hojas de cálculo."
+			}
+		},
+		"openSource": {
+			"heading": "Código abierto",
+			"description": "Librerías y herramientas de código abierto que mantenemos.",
+			"viewAll": "Todos los repositorios en GitHub",
+			"items": {
+				"lorelai": "Un generador de lorem ipsum para Go.",
+				"isEmailDisposable": "Verifica si una dirección de email es desechable. Funciona sin conexión.",
+				"goIpIntelligence": "Detecta VPNs, proxies, Tor y rangos de IP de hosting, con ASN y geolocalización.",
+				"holidaysPerCountry": "Calendarios de feriados para Go, incluidos los feriados regionales. Funciona sin conexión.",
+				"businessDaysCalculator": "Cuenta los días hábiles entre dos fechas, en Go.",
+				"sentimentGo": "Análisis de sentimiento ligero para Go, con un léxico integrado."
+			}
+		},
+		"cta": {
+			"heading": "¿Necesitas algo así?",
+			"body": "El equipo que construyó estos productos también construye para clientes. Cuéntanos en qué estás trabajando.",
+			"button": "Agendar llamada"
+		}
+	},
+	"WhatWeDo": {
+		"overline": "QUÉ HACEMOS",
+		"heading": "Un equipo de ingeniería,",
+		"headingGold": "dos líneas de trabajo.",
+		"subtitle": "Construimos software para clientes y construimos y operamos nuestros propios productos. Lo que aprendemos operando software en producción se aplica al trabajo que hacemos para ti.",
+		"services": {
+			"title": "Servicios de ingeniería",
+			"body": "Diseñamos, construimos y mantenemos software para otras empresas — como equipo de proyecto o con ingenieros dedicados a tu equipo.",
+			"items": [
+				"Desarrollo de producto full-stack",
+				"Ingeniería backend e infraestructura",
+				"Integración de IA y automatización",
+				"Ingenieros dedicados",
+				"Alianzas de desarrollo a largo plazo",
+				"CTO fraccional"
+			],
+			"cta": "Ver servicios"
+		},
+		"products": {
+			"title": "Nuestros propios productos",
+			"body": "Diseñamos, construimos y operamos software bajo nuestro propio nombre, así que convivimos con las consecuencias de nuestras propias decisiones de ingeniería.",
+			"items": [
+				"Requiems API — una sola clave para APIs de validación de email, ubicación, finanzas y utilidades",
+				"CompileStrength — un SaaS de fitness con IA",
+				"BiasMarket — un creador de tiendas para vendedoras de merch K-pop",
+				"Librerías de código abierto y herramientas para desarrolladores"
+			],
+			"cta": "Ver productos"
+		}
+	},
+	"EngineeringPrinciples": {
+		"heading1": "CÓMO",
+		"heading2": "CONSTRUIMOS",
+		"subtitle": "Principios con los que trabaja todo el equipo.",
+		"items": [
+			{
+				"title": "Empezar por la restricción",
+				"body": "Antes de elegir una arquitectura preguntamos cuál es el verdadero cuello de botella — latencia, costo, complejidad o tiempo de salida al mercado. La respuesta define el diseño más que cualquier framework."
+			},
+			{
+				"title": "Simple y probado por defecto",
+				"body": "Herramientas consolidadas antes que nuevas. Código que el próximo ingeniero pueda leer sin contexto. Toda abstracción es deuda hasta que demuestra su valor."
+			},
+			{
+				"title": "La IA es un problema de integración",
+				"body": "Cuando la IA es parte del stack, el objetivo es una salida confiable, un comportamiento acotado y una lógica de fallback clara — no una demo."
+			},
+			{
+				"title": "Acceso directo a los ingenieros",
+				"body": "Una vez que el proyecto empieza, revisas el avance y conversas los trade-offs directamente con los ingenieros que construyen tu sistema."
+			}
+		],
+		"cta": "Más sobre cómo trabajamos"
 	}
 }

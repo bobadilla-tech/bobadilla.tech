@@ -29,7 +29,7 @@ export default function ServiceEstimateCTA() {
 						})}
 					</p>
 
-					<Button href={CAL_LINKS.ale} variant="gold">
+					<Button href={CAL_LINKS.intro} variant="gold">
 						{t("button")}
 					</Button>
 				</motion.div>

@@ -1,7 +1,13 @@
 import { Github, Linkedin, Instagram } from "@/shared/ui/BrandIcons";
 import { getTranslations } from "next-intl/server";
 import { Link } from "~/i18n/navigation";
-import { CONTACT, SOCIAL_LINKS, FOOTER_LINKS } from "~/shared/lib/constants";
+import {
+	CONTACT,
+	SOCIAL_LINKS,
+	FOOTER_SERVICE_LINKS,
+	FOOTER_COMPANY_LINKS,
+} from "~/shared/lib/constants";
+import { BRAND } from "~/shared/lib/brand";
 
 function toTelUri(phoneNumber: string): string {
 	const trimmed = phoneNumber.trim();
@@ -12,18 +18,19 @@ function toTelUri(phoneNumber: string): string {
 
 export default async function Footer() {
 	const t = await getTranslations("Footer");
+	const linkClass =
+		"font-body text-brand-primary/60 hover:text-brand-primary text-sm transition-colors duration-200";
 
 	return (
 		<footer className="bg-surface border-t border-border">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
-					{/* Logo + social */}
 					<div className="flex flex-col gap-6">
 						<Link
 							href="/"
 							className="font-heading text-2xl font-bold text-brand-gold"
 						>
-							Bobadilla Tech
+							{BRAND.name}
 						</Link>
 						<div className="flex items-center gap-4">
 							<a
@@ -55,88 +62,65 @@ export default async function Footer() {
 							</a>
 						</div>
 					</div>
-
-					{/* Nav links */}
 					<div className="flex flex-col gap-4">
 						<span className="font-body text-xs font-semibold tracking-widest uppercase text-brand-primary/40">
-							{t("navigation")}
+							{t("services")}
 						</span>
 						<nav className="flex flex-col gap-3">
-							{FOOTER_LINKS.map((link) => (
-								<Link
-									key={link.href}
-									href={link.href}
-									className="font-body text-brand-primary/60 hover:text-brand-primary text-sm transition-colors duration-200"
-								>
+							{FOOTER_SERVICE_LINKS.map((link) => (
+								<Link key={link.href} href={link.href} className={linkClass}>
 									{t(`links.${link.id}` as Parameters<typeof t>[0])}
 								</Link>
 							))}
 						</nav>
 					</div>
-
-					{/* Company */}
 					<div className="flex flex-col gap-4">
 						<span className="font-body text-xs font-semibold tracking-widest uppercase text-brand-primary/40">
 							{t("company")}
 						</span>
 						<nav className="flex flex-col gap-3">
-							{[
-								{ href: "/hire", label: "Work With Us" },
-								{ href: "/start-small", label: "Start Small" },
-								{ href: "/system-audit", label: "System Audit" },
-								{ href: "/case-studies", label: "Case Studies" },
-								{ href: "/team", label: "Team" },
-								{ href: "/founder", label: "Founder" },
-							].map((link) => (
-								<Link
-									key={link.href}
-									href={link.href}
-									className="font-body text-brand-primary/60 hover:text-brand-primary text-sm transition-colors duration-200"
-								>
-									{link.label}
-								</Link>
-							))}
+							{FOOTER_COMPANY_LINKS.map((link) =>
+								"external" in link && link.external ? (
+									<a
+										key={link.href}
+										href={link.href}
+										target="_blank"
+										rel="noopener noreferrer"
+										className={linkClass}
+									>
+										{t(`links.${link.id}` as Parameters<typeof t>[0])}
+									</a>
+								) : (
+									<Link key={link.href} href={link.href} className={linkClass}>
+										{t(`links.${link.id}` as Parameters<typeof t>[0])}
+									</Link>
+								)
+							)}
 						</nav>
 					</div>
-
-					{/* Drop us a line */}
 					<div className="flex flex-col gap-4">
 						<span className="font-body text-xs font-semibold tracking-widest uppercase text-brand-primary/40">
 							{t("dropUsALine")}
 						</span>
-						<div className="flex flex-col gap-2">
-							<a
-								href={`mailto:${CONTACT.email.eliaz}`}
-								className="font-body text-brand-primary/60 hover:text-brand-primary text-sm transition-colors duration-200"
-							>
-								{CONTACT.email.eliaz}
-							</a>
-							<a
-								href={`mailto:${CONTACT.email.ale}`}
-								className="font-body text-brand-primary/60 hover:text-brand-primary text-sm transition-colors duration-200"
-							>
-								{CONTACT.email.ale}
-							</a>
-						</div>
+						<a href={`mailto:${CONTACT.email.main}`} className={linkClass}>
+							{CONTACT.email.main}
+						</a>
 					</div>
-
-					{/* Call us */}
 					<div className="flex flex-col gap-4">
 						<span className="font-body text-xs font-semibold tracking-widest uppercase text-brand-primary/40">
 							{t("callUs")}
 						</span>
-						<a
-							href={`tel:${toTelUri(CONTACT.phone)}`}
-							className="font-body text-brand-primary/60 hover:text-brand-primary text-sm transition-colors duration-200"
-						>
+						<a href={`tel:${toTelUri(CONTACT.phone)}`} className={linkClass}>
 							{CONTACT.phone}
 						</a>
 					</div>
 				</div>
-
 				<div className="mt-12 pt-8 border-t border-border">
 					<p className="font-body text-brand-primary/30 text-sm text-center">
-						{t("copyright", { year: new Date().getFullYear() })}
+						{t("copyright", {
+							year: new Date().getFullYear(),
+							brand: BRAND.name,
+						})}
 					</p>
 				</div>
 			</div>

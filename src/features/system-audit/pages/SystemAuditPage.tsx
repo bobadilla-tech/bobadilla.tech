@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 import Button from "@/shared/ui/Button";
-import { CAL_LINKS } from "~/shared/lib/constants";
+import { CAL_LINKS, CONTACT } from "~/shared/lib/constants";
 
 const fadeUp = {
 	initial: { opacity: 0, y: 24 },
@@ -64,9 +64,9 @@ export default function SystemAuditPage() {
 					</div>
 					<p className="font-body text-xl text-brand-primary/70 leading-relaxed max-w-2xl">
 						If your system feels slow, fragile, or unclear to scale — this is
-						where we start. We don't jump into long contracts or vague estimates.
-						First, we understand exactly what's going on and give you a clear path
-						forward.
+						where we start. We don't jump into long contracts or vague
+						estimates. First, we understand exactly what's going on and give you
+						a clear path forward.
 					</p>
 				</motion.div>
 
@@ -139,7 +139,7 @@ export default function SystemAuditPage() {
 							},
 							{
 								heading: "You keep the report regardless",
-								body: "This isn't a pitch in disguise. The deliverable is a real technical document you own. Use it to guide internal work, bring in other contractors, or inform your own roadmap.",
+								body: "This isn't a pitch in disguise. The deliverable is a real technical document you own. Use it to guide internal work, bring in other teams, or inform your own roadmap.",
 							},
 							{
 								heading: "Pricing depends on system complexity",
@@ -170,18 +170,18 @@ export default function SystemAuditPage() {
 						Next step
 					</h2>
 					<p className="font-body text-brand-primary/60 mb-2 max-w-md mx-auto">
-						Book a short call to discuss your system. We'll tell you whether this
-						audit is the right starting point — and what it would cost.
+						Book a short call to discuss your system. We'll tell you whether
+						this audit is the right starting point — and what it would cost.
 					</p>
 					<p className="font-body text-brand-primary/40 text-sm mb-8">
 						Or reach out with details and we'll respond directly.
 					</p>
 					<div className="flex flex-col sm:flex-row gap-4 justify-center">
-						<Button href={CAL_LINKS.eliaz} variant="gold" size="md">
+						<Button href={CAL_LINKS.technical} variant="gold" size="md">
 							Book a Call to Discuss
 						</Button>
 						<Button
-							href={`mailto:eliaz@bobadilla.tech?subject=System Audit Inquiry`}
+							href={`mailto:${CONTACT.email.main}?subject=System Audit Inquiry`}
 							variant="outline"
 							size="md"
 						>

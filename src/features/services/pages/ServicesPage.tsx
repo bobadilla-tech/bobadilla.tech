@@ -122,7 +122,7 @@ export default async function ServicesPage() {
 							{t("ctaBody")}
 						</p>
 						<div className="flex flex-col sm:flex-row justify-center gap-4">
-							<Button href={CAL_LINKS.ale} variant="gold">
+							<Button href={CAL_LINKS.intro} variant="gold">
 								{t("bookCall")}
 							</Button>
 							<Button to="/#contact" variant="ghost">

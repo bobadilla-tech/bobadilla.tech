@@ -8,7 +8,7 @@ import { CONTACT } from "~/shared/lib/constants";
 
 export default function BookConfirmedPage() {
 	const t = useTranslations("BookConfirmedPage");
-	
+
 	const preCallItems = t.raw("preCallItems") as Array<{
 		label: string;
 		body: string;
@@ -71,10 +71,10 @@ export default function BookConfirmedPage() {
 					<p className="font-body text-brand-primary/50 text-sm mb-6">
 						{t("detailsPrompt")}{" "}
 						<a
-							href={`mailto:${CONTACT.email.eliaz}?subject=${encodeURIComponent(t("emailSubject"))}`}
+							href={`mailto:${CONTACT.email.main}?subject=${encodeURIComponent(t("emailSubject"))}`}
 							className="text-brand-gold hover:text-brand-gold-light transition-colors duration-200"
 						>
-							{CONTACT.email.eliaz}
+							{CONTACT.email.main}
 						</a>
 					</p>
 					<Button to="/" variant="ghost" size="sm">

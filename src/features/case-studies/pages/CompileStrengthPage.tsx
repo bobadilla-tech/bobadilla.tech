@@ -16,9 +16,18 @@ const fadeUp = {
 export default function CompileStrengthPage() {
 	const t = useTranslations("CompileStrengthPage");
 
-	const stackItems = t.raw("stack.items") as Array<{ layer: string; items: string }>;
-	const resultItems = t.raw("results.items") as Array<{ stat: string; label: string }>;
-	const takeawayItems = t.raw("takeaways.items") as Array<{ heading: string; body: string }>;
+	const stackItems = t.raw("stack.items") as Array<{
+		layer: string;
+		items: string;
+	}>;
+	const resultItems = t.raw("results.items") as Array<{
+		stat: string;
+		label: string;
+	}>;
+	const takeawayItems = t.raw("takeaways.items") as Array<{
+		heading: string;
+		body: string;
+	}>;
 
 	return (
 		<div className="pt-32 pb-24">
@@ -26,7 +35,10 @@ export default function CompileStrengthPage() {
 				{/* Breadcrumb */}
 				<motion.div {...fadeUp} className="mb-12">
 					<div className="flex items-center gap-2 font-body text-sm text-brand-primary/40 mb-8">
-						<Link href="/case-studies" className="hover:text-brand-gold transition-colors">
+						<Link
+							href="/case-studies"
+							className="hover:text-brand-gold transition-colors"
+						>
 							{t("breadcrumb")}
 						</Link>
 						<span>/</span>
@@ -167,7 +179,7 @@ export default function CompileStrengthPage() {
 						{t("cta.body")}
 					</p>
 					<div className="flex flex-col sm:flex-row justify-center gap-4">
-						<Button href={CAL_LINKS.eliaz} variant="gold" size="md">
+						<Button href={CAL_LINKS.technical} variant="gold" size="md">
 							{t("cta.bookCall")}
 						</Button>
 						<Button to="/case-studies" variant="ghost" size="md">

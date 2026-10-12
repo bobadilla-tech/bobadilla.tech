@@ -10,8 +10,16 @@ import { CAL_LINKS } from "~/shared/lib/constants";
 export default function HirePage() {
 	const t = useTranslations("HirePage");
 	const whoItems = t.raw("who") as string[];
-	const services = t.raw("services") as Array<{ title: string; description: string; outcome: string }>;
-	const steps = t.raw("steps") as Array<{ number: string; title: string; body: string }>;
+	const services = t.raw("services") as Array<{
+		title: string;
+		description: string;
+		outcome: string;
+	}>;
+	const steps = t.raw("steps") as Array<{
+		number: string;
+		title: string;
+		body: string;
+	}>;
 	const whyItems = t.raw("why") as string[];
 
 	return (
@@ -30,12 +38,11 @@ export default function HirePage() {
 						{t("intro")}
 					</p>
 					<div className="flex flex-col sm:flex-row gap-4">
-						<Button href={CAL_LINKS.eliaz} variant="gold" size="md">
+						<Button href={CAL_LINKS.technical} variant="gold" size="md">
 							{t("cta1")}
 						</Button>
 						<Button to="/start-small" variant="outline" size="md">
-							{t("cta2")}{" "}
-							<ArrowRight className="ml-2 size-4 inline" />
+							{t("cta2")} <ArrowRight className="ml-2 size-4 inline" />
 						</Button>
 					</div>
 				</motion.div>
@@ -190,7 +197,7 @@ export default function HirePage() {
 						{t("finalNote")}
 					</p>
 					<div className="flex flex-col sm:flex-row gap-4 justify-center">
-						<Button href={CAL_LINKS.eliaz} variant="gold" size="md">
+						<Button href={CAL_LINKS.technical} variant="gold" size="md">
 							{t("bookCall")}
 						</Button>
 						<Button to="/start-small" variant="outline" size="md">
