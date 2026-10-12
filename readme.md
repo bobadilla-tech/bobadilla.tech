@@ -9,7 +9,7 @@
 [![codecov](https://codecov.io/gh/bobadilla-tech/bobadilla.tech/graph/badge.svg?token=N3O0R9J0SN)](https://codecov.io/gh/bobadilla-tech/bobadilla.tech)
 [![Docs](https://img.shields.io/badge/Docs-docs/core-blue)](./docs/core/architecture.md)
 
-Bobadilla Technologies’ official website and portfolio, built with Next.js. It
+Bobadilla Tech's official website, built with Next.js. It
 includes a modern landing page, services catalog, pricing tools, a
 Sanity-powered blog, and a contact system backed by Cloudflare D1 with an
 internal admin for lead tracking.

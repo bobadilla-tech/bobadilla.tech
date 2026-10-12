@@ -17,6 +17,12 @@ Next.js project.
 
 ## 🎨 Design System
 
+### Brand
+
+- Read the company display name and URLs from `src/shared/lib/brand.ts`.
+- In `messages/*.json`, use `{brand}` instead of brand name literals and pass `BRAND.name`; register those message paths in `messages.test.ts`.
+- In Spanish and Portuguese, write copy without an article before `{brand}`.
+
 The site uses a gold-on-dark brand identity. All design tokens are defined in
 `src/app/globals.css` via a Tailwind v4 `@theme` block — **do not use a
 `tailwind.config.ts`**.
