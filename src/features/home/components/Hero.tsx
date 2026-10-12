@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { BadgeCheck } from "lucide-react";
+import { Code } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { CAL_LINKS } from "~/shared/lib/constants";
 import Button from "@/shared/ui/Button";
@@ -25,9 +25,9 @@ export default function Hero() {
 						initial={{ opacity: 0, y: 10 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ delay: 0.1, duration: 0.5 }}
-						className="inline-flex items-center gap-2 text-brand-primary/70"
+						className="inline-flex items-center gap-2 text-brand-primary/70 text-center"
 					>
-						<BadgeCheck className="size-5 shrink-0" />
+						<Code className="size-5 shrink-0" />
 						<span className="font-body text-sm sm:text-base font-medium tracking-widest uppercase">
 							{t("badge")}
 						</span>
@@ -79,7 +79,7 @@ export default function Hero() {
 			>
 				<Image
 					src="/assets/landing/main.png"
-					alt="World-class digital products"
+					alt=""
 					width={1200}
 					height={800}
 					className="w-full h-auto"
@@ -92,9 +92,12 @@ export default function Hero() {
 				initial={{ opacity: 0, y: 16 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ delay: 0.7, duration: 0.6 }}
-				className="relative z-10 pb-16"
+				className="relative z-10 pb-16 px-4 flex flex-col items-center gap-8 text-center"
 			>
-				<Button href={CAL_LINKS.ale} variant="gold" size="lg">
+				<p className="font-body text-lg sm:text-xl text-brand-primary/70 max-w-2xl leading-relaxed">
+					{t("subtitle")}
+				</p>
+				<Button href={CAL_LINKS.intro} variant="gold" size="lg">
 					{t("button")}
 				</Button>
 			</motion.div>

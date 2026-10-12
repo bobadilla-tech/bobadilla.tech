@@ -1,6 +1,14 @@
 import { CTABand } from "@/shared/components/client";
 import { ContactForm } from "@/features/leads";
-import { Hero, StatsBar, Services, WhyBobatech, Industries, FAQ } from "@/features/home";
+import {
+	Hero,
+	StatsBar,
+	Services,
+	Industries,
+	FAQ,
+	WhatWeDo,
+	EngineeringPrinciples,
+} from "@/features/home";
 import { generateOrganizationSchema } from "~/shared/lib/seo";
 
 export default function Home() {
@@ -13,9 +21,10 @@ export default function Home() {
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
 			/>
 			<Hero />
-			<StatsBar />
+			<WhatWeDo />
 			<Services />
-			<WhyBobatech />
+			<StatsBar />
+			<EngineeringPrinciples />
 			<Industries />
 			<FAQ />
 			<CTABand />
