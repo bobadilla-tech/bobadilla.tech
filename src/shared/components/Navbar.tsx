@@ -5,8 +5,13 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "~/i18n/navigation";
-import { CAL_LINKS, SOCIAL_LINKS, EXTERNAL_LINKS } from "~/shared/lib/constants";
+import {
+	CAL_LINKS,
+	SOCIAL_LINKS,
+	EXTERNAL_LINKS,
+} from "~/shared/lib/constants";
 import Button from "@/shared/ui/Button";
+import { BRAND } from "~/shared/lib/brand";
 
 export default function Navbar() {
 	const [isScrolled, setIsScrolled] = useState(false);
@@ -58,17 +63,17 @@ export default function Navbar() {
 	}, [isResourcesOpen, isCompanyOpen]);
 
 	const companyLinks = [
+		{ label: t("about"), href: "/company" },
+		{ label: t("team"), href: "/team" },
+		{ label: t("caseStudies"), href: "/case-studies" },
 		{ label: t("hire"), href: "/hire" },
 		{ label: t("startSmall"), href: "/start-small" },
-		{ label: t("caseStudies"), href: "/case-studies" },
-		{ label: t("team"), href: "/team" },
-		{ label: t("founder"), href: "/founder" },
 	];
 
 	const resourceLinks = [
 		{ label: t("blog"), href: "/blog" },
 		{ label: t("help"), href: "/help" },
-		{ label: t("tools"), href: "https://requiems.xyz/en/tools", external: true },
+		{ label: t("tools"), href: EXTERNAL_LINKS.tools, external: true },
 		{ label: t("openSource"), href: SOCIAL_LINKS.github, external: true },
 		{ label: t("apis"), href: EXTERNAL_LINKS.apis, external: true },
 	];
@@ -90,8 +95,9 @@ export default function Navbar() {
 							className="shrink-0 h-28 overflow-hidden flex items-center"
 						>
 							<Image
-								src="/assets/logo.png"
-								alt="Boba Tech"
+								src={BRAND.logo.light}
+								alt={BRAND.shortName}
+								data-brand-logo
 								width={500}
 								height={500}
 								className="w-32 sm:w-44 h-auto"
@@ -100,12 +106,18 @@ export default function Navbar() {
 						</Link>
 
 						{/* Nav links — centered */}
-						<div className="hidden md:flex items-center justify-center gap-8">
+						<div className="hidden xl:flex items-center justify-center gap-8">
 							<Link
 								href="/services"
 								className="font-body text-xl text-brand-primary/80 hover:text-brand-primary transition-colors duration-200"
 							>
 								{t("services")}
+							</Link>
+							<Link
+								href="/products"
+								className="font-body text-xl text-brand-primary/80 hover:text-brand-primary transition-colors duration-200"
+							>
+								{t("products")}
 							</Link>
 							<div
 								className="relative"
@@ -114,7 +126,9 @@ export default function Navbar() {
 								onMouseLeave={() => setIsCompanyOpen(false)}
 								onFocusCapture={() => setIsCompanyOpen(true)}
 								onBlurCapture={(e) => {
-									if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+									if (
+										!e.currentTarget.contains(e.relatedTarget as Node | null)
+									) {
 										setIsCompanyOpen(false);
 									}
 								}}
@@ -137,7 +151,9 @@ export default function Navbar() {
 										if (e.key === "Escape") setIsCompanyOpen(false);
 									}}
 									className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-48 bg-brand-bg/95 backdrop-blur-lg border border-border rounded-xl shadow-xl transition-all duration-200 ${
-										isCompanyOpen ? "opacity-100 visible" : "opacity-0 invisible"
+										isCompanyOpen
+											? "opacity-100 visible"
+											: "opacity-0 invisible"
 									}`}
 								>
 									{companyLinks.map((link) => (
@@ -159,7 +175,9 @@ export default function Navbar() {
 								onMouseLeave={() => setIsResourcesOpen(false)}
 								onFocusCapture={() => setIsResourcesOpen(true)}
 								onBlurCapture={(e) => {
-									if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+									if (
+										!e.currentTarget.contains(e.relatedTarget as Node | null)
+									) {
 										setIsResourcesOpen(false);
 									}
 								}}
@@ -182,7 +200,9 @@ export default function Navbar() {
 										if (e.key === "Escape") setIsResourcesOpen(false);
 									}}
 									className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-48 bg-brand-bg/95 backdrop-blur-lg border border-border rounded-xl shadow-xl transition-all duration-200 ${
-										isResourcesOpen ? "opacity-100 visible" : "opacity-0 invisible"
+										isResourcesOpen
+											? "opacity-100 visible"
+											: "opacity-0 invisible"
 									}`}
 								>
 									{resourceLinks.map((link) =>
@@ -216,23 +236,17 @@ export default function Navbar() {
 							>
 								{t("pricing")}
 							</Link>
-							<Link
-								href="/#contact"
-								className="font-body text-xl text-brand-primary/80 hover:text-brand-primary transition-colors duration-200"
-							>
-								{t("contact")}
-							</Link>
 						</div>
 
 						{/* Book a Call — right */}
-						<div className="hidden md:flex items-center justify-end">
-							<Button href={CAL_LINKS.ale} variant="gold" size="lg">
+						<div className="hidden xl:flex items-center justify-end">
+							<Button href={CAL_LINKS.intro} variant="gold" size="lg">
 								{t("bookCall")}
 							</Button>
 						</div>
 
 						{/* Mobile hamburger */}
-						<div className="md:hidden flex justify-end col-start-3">
+						<div className="xl:hidden flex justify-end col-start-3">
 							<button
 								onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
 								className="text-brand-primary hover:text-brand-primary/80 transition-colors duration-200"
@@ -249,11 +263,11 @@ export default function Navbar() {
 			{isMobileMenuOpen && (
 				<>
 					<div
-						className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+						className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 xl:hidden"
 						onClick={() => setIsMobileMenuOpen(false)}
 						aria-hidden="true"
 					/>
-					<div className="fixed left-0 right-0 top-28 bottom-0 bg-brand-bg z-50 md:hidden overflow-y-auto">
+					<div className="fixed left-0 right-0 top-28 bottom-0 bg-brand-bg z-50 xl:hidden overflow-y-auto">
 						<div className="flex flex-col space-y-4 p-6">
 							<Link
 								href="/services"
@@ -261,6 +275,13 @@ export default function Navbar() {
 								onClick={() => setIsMobileMenuOpen(false)}
 							>
 								{t("services")}
+							</Link>
+							<Link
+								href="/products"
+								className="font-body text-brand-primary/70 hover:text-brand-primary transition-colors duration-200 py-2"
+								onClick={() => setIsMobileMenuOpen(false)}
+							>
+								{t("products")}
 							</Link>
 							<div>
 								<div className="font-body text-brand-primary/40 text-xs tracking-widest uppercase mb-3">
@@ -324,7 +345,7 @@ export default function Navbar() {
 								{t("contact")}
 							</Link>
 							<Button
-								href={CAL_LINKS.ale}
+								href={CAL_LINKS.intro}
 								variant="gold"
 								size="sm"
 								className="mt-4 w-full justify-center"
