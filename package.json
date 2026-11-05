@@ -44,7 +44,7 @@
 		"better-auth": "^1.6.23",
 		"clsx": "^2.1.1",
 		"drizzle-kit": "^0.31.11",
-		"drizzle-orm": "^0.45.2",
+		"drizzle-orm": "^0.45.4",
 		"embla-carousel-react": "^8.6.0",
 		"framer-motion": "^12.42.2",
 		"lucide-react": "^1.24.0",
