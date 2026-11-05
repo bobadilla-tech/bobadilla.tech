@@ -43,7 +43,7 @@
 		"@tanstack/react-table": "^8.21.3",
 		"better-auth": "^1.6.23",
 		"clsx": "^2.1.1",
-		"drizzle-kit": "^0.31.10",
+		"drizzle-kit": "^0.31.11",
 		"drizzle-orm": "^0.45.2",
 		"embla-carousel-react": "^8.6.0",
 		"framer-motion": "^12.42.2",
