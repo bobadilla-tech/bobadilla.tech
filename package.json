@@ -33,7 +33,7 @@
 	"dependencies": {
 		"@next/third-parties": "^16.2.10",
 		"@opennextjs/cloudflare": "^1.20.2",
-		"@portabletext/react": "^6.2.0",
+		"@portabletext/react": "^8.0.1",
 		"@portabletext/types": "^4.0.2",
 		"@react-email/components": "^1.0.12",
 		"@react-email/render": "^2.2.0",
