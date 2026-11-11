@@ -37,7 +37,7 @@
 		"@portabletext/types": "^4.0.2",
 		"@react-email/components": "^1.0.12",
 		"@react-email/render": "^2.2.0",
-		"@sanity/client": "^7.23.1",
+		"@sanity/client": "^8.15.0",
 		"@sanity/image-url": "^2.1.1",
 		"@t3-oss/env-nextjs": "^0.13.11",
 		"@tanstack/react-table": "^9.3.1",
