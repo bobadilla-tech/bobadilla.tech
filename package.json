@@ -31,7 +31,7 @@
 		"generate:og:nala": "tsx scripts/generate-og-nala.ts"
 	},
 	"dependencies": {
-		"@next/third-parties": "^16.2.10",
+		"@next/third-parties": "^16.4.6",
 		"@opennextjs/cloudflare": "^1.20.17",
 		"@portabletext/react": "^8.0.1",
 		"@portabletext/types": "^4.0.2",
