@@ -27,8 +27,8 @@ importers:
         specifier: ^2.2.0
         version: 2.2.0(react-dom@19.2.7(react@19.3.1))(react@19.3.1)
       '@sanity/client':
-        specifier: ^8.15.0
-        version: 8.15.0(vitest@4.1.12)
+        specifier: ^8.16.0
+        version: 8.16.0(vitest@4.1.12)
       '@sanity/image-url':
         specifier: ^2.1.1
         version: 2.1.1
@@ -1930,8 +1930,8 @@ packages:
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
 
-  '@sanity/client@8.15.0':
-    resolution: {integrity: sha512-CgmNhvXCD8S0LpXr0YMPNPw0/pzzJ+WbO0vmgu0aISHo+AZDS+ke0G+xuZitqFsgUwYso9zBxJKYpoJnoUOvyA==}
+  '@sanity/client@8.16.0':
+    resolution: {integrity: sha512-x6VKopU1Rt2mp3YBQRBIyWE2ebzqc4sMwUbQJJzIzNS0TMnNURvHe/z1qo/bDIph37B5vYvfWIT7Js6SPAQkUQ==}
     engines: {node: '>=22.12.0'}
 
   '@sanity/image-url@2.1.1':
@@ -7097,7 +7097,7 @@ snapshots:
 
   '@rtsao/scc@1.1.0': {}
 
-  '@sanity/client@8.15.0(vitest@4.1.12)':
+  '@sanity/client@8.16.0(vitest@4.1.12)':
     dependencies:
       eventsource: 5.1.5
       get-it: 9.7.0(vitest@4.1.12)
