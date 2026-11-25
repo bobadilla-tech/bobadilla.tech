@@ -72,8 +72,8 @@ importers:
         specifier: 19.3.1
         version: 19.3.1(react@19.3.1)
       react-email:
-        specifier: ^6.11.13
-        version: 6.11.13(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@10.2.2)
+        specifier: ^6.11.16
+        version: 6.11.16(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@10.2.2)
       react-syntax-highlighter:
         specifier: ^16.1.1
         version: 16.1.2(react@19.3.1)
@@ -2656,6 +2656,11 @@ packages:
 
   ajv-formats@3.0.1:
     resolution: {integrity: sha512-8iUql50EUR+uUcdRQ3HDqa6EVyo3docL8g5WJ3FNcWmu62IbkGUue/pEyLBW8VGKKucTPgqeks4fIU1DA4yowQ==}
+    peerDependencies:
+      ajv: ^8.0.0
+    peerDependenciesMeta:
+      ajv:
+        optional: true
 
   ajv@6.15.0:
     resolution: {integrity: sha512-fgFx7Hfoq60ytK2c7DhnF8jIvzYgOMxfugjLOSMHjLIPgenqa7S7oaagATUq99mV6IYvN2tRmC0wnTYX6iPbMw==}
@@ -3703,10 +3708,6 @@ packages:
     resolution: {integrity: sha512-Wjlyrolmm8uDpm/ogGyXZXb1Z+Ca2B8NbJwqBVg0axK9GbBeoS7yGV6vjXnYdGm6X53iehEuxxbyiKp8QmN4Vw==}
     engines: {node: 18 || 20 || >=22}
 
-  glob@14.0.4:
-    resolution: {integrity: sha512-mMiwNKoJZ4HAIRVJxotO6LsNRReA30gQwP9E2/p94tfLv+jygCNpKDjhhSL6OLY6LE371EZm5EAf7RpYuUqlsw==}
-    engines: {node: 18 || 20 || >=22}
-
   globals@14.0.0:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
     engines: {node: '>=18'}
@@ -4487,10 +4488,6 @@ packages:
     resolution: {integrity: sha512-3O/iVVsJAPsOnpwWIeD+d6z/7PmqApyQePUtCndjatj/9I5LylHvt5qluFaBT3I5h3r1ejfR056c+FCv+NnNXg==}
     engines: {node: 18 || 20 || >=22}
 
-  path-scurry@3.0.0:
-    resolution: {integrity: sha512-1pTbQqH1wIwMi/eleQ5leFTTCkzFsPcgXNjwOA8YGGW/W4/kHT3dssE7Z6NH+zuqNLOzOB0uaD61yl7cAcVhgg==}
-    engines: {node: 18 || 20 || >=22}
-
   path-to-regexp@6.3.0:
     resolution: {integrity: sha512-Yhpw4T9C6hPpgPeA28us07OJeqZ5EzQTkbfwuhsUg0c237RomFoETJgmp2sa3F/41gfLE6G5cqcYwznmeEeOlQ==}
 
@@ -4601,8 +4598,8 @@ packages:
     peerDependencies:
       react: ^19.3.1
 
-  react-email@6.11.13:
-    resolution: {integrity: sha512-GyTIMXrQF4oF9L9XkEu9rZYelgjqzLKzfR+aNIR29nFN5D3S7+Tilyl9AcxhOrVU2c/dUVxnwGv+uACBZrTt4Q==}
+  react-email@6.11.16:
+    resolution: {integrity: sha512-/d0gipOg2mB4IOqM46SfcQIZsJP2rumyxZWREOB8hKcyLAFDSlurCyvfWKVA85JaMUZECVFTN/U0UdqUAIBgXQ==}
     engines: {node: '>=20.19.0'}
     hasBin: true
     peerDependencies:
@@ -8902,12 +8899,6 @@ snapshots:
       minipass: 7.1.3
       path-scurry: 2.0.2
 
-  glob@14.0.4:
-    dependencies:
-      minimatch: 11.0.5
-      minipass: 7.1.3
-      path-scurry: 3.0.0
-
   globals@14.0.0: {}
 
   globals@16.4.0: {}
@@ -9664,11 +9655,6 @@ snapshots:
       lru-cache: 11.5.3
       minipass: 7.1.3
 
-  path-scurry@3.0.0:
-    dependencies:
-      lru-cache: 11.5.3
-      minipass: 7.1.3
-
   path-to-regexp@6.3.0: {}
 
   path-to-regexp@8.4.2: {}
@@ -9762,7 +9748,7 @@ snapshots:
       react: 19.3.1
       scheduler: 0.28.0
 
-  react-email@6.11.13(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@10.2.2):
+  react-email@6.11.16(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@10.2.2):
     dependencies:
       '@babel/parser': 7.29.2
       '@babel/traverse': 7.29.0(supports-color@10.2.2)
@@ -9772,7 +9758,6 @@ snapshots:
       conf: 15.1.0
       css-tree: 3.2.1
       esbuild: 0.28.2
-      glob: 14.0.4
       jiti: 2.6.1
       log-symbols: 7.0.1
       marked: 15.0.12
