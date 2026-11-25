@@ -30,8 +30,8 @@ importers:
         specifier: ^8.17.0
         version: 8.17.0(vitest@4.1.12)
       '@sanity/image-url':
-        specifier: ^2.1.1
-        version: 2.1.1
+        specifier: ^2.2.0
+        version: 2.2.0
       '@t3-oss/env-nextjs':
         specifier: ^0.13.11
         version: 0.13.11(typescript@6.0.3)(zod@4.6.7)
@@ -1932,8 +1932,8 @@ packages:
     resolution: {integrity: sha512-X7qnv2HdKPZUKlrLBRsjw+8yKqjCJd2i2V3cV1CRY5zq9k0wB1mhWpiwXiJhcRTBza8wdQtNSCdQCh8hBoZ71g==}
     engines: {node: '>=22.12.0'}
 
-  '@sanity/image-url@2.1.1':
-    resolution: {integrity: sha512-qVXsF1teWR6FO3ZFAz46HDcRU+E6EQkpyncPnkGOzeJ1PgnaOiWMVbiSrZtX10s3txzzu/tAjKwbxbGHfDWgGw==}
+  '@sanity/image-url@2.2.0':
+    resolution: {integrity: sha512-6uJnWhDJMlfwsnHwlnHpUgXCo5kmH3Wv/ERXalgRJHiBhChO/UYhIBTOxdwXTP01EkeoDARn6/+e3Vf+db+JIA==}
     engines: {node: '>=20.19.0'}
 
   '@sanity/signed-urls@2.0.6':
@@ -7039,7 +7039,7 @@ snapshots:
     transitivePeerDependencies:
       - vitest
 
-  '@sanity/image-url@2.1.1':
+  '@sanity/image-url@2.2.0':
     dependencies:
       '@sanity/signed-urls': 2.0.6
 
